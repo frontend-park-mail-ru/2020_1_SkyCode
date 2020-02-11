@@ -1,0 +1,12 @@
+{
+  "name": "homework_1_static_server",
+  "version": "1.0.0",
+  "description": "Simple http server to send static files",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "pycnick",
+  "license": "ISC"
+}
