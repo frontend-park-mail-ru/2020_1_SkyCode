@@ -1,0 +1,10 @@
+@import "../nav/nav.css";
+@import "../location/location.css";
+@import "../logo/logo.css";
+
+.header {
+    background-color: azure;
+    color: black;
+    padding-top: 20px;
+    min-height: 60px;
+}

@@ -1,0 +1,7 @@
+.login__button {
+    height: 38px;
+    border: 0;
+    background-color: blueviolet;
+    color: white;
+    padding: 0 20px 0 20px;
+}
