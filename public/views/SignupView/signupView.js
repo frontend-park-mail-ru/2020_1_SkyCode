@@ -18,13 +18,13 @@ class SignupView {
         const button = document.getElementsByClassName('signup__button')[0];
         button.addEventListener('click', function (evt) {
             evt.preventDefault();
-            const username = document.getElementsByName('username')[0].value;
+            const email = document.getElementsByName('email')[0].value;
             const firstName = document.getElementsByName('firstName')[0].value;
             const lastName = document.getElementsByName('lastName')[0].value;
-            const password = document.getElementsByName('password1')[0].value;
+            const password = document.getElementsByName('password')[0].value;
 
             const req = {
-                email: username,
+                email: email,
                 firstName: firstName,
                 lastName: lastName,
                 password: password,
@@ -33,7 +33,7 @@ class SignupView {
             UserModel.createUser(req).then(response => {
                 EventBus.publish('updateUser', response);
                 MainView.render();
-            }).catch(error => console.log(error));
+            }).catch(error => alert(error));
 
         });
 

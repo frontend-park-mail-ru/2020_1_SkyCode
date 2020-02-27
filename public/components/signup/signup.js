@@ -10,8 +10,8 @@ export class Signup {
 
     render() {
         const title = new Title('Sign Up', 'signup__title');
-        const usrLabel = new Label('Username', 'signup__label');
-        const usrInput = new Input('username', 'Username', 'text', 'signup__input');
+        const usrLabel = new Label('Email', 'signup__label');
+        const usrInput = new Input('email', 'Email', 'text', 'signup__input');
         const fNameLabel = new Label('First Name', 'signup__label');
         const fNameInput = new Input('firstName', 'First name', 'text', 'signup__input');
         const lNameLabel = new Label('Last Name', 'signup__label');

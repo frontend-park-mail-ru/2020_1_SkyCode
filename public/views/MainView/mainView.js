@@ -8,11 +8,22 @@ import EventBus from '../../services/EventBus.js';
 import SessionModel from '../../models/SessionModel.js';
 import RestaurantModel from '../../models/RestaurantModel.js';
 
+/**
+ * Основная страница веб-приложения
+ */
 class MainView {
+    /**
+     * Инициализация изменяемого DOM-элемента.
+     * @param parent изменяемый элемент
+     */
     constructor(parent  = document.getElementById('application')) {
         this.parent = parent;
     }
 
+    /**
+     * Генерация страницы на месте переданного в конструктор элемента.
+     * Для залогининых и разлогининых пользователей будут отрисованы различные заголовки.
+     */
     render() {
         Header.getInstance();
 

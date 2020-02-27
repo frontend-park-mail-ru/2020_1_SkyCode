@@ -1,3 +1,7 @@
+/**
+ * Класс, обеспечивающий своим клиентам
+ * отношение подписчик-издатель
+ */
 class EventBus {
     constructor() {
         if (EventBus.instance)
