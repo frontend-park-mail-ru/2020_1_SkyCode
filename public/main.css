@@ -1,0 +1,10 @@
+@import "views/LoginView/loginView.css";
+@import "views/SignupView/signupView.css";
+@import "views/ProfileView/profileView.css";
+@import "views/RestaurantView/restaurantView.css";
+
+body {
+    font-family: 'Montserrat Alternates', sans-serif;
+    padding: 0;
+    margin: 0;
+}

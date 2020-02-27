@@ -1,0 +1,11 @@
+@import "__link/nav__link.css";
+
+.nav {
+    float: left;
+
+}
+
+.nav li {
+    display: inline;
+    margin: 5px 10px 5px 10px;
+}

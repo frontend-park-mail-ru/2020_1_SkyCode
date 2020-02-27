@@ -1,0 +1,32 @@
+@import "../general/button/button.css";
+@import "../general/input/input.css";
+@import "../general/label/label.css";
+@import "../general/title/title.css";
+.login__form {
+    float: bottom;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    align-items: flex-start;
+    justify-content: space-around;
+    margin: 0 0 10px 130px;
+
+    box-shadow: 1px 2px 10px 0px #c5c5c5;
+    padding: 12px 20px 20px;
+}
+
+.login__input {
+    margin: 10px;
+}
+
+.login__label {
+    margin: 10px 10px 0 10px;
+}
+
+.login__button {
+    margin: 10px;
+}
+
+.login__title {
+    margin: 10px;
+}
