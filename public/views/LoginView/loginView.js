@@ -39,9 +39,9 @@ class LoginView {
 				    EventBus.publish('updateUser', response);
 					MainView.render();
 			    } else {
-			    	alert("No login.")
+					Validation.setError('server_err', response.message)
 			    }
-			}).catch(err => console.log(err));
+			}).catch(err => { Validation.setError('server_err', err.message)});
 
 		});
 
