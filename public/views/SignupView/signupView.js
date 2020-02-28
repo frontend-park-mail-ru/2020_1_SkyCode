@@ -25,6 +25,13 @@ class SignupView {
                 return;
             }
 
+            if (document.getElementsByName('password1')[0].value !==
+                document.getElementsByName('password2')[0].value) {
+                console.log('form is invalid');
+                Validation.setError('server_err', 'Passwords are different');
+                return;
+            }
+
             const email = document.getElementsByName('email')[0].value;
             const firstName = document.getElementsByName('firstName')[0].value;
             const lastName = document.getElementsByName('lastName')[0].value;
@@ -38,10 +45,18 @@ class SignupView {
             };
 
             UserModel.createUser(req).then(response => {
+                debugger;
+                if (response.error) {
+                    Validation.setError('server_err', response.error);
+                    return;
+                }
+
+                Validation.setError('server_err', '');
                 EventBus.publish('updateUser', response);
                 MainView.render();
-            }).catch(error => {Validation.setError('server_error', error.error)});
-
+            }).catch(error => {
+                debugger;
+                Validation.setError('server_error', error.error)});
         });
 
         document.querySelector('.login').addEventListener('click', (evt) => {

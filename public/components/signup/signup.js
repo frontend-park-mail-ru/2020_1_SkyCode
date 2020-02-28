@@ -36,6 +36,7 @@ export class Signup {
         const pswd2ErrLabel = new ErrorComponent('password2__err', 'error');
 
         const buttonInput = new Button('Sign Up', 'signup__button');
+        const serverErr = new ErrorComponent('server_err', 'error');
 
         const template = '<section class={{className}}>' +
             ' <form action={{action}}>' +
@@ -56,7 +57,7 @@ export class Signup {
             pswd2Input.render() +
             pswd2ErrLabel.render() +
             buttonInput.render() +
-            ' </form>' +
+            ' </form>' + serverErr.render() +
             '</section>';
 
         const compileTemplate = Handlebars.compile(template);
