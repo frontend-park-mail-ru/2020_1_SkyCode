@@ -6,7 +6,7 @@ class Http {
         this.serverPath = 'http://89.208.199.114:8080';
     }
 
-    async fetchRequest({path = '/', method = 'GET', body = null, headers = true}) {
+    fetchRequest({path = '/', method = 'GET', body = null, headers = true}) {
         const req = {
             method: method,
             mode: 'cors',
@@ -22,7 +22,7 @@ class Http {
             }
 
         }
-        return await fetch(`${this.serverPath}${path}`, req);
+        return fetch(`${this.serverPath}${path}`, req);
     }
 
     async fetchGet({path}) {
