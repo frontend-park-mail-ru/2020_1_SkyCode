@@ -45,7 +45,6 @@ class SignupView {
             };
 
             UserModel.createUser(req).then(response => {
-                debugger;
                 if (response.error) {
                     Validation.setError('server_err', response.error);
                     return;
@@ -55,7 +54,6 @@ class SignupView {
                 EventBus.publish('updateUser', response);
                 MainView.render();
             }).catch(error => {
-                debugger;
                 Validation.setError('server_error', error.error)});
         });
 

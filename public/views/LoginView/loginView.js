@@ -18,41 +18,41 @@ class LoginView {
 	}
 
 	render() {
-		this.parent.innerHTML = '';
-		this.parent.innerHTML += Header.getInstance().render();
-		this.parent.innerHTML += new Login().render();
-
-		const button = document.getElementsByClassName('login__button')[0];
-		button.addEventListener('click', function (evt) {
-			evt.preventDefault();
-
-			if (!Validation.validationCheck()){
-				console.log('form is invalid');
-				return;
-			}
-
-			const username = document.getElementsByName('email')[0].value;
-			const password = document.getElementsByName('password')[0].value;
-
-			SessionModel.login(username, password).then(response => {
-				debugger;
-			    if (!response.error) {
-				    EventBus.publish('updateUser', response);
-					MainView.render();
-			    } else {
-					Validation.setError('server_err', response.error)
-			    }
-			}).catch(err => {
-				Validation.setError('server_err', err.error)
-			});
-
-		});
+		Header.getInstance();
 
 		UserModel.getUser().then(response => {
 			if (response.error) {
+				this.parent.innerHTML = '';
+				this.parent.innerHTML += Header.getInstance().render(this.parent);
+				this.parent.innerHTML += new Login().render();
+
+				const button = document.getElementsByClassName('login__button')[0];
+				button.addEventListener('click', function (evt) {
+					evt.preventDefault();
+
+					if (!Validation.validationCheck()){
+						console.log('form is invalid');
+						return;
+					}
+
+					const username = document.getElementsByName('email')[0].value;
+					const password = document.getElementsByName('password')[0].value;
+
+					SessionModel.login(username, password).then(response => {
+						if (!response.error) {
+							EventBus.publish('updateUser', response);
+							MainView.render();
+						} else {
+							Validation.setError('server_err', response.error)
+						}
+					}).catch(err => {
+						Validation.setError('server_err', err.error)
+					});
+
+				});
+
 				document.querySelector('.login').addEventListener('click', (evt) => {
 					evt.preventDefault();
-					LoginView.render();
 				});
 
 				document.querySelector('.signup').addEventListener('click', (evt) => {
@@ -60,6 +60,8 @@ class LoginView {
 					SignupView.render();
 				});
 			} else {
+				MainView.render();
+
 				document.querySelector('.profile').addEventListener('click', (evt) => {
 					evt.preventDefault();
 					UserModel.getUser().then(response => {
@@ -80,13 +82,13 @@ class LoginView {
 					})
 				});
 			}
-		}).catch(error => {console.log(error); console.log('loginView:line 73')});
-
-		// TODO: Перетащить в хедер
-		document.querySelector('.main__logo').addEventListener('click', (evt) => {
-			evt.preventDefault();
-			MainView.render();
-		});
+		}).catch(error => {console.log(error); console.log('loginView:line 73')}).finally(() => {
+				document.querySelector('.main__logo').addEventListener('click', (evt) => {
+					evt.preventDefault();
+					MainView.render();
+				});
+			}
+		)
 	}
 }
 

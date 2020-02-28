@@ -33,7 +33,7 @@ class ProfileView {
 		profile.addEventListener('click', function (evt) {
 			evt.preventDefault();
 
-			const email = document.getElementsByName('username')[0].value;
+			const email = document.getElementsByName('email')[0].value;
 			const firstName = document.getElementsByName('firstName')[0].value;
 			const lastName = document.getElementsByName('lastName')[0].value;
 			const src = document.getElementsByName('profilephoto')[0];
@@ -52,7 +52,7 @@ class ProfileView {
 		document.querySelector('.profile').addEventListener('click', (evt) => {
 			evt.preventDefault();
 			UserModel.getUser().then(response => {
-				ProfileView.render(response);
+				ProfileView.getInstance().render(response);
 			}).catch(err => console.log(err));
 		});
 
