@@ -1,3 +1,7 @@
+
+/**
+ * Компонент картинки с из нужного источника с настраиваемым классом
+ */
 export class Image {
 	constructor(src, className) {
 		this.src = src;
@@ -5,7 +9,7 @@ export class Image {
 	}
 
 	render() {
-		const template = '<img class={{className}} src={{src}}>';
+		const template = '<img class={{className}} src={{src}} alt="can`t load">';
 		const compileTemplate = Handlebars.compile(template);
 		return compileTemplate({className: this.className, src: this.src});
 	}

@@ -1,7 +1,8 @@
+/**
+ * Компонент логотипа
+ */
 export class Logo {
-    constructor() {
-
-    }
+    constructor() {}
 
     render() {
         const template = '<div class="logo"><h1><a class="main__logo" data-section="main" href="/">Delivery</a></h1></div>';

@@ -1,11 +1,10 @@
 import {Label} from "../label/label.js";
 import {Input} from "../input/input.js";
 
+/**
+ * Компонент поиска
+ */
 export class Location {
-    constructor() {
-
-    }
-
     render() {
         const label = new Label('Location', 'location__label').render();
         const input = new Input('location', 'Location', 'text', 'location__input').render();

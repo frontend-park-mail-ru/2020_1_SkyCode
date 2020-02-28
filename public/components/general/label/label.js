@@ -1,3 +1,6 @@
+/**
+ * Компонент метки с настраиваемым текстом и именем класса
+ */
 export class Label {
     constructor(text, classname) {
         this.text = text;

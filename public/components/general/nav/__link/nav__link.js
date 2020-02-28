@@ -1,3 +1,6 @@
+/**
+ * Компонент ссылки в навигационной панели
+ */
 export class NavLink {
     constructor(parent = document.body, link = '/', linkTitle = '', section) {
         this.parent = parent;

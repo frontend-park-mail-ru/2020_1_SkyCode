@@ -1,3 +1,7 @@
+/**
+ * Компонент заголовка с настраиваемым
+ * именем класса и текстом
+ */
 export class Title {
     constructor(text, className) {
         this.text = text;

@@ -1,7 +1,9 @@
 import {NavLink} from "./__link/nav__link.js";
-import {Link} from "../link/link.js";
 
-
+/**
+ * Компонент, генерирующий навигационную панель в
+ * соответствии с переданным контекстом
+ */
 export class Nav {
     constructor() {
     }

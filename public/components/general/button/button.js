@@ -1,3 +1,7 @@
+
+/**
+ * Компонент кнопки с настраиваемым текстом и классом
+ */
 export class Button {
     constructor(text, classname) {
         this.text = text;
