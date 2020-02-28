@@ -1,5 +1,3 @@
-
-
 export default class Validation {
     static validationCheck() {
         let valid = true;

@@ -1,4 +1,4 @@
-import {NavLink} from "./__link/nav__link.js";
+import {NavLink} from './__link/nav__link.js';
 
 /**
  * Компонент, генерирующий навигационную панель в

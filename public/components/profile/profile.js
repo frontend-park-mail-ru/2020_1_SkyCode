@@ -2,7 +2,7 @@ import {Title} from '../general/title/title.js';
 import {Input} from '../general/input/input.js';
 import {Button} from '../general/button/button.js';
 import {Image} from '../general/image/image.js';
-import {Label} from "../general/label/label.js";
+import {Label} from '../general/label/label.js';
 
 /**
  * Компонент редактирования профиля пользователя
@@ -13,9 +13,9 @@ export class Profile {
     }
 
     render() {
-        const title = new Title(`Profile`, 'profile__title');
+        const title = new Title('Profile', 'profile__title');
         const ava = new Image(`${this.user.profilePhoto}`, 'profile__photo');
-        const avaErr = new Label('', )
+        const avaErr = new Label('', );
         const input = new Input('profilephoto', 'Change', 'file', 'profile__uploadphoto');
         const usrInput = new Input('email', `${this.user.email}`, 'email',
             'profile__input', true, `${this.user.email}`);

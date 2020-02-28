@@ -1,6 +1,6 @@
 import Header from '../../components/header/header.js';
 import {Menu} from '../../components/menu/menu.js';
-import LoginView from "../LoginView/loginView.js";
+import LoginView from '../LoginView/loginView.js';
 import UserModel from '../../models/UserModel.js';
 import ProfileView from '../ProfileView/profileView.js';
 import SessionModel from '../../models/SessionModel.js';
@@ -43,7 +43,7 @@ class RestaurantView {
                     EventBus.publish('deleteUser', response);
                     LoginView.render();
                 }
-            })
+            });
         });
 
         document.querySelector('.main__logo').addEventListener('click', (evt) => {
