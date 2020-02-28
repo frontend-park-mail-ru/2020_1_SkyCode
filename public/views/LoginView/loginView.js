@@ -35,13 +35,16 @@ class LoginView {
 			const password = document.getElementsByName('password')[0].value;
 
 			SessionModel.login(username, password).then(response => {
+				debugger;
 			    if (!response.error) {
 				    EventBus.publish('updateUser', response);
 					MainView.render();
 			    } else {
-					Validation.setError('server_err', response.message)
+					Validation.setError('server_err', response.error)
 			    }
-			}).catch(err => { Validation.setError('server_err', err.message)});
+			}).catch(err => {
+				Validation.setError('server_err', err.error)
+			});
 
 		});
 

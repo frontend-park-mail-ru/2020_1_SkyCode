@@ -40,7 +40,7 @@ class SignupView {
             UserModel.createUser(req).then(response => {
                 EventBus.publish('updateUser', response);
                 MainView.render();
-            }).catch(error => {Validation.setError('server_error', error.message)});
+            }).catch(error => {Validation.setError('server_error', error.error)});
 
         });
 
