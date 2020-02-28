@@ -4,6 +4,7 @@ import MainView from '../../views/MainView/mainView.js'
 import LoginView from '../LoginView/loginView.js';
 import UserModel from '../../models/UserModel.js';
 import EventBus from '../../services/EventBus.js';
+import Validation from "../../services/InputValidation.js";
 
 class SignupView {
     constructor(parent = document.getElementById('application')) {
@@ -13,15 +14,21 @@ class SignupView {
     render() {
         this.parent.innerHTML = '';
         this.parent.innerHTML += Header.getInstance().render();
-        this.parent.innerHTML += new Signup(this.parent).render();
+        this.parent.innerHTML += new Signup().render();
 
         const button = document.getElementsByClassName('signup__button')[0];
         button.addEventListener('click', function (evt) {
             evt.preventDefault();
+
+            if (!Validation.validationCheck()) {
+                console.log('form is invalid');
+                return;
+            }
+
             const email = document.getElementsByName('email')[0].value;
             const firstName = document.getElementsByName('firstName')[0].value;
             const lastName = document.getElementsByName('lastName')[0].value;
-            const password = document.getElementsByName('password')[0].value;
+            const password = document.getElementsByName('password1')[0].value;
 
             const req = {
                 email: email,

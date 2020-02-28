@@ -4,7 +4,7 @@
 export class Label {
     constructor(text, classname) {
         this.text = text;
-        this. classname = classname;
+        this.classname = classname;
     }
 
     render() {

@@ -7,6 +7,7 @@ import ProfileView from '../ProfileView/profileView.js';
 import RestaurantView from '../RestaurantView/restaurantView.js';
 import UserModel from '../../models/UserModel.js';
 import EventBus from '../../services/EventBus.js';
+import Validation from "../../services/InputValidation.js";
 
 /**
  * Страница аутентификации
@@ -24,7 +25,13 @@ class LoginView {
 		const button = document.getElementsByClassName('login__button')[0];
 		button.addEventListener('click', function (evt) {
 			evt.preventDefault();
-			const username = document.getElementsByName('username')[0].value;
+
+			if (!Validation.validationCheck()){
+				console.log('form is invalid');
+				return;
+			}
+
+			const username = document.getElementsByName('email')[0].value;
 			const password = document.getElementsByName('password')[0].value;
 
 			SessionModel.login(username, password).then(response => {

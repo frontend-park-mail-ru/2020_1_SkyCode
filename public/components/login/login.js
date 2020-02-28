@@ -10,15 +10,21 @@ import {Title} from '../general/title/title.js';
 export class Login {
     render() {
         const title = new Title('Log In', 'login__title');
+
         const usrLabel = new Label('Username', 'login__label');
-        const usrInput = new Input('username', 'Username', 'text', 'login__input');
+        const email = new Input('email', 'email', 'email', 'login__input', true);
+        const emailErr = new Label('', 'email__err');
+
         const pswdLabel = new Label('Password', 'login__label');
-        const pswdInput = new Input('password', 'Password', 'password', 'login__input');
+        const pswdInput = new Input('password', 'Password', 'password', 'login__input', true);
+        const pswdErr = new Label('', 'password__err');
+
         const buttonInput = new Button('Log In', 'login__button');
 
         const template = '<section class={{className}}>' +
            ' <form action={{action}} method="post">' +
-            title.render() +  usrLabel.render() + usrInput.render() + pswdLabel.render() + pswdInput.render() + buttonInput.render() +
+            title.render() +  usrLabel.render() + email.render() + emailErr.render() +
+            pswdLabel.render() + pswdInput.render() + pswdErr.render() + buttonInput.render() +
             ' </form>' +
             '</section>';
 
