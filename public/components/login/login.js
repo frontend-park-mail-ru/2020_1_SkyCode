@@ -2,7 +2,7 @@ import {Button} from '../general/button/button.js';
 import {Input} from '../general/input/input.js';
 import {Label} from '../general/label/label.js';
 import {Title} from '../general/title/title.js';
-import {ErrorComponent} from "../general/error/error.js";
+import {ErrorComponent} from '../general/error/error.js';
 
 /**
  * Компонент логина

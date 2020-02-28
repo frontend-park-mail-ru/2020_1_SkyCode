@@ -1,5 +1,5 @@
-import {Label} from "../label/label.js";
-import {Input} from "../input/input.js";
+import {Label} from '../label/label.js';
+import {Input} from '../input/input.js';
 
 /**
  * Компонент поиска

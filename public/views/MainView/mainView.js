@@ -1,8 +1,8 @@
 import Header from '../../components/header/header.js';
-import LoginView from '../LoginView/loginView.js'
-import SignupView from '../SignupView/signupView.js'
+import LoginView from '../LoginView/loginView.js';
+import SignupView from '../SignupView/signupView.js';
 import ProfileView from '../ProfileView/profileView.js';
-import RestaurantView from '../RestaurantView/restaurantView.js'
+import RestaurantView from '../RestaurantView/restaurantView.js';
 import UserModel from '../../models/UserModel.js';
 import EventBus from '../../services/EventBus.js';
 import SessionModel from '../../models/SessionModel.js';
@@ -70,7 +70,7 @@ class MainView {
                             EventBus.publish('deleteUser', response);
                             LoginView.render();
                         }
-                    })
+                    });
                 });
 
                 document.querySelector('.main__logo').addEventListener('click', (evt) => {

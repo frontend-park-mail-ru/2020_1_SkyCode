@@ -1,13 +1,13 @@
 import Header from '../../components/header/header.js';
 import {Login} from '../../components/login/login.js';
 import SessionModel from '../../models/SessionModel.js';
-import MainView from '../../views/MainView/mainView.js'
+import MainView from '../../views/MainView/mainView.js';
 import SignupView from '../SignupView/signupView.js';
 import ProfileView from '../ProfileView/profileView.js';
 import RestaurantView from '../RestaurantView/restaurantView.js';
 import UserModel from '../../models/UserModel.js';
 import EventBus from '../../services/EventBus.js';
-import Validation from "../../services/InputValidation.js";
+import Validation from '../../services/InputValidation.js';
 
 /**
  * Страница аутентификации
@@ -30,7 +30,7 @@ class LoginView {
 				button.addEventListener('click', function (evt) {
 					evt.preventDefault();
 
-					if (!Validation.validationCheck()){
+					if (!Validation.validationCheck()) {
 						console.log('form is invalid');
 						return;
 					}
@@ -43,10 +43,10 @@ class LoginView {
 							EventBus.publish('updateUser', response);
 							MainView.render();
 						} else {
-							Validation.setError('server_err', response.error)
+							Validation.setError('server_err', response.error);
 						}
 					}).catch(err => {
-						Validation.setError('server_err', err.error)
+						Validation.setError('server_err', err.error);
 					});
 
 				});
@@ -79,16 +79,19 @@ class LoginView {
 					SessionModel.logout().then(response => {
 						EventBus.publish('deleteUser', response);
 						LoginView.render();
-					})
+					});
 				});
 			}
-		}).catch(error => {console.log(error); console.log('loginView:line 73')}).finally(() => {
+		}).catch(error => {
+			console.log(error);
+			console.log('loginView:line 73');
+		}).finally(() => {
 				document.querySelector('.main__logo').addEventListener('click', (evt) => {
 					evt.preventDefault();
 					MainView.render();
 				});
 			}
-		)
+		);
 	}
 }
 

@@ -1,11 +1,11 @@
 import Header from '../../components/header/header.js';
 import {Profile} from '../../components/profile/profile.js';
 import RestaurantView from '../RestaurantView/restaurantView.js';
-import LoginView from '../LoginView/loginView.js'
+import LoginView from '../LoginView/loginView.js';
 import UserModel from '../../models/UserModel.js';
 import SessionModel from '../../models/SessionModel.js';
 import EventBus from '../../services/EventBus.js';
-import RestaurantModel from '../../models/RestaurantModel.js'
+import RestaurantModel from '../../models/RestaurantModel.js';
 import MainView from '../MainView/mainView.js';
 
 /**
@@ -75,7 +75,7 @@ class ProfileView {
 					EventBus.publish('deleteUser', response);
 					LoginView.render();
 				}
-			})
+			});
 		});
 
 		document.querySelector('.main__logo').addEventListener('click', (evt) => {

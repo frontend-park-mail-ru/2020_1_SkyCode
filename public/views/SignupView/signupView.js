@@ -1,10 +1,10 @@
 import Header from '../../components/header/header.js';
 import {Signup} from '../../components/signup/signup.js';
-import MainView from '../../views/MainView/mainView.js'
+import MainView from '../../views/MainView/mainView.js';
 import LoginView from '../LoginView/loginView.js';
 import UserModel from '../../models/UserModel.js';
 import EventBus from '../../services/EventBus.js';
-import Validation from "../../services/InputValidation.js";
+import Validation from '../../services/InputValidation.js';
 
 class SignupView {
     constructor(parent = document.getElementById('application')) {
@@ -54,7 +54,7 @@ class SignupView {
                 EventBus.publish('updateUser', response);
                 MainView.render();
             }).catch(error => {
-                Validation.setError('server_error', error.error)});
+                Validation.setError('server_error', error.error);});
         });
 
         document.querySelector('.login').addEventListener('click', (evt) => {
