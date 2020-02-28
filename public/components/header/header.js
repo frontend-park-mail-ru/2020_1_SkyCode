@@ -3,12 +3,19 @@ import {Nav} from '../general/nav/nav.js';
 import {Location} from '../general/location/location.js';
 import EventBus from '../../services/EventBus.js';
 
+/**
+ * Компонент заголовока
+ *
+ * @note реализует паттерн singleton
+ * @note является подписчиком событий 'updateUser', 'deleteUser'
+ */
 class Header {
     constructor() {
         this.menuElements = {
             login: 'Log In',
             signup: 'Sign Up',
         };
+
         this.updateUser = this.updateUser.bind(this);
         this.deleteUser = this.deleteUser.bind(this);
         EventBus.subscribe('updateUser', this.updateUser);
@@ -24,6 +31,7 @@ class Header {
 
     updateUser(user) {
         if (!user) {
+            console.log('header.js:Header:updateUser: пользователь равен', user);
             return;
         }
 
@@ -36,6 +44,7 @@ class Header {
 
     deleteUser(user) {
         if (!user) {
+            console.log('header.js:Header:updateUser: пользователь равен', user);
             return;
         }
 

@@ -3,6 +3,9 @@ import {Input} from '../general/input/input.js';
 import {Button} from '../general/button/button.js';
 import {Image} from '../general/image/image.js';
 
+/**
+ * Компонент редактирования профиля пользователя
+ */
 export class Profile {
     constructor(user) {
         this.user = user;
@@ -11,7 +14,7 @@ export class Profile {
     render() {
         const title = new Title(`Profile`, 'profile__title');
         const ava = new Image(`${this.user.profilePhoto}`, 'profile__photo');
-        const input = new Input('profilephoto', 'Change', 'file', 'profile__uploadphoto')
+        const input = new Input('profilephoto', 'Change', 'file', 'profile__uploadphoto');
         const usrInput = new Input('username', `${this.user.email}`, 'text', 'profile__input');
         const fNameInput = new Input('firstName', `${this.user.firstName}`, 'text', 'profile__input');
         const lNameInput = new Input('lastName', `${this.user.lastName}`, 'text', 'profile__input');

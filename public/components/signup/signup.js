@@ -3,11 +3,10 @@ import {Input} from '../general/input/input.js';
 import {Label} from '../general/label/label.js';
 import {Title} from '../general/title/title.js';
 
+/**
+ * Компонент регистрации пользователя
+ */
 export class Signup {
-    constructor() {
-
-    }
-
     render() {
         const title = new Title('Sign Up', 'signup__title');
         const usrLabel = new Label('Email', 'signup__label');

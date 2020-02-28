@@ -3,6 +3,10 @@ import {Input} from '../general/input/input.js';
 import {Label} from '../general/label/label.js';
 import {Title} from '../general/title/title.js';
 
+/**
+ * Компонент логина
+ * TODO: мб нужно будет что-то добавить
+ */
 export class Login {
     constructor(parent) {
         this.parent = parent;
