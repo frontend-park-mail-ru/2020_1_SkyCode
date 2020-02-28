@@ -1,5 +1,8 @@
 import Http from './Http.js';
 
+/**
+ * Модель пользователя, реализует запросы к серверу за пользовательскими данными
+ */
 class UserModel {
     getUser() {
         return Http.fetchGet({path: '/profile'}).then(response => response.json());

@@ -8,6 +8,9 @@ import EventBus from '../../services/EventBus.js';
 import {Title} from '../../components/general/title/title.js';
 import MainView from '../MainView/mainView.js';
 
+/**
+ * Страница ресторана
+ */
 class RestaurantView {
     constructor(parent = document.getElementById('application')) {
         this.parent = parent;
@@ -21,7 +24,6 @@ class RestaurantView {
         rest.innerHTML += new Title(menu.name, 'restaurant__title').render();
         rest.innerHTML += new Menu(this.parent).render(menu);
         this.parent.innerHTML += rest.outerHTML;
-
 
         document.querySelector('.profile').addEventListener('click', (evt) => {
             evt.preventDefault();

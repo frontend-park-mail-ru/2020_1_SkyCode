@@ -1,9 +1,13 @@
 import Http from './Http.js';
 
+/**
+ * Модель пользовательской сессии, реализует управление текущей
+ *  пользовательской сессией
+ */
 class SessionModel {
-    login(usr, pswd) {
+    login(usr, password) {
         return Http.fetchPost({path: '/session',
-            body: JSON.stringify({email: usr, password: pswd})
+            body: JSON.stringify({email: usr, password: password})
         }).then(res => res.json());
     }
 

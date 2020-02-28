@@ -8,8 +8,11 @@ import EventBus from '../../services/EventBus.js';
 import RestaurantModel from '../../models/RestaurantModel.js'
 import MainView from '../MainView/mainView.js';
 
+/**
+ * Страница профиля
+ */
 class ProfileView {
-	constructor(parent = document.getElementById('application'), user = {}) {
+	constructor(parent = document.getElementById('application')) {
 		this.parent = parent;
 		this.render = this.render.bind(this);
 	}

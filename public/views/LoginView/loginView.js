@@ -8,19 +8,22 @@ import RestaurantView from '../RestaurantView/restaurantView.js';
 import UserModel from '../../models/UserModel.js';
 import EventBus from '../../services/EventBus.js';
 
+/**
+ * Страница аутентификации
+ */
 class LoginView {
 	constructor(parent = document.getElementById('application')) {
 		this.parent = parent;
-
 	}
 
 	render() {
 		this.parent.innerHTML = '';
 		this.parent.innerHTML += Header.getInstance().render();
-		this.parent.innerHTML += new Login(this.parent).render();
+		this.parent.innerHTML += new Login().render();
 
 		const button = document.getElementsByClassName('login__button')[0];
 		button.addEventListener('click', function (evt) {
+			evt.preventDefault();
 			const username = document.getElementsByName('username')[0].value;
 			const password = document.getElementsByName('password')[0].value;
 
@@ -63,13 +66,13 @@ class LoginView {
 					evt.preventDefault();
 					SessionModel.logout().then(response => {
 						EventBus.publish('deleteUser', response);
-						debugger;
 						LoginView.render();
 					})
 				});
 			}
-		}).catch(error => console.log(error));
+		}).catch(error => {console.log(error); console.log('loginView:line 73')});
 
+		// TODO: Перетащить в хедер
 		document.querySelector('.main__logo').addEventListener('click', (evt) => {
 			evt.preventDefault();
 			MainView.render();

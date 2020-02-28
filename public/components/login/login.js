@@ -8,10 +8,6 @@ import {Title} from '../general/title/title.js';
  * TODO: мб нужно будет что-то добавить
  */
 export class Login {
-    constructor(parent) {
-        this.parent = parent;
-    }
-
     render() {
         const title = new Title('Log In', 'login__title');
         const usrLabel = new Label('Username', 'login__label');
@@ -28,6 +24,5 @@ export class Login {
 
         const compileTemplate = Handlebars.compile(template);
         return compileTemplate({className: 'login__form', action: '/'});
-
     }
 }

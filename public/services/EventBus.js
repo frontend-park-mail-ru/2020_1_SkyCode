@@ -1,6 +1,9 @@
 /**
- * Класс, обеспечивающий своим клиентам
- * отношение подписчик-издатель
+ * Класс, позволяющий его клиетнам подписываться на события и
+ *  инициировать их, передавая подписчикам информацию
+ *
+ * @note реализует паттерн singleton
+ * @note реализует паттерн reader-writer
  */
 class EventBus {
     constructor() {
@@ -16,6 +19,7 @@ class EventBus {
         if (!this.channels[name]) {
             this.channels[name] = [];
         }
+
         this.channels[name].push(listener);
     }
 
