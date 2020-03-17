@@ -1,7 +1,8 @@
-import Block from "../block";
+import Block from "../block.js";
 
 class profileArea extends Block {
     #user;
+
     constructor({user} = {}) {
         super([], [
             'searchbar',
@@ -13,9 +14,11 @@ class profileArea extends Block {
 
     HTML() {
         if (this.#user === undefined) {
-            return '<a class="${classes}" href="/login">login</a>';
+            return `<a class="${super.classes}" href="/login">login</a>`;
         }
 
-        return '<a class="${classes}" href="/profile">profile</a>';
+        return `<a class="${super.classes}" href="/profile">profile</a>`;
     }
 }
+
+export default profileArea;

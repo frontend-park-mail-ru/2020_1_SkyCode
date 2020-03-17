@@ -9,7 +9,7 @@ class Block {
 
     HTML() {
         return this.#children.reduce((previous, current) => {
-            previous += current.HTML();
+            return previous + current.HTML();
         }, '');
     }
 
@@ -23,9 +23,9 @@ class Block {
 
     get classes() {
         return this.#classes.reduce((previous, current) => {
-            previous += (' ' + current);
+            return previous + (' ' + current);
         }, '');
     }
 }
 
-// export default Block;
+export default Block;

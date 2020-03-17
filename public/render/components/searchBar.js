@@ -1,4 +1,4 @@
-import Block from "../block";
+import Block from '../block.js';
 
 class searchBar extends Block {
     constructor() {
@@ -9,7 +9,9 @@ class searchBar extends Block {
     }
 
     HTML() {
-        return '<input class="${classes}" type="text" placeholder="Search...">' +
+        return `<input class="${super.classes}" type="text" placeholder="Search...">` +
             '<button type="submit">Submit</button>';
     }
 }
+
+export default searchBar;

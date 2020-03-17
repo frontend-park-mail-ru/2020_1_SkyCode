@@ -1,4 +1,4 @@
-import Block from "../block"
+import Block from '../block.js';
 
 class logo extends Block {
     constructor() {
@@ -8,7 +8,7 @@ class logo extends Block {
     }
 
     HTML() {
-        return '<button class="${classes}>Delivery</button>';
+        return `<a href="./" class="${super.classes}">Delivery</a>`;
     }
 
     bind() {

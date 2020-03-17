@@ -6,6 +6,7 @@
   "dependencies": {
     "documentation": "^12.1.4",
     "express": "^4.17.1",
+    "http-server": "^0.12.1",
     "path": "^0.12.7"
   },
   "devDependencies": {

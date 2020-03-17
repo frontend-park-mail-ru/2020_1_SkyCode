@@ -1,5 +1,8 @@
-import Block from "../block.js";
-import leftSidebarButton from "leftSidebarButton.js";
+import Block from '../block.js';
+import leftSidebarButton from './leftSidebarButton.js';
+import logo from './logo.js';
+import searchBar from './searchBar.js';
+import profileArea from './profileArea.js';
 
 class header extends Block {
     constructor({ user } = {}) {

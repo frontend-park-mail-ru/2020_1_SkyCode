@@ -1,4 +1,4 @@
-import Block from "../block.js";
+import Block from '../block.js';
 
 
 class leftSidebarButton extends Block {
@@ -6,11 +6,11 @@ class leftSidebarButton extends Block {
         super([], [
             'button',
             'header__left-sidebar-button',
-        ])
+        ]);
     }
 
     HTML() {
-        return '<button class="${classes}">.</button>'
+        return `<button class="${super.classes}">.</button>`;
     }
 }
 

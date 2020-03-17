@@ -1,8 +1,8 @@
-// import Block from "../block";
-// import header from "../components/header";
+import Block from '../block.js';
+import header from '../components/header.js';
 
 class MainView extends Block {
-    #user
+
     constructor({user} = {}) {
         super([
             new header({user}),
