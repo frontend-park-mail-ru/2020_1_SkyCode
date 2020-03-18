@@ -1,3 +1,5 @@
 import MainView from '../MainView.js';
 
-document.body.innerHTML = (new MainView().HTML());
+let mv = new MainView();
+document.body.innerHTML = (mv.HTML());
+mv.bind();

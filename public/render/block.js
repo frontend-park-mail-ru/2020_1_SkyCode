@@ -26,6 +26,15 @@ class Block {
             return previous + (' ' + current);
         }, '');
     }
+
+    get myDomNode() {
+        let me = document.getElementsByClassName(this.classes);
+        if (me.length === 0) {
+            return;
+        }
+
+        return me[0];
+    }
 }
 
 export default Block;

@@ -1,5 +1,5 @@
 import Block from '../block.js';
-import header from '../components/header.js';
+import header from '../components/blocks/header/header.js';
 
 class MainView extends Block {
 
