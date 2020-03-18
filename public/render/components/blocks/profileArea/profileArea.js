@@ -29,7 +29,7 @@ class profileArea extends Block {
                         'profile-area__signup'
                     ]
                 }),
-            ]);
+            ], []);
         }
 
         this.user = user;

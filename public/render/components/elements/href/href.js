@@ -26,6 +26,7 @@ class href extends Block {
 
         me.onclick = function (event) {
             event.preventDefault();
+            console.log('href ' + this.href + ' clicked');
             EventBus.publish('goto', this.href);
         }.bind(this);
     }

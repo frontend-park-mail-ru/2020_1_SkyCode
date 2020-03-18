@@ -1,6 +1,5 @@
 import Block from '../../../block.js';
 
-
 export default class button extends Block {
     constructor({text, callback, classes}) {
         classes.push('button');
