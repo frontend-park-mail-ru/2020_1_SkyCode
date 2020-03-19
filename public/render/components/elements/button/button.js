@@ -1,20 +1,15 @@
-import Block from '../../../block.js';
+import Block from '../../../Block.js';
 
 export default class button extends Block {
     constructor({text, callback, classes}) {
         classes.push('button');
 
-        super([], classes);
-
-        this.text = text;
-        this.callback = callback;
-    }
-
-    HTML() {
-        return Handlebars.templates['button.hbs']({
-            classes: this.classes,
-            text: this.text,
-        });
+        super(false);
+        this.classes = classes;
+        this.children = {
+            text: text,
+            callback: callback,
+        };
     }
 
     bind() {

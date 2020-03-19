@@ -1,38 +1,40 @@
-import Block from "../../../block.js";
+import Block from "../../../Block.js";
 import href from '../../elements/href/href.js';
 
 class profileArea extends Block {
     constructor({user} = {}) {
-        if (user) {
-            super([
-                new href({
-                    text: 'log out',
-                    href: '/logout',
-                    classes: [
-                        'profile-area__logout'
-                    ]
-                }),
-            ]);
-        } else {
-            super([
-                new href({
-                    text: 'log in',
-                    href: '/login',
-                    classes: [
-                        'profile-area__login'
-                    ]
-                }),
-                new href({
-                    text: 'sign up',
-                    href: '/signup',
-                    classes: [
-                        'profile-area__signup'
-                    ]
-                }),
-            ], []);
-        }
+        super();
+        this.children = {
+            user: user,
 
-        this.user = user;
+            logout: new href({
+                text: 'log out',
+                href: '/logout',
+                classes: [
+                    'profile-area__logout'
+                ]
+            }),
+
+            login: new href({
+                text: 'log in',
+                href: '/login',
+                classes: [
+                    'profile-area__login'
+                ]
+            }),
+
+            signup: new href({
+                text: 'sign up',
+                href: '/signup',
+                classes: [
+                    'profile-area__signup'
+                ]
+            }),
+        };
+
+        Object.defineProperty(this.children, 'user', {
+            enumerable: false,
+        })
     }
 }
 

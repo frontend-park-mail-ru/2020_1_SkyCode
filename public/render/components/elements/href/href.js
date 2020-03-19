@@ -1,21 +1,16 @@
-import Block from '../../../block.js';
+import Block from '../../../Block.js';
 import EventBus from '../../../../services/EventBus.js';
 
-class href extends Block {
+export default class href extends Block {
     constructor({text, href, classes}) {
         classes.push('href');
 
-        super([], classes);
-        this.text = text;
-        this.href = href;
-    }
-
-    HTML() {
-        return Handlebars.templates['href.hbs']({
-            text: this.text,
-            href: this.href,
-            classes: super.classes,
-        });
+        super(false);
+        this.classes = classes;
+        this.children = {
+            text: text,
+            href: href,
+        };
     }
 
     bind() {
@@ -40,5 +35,3 @@ class href extends Block {
         me.onclick = null;
     }
 }
-
-export default href;
