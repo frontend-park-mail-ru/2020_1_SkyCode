@@ -1,30 +1,72 @@
-class Block {
-    #children;
-    #classes;
 
-    constructor(children = [], classes = []) {
-        this.#children = children;
-        this.#classes = classes;
+export default class Block {
+
+    set children(children) {
+        this._children = children;
     }
 
-    HTML() {
-        return this.#children.reduce((previous, current) => {
-            return previous + current.HTML();
+    get children() {
+        return this._children;
+    }
+
+    set classes (classes) {
+        if (Array.isArray(classes)) {
+            this._classes = classes;
+            return;
+        }
+
+        if (typeof classes === 'string') {
+            this._classes = classes.split(' ');
+            return;
+        }
+
+        console.trace('bad param');
+    }
+
+    get arrClasses () {
+        return this._classes;
+    }
+
+    get strClasses () {
+        return this._classes.reduce((previous, current) => {
+            return previous + (' ' + current);
         }, '');
     }
 
     bind() {
-        this.#children.forEach(element => element.bind());
+        for (let child in this._children) {
+            if (typeof child !== 'object') {
+                console.trace('child ' + child + ' is not an object');
+                return;
+            }
+
+            if (child.hasOwnProperty('bind')) {
+                child.bind();
+                continue;
+            }
+
+            console.trace('child' + child.constructor.name + ' has no bind method');
+        }
     }
 
     unbind() {
-        this.#children.forEach(element => element.unbind());
+        for (let child in this._children) {
+            if (typeof child !== 'object') {
+                console.trace('child ' + child + ' is not an object');
+                return;
+            }
+
+            if (child.hasOwnProperty('unbind')) {
+                child.unbind();
+                continue;
+            }
+
+            console.trace('child ' + child.constructor.name + ' has no bind method');
+        }
     }
 
-    get classes() {
-        return this.#classes.reduce((previous, current) => {
-            return previous + (' ' + current);
-        }, '');
+    HTML() {
+        return Handlebars.templates[this.constructor.name + '.hbs'](this.children)
     }
 
     get myDomNode() {
@@ -36,5 +78,3 @@ class Block {
         return me[0];
     }
 }
-
-export default Block;
