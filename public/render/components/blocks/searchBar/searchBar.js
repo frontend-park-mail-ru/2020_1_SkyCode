@@ -10,28 +10,25 @@ class searchBar extends Block {
             input: new input({
                 type: 'text',
                 placeholder: 'search',
-                classes: ['search-bar__input'],
+                classes: 'search-bar__input',
             }),
 
             button: new button({
                 text: 'search',
-                classes: ['search-bar__button'],
+                classes: 'search-bar__button',
+
                 callback: () => {
+
+                    let data = {
+                        value: document.getElementsByClassName('search-bar__input')[0].value,
+                    };
+                    console.log('data: ', data.value);
                     console.log('search-bar__button clicked');
-                    EventBus.publish('search-bar-button-clicked')
+
+                    EventBus.publish('search-bar-button-clicked', data);
                 },
             }),
         };
-    }
-
-    bind() {
-        super.bind();
-        EventBus.subscribe('search-bar-button-clicked', async () => {
-            console.log(`data "${document.getElementsByClassName('search-bar__input')[0].value}" searched`);
-
-            EventBus.publish('search',
-                {text: document.getElementsByClassName('search-bar__input')[0].value});
-        })
     }
 }
 

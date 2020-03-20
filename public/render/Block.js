@@ -1,10 +1,6 @@
 export default class Block {
-    constructor(hasChildren = true) {
+    constructor() {
         this.toString = this.HTML;
-        if (!hasChildren) {
-            this.bind = () => {};
-            this.unbind = () => {};
-        }
     }
 
     set children(children) {
@@ -94,5 +90,13 @@ export default class Block {
         }
 
         return me[0];
+    }
+
+    unnumerableChildren(...unnumChildren) {
+        for (let child of unnumChildren) {
+            Object.defineProperty(this.children, child, {
+                enumerable: false,
+            });
+        }
     }
 }

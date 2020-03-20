@@ -2,7 +2,7 @@ import Block from '../../../Block.js';
 
 export default class input extends Block {
     constructor({type, placeholder, classes}) {
-        classes.push('input');
+        classes += ' input';
         super(false);
 
         this.classes = classes;

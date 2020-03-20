@@ -5,36 +5,31 @@ class profileArea extends Block {
     constructor({user} = {}) {
         super();
         this.children = {
-            user: user,
 
             logout: new href({
                 text: 'log out',
                 href: '/logout',
-                classes: [
-                    'profile-area__logout'
-                ]
+                classes: 'profile-area__logout',
             }),
 
             login: new href({
                 text: 'log in',
                 href: '/login',
-                classes: [
-                    'profile-area__login'
-                ]
+                classes: 'profile-area__login',
             }),
 
             signup: new href({
                 text: 'sign up',
                 href: '/signup',
-                classes: [
-                    'profile-area__signup'
-                ]
+                classes: 'profile-area__signup',
             }),
+
+            user: user,
         };
 
-        Object.defineProperty(this.children, 'user', {
-            enumerable: false,
-        })
+        // Все пользовательские данные являются неперечисляемыми потомками.
+        // Нужны, чтобы предотвратить попытки вызвать у них bind
+        this.unnumerableChildren('user');
     }
 }
 

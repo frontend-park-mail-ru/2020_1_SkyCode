@@ -2,14 +2,14 @@ import Block from '../../../Block.js';
 
 export default class button extends Block {
     constructor({text, callback, classes}) {
-        classes.push('button');
+        classes += ' button';
 
         super(false);
         this.classes = classes;
         this.children = {
             text: text,
-            callback: callback,
         };
+        this.callback = callback;
     }
 
     bind() {

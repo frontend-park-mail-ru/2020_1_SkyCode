@@ -3,7 +3,7 @@ import EventBus from '../../../../services/EventBus.js';
 
 export default class href extends Block {
     constructor({text, href, classes}) {
-        classes.push('href');
+        classes += ' href';
 
         super(false);
         this.classes = classes;
