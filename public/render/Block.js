@@ -74,7 +74,7 @@ export default class Block {
                 return;
             }
 
-            if (child.hasOwnProperty('unbind')) {
+            if ('unbind' in child) {
                 child.unbind();
                 continue;
             }
