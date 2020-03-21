@@ -4,6 +4,7 @@
     grid-template-columns: min-content min-content auto min-content;
     grid-template-rows: auto;
     width: 100%;
+    position: fixed;
 }
 
 /* logo */
@@ -51,9 +52,7 @@
 }
 
 .hamburger-button__checkbox:checked ~ .hamburger-button__hamburger-line:nth-child(2) {
-    opacity: 1;
     transform: rotate(45deg) translate(4px, 2px);
-    background: #232323;
 }
 
 .hamburger-button__checkbox:checked ~ .hamburger-button__hamburger-line:nth-child(3) {
