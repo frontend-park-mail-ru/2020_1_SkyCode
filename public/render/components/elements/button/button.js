@@ -4,11 +4,12 @@ export default class button extends Block {
     constructor({text, callback, classes}) {
         classes += ' button';
 
-        super(false);
-        this.classes = classes;
-        this.templateData = {
+        super();
+        this.addClasses(classes);
+        this.addTemplateData({
             text: text,
-        };
+        }, false);
+
         this.callback = callback;
     }
 

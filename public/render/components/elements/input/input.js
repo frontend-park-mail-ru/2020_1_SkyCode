@@ -3,12 +3,12 @@ import Block from '../../../Block.js';
 export default class input extends Block {
     constructor({type, placeholder, classes}) {
         classes += ' input';
-        super(false);
+        super();
 
-        this.classes = classes;
-        this.templateData = {
+        this.addClasses(classes);
+        this.addTemplateData({
             type: type,
             placeholder: placeholder,
-        };
+        }, false);
     }
 }

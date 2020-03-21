@@ -1,18 +1,32 @@
 export default class Block {
     constructor() {
         this.toString = this.HTML;
-    }
 
-    set templateData(templateData) {
-        this.templateData = (this.templateData || {});
-        Object.assign(this.templateData, templateData);
+        // templateData --- информация, передающаяся в template
+        this._templateData = {};
+        // Добавляем классы
+        this.addTemplateData({classes: []}, false);
     }
 
     get templateData() {
-        return this.templateData;
+        return this._templateData;
     }
 
-    set classes(classes) {
+    addTemplateData(templateDataObj, is_blocks) {
+        Object.assign(this.templateData, templateDataObj);
+
+        if (!is_blocks) return;
+        // Если добавлены блоки, то они должны быть перечисляемыми, чтобы их можно было длрекурсивно связать
+        for (let key in templateDataObj) {
+            if (templateDataObj.hasOwnProperty(key)) {
+                Object.defineProperty(this.templateData, key, {
+                    enumerable: false,
+                });
+            }
+        }
+    }
+
+    addClasses(classes) {
         let isArr = Array.isArray(classes);
         let isStr = typeof classes === 'string';
 
@@ -29,53 +43,62 @@ export default class Block {
             cls = classes.split(' ');
         }
 
-        this.templateData = (this.templateData || {});
-        this.templateData.classes = cls;
-        this._classes = cls;
+        this.templateData.classes.push(cls);
     }
 
     get arrClasses() {
-        return this._classes;
+        return this._templateData.classes;
     }
 
     get strClasses() {
-        return this._classes.reduce((previous, current) => {
+        return this.arrClasses.reduce((previous, current) => {
             return previous + (' ' + current);
         }, '');
     }
 
     bind() {
         for (let key in this.templateData) {
-            if (key === 'classes') continue;
+            if (!this.templateData.hasOwnProperty(key)) {
+                console.trace('the property ' + key + ' is not owned by this object');
+                continue;
+            }
+
             let child = this.templateData[key];
 
             if (typeof child !== 'object') {
                 console.trace('child ' + child + ' is not an object');
-                return;
-            }
-
-            if ('bind' in child) {
-                child.bind();
                 continue;
             }
 
-            console.trace('child ' + child.constructor.name + ' has no bind method');
+            if (! ('bind' in child)) {
+                console.trace('child ' + child.constructor.name + ' has no bind method');
+                continue;
+            }
+
+            child.bind();
         }
     }
 
     unbind() {
         for (let child in this.templateData) {
-            if (typeof child !== 'object') {
-                console.trace('child ' + child + ' is not an object');
-                return;
-            }
-
-            if ('unbind' in child) {
-                child.unbind();
+            if (!this.templateData.hasOwnProperty(key)) {
+                console.trace('the property ' + key + ' is not owned by this object');
                 continue;
             }
 
-            console.trace('child ' + child.constructor.name + ' has no bind method');
+            let child = this.templateData[key];
+
+            if (typeof child !== 'object') {
+                console.trace('child ' + child + ' is not an object');
+                continue;
+            }
+
+            if (! ('unbind' in child)) {
+                console.trace('child ' + child.constructor.name + ' has no unbind method');
+                continue;
+            }
+
+            child.unbind();
         }
     }
 
@@ -84,19 +107,11 @@ export default class Block {
     }
 
     get myDomNode() {
-        let me = document.getElementsByClassName(this.classes);
+        let me = document.getElementsByClassName(this.strClasses);
         if (me.length === 0) {
             return;
         }
 
         return me[0];
-    }
-
-    unnumerableChildren(...unnumChildren) {
-        for (let child of unnumChildren) {
-            Object.defineProperty(this.templateData, child, {
-                enumerable: false,
-            });
-        }
     }
 }

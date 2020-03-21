@@ -5,9 +5,9 @@ class MainView extends Block {
     constructor({user} = {}) {
         super();
 
-        this.templateData = {
+        this.addTemplateData({
             header: new header({user}),
-        };
+        }, true);
 
         this.bind();
     }

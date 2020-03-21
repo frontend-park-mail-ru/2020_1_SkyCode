@@ -5,12 +5,12 @@ export default class href extends Block {
     constructor({text, href, classes}) {
         classes += ' href';
 
-        super(false);
-        this.classes = classes;
-        this.templateData = {
+        super();
+        this.addClasses(classes);
+        this.addTemplateData({
             text: text,
             href: href,
-        };
+        }, false);
     }
 
     bind() {

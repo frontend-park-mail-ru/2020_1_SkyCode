@@ -7,11 +7,11 @@ import button from '../../elements/button/button.js';
 class header extends Block {
     constructor({ user } = {}) {
         super();
-        this.templateData = {
+        this.addTemplateData({
             leftSideButton: new button({
                 text: '.',
                 callback: () => { console.log('left side button clicked'); },
-                classes: ['left-side-button'],
+                classes: ['header__hamburger-button'],
             }),
 
             logo: new href({
@@ -22,7 +22,7 @@ class header extends Block {
 
             searchBar: new searchBar(),
             profileArea: new profileArea({ user }),
-        };
+        }, true);
     }
 }
 

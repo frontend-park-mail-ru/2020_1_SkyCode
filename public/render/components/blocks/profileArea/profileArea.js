@@ -4,8 +4,7 @@ import href from '../../elements/href/href.js';
 class profileArea extends Block {
     constructor({user} = {}) {
         super();
-        this.templateData = {
-
+        this.addTemplateData({
             logout: new href({
                 text: 'log out',
                 href: '/logout',
@@ -23,13 +22,11 @@ class profileArea extends Block {
                 href: '/signup',
                 classes: 'profile-area__signup',
             }),
+        }, true);
 
+        this.addTemplateData({
             user: user,
-        };
-
-        // Все пользовательские данные являются неперечисляемыми потомками.
-        // Нужны, чтобы предотвратить попытки вызвать у них bind
-        this.unnumerableChildren('user');
+        }, false);
     }
 }
 

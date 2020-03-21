@@ -6,7 +6,7 @@ import EventBus from '../../../../services/EventBus.js';
 class searchBar extends Block {
     constructor() {
         super();
-        this.templateData = {
+        this.addTemplateData({
             input: new input({
                 type: 'text',
                 placeholder: 'search',
@@ -28,7 +28,7 @@ class searchBar extends Block {
                     EventBus.publish('search-bar-button-clicked', data);
                 },
             }),
-        };
+        }, true);
     }
 }
 
