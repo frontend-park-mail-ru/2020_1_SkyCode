@@ -2,14 +2,12 @@ import header from '../../blocks/header/header.js';
 import Block from '../../../Block.js';
 
 class MainView extends Block {
-    constructor({user} = {}) {
+    constructor() {
         super();
 
         this.addTemplateData({
-            header: new header({user}),
+            header: new header({classes: 'header'}),
         }, true);
-
-        this.bind();
     }
 }
 

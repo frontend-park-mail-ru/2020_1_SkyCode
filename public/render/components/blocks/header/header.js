@@ -1,28 +1,37 @@
 import Block from '../../../Block.js';
 import href from '../../elements/href/href.js';
-import searchBar from '../searchBar/searchBar.js';
-import profileArea from '../profileArea/profileArea.js';
-import button from '../../elements/button/button.js';
+import hamburgerButton from '../../elements/hamburgerButton/hamburgerButton.js';
+import input from '../../elements/input/input.js';
+import searchField from '../searchField/searchField.js';
 
 class header extends Block {
-    constructor({ user } = {}) {
+    constructor({ classes = 'header' } = {}) {
         super();
         this.addTemplateData({
-            leftSideButton: new button({
-                text: '.',
-                callback: () => { console.log('left side button clicked'); },
-                classes: ['header__hamburger-button'],
+            hamburgerButton: new hamburgerButton({
+                classes: 'header__hamburger-button',
+                callback: () => { console.log('hamburgerButton clicked'); },
             }),
 
             logo: new href({
                 text: 'Delivery',
                 href: '/',
-                classes: ['logo'],
+                classes: 'header__logo',
             }),
 
-            searchBar: new searchBar(),
-            profileArea: new profileArea({ user }),
+            searchField: new searchField({
+                callback: () => { console.log('searchFieldButton clicked'); },
+                classes: 'header__search-field',
+            }),
+
+            profileButton: new input({
+                type: 'image',
+                src: '/static/profile.png',
+                classes: 'header__profile-button'
+            }),
         }, true);
+
+        this.addClasses(classes);
     }
 }
 

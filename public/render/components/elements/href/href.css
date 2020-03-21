@@ -1,0 +1,9 @@
+
+.header__logo {
+    display: inline;
+    padding: 10px;
+    outline: none;
+    text-decoration: none;
+    color: black;
+    font-size: x-large;
+}

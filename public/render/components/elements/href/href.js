@@ -2,8 +2,7 @@ import Block from '../../../Block.js';
 import EventBus from '../../../../services/EventBus.js';
 
 export default class href extends Block {
-    constructor({text, href, classes}) {
-        classes += ' href';
+    constructor({text, href, classes = 'href'}) {
 
         super();
         this.addClasses(classes);
@@ -16,6 +15,7 @@ export default class href extends Block {
     bind() {
         let me = super.myDomNode;
         if (me === undefined) {
+            console.trace('cat\' ret myself from DOM');
             return;
         }
 
