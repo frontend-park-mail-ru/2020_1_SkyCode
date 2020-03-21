@@ -6,7 +6,7 @@ export default class input extends Block {
         super(false);
 
         this.classes = classes;
-        this.children = {
+        this.templateData = {
             type: type,
             placeholder: placeholder,
         };

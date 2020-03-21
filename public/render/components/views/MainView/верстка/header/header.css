@@ -1,10 +1,14 @@
 
 .header {
-    display: inline-flex;
+    display: grid;
+    grid-template-columns: min-content min-content auto min-content;
+    grid-template-rows: auto;
+    width: 100%;
 }
 
 /* logo */
-.logo {
+.header__logo {
+    display: inline;
     padding: 10px;
     outline: none;
     text-decoration: none;
@@ -14,11 +18,12 @@
 
 /* hamburger button */
 
-.hamburger-button {
+.header__hamburger-button {
+    display: inline;
     padding: 10px;
 }
 
-.hamburger-button .hamburger-line {
+.hamburger-button__hamburger-line {
     display: block;
     width: 33px;
     height: 4px;
@@ -37,34 +42,34 @@
     opacity 0.55s ease;
 }
 
-.hamburger-button .hamburger-line:first-child {
+.hamburger-button__hamburger-line:first-child {
     transform-origin: 0 0;
 }
 
-.hamburger-button .hamburger-line:nth-last-child(2) {
+.hamburger-button__hamburger-line:nth-last-child(2) {
     transform-origin: 0 100%;
 }
 
-.hamburger-button .input:checked ~ .hamburger-line:nth-child(2) {
+.hamburger-button__checkbox:checked ~ .hamburger-button__hamburger-line:nth-child(2) {
     opacity: 1;
     transform: rotate(45deg) translate(4px, 2px);
     background: #232323;
 }
 
-.hamburger-button .input:checked ~ .hamburger-line:nth-child(3) {
+.hamburger-button__checkbox:checked ~ .hamburger-button__hamburger-line:nth-child(3) {
     opacity: 0;
     transform: rotate(0deg) scale(0.2, 0.2);
 }
 
-.hamburger-button .input:checked ~ .hamburger-line:nth-child(4) {
+.hamburger-button__checkbox:checked ~ .hamburger-button__hamburger-line:nth-child(4) {
     transform: rotate(-45deg) translate(-4px, 2px);
 }
 
-.hamburger-button .input {
-    display: block;
+.hamburger-button__checkbox {
+    display: inline;
     cursor: pointer;
     position: absolute;
-    top: 0px;
+    top: 0;
     left: 10px;
     width: 50px;
     height: 50px;
@@ -78,17 +83,19 @@
 
 /* search field*/
 
-.search-field {
+.header__search-field {
+    display: inline-flex;
     position: relative;
     margin-bottom: 10px;
-    display: inline-flex;
     padding: 10px;
+    width: 100%;
 }
 
-.search-field .input {
+.search-field__input-field {
     background: #F8F8F8;
     height: 30px;
     width: 100%;
+    min-width: 50px;
     padding-left: 10px;
     border-radius: 0 30px 30px 0;
     border: none;
@@ -96,10 +103,21 @@
     vertical-align: middle;
 }
 
-.search-field .submit {
+.search-field__input-button {
     border: none;
     outline: none;
     height: 30px;
     width: 50px;
+    min-width: 50px;
     border-radius: 30px 0 0 30px;
+}
+
+/* profile button */
+
+.header__profile-button {
+    display: inline;
+    width: 30px;
+    height: 30px;
+    margin: 10px;
+    outline: none;
 }

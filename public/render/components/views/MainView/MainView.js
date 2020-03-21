@@ -5,7 +5,7 @@ class MainView extends Block {
     constructor({user} = {}) {
         super();
 
-        this.children = {
+        this.templateData = {
             header: new header({user}),
         };
 

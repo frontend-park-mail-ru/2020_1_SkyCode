@@ -3,13 +3,13 @@ export default class Block {
         this.toString = this.HTML;
     }
 
-    set children(children) {
-        this._children = (this._children || {});
-        Object.assign(this._children, children);
+    set templateData(templateData) {
+        this.templateData = (this.templateData || {});
+        Object.assign(this.templateData, templateData);
     }
 
-    get children() {
-        return this._children;
+    get templateData() {
+        return this.templateData;
     }
 
     set classes(classes) {
@@ -29,8 +29,8 @@ export default class Block {
             cls = classes.split(' ');
         }
 
-        this._children = (this._children || {});
-        this._children.classes = cls;
+        this.templateData = (this.templateData || {});
+        this.templateData.classes = cls;
         this._classes = cls;
     }
 
@@ -45,9 +45,9 @@ export default class Block {
     }
 
     bind() {
-        for (let key in this._children) {
+        for (let key in this.templateData) {
             if (key === 'classes') continue;
-            let child = this._children[key];
+            let child = this.templateData[key];
 
             if (typeof child !== 'object') {
                 console.trace('child ' + child + ' is not an object');
@@ -64,7 +64,7 @@ export default class Block {
     }
 
     unbind() {
-        for (let child in this._children) {
+        for (let child in this.templateData) {
             if (typeof child !== 'object') {
                 console.trace('child ' + child + ' is not an object');
                 return;
@@ -80,7 +80,7 @@ export default class Block {
     }
 
     HTML() {
-        return Handlebars.templates[this.constructor.name + '.hbs'](this.children);
+        return Handlebars.templates[this.constructor.name + '.hbs'](this.templateData);
     }
 
     get myDomNode() {
@@ -94,7 +94,7 @@ export default class Block {
 
     unnumerableChildren(...unnumChildren) {
         for (let child of unnumChildren) {
-            Object.defineProperty(this.children, child, {
+            Object.defineProperty(this.templateData, child, {
                 enumerable: false,
             });
         }

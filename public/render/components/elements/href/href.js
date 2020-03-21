@@ -7,7 +7,7 @@ export default class href extends Block {
 
         super(false);
         this.classes = classes;
-        this.children = {
+        this.templateData = {
             text: text,
             href: href,
         };

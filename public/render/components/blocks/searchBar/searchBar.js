@@ -6,7 +6,7 @@ import EventBus from '../../../../services/EventBus.js';
 class searchBar extends Block {
     constructor() {
         super();
-        this.children = {
+        this.templateData = {
             input: new input({
                 type: 'text',
                 placeholder: 'search',

@@ -4,7 +4,7 @@ import href from '../../elements/href/href.js';
 class profileArea extends Block {
     constructor({user} = {}) {
         super();
-        this.children = {
+        this.templateData = {
 
             logout: new href({
                 text: 'log out',

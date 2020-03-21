@@ -6,7 +6,7 @@ export default class button extends Block {
 
         super(false);
         this.classes = classes;
-        this.children = {
+        this.templateData = {
             text: text,
         };
         this.callback = callback;

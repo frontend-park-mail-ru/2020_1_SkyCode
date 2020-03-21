@@ -7,7 +7,7 @@ import button from '../../elements/button/button.js';
 class header extends Block {
     constructor({ user } = {}) {
         super();
-        this.children = {
+        this.templateData = {
             leftSideButton: new button({
                 text: '.',
                 callback: () => { console.log('left side button clicked'); },
