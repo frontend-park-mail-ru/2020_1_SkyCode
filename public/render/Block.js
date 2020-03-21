@@ -15,7 +15,7 @@ export default class Block {
     addTemplateData(templateDataObj, is_blocks) {
         Object.assign(this.templateData, templateDataObj);
 
-        if (!is_blocks) return;
+        if (is_blocks) return;
         // Если добавлены блоки, то они должны быть перечисляемыми, чтобы их можно было длрекурсивно связать
         for (let key in templateDataObj) {
             if (templateDataObj.hasOwnProperty(key)) {
@@ -109,6 +109,7 @@ export default class Block {
     get myDomNode() {
         let me = document.getElementsByClassName(this.strClasses);
         if (me.length === 0) {
+            console.trace('cat\' ret myself from DOM');
             return;
         }
 
