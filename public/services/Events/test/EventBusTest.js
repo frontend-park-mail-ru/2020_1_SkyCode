@@ -46,5 +46,11 @@ QUnit.module('Тестируем eventBus', function () {
         unsub();
         assert.strictEqual(0, eBus._listeners[eName1].length);
         assert.strictEqual(0, eBus._listeners[eName2].length);
+
+        eBus.publish(eName1);
+        assert.strictEqual(counter, 2);
+
+        eBus.publish(eName2);
+        assert.strictEqual(counter, 2);
 	});
 });
