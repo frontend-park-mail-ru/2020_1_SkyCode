@@ -1,0 +1,19 @@
+<div class="{{classes}}">
+    <div class="actions__container-scroll-hider">
+        <div class="actions__container">
+            <ul class="actions__list">
+                {{#each actions}}
+
+                <li class="actions__li">
+                    <a href="{{this.href}}">
+                        <img class="actions__action" src="{{this.src}}"/>
+                    </a>
+                </li>
+
+                {{else}}
+                    <p>Can't load actions.</p>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</div>
