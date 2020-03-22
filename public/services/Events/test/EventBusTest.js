@@ -11,11 +11,11 @@ QUnit.module('Тестируем eventBus', function () {
         let rightCons3Val = 3;
         let data = { val: rightCons3Val };
 
-        let unsub1 = eBus.listen(eName, () => {consumer1 = rightCons1Val});
-        let unsub2 = eBus.listen(eName, () => {consumer2 = rightCons2Val});
-        let unsub3 = eBus.listen(eName, (data) => {consumer3 = data.val});
+        let unsub1 = eBus.subscribe(eName, () => {consumer1 = rightCons1Val});
+        let unsub2 = eBus.subscribe(eName, () => {consumer2 = rightCons2Val});
+        let unsub3 = eBus.subscribe(eName, (data) => {consumer3 = data.val});
 
-        eBus.initiate(eName, data);
+        eBus.publish(eName, data);
 
         assert.strictEqual(consumer1, rightCons1Val);
         assert.strictEqual(consumer2, rightCons2Val);
@@ -32,12 +32,12 @@ QUnit.module('Тестируем eventBus', function () {
         let counter = 0;
         let eName1 = 'qwer', eName2 = 'asdf';
         let eNames = eName1 + ' ' + eName2;
-        let unsub = eBus.listen(eNames, () => counter++);
+        let unsub = eBus.subscribe(eNames, () => counter++);
 
-        eBus.initiate(eName1);
+        eBus.publish(eName1);
         assert.strictEqual(counter, 1);
 
-        eBus.initiate(eName2);
+        eBus.publish(eName2);
         assert.strictEqual(counter, 2);
 
         assert.strictEqual(1, eBus._listeners[eName1].length);

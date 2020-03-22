@@ -1,4 +1,4 @@
-'use strinct'
+'use strinct';
 
 class EventBus {
     _listeners;
@@ -7,7 +7,7 @@ class EventBus {
         this._listeners = {};
     }
 
-    listen(events, callback) {
+    subscribe(events, callback) {
         if (typeof callback !== 'function') {
             log('callback is not a function');
             return;
@@ -48,7 +48,7 @@ class EventBus {
         };
     }
 
-    initiate(event, data) {
+    publish(event, data) {
         let callbacks = (this._listeners[event.toLowerCase()] || []);
 
         callbacks.forEach(callback => {
