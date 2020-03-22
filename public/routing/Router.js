@@ -1,6 +1,6 @@
 'use strct';
 
-import EventBus from '../EventBus.js';
+import EventBus from '../services/EventBus.js';
 
 class Router {
     _currentPage;
