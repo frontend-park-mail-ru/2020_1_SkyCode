@@ -13,9 +13,9 @@ class EventBus {
             return;
         }
 
-        events = ('' + events).toLowerCase().split(/\s/);
+        let strEvents = String(events).toLowerCase().split(/\s/);
 
-        events.forEach(event => {
+        strEvents.forEach(event => {
             if (!this._listeners[event]) {
                 this._listeners[event] = [];
             }
@@ -41,14 +41,14 @@ class EventBus {
             singleUnsubscribe = false;
 
             events.forEach(event => {
-                let callbacks = listeners[event];
-                let index = callbacks.indexOf(callback);
+                const callbacks = listeners[event];
+                const index = callbacks.indexOf(callback);
                 callbacks.splice(index, 1);
             });
         };
     }
 
-    publish(event, data) {
+    broadcast(event, data) {
         let callbacks = (this._listeners[event.toLowerCase()] || []);
 
         callbacks.forEach(callback => {
