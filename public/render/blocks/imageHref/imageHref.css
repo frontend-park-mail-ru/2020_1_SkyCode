@@ -1,0 +1,12 @@
+
+.order__profile-href {
+    grid-area: profile;
+    justify-self: right;
+    margin: 10px;
+}
+
+.order__profile-image {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+}

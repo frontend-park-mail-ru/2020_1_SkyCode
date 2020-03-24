@@ -1,6 +1,8 @@
 
 .header__hamburger-button {
-    padding: 10px;
+    margin-top: 15px;
+    margin-left: 20px;
+    margin-right: 5px;
 }
 
 .hamburger-button__hamburger-line {

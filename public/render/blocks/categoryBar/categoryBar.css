@@ -1,5 +1,9 @@
 @import "../category/category.css";
 
+.category-bar {
+    grid-area: category-bar;
+}
+
 .category-bar__container-scroll-hider {
     overflow: hidden;
 }

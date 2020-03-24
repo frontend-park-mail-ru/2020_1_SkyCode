@@ -1,7 +1,6 @@
 @import "../../elements/input/input.css";
 
 .header__search-field {
-    display: inline-flex;
+    display: flex;
     padding: 10px;
-    width: 100%;
 }

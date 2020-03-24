@@ -9,13 +9,12 @@
 .search-field__input-field {
     background: #F8F8F8;
     height: 30px;
-    width: 100%;
     min-width: 50px;
-    padding-left: 10px;
     border-radius: 0 30px 30px 0;
     border: none;
     outline: none;
     vertical-align: middle;
+    width: 100%;
 }
 
 .search-field__input-button {

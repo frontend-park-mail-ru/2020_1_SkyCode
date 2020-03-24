@@ -1,0 +1,20 @@
+@import "../imageHref/imageHref.css";
+
+.order {
+    grid-area: order;
+
+    display: grid;
+    grid-template-columns: 50px 50px;
+    grid-template-rows: min-content min-content auto min-content min-content;
+    grid-template-areas:
+        ".......... profile"
+        "restaurant restaurant"
+        "basket     basket"
+        "total      total"
+        "persons    checkout";
+    background: #F8F8F8;
+    width: available;
+
+    border-left: 1px solid #D6D6D6;
+}
+

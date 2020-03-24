@@ -1,17 +1,25 @@
 @import "../../blocks/header/header.css";
 @import "../../blocks/actionBar/actionBar.css";
 @import "../../blocks/categoryBar/categoryBar.css";
+@import "../../blocks/order/order.css";
 
+/* Пока не знаю, куда это засунуть */
+
+body {
+    margin: 0;
+}
 
 .main-view {
     display: grid;
     grid-template-rows: min-content min-content min-content min-content auto;
     grid-template-columns: 6fr 3fr;
     grid-template-areas:
-        "header header sidebar"
-        "actions actions sidebar"
-        "addbar  addbar sidebar"
-        "categories  categories sidebar";
+        "header         header          order"
+        "action-bar     action-bar      order"
+        "addbar         addbar          order"
+        "category-bar   category-bar    order";
+
+    background: #FFFFFF;
 }
 
 .main-view > * {
