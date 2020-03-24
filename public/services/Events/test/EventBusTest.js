@@ -23,34 +23,34 @@ QUnit.module('Тестируем eventBus', () => {
 
         unsub1(); unsub2(); unsub3();
 
-        assert.strictEqual(0 , eBus._listeners[eName].length);
+        assert.strictEqual(0 , eBus._callbacksMap[eName].length);
 	});
 
     QUnit.test('Верная подписка и отписка нескольких событий', (assert) => {
-        const eBus = new EventBus();
+        const eventBus = new EventBus();
 
         let counter = 0;
-        const eName1 = 'qwer', eName2 = 'asdf';
-        const eNames = eName1 + ' ' + eName2;
-        const unsub = eBus.subscribe(eNames, () => counter++);
+        const eventName1 = 'qwer', eventName2 = 'asdf';
+        const eventNames = eventName1 + ' ' + eventName2;
+        const unsub = eventBus.subscribe(eventNames, () => counter++);
 
-        eBus.broadcast(eName1);
+        eventBus.broadcast(eventName1);
         assert.strictEqual(counter, 1);
 
-        eBus.broadcast(eName2);
+        eventBus.broadcast(eventName2);
         assert.strictEqual(counter, 2);
 
-        assert.strictEqual(1, eBus._listeners[eName1].length);
-        assert.strictEqual(1, eBus._listeners[eName2].length);
+        assert.strictEqual(1, eventBus._callbacksMap[eventName1].length);
+        assert.strictEqual(1, eventBus._callbacksMap[eventName2].length);
         
         unsub();
-        assert.strictEqual(0, eBus._listeners[eName1].length);
-        assert.strictEqual(0, eBus._listeners[eName2].length);
+        assert.strictEqual(0, eventBus._callbacksMap[eventName1].length);
+        assert.strictEqual(0, eventBus._callbacksMap[eventName2].length);
 
-        eBus.broadcast(eName1);
+        eventBus.broadcast(eventName1);
         assert.strictEqual(counter, 2);
 
-        eBus.broadcast(eName2);
+        eventBus.broadcast(eventName2);
         assert.strictEqual(counter, 2);
 	});
 });
