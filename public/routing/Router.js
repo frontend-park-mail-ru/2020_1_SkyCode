@@ -1,4 +1,4 @@
-'use strct';
+'use strict';
 
 import EventBus from '../services/EventBus.js';
 
@@ -9,10 +9,10 @@ class Router {
         this._pages = [];
         this._registerAllPages();
         EventBus.listen('set-page', (this._goto).bind(this));
-        window.onpopstate = (this._histMove).bind(this);
+        window.onpopstate = (this._handlePopState).bind(this);
     }
 
-    _histMove(event) {
+    _handlePopState(event) {
         // Невозможно сохранить актуальное состояние прошлой страницы, т.к. запись прошлой истории недоступна
         // Мы даже не знаем, было ли нажато hist.front() или hist.back(), чтобы при помощи обратных команд
         // выйти на нужные записи, изменить их и вернуться на текущую
@@ -51,13 +51,13 @@ class Router {
     _registerPage(page, url) {
         this._pages.push({
             // будут использоваться только целочисленные части url?
-            pattern: new RegExp('^' + url.replace(/:\w+/, '(d+)') + '$'),
+            pattern: new RegExp('^' + url.replace(/:\w+/, '(\w+)') + '$'),
             page: page,
         });
     }
 
     _retreivePage(url) {
-        for (let pg of this._pages) {
+        for (const pg of this._pages) {
             if (url.match(pg.pattern)) {
                 return pg.page;
             }
