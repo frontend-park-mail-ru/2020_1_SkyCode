@@ -1,6 +1,6 @@
-import Block from '../../Block.js';
+import Component from '../../Component.js';
 
-export default class category extends Block {
+export default class category extends Component {
     constructor({src, text, classes = 'category'}) {
         super();
         this.addClasses(classes);

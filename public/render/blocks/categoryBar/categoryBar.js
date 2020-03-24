@@ -1,8 +1,8 @@
-import Block from '../../Block.js';
+import Component from '../../Component.js';
 import category from '../category/category.js';
 
 
-export default class categoryBar extends Block{
+export default class categoryBar extends Component{
     constructor({categoryArr, classes = 'categoryBar'}) {
         super();
         this.addClasses(classes);

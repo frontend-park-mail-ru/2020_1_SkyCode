@@ -1,7 +1,7 @@
-import Block from '../../Block.js';
+import Component from '../../Component.js';
 import imageHref from '../imageHref/imageHref.js';
 
-export default class order extends Block {
+export default class order extends Component {
     constructor({profile = {src: '/static/profile.png', href: 'login'},
                     restaurant, basket, classes = 'order'}) {
         super();

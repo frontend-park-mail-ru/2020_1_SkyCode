@@ -10,8 +10,8 @@ for (let i = 1; i <= 5; i++) {
     });
 }
 
-let categories = [];
-let texts = [
+const categories = [];
+const texts = [
     'Магазины',
     'Завтраки',
     'Индийская',
@@ -38,6 +38,6 @@ for (let i = 1; i <= 17; i++) {
     });
 }
 
-let mv = new MainView({actionArr: actions, categoryArr: categories});
+const mv = new MainView({actionArr: actions, categoryArr: categories});
 document.body.innerHTML = (mv.HTML());
 mv.bind();

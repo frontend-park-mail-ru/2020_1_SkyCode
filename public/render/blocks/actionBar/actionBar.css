@@ -1,6 +1,5 @@
 @import "../../blocks/action/action.css";
 
-
 .action-bar {
     grid-area: action-bar;
 }
@@ -31,5 +30,3 @@
 .action-bar__li {
     margin: 10px;
 }
-
-

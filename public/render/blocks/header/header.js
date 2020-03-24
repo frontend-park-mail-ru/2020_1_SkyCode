@@ -1,10 +1,10 @@
-import Block from '../../Block.js';
+import Component from '../../Component.js';
 import href from '../../elements/href/href.js';
 import hamburgerButton from '../../elements/hamburgerButton/hamburgerButton.js';
 import input from '../../elements/input/input.js';
 import searchField from '../searchField/searchField.js';
 
-export default class header extends Block {
+export default class header extends Component {
     constructor({ classes = 'header' } = {}) {
         super();
         this.addTemplateData({

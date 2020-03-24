@@ -1,6 +1,6 @@
-import Block from '../../Block.js';
+import Component from '../../Component.js';
 
-export default class input extends Block {
+export default class input extends Component {
     constructor({type, placeholder, classes = 'input', src}) {
         super();
 

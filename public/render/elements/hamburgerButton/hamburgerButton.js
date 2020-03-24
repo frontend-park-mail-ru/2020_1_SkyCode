@@ -1,6 +1,6 @@
-import Block from '../../Block.js';
+import Component from '../../Component.js';
 
-export default class hamburgerButton extends Block{
+export default class hamburgerButton extends Component{
     constructor({classes = 'hamburger-button', callback}) {
         super();
         this.addClasses(classes);

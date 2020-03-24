@@ -1,25 +1,25 @@
-export default class Block {
+export default class Component {
     constructor() {
         this.toString = this.HTML;
 
         // templateData --- информация, передающаяся в template
-        this._templateData = {};
+        this._context = {};
         // Добавляем классы
         this.addTemplateData({classes: []}, false);
     }
 
-    get templateData() {
-        return this._templateData;
+    get context() {
+        return this._context;
     }
 
     addTemplateData(templateDataObj, is_blocks) {
-        Object.assign(this.templateData, templateDataObj);
+        Object.assign(this.context, templateDataObj);
 
         if (is_blocks) return;
         // Если добавлены блоки, то они должны быть перечисляемыми, чтобы их можно было длрекурсивно связать
-        for (let key in templateDataObj) {
+        for (const key in templateDataObj) {
             if (templateDataObj.hasOwnProperty(key)) {
-                Object.defineProperty(this.templateData, key, {
+                Object.defineProperty(this.context, key, {
                     enumerable: false,
                 });
             }
@@ -31,8 +31,7 @@ export default class Block {
         let isStr = typeof classes === 'string';
 
         if (!(isArr || isStr)) {
-            console.trace('bad param');
-            return;
+            throw 'bad usage: must be str or strArr on entry'
         }
 
         let cls;
@@ -43,35 +42,30 @@ export default class Block {
             cls = classes.split(' ');
         }
 
-        this.templateData.classes.push(cls);
+        this.context.classes.push(cls);
     }
 
     get arrClasses() {
-        return this._templateData.classes;
+        return this._context.classes;
     }
 
     get strClasses() {
-        return this.arrClasses.reduce((previous, current) => {
-            return previous + (' ' + current);
-        }, '');
+        return this.arrClasses.join(' ');
     }
 
     bind() {
-        for (let key in this.templateData) {
-            if (!this.templateData.hasOwnProperty(key)) {
-                console.trace('the property ' + key + ' is not owned by this object');
+        for (const key in this.context) {
+            if (!this.context.hasOwnProperty(key)) {
                 continue;
             }
 
-            let child = this.templateData[key];
+            const child = this.context[key];
 
             if (typeof child !== 'object') {
-                console.trace('child ' + child + ' is not an object');
                 continue;
             }
 
             if (! ('bind' in child)) {
-                console.trace('child ' + child.constructor.name + ' has no bind method');
                 continue;
             }
 
@@ -80,21 +74,18 @@ export default class Block {
     }
 
     unbind() {
-        for (let child in this.templateData) {
-            if (!this.templateData.hasOwnProperty(key)) {
-                console.trace('the property ' + key + ' is not owned by this object');
+        for (const child in this.context) {
+            if (!this.context.hasOwnProperty(key)) {
                 continue;
             }
 
-            let child = this.templateData[key];
+            let child = this.context[key];
 
             if (typeof child !== 'object') {
-                console.trace('child ' + child + ' is not an object');
                 continue;
             }
 
             if (! ('unbind' in child)) {
-                console.trace('child ' + child.constructor.name + ' has no unbind method');
                 continue;
             }
 
@@ -103,13 +94,12 @@ export default class Block {
     }
 
     HTML() {
-        return Handlebars.templates[this.constructor.name + '.hbs'](this.templateData);
+        return Handlebars.templates[this.constructor.name + '.hbs'](this.context);
     }
 
     get myDomNode() {
         let me = document.getElementsByClassName(this.strClasses);
         if (me.length === 0) {
-            console.trace('cat\' ret myself from DOM');
             return;
         }
 

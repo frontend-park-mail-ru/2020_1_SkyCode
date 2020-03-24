@@ -1,6 +1,6 @@
-import Block from '../../Block.js';
+import Component from '../../Component.js';
 
-export default class button extends Block {
+export default class button extends Component {
     constructor({text, callback, classes = 'button'}) {
 
         super();

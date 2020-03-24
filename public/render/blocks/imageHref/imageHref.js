@@ -1,8 +1,8 @@
-import Block from '../../Block.js';
+import Component from '../../Component.js';
 import input from '../../elements/input/input.js';
 
 
-export default class imageHref extends Block {
+export default class imageHref extends Component {
     constructor({src, href, classes = 'imageHref', imageClasses = 'imageClasses'}) {
         super();
         this.addClasses(classes);

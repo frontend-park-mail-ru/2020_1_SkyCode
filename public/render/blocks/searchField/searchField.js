@@ -1,7 +1,7 @@
-import Block from '../../Block.js';
+import Component from '../../Component.js';
 import input from '../../elements/input/input.js';
 
-export default class searchField extends Block {
+export default class searchField extends Component {
     constructor({classes = 'search-field', callback}) {
         super();
         this.addClasses(classes);
@@ -22,11 +22,11 @@ export default class searchField extends Block {
     }
 
     bind() {
-        let me = this.myDomNode;
+        const me = this.myDomNode;
         if (me === undefined) return;
 
-        let but = me.getElementsByClassName('search-field__input-button')[0];
-        but.onclick = this.callback;
+        const button = me.getElementsByClassName('search-field__input-button')[0];
+        button.onclick = this.callback;
     }
 
     unbind() {

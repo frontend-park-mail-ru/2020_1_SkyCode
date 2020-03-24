@@ -1,7 +1,7 @@
-import Block from '../../Block.js';
+import Component from '../../Component.js';
 import EventBus from '../../../services/EventBus.js';
 
-export default class href extends Block {
+export default class href extends Component {
     constructor({text, href, classes = 'href'}) {
 
         super();

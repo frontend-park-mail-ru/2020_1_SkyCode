@@ -1,10 +1,10 @@
 import header from '../../blocks/header/header.js';
 import actionBar from '../../blocks/actionBar/actionBar.js';
 import categoryBar from '../../blocks/categoryBar/categoryBar.js';
-import Block from '../../Block.js';
+import Component from '../../Component.js';
 import order from '../../blocks/order/order.js';
 
-class MainView extends Block {
+class MainView extends Component {
     constructor({actionArr, categoryArr,
                 profile, restaurant, basket}) {
         super();
