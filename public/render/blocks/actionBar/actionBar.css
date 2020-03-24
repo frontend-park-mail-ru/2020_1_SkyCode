@@ -1,9 +1,10 @@
+@import "../../blocks/action/action.css";
 
-.actions__container-scroll-hider {
+.action-bar__container-scroll-hider {
     overflow: hidden;
 }
 
-.actions__container {
+.action-bar__container {
     overflow-x: scroll;
     -webkit-overflow-scrolling: touch;
 
@@ -11,19 +12,16 @@
     margin-bottom: -20px;
 }
 
-.actions__list {
+.action-bar__list {
     display: flex;
     list-style-type: none;
 }
 
-.actions__li {
+.action-bar__li {
     margin-right: 15px;
 }
 
-.actions__li:last-child {
+.action-bar__li:last-child {
     margin-right: 0;
 }
 
-.actions__action {
-    border-radius: 10%;
-}

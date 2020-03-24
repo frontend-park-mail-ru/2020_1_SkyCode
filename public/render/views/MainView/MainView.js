@@ -1,17 +1,19 @@
 import header from '../../blocks/header/header.js';
-import actions from '../../blocks/actions/actions.js';
+import actionBar from '../../blocks/actionBar/actionBar.js';
 import categories from '../../blocks/categories/categories.js';
 import Block from '../../Block.js';
 
 class MainView extends Block {
-    constructor({actions: actionData, categories: categoryData}) {
+    constructor({actionArr, categories: categoryData}) {
         super();
 
         this.addTemplateData({
-            header: new header({classes: 'header'}),
-            actions: new actions({
+            header: new header({
+                classes: 'header'
+            }),
+            actionBar: new actionBar({
                 classes: 'actions',
-                actions: actionData,
+                actionArr,
             }),
             categories: new categories({
                 classes: 'categories',
