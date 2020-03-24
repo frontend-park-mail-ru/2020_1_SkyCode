@@ -6,7 +6,6 @@
 
 .action-bar__container {
     overflow-x: scroll;
-    -webkit-overflow-scrolling: touch;
 
     padding-bottom: 20px;
     margin-bottom: -20px;

@@ -1,6 +1,6 @@
 .category-bar__category {
-    width: 100px;
-    height: 200px;
+    height: 150px;
+    width: 75px;
     border-radius: 50px;
     background: white;
     outline: none;
@@ -12,17 +12,18 @@
 }
 
 .category-bar__image {
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     border-radius: 50px;
     border: 1px solid grey;
     position: absolute;
-    top: 15px;
-    left: 15px;
+    top: 7px;
+    left: 7px;
 }
 
 .category-bar__legend {
-    margin-top: 50px;
     margin-right: auto;
     margin-left: auto;
+    position: relative;
+    top: 10px;
 }
