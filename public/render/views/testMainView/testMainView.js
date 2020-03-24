@@ -38,6 +38,6 @@ for (let i = 1; i <= 17; i++) {
     });
 }
 
-let mv = new MainView({actionArr: actions, categories: categories});
+let mv = new MainView({actionArr: actions, categoryArr: categories});
 document.body.innerHTML = (mv.HTML());
 mv.bind();

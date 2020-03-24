@@ -1,10 +1,10 @@
 import header from '../../blocks/header/header.js';
 import actionBar from '../../blocks/actionBar/actionBar.js';
-import categories from '../../blocks/categories/categories.js';
+import categoryBar from '../../blocks/categoryBar/categoryBar.js';
 import Block from '../../Block.js';
 
 class MainView extends Block {
-    constructor({actionArr, categories: categoryData}) {
+    constructor({actionArr, categoryArr}) {
         super();
 
         this.addTemplateData({
@@ -12,12 +12,12 @@ class MainView extends Block {
                 classes: 'header'
             }),
             actionBar: new actionBar({
-                classes: 'actions',
+                classes: 'action-bar',
                 actionArr,
             }),
-            categories: new categories({
-                classes: 'categories',
-                categories: categoryData,
+            categoryBar: new categoryBar({
+                classes: 'category-bar',
+                categoryArr,
             })
         }, true);
     }

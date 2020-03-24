@@ -1,21 +1,4 @@
-.categories__container-scroll-hider {
-    overflow: hidden;
-}
-
-.categories__container {
-    overflow-x: scroll;
-    -webkit-overflow-scrolling: touch;
-
-    padding-bottom: 20px;
-    margin-bottom: -20px;
-}
-
-.categories__list {
-    display: flex;
-    list-style-type: none;
-}
-
-.categories__category {
+.category-bar__category {
     width: 100px;
     height: 200px;
     border-radius: 50px;
@@ -28,19 +11,18 @@
     margin-right: 15px;
 }
 
-.categories__image {
+.category-bar__image {
     width: 70px;
     height: 70px;
     border-radius: 50px;
-    border: 1px solid grey; /* Параметры рамки */
+    border: 1px solid grey;
     position: absolute;
     top: 15px;
     left: 15px;
 }
 
-.categories__legend {
+.category-bar__legend {
     margin-top: 50px;
     margin-right: auto;
     margin-left: auto;
-
 }

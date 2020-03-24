@@ -1,0 +1,18 @@
+@import "../category/category.css";
+
+.category-bar__container-scroll-hider {
+    overflow: hidden;
+}
+
+.category-bar__container {
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+
+    padding-bottom: 20px;
+    margin-bottom: -20px;
+}
+
+.category-bar__list {
+    display: flex;
+    list-style-type: none;
+}
