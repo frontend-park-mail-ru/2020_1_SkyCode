@@ -1,2 +1,2 @@
 #!/bin/bash
-handlebars ../*/*/*/*/*.hbs -f precompiled.js
+handlebars ../render/*/*/*.hbs -f precompiled.js

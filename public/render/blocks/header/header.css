@@ -1,7 +1,7 @@
 
 @import "../../elements/hamburgerButton/hamburgerButton.css";
 @import "../../elements/href/href.css";
-@import "..ld/searchField.css";
+@import "../searchField/searchField.css";
 @import "../../elements/input/input.css";
 
 .header {
