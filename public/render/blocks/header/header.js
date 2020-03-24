@@ -4,7 +4,7 @@ import hamburgerButton from '../../elements/hamburgerButton/hamburgerButton.js';
 import input from '../../elements/input/input.js';
 import searchField from '../searchField/searchField.js';
 
-class header extends Block {
+export default class header extends Block {
     constructor({ classes = 'header' } = {}) {
         super();
         this.addTemplateData({
@@ -34,5 +34,3 @@ class header extends Block {
         this.addClasses(classes);
     }
 }
-
-export default header;
