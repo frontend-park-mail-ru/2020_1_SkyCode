@@ -71,7 +71,19 @@ export default class Component {
         return Handlebars.templates[this.constructor.name + '.hbs'](this.context);
     }
 
+    set id(id) {
+        this._id = id;
+    }
+
+    get id() {
+        return this._id;
+    }
+
     get domElement() {
+        if (this._id) {
+            return document.getElementById(this.id);
+        }
+
         let me = document.getElementsByClassName(this.strClasses);
         if (me.length === 0) {
             return;
