@@ -1,11 +1,15 @@
 export default class Component {
-    constructor() {
+    constructor(classes) {
         this.toString = this.HTML;
 
         // templateData --- информация, передающаяся в template
         this._context = {};
         // Добавляем классы
         this.addTemplateData({classes: []}, false);
+
+        if (classes) {
+            this.addClasses(classes);
+        }
     }
 
     get context() {
@@ -34,15 +38,13 @@ export default class Component {
             throw 'bad usage: must be str or strArr on entry'
         }
 
-        let cls;
+        let addClasses = classes;
 
-        if (isArr) {
-            cls = classes;
-        } else {
-            cls = classes.split(' ');
+        if (isStr) {
+            addClasses = classes.split(' ');
         }
 
-        this.context.classes.push(cls);
+        this.context.classes.push(addClasses);
     }
 
     get arrClasses() {
