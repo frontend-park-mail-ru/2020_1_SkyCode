@@ -1,5 +1,5 @@
 export default class Component {
-    constructor(classes) {
+    constructor(classes, contextObj) {
         this.toString = this.HTML;
 
         // templateData --- информация, передающаяся в template
@@ -10,22 +10,18 @@ export default class Component {
         if (classes) {
             this.addClasses(classes);
         }
+
+        if (contextObj) {
+            this.addTemplateData(contextObj);
+        }
     }
 
     get context() {
         return this._context;
     }
 
-    addTemplateData(contextObject, isBlocks) {
+    addTemplateData(contextObject) {
         Object.assign(this.context, contextObject);
-
-        if (isBlocks) return;
-        // Если добавлены блоки, то они должны быть перечисляемыми, чтобы их можно было длрекурсивно связать
-        for (const key in Object.keys(contextObject)) {
-            Object.defineProperty(this.context, key, {
-                enumerable: false,
-            });
-        }
     }
 
     addClasses(classes) {
@@ -57,6 +53,10 @@ export default class Component {
 
             const child = this.context[key];
 
+            if (!child instanceof Component){
+                continue;
+            }
+
             if (typeof child !== 'object') {
                 continue;
             }
@@ -76,6 +76,10 @@ export default class Component {
             }
 
             let child = this.context[key];
+
+            if (!child instanceof Component){
+                continue;
+            }
 
             if (typeof child !== 'object') {
                 continue;
