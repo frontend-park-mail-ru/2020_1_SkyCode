@@ -22,7 +22,7 @@ export default class searchField extends Component {
     }
 
     bind() {
-        const me = this.myDomNode;
+        const me = this.domElement;
         if (me === undefined) return;
 
         const button = me.getElementsByClassName('search-field__input-button')[0];
@@ -30,7 +30,7 @@ export default class searchField extends Component {
     }
 
     unbind() {
-        let me = this.myDomNode;
+        let me = this.domElement;
         if (me === undefined) return;
 
         let but = me.getElementsByClassName('search-field__input-button')[0];

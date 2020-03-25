@@ -13,7 +13,7 @@ export default class button extends Component {
     }
 
     bind() {
-        let node = super.myDomNode;
+        let node = super.domElement;
         if (node === undefined) {
             return;
         }
@@ -22,7 +22,7 @@ export default class button extends Component {
     }
 
     unbind() {
-        let node = super.myDomNode;
+        let node = super.domElement;
         if (node  === undefined) {
             return;
         }

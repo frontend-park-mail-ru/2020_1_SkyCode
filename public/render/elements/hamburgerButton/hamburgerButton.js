@@ -8,7 +8,7 @@ export default class hamburgerButton extends Component{
     }
 
     bind() {
-        let me = super.myDomNode;
+        let me = super.domElement;
         if (me === undefined) {
             return;
         }
@@ -17,7 +17,7 @@ export default class hamburgerButton extends Component{
     }
 
     unbind() {
-        let me = super.myDomNode;
+        let me = super.domElement;
         if (me === undefined) {
             return;
         }

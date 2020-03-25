@@ -46,50 +46,24 @@ export default class Component {
     }
 
     bind() {
-        for (const key in this.context) {
-            if (!this.context.hasOwnProperty(key)) {
+        for (const value in Object.values(this.context)) {
+
+            if (!value instanceof Component){
                 continue;
             }
 
-            const child = this.context[key];
-
-            if (!child instanceof Component){
-                continue;
-            }
-
-            if (typeof child !== 'object') {
-                continue;
-            }
-
-            if (!('bind' in child)) {
-                continue;
-            }
-
-            child.bind();
+            value.bind();
         }
     }
 
     unbind() {
-        for (const child in this.context) {
-            if (!this.context.hasOwnProperty(key)) {
+        for (const value in Object.values(this.context)) {
+
+            if (!value instanceof Component){
                 continue;
             }
 
-            let child = this.context[key];
-
-            if (!child instanceof Component){
-                continue;
-            }
-
-            if (typeof child !== 'object') {
-                continue;
-            }
-
-            if (!('unbind' in child)) {
-                continue;
-            }
-
-            child.unbind();
+            value.unbind();
         }
     }
 
@@ -97,7 +71,7 @@ export default class Component {
         return Handlebars.templates[this.constructor.name + '.hbs'](this.context);
     }
 
-    get myDomNode() {
+    get domElement() {
         let me = document.getElementsByClassName(this.strClasses);
         if (me.length === 0) {
             return;

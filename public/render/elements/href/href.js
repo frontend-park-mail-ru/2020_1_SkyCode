@@ -13,7 +13,7 @@ export default class href extends Component {
     }
 
     bind() {
-        let me = super.myDomNode;
+        let me = super.domElement;
         if (me === undefined) {
             console.trace('cat\' ret myself from DOM');
             return;
@@ -27,7 +27,7 @@ export default class href extends Component {
     }
 
     unbind() {
-        let me = super.myDomNode;
+        let me = super.domElement;
         if (me === undefined) {
             return;
         }
