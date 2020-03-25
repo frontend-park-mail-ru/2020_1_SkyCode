@@ -16,17 +16,15 @@ export default class Component {
         return this._context;
     }
 
-    addTemplateData(templateDataObj, is_blocks) {
-        Object.assign(this.context, templateDataObj);
+    addTemplateData(contextObject, isBlocks) {
+        Object.assign(this.context, contextObject);
 
-        if (is_blocks) return;
+        if (isBlocks) return;
         // Если добавлены блоки, то они должны быть перечисляемыми, чтобы их можно было длрекурсивно связать
-        for (const key in templateDataObj) {
-            if (templateDataObj.hasOwnProperty(key)) {
-                Object.defineProperty(this.context, key, {
-                    enumerable: false,
-                });
-            }
+        for (const key in Object.keys(contextObject)) {
+            Object.defineProperty(this.context, key, {
+                enumerable: false,
+            });
         }
     }
 
@@ -35,7 +33,7 @@ export default class Component {
         let isStr = typeof classes === 'string';
 
         if (!(isArr || isStr)) {
-            throw 'bad usage: must be str or strArr on entry'
+            throw 'bad usage: must be str or strArr on entry';
         }
 
         let addClasses = classes;
@@ -47,12 +45,8 @@ export default class Component {
         this.context.classes.push(addClasses);
     }
 
-    get arrClasses() {
-        return this._context.classes;
-    }
-
     get strClasses() {
-        return this.arrClasses.join(' ');
+        return this.context.classes.join(' ');
     }
 
     bind() {
@@ -67,7 +61,7 @@ export default class Component {
                 continue;
             }
 
-            if (! ('bind' in child)) {
+            if (!('bind' in child)) {
                 continue;
             }
 
@@ -87,7 +81,7 @@ export default class Component {
                 continue;
             }
 
-            if (! ('unbind' in child)) {
+            if (!('unbind' in child)) {
                 continue;
             }
 
