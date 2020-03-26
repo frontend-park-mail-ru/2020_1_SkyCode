@@ -1,58 +1,37 @@
 'use strict';
 
 class EventBus {
-    _callbacksMap;
+	constructor() {
+		if (EventBus.instance) {
+			return EventBus.instance;
+		}
+		this.events = {};
+		EventBus.instance = this;
+		return this;
+	}
 
-    constructor() {
-        this._callbacksMap = {};
-    }
+	subscribe(event, callback) {
+		if (!this.events[event]) {
+			this.events[event] = [];
 
-    subscribe(events, callback) {
-        if (typeof callback !== 'function') {
-            return;
-        }
+		}
+		this.events[event].push(callback);
+	}
 
-        const strEvents = String(events).toLowerCase().split(/\s/);
+	unsubscribe(event, callback) {
+		if (this.events[event]) {
+			const index = this.events[event].indexOf(callback);
+			this.events[event].splice(index, 1);
+		}
+	}
 
-        strEvents.forEach(event => {
-            if (!this._callbacksMap[event]) {
-                this._callbacksMap[event] = [];
-            }
-            
-            this._callbacksMap[event].push(callback);
-        });
-
-        /* Теперь subscribe сразу возвращает функцию, отписывающую соответствующие 
-        события. 
-
-        Таким образом можно не только легко отписываться от событий, но и 
-        быть уверенным, что нас никто не отпишет втихую */
-        let singleUnsubscribe = true;
-        // След переменная создается, чтобы ф-я была независима от this
-        const callbacksMap = this._callbacksMap;
-
-        return function stopListen() {
-            if (!singleUnsubscribe) {
-                return;
-            }
-
-            singleUnsubscribe = false;
-
-            events.forEach(event => {
-                const callbacks = callbacksMap[event];
-                const index = callbacks.indexOf(callback);
-                callbacks.splice(index, 1);
-            });
-        };
-    }
-
-    broadcast(event, data) {
-        let callbacks = this._callbacksMap[event.toLowerCase()] || [];
-
-        callbacks.forEach(callback => {
-            callback(data);
-        });
-    }
+	publish(event, data) {
+		const event = this.events[event];
+		if (!event || !event.length) {
+			return;
+		}
+		event.forEach(callback =>  callback(data));
+	}
 }
 
 export default new EventBus();
