@@ -3,7 +3,7 @@
 import EventBus from '../services/EventBus.js';
 
 class Router {
-    _currentPage;
+    _currentController;
 
     constructor() {
         this._pages = [];
@@ -17,23 +17,23 @@ class Router {
         // Мы даже не знаем, было ли нажато hist.front() или hist.back(), чтобы при помощи обратных команд
         // выйти на нужные записи, изменить их и вернуться на текущую
         event.preventDefault();
-        this._currentPage.hide();
-        this._currentPage = this._retreivePage(document.location) || log('unknown url') || Page404;
-        this._currentPage.show(document.location, event.state);
+        this._currentController.hide();
+        this._currentController = this._retreivePage(document.location) || Page404;
+        this._currentController.show(document.location, event.state);
     }
 
     _goto({url}) {
         let state = {};
 
-        if (this._currentPage) {
-            state = this._currentPage.state;
-            this._savePageStateInHistory(this._currentPage);
-            this._currentPage.hide();
+        if (this._currentController) {
+            state = this._currentController.state;
+            this._savePageStateInHistory(this._currentController);
+            this._currentController.hide();
         }
 
-        this._currentPage = this._retreivePage(url) || log('unknown url') || Page404;
-        this._setNewHistoryRecord(this._currentPage, url);
-        this._currentPage.show(url, state);
+        this._currentController = this._retreivePage(url) || Page404;
+        this._setNewHistoryRecord(this._currentController, url);
+        this._currentController.show(url, state);
     }
 
     _savePageStateInHistory(page) {
@@ -50,7 +50,6 @@ class Router {
 
     _registerPage(page, url) {
         this._pages.push({
-            // будут использоваться только целочисленные части url?
             pattern: new RegExp('^' + url.replace(/:\w+/, '(\w+)') + '$'),
             page: page,
         });
@@ -64,11 +63,6 @@ class Router {
         }
     }
 }
-
-let log = function (message) {
-    let start = '\nRouter:\t';
-    console.log(start + message);
-};
 
 
 export default new Router();
