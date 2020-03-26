@@ -1,0 +1,22 @@
+@import "../../blocks/header/Header.css";
+@import "../../blocks/actionBar/ActionBar.css";
+@import "../../blocks/categoryBar/CategoryBar.css";
+@import "../../blocks/order/Order.css";
+
+.main-view {
+    display: grid;
+    grid-template-rows: min-content min-content min-content min-content auto;
+    grid-template-columns: 6fr 3fr;
+    grid-template-areas:
+        "header         header          order"
+        "action-bar     action-bar      order"
+        "addbar         addbar          order"
+        "category-bar   category-bar    order";
+
+    background: #FFFFFF;
+}
+
+.main-view > * {
+    min-width: 0;
+}
+

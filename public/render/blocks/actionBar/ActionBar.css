@@ -1,0 +1,32 @@
+@import "../action/Action.css";
+
+.action-bar {
+    grid-area: action-bar;
+}
+
+.action-bar__container-scroll-hider {
+    overflow: hidden;
+}
+
+.action-bar__container {
+    overflow-x: scroll;
+
+    padding: 20px;
+    margin-bottom: -20px;
+}
+
+.action-bar__list {
+    display: flex;
+    list-style-type: none;
+    /* standart */
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    padding-inline-start: 40px;
+    /* end standart */
+}
+
+.action-bar__li {
+    margin: 10px;
+}

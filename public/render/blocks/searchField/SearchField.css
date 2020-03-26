@@ -1,0 +1,6 @@
+@import "../../elements/input/Input.css";
+
+.header__search-field {
+    display: flex;
+    padding: 10px;
+}

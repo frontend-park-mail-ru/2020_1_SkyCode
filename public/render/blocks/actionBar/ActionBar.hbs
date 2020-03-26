@@ -1,0 +1,15 @@
+<div class="{{classes}}">
+    <div class="action-bar__container-scroll-hider">
+        <div class="action-bar__container">
+            <ul class="action-bar__list">
+                {{#each actions}}
+                    <li class="action-bar__li">
+                        {{{this}}}
+                    </li>
+                {{else}}
+                    <p>Can't load actions.</p>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</div>
