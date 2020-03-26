@@ -1,6 +1,6 @@
 'use strict';
 
-class BasePage {
+class BaseController {
     _title;
     _view;
 
@@ -39,4 +39,4 @@ class BasePage {
     }
 }
 
-export default BasePage;
+export default BaseController;

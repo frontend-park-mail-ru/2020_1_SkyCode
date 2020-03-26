@@ -1,8 +1,8 @@
 'use strict';
 
-import BasePage from "./BasePage";
+import BaseController from "./BaseController";
 
-class MainPage extends BasePage {
+class MainController extends BaseController {
     constructor({title = 'main page'}) {
         super({title});
     }
@@ -20,4 +20,4 @@ class MainPage extends BasePage {
     }
 }
 
-export default new MainPage();
+export default new MainController();
