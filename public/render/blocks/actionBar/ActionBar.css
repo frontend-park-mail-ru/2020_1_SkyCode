@@ -1,4 +1,4 @@
-@import "../../blocks/action/action.css";
+@import "../action/Action.css";
 
 .action-bar {
     grid-area: action-bar;

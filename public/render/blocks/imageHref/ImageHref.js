@@ -1,14 +1,14 @@
 import Component from '../../Component.js';
-import input from '../../elements/input/input.js';
+import Input from '../../elements/input/Input.js';
 
 
-export default class imageHref extends Component {
+export default class ImageHref extends Component {
     constructor({src, href, classes = 'imageHref', imageClasses = 'imageClasses'}) {
         super();
         this.addClasses(classes);
-        this.addTemplateData({href}, false);
-        this.addTemplateData({
-            image: new input({
+        this.addContextData({href}, false);
+        this.addContextData({
+            image: new Input({
                 type: 'image',
                 classes: imageClasses,
                 src,

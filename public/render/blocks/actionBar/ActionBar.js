@@ -1,7 +1,7 @@
 import Component from '../../Component.js';
-import Action from '../action/action.js';
+import Action from '../action/Action.js';
 
-export default class actionBar extends Component{
+export default class ActionBar extends Component{
     constructor({classes = 'action-bar', actionArr}) {
         super();
         this.addClasses(classes);
@@ -16,6 +16,6 @@ export default class actionBar extends Component{
             }));
         }
 
-        this.addTemplateData({actions}, true);
+        this.addContextData({actions}, true);
     }
 }

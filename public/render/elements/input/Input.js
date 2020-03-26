@@ -1,11 +1,11 @@
 import Component from '../../Component.js';
 
-export default class input extends Component {
+export default class Input extends Component {
     constructor({type, placeholder, classes = 'input', src}) {
         super();
 
         this.addClasses(classes);
-        this.addTemplateData({
+        this.addContextData({
             src: src,
             type: type,
             placeholder: placeholder,

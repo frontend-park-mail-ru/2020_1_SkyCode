@@ -1,6 +1,6 @@
 import Component from '../../Component.js';
 
-export default class hamburgerButton extends Component{
+export default class HamburgerButton extends Component{
     constructor({classes = 'hamburger-button', callback}) {
         super();
         this.addClasses(classes);

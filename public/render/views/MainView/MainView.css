@@ -1,13 +1,7 @@
-@import "../../blocks/header/header.css";
-@import "../../blocks/actionBar/actionBar.css";
-@import "../../blocks/categoryBar/categoryBar.css";
-@import "../../blocks/order/order.css";
-
-/* Пока не знаю, куда это засунуть */
-
-body {
-    margin: 0;
-}
+@import "../../blocks/header/Header.css";
+@import "../../blocks/actionBar/ActionBar.css";
+@import "../../blocks/categoryBar/CategoryBar.css";
+@import "../../blocks/order/Order.css";
 
 .main-view {
     display: grid;

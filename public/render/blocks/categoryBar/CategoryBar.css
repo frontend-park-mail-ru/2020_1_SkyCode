@@ -1,4 +1,4 @@
-@import "../category/category.css";
+@import "../category/Category.css";
 
 .category-bar {
     grid-area: category-bar;

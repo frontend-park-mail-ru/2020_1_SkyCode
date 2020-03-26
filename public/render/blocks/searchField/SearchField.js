@@ -1,17 +1,17 @@
 import Component from '../../Component.js';
-import input from '../../elements/input/input.js';
+import Input from '../../elements/input/Input.js';
 
-export default class searchField extends Component {
+export default class SearchField extends Component {
     constructor({classes = 'search-field', callback}) {
         super();
         this.addClasses(classes);
-        this.addTemplateData({
-            inputButton: new input({
+        this.addContextData({
+            inputButton: new Input({
                 type: 'image',
                 src: '/static/loupe.png',
                 classes: 'search-field__input-button'
             }),
-            inputField: new input({
+            inputField: new Input({
                 type: 'text',
                 placeholder: 'Search',
                 classes: 'search-field__input-field'

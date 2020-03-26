@@ -5,14 +5,14 @@ export default class Component {
         // templateData --- информация, передающаяся в template
         this._context = {};
         // Добавляем классы
-        this.addTemplateData({classes: []}, false);
+        this.addContextData({classes: []}, false);
 
         if (classes) {
             this.addClasses(classes);
         }
 
         if (contextObj) {
-            this.addTemplateData(contextObj);
+            this.addContextData(contextObj);
         }
     }
 
@@ -20,7 +20,7 @@ export default class Component {
         return this._context;
     }
 
-    addTemplateData(contextObject) {
+    addContextData(contextObject) {
         Object.assign(this.context, contextObject);
     }
 

@@ -1,11 +1,11 @@
 import Component from '../../Component.js';
 
-export default class button extends Component {
+export default class Button extends Component {
     constructor({text, callback, classes = 'button'}) {
 
         super();
         this.addClasses(classes);
-        this.addTemplateData({
+        this.addContextData({
             text: text,
         }, false);
 

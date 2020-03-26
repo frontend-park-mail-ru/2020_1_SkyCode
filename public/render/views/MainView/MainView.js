@@ -1,27 +1,27 @@
-import header from '../../blocks/header/header.js';
-import actionBar from '../../blocks/actionBar/actionBar.js';
-import categoryBar from '../../blocks/categoryBar/categoryBar.js';
+import Header from '../../blocks/header/Header.js';
+import ActionBar from '../../blocks/actionBar/ActionBar.js';
+import CategoryBar from '../../blocks/categoryBar/CategoryBar.js';
 import Component from '../../Component.js';
-import order from '../../blocks/order/order.js';
+import Order from '../../blocks/order/Order.js';
 
 class MainView extends Component {
     constructor({actionArr, categoryArr,
                 profile, restaurant, basket}) {
         super();
 
-        this.addTemplateData({
-            header: new header({
+        this.addContextData({
+            header: new Header({
                 classes: 'header'
             }),
-            actionBar: new actionBar({
+            actionBar: new ActionBar({
                 classes: 'action-bar',
                 actionArr,
             }),
-            categoryBar: new categoryBar({
+            categoryBar: new CategoryBar({
                 classes: 'category-bar',
                 categoryArr,
             }),
-            order: new order({
+            order: new Order({
                 classes: 'order',
                 profile,
                 restaurant,
