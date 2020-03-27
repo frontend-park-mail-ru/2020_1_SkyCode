@@ -26,11 +26,11 @@ class EventBus {
 	}
 
 	publish(event, data) {
-		const event = this.events[event];
-		if (!event || !event.length) {
+		const callbacks = this.events[event];
+		if (!callbacks || !callbacks.length) {
 			return;
 		}
-		event.forEach(callback =>  callback(data));
+		callbacks.forEach(callback =>  callback(data));
 	}
 }
 

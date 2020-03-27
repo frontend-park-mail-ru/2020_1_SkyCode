@@ -1,22 +1,24 @@
 'use strict';
 
-import BaseController from "./BaseController";
+import BaseController from "./BaseController.js";
+import MainView from '../render/views/MainView/MainView.js';
+import Mocks from '../mocks.js';
 
 class MainController extends BaseController {
-    constructor({title = 'main page'}) {
-        super({title});
+    constructor(title = 'main page') {
+        super(title);
     }
 
     show(url, {actions, categories} = {}) {
         if (actions === undefined) {
-            actions = Models.getActions(); // Моделей пока нет
+            actions = Mocks.actions;
         }
 
         if (categories === undefined) {
-            categories = Models.getActions(); // Моделей пока нет
+            categories = Mocks.categories;
         }
 
-        super.show(new MainView({actions: actions, categories: categories}));
+        super.show(new MainView({actionArr: actions, categoryArr: categories}));
     }
 }
 

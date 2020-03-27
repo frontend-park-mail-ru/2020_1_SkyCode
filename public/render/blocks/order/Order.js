@@ -1,5 +1,7 @@
 import Component from '../../Component.js';
 import ImageHref from '../imageHref/ImageHref.js';
+import PlaceTimeCard from '../restaurantInput/PlaceTimeCard.js';
+
 
 export default class Order extends Component {
     constructor({profile = {src: '/static/profile.png', href: 'login'},
@@ -13,6 +15,11 @@ export default class Order extends Component {
                 src: profile.src,
                 href: profile.href,
             }),
-        }, true);
+            title: 'My Order',
+            // placeTimeCard: new PlaceTimeCard({
+            //     classes: 'order__place-time-card',
+            //     restaurant,
+            // })
+        });
     }
 }

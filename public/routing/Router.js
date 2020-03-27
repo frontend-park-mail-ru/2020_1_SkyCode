@@ -1,6 +1,7 @@
 'use strict';
 
-import EventBus from '../services/EventBus.js';
+import EventBus from '../services/Events/EventBus.js';
+import MainController from '../controllers/MainController.js';
 
 class Router {
     _currentController;
@@ -8,7 +9,7 @@ class Router {
     constructor() {
         this._pages = [];
         this._registerAllPages();
-        EventBus.listen('set-page', (this._goto).bind(this));
+        EventBus.subscribe('set-page', (this._goto).bind(this));
         window.onpopstate = (this._handlePopState).bind(this);
     }
 
@@ -18,7 +19,7 @@ class Router {
         // выйти на нужные записи, изменить их и вернуться на текущую
         event.preventDefault();
         this._currentController.hide();
-        this._currentController = this._retreivePage(document.location) || Page404;
+        this._currentController = this._retrievePage(document.location) || Page404;
         this._currentController.show(document.location, event.state);
     }
 
@@ -31,7 +32,7 @@ class Router {
             this._currentController.hide();
         }
 
-        this._currentController = this._retreivePage(url) || Page404;
+        this._currentController = this._retrievePage(url) || Page404;
         this._setNewHistoryRecord(this._currentController, url);
         this._currentController.show(url, state);
     }
@@ -45,17 +46,17 @@ class Router {
     }
 
     _registerAllPages() {
-        this._registerPage(MainPage, url);
+        this._registerPage(MainController, '/');
     }
 
-    _registerPage(page, url) {
+    _registerPage(controller, path) {
         this._pages.push({
-            pattern: new RegExp('^' + url.replace(/:\w+/, '(\w+)') + '$'),
-            page: page,
+            pattern: new RegExp('^' + path.replace(/:\w+/, '(\w+)') + '$'),
+            page: controller,
         });
     }
 
-    _retreivePage(url) {
+    _retrievePage(url) {
         for (const pg of this._pages) {
             if (url.match(pg.pattern)) {
                 return pg.page;

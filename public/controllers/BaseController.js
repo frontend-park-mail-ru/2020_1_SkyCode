@@ -4,7 +4,7 @@ class BaseController {
     _title;
     _view;
 
-    constructor({title}) {
+    constructor(title) {
         this._title = title;
     }
 
