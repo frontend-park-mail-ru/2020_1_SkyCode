@@ -1,7 +1,5 @@
 import Component from '../../Component.js';
 import ImageHref from '../imageHref/ImageHref.js';
-import PlaceTimeCard from '../restaurantInput/PlaceTimeCard.js';
-
 
 export default class Order extends Component {
     constructor({profile = {src: '/static/profile.png', href: 'login'},
