@@ -19,7 +19,7 @@ class Router {
         // выйти на нужные записи, изменить их и вернуться на текущую
         event.preventDefault();
         this._currentController.hide();
-        this._currentController = this._retrievePage(document.location) || Page404;
+        this._currentController = this._matchUrl(document.location) || Page404;
         this._currentController.show(document.location, event.state);
     }
 
@@ -32,7 +32,8 @@ class Router {
             this._currentController.hide();
         }
 
-        this._currentController = this._retrievePage(url) || Page404;
+        [this._currentController, state.matchData] = this._matchUrl(url) || throw 'no such page';
+
         this._setNewHistoryRecord(this._currentController, url);
         this._currentController.show(url, state);
     }
@@ -56,10 +57,12 @@ class Router {
         });
     }
 
-    _retrievePage(url) {
+    _matchUrl(url) {
         for (const pg of this._pages) {
-            if (url.match(pg.pattern)) {
-                return pg.page;
+            let matchData = url.match(pg.pattern);
+
+            if (matchData) {
+                return [pg.page, matchData.slice(1)];
             }
         }
     }
