@@ -2,6 +2,7 @@
 
 import EventBus from '../services/Events/EventBus.js';
 import MainController from '../controllers/MainController.js';
+import Controller404 from '../controllers/Controller404.js';
 
 class Router {
     _currentController;
@@ -19,7 +20,7 @@ class Router {
         // выйти на нужные записи, изменить их и вернуться на текущую
         event.preventDefault();
         this._currentController.hide();
-        [this._currentController, event.state.matchData] = this._matchUrl(window.location.pathname) || throw 'no such page';
+        [this._currentController, event.state.matchData] = this._matchUrl(window.location.pathname) || [Controller404];
         this._currentController.show(document.location, event.state);
     }
 
@@ -32,7 +33,7 @@ class Router {
             this._currentController.hide();
         }
 
-        [this._currentController, state.matchData] = this._matchUrl(url) || throw 'no such page';
+        [this._currentController, state.matchData] = this._matchUrl(url) || [Controller404];
 
         this._setNewHistoryRecord(this._currentController, url);
         this._currentController.show(url, state);
