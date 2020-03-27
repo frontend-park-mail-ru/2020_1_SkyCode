@@ -19,7 +19,7 @@ class Router {
         // выйти на нужные записи, изменить их и вернуться на текущую
         event.preventDefault();
         this._currentController.hide();
-        this._currentController = this._matchUrl(document.location) || Page404;
+        [this._currentController, event.state.matchData] = this._matchUrl(window.location.pathname) || throw 'no such page';
         this._currentController.show(document.location, event.state);
     }
 
