@@ -46,9 +46,9 @@ export default class Component {
     }
 
     bind() {
-        for (const value in Object.values(this.context)) {
+        for (const value of Object.values(this.context)) {
 
-            if (!value instanceof Component){
+            if (!(value instanceof Component)){
                 continue;
             }
 
@@ -57,9 +57,9 @@ export default class Component {
     }
 
     unbind() {
-        for (const value in Object.values(this.context)) {
+        for (const value of Object.values(this.context)) {
 
-            if (!value instanceof Component){
+            if (!(value instanceof Component)){
                 continue;
             }
 
@@ -90,5 +90,9 @@ export default class Component {
         }
 
         return me[0];
+    }
+
+    get state() {
+        return {}; // состояния будут реализованы позже
     }
 }

@@ -1,5 +1,5 @@
 import Component from '../../Component.js';
-import EventBus from '../../../services/EventBus.js';
+import EventBus from '../../../services/Events/EventBus.js';
 
 export default class Href extends Component {
     constructor({text, href, classes = 'href'}) {
@@ -22,7 +22,7 @@ export default class Href extends Component {
         me.onclick = function (event) {
             event.preventDefault();
             console.log('href ' + this.href + ' clicked');
-            EventBus.publish('goto', this.href);
+            EventBus.publish('goto', {url: this.href});
         }.bind(this);
     }
 

@@ -4,17 +4,24 @@
     grid-area: order;
 
     display: grid;
-    grid-template-columns: 50px 50px;
-    grid-template-rows: min-content min-content auto min-content min-content;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: min-content min-content min-content auto min-content min-content;
     grid-template-areas:
-        ".......... profile"
-        "restaurant restaurant"
-        "basket     basket"
-        "total      total"
-        "persons    checkout";
+        "..........         profile"
+        "title              ......."
+        "placeTimeCard      placeTimeCard"
+        "basket             basket"
+        "total              total"
+        "persons            checkout";
     background: #F8F8F8;
-    width: available;
 
     border-left: 1px solid #D6D6D6;
+}
+
+.order__title {
+    margin: 10px;
+    font-family: Arial, serif;
+    font-size: 25px;
+    text-align: center;
 }
 

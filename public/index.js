@@ -1,5 +1,4 @@
-import MainView from './views/MainView/mainView.js';
+import Router from './routing/Router.js';
+import EventBus from './services/Events/EventBus.js';
 
-const application = document.getElementById('application');
-
-MainView.render(application);
+EventBus.publish('set-page', {url: '/'});
