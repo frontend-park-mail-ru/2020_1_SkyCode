@@ -3,6 +3,11 @@ class Mocks {
     constructor() {
         this.initActions();
         this.initCategories();
+        this.initProducts();
+    }
+
+    get products() {
+        return this._products;
     }
 
     get actions() {
@@ -53,6 +58,25 @@ class Mocks {
                 text: texts[i - 1],
             });
         }
+    }
+
+    initProducts() {
+        this._products = [{
+            imageHref: 'static/basket/BBQBurger.jpg',
+            quantity: 1,
+            name: 'BBQ Burger',
+            cost: 339,
+        }, {
+            imageHref: 'static/basket/FrenchFries.jpg',
+            quantity: 2,
+            name: 'French fries',
+            cost: 139,
+        }, {
+            imageHref: 'static/basket/CocaCola.jpg',
+            quantity: 1,
+            name: 'Coca-cola',
+            cost: 99,
+        }];
     }
 }
 

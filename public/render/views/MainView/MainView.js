@@ -6,7 +6,7 @@ import Order from '../../blocks/order/Order.js';
 
 class MainView extends Component {
     constructor({actionArr, categoryArr,
-                profile, restaurant, basket}) {
+                profile, products}) {
         super();
 
         this.addContextData({
@@ -24,9 +24,8 @@ class MainView extends Component {
             order: new Order({
                 classes: 'order',
                 profile,
-                restaurant,
-                basket,
-            })
+                products,
+            }),
         }, true);
     }
 }
