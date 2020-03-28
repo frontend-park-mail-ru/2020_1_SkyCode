@@ -1,4 +1,5 @@
 @import "../imageHref/ImageHref.css";
+@import "../PlaceTimeCard/PlaceTimeCard.css";
 
 .order {
     grid-area: order;
@@ -9,7 +10,7 @@
     grid-template-areas:
         "..........         profile"
         "title              ......."
-        "placeTimeCard      placeTimeCard"
+        "place-time-card    place-time-card"
         "basket             basket"
         "total              total"
         "persons            checkout";
