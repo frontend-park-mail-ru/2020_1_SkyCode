@@ -1,0 +1,15 @@
+<div class="{{classes}}">
+    <div class="basket__container-scroll-hider">
+        <div class="basket__container">
+            <ul class="basket__list">
+                {{#each basketProducts}}
+                    <li class="basket__list-item">
+                        {{{this}}}
+                    </li>
+                {{else}}
+                    <p>Can't load basket</p>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</div>

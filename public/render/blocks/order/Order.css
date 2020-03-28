@@ -1,5 +1,6 @@
 @import "../imageHref/ImageHref.css";
 @import "../PlaceTimeCard/PlaceTimeCard.css";
+@import "../basket/Basket.css";
 
 .order {
     grid-area: order;
