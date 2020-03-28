@@ -76,7 +76,7 @@ class Mocks {
             quantity: 1,
             name: 'Coca-cola',
             cost: 99,
-        }];
+        }, ];
     }
 }
 

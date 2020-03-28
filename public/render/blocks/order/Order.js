@@ -3,6 +3,7 @@ import ImageHref from '../imageHref/ImageHref.js';
 import PlaceTimeCard from '../placeTimeCard/PlaceTimeCard.js';
 import Basket from '../basket/Basket.js';
 import PersonInput from '../personInput/PersonInput.js';
+import Button from '../../elements/button/Button.js';
 
 export default class Order extends Component {
     constructor({profile = {src: '/static/profile.png', href: '/login'},
@@ -31,6 +32,12 @@ export default class Order extends Component {
                 classes: 'order__person-input',
                 min: 1,
                 label: 'Persons:',
+            }),
+            checkout: new Button({
+                id: 'order__checkout',
+                classes: 'order__checkout',
+                text: 'Checkout',
+                callback: () => 0,
             })
         });
     }

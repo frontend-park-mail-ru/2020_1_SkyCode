@@ -8,7 +8,7 @@ export default class Button extends Component {
 
     bind() {
         let node = super.domElement;
-        if (node === undefined) {
+        if (node === undefined || this.callback === undefined) {
             return;
         }
 
