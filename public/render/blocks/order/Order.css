@@ -7,13 +7,21 @@
 
     display: grid;
     grid-template-columns: 50% 50%;
-    grid-template-rows: min-content min-content min-content 1fr min-content min-content;
+    grid-template-rows:
+            min-content
+            min-content
+            min-content
+            1fr
+            min-content
+            min-content
+            min-content;
     grid-template-areas:
         "..........         profile"
         "title              ......."
         "place-time-card    place-time-card"
         "basket             basket"
         "total-text         total"
+        "hline              hline"
         "persons            checkout";
     background: #F8F8F8;
 
@@ -28,14 +36,18 @@
 }
 
 .order__total-text {
-    margin: 35px;
+    margin-top: auto;
+    margin-right: 35px;
+    margin-left: 35px;
     font-family: Arial, serif;
     font-size: 18px;
     text-align: left;
 }
 
 .order__total {
-    margin: 35px;
+    margin-top: auto;
+    margin-right: 35px;
+    margin-left: 35px;
     font-family: Arial, serif;
     font-size: 18px;
     text-align: right;
