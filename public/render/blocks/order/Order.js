@@ -30,7 +30,6 @@ export default class Order extends Component {
             }),
             personInput: new PersonInput({
                 classes: 'order__person-input',
-                min: 1,
                 label: 'Persons:',
             }),
             checkout: new Button({
