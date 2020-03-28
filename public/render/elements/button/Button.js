@@ -1,14 +1,8 @@
 import Component from '../../Component.js';
 
 export default class Button extends Component {
-    constructor({text, callback, classes = 'button'}) {
-
-        super();
-        this.addClasses(classes);
-        this.addContextData({
-            text: text,
-        }, false);
-
+    constructor({text, callback, classes = 'button', id}) {
+        super(classes, {text}, id);
         this.callback = callback;
     }
 

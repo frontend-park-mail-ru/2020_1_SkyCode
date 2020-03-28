@@ -1,6 +1,7 @@
 @import "../imageHref/ImageHref.css";
-@import "../PlaceTimeCard/PlaceTimeCard.css";
+@import "../placeTimeCard/PlaceTimeCard.css";
 @import "../basket/Basket.css";
+@import "../personInput/PersonInput.css";
 
 .order {
     grid-area: order;
@@ -22,7 +23,7 @@
         "basket             basket"
         "total-text         total"
         "hline              hline"
-        "persons            checkout";
+        "person-input        checkout";
     background: #F8F8F8;
 
     border-left: 1px solid #D6D6D6;

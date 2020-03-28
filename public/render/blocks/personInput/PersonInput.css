@@ -1,0 +1,11 @@
+@import "../../elements/button/Button.css";
+@import "../../elements/input/Input.css";
+
+.order__person-input {
+    grid-area: person-input;
+    margin: 20px
+}
+
+.person-input__input-container {
+    display: flex;
+}

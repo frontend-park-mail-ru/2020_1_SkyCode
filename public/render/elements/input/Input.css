@@ -43,3 +43,13 @@
     margin-top: 10px;
     outline: none;
 }
+
+.person-input__input {
+    background: #F8F8F8;
+    border: 0;
+    border-top: 1px solid #d2d0d0;
+    border-bottom: 1px solid #d2d0d0;
+
+
+    text-align: center;
+}

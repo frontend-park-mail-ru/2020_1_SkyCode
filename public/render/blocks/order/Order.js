@@ -1,8 +1,8 @@
 import Component from '../../Component.js';
 import ImageHref from '../imageHref/ImageHref.js';
-import PlaceTimeCard from '../PlaceTimeCard/PlaceTimeCard.js';
+import PlaceTimeCard from '../placeTimeCard/PlaceTimeCard.js';
 import Basket from '../basket/Basket.js';
-import Mocks from '../../../mocks.js';
+import PersonInput from '../personInput/PersonInput.js';
 
 export default class Order extends Component {
     constructor({profile = {src: '/static/profile.png', href: '/login'},
@@ -27,6 +27,11 @@ export default class Order extends Component {
                 classes: 'order__basket',
                 products
             }),
+            personInput: new PersonInput({
+                classes: 'order__person-input',
+                min: 1,
+                label: 'Persons:',
+            })
         });
     }
 }
