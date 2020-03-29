@@ -3,6 +3,7 @@
 import EventBus from '../services/Events/EventBus.js';
 import MainController from '../controllers/MainController.js';
 import Controller404 from '../controllers/Controller404.js';
+import LoginSignupController from '../controllers/LoginSignupController.js';
 
 class Router {
     _currentController;
@@ -49,6 +50,8 @@ class Router {
 
     _registerAllPages() {
         this._registerPage(MainController, '/');
+        this._registerPage(LoginSignupController, '/login');
+        this._registerPage(LoginSignupController, '/signup');
     }
 
     _registerPage(controller, path) {

@@ -1,0 +1,11 @@
+@import "../../blocks/signupField/SignupField.css";
+@import "../../blocks/loginField/LoginField.css";
+
+.login-signup-view {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-areas: "login signup";
+
+    height: 100vh;
+    font-size: 20px;
+}
