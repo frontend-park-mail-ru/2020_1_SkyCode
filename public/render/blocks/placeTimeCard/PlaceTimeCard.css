@@ -18,11 +18,18 @@
 
 .place-time-card__place-text {
     grid-area: place-text;
+
+    font-size: 14px;
+
     color: white;
 }
 
 .place-time-card__time-text {
-    color: white;
     grid-area: time-text;
+
+    font-size: 14px;
+
+    color: white;
+
     margin-top: 10px;
 }

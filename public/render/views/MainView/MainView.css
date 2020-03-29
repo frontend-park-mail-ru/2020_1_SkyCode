@@ -30,13 +30,10 @@
 }
 
 .main-view__label {
-    padding-left: 70px;
+    grid-area: label;
 
-    font-family: Varela Round;
-    font-style: normal;
-    font-weight: normal;
+    padding-left: 70px;
     font-size: 26px;
-    line-height: 31px;
     text-align: left;
 }
 

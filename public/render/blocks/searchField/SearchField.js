@@ -8,7 +8,7 @@ export default class SearchField extends Component {
         this.addContextData({
             inputButton: new Input({
                 type: 'image',
-                src: '/static/loupe.png',
+                src: '/static/search.svg',
                 classes: 'search-field__input-button'
             }),
             inputField: new Input({

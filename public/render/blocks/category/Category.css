@@ -22,6 +22,8 @@
 }
 
 .category-bar__legend {
+    font-size: 14px;
+
     margin-right: auto;
     margin-left: auto;
     position: relative;

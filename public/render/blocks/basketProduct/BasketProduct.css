@@ -3,5 +3,15 @@
 .basket__basket-product {
     display: flex;
     margin: 10px;
+    justify-content: space-between;
+    align-items: center;
     text-align: center;
+
+    font-size: 14px;
+}
+
+.basket-product__price {
+    color: #C4C4C4;
+    text-align: right;
+    margin-left: 10px;
 }

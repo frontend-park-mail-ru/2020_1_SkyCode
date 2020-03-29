@@ -31,27 +31,34 @@
 }
 
 .order__title {
+    grid-area: title;
+
+    font-size: 18px;
+
     margin: 10px;
-    font-family: Arial, serif;
-    font-size: 25px;
     text-align: center;
+
 }
 
 .order__total-text {
+    grid-area: total-text;
+
+    font-size: 18px;
+
     margin-top: auto;
     margin-right: 35px;
     margin-left: 35px;
-    font-family: Arial, serif;
-    font-size: 18px;
     text-align: left;
 }
 
 .order__total {
+    grid-area: total;
+
+    font-size: 18px;
+
     margin-top: auto;
     margin-right: 35px;
     margin-left: 35px;
-    font-family: Arial, serif;
-    font-size: 18px;
     text-align: right;
 }
 
