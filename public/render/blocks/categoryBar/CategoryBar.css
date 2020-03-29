@@ -10,7 +10,6 @@
 
 .category-bar__container {
     overflow-x: scroll;
-    -webkit-overflow-scrolling: touch;
 
     padding: 0 20px 20px;
     margin-bottom: -20px;

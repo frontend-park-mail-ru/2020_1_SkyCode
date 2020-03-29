@@ -1,5 +1,5 @@
 export default class Component {
-    constructor(classes, contextObj) {
+    constructor(classes, contextObj, id) {
         this.toString = this.HTML;
 
         // templateData --- информация, передающаяся в template
@@ -13,6 +13,11 @@ export default class Component {
 
         if (contextObj) {
             this.addContextData(contextObj);
+        }
+
+        if (id) {
+            this._id = id;
+            this.addContextData({id});
         }
     }
 

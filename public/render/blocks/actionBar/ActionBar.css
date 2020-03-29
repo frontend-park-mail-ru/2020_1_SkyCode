@@ -18,7 +18,8 @@
 .action-bar__list {
     display: flex;
     list-style-type: none;
-    /* standart */
+
+    /* standart rewrite*/
     margin-block-start: 0;
     margin-block-end: 0;
     margin-inline-start: 0;

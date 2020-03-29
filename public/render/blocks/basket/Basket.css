@@ -1,0 +1,25 @@
+@import "../basketProduct/BasketProduct.css";
+
+.order__basket {
+    grid-area: basket;
+}
+
+.basket__scroll-hider {
+    overflow: hidden;
+}
+
+/**/
+.basket__scrolled-area {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 300px;
+    margin-right: -14px;
+}
+
+.basket__list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    list-style-type: none;
+    padding-inline-start: 0;
+}
