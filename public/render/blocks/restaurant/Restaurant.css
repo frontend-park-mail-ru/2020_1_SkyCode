@@ -8,10 +8,6 @@
     color: black;
 }
 
-.restaurant-list__restaurant:first-child {
-    margin-left: 60px;
-}
-
 .restaurant__avg-time {
     position: relative;
     top: -26px;

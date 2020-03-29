@@ -9,17 +9,18 @@
     display: grid;
     grid-template-rows:
             min-content
-            min-content
-            min-content
-            min-content
             auto;
     grid-template-columns: 3fr 3fr 2fr;
+    /*grid-template-areas:*/
+    /*    "header             header              order"*/
+    /*    "action-bar         action-bar          order"*/
+    /*    "label              select-time-button  order"*/
+    /*    "category-bar       category-bar        order"*/
+    /*    "restaurant-list    restaurant-list     order";*/
+
     grid-template-areas:
-        "header             header              order"
-        "action-bar         action-bar          order"
-        "label              select-time-button  order"
-        "category-bar       category-bar        order"
-        "restaurant-list    restaurant-list     order";
+            "header       header     order"
+            "main-area    main-area  order";
 
     background: #FFFFFF;
 }
@@ -39,3 +40,31 @@
     text-align: left;
 }
 
+.main-view__main-area {
+    grid-area: main-area;
+}
+
+.main-view__scroll-hider {
+    overflow: hidden;
+}
+
+.main-view__scrolled-area {
+    overflow-y: scroll;
+    height: 100vh;
+    margin-right: -14px;
+}
+
+.main-view__main-grid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows:
+            min-content
+            min-content
+            min-content
+            auto;
+    grid-template-areas:
+            "action-bar         action-bar"
+            "label              select-time-button"
+            "category-bar       category-bar"
+            "restaurant-list    restaurant-list";
+}
