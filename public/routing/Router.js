@@ -2,6 +2,7 @@
 
 import EventBus from '../services/Events/EventBus.js';
 import MainController from '../controllers/MainController.js';
+import RestaurantController from '../controllers/RestaurantController.js';
 
 class Router {
     _currentController;
@@ -47,6 +48,7 @@ class Router {
 
     _registerAllPages() {
         this._registerPage(MainController, '/');
+        this._registerPage(RestaurantController, '/restaurant');
     }
 
     _registerPage(controller, path) {
