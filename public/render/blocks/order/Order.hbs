@@ -1,11 +1,25 @@
 <div class="{{classes}}">
     {{{profileButton}}}
-    <div class="order__title" style="grid-area: title">
+
+    <div class="order__title">
         {{title}}
     </div>
+
     {{{placeTimeCard}}}
     {{{basket}}}
-    {{{total}}}
-    {{{persons}}}
+
+    <div class="order__total-text">
+        Total:
+    </div>
+
+    <div class="order__total">
+        RUB {{total}}
+    </div>
+
+    <div style="grid-area: hline">
+        <hr>
+    </div>
+
+    {{{personInput}}}
     {{{checkout}}}
 </div>

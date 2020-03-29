@@ -1,0 +1,6 @@
+.main-view__select-time-button {
+    display: flex;
+    grid-area: select-time-button;
+    justify-content: flex-end;
+    margin: 10px;
+}

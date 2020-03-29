@@ -1,27 +1,64 @@
 @import "../imageHref/ImageHref.css";
+@import "../placeTimeCard/PlaceTimeCard.css";
+@import "../basket/Basket.css";
+@import "../personInput/PersonInput.css";
 
 .order {
     grid-area: order;
+    height: 100vh;
 
     display: grid;
     grid-template-columns: 50% 50%;
-    grid-template-rows: min-content min-content min-content auto min-content min-content;
+    grid-template-rows:
+            min-content
+            min-content
+            min-content
+            auto
+            min-content
+            min-content
+            min-content;
     grid-template-areas:
         "..........         profile"
         "title              ......."
-        "placeTimeCard      placeTimeCard"
+        "place-time-card    place-time-card"
         "basket             basket"
-        "total              total"
-        "persons            checkout";
+        "total-text         total"
+        "hline              hline"
+        "person-input        checkout";
     background: #F8F8F8;
 
     border-left: 1px solid #D6D6D6;
 }
 
 .order__title {
+    grid-area: title;
+
+    font-size: 18px;
+
     margin: 10px;
-    font-family: Arial, serif;
-    font-size: 25px;
     text-align: center;
+
+}
+
+.order__total-text {
+    grid-area: total-text;
+
+    font-size: 18px;
+
+    margin-top: auto;
+    margin-right: 35px;
+    margin-left: 35px;
+    text-align: left;
+}
+
+.order__total {
+    grid-area: total;
+
+    font-size: 18px;
+
+    margin-top: auto;
+    margin-right: 35px;
+    margin-left: 35px;
+    text-align: right;
 }
 

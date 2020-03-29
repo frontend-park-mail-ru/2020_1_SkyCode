@@ -1,0 +1,70 @@
+
+.person-input__minus-button {
+    background: #F8F8F8;
+    outline: 0;
+
+    border: 1px solid #d2d0d0;
+    border-right: 0;
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
+
+    height: 20px;
+}
+
+.person-input__plus-button {
+    background: #F8F8F8;
+    outline: 0;
+
+
+    border: 1px solid #d2d0d0;
+    border-left: 0;
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+
+    height: 20px;
+}
+
+.order__checkout {
+    grid-area: checkout;
+    background: #F6D471;
+    border-radius: 15px 0 0 15px;
+
+    width: 150px;
+    height: 20px;
+
+    outline: 0;
+    border: 0;
+    text-align: center;
+
+    margin: auto 0 20px 20px;
+    justify-self: right;
+}
+
+.select-time-button__image-button {
+    background: #EA8B65 url("../../../static/clock.svg") no-repeat;
+
+    height: 37px;
+    width: 37px;
+    border: 0;
+    outline: 0;
+
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+}
+
+.select-time-button__text-button {
+
+    background: #EA8B65;
+    height: 37px;
+    border: 0;
+    outline: 0;
+
+    font-size: 14px;
+    text-align: center;
+    color: white;
+
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+
+    padding: 10px 16px 10px 10px;
+}
