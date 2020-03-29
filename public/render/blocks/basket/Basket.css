@@ -4,19 +4,21 @@
     grid-area: basket;
 }
 
-.basket__container-scroll-hider {
+.basket__scroll-hider {
     overflow: hidden;
 }
 
-.basket__container {
+/**/
+.basket__scrolled-area {
+    overflow-x: hidden;
     overflow-y: scroll;
-
-    padding-right: 20px;
-    margin-right: -20px;
+    height: 300px;
+    margin-right: -14px;
 }
 
 .basket__list {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     list-style-type: none;
     padding-inline-start: 0;

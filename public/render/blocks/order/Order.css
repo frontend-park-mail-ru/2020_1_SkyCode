@@ -10,13 +10,13 @@
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows:
+            min-content
+            min-content
+            min-content
             auto
-            auto
-            auto
-            1fr
-            auto
-            auto
-            auto;
+            min-content
+            min-content
+            min-content;
     grid-template-areas:
         "..........         profile"
         "title              ......."
