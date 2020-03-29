@@ -3,16 +3,23 @@
 @import "../../blocks/categoryBar/CategoryBar.css";
 @import "../../blocks/order/Order.css";
 @import "../../blocks/selectTimeButton/SelectTimeButton.css";
+@import "../../blocks/restaurantList/RestaurantList.css";
 
 .main-view {
     display: grid;
-    grid-template-rows: min-content min-content min-content min-content auto;
+    grid-template-rows:
+            min-content
+            min-content
+            min-content
+            min-content
+            auto;
     grid-template-columns: 3fr 3fr 2fr;
     grid-template-areas:
-        "header         header                  order"
-        "action-bar     action-bar              order"
-        "label          select-time-button      order"
-        "category-bar   category-bar            order";
+        "header             header              order"
+        "action-bar         action-bar          order"
+        "label              select-time-button  order"
+        "category-bar       category-bar        order"
+        "restaurant-list    restaurant-list     order";
 
     background: #FFFFFF;
 }

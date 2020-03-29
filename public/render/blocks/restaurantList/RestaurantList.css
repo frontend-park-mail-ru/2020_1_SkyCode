@@ -1,0 +1,9 @@
+@import "../restaurant/Restaurant.css";
+
+.main-view__restaurant-list {
+    grid-area: restaurant-list;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+

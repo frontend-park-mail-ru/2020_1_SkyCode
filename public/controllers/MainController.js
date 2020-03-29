@@ -12,12 +12,14 @@ class MainController extends BaseController {
     show(url, {
         actions = Mocks.actions,
         categories = Mocks.categories,
-        products = Mocks.products
+        products = Mocks.products,
+        restaurants = Mocks.restaurants,
     } = {}) {
         super.show(new MainView({
             actionArr: actions,
             categoryArr: categories,
-            products
+            restaurantArr: restaurants,
+            products,
         }));
     }
 }

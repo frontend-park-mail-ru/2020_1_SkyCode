@@ -4,6 +4,11 @@ class Mocks {
         this.initActions();
         this.initCategories();
         this.initProducts();
+        this.initRestaurants();
+    }
+
+    get restaurants() {
+        return this._restaurants;
     }
 
     get products() {
@@ -76,6 +81,28 @@ class Mocks {
             quantity: 1,
             name: 'Coca-cola',
             cost: 99,
+        }, ];
+    }
+
+    initRestaurants() {
+        this._restaurants = [{
+            name: 'Badel Story',
+            imageHref: '/static/restaurants/BagelStory.jpg',
+            rate: 4.3,
+            avgDeliveryTime: 45,
+            href: '/restaurants/BadelStory',
+        }, {
+            name: 'La Paris Dakar',
+            imageHref: '/static/restaurants/LaParisDakar.jpg',
+            rate: 4.7,
+            avgDeliveryTime: 25,
+            href: '/restaurants/LaParisDakar',
+        }, {
+            name: 'The Estamient',
+            imageHref: '/static/restaurants/TheEstamient.jpg',
+            rate: 4.1,
+            avgDeliveryTime: 35,
+            href: '/restaurants/TheEstamient',
         }, ];
     }
 }

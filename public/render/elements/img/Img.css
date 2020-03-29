@@ -7,3 +7,14 @@
     margin-left: 10px;
     margin-bottom: 10px;
 }
+
+.restaurant__img {
+    width: 266px;
+    height: 114px;
+    border-radius: 15px;
+}
+
+.restaurant__rate-img {
+    width: 10px;
+    height: 10px;
+}

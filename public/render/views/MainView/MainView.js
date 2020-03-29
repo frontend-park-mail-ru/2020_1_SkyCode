@@ -4,9 +4,10 @@ import CategoryBar from '../../blocks/categoryBar/CategoryBar.js';
 import Component from '../../Component.js';
 import Order from '../../blocks/order/Order.js';
 import SelectTimeButton from '../../blocks/selectTimeButton/SelectTimeButton.js';
+import RestaurantList from '../../blocks/restaurantList/RestaurantList.js';
 
 class MainView extends Component {
-    constructor({actionArr, categoryArr,
+    constructor({actionArr, categoryArr, restaurantArr,
                 profile, products}) {
         super();
 
@@ -34,6 +35,10 @@ class MainView extends Component {
                 profile,
                 products,
             }),
+            restaurantList: new RestaurantList({
+                classes: 'main-view__restaurant-list',
+                restaurantArr,
+            })
         }, true);
     }
 }
