@@ -2,21 +2,33 @@
 @import "../../blocks/actionBar/ActionBar.css";
 @import "../../blocks/categoryBar/CategoryBar.css";
 @import "../../blocks/order/Order.css";
+@import "../../blocks/selectTimeButton/SelectTimeButton.css";
 
 .main-view {
     display: grid;
     grid-template-rows: min-content min-content min-content min-content auto;
-    grid-template-columns: 6fr 2fr;
+    grid-template-columns: 3fr 3fr 2fr;
     grid-template-areas:
-        "header         order"
-        "action-bar     order"
-        "addbar         order"
-        "category-bar   order";
+        "header         header                  order"
+        "action-bar     action-bar              order"
+        "label          select-time-button      order"
+        "category-bar   category-bar            order";
 
     background: #FFFFFF;
 }
 
 .main-view > * {
     min-width: 0;
+}
+
+.main-view__label {
+    padding-left: 70px;
+
+    font-family: Varela Round;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 26px;
+    line-height: 31px;
+    text-align: left;
 }
 

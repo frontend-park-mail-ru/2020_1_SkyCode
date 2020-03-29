@@ -3,6 +3,7 @@ import ActionBar from '../../blocks/actionBar/ActionBar.js';
 import CategoryBar from '../../blocks/categoryBar/CategoryBar.js';
 import Component from '../../Component.js';
 import Order from '../../blocks/order/Order.js';
+import SelectTimeButton from '../../blocks/selectTimeButton/SelectTimeButton.js';
 
 class MainView extends Component {
     constructor({actionArr, categoryArr,
@@ -10,6 +11,13 @@ class MainView extends Component {
         super();
 
         this.addContextData({
+            label: 'Restaurants',
+            selectTimeButton: new SelectTimeButton({
+                classes: 'main-view__select-time-button',
+                imageHref: 'static/clock.svg',
+                text: 'Delivery: now',
+                callback: () => 0,
+            }),
             header: new Header({
                 classes: 'header'
             }),

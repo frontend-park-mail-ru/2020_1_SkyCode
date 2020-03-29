@@ -39,3 +39,31 @@
     margin: auto 0 20px 20px;
     justify-self: right;
 }
+
+.select-time-button__image-button {
+    background: #EA8B65 url("../../../static/clock.svg") no-repeat;
+    height: 37px;
+    width: 37px;
+    border: 0;
+    outline: 0;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+}
+
+.select-time-button__text-button {
+    background: #EA8B65;
+    height: 37px;
+    border: 0;
+    outline: 0;
+
+    font-family: Varela Round;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: white;
+
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+}
