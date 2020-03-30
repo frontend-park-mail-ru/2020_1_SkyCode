@@ -6,7 +6,7 @@ import PersonInput from '../personInput/PersonInput.js';
 import Button from '../../elements/button/Button.js';
 
 export default class Order extends Component {
-    constructor({profile = {src: '/static/profile.png', href: '/login'},
+    constructor({profile = {avatar: '/static/profile.png', href: '/login'},
                     products, classes = 'order'}) {
         super();
         this.addClasses(classes);
@@ -18,7 +18,7 @@ export default class Order extends Component {
             profileButton: new ImageHref({
                 classes: 'order__profile-href',
                 imageClasses: 'order__profile-image',
-                src: profile.src,
+                src: profile.avatar,
                 href: profile.href,
             }),
             placeTimeCard: new PlaceTimeCard({

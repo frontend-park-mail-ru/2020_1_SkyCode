@@ -5,6 +5,7 @@ class Mocks {
         this.initCategories();
         this.initProducts();
         this.initRestaurants();
+        this.initProfile();
     }
 
     get restaurants() {
@@ -21,6 +22,17 @@ class Mocks {
 
     get categories() {
         return this._categories;
+    }
+
+    get profile() {
+        return this._profile;
+    }
+
+    initProfile() {
+        this._profile = {
+            avatar: '/static/profile.png',
+            href: '/login',
+        };
     }
 
     initActions() {
