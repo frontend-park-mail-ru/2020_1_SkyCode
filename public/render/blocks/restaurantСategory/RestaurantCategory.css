@@ -1,0 +1,23 @@
+
+.restaurant-category {
+    height: 31px;
+    padding: 5px;
+    min-width: 100px;
+    border-radius: 5px;
+    background: #FFFFFF;
+    box-shadow: 0px 7px 50px #D6D6D6;
+    display: inline-block;
+    vertical-align: top;
+    width: 60px;
+    margin: 10px;
+
+
+}
+
+.restaurant-category__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+

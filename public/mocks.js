@@ -11,6 +11,10 @@ class Mocks {
         return this._restaurants;
     }
 
+    get restaurant() {
+        return this._restaurants[0];
+    }
+
     get products() {
         return this._products;
     }

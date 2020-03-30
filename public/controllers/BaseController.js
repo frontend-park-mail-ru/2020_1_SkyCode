@@ -11,7 +11,6 @@ class BaseController {
     // У вьюхи должны быть методы bind, unbind, HTML и геттер state
     show(view) {
         this._view = view;
-        debugger;
         document.body.innerHTML = this._view.HTML();
         this._view.bind();
     }

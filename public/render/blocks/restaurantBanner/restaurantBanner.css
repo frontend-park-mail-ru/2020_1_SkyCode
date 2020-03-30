@@ -1,0 +1,40 @@
+.restaurantBanner {
+    position: relative;
+    border-radius: 15px;
+    height: 180px;
+}
+
+.restaurantBanner__img-container {
+    width: 882px;
+    height: 180px;
+    border-radius: 15px;
+}
+
+.restaurantBanner__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.restaurantBanner__info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    top: 128px;
+    height: 52px;
+    background: #F8F8F8;
+    border-radius: 0px 15px;
+}
+
+.restaurantBanner__name {
+    padding: 15px 15px 5px 15px;
+}
+
+.restaurantBanner__rate {
+    display: flex;
+    align-items: center;
+    padding: 15px 15px 15px 5px;
+}
