@@ -1,0 +1,15 @@
+.login-signup__login {
+    grid-area: login;
+    background-color: #FFFFFF;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-field__title {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 40px;
+}

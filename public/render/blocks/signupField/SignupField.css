@@ -1,0 +1,16 @@
+.login-signup__signup {
+    grid-area: signup;
+    background-color: #F8F8F8;
+    border-left: 1px solid #D6D6D6;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-field__title {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 40px;
+}

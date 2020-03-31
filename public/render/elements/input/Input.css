@@ -55,3 +55,30 @@
     text-align: center;
     width: 30px;
 }
+
+.signup-field__input {
+    width: 200px;
+    text-align: center;
+    margin-bottom: 10px;
+
+    background: #FFFFFF;
+    box-shadow: 4px 3px grey;
+    border: 0;
+    outline: 0;
+    height: 25px;
+    border-radius: 30px;
+}
+
+.login-field__input {
+    width: 200px;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 15px;
+
+    background: #F8F8F8;
+    box-shadow: 4px 3px black;
+    border: 0;
+    outline: 0;
+    height: 25px;
+    border-radius: 30px;
+}
