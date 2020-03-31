@@ -1,0 +1,14 @@
+@import "../../blocks/profileAvatarArea/ProfileAvatarArea.css";
+@import "../../blocks/profileTextArea/ProfileTextArea.css";
+@import "../../blocks/header/Header.css";
+
+.profile-view {
+    display: grid;
+    grid-template-areas:
+            "header             profile-avatar-area"
+            "profile-text-area  profile-avatar-area";
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: min-content auto;
+
+    height: 100%;
+}

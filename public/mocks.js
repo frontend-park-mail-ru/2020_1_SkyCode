@@ -5,12 +5,10 @@ class Mocks {
         this.initCategories();
         this.initProducts();
         this.initRestaurants();
-        this.initNoProfile();
+        this.initProfile();
     }
 
-    get noProfile() {
-        return this._noProfile;
-    }
+
 
     get restaurants() {
         return this._restaurants;
@@ -32,9 +30,20 @@ class Mocks {
         return this._categories;
     }
 
-    initNoProfile() {
-        this._noProfile = {src: '/static/profile.png', href: '/login'};
-}
+
+    get profile() {
+        return this._profile;
+    }
+
+    initProfile() {
+        this._profile = {
+            avatar: '/static/profile.png',
+            href: '/login',
+            phone: '+7(777)777-77-77',
+            email: 'test@email.com',
+        };
+    }
+
 
     initActions() {
         this._actions = [];

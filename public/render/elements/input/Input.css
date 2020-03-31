@@ -56,6 +56,20 @@
     width: 30px;
 }
 
+
+.profile-text-area__input {
+    width: 200px;
+    text-align: center;
+    margin: 15px;
+
+    background: #F8F8F8;
+    box-shadow: 4px 3px black;
+    border: 0;
+    outline: 0;
+    height: 25px;
+    border-radius: 30px;
+}
+
 .signup-field__input {
     width: 200px;
     text-align: center;
@@ -66,8 +80,15 @@
     box-shadow: 4px 6px 100px #9E9E9E;
     border: 1px;
     outline: 1px;
+
     height: 25px;
     border-radius: 30px;
+}
+
+
+.profile-avatar-area__image-input {
+    opacity: 0;
+    visibility: hidden;
 }
 
 .login-field__input {
@@ -83,3 +104,4 @@
     height: 25px;
     border-radius: 30px;
 }
+
