@@ -22,7 +22,7 @@ export default class Href extends Component {
         me.onclick = function (event) {
             event.preventDefault();
             console.log('href ' + this.href + ' clicked');
-            EventBus.publish('goto', {url: this.href});
+            EventBus.publish('set-page', {url: this.context.href});
         }.bind(this);
     }
 

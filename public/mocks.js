@@ -8,8 +8,14 @@ class Mocks {
         this.initProfile();
     }
 
+
+
     get restaurants() {
         return this._restaurants;
+    }
+
+    get restaurant() {
+        return this._restaurants[0];
     }
 
     get products() {
@@ -24,6 +30,7 @@ class Mocks {
         return this._categories;
     }
 
+
     get profile() {
         return this._profile;
     }
@@ -36,6 +43,7 @@ class Mocks {
             email: 'test@email.com',
         };
     }
+
 
     initActions() {
         this._actions = [];

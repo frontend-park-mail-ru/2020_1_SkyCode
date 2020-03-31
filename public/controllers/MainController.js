@@ -14,6 +14,7 @@ class MainController extends BaseController {
         categories = Mocks.categories,
         products = Mocks.products,
         restaurants = Mocks.restaurants,
+        profile = Mocks.noProfile,
     } = {}) {
         super.show(new MainView({
             actionArr: actions,

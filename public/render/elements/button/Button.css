@@ -75,12 +75,11 @@
     margin: 15px;
 
     background: #F8F8F8;
-    box-shadow: 4px 3px black;
+    box-shadow: 3px 2px black;
     border: 0;
     outline: 0;
     height: 25px;
     border-radius: 30px;
-
     font-weight: bold;
     cursor: pointer;
 }
@@ -91,12 +90,46 @@
     margin: 40px 15px 15px;
 
     background: #F8F8F8;
-    box-shadow: 4px 3px black;
+    box-shadow: 3px 2px black; 
+    border: 0;
+    outline: 0;
+    height: 25px;
+    border-radius: 30px;
+  
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+
+
+.login-field__submit-button {
+    background: #F8F8F8;
+    box-shadow: 3px 2px black;
+
     border: 0;
     outline: 0;
     height: 25px;
     border-radius: 30px;
 
+    width: 100px;
+    margin: 15px;
+
     font-weight: bold;
-    cursor: pointer;
 }
+
+.signup-field__submit-button {
+    background: #FFFFFF;
+    box-shadow: 3px 2px grey;
+
+    border: 0;
+    outline: 0;
+    height: 25px;
+    border-radius: 30px;
+
+    width: 100px;
+    margin: 15px;
+
+    font-weight: bold;
+}
+

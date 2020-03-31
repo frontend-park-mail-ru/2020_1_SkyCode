@@ -10,7 +10,7 @@
     grid-template-rows:
             min-content
             auto;
-    grid-template-columns: 3fr 3fr 2fr;
+    grid-template-columns: 5fr 5fr 3fr;
     /*grid-template-areas:*/
     /*    "header             header              order"*/
     /*    "action-bar         action-bar          order"*/

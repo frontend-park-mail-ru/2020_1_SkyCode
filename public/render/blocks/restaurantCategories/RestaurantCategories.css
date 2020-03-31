@@ -1,0 +1,26 @@
+@import "../restaurantСategory/RestaurantCategory.css";
+
+.restaurant-categories {
+    height: 200px;
+    width: 882px;
+    grid-area: restaurant-category;
+    margin: 0 100px;
+}
+
+.restaurant-category-scroller {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+    width: 882px;
+    background-color: #FFFFFF;
+    height:200px;
+    overflow: hidden;
+    overflow-x: scroll;
+    white-space:nowrap;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: rgba(255, 255, 255, 0.0);
+}
