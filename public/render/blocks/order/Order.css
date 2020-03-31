@@ -6,9 +6,6 @@
 .order {
     grid-area: order;
     height: 100vh;
-    width: 334px;
-    float: right;
-
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows:

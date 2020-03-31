@@ -1,31 +1,18 @@
 @import "../restaurantСategory/RestaurantCategory.css";
 
-/*.restaurant-category-bar {*/
-/*    grid-area: restaurant-category-bar;*/
-/*}*/
-
-/*.restaurant-category-bar__container-scroll-hider {*/
-/*    overflow: hidden;*/
-/*}*/
-
-/*.restaurant-category-bar__container {*/
-/*    overflow-x: scroll;*/
-
-/*    padding: 0 20px 20px;*/
-/*    margin-bottom: -20px;*/
-/*}*/
-
-/*.restaurant-category-bar__list {*/
-/*    display: flex;*/
-/*    list-style-type: none;*/
-
-/*}*/
+.restaurant-categories {
+    height: 200px;
+    width: 882px;
+    grid-area: restaurant-category;
+    margin: 0 100px;
+}
 
 .restaurant-category-scroller {
     display: flex;
+
     justify-content: space-between;
     align-items: center;
-    width: 820px;
+    width: 882px;git
     background-color: #FFFFFF;
     height:200px;
     overflow: hidden;

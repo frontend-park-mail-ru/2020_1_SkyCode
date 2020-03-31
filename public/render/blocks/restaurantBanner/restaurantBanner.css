@@ -1,7 +1,9 @@
 .restaurantBanner {
     position: relative;
+    grid-area: restaurant-banner;
     border-radius: 15px;
     height: 180px;
+    margin: 0 100px 0 100px;
 }
 
 .restaurantBanner__img-container {
