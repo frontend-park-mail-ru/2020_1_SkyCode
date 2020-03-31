@@ -21,7 +21,6 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
     "start": "cd server; go run server.go",
     "build": "cd public/handlebars; ./precompile.sh"
   },
