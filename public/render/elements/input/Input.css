@@ -59,12 +59,13 @@
 .signup-field__input {
     width: 200px;
     text-align: center;
-    margin-bottom: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
 
     background: #FFFFFF;
-    box-shadow: 4px 3px grey;
-    border: 0;
-    outline: 0;
+    box-shadow: 4px 6px 100px #9E9E9E;
+    border: 1px;
+    outline: 1px;
     height: 25px;
     border-radius: 30px;
 }
@@ -75,10 +76,10 @@
     margin-top: 5px;
     margin-bottom: 15px;
 
-    background: #F8F8F8;
-    box-shadow: 4px 3px black;
-    border: 0;
-    outline: 0;
+    background: #FFFFFF;
+    box-shadow: 4px 6px 100px #9E9E9E;
+    border: 1px;
+    outline: 1px;
     height: 25px;
     border-radius: 30px;
 }

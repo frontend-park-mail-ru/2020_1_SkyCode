@@ -78,3 +78,15 @@
     color: #FFFFFF;
     transition-delay: 0.45s;
 }
+
+.signup-field__submit-button {
+    margin-top: 20px;
+}
+
+.signup-field__submit-button {
+    margin-top: 30px;
+}
+
+.login-field__submit-button {
+    margin-top: 30px;
+}
