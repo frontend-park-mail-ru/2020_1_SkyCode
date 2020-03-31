@@ -1,6 +1,6 @@
 @import "render/views/MainView/MainView.css";
 @import "render/views/LoginSignupView/LoginSignupView.css";
-
+@import "render/views/RestaurantView/RestaurantView.css";
 
 body {
     font-family: 'Varela Round', sans-serif;

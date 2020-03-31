@@ -30,7 +30,7 @@ class EventBus {
 		if (!callbacks || !callbacks.length) {
 			return;
 		}
-		callbacks.forEach(callback =>  callback(data));
+		callbacks.forEach(callback => callback(data));
 	}
 }
 
