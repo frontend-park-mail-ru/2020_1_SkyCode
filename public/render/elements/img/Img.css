@@ -18,3 +18,9 @@
     width: 10px;
     height: 10px;
 }
+
+.profile-avatar-area__image {
+    width: 200px;
+    border: 2px black;
+}
+

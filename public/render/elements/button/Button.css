@@ -68,3 +68,35 @@
 
     padding: 10px 16px 10px 10px;
 }
+
+.profile-text-area__submit {
+    width: 200px;
+    text-align: center;
+    margin: 15px;
+
+    background: #F8F8F8;
+    box-shadow: 4px 3px black;
+    border: 0;
+    outline: 0;
+    height: 25px;
+    border-radius: 30px;
+
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.profile-text-area__submit-password{
+    width: 200px;
+    text-align: center;
+    margin: 40px 15px 15px;
+
+    background: #F8F8F8;
+    box-shadow: 4px 3px black;
+    border: 0;
+    outline: 0;
+    height: 25px;
+    border-radius: 30px;
+
+    font-weight: bold;
+    cursor: pointer;
+}

@@ -11,7 +11,9 @@ export default class ProfileAvatarArea extends Component {
             }),
             AvatarInput: new Input({
                 classes: 'profile-avatar-area__image-input',
+                id: 'profile-avatar-area__image-input',
                 type: 'file',
+                value: 'xxx',
             })
         });
     }

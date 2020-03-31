@@ -9,4 +9,6 @@
             "profile-text-area  profile-avatar-area";
     grid-template-columns: 3fr 1fr;
     grid-template-rows: min-content auto;
+
+    height: 100%;
 }

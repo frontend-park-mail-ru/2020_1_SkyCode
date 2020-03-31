@@ -32,6 +32,8 @@ class Mocks {
         this._profile = {
             avatar: '/static/profile.png',
             href: '/login',
+            phone: '+7(777)777-77-77',
+            email: 'test@email.com',
         };
     }
 
