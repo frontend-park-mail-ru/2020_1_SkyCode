@@ -4,7 +4,11 @@
 .login-signup-view {
     display: grid;
     grid-template-columns: 50% 50%;
-    grid-template-areas: "login signup";
+    grid-template-rows: min-content 1fr;
+
+    grid-template-areas:
+            "header signup"
+            "login signup";
 
     height: 100vh;
     font-size: 20px;
