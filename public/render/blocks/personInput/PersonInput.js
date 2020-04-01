@@ -3,14 +3,14 @@ import Input from '../../elements/input/Input.js';
 import Button from '../../elements/button/Button.js';
 
 export default class PersonInput extends Component {
-    constructor({classes, label}) {
+    constructor({classes, label, personNum = 1}) {
         super(classes, {
             label,
             input: new Input({
                 id: 'person-input__number-input',
                 type: 'number',
                 classes: 'person-input__input',
-                value: 1,
+                value: personNum,
                 min: 1,
                 max: 1000,
             }),

@@ -6,8 +6,10 @@ import PersonInput from '../personInput/PersonInput.js';
 import Button from '../../elements/button/Button.js';
 
 export default class Order extends Component {
-    constructor({profile = {avatar: '/static/profile.png', href: '/login'},
-                    products, classes = 'order'}) {
+    constructor({products,
+                    classes = 'order',
+                    withCheckoutButton = true,
+                    personNum = 1}) {
         super();
         this.addClasses(classes);
         this.addContextData({
@@ -18,8 +20,8 @@ export default class Order extends Component {
             profileButton: new ImageHref({
                 classes: 'order__profile-href',
                 imageClasses: 'order__profile-image',
-                src: profile.avatar,
-                href: profile.href,
+                src: '/static/profile.png',
+                href: '/login',
             }),
             placeTimeCard: new PlaceTimeCard({
                 classes: 'order__place-time-card',
@@ -31,13 +33,19 @@ export default class Order extends Component {
             personInput: new PersonInput({
                 classes: 'order__person-input',
                 label: 'Persons:',
+                value: personNum,
             }),
-            checkout: new Button({
-                id: 'order__checkout',
-                classes: 'order__checkout',
-                text: 'Checkout',
-                callback: () => 0,
-            })
         });
+
+        if (withCheckoutButton) {
+            this.addContextData({
+                checkout: new Button({
+                    id: 'order__checkout',
+                    classes: 'order__checkout',
+                    text: 'Checkout',
+                    callback: () => 0,
+                })
+            });
+        }
     }
 }
