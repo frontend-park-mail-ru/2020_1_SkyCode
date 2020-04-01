@@ -11,7 +11,7 @@ export default class CheckoutView extends Component {
                 classes: 'header',
             }),
             Order: new Order({
-                classes: 'checkout-view__order',
+                classes: 'order',
                 withCheckoutButton: false,
                 personNum,
                 products,
