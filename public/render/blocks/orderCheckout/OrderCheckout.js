@@ -1,6 +1,6 @@
 import Component from '../../Component.js';
 import Input from '../../elements/input/Input.js';
-import Button from '../../elements/button/Button';
+import neonButton from '../../elements/neonButton/neonButton.js';
 
 export default class OrderCheckout extends Component {
     constructor({classes, phone, address, email}) {
@@ -32,11 +32,7 @@ export default class OrderCheckout extends Component {
                 type: 'text',
                 placeholder: 'Enter your comment',
             }),
-            SubmitButton: new Button({
-                classes: 'order-checkout__submit-button',
-                text: 'Confirm',
-                callback: () => 0,
-            }),
+            SubmitButton: new neonButton({classes: 'order-checkout__submit-button', href: '#', text: 'Order'})
         });
     }
 }

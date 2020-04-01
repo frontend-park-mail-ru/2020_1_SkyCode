@@ -1,19 +1,21 @@
+@import "../../blocks/orderCheckout/OrderCheckout.css";
+
+.header-order-container {
+    display: grid;
+    grid-area: header-order;
+    grid-template-rows: 1fr 8fr;
+    grid-template-areas:
+            "header"
+            "order-confirmation";
+}
+
 .checkout-view {
     display: grid;
-    grid-template-rows:
-            min-content
-            auto;
-    grid-template-columns: 5fr 5fr 3fr;
-    /*grid-template-areas:*/
-    /*    "header             header              order"*/
-    /*    "action-bar         action-bar          order"*/
-    /*    "label              select-time-button  order"*/
-    /*    "category-bar       category-bar        order"*/
-    /*    "restaurant-list    restaurant-list     order";*/
+    grid-template-columns: 10fr 3fr;
 
     grid-template-areas:
-            "header             header          order"
-            "order-checkout     order-checkout  order";
+            "header-order order";
 
     background: #FFFFFF;
 }
+

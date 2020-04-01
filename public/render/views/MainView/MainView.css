@@ -11,13 +11,6 @@
             min-content
             auto;
     grid-template-columns: 5fr 5fr 3fr;
-    /*grid-template-areas:*/
-    /*    "header             header              order"*/
-    /*    "action-bar         action-bar          order"*/
-    /*    "label              select-time-button  order"*/
-    /*    "category-bar       category-bar        order"*/
-    /*    "restaurant-list    restaurant-list     order";*/
-
     grid-template-areas:
             "header       header     order"
             "main-area    main-area  order";

@@ -107,3 +107,17 @@
     border-radius: 30px;
 }
 
+.order-checkout__input {
+    width: 90%;
+    text-align: start;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    padding-left: 10px;
+
+    background: #FFFFFF;
+    box-shadow: 4px 6px 100px #9E9E9E;
+    border: 1px;
+    outline: 1px;
+    height: 25px;
+    border-radius: 30px;
+}
