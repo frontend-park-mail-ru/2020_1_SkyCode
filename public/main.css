@@ -3,6 +3,7 @@
 @import "render/views/LoginSignupView/LoginSignupView.css";
 @import "render/views/RestaurantView/RestaurantView.css";
 @import "render/views/CheckoutView/CheckoutView.css";
+@import "render/views/AddProductByRestaurantView/AddProductByRestaurantView.css";
 
 body {
     font-family: 'Varela Round', sans-serif;
