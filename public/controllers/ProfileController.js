@@ -7,7 +7,7 @@ class ProfileController extends BaseController {
         super(title);
     }
 
-    show(url, {profile = Mocks.profile}) {
+    show({profile = Mocks.profile}) {
         super.show(new ProfileView({profile}));
     }
 }
