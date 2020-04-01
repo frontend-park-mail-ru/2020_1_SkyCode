@@ -8,7 +8,7 @@ class LoginSignupController extends BaseController {
         super(title);
     }
 
-    show(url, {profile}) {
+    show({profile}) {
         if (profile !== undefined) {
             EventBus.publish('set-page', {url: '/'});
             return;

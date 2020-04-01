@@ -9,7 +9,7 @@ class RestaurantController extends BaseController {
 		super(title);
 	}
 
-	show(url, {
+	show({
 		products = Mocks.products,
 		restaurantInfo = Mocks.restaurant,
 		categoryArr = Mocks.categories,
