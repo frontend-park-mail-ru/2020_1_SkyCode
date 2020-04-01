@@ -40,7 +40,7 @@ class Router {
         [this._currentController, state.matchData] = this._matchUrl(url) || [Controller404];
 
         this._setNewHistoryRecord(this._currentController, url);
-        this._currentController.show(url, state);
+        this._currentController.show(state);
     }
 
     _savePageStateInHistory(page) {

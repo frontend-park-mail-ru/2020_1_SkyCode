@@ -9,7 +9,7 @@ class MainController extends BaseController {
         super(title);
     }
 
-    show(url, {
+    show({
         actions = Mocks.actions,
         categories = Mocks.categories,
         products = Mocks.products,
