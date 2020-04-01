@@ -3,7 +3,7 @@ import ImageHref from '../imageHref/ImageHref.js';
 import PlaceTimeCard from '../placeTimeCard/PlaceTimeCard.js';
 import Basket from '../basket/Basket.js';
 import PersonInput from '../personInput/PersonInput.js';
-import Button from '../../elements/button/Button.js';
+import Href from '../../elements/href/Href.js';
 
 export default class Order extends Component {
     constructor({products,
@@ -39,12 +39,11 @@ export default class Order extends Component {
 
         if (withCheckoutButton) {
             this.addContextData({
-                checkout: new Button({
-                    id: 'order__checkout',
+                checkout: new Href({
                     classes: 'order__checkout',
                     text: 'Checkout',
-                    callback: () => 0,
-                })
+                    href: '/checkout',
+                }),
             });
         }
     }

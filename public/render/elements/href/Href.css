@@ -9,3 +9,27 @@
     line-height: 36px;
     position: center;
 }
+
+.order__checkout {
+    grid-area: checkout;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #F6D471;
+    border-radius: 15px 0 0 15px;
+
+    width: 150px;
+    font-size: 20px;
+    color: black;
+    line-height: 36px;
+    text-decoration: none;
+
+    outline: 0;
+    border: 0;
+    text-align: center;
+
+    margin: auto 0 20px 20px;
+    justify-self: right;
+}
