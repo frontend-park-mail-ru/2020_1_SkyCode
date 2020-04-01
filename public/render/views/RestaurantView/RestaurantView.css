@@ -2,7 +2,7 @@
 @import "../../blocks/order/Order.css";
 @import "../../blocks/restaurantBanner/restaurantBanner.css";
 @import "../../blocks/restaurantCategories/RestaurantCategories.css";
-@import "../../blocks/products/products.css";
+@import "../../blocks/products/Products.css";
 
 .restaurant-view {
     height: 100vh;
