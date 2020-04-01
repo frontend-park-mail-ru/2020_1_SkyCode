@@ -25,7 +25,12 @@
 .main-view__label {
     grid-area: label;
 
-    padding-left: 70px;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: start;
+
+
+
     font-size: 26px;
     text-align: left;
 }
@@ -36,6 +41,9 @@
 
 .main-view__scroll-hider {
     overflow: hidden;
+    padding-right: 10px;
+    margin-left: 88px;
+    margin-right: 88px;
 }
 
 .main-view__scrolled-area {

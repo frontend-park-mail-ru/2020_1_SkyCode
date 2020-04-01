@@ -10,9 +10,6 @@
 
 .action-bar__container {
     overflow-x: scroll;
-
-    padding: 20px;
-    margin-bottom: -20px;
 }
 
 .action-bar__list {
@@ -24,10 +21,10 @@
     margin-block-end: 0;
     margin-inline-start: 0;
     margin-inline-end: 0;
-    padding-inline-start: 40px;
+    padding-inline-start: 0;
     /* end standart */
 }
 
 .action-bar__li {
-    margin: 10px;
+    margin: 15px;
 }
