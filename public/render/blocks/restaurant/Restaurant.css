@@ -1,11 +1,11 @@
 @import "../../elements/img/Img.css";
 
 .restaurant-list__restaurant {
-    width: 266px;
-    height: 200px;
-    margin: 20px;
+    width: 230px;
+    height: 150px;
     text-decoration: none;
     color: black;
+    margin-bottom: 30px;
 }
 
 .restaurant__avg-time {

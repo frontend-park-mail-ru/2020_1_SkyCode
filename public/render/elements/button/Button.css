@@ -60,13 +60,13 @@
     outline: 0;
 
     font-size: 14px;
-    text-align: center;
     color: white;
+
+    display: flex;
+    padding: 1px 6px;
 
     border-bottom-right-radius: 20px;
     border-top-right-radius: 20px;
-
-    padding: 10px 16px 10px 10px;
 }
 
 .profile-text-area__submit {

@@ -11,11 +11,12 @@
 .category-bar__container {
     overflow-x: scroll;
 
-    padding: 0 20px 20px;
     margin-bottom: -20px;
 }
 
 .category-bar__list {
     display: flex;
     list-style-type: none;
+
+    padding-inline-start: 0;
 }
