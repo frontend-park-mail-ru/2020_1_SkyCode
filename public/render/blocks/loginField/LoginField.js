@@ -1,6 +1,6 @@
 import Component from '../../Component.js';
 import Input from '../../elements/input/Input.js';
-import neonButton from '../../elements/neonButton/neonButton.js';
+import Button from '../../elements/button/Button.js';
 
 export default class LoginField extends Component {
     constructor({classes}) {
@@ -17,7 +17,11 @@ export default class LoginField extends Component {
                 type: 'password',
                 placeholder: 'Spoone123',
             }),
-            submitButton: new neonButton({classes: 'login-field__submit-button', href: '#', text: 'Log In'}),
+            submitButton: new Button({
+                classes: 'login-field__submit',
+                text: 'Log In',
+                callback: () => 0,
+            }),
         });
     }
 }
