@@ -53,20 +53,20 @@
     border-top-right-radius: 20px;
 }
 
-.profile-text-area__submit {
-    width: 200px;
-    text-align: center;
-    margin: 15px;
+/*.profile-text-area__submit {*/
+/*    width: 200px;*/
+/*    text-align: center;*/
+/*    margin: 15px;*/
 
-    background: #F8F8F8;
-    box-shadow: 3px 2px black;
-    border: 0;
-    outline: 0;
-    height: 25px;
-    border-radius: 30px;
-    font-weight: bold;
-    cursor: pointer;
-}
+/*    background: #F8F8F8;*/
+/*    box-shadow: 3px 2px black;*/
+/*    border: 0;*/
+/*    outline: 0;*/
+/*    height: 25px;*/
+/*    border-radius: 30px;*/
+/*    font-weight: bold;*/
+/*    cursor: pointer;*/
+/*}*/
 
 .profile-text-area__submit-password{
     width: 200px;
@@ -85,35 +85,101 @@
 }
 
 
+.add-product-by-restaurant__submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
+    background: #F6D471;
+    border-radius: 15px;
 
-.login-field__submit-button {
-    background: #F8F8F8;
-    box-shadow: 3px 2px black;
+    width: 150px;
+    font-size: 17px;
+    color: black;
+    line-height: 25px;
+    text-decoration: none;
 
-    border: 0;
     outline: 0;
-    height: 25px;
-    border-radius: 30px;
+    border: 0;
+    text-align: center;
 
-    width: 100px;
-    margin: 15px;
+    align-self: start;
+    justify-self: center;
+    cursor: pointer;
 
-    font-weight: bold;
+    margin-top: 10px;
 }
 
-.signup-field__submit-button {
-    background: #FFFFFF;
-    box-shadow: 3px 2px grey;
+.login-field__submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    border: 0;
+    background: #F6D471;
+    border-radius: 15px;
+
+    width: 150px;
+    font-size: 17px;
+    color: black;
+    line-height: 25px;
+    text-decoration: none;
+
     outline: 0;
-    height: 25px;
-    border-radius: 30px;
+    border: 0;
+    text-align: center;
 
-    width: 100px;
-    margin: 15px;
+    align-self: center;
+    justify-self: center;
+    cursor: pointer;
 
-    font-weight: bold;
+    margin-top: 25px;
+}
+
+.signup-field__submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #F6D471;
+    border-radius: 15px;
+
+    width: 150px;
+    font-size: 17px;
+    color: black;
+    line-height: 25px;
+    text-decoration: none;
+
+    outline: 0;
+    border: 0;
+    text-align: center;
+
+    align-self: center;
+    justify-self: center;
+    cursor: pointer;
+
+    margin-top: 25px;
+}
+
+.submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #F6D471;
+    border-radius: 15px;
+
+    width: 150px;
+    font-size: 17px;
+    color: black;
+    line-height: 25px;
+    text-decoration: none;
+
+    outline: 0;
+    border: 0;
+    text-align: center;
+
+    align-self: center;
+    justify-self: center;
+    cursor: pointer;
 }
 

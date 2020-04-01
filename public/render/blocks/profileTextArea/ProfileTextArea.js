@@ -1,6 +1,6 @@
 import Component from '../../Component.js';
 import Input from '../../elements/input/Input.js';
-import neonButton from '../../elements/neonButton/neonButton.js';
+import Button from '../../elements/button/Button.js';
 
 export default class ProfileTextArea extends Component {
     constructor({classes, phone, email}) {
@@ -29,7 +29,11 @@ export default class ProfileTextArea extends Component {
                 id: 'new-password-input',
                 placeholder: 'new password',
             }),
-            SubmitButton: new neonButton({classes: 'profile-text-area__submit', href: '#', text: 'Save'}),
+            SubmitButton: new Button({
+                classes: 'submit',
+                text: 'Save',
+                callback: () => 0,
+            }),
         });
     }
 }
