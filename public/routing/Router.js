@@ -6,6 +6,7 @@ import Controller404 from '../controllers/Controller404.js';
 import ProfileController from '../controllers/ProfileController.js';
 import LoginSignupController from '../controllers/LoginSignupController.js';
 import RestaurantController from '../controllers/RestaurantController.js';
+import CheckoutController from '../controllers/CheckoutController.js'
 
 
 class Router {
@@ -57,6 +58,7 @@ class Router {
         this._registerPage(LoginSignupController, '/login');
         this._registerPage(LoginSignupController, '/signup');
         this._registerPage(RestaurantController, '/restaurant');
+        this._registerPage(CheckoutController, '/checkout');
     }
 
     _registerPage(controller, path) {

@@ -1,0 +1,21 @@
+@import "../../blocks/orderCheckout/OrderCheckout.css";
+
+.header-order-container {
+    display: grid;
+    grid-area: header-order;
+    grid-template-rows: 1fr 8fr;
+    grid-template-areas:
+            "header"
+            "order-confirmation";
+}
+
+.checkout-view {
+    display: grid;
+    grid-template-columns: 10fr 3fr;
+
+    grid-template-areas:
+            "header-order order";
+
+    background: #FFFFFF;
+}
+
