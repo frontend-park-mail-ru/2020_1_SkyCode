@@ -10,7 +10,11 @@ class UserModel {
     }
 
     updateUser(body) {
-        return Http.fetchPut({path: '/api/v1/profile/bio', body: body}).then(response => response.json());
+        return Http.fetchPut({path: '/api/v1/profile/bio', body: JSON.stringify(body)}).then(response => response.json());
+    }
+
+    updateAvatar(body) {
+        return Http.fetchPut({path: '/api/v1/profile/avatar', body: body, type: 'file'}).then(response => response.json());
     }
 }
 

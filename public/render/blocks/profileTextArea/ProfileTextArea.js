@@ -6,13 +6,6 @@ import EventBus from '../../../services/Events/EventBus.js';
 export default class ProfileTextArea extends Component {
 	constructor({classes, data}) {
 		super(classes, {
-			PhoneInput: new Input({
-				classes: 'profile-text-area__input',
-				id: 'phone-input',
-				type: 'phone',
-				value: data.User.phone,
-				placeholder: 'phone'
-			}),
 			fNameInput: new Input({
 				classes: 'profile-text-area__input',
 				id: 'fname-input',
@@ -39,15 +32,14 @@ export default class ProfileTextArea extends Component {
 		this.addContextData({SubmitButton:
 		new neonButton({
 			text: 'Save',
+			classes: 'profile-update__submit',
             callback: () => {
-				console.log('123');
 			    const data = {
-                    email: this.context.EmailInput.domElement.value,
                     firstName: this.context.fNameInput.domElement.value,
-                    lastName: this.context.lNameInput.domElement.value
+				    lastName: this.context.lNameInput.domElement.value,
+				    email: this.context.EmailInput.domElement.value
                 };
 			    EventBus.publish('update-user', data);
-			    console.log('publish');
             }
 		})});
 

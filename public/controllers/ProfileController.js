@@ -17,19 +17,26 @@ class ProfileController extends BaseController {
     }
 
     startCatchEvents() {
-        EventBus.subscribe('update-user', this.updateCb.bind(this));
-        console.log('subscribe');
+        EventBus.subscribe('update-user', this.updateBioCb.bind(this));
+        EventBus.subscribe('avatar-update', this.updateAvatarCb.bind(this));
     }
 
     stopCatchEvents() {
-        EventBus.unsubscribe('update-user', this.updateCb.bind(this));
+        EventBus.unsubscribe('update-user', this.updateBioCb.bind(this));
+        EventBus.unsubscribe('avatar-update', this.updateAvatarCb.bind(this));
     }
 
-    updateCb(data) {
-        console.log('cb');
+    updateBioCb(data) {
         UserModel.updateUser(data).then(response => {
             EventBus.publish('set-page', {url: '/me'});
         })
+    }
+
+    updateAvatarCb(data) {
+        console.log('AvaCb');
+        UserModel.updateAvatar(data).then(response => {
+            EventBus.publish('set-page', {url: '/me'});
+        });
     }
 }
 
