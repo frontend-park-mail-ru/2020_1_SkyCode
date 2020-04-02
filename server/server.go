@@ -1,3 +1,5 @@
+package main
+
 import (
         "fmt"
         "log"
@@ -18,8 +20,8 @@ func imageHandler(w http.ResponseWriter, r *http.Request) {
 func resourceHandler(w http.ResponseWriter, r *http.Request) {
         var path = r.URL.Path
 
-        matchedJs, errJs := regexp.MatchString(.js$, path)
-        matchedCss, errCss := regexp.MatchString(.css$, path)
+        matchedJs, errJs := regexp.MatchString(`.js$`, path)
+        matchedCss, errCss := regexp.MatchString(`.css$`, path)
 
         if errJs != nil {
                 panic(errJs)
