@@ -4,7 +4,7 @@ import ProfileTextArea from '../../blocks/profileTextArea/ProfileTextArea.js';
 import ProfileAvatarArea from '../../blocks/profileAvatarArea/ProfileAvatarArea.js';
 
 export default class ProfileView extends Component {
-    constructor({profile, products}) {
+    constructor({profile}) {
         super();
         this.addContextData({
             Header: new Header({
@@ -12,12 +12,11 @@ export default class ProfileView extends Component {
             }),
             ProfileTextArea: new ProfileTextArea({
                 classes: 'profile-view__profile-text-area',
-                phone: profile.phone,
-                email: profile.email,
+                data: profile
             }),
             ProfileAvatarArea: new ProfileAvatarArea({
                 classes: 'profile-view__profile-avatar-area',
-                avatar: profile.avatar,
+                data: profile
             }),
         });
     }

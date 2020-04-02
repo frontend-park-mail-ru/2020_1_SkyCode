@@ -7,7 +7,7 @@ export default class ProfileAvatarArea extends Component {
         super(classes, {
             Image: new Img({
                 classes: 'profile-avatar-area__image',
-                src: avatar,
+                src: '/static/profile.png',
             }),
             AvatarInput: new Input({
                 classes: 'profile-avatar-area__image-input',

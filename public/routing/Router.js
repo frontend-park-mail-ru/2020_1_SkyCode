@@ -36,13 +36,13 @@ class Router {
         if (this._currentController) {
             state = this._currentController.state;
             this._savePageStateInHistory(this._currentController);
-            this._currentController.hide();
+            this._currentController.stop();
         }
 
         [this._currentController, state.matchData] = this._matchUrl(url) || [Controller404];
 
         this._setNewHistoryRecord(this._currentController, url);
-        this._currentController.show(state);
+        this._currentController.run(state);
     }
 
     _savePageStateInHistory(page) {

@@ -1,9 +1,6 @@
-/**
- * Класс-обётрка сетевого взаимодействия по http протоколу
- */
 class Http {
     constructor() {
-        this.serverPath = 'http://89.208.199.114:8080';
+        this.serverPath = 'http://89.208.199.114:5000';
     }
 
     fetchRequest({path = '/', method = 'GET', body = null, headers = true}) {

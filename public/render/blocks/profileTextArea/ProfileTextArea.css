@@ -9,6 +9,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    padding: 20px;
 }
 
 .profile-text-area__input-container {
@@ -16,6 +17,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
 }
 
 .profile-text-area__row {
