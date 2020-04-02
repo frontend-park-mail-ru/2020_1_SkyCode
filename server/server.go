@@ -39,6 +39,7 @@ func resourceHandler(w http.ResponseWriter, r *http.Request) {
 func main() {
 	http.HandleFunc("/controllers/", resourceHandler)
 	http.HandleFunc("/handlebars/", resourceHandler)
+	http.HandleFunc("/models/", resourceHandler)
 	http.HandleFunc("/render/", resourceHandler)
 	http.HandleFunc("/routing/", resourceHandler)
 	http.HandleFunc("/services/", resourceHandler)
