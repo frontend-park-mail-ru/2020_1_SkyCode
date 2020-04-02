@@ -1,7 +1,6 @@
 import Component from '../../Component.js';
 import Input from '../../elements/input/Input.js';
 import neonButton from '../../elements/neonButton/neonButton.js';
-import Button from '../../elements/button/Button.js';
 
 export default class AddProductByRestaurant extends Component {
 	constructor({classes}) {
@@ -36,10 +35,9 @@ export default class AddProductByRestaurant extends Component {
 				type: 'file',
 				placeholder: 'Image',
 			}),
-			submitButton: new Button({
+			submitButton: new neonButton({
 				classes: 'add-product-by-restaurant__submit',
 				text: 'Add',
-				callback: () => 0,
 			})
 		});
 	}

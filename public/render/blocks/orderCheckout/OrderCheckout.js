@@ -1,7 +1,6 @@
 import Component from '../../Component.js';
 import Input from '../../elements/input/Input.js';
 import neonButton from '../../elements/neonButton/neonButton.js';
-import Href from '../../elements/href/Href.js';
 
 export default class OrderCheckout extends Component {
     constructor({classes, phone, address, email}) {
@@ -33,9 +32,8 @@ export default class OrderCheckout extends Component {
                 type: 'text',
                 placeholder: 'Enter your comment',
             }),
-            SubmitButton: new Href({
+            SubmitButton: new neonButton({
                 classes: 'order-checkout__confirm',
-                href: '#',
                 text: 'Confirm'
             }),
         });

@@ -85,80 +85,80 @@
 }
 
 
-.add-product-by-restaurant__submit {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/*.add-product-by-restaurant__submit {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
 
-    background: #F6D471;
-    border-radius: 15px;
+/*    background: #F6D471;*/
+/*    border-radius: 15px;*/
 
-    width: 150px;
-    font-size: 17px;
-    color: black;
-    line-height: 25px;
-    text-decoration: none;
+/*    width: 150px;*/
+/*    font-size: 17px;*/
+/*    color: black;*/
+/*    line-height: 25px;*/
+/*    text-decoration: none;*/
 
-    outline: 0;
-    border: 0;
-    text-align: center;
+/*    outline: 0;*/
+/*    border: 0;*/
+/*    text-align: center;*/
 
-    align-self: start;
-    justify-self: center;
-    cursor: pointer;
+/*    align-self: start;*/
+/*    justify-self: center;*/
+/*    cursor: pointer;*/
 
-    margin-top: 10px;
-}
+/*    margin-top: 10px;*/
+/*}*/
 
-.login-field__submit {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/*.login-field__submit {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
 
-    background: #F6D471;
-    border-radius: 15px;
+/*    background: #F6D471;*/
+/*    border-radius: 15px;*/
 
-    width: 150px;
-    font-size: 17px;
-    color: black;
-    line-height: 25px;
-    text-decoration: none;
+/*    width: 150px;*/
+/*    font-size: 17px;*/
+/*    color: black;*/
+/*    line-height: 25px;*/
+/*    text-decoration: none;*/
 
-    outline: 0;
-    border: 0;
-    text-align: center;
+/*    outline: 0;*/
+/*    border: 0;*/
+/*    text-align: center;*/
 
-    align-self: center;
-    justify-self: center;
-    cursor: pointer;
+/*    align-self: center;*/
+/*    justify-self: center;*/
+/*    cursor: pointer;*/
 
-    margin-top: 25px;
-}
+/*    margin-top: 25px;*/
+/*}*/
 
-.signup-field__submit {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/*.signup-field__submit {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
 
-    background: #F6D471;
-    border-radius: 15px;
+/*    background: #F6D471;*/
+/*    border-radius: 15px;*/
 
-    width: 150px;
-    font-size: 17px;
-    color: black;
-    line-height: 25px;
-    text-decoration: none;
+/*    width: 150px;*/
+/*    font-size: 17px;*/
+/*    color: black;*/
+/*    line-height: 25px;*/
+/*    text-decoration: none;*/
 
-    outline: 0;
-    border: 0;
-    text-align: center;
+/*    outline: 0;*/
+/*    border: 0;*/
+/*    text-align: center;*/
 
-    align-self: center;
-    justify-self: center;
-    cursor: pointer;
+/*    align-self: center;*/
+/*    justify-self: center;*/
+/*    cursor: pointer;*/
 
-    margin-top: 25px;
-}
+/*    margin-top: 25px;*/
+/*}*/
 
 .submit {
     display: flex;
