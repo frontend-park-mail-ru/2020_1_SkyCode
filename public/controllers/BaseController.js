@@ -9,15 +9,25 @@ class BaseController {
     }
 
     // У вьюхи должны быть методы bind, unbind, HTML и геттер state
-    show(view) {
+    run(view) {
         this._view = view;
         document.body.innerHTML = this._view.HTML();
         this._view.bind();
+        this.startCatchEvents();
     }
 
-    hide() {
+    stop() {
+        this.stopCatchEvents();
         this._view.unbind();
         this._view = void 0;
+    }
+
+    startCatchEvents() {
+        void 0;
+    }
+
+    stopCatchEvents() {
+        void 0;
     }
 
     get state() {

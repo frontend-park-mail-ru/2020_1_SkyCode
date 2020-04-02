@@ -9,13 +9,13 @@ class RestaurantController extends BaseController {
 		super(title);
 	}
 
-	show({
+	run({
 		products = Mocks.products,
 		restaurantInfo = Mocks.restaurant,
 		categoryArr = Mocks.categories,
 		productArr = Mocks.products
 	}) {
-		super.show(new RestaurantView({products, restaurantInfo, categoryArr, productArr}));
+		super.run(new RestaurantView({products, restaurantInfo, categoryArr, productArr}));
 	}
 }
 

@@ -9,14 +9,14 @@ class MainController extends BaseController {
         super(title);
     }
 
-    show({
+    run({
         actions = Mocks.actions,
         categories = Mocks.categories,
         products = Mocks.products,
         restaurants = Mocks.restaurants,
         profile = Mocks.noProfile,
     } = {}) {
-        super.show(new MainView({
+        super.run(new MainView({
             actionArr: actions,
             categoryArr: categories,
             restaurantArr: restaurants,

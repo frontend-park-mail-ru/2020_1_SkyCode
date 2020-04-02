@@ -6,8 +6,8 @@ class AddProductByRestaurantController extends BaseController {
 		super(title);
 	}
 
-	show() {
-		super.show(new AddProductByRestaurantView());
+	run() {
+		super.run(new AddProductByRestaurantView());
 	}
 }
 
