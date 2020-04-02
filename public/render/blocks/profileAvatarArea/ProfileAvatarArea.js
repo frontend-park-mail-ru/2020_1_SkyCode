@@ -5,11 +5,10 @@ import EventBus from '../../../services/Events/EventBus.js';
 
 export default class ProfileAvatarArea extends Component {
     constructor({classes, data}) {
-        console.log(data.User.profile_photo);
         super(classes, {
             Image: new Img({
                 classes: 'profile-avatar-area__image',
-                src: data.User.profile_photo,
+                src: `/images/${data.User.profile_photo}`,
             }),
             AvatarInput: new Input({
                 classes: 'profile-avatar-area__image-input',
