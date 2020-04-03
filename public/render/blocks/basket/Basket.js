@@ -12,9 +12,9 @@ export default class Basket extends Component {
             basketProducts.push(new BasketProduct({
                 classes: 'basket__basket-product',
                 name: product.name,
-                imageHref: `/images/${product.imageHref}`,
-                quantity: product.quantity,
-                cost: product.cost,
+                imageHref: `/images/${product.image}`,
+                quantity: 1,
+                cost: product.price,
             }));
         }
 

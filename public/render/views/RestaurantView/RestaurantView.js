@@ -6,7 +6,7 @@ import RestaurantCategories from '../../blocks/restaurantCategories/RestaurantCa
 import Products from '../../blocks/products/Products.js';
 
 class RestaurantView extends Component {
-	constructor({restaurant, categoryArr}) {
+	constructor({restaurant, products, categoryArr}) {
 		super();
 
 		console.log(restaurant);
@@ -18,7 +18,7 @@ class RestaurantView extends Component {
 			}),
 			order: new Order({
 				classes: 'order',
-				products: restaurant.products,
+				products: products,
 			}),
 			restaurantBanner: new RestaurantBanner({
 				classes: 'restaurantBanner',
@@ -27,7 +27,7 @@ class RestaurantView extends Component {
 				name: restaurant.name
 			}),
 			categories: new RestaurantCategories({categoryArr: categoryArr}),
-			products: new Products({classes: 'products', productArr: restaurant.products})
+			products: new Products({classes: 'products', productArr: products})
 		}, true);
 	}
 }
