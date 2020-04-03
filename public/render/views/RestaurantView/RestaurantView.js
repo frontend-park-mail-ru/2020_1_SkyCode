@@ -6,8 +6,11 @@ import RestaurantCategories from '../../blocks/restaurantCategories/RestaurantCa
 import Products from '../../blocks/products/Products.js';
 
 class RestaurantView extends Component {
-	constructor({products, restaurantInfo, categoryArr, productArr}) {
+	constructor({restaurant, categoryArr}) {
 		super();
+
+		console.log(restaurant);
+		console.log(restaurant.products);
 
 		this.addContextData({
 			header: new Header({
@@ -15,16 +18,16 @@ class RestaurantView extends Component {
 			}),
 			order: new Order({
 				classes: 'order',
-				products,
+				products: restaurant.products,
 			}),
 			restaurantBanner: new RestaurantBanner({
 				classes: 'restaurantBanner',
-				imgHref: restaurantInfo.imageHref,
-				rate: restaurantInfo.rate,
-				name: restaurantInfo.name
+				imgHref: `/images/${restaurant.image}`,
+				rate: restaurant.rating,
+				name: restaurant.name
 			}),
 			categories: new RestaurantCategories({categoryArr: categoryArr}),
-			products: new Products({classes: 'products', productArr})
+			products: new Products({classes: 'products', productArr: restaurant.products})
 		}, true);
 	}
 }

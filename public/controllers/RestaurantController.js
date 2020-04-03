@@ -2,6 +2,7 @@
 
 import BaseController from './BaseController.js';
 import RestaurantView from '../render/views/RestaurantView/RestaurantView.js';
+import RestaurantModel from '../models/RestaurantModel.js';
 import Mocks from '../mocks.js';
 
 class RestaurantController extends BaseController {
@@ -9,13 +10,12 @@ class RestaurantController extends BaseController {
 		super(title);
 	}
 
-	run({
-		products = Mocks.products,
-		restaurantInfo = Mocks.restaurant,
-		categoryArr = Mocks.categories,
-		productArr = Mocks.products
-	}) {
-		super.run(new RestaurantView({products, restaurantInfo, categoryArr, productArr}));
+	run() {
+		RestaurantModel.getRestaurant(1).then(response => {
+			const categoryArr = Mocks.categories;
+			super.run(new RestaurantView({restaurant: response, categoryArr}));
+		}).catch(err => console.log(err));
+
 	}
 }
 
