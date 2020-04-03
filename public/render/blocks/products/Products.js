@@ -3,7 +3,6 @@ import productCard from '../productCard/productCard.js';
 
 export default class Products extends Component {
 	constructor({classes, productArr}) {
-		console.log(productArr);
 		super();
 		this.addClasses(classes);
 

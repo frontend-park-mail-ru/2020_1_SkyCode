@@ -10,7 +10,6 @@ export default class productCard extends Component {
 				text: 'Add',
 				classes,
 				callback: () => {
-					console.log('CallBack');
 					EventBus.publish('add-product', id);
 				}
 			})

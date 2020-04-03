@@ -8,6 +8,7 @@ import LoginSignupController from '../controllers/LoginSignupController.js';
 import RestaurantController from '../controllers/RestaurantController.js';
 import CheckoutController from '../controllers/CheckoutController.js'
 import AddProductByRestaurantController from '../controllers/AddProductByRestaurantController.js'
+import BasketController from '../controllers/BasketController.js';
 
 
 class Router {
@@ -16,6 +17,7 @@ class Router {
     constructor() {
         this._pages = [];
         this._registerAllPages();
+        this._initControllers();
         EventBus.subscribe('set-page', (this._goto).bind(this));
         window.onpopstate = (this._handlePopState).bind(this);
     }
@@ -28,6 +30,10 @@ class Router {
         this._currentController.hide();
         [this._currentController, event.state.matchData] = this._matchUrl(window.location.pathname) || [Controller404];
         this._currentController.show(document.location, event.state);
+    }
+
+    _initControllers() {
+        BasketController.startCatchEvents();
     }
 
     _goto({url}) {

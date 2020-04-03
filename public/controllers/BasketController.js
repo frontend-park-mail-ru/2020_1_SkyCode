@@ -1,14 +1,10 @@
 import BaseController from './BaseController.js';
-import EventBus from '../services/Events/EventBus';
+import EventBus from '../services/Events/EventBus.js';
 
 class BasketController extends BaseController {
 	constructor() {
 		super();
 		this.basket = {};
-	}
-
-	run() {
-		super.run();
 	}
 
 	startCatchEvents() {
@@ -20,7 +16,13 @@ class BasketController extends BaseController {
 	}
 
 	addProductCb(data) {
-		console.log(data);
+		if (data in this.basket) {
+			this.basket[data]++;
+		} else {
+			this.basket[data] = 1;
+		}
+
+		console.log(this.basket);
 	}
 }
 
