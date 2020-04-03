@@ -1,6 +1,7 @@
 import Component from '../../Component.js';
 import Input from '../../elements/input/Input.js';
 import neonButton from '../../elements/neonButton/neonButton.js';
+import EventBus from '../../../services/Events/EventBus.js';
 
 export default class LoginField extends Component {
     constructor({classes}) {
@@ -8,19 +9,28 @@ export default class LoginField extends Component {
             identifierInput: new Input({
                 classes: 'login-field__input',
                 id: 'login-field__email-input',
-                type: 'email',
-                placeholder: 'your@email.fast or +7(9...'
+                type: 'text',
+                placeholder: '+phone'
             }),
             passwordInput: new Input({
                 classes: 'login-field__input',
                 id: 'login-field__password-input',
                 type: 'password',
-                placeholder: 'Spoone123',
+                placeholder: 'password',
             }),
-            submitButton: new neonButton({
-                classes: 'login-field__submit',
-                text: 'Log In',
-            }),
+
         });
+
+        this.addContextData({submitButton: new neonButton({
+            classes: 'login-field__submit',
+            text: 'Log In',
+            callback: () => {
+                const data = {
+                    phone: this.context.identifierInput.domElement.value,
+                    password: this.context.passwordInput.domElement.value
+                }
+                EventBus.publish('login', data);
+            }
+        })});
     }
 }

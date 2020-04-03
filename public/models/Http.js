@@ -1,12 +1,9 @@
-/**
- * Класс-обётрка сетевого взаимодействия по http протоколу
- */
 class Http {
     constructor() {
-        this.serverPath = 'http://89.208.199.114:8080';
+        this.serverPath = 'http://89.208.199.114:5000';
     }
 
-    fetchRequest({path = '/', method = 'GET', body = null, headers = true}) {
+    fetchRequest({path = '/', method = 'GET', body = null, headers = true, type = 'json'}) {
         const req = {
             method: method,
             mode: 'cors',
@@ -16,9 +13,11 @@ class Http {
         if (body != null) {
             req.body = body;
             if (headers === true) {
-                req.headers = {
-                    'Content-Type': 'application/json',
-                };
+                if (type === 'json') {
+                    req.headers = {
+                        'Content-Type': 'application/json',
+                    };
+                }
             }
 
         }
@@ -33,8 +32,8 @@ class Http {
         return await this.fetchRequest({method: 'POST', path: path, body: body});
     }
 
-    async fetchPut({path, body}) {
-        return await this.fetchRequest({method: 'PUT', path: path, body: body, headers: false});
+    async fetchPut({path, body, type = 'json'}) {
+        return await this.fetchRequest({method: 'PUT', path: path, body: body, type: type});
     }
 
     async fetchDelete({path, body}) {
