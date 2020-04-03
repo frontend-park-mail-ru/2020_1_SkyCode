@@ -13,7 +13,6 @@ class ProfileController extends BaseController {
         UserModel.getUser().then(response =>  {
             super.run(new ProfileView({profile: response}));
         }).catch(err => console.log(err));
-
     }
 
     startCatchEvents() {

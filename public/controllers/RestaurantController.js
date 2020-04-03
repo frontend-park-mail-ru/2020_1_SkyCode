@@ -18,7 +18,6 @@ class RestaurantController extends BaseController {
 				super.run(new RestaurantView({restaurant: response, products: products, basket: basket,  categoryArr}));
 			}).catch(err => console.log(err));
 		}).catch(err => console.log(err));
-
 	}
 }
 

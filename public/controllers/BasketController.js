@@ -23,7 +23,7 @@ class BasketController extends BaseController {
 			this.basket[data.id].amount = 1;
 		}
 
-		EventBus.publish('set-page', {url: '/restaurant'});
+		EventBus.publish('set-page', {url: '/restaurants'});
 		console.log(this.basket);
 	}
 }

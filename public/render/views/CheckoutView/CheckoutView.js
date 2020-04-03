@@ -4,8 +4,9 @@ import Order from '../../blocks/order/Order.js';
 import OrderCheckout from '../../blocks/orderCheckout/OrderCheckout.js';
 
 export default class CheckoutView extends Component {
-    constructor({profile, products, personNum}) {
+    constructor({profile, basket, personNum}) {
         super();
+        console.log(profile);
         this.addContextData({
             Header: new Header({
                 classes: 'header',
@@ -14,7 +15,7 @@ export default class CheckoutView extends Component {
                 classes: 'order',
                 withCheckoutButton: false,
                 personNum,
-                products,
+                basket,
             }),
             OrderCheckout: new OrderCheckout({
                 classes: 'order-confirmation',
