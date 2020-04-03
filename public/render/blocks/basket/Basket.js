@@ -3,18 +3,22 @@ import BasketProduct from '../basketProduct/BasketProduct.js';
 
 
 export default class Basket extends Component {
-    constructor({classes, products, basketStorage}) {
+    constructor({classes, basket}) {
         super(classes);
 
         let basketProducts = [];
 
-        for (const product of basketStorage) {
+        console.log("qwe");
+        console.log(basket);
+
+        for (const id in basket) {
+            console.log(basket[id]);
             basketProducts.push(new BasketProduct({
                 classes: 'basket__basket-product',
-                name: product.name,
-                imageHref: `/images/${product.image}`,
-                quantity: 1,
-                cost: product.price,
+                name: basket[id].name,
+                imageHref: `/images/${basket[id].image}`,
+                quantity: basket[id].amount,
+                cost: basket[id].price,
             }));
         }
 

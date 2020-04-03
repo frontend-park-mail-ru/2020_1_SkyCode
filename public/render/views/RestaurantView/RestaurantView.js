@@ -6,7 +6,7 @@ import RestaurantCategories from '../../blocks/restaurantCategories/RestaurantCa
 import Products from '../../blocks/products/Products.js';
 
 class RestaurantView extends Component {
-	constructor({restaurant, products, basketStorage, categoryArr}) {
+	constructor({restaurant, products, basket, categoryArr}) {
 		super();
 
 		this.addContextData({
@@ -15,8 +15,7 @@ class RestaurantView extends Component {
 			}),
 			order: new Order({
 				classes: 'order',
-				products: products,
-				basketStorage
+				basket
 			}),
 			restaurantBanner: new RestaurantBanner({
 				classes: 'restaurantBanner',

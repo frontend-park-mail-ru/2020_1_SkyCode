@@ -16,12 +16,14 @@ class BasketController extends BaseController {
 	}
 
 	addProductCb(data) {
-		if (data in this.basket) {
-			this.basket[data]++;
+		if (data.id in this.basket) {
+			this.basket[data.id].amount++;
 		} else {
-			this.basket[data] = 1;
+			this.basket[data.id] = data;
+			this.basket[data.id].amount = 1;
 		}
 
+		EventBus.publish('set-page', {url: '/restaurant'});
 		console.log(this.basket);
 	}
 }
