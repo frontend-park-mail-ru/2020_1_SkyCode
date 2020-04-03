@@ -2,6 +2,7 @@ import Component from '../../Component.js';
 import Input from '../../elements/input/Input.js';
 import neonButton from '../../elements/neonButton/neonButton.js';
 import EventBus from '../../../services/Events/EventBus.js';
+import Img from '../../elements/img/Img.js';
 
 export default class ProfileTextArea extends Component {
 	constructor({classes, data}) {
@@ -27,22 +28,41 @@ export default class ProfileTextArea extends Component {
 				value: data.User.email,
 				placeholder: 'e-mail'
 			}),
+			Image: new Img({
+				classes: 'profile-avatar-area__image',
+				src: `/images/${data.User.profile_photo}`,
+			}),
+			AvatarInput: new Input({
+				classes: 'profile-avatar-area__image-input',
+				id: 'profile-avatar-area__image-input',
+				type: 'file',
+				value: 'xxx',
+			})
 		});
 
 		this.addContextData({SubmitButton:
-		new neonButton({
-			text: 'Save',
-			classes: 'profile-update__submit',
-            callback: () => {
-			    const data = {
-                    firstName: this.context.fNameInput.domElement.value,
-				    lastName: this.context.lNameInput.domElement.value,
-				    email: this.context.EmailInput.domElement.value
-                };
-			    EventBus.publish('update-user', data);
-            }
-		})});
+				new neonButton({
+					text: 'Save',
+					classes: 'profile-update__submit',
+					callback: () => {
+						const data = {
+							firstName: this.context.fNameInput.domElement.value,
+							lastName: this.context.lNameInput.domElement.value,
+							email: this.context.EmailInput.domElement.value
+						};
+						EventBus.publish('update-user', data);
+					}
+				})}
+		);
+	}
 
-
+	bind() {
+		this.context.AvatarInput.domElement.addEventListener('change', () => {
+			const img = this.context.AvatarInput.domElement.files[0];
+			console.log(img);
+			let formData = new FormData();
+			formData.append('avatar', img);
+			EventBus.publish('avatar-update', formData);
+		});
 	}
 }

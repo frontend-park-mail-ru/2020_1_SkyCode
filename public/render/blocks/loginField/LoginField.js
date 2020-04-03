@@ -10,7 +10,7 @@ export default class LoginField extends Component {
                 classes: 'login-field__input',
                 id: 'login-field__email-input',
                 type: 'text',
-                placeholder: '+phone'
+                placeholder: 'phone'
             }),
             passwordInput: new Input({
                 classes: 'login-field__input',

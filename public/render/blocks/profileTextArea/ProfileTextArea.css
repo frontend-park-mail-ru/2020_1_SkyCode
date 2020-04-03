@@ -1,39 +1,26 @@
-.profile-view__profile-text-area {
-    grid-area: profile-text-area;
+.profile-view__profile-area {
+    grid-area: profile-area;
     height: 400px;
-    width: 300px;
+    width: 80%;
     justify-self: center;
     align-self: center;
     box-shadow: 0px 4px 100px #D6D6D6;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-around;
     padding: 20px;
 }
 
-.profile-text-area__input-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-}
-
-.profile-text-area__row {
-    display: flex;
-    flex-direction: column;
-}
-
-.profile-text-area__column {
-    display: flex;
-    flex-direction: column;
-}
-
-.profile-text-area__title {
+.profile-area__title {
     font-size: 25px;
 }
 
-.profile-text-area__main-title {
+.profile-area__main-title {
     font-size: 40px;
+}
+
+.profile-avatar-area__button {
+    font-size: 30px;
+    cursor: pointer;
 }
