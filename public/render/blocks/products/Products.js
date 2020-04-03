@@ -9,7 +9,8 @@ export default class Products extends Component {
 
 		let products = [];
 		for (let product of productArr) {
-			products.push(new productCard({classes: `product-card-${product.quantity}`,
+			products.push(new productCard({classes: `product-card-${product.id}`,
+				id: product.id,
 				imgSrc: `/images/${product.image}`,
 				productDescription: product.price,
 				productName: product.name}));

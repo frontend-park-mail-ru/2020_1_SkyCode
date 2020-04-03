@@ -40,10 +40,11 @@ export default class ProfileTextArea extends Component {
 			})
 		});
 
-		this.addContextData({SubmitButton:
+		this.addContextData({
+			SubmitButton:
 				new neonButton({
 					text: 'Save',
-					classes: 'profile-update__submit',
+					classes: 'profile-update__submit-btn',
 					callback: () => {
 						const data = {
 							firstName: this.context.fNameInput.domElement.value,
@@ -52,17 +53,17 @@ export default class ProfileTextArea extends Component {
 						};
 						EventBus.publish('update-user', data);
 					}
-				})}
-		);
+				})
+		});
 	}
 
 	bind() {
 		this.context.AvatarInput.domElement.addEventListener('change', () => {
 			const img = this.context.AvatarInput.domElement.files[0];
-			console.log(img);
 			let formData = new FormData();
 			formData.append('avatar', img);
 			EventBus.publish('avatar-update', formData);
 		});
+		super.bind();
 	}
 }

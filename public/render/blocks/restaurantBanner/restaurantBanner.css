@@ -10,6 +10,7 @@
     width: 882px;
     height: 180px;
     border-radius: 15px;
+    visibility: hidden;
 }
 
 .restaurantBanner__img {

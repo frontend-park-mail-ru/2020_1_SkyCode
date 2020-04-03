@@ -8,6 +8,10 @@ class RestaurantModel {
 	getProducts(id) {
 		return Http.fetchGet({path: `/api/v1/restaurants/${id}/product`}).then(response => response.json());
 	}
+
+	getRestaurants() {
+		return Http.fetchGet({path: `/api/v1/restaurants/`}).then(response => response.json());
+	}
 }
 
 export default new RestaurantModel();
