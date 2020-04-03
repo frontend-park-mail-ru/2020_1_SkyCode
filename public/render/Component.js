@@ -21,6 +21,10 @@ export default class Component {
         }
     }
 
+    static isComponent(object) {
+        return object instanceof Component;
+    }
+
     get context() {
         return this._context;
     }
@@ -53,11 +57,17 @@ export default class Component {
     bind() {
         for (const value of Object.values(this.context)) {
 
-            if (!(value instanceof Component)){
-                continue;
+            if (Array.isArray(value)) {
+                value.forEach((value) => {
+                    if (Component.isComponent(value)) {
+                        value.bind()
+                    }
+                });
             }
 
-            value.bind();
+            if (Component.isComponent(value)) {
+                value.bind()
+            }
         }
     }
 
