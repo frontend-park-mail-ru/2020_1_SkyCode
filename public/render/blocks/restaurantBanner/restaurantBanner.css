@@ -10,6 +10,8 @@
     width: 882px;
     height: 180px;
     border-radius: 15px;
+    outline-width: 0;
+    border: none;
 }
 
 .restaurantBanner__img {
@@ -17,6 +19,8 @@
     height: 100%;
     object-fit: cover;
     border-radius: 15px;
+    border: none;
+
 }
 
 .restaurantBanner__info {

@@ -6,7 +6,7 @@ import PersonInput from '../personInput/PersonInput.js';
 import Href from '../../elements/href/Href.js';
 
 export default class Order extends Component {
-    constructor({products,
+    constructor({products, basketStorage,
                     classes = 'order',
                     withCheckoutButton = true,
                     personNum = 1}) {
@@ -28,7 +28,8 @@ export default class Order extends Component {
             }),
             basket: new Basket({
                 classes: 'order__basket',
-                products
+                products,
+                basketStorage
             }),
             personInput: new PersonInput({
                 classes: 'order__person-input',
