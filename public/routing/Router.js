@@ -51,6 +51,7 @@ class Router {
         }
 
         [this._currentController, state.matchData] = this._matchUrl(url) || [Controller404];
+        history.replaceState(this._currentController.state, this._currentController.title, url);
         this._currentController.run(state);
     }
 
