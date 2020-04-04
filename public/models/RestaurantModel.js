@@ -14,7 +14,7 @@ class RestaurantModel {
 	}
 
 	addProduct(id, body) {
-		return Http.fetchPost({path: `/api/v1/restaurants/${id}/product`, body: JSON.stringify(body)}).then(response => response.json());
+		return Http.fetchPost({path: `/api/v1/restaurants/${id}/product`, body, type: 'file'}).then(response => response.json());
 	}
 
 	addProductImage(id, body) {
