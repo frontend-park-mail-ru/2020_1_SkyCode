@@ -5,6 +5,8 @@ class BasketController extends BaseController {
 	constructor() {
 		super();
 		this.basket = {};
+		this.total = 0;
+		this.persons = 1;
 	}
 
 	startCatchEvents() {

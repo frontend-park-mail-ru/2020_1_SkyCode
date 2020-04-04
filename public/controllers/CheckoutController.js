@@ -4,6 +4,7 @@ import Mocks from '../mocks.js';
 import UserModel from '../models/UserModel.js';
 import BasketController from './BasketController.js';
 import EventBus from '../services/Events/EventBus.js';
+import RestaurantModel from '../models/RestaurantModel.js';
 
 class CheckoutController extends BaseController {
     constructor(title = 'confirm') {
@@ -30,6 +31,9 @@ class CheckoutController extends BaseController {
     }
 
     checkoutCb(data) {
+        RestaurantModel.addOrder(data).then(response => {
+            EventBus.publish('set-page', {url: '/'});
+        }).catch(err => console.log(err));
         console.log(data);
     }
 }

@@ -8,13 +8,13 @@ export default class RestaurantList extends Component {
 
         let restaurantComponents = [];
 
-        for (let restaurant of restaurantArr) {
+        for (const restaurant of restaurantArr) {
             restaurantComponents.push(new Restaurant({
                 classes: 'restaurant-list__restaurant',
                 name: restaurant.name,
-                avgDeliveryTime: restaurant.avgDeliveryTime,
-                rate: restaurant.rate,
-                imageHref: restaurant.imageHref,
+                avgDeliveryTime: 30, //restaurant.avgDeliveryTime,
+                rate: restaurant.rating,
+                imageHref: `/images/${restaurant.image}`,
                 href: restaurant.href,
             }));
         }

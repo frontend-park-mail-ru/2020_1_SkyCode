@@ -25,7 +25,7 @@ class AddProductByRestaurantController extends BaseController {
 	addProductCb(data) {
 		RestaurantModel.addProduct(1, data).then(response => {
 			if (response.message) {
-				EventBus.publish('set-page', {url: '/'});
+				EventBus.publish('set-page', {url: '/restaurants'});
 			}
 		}).catch(err => console.log(err));
 	}
