@@ -6,7 +6,7 @@ import PersonInput from '../personInput/PersonInput.js';
 import Href from '../../elements/href/Href.js';
 
 export default class Order extends Component {
-    constructor({products, basketStorage,
+    constructor({basket,
                     classes = 'order',
                     withCheckoutButton = true,
                     personNum = 1}) {
@@ -14,9 +14,13 @@ export default class Order extends Component {
         this.addClasses(classes);
         this.addContextData({
             title: 'My Order',
-            total: products.reduce(
-                (accumulate, current) => accumulate + current.cost * current.quantity, 0
-            ),
+            total: () => {
+                let sum = 0;
+                for (const id in basket) {
+                    sum += basket[id].price * basket[id].amount;
+                }
+                return sum;
+                },
             profileButton: new ImageHref({
                 classes: 'order__profile-href',
                 imageClasses: 'order__profile-image',
@@ -28,8 +32,7 @@ export default class Order extends Component {
             }),
             basket: new Basket({
                 classes: 'order__basket',
-                products,
-                basketStorage
+                basket: basket
             }),
             personInput: new PersonInput({
                 classes: 'order__person-input',

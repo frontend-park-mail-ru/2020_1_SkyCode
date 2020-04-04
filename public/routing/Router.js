@@ -64,7 +64,7 @@ class Router {
         this._registerPage(ProfileController, '/me');
         this._registerPage(LoginSignupController, '/login');
         this._registerPage(LoginSignupController, '/signup');
-        this._registerPage(RestaurantController, '/restaurant');
+        this._registerPage(RestaurantController, '/restaurants');
         this._registerPage(CheckoutController, '/checkout');
         this._registerPage(AddProductByRestaurantController, '/add');
     }

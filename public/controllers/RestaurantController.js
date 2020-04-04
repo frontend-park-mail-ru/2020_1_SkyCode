@@ -14,11 +14,10 @@ class RestaurantController extends BaseController {
 		RestaurantModel.getRestaurant(1).then(response => {
 			RestaurantModel.getProducts(1).then(products => {
 				const categoryArr = Mocks.categories;
-				let basketStorage = BasketController.basket;
-				super.run(new RestaurantView({restaurant: response, products: products, basketStorage,  categoryArr}));
+				let basket = BasketController.basket;
+				super.run(new RestaurantView({restaurant: response, products: products, basket: basket,  categoryArr}));
 			}).catch(err => console.log(err));
 		}).catch(err => console.log(err));
-
 	}
 }
 
