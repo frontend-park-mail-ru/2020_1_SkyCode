@@ -11,7 +11,8 @@ export default class RestaurantCategories extends Component{
 		for (let categoryData of categoryArr) {
 			categories.push(new restaurantCategory({
 				categoryName: categoryData.text,
-				classes: 'restaurant-category-bar__category'
+				classes: 'restaurant-category-bar__category',
+				href: '#'
 			}));
 		}
 
