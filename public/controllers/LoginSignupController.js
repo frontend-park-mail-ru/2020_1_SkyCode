@@ -13,12 +13,16 @@ class LoginSignupController extends BaseController {
     run({profile}) {
         UserModel
             .getUser()
-            .then(() =>  {
-                EventBus.publish('set-page', {url: '/me'});
+            .then((answer) =>  {
+                if (answer.error === 'Unauthorized') {
+                    super.run(new LoginSignupView());
+                } else {
+                    EventBus.publish('set-page', {url: '/me'});
+                }
             })
-            .catch(err => console.log(err));
-
-        super.run(new LoginSignupView());
+            .catch(err => {
+                console.log(err);
+            });
     }
 
     startCatchEvents() {

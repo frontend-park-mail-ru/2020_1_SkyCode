@@ -40,7 +40,7 @@ class Router {
         let state = {};
 
         if (this._currentController) {
-            state = this._currentController.state;
+            state = this._currentController.state || {};
             this._savePageStateInHistory(this._currentController);
             this._currentController.stop();
         }

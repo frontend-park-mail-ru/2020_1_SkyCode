@@ -12,11 +12,14 @@ class ProfileController extends BaseController {
         UserModel
             .getUser()
             .then(response =>  {
-                super.run(new ProfileView({profile: response}));
+                if (response.error === 'Unauthorized') {
+                    EventBus.publish('set-page', {url: '/login'});
+                } else {
+                    super.run(new ProfileView({profile: response}));
+                }
             })
             .catch(err => {
                 console.log(err);
-                EventBus.publish('set-page', {url: '/login'});
             });
     }
 
