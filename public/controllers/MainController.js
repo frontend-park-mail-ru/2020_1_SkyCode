@@ -4,6 +4,7 @@ import BaseController from './BaseController.js';
 import MainView from '../render/views/MainView/MainView.js';
 import Mocks from '../mocks.js';
 import RestaurantModel from '../models/RestaurantModel.js';
+import BasketController from './BasketController.js';
 
 class MainController extends BaseController {
     constructor(title = 'main page') {
@@ -19,7 +20,7 @@ class MainController extends BaseController {
                 actionArr: actions,
                 categoryArr: categories,
                 restaurantArr: response.Restaurants,
-                products: BaseController.basket,
+                products: BasketController.basket,
             }));
         }).catch(err => console.log(err));
 

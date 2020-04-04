@@ -51,6 +51,7 @@ class Router {
         }
 
         [this._currentController, state.matchData] = this._matchUrl(url) || [Controller404];
+        history.replaceState(this._currentController.state, this._currentController.title, url);
         this._currentController.run(state);
     }
 
@@ -64,7 +65,6 @@ class Router {
         }
 
         [this._currentController, state.matchData] = this._matchUrl(url) || [Controller404];
-
         this._setNewHistoryRecord(this._currentController, url);
         this._currentController.run(state);
     }
@@ -82,14 +82,14 @@ class Router {
         this._registerPage(ProfileController, '/me');
         this._registerPage(LoginSignupController, '/login');
         this._registerPage(LoginSignupController, '/signup');
-        this._registerPage(RestaurantController, '/restaurants');
+        this._registerPage(RestaurantController, '/restaurants/:int');
         this._registerPage(CheckoutController, '/checkout');
         this._registerPage(AddProductByRestaurantController, '/add');
     }
 
     _registerPage(controller, path) {
         this._pages.push({
-            pattern: new RegExp('^' + path.replace(/:\w+/, '(\w+)') + '$'),
+            pattern: new RegExp('^' + path.replace(/:\w+/, '(\\w+)') + '$'),
             page: controller,
         });
     }
