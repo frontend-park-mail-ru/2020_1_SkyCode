@@ -12,12 +12,19 @@ class CheckoutController extends BaseController {
     };
 
     run({profile = Mocks.profile, personNum = 1}) {
-        UserModel.getUser().then(response => {
-            super.run(new CheckoutView({
-                profile: response.User,
-                basket: BasketController.basket,
-                personNum,
-            }));
+        UserModel
+            .getUser()
+            .then(response => {
+                if (response.error === 'Unauthorized') {
+                    EventBus.publish('redirect', {url: '/login'});
+                } else {
+                    super.run(new CheckoutView({
+                        profile: response.User,
+                        basket: BasketController.basket,
+                        personNum,
+                    }));
+                }
+
         }).catch(err => console.log(err));
 
     }
