@@ -10,7 +10,7 @@ export default class ActionBar extends Component{
         for (let actionData of actionArr) {
             actions.push(new Action({
                 classes: 'action-bar__action',
-                href: actionData.href,
+                // href: actionData.href, нужно в будущем добавить гиперссылку или коллбек на нажатие
                 src: actionData.src,
                 alt: actionData.alt,
             }));
