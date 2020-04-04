@@ -94,6 +94,11 @@
     visibility: hidden;
 }
 
+.add-product-by-restaurant__image-input {
+    opacity: 0;
+    visibility: hidden;
+}
+
 .login-field__input {
     width: 200px;
     text-align: center;

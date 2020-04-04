@@ -17,3 +17,7 @@
 .add-product-by-restaurant__title {
     font-size: 26px;
 }
+
+.add-product-by-restaurant__button {
+    margin-left: 5px;
+}
