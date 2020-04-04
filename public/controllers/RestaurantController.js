@@ -7,12 +7,15 @@ import Mocks from '../mocks.js';
 import BasketController from './BasketController.js';
 
 class RestaurantController extends BaseController {
+
 	constructor(title = 'Restaurant') {
 		super(title);
+		this.restaurantId = 0;
 	}
-	run() {
-		RestaurantModel.getRestaurant(1).then(response => {
-			RestaurantModel.getProducts(1).then(products => {
+	run(state) {
+		this.restaurantId = state.matchData[0];
+		RestaurantModel.getRestaurant(this.restaurantId).then(response => {
+			RestaurantModel.getProducts(this.restaurantId).then(products => {
 				const categoryArr = Mocks.categories;
 				let basket = BasketController.basket;
 				super.run(new RestaurantView({restaurant: response, products: products, basket: basket,  categoryArr}));
