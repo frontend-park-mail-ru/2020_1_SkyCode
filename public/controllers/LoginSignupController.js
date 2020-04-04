@@ -11,10 +11,12 @@ class LoginSignupController extends BaseController {
     }
 
     run({profile}) {
-        if (profile !== undefined) {
-            EventBus.publish('set-page', {url: '/'});
-            return;
-        }
+        UserModel
+            .getUser()
+            .then(() =>  {
+                EventBus.publish('set-page', {url: '/me'});
+            })
+            .catch(err => console.log(err));
 
         super.run(new LoginSignupView());
     }
