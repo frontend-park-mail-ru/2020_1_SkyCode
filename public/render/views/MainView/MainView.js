@@ -33,7 +33,7 @@ class MainView extends Component {
             order: new Order({
                 classes: 'order',
                 profile,
-                products,
+                basket: products,
             }),
             restaurantList: new RestaurantList({
                 classes: 'main-view__restaurant-list',

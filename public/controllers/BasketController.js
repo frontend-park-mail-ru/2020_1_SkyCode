@@ -1,5 +1,6 @@
 import BaseController from './BaseController.js';
 import EventBus from '../services/Events/EventBus.js';
+import RestaurantController from './RestaurantController.js';
 
 class BasketController extends BaseController {
 	constructor() {
@@ -25,7 +26,7 @@ class BasketController extends BaseController {
 			this.basket[data.id].amount = 1;
 		}
 
-		EventBus.publish('set-page', {url: '/restaurants'});
+		EventBus.publish('set-page', {url: `/restaurants/${RestaurantController.restaurantId}`});
 		console.log(this.basket);
 	}
 }
