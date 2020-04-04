@@ -8,7 +8,7 @@ class SessionModel {
     }
 
     logout() {
-        return Http.fetchDelete({path: '/api/v1/session'}).then(response => response.json());
+        return Http.fetchDelete({path: '/api/v1/logout'}).then(response => response.json());
     }
 
 }

@@ -12,6 +12,10 @@
     padding: 20px;
 }
 
+.profile-area__button-array {
+    display: flex;
+}
+
 .profile-area__title {
     font-size: 25px;
 }

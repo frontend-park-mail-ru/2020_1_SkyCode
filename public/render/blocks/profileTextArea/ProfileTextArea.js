@@ -53,6 +53,14 @@ export default class ProfileTextArea extends Component {
 						};
 						EventBus.publish('update-user', data);
 					}
+				}),
+			LogoutButton:
+				new neonButton({
+					text: 'Log Out',
+					classes: 'profile-update__logout-btn',
+					callback: () => {
+						EventBus.publish('log-out');
+						},
 				})
 		});
 	}

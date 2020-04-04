@@ -2,6 +2,7 @@ import BaseController from './BaseController.js';
 import ProfileView from '../render/views/ProfileView/ProfileView.js';
 import UserModel from '../models/UserModel.js';
 import EventBus from '../services/Events/EventBus.js';
+import SessionModel from '../models/SessionModel.js';
 
 class ProfileController extends BaseController {
     constructor(title = 'profile page') {
@@ -26,11 +27,22 @@ class ProfileController extends BaseController {
     startCatchEvents() {
         EventBus.subscribe('update-user', this.updateBioCb.bind(this));
         EventBus.subscribe('avatar-update', this.updateAvatarCb.bind(this));
+        EventBus.subscribe('log-out', this.logOut.bind(this));
     }
 
     stopCatchEvents() {
         EventBus.unsubscribe('update-user', this.updateBioCb.bind(this));
         EventBus.unsubscribe('avatar-update', this.updateAvatarCb.bind(this));
+        EventBus.unsubscribe('log-out', this.logOut.bind(this));
+    }
+
+    logOut() {
+        console.log('qwer');
+        SessionModel.logout().then(() => {
+           EventBus.publish('set-page', {url: '/login'});
+        }).catch(err => {
+            console.log(err);
+        });
     }
 
     updateBioCb(data) {
