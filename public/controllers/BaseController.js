@@ -17,6 +17,9 @@ class BaseController {
     }
 
     stop() {
+        if (this._view === undefined) {
+            return;
+        }
         this.stopCatchEvents();
         this._view.unbind();
         this._view = void 0;

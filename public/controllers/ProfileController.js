@@ -1,6 +1,5 @@
 import BaseController from './BaseController.js';
 import ProfileView from '../render/views/ProfileView/ProfileView.js';
-import Mocks from '../mocks.js';
 import UserModel from '../models/UserModel.js';
 import EventBus from '../services/Events/EventBus.js';
 
@@ -10,9 +9,18 @@ class ProfileController extends BaseController {
     }
 
     run() {
-        UserModel.getUser().then(response =>  {
-            super.run(new ProfileView({profile: response}));
-        }).catch(err => console.log(err));
+        UserModel
+            .getUser()
+            .then(response =>  {
+                if (response.error === 'Unauthorized') {
+                    EventBus.publish('redirect', {url: '/login'});
+                } else {
+                    super.run(new ProfileView({profile: response}));
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            });
     }
 
     startCatchEvents() {
@@ -26,14 +34,14 @@ class ProfileController extends BaseController {
     }
 
     updateBioCb(data) {
-        UserModel.updateUser(data).then(response => {
+        UserModel.updateUser(data).then(() => {
             EventBus.publish('set-page', {url: '/me'});
         }).catch(err => console.log(err));
     }
 
     updateAvatarCb(data) {
         console.log('AvaCb');
-        UserModel.updateAvatar(data).then(response => {
+        UserModel.updateAvatar(data).then(() => {
             EventBus.publish('set-page', {url: '/me'});
         }).catch(err => console.log(err));
     }
