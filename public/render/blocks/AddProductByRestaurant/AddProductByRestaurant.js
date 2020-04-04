@@ -32,23 +32,23 @@ export default class AddProductByRestaurant extends Component {
 				classes: 'add-product-by-restaurant__submit',
 				text: 'Add',
 				callback: () => {
-					const data = {
-						name: this.context.nameInput.domElement.value,
-						price: parseFloat(this.context.costInput.domElement.value),
-					};
-					EventBus.publish('add-product-by-restaurant', data);
+					let formData = new FormData();
+					formData.append('image', this.context.Image.domElement.files[0]);
+					formData.append('Name', this.context.nameInput.domElement.value);
+					formData.append('Price', this.context.costInput.domElement.value);
+					EventBus.publish('add-product-by-restaurant', formData);
 				}
 			})
 		});
 	}
-
-	bind() {
-		this.context.Image.domElement.addEventListener('change', () => {
-			const img = this.context.Image.domElement.files[0];
-			let formData = new FormData();
-			formData.append('image', img);
-			EventBus.publish('add-product-img-restaurant', formData);
-		});
-		super.bind();
-	}
+	//
+	// bind() {
+	// 	this.context.Image.domElement.addEventListener('change', () => {
+	// 		const img = this.context.Image.domElement.files[0];
+	// 		let formData = new FormData();
+	// 		formData.append('image', img);
+	// 		EventBus.publish('add-product-img-restaurant', formData);
+	// 	});
+	// 	super.bind();
+	// }
 }

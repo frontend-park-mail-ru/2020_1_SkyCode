@@ -28,8 +28,8 @@ class Http {
         return await this.fetchRequest({method: 'GET', path: path, m: 'cors'});
     }
 
-    async fetchPost({path, body}) {
-        return await this.fetchRequest({method: 'POST', path: path, body: body});
+    async fetchPost({path, body, type = 'json'}) {
+        return await this.fetchRequest({method: 'POST', path: path, body: body, type: type});
     }
 
     async fetchPut({path, body, type = 'json'}) {
