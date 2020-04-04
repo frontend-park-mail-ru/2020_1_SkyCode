@@ -8,7 +8,7 @@ import EventBus from '../services/Events/EventBus.js';
 class CheckoutController extends BaseController {
     constructor(title = 'confirm') {
         super(title);
-    };
+    }
 
     run({profile = Mocks.profile, personNum = 1}) {
         UserModel.getUser().then(response => {

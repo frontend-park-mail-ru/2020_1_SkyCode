@@ -8,7 +8,7 @@ import RestaurantList from '../../blocks/restaurantList/RestaurantList.js';
 
 class MainView extends Component {
     constructor({actionArr, categoryArr, restaurantArr,
-                profile, products}) {
+        profile, products}) {
         super();
 
         this.addContextData({

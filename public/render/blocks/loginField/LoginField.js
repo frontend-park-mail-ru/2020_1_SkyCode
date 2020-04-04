@@ -28,7 +28,7 @@ export default class LoginField extends Component {
                 const data = {
                     phone: this.context.identifierInput.domElement.value,
                     password: this.context.passwordInput.domElement.value
-                }
+                };
                 EventBus.publish('login', data);
             }
         })});

@@ -1,6 +1,5 @@
 import BaseController from './BaseController.js';
 import ProfileView from '../render/views/ProfileView/ProfileView.js';
-import Mocks from '../mocks.js';
 import UserModel from '../models/UserModel.js';
 import EventBus from '../services/Events/EventBus.js';
 
@@ -28,7 +27,7 @@ class ProfileController extends BaseController {
     updateBioCb(data) {
         UserModel.updateUser(data).then(response => {
             EventBus.publish('set-page', {url: '/me'});
-        })
+        });
     }
 
     updateAvatarCb(data) {

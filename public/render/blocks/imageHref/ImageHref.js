@@ -1,6 +1,6 @@
 import Component from '../../Component.js';
 import Input from '../../elements/input/Input.js';
-import EventBus from "../../../services/Events/EventBus.js";
+import EventBus from '../../../services/Events/EventBus.js';
 
 
 export default class ImageHref extends Component {

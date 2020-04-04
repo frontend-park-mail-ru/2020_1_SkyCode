@@ -8,7 +8,7 @@ export default class Basket extends Component {
 
         let basketProducts = [];
 
-        console.log("qwe");
+        console.log('qwe');
         console.log(basket);
 
         for (const id in basket) {

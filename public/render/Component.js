@@ -60,13 +60,13 @@ export default class Component {
             if (Array.isArray(value)) {
                 value.forEach((value) => {
                     if (Component.isComponent(value)) {
-                        value.bind()
+                        value.bind();
                     }
                 });
             }
 
             if (Component.isComponent(value)) {
-                value.bind()
+                value.bind();
             }
         }
     }

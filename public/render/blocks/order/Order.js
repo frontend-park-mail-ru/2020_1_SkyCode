@@ -7,9 +7,9 @@ import Href from '../../elements/href/Href.js';
 
 export default class Order extends Component {
     constructor({basket,
-                    classes = 'order',
-                    withCheckoutButton = true,
-                    personNum = 1}) {
+        classes = 'order',
+        withCheckoutButton = true,
+        personNum = 1}) {
         super();
         this.addClasses(classes);
         this.addContextData({
@@ -20,7 +20,7 @@ export default class Order extends Component {
                     sum += basket[id].price * basket[id].amount;
                 }
                 return sum;
-                },
+            },
             profileButton: new ImageHref({
                 classes: 'order__profile-href',
                 imageClasses: 'order__profile-image',
