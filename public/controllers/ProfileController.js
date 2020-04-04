@@ -28,14 +28,14 @@ class ProfileController extends BaseController {
     updateBioCb(data) {
         UserModel.updateUser(data).then(response => {
             EventBus.publish('set-page', {url: '/me'});
-        })
+        }).catch(err => console.log(err));
     }
 
     updateAvatarCb(data) {
         console.log('AvaCb');
         UserModel.updateAvatar(data).then(response => {
             EventBus.publish('set-page', {url: '/me'});
-        });
+        }).catch(err => console.log(err));
     }
 }
 

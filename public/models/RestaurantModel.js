@@ -10,7 +10,19 @@ class RestaurantModel {
 	}
 
 	getRestaurants() {
-		return Http.fetchGet({path: `/api/v1/restaurants/`}).then(response => response.json());
+		return Http.fetchGet({path: '/api/v1/restaurants'}).then(response => response.json());
+	}
+
+	addProduct(id, body) {
+		return Http.fetchPost({path: `/api/v1/restaurants/${id}/product`, body: JSON.stringify(body)}).then(response => response.json());
+	}
+
+	addProductImage(id, body) {
+		return Http.fetchPut({path: `/api/v1/products/${id}/image`, body, type: 'file'}).then(response => response.json());
+	}
+
+	addOrder(body) {
+		return Http.fetchPost({path: '/api/v1/orders/checkout', body: JSON.stringify(body)}).then(response => response.json());
 	}
 }
 

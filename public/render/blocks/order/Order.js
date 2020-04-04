@@ -4,6 +4,7 @@ import PlaceTimeCard from '../placeTimeCard/PlaceTimeCard.js';
 import Basket from '../basket/Basket.js';
 import PersonInput from '../personInput/PersonInput.js';
 import Href from '../../elements/href/Href.js';
+import BasketController from '../../../controllers/BasketController.js';
 
 export default class Order extends Component {
     constructor({basket,
@@ -19,6 +20,7 @@ export default class Order extends Component {
                 for (const id in basket) {
                     sum += basket[id].price * basket[id].amount;
                 }
+                BasketController.total = sum;
                 return sum;
                 },
             profileButton: new ImageHref({
