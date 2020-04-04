@@ -19,6 +19,7 @@ class Router {
         this._registerAllPages();
         this._initControllers();
         EventBus.subscribe('set-page', (this._goto).bind(this));
+        EventBus.subscribe('redirect', (this._redirect).bind(this));
         window.onpopstate = (this._handlePopState).bind(this);
     }
 
@@ -27,13 +28,30 @@ class Router {
         // Мы даже не знаем, было ли нажато hist.front() или hist.back(), чтобы при помощи обратных команд
         // выйти на нужные записи, изменить их и вернуться на текущую
         event.preventDefault();
-        this._currentController.hide();
-        [this._currentController, event.state.matchData] = this._matchUrl(window.location.pathname) || [Controller404];
-        this._currentController.show(document.location, event.state);
+        if (this._currentController) {
+            this._currentController.stop();
+        }
+
+        let matchData;
+
+        [this._currentController, matchData] = this._matchUrl(window.location.pathname) || [Controller404];
+        this._currentController.run(document.location, matchData);
     }
 
     _initControllers() {
         BasketController.startCatchEvents();
+    }
+
+    _redirect({url}) {
+        let state = {};
+
+        if (this._currentController) {
+            state = this._currentController.state || {};
+            this._currentController.stop();
+        }
+
+        [this._currentController, state.matchData] = this._matchUrl(url) || [Controller404];
+        this._currentController.run(state);
     }
 
     _goto({url}) {

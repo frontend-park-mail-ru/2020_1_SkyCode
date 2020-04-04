@@ -13,7 +13,7 @@ class ProfileController extends BaseController {
             .getUser()
             .then(response =>  {
                 if (response.error === 'Unauthorized') {
-                    EventBus.publish('set-page', {url: '/login'});
+                    EventBus.publish('redirect', {url: '/login'});
                 } else {
                     super.run(new ProfileView({profile: response}));
                 }

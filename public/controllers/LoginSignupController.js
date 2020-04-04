@@ -17,7 +17,7 @@ class LoginSignupController extends BaseController {
                 if (answer.error === 'Unauthorized') {
                     super.run(new LoginSignupView());
                 } else {
-                    EventBus.publish('set-page', {url: '/me'});
+                    EventBus.publish('redirect', {url: '/me'});
                 }
             })
             .catch(err => {
