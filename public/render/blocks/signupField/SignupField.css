@@ -1,6 +1,6 @@
 .login-signup__signup {
-    width: 300px;
-    height: 500px;
+    width: 50%;
+    height: 90%;
     grid-area: signup;
     background-color: #FFFFFF;
     justify-self: center;
@@ -14,8 +14,8 @@
 }
 
 .login-signup__signup:hover {
-    width: 300px;
-    height: 500px;
+    width: 50%;
+    height: 90%;
     grid-area: signup;
     background-color: #FFFFFF;
     justify-self: center;
