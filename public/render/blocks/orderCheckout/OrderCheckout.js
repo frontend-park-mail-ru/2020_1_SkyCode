@@ -16,9 +16,9 @@ export default class OrderCheckout extends Component {
                 value:
                     phone[0] +
                     '(' + phone.slice(1, 4) + ')' +
-                    phone.slice(5, 8) + '-' +
-                    phone.slice(8, 10) + '-' +
-                    phone.slice(11, 13),
+                    phone.slice(4, 7) + '-' +
+                    phone.slice(7, 9) + '-' +
+                    phone.slice(9, 11),
                 placeholder: '8(800)555-35-35',
                 isRequired: true,
                 pattern: '\\d\\(\\d{3}\\)\\d{3}-\\d{2}-\\d{2}'
