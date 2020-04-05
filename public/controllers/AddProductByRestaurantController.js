@@ -2,6 +2,8 @@ import BaseController from './BaseController.js';
 import AddProductByRestaurantView from '../render/views/AddProductByRestaurantView/AddProductByRestaurantView.js';
 import EventBus from '../services/Events/EventBus.js';
 import RestaurantModel from '../models/RestaurantModel.js';
+import UserModel from '../models/UserModel.js';
+import Router from '../routing/Router.js';
 
 class AddProductByRestaurantController extends BaseController {
     constructor(title = 'Add product') {
