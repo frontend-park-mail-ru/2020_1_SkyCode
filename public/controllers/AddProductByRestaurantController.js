@@ -10,7 +10,8 @@ class AddProductByRestaurantController extends BaseController {
 		super(title);
 	}
 
-	run() {
+	run(state) {
+		this.restaurant = state.matchData[0];
 		UserModel.getUser().then(response => {
 			if (response.User.role === 'Moderator' || response.User.role === 'Admin') {
 				super.run(new AddProductByRestaurantView());
@@ -30,9 +31,9 @@ class AddProductByRestaurantController extends BaseController {
 	}
 
 	addProductCb(data) {
-		RestaurantModel.addProduct(Router.state.matchData[0], data).then(response => {
+		RestaurantModel.addProduct(this.restaurant, data).then(response => {
 			if (response.message) {
-				EventBus.publish('set-page', {url: `/restaurants/${Router.state.matchData[0]}`});
+				EventBus.publish('set-page', {url: `/restaurants/${this.restaurant}`});
 			}
 		}).catch(err => console.log(err));
 	}
