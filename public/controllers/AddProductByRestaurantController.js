@@ -2,6 +2,8 @@ import BaseController from './BaseController.js';
 import AddProductByRestaurantView from '../render/views/AddProductByRestaurantView/AddProductByRestaurantView.js';
 import EventBus from '../services/Events/EventBus.js';
 import RestaurantModel from '../models/RestaurantModel.js';
+import UserModel from '../models/UserModel.js';
+import RestaurantController from './RestaurantController.js';
 
 class AddProductByRestaurantController extends BaseController {
 	constructor(title = 'Add product') {
@@ -9,7 +11,14 @@ class AddProductByRestaurantController extends BaseController {
 	}
 
 	run() {
-		super.run(new AddProductByRestaurantView());
+		UserModel.getUser().then(response => {
+			if (response.User.role === 'Moderator' || response.User.role === 'Admin') {
+				super.run(new AddProductByRestaurantView());
+			} else {
+				EventBus.publish('set-page', {url: '/'});
+			}
+		}).catch(err => console.log(err));
+
 	}
 
 	startCatchEvents() {
@@ -25,7 +34,7 @@ class AddProductByRestaurantController extends BaseController {
 	addProductCb(data) {
 		RestaurantModel.addProduct(1, data).then(response => {
 			if (response.message) {
-				EventBus.publish('set-page', {url: '/restaurants'});
+				EventBus.publish('set-page', {url: `/restaurants/${RestaurantController.restaurantId}`});
 			}
 		}).catch(err => console.log(err));
 	}
