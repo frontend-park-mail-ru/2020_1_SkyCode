@@ -11,10 +11,10 @@ const port = 3000;
 app.use(express.static(path.resolve(__dirname, '../', 'public')));
 app.use(express.static(path.resolve(__dirname, '../../backend/images/')));
 
-app.get('/',  function (req, res) {
+app.get('/',  (req, res) => {
     res.sendFile(path.resolve(root), 'public/index.html');
 });
 
-app.listen(port, function () {
+app.listen(port, () => {
     console.log(`Server listen at port ${port}`);
 });

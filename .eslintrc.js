@@ -49,7 +49,7 @@ module.exports = {
         }],
         'lines-between-class-members': ['error', 'always'],
         'max-depth':                ['error', 3],
-        'max-length':               ['error', {
+        'max-len':               ['error', {
             'code': 80,
         }],
         'multiline-comment-style':  ['error', 'starred-block'],
@@ -71,13 +71,15 @@ module.exports = {
         'no-nested-ternary':        ['error'],
         'no-new-object':            ['error'],
         'no-tabs':                  ['error'],
-        'no-trailing-spaces':       ['error'],
+        'no-trailing-spaces':       ['error', {
+            'skipBlankLines': true
+        }],
         'no-unneeded-ternary':      ['error'],
         'no-whitespace-before-property':    ['error'],
         'object-curly-spacing':     ['error'],
         'object-property-newline':  ['error'],
         'operator-assignment':      ['error', 'always'],
-        'operator-linebreak':       ['error', 'none'],
+        'operator-linebreak':       ['error', 'before'],
         'padded-blocks':            ['error', 'never'],
         'prefer-exponentiation-operator':   ['error'],
         'quote-props':              ['error', 'as-needed'],

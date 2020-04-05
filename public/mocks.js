@@ -1,4 +1,3 @@
-
 class Mocks {
     constructor() {
         this.initActions();
@@ -7,7 +6,6 @@ class Mocks {
         this.initRestaurants();
         this.initProfile();
     }
-
 
 
     get restaurants() {
@@ -76,7 +74,7 @@ class Mocks {
             'Thai',
             'Sushi', // 8
 
-            'Магазины',//9
+            'Магазины', //9
             'Завтраки',
             'Индийская',
             'Узбекская',
@@ -87,12 +85,12 @@ class Mocks {
             'Десерты',
             'Пироги',
             'Азиатская',
-            'Шашлыки',//20
+            'Шашлыки', //20
             'Фастфуд',
             'Бургеры',
             'Пицца',
             'Суши',
-            'Великий пост',//25
+            'Великий пост', //25
         ];
 
         for (let i = 1; i <= 8; i++) {
@@ -142,7 +140,7 @@ class Mocks {
             quantity: 1,
             name: 'Coca-cola',
             cost: 99,
-        },];
+        }];
     }
 
     initRestaurants() {
@@ -218,13 +216,9 @@ class Mocks {
             rate: 4.1,
             avgDeliveryTime: 35,
             href: '/restaurants',
-        },];
+        }];
     }
 }
 
 export default new Mocks();
-
-
-
-
 

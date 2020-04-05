@@ -12,14 +12,14 @@ class ProfileController extends BaseController {
     run() {
         UserModel
             .getUser()
-            .then(response => {
+            .then((response) => {
                 if (response.error === 'Unauthorized') {
                     EventBus.publish('redirect', {url: '/login'});
                 } else {
                     super.run(new ProfileView({profile: response}));
                 }
             })
-            .catch(err => {
+            .catch((err) => {
                 console.log(err);
             });
     }
@@ -44,10 +44,11 @@ class ProfileController extends BaseController {
             } else {
                 EventBus.publish('set-page', {url: '/login'});
             }
-        }).catch(err => {
-            EventBus.publish('logout-error', 'Bad connection');
-            console.log(err);
-        });
+        })
+            .catch((err) => {
+                EventBus.publish('logout-error', 'Bad connection');
+                console.log(err);
+            });
     }
 
     updateBioCb(data) {
@@ -60,7 +61,7 @@ class ProfileController extends BaseController {
                     EventBus.publish('set-page', {url: '/me'});
                 }
             })
-            .catch(err => {
+            .catch((err) => {
                 console.log(err);
                 EventBus.publish('update-bio-error', 'Bad connection');
             });
@@ -76,7 +77,7 @@ class ProfileController extends BaseController {
                     EventBus.publish('set-page', {url: '/me'});
                 }
             })
-            .catch(err => {
+            .catch((err) => {
                 console.log(err);
                 EventBus.publish('update-avatar-error', 'Bad connection');
             });

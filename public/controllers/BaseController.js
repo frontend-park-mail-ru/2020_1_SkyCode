@@ -1,17 +1,14 @@
 'use strict';
 
 class BaseController {
-    _title;
-    _view;
-
     constructor(title) {
         this._title = title;
     }
 
-    // У вьюхи должны быть методы bind, unbind, HTML и геттер state
+    // У вьюхи должны быть методы bind, unbind, html и геттер state
     run(view) {
         this._view = view;
-        document.body.innerHTML = this._view.HTML();
+        document.body.innerhtml = this._view.html();
         this._view.bind();
         this.startCatchEvents();
     }
@@ -34,9 +31,8 @@ class BaseController {
     }
 
     get state() {
-        if (this._view === undefined){
-            this.log('an attempt to get undef state');
-            return;
+        if (this._view === undefined) {
+            return undefined;
         }
 
         return this._view.state;
@@ -47,7 +43,7 @@ class BaseController {
     }
 
     log(message) {
-        let start = '\n' + this.constructor.name + ':\t';
+        const start = '\n' + this.constructor.name + ':\t';
         console.log(start + message);
     }
 }

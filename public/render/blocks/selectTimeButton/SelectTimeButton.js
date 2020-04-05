@@ -3,7 +3,7 @@ import Button from '../../elements/button/Button.js';
 
 
 export default class SelectTimeButton extends Component {
-    constructor({classes, imageHref, text, callback}) {
+    constructor({classes, text, callback}) {
         super(classes, {
             textButton: new Button({
                 classes: 'select-time-button__text-button',
@@ -13,7 +13,7 @@ export default class SelectTimeButton extends Component {
             imageButton: new Button({
                 classes: 'select-time-button__image-button',
                 callback,
-            })
+            }),
         });
     }
 }

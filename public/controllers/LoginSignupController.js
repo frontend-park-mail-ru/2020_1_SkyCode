@@ -1,8 +1,9 @@
-import BaseController from './BaseController.js';
+// eslint-disable-next-line max-len
 import LoginSignupView from '../render/views/LoginSignupView/LoginSignupView.js';
 import EventBus from '../services/Events/EventBus.js';
-import UserModel from '../models/UserModel.js';
 import SessionModel from '../models/SessionModel.js';
+import BaseController from './BaseController.js';
+import UserModel from '../models/UserModel.js';
 
 
 class LoginSignupController extends BaseController {
@@ -10,7 +11,7 @@ class LoginSignupController extends BaseController {
         super(title);
     }
 
-    run({profile}) {
+    run() {
         UserModel
             .getUser()
             .then((answer) =>  {
@@ -20,7 +21,7 @@ class LoginSignupController extends BaseController {
                     EventBus.publish('redirect', {url: '/me'});
                 }
             })
-            .catch(err => {
+            .catch((err) => {
                 console.log(err);
                 super.run(new LoginSignupView());
             });
@@ -41,7 +42,7 @@ class LoginSignupController extends BaseController {
 
         UserModel
             .createUser(data)
-            .then(response => {
+            .then((response) => {
                 if (response.message) {
                     EventBus.publish('set-page', {url: '/'});
                 }
@@ -50,7 +51,7 @@ class LoginSignupController extends BaseController {
                     EventBus.publish('signup-error', response.error);
                 }
             })
-            .catch(err => {
+            .catch((err) => {
                 console.log(err);
             });
     }
@@ -60,7 +61,7 @@ class LoginSignupController extends BaseController {
 
         SessionModel
             .login(data)
-            .then(response => {
+            .then((response) => {
                 if (response.User) {
                     EventBus.publish('set-page', {url: '/'});
                 }
@@ -69,7 +70,7 @@ class LoginSignupController extends BaseController {
                     EventBus.publish('login-error', response.error);
                 }
             })
-            .catch(err => {
+            .catch((err) => {
                 console.log(err);
             });
     }

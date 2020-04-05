@@ -1,21 +1,22 @@
 import Component from '../../Component.js';
-import productCard from '../productCard/productCard.js';
+import ProductCard from '../productCard/ProductCard.js';
 
 export default class Products extends Component {
-	constructor({classes, productArr}) {
-		super();
-		this.addClasses(classes);
+    constructor({classes, productArr}) {
+        super();
+        this.addClasses(classes);
 
-		let products = [];
-		for (let product of productArr) {
-			products.push(new productCard({classes: `product-card-${product.id}`,
-				product,
-				id: product.id,
-				imgSrc: `/images/${product.image}`,
-				productDescription: product.price,
-				productName: product.name}));
-		}
+        const products = [];
+        for (const product of productArr) {
+            products.push(new ProductCard({
+                classes: `product-card-${product.id}`,
+                product,
+                id: product.id,
+                imgSrc: `/images/${product.image}`,
+                productDescription: product.price,
+                productName: product.name}));
+        }
 
-		this.addContextData({products}, true);
-	}
+        this.addContextData({products}, true);
+    }
 }

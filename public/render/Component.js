@@ -1,8 +1,8 @@
 export default class Component {
     constructor(classes, contextObj, id) {
-        this.toString = this.HTML;
+        this.toString = this.html;
 
-        // templateData --- информация, передающаяся в template
+        // TemplateData --- информация, передающаяся в template
         this._context = {};
         // Добавляем классы
         this.addContextData({classes: []}, false);
@@ -34,8 +34,8 @@ export default class Component {
     }
 
     addClasses(classes) {
-        let isArr = Array.isArray(classes);
-        let isStr = typeof classes === 'string';
+        const isArr = Array.isArray(classes);
+        const isStr = typeof classes === 'string';
 
         if (!(isArr || isStr)) {
             throw 'bad usage: must be str or strArr on entry';
@@ -56,25 +56,23 @@ export default class Component {
 
     bind() {
         for (const value of Object.values(this.context)) {
-
             if (Array.isArray(value)) {
                 value.forEach((value) => {
                     if (Component.isComponent(value)) {
-                        value.bind()
+                        value.bind();
                     }
                 });
             }
 
             if (Component.isComponent(value)) {
-                value.bind()
+                value.bind();
             }
         }
     }
 
     unbind() {
         for (const value of Object.values(this.context)) {
-
-            if (!(value instanceof Component)){
+            if (!(value instanceof Component)) {
                 continue;
             }
 
@@ -82,7 +80,7 @@ export default class Component {
         }
     }
 
-    HTML() {
+    html() {
         return Handlebars.templates[this.constructor.name + '.hbs'](this.context);
     }
 
@@ -99,7 +97,7 @@ export default class Component {
             return document.getElementById(this.id);
         }
 
-        let me = document.getElementsByClassName(this.strClasses);
+        const me = document.getElementsByClassName(this.strClasses);
         if (me.length === 0) {
             return;
         }
@@ -108,6 +106,6 @@ export default class Component {
     }
 
     get state() {
-        return {}; // состояния будут реализованы позже
+        return {}; // Состояния будут реализованы позже
     }
 }

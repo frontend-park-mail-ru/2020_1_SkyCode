@@ -16,15 +16,13 @@ export default class PersonInput extends Component {
             }),
         });
 
-        let incrementCallback = (add) => {
-            return () => {
-                let input = this.context.input.domElement;
-                let setValue = Number(input.value) + add;
+        const incrementCallback = (add) => () => {
+            const input = this.context.input.domElement;
+            const setValue = Number(input.value) + add;
 
-                if (input.min <= setValue && setValue <= input.max) {
-                    input.value = setValue;
-                }
-            };
+            if (input.min <= setValue && setValue <= input.max) {
+                input.value = setValue;
+            }
         };
 
         this.addContextData({

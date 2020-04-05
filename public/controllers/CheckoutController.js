@@ -9,12 +9,12 @@ import RestaurantModel from '../models/RestaurantModel.js';
 class CheckoutController extends BaseController {
     constructor(title = 'confirm') {
         super(title);
-    };
+    }
 
-    run({profile = Mocks.profile, personNum = 1}) {
+    run({personNum = 1}) {
         UserModel
             .getUser()
-            .then(response => {
+            .then((response) => {
                 if (response.error === 'Unauthorized') {
                     EventBus.publish('redirect', {url: '/login'});
                 } else {
@@ -24,9 +24,8 @@ class CheckoutController extends BaseController {
                         personNum,
                     }));
                 }
-
-            }).catch(err => console.log(err));
-
+            })
+            .catch((err) => console.log(err));
     }
 
     startCatchEvents() {
@@ -40,16 +39,17 @@ class CheckoutController extends BaseController {
     checkoutCb(data) {
         RestaurantModel
             .addOrder(data)
-            .then(response => {
+            .then((response) => {
                 if (response.error) {
                     EventBus.publish('order-checkout-error', response.error);
                 } else {
                     EventBus.publish('set-page', {url: '/'});
                 }
-            }).catch(err => {
+            })
+            .catch((err) => {
                 console.log(err);
                 EventBus.publish('order-checkout-error', err);
-        });
+            });
     }
 }
 

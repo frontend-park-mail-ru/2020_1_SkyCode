@@ -11,7 +11,7 @@ export default class ProfileView extends Component {
             }),
             ProfileTextArea: new ProfileTextArea({
                 classes: 'profile-view__profile-area',
-                data: profile
+                data: profile,
             }),
         });
     }

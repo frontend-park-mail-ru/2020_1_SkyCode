@@ -8,9 +8,9 @@ import BasketController from '../../../controllers/BasketController.js';
 
 export default class Order extends Component {
     constructor({basket,
-                    classes = 'order',
-                    withCheckoutButton = true,
-                    personNum = 1}) {
+        classes = 'order',
+        withCheckoutButton = true,
+        personNum = 1}) {
         super();
         this.addClasses(classes);
         this.addContextData({
@@ -22,7 +22,7 @@ export default class Order extends Component {
                 }
                 BasketController.total = sum;
                 return sum;
-                },
+            },
             profileButton: new ImageHref({
                 classes: 'order__profile-href',
                 imageClasses: 'order__profile-image',
@@ -34,7 +34,7 @@ export default class Order extends Component {
             }),
             basket: new Basket({
                 classes: 'order__basket',
-                basket: basket
+                basket,
             }),
             personInput: new PersonInput({
                 classes: 'order__person-input',

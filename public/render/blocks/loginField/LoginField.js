@@ -1,6 +1,6 @@
 import Component from '../../Component.js';
 import Input from '../../elements/input/Input.js';
-import neonButton from '../../elements/neonButton/neonButton.js';
+import NeonButton from '../../elements/neonButton/neonButton.js';
 import EventBus from '../../../services/Events/EventBus.js';
 import ErrorBlock from '../errorBlock/ErrorBlock.js';
 import Validation from '../../../services/InputValidation.js';
@@ -14,7 +14,7 @@ export default class LoginField extends Component {
                 type: 'tel',
                 placeholder: '8(800)555-35-35',
                 isRequired: true,
-                pattern: '\\d\\(\\d{3}\\)\\d{3}-\\d{2}-\\d{2}'
+                pattern: '\\d\\(\\d{3}\\)\\d{3}-\\d{2}-\\d{2}',
             }),
             passwordInput: new Input({
                 classes: 'login-field__input',
@@ -34,7 +34,7 @@ export default class LoginField extends Component {
             }),
         });
 
-        this.addContextData({submitButton: new neonButton({
+        this.addContextData({submitButton: new NeonButton({
             classes: 'login-field__submit',
             text: 'Log In',
             callback: () => {
@@ -57,10 +57,10 @@ export default class LoginField extends Component {
 
                 const data = {
                     phone: this.context.phoneInput.domElement.value,
-                    password: this.context.passwordInput.domElement.value
+                    password: this.context.passwordInput.domElement.value,
                 };
                 EventBus.publish('login', data);
-            }
+            },
         })});
     }
 

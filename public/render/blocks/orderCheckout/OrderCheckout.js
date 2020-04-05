@@ -1,6 +1,6 @@
 import Component from '../../Component.js';
 import Input from '../../elements/input/Input.js';
-import neonButton from '../../elements/neonButton/neonButton.js';
+import NeonButton from '../../elements/neonButton/neonButton.js';
 import EventBus from '../../../services/Events/EventBus.js';
 import BasketController from '../../../controllers/BasketController.js';
 import ErrorBlock from '../errorBlock/ErrorBlock.js';
@@ -13,15 +13,14 @@ export default class OrderCheckout extends Component {
                 classes: 'order-checkout__input',
                 id: 'order-checkout__phone-input',
                 type: 'tel',
-                value:
-                    phone[0] +
-                    '(' + phone.slice(1, 4) + ')' +
-                    phone.slice(4, 7) + '-' +
-                    phone.slice(7, 9) + '-' +
-                    phone.slice(9, 11),
+                value: phone[0]
+                    + '(' + phone.slice(1, 4)
+                    + ')' + phone.slice(4, 7)
+                    + '-' + phone.slice(7, 9)
+                    + '-' + phone.slice(9, 11),
                 placeholder: '8(800)555-35-35',
                 isRequired: true,
-                pattern: '\\d\\(\\d{3}\\)\\d{3}-\\d{2}-\\d{2}'
+                pattern: '\\d\\(\\d{3}\\)\\d{3}-\\d{2}-\\d{2}',
             }),
             PhoneError: new ErrorBlock({
                 id: 'phone-input-error',
@@ -42,6 +41,7 @@ export default class OrderCheckout extends Component {
                 id: 'order-checkout__email-input',
                 type: 'email',
                 value: email,
+                // eslint-disable-next-line max-len
                 pattern: '^([A-Za-z0-9_\\-\\.])+@([A-Za-z0-9_\\-\\.])+\\.([A-Za-z]{2,4})$',
                 placeholder: 'email@example.com',
             }),
@@ -56,12 +56,12 @@ export default class OrderCheckout extends Component {
             }),
             GeneralError: new ErrorBlock({
                 id: 'general-error',
-            })
+            }),
         });
 
         this.addContextData({
             SubmitButton:
-                new neonButton({
+                new NeonButton({
                     classes: 'order-checkout__confirm',
                     text: 'Confirm',
                     callback: () => {
@@ -99,7 +99,7 @@ export default class OrderCheckout extends Component {
                         for (const id in basket) {
                             const productItem = {
                                 productId: parseInt(id),
-                                count: basket[id].amount
+                                count: basket[id].amount,
                             };
                             products.push(productItem);
                         }
@@ -111,10 +111,10 @@ export default class OrderCheckout extends Component {
                             comment: this.context.CommentInput.domElement.value,
                             personNum: BasketController.persons,
                             price: BasketController.total,
-                            products: products,
+                            products,
                         };
                         EventBus.publish('checkout', data);
-                    }
+                    },
                 }),
         });
     }

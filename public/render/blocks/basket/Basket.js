@@ -6,7 +6,7 @@ export default class Basket extends Component {
     constructor({classes, basket}) {
         super(classes);
 
-        let basketProducts = [];
+        const basketProducts = [];
 
         for (const id in basket) {
             basketProducts.push(new BasketProduct({

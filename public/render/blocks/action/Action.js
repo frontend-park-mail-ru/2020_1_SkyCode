@@ -7,7 +7,7 @@ export default class Action extends Component {
         this.addContextData({
             href,
             src,
-            alt
+            alt,
         }, false);
     }
 }

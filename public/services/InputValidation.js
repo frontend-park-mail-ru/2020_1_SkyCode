@@ -1,27 +1,27 @@
 export default class Validation {
     static inputValidation(inputComponent, errFieldComponent) {
-        let [isValid, errors] = this.inputCheck(inputComponent.domElement);
+        const [isValid, errors] = this.inputCheck(inputComponent.domElement);
 
         this.showErrors(errFieldComponent, errors);
         return isValid;
     }
 
     static inputCheck(inputElement) {
-        let errors = Array();
-        let validity = inputElement.validity;
-        let isValid = validity.valid;
+        const errors = Array();
+        const validity = inputElement.validity;
+        const isValid = validity.valid;
 
         if (isValid) return [true, errors];
 
-        if (validity.valueMissing){
+        if (validity.valueMissing) {
             errors.push('Required field');
         }
 
-        if (validity.patternMismatch){
+        if (validity.patternMismatch) {
             errors.push('Wrong format');
         }
 
-        if (validity.tooLong){
+        if (validity.tooLong) {
             errors.push(`Must be less than ${inputElement.maxLength} symbols`);
         }
 

@@ -9,12 +9,12 @@ export default class SearchField extends Component {
             inputButton: new Input({
                 type: 'image',
                 src: '/static/search.svg',
-                classes: 'search-field__input-button'
+                classes: 'search-field__input-button',
             }),
             inputField: new Input({
                 type: 'text',
                 placeholder: 'Search',
-                classes: 'search-field__input-field'
+                classes: 'search-field__input-field',
             }),
         }, true);
 
@@ -25,15 +25,17 @@ export default class SearchField extends Component {
         const me = this.domElement;
         if (me === undefined) return;
 
-        const button = me.getElementsByClassName('search-field__input-button')[0];
+        const button = me.getElementsByClassName(
+            'search-field__input-button',
+        )[0];
         button.onclick = this.callback;
     }
 
     unbind() {
-        let me = this.domElement;
+        const me = this.domElement;
         if (me === undefined) return;
 
-        let but = me.getElementsByClassName('search-field__input-button')[0];
+        const but = me.getElementsByClassName('search-field__input-button')[0];
         but.onclick = null;
     }
 }

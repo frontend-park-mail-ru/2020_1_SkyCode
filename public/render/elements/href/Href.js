@@ -3,23 +3,22 @@ import EventBus from '../../../services/Events/EventBus.js';
 
 export default class Href extends Component {
     constructor({text, href, classes = 'href'}) {
-
         super();
         this.addClasses(classes);
         this.addContextData({
-            text: text,
-            href: href,
+            text,
+            href,
         }, false);
     }
 
     bind() {
-        let me = super.domElement;
+        const me = super.domElement;
         if (me === undefined) {
             console.trace('cat\' ret myself from DOM');
             return;
         }
 
-        me.onclick = function (event) {
+        me.onclick = function(event) {
             event.preventDefault();
             console.log('href ' + this.href + ' clicked');
             EventBus.publish('set-page', {url: this.context.href});
@@ -27,7 +26,7 @@ export default class Href extends Component {
     }
 
     unbind() {
-        let me = super.domElement;
+        const me = super.domElement;
         if (me === undefined) {
             return;
         }

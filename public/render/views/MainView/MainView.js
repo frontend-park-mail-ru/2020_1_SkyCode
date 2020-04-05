@@ -8,7 +8,7 @@ import RestaurantList from '../../blocks/restaurantList/RestaurantList.js';
 
 class MainView extends Component {
     constructor({actionArr, categoryArr, restaurantArr,
-                profile, products}) {
+        profile, products}) {
         super();
 
         this.addContextData({
@@ -20,7 +20,7 @@ class MainView extends Component {
                 callback: () => 0,
             }),
             header: new Header({
-                classes: 'header'
+                classes: 'header',
             }),
             actionBar: new ActionBar({
                 classes: 'action-bar',
@@ -38,7 +38,7 @@ class MainView extends Component {
             restaurantList: new RestaurantList({
                 classes: 'main-view__restaurant-list',
                 restaurantArr,
-            })
+            }),
         }, true);
     }
 }

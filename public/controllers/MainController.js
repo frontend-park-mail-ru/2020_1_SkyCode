@@ -12,7 +12,7 @@ class MainController extends BaseController {
     }
 
     run() {
-        RestaurantModel.getRestaurants().then(response => {
+        RestaurantModel.getRestaurants().then((response) => {
             const actions = Mocks.actions;
             const categories = Mocks.categories;
             super.run(new MainView({
@@ -21,16 +21,16 @@ class MainController extends BaseController {
                 restaurantArr: response.Restaurants,
                 products: BasketController.basket,
             }));
-        }).catch(err => {
-            console.log(err);
-            super.run(new MainView({
-                actionArr: Mocks.actions,
-                categoryArr: Mocks.categories,
-                restaurantArr: Mocks.restaurants,
-                products: BasketController.basket,
-            }));
-        });
-
+        })
+            .catch((err) => {
+                console.log(err);
+                super.run(new MainView({
+                    actionArr: Mocks.actions,
+                    categoryArr: Mocks.categories,
+                    restaurantArr: Mocks.restaurants,
+                    products: BasketController.basket,
+                }));
+            });
     }
 }
 

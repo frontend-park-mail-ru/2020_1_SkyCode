@@ -1,6 +1,6 @@
 import Component from '../../Component.js';
 import Input from '../../elements/input/Input.js';
-import neonButton from '../../elements/neonButton/neonButton.js';
+import NeonButton from '../../elements/neonButton/neonButton.js';
 import EventBus from '../../../services/Events/EventBus.js';
 import Img from '../../elements/img/Img.js';
 import ErrorBlock from '../errorBlock/ErrorBlock.js';
@@ -36,6 +36,7 @@ export default class ProfileTextArea extends Component {
                 id: 'email-input',
                 type: 'email',
                 value: data.User.email,
+                // eslint-disable-next-line max-len
                 pattern: '^([A-Za-z0-9_\\-\\.])+@([A-Za-z0-9_\\-\\.])+\\.([A-Za-z]{2,4})$',
                 placeholder: 'email@example.com',
             }),
@@ -62,7 +63,7 @@ export default class ProfileTextArea extends Component {
 
         this.addContextData({
             SubmitButton:
-                new neonButton({
+                new NeonButton({
                     text: 'Save',
                     classes: 'profile-update__submit-btn',
                     callback: () => {
@@ -80,7 +81,6 @@ export default class ProfileTextArea extends Component {
                             this.context.lastNameErrorField,
                         ) && validationFlag;
 
-                        debugger
                         validationFlag = Validation.inputValidation(
                             this.context.EmailInput,
                             this.context.emailErrorField,
@@ -96,40 +96,40 @@ export default class ProfileTextArea extends Component {
                             email: this.context.EmailInput.domElement.value,
                         };
                         EventBus.publish('update-user', data);
-                    }
+                    },
                 }),
 
             LogoutButton:
-                new neonButton({
+                new NeonButton({
                     text: 'Log Out',
                     classes: 'profile-update__logout-btn',
                     callback: () => {
                         EventBus.publish('log-out');
                     },
-                })
+                }),
         });
     }
 
     bind() {
         this.context.AvatarInput.domElement.addEventListener('change', () => {
             const img = this.context.AvatarInput.domElement.files[0];
-            let formData = new FormData();
+            const formData = new FormData();
             formData.append('avatar', img);
             this.context.avatarErrorField.clean();
             EventBus.publish('avatar-update', formData);
         });
 
         EventBus.subscribe('update-bio-error', (message) => {
-        	this.context
-				.generalErrorField
-				.addMessage(message);
-		});
+            this.context
+                .generalErrorField
+                .addMessage(message);
+        });
 
-		EventBus.subscribe('update-avatar-error', (message) => {
-			this.context
-				.avatarErrorField
-				.addMessage(message);
-		});
+        EventBus.subscribe('update-avatar-error', (message) => {
+            this.context
+                .avatarErrorField
+                .addMessage(message);
+        });
 
         super.bind();
     }

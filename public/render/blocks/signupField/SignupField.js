@@ -1,6 +1,6 @@
 import Component from '../../Component.js';
 import Input from '../../elements/input/Input.js';
-import neonButton from '../../elements/neonButton/neonButton.js';
+import NeonButton from '../../elements/neonButton/neonButton.js';
 import EventBus from '../../../services/Events/EventBus.js';
 import ErrorBlock from '../errorBlock/ErrorBlock.js';
 import Validation from '../../../services/InputValidation.js';
@@ -61,11 +61,11 @@ export default class SignupField extends Component {
             }),
             generalErrorField: new ErrorBlock({
                 id: 'signup-general-error',
-            })
+            }),
         });
 
         this.addContextData({
-            submitButton: new neonButton({
+            submitButton: new NeonButton({
                 classes: 'signup-field__submit',
                 text: 'Sign Up',
                 callback: () => {
@@ -97,11 +97,15 @@ export default class SignupField extends Component {
                         this.context.password2ErrorField,
                     ) && validationFlag;
 
-                    if (this.context.passwordInput1.domElement.value !==
-                        this.context.passwordInput2.domElement.value) {
+                    if (this.context.passwordInput1.domElement.value
+                        !== this.context.passwordInput2.domElement.value) {
                         validationFlag = false;
-                        this.context.password1ErrorField.addMessage('Passwords must be equal');
-                        this.context.password2ErrorField.addMessage('Passwords must be equal');
+                        this.context.password1ErrorField.addMessage(
+                            'Passwords must be equal',
+                        );
+                        this.context.password2ErrorField.addMessage(
+                            'Passwords must be equal',
+                        );
                     }
 
                     if (validationFlag === false) {
@@ -115,14 +119,13 @@ export default class SignupField extends Component {
                         password: this.context.passwordInput1.domElement.value,
                     };
                     EventBus.publish('signup', data);
-                }
-            })
+                },
+            }),
         });
     }
 
     bind() {
         EventBus.subscribe('signup-error', (message) => {
-            debugger;
             this.context.generalErrorField.addMessage(message);
         });
 

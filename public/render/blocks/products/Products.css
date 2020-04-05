@@ -1,4 +1,4 @@
-@import "../../blocks/productCard/productCard.css";
+@import "../productCard/ProductCard.css";
 
 .product-card-grid {
     grid-area: products;

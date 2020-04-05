@@ -3,11 +3,17 @@ class Http {
         this.serverPath = 'http://89.208.199.114:5000';
     }
 
-    fetchRequest({path = '/', method = 'GET', body = null, headers = true, type = 'json'}) {
+    fetchRequest({
+        path = '/',
+        method = 'GET',
+        body = null,
+        headers = true,
+        type = 'json',
+    }) {
         const req = {
-            method: method,
+            method,
             mode: 'cors',
-            credentials: 'include'
+            credentials: 'include',
         };
 
         if (body != null) {
@@ -19,27 +25,35 @@ class Http {
                     };
                 }
             }
-
         }
         return fetch(`${this.serverPath}${path}`, req);
     }
 
     async fetchGet({path}) {
-        return await this.fetchRequest({method: 'GET', path: path, m: 'cors'});
+        return await this.fetchRequest({method: 'GET',
+            path,
+            m: 'cors'});
     }
 
     async fetchPost({path, body, type = 'json'}) {
-        return await this.fetchRequest({method: 'POST', path: path, body: body, type: type});
+        return await this.fetchRequest({method: 'POST',
+            path,
+            body,
+            type});
     }
 
     async fetchPut({path, body, type = 'json'}) {
-        return await this.fetchRequest({method: 'PUT', path: path, body: body, type: type});
+        return await this.fetchRequest({method: 'PUT',
+            path,
+            body,
+            type});
     }
 
     async fetchDelete({path, body}) {
-        return await this.fetchRequest({method: 'DELETE', path: path, body: body});
+        return await this.fetchRequest({method: 'DELETE',
+            path,
+            body});
     }
-
 }
 
 export default new Http();

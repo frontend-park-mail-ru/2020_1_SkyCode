@@ -7,7 +7,7 @@ export default class Button extends Component {
     }
 
     bind() {
-        let node = super.domElement;
+        const node = super.domElement;
         if (node === undefined || this.callback === undefined) {
             return;
         }
@@ -16,7 +16,7 @@ export default class Button extends Component {
     }
 
     unbind() {
-        let node = super.domElement;
+        const node = super.domElement;
         if (node  === undefined) {
             return;
         }

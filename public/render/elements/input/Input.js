@@ -2,17 +2,17 @@ import Component from '../../Component.js';
 
 export default class Input extends Component {
     constructor({
-                    type,
-                    placeholder,
-                    classes = 'input',
-                    src,
-                    max,
-                    min,
-                    id,
-                    value,
-                    isRequired,
-                    pattern,
-                    maxlength,
+        type,
+        placeholder,
+        classes = 'input',
+        src,
+        max,
+        min,
+        id,
+        value,
+        isRequired,
+        pattern,
+        maxlength,
 
     }) {
         super(classes, {
@@ -25,7 +25,6 @@ export default class Input extends Component {
             isRequired,
             pattern,
             maxlength,
-        },
-            id);
+        }, id);
     }
 }

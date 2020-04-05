@@ -1,6 +1,6 @@
 import Component from '../../Component.js';
 
-export default class HamburgerButton extends Component{
+export default class HamburgerButton extends Component {
     constructor({classes = 'hamburger-button', callback}) {
         super();
         this.addClasses(classes);
@@ -8,7 +8,7 @@ export default class HamburgerButton extends Component{
     }
 
     bind() {
-        let me = super.domElement;
+        const me = super.domElement;
         if (me === undefined) {
             return;
         }
@@ -17,12 +17,11 @@ export default class HamburgerButton extends Component{
     }
 
     unbind() {
-        let me = super.domElement;
+        const me = super.domElement;
         if (me === undefined) {
             return;
         }
 
         me.onclick = null;
-
     }
 }
