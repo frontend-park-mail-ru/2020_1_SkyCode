@@ -7,7 +7,7 @@ export default class Validation {
     }
 
     static inputCheck(inputElement) {
-        const errors = Array();
+        const errors = [];
         const validity = inputElement.validity;
         const isValid = validity.valid;
 
