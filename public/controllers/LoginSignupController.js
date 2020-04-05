@@ -22,6 +22,7 @@ class LoginSignupController extends BaseController {
             })
             .catch(err => {
                 console.log(err);
+                super.run(new LoginSignupView());
             });
     }
 
@@ -36,20 +37,37 @@ class LoginSignupController extends BaseController {
     }
 
     signupCb(data) {
-        UserModel.createUser(data).then(response => {
-            if (response.message) {
-                EventBus.publish('set-page', {url: '/'});
-            }
-        }).catch(err => console.log(err));
-        console.log(data);
+        UserModel
+            .createUser(data)
+            .then(response => {
+                if (response.message) {
+                    EventBus.publish('set-page', {url: '/'});
+                }
+
+                if (response.error) {
+                    EventBus.publish('signup-error', response.error);
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            });
     }
 
     loginCb(data) {
-        SessionModel.login(data).then(response => {
-            if (response.User) {
-                EventBus.publish('set-page', {url: '/'});
-            }
-        }).catch(err => console.log(err));
+        SessionModel
+            .login(data)
+            .then(response => {
+                if (response.User) {
+                    EventBus.publish('set-page', {url: '/'});
+                }
+
+                if (response.error) {
+                    EventBus.publish('login-error', response.error);
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            });
     }
 }
 

@@ -10,6 +10,10 @@ export default class Input extends Component {
                     min,
                     id,
                     value,
+                    isRequired,
+                    pattern,
+                    maxlength,
+
     }) {
         super(classes, {
             src,
@@ -18,6 +22,9 @@ export default class Input extends Component {
             min,
             max,
             value,
+            isRequired,
+            pattern,
+            maxlength,
         },
             id);
     }
