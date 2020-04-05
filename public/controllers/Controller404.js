@@ -2,7 +2,7 @@ import BaseController from './BaseController.js';
 
 class Controller404 extends BaseController {
     run() {
-        document.body.innerhtml = '<b>404...zzz...404...zzz</b>';
+        document.body.innerHTML = '<b>404...zzz...404...zzz</b>';
     }
 
     stop() {}
