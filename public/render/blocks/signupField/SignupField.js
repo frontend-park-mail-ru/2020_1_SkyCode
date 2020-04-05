@@ -97,12 +97,11 @@ export default class SignupField extends Component {
                         this.context.password2ErrorField,
                     ) && validationFlag;
 
-                    if (this.context.passwordInput1.value !==
-                        this.context.passwordInput2.value) {
+                    if (this.context.passwordInput1.domElement.value !==
+                        this.context.passwordInput2.domElement.value) {
                         validationFlag = false;
-                        this.context
-                            .generalErrorField
-                            .addMessage('Passwords must be equal');
+                        this.context.password1ErrorField.addMessage('Passwords must be equal');
+                        this.context.password2ErrorField.addMessage('Passwords must be equal');
                     }
 
                     if (validationFlag === false) {
