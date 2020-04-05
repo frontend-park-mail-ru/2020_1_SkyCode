@@ -122,6 +122,7 @@ export default class SignupField extends Component {
 
     bind() {
         EventBus.subscribe('signup-error', (message) => {
+            debugger;
             this.context.generalErrorField.addMessage(message);
         });
 

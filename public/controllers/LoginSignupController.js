@@ -37,6 +37,8 @@ class LoginSignupController extends BaseController {
     }
 
     signupCb(data) {
+        data.phone = data.phone.replace(/[()-]/g, '');
+
         UserModel
             .createUser(data)
             .then(response => {
@@ -54,6 +56,8 @@ class LoginSignupController extends BaseController {
     }
 
     loginCb(data) {
+        data.phone = data.phone.replace(/[()-]/g, '');
+
         SessionModel
             .login(data)
             .then(response => {
