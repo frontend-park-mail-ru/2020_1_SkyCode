@@ -12,7 +12,7 @@ class ProfileController extends BaseController {
     run() {
         UserModel
             .getUser()
-            .then(response =>  {
+            .then(response => {
                 if (response.error === 'Unauthorized') {
                     EventBus.publish('redirect', {url: '/login'});
                 } else {
@@ -38,24 +38,48 @@ class ProfileController extends BaseController {
 
     logOut() {
         console.log('qwer');
-        SessionModel.logout().then(() => {
-           EventBus.publish('set-page', {url: '/login'});
+        SessionModel.logout().then((response) => {
+            if (response.error) {
+                EventBus.publish('logout-error', response.error);
+            } else {
+                EventBus.publish('set-page', {url: '/login'});
+            }
         }).catch(err => {
+            EventBus.publish('logout-error', 'Bad connection');
             console.log(err);
         });
     }
 
     updateBioCb(data) {
-        UserModel.updateUser(data).then(() => {
-            EventBus.publish('set-page', {url: '/me'});
-        }).catch(err => console.log(err));
+        UserModel
+            .updateUser(data)
+            .then((response) => {
+                if (response.error) {
+                    EventBus.publish('update-bio-error', response.error);
+                } else {
+                    EventBus.publish('set-page', {url: '/me'});
+                }
+            })
+            .catch(err => {
+                console.log(err);
+                EventBus.publish('update-bio-error', 'Bad connection');
+            });
     }
 
     updateAvatarCb(data) {
-        console.log('AvaCb');
-        UserModel.updateAvatar(data).then(() => {
-            EventBus.publish('set-page', {url: '/me'});
-        }).catch(err => console.log(err));
+        UserModel
+            .updateAvatar(data)
+            .then((response) => {
+                if (response.error) {
+                    EventBus.publish('update-avatar-error', response.error);
+                } else {
+                    EventBus.publish('set-page', {url: '/me'});
+                }
+            })
+            .catch(err => {
+                console.log(err);
+                EventBus.publish('update-avatar-error', 'Bad connection');
+            });
     }
 }
 

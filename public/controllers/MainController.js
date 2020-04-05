@@ -21,7 +21,15 @@ class MainController extends BaseController {
                 restaurantArr: response.Restaurants,
                 products: BasketController.basket,
             }));
-        }).catch(err => console.log(err));
+        }).catch(err => {
+            console.log(err);
+            super.run(new MainView({
+                actionArr: Mocks.actions,
+                categoryArr: Mocks.categories,
+                restaurantArr: Mocks.restaurants,
+                products: BasketController.basket,
+            }));
+        });
 
     }
 }
