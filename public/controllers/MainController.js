@@ -13,7 +13,6 @@ class MainController extends BaseController {
 
     run() {
         RestaurantModel.getRestaurants().then(response => {
-            console.log(response);
             const actions = Mocks.actions;
             const categories = Mocks.categories;
             super.run(new MainView({

@@ -9,7 +9,6 @@ export default class Basket extends Component {
         let basketProducts = [];
 
         for (const id in basket) {
-            console.log(basket[id]);
             basketProducts.push(new BasketProduct({
                 classes: 'basket__basket-product',
                 name: basket[id].name,

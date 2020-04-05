@@ -6,7 +6,6 @@ import OrderCheckout from '../../blocks/orderCheckout/OrderCheckout.js';
 export default class CheckoutView extends Component {
     constructor({profile, basket, personNum}) {
         super();
-        console.log(profile);
         this.addContextData({
             Header: new Header({
                 classes: 'header',
