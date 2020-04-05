@@ -18,6 +18,14 @@ class BasketController extends BaseController {
 		EventBus.unsubscribe('add-product', this.addProductCb.bind(this));
 	}
 
+	productNumber() {
+		return Object.keys(this.basket).length;
+	}
+
+	isEmpty() {
+		return 0 === this.productNumber();
+	}
+
 	addProductCb(data) {
 		if (data.id in this.basket) {
 			this.basket[data.id].amount++;

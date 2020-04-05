@@ -25,7 +25,7 @@ class CheckoutController extends BaseController {
                     }));
                 }
 
-        }).catch(err => console.log(err));
+            }).catch(err => console.log(err));
 
     }
 
@@ -38,10 +38,18 @@ class CheckoutController extends BaseController {
     }
 
     checkoutCb(data) {
-        RestaurantModel.addOrder(data).then(response => {
-            EventBus.publish('set-page', {url: '/'});
-        }).catch(err => console.log(err));
-        console.log(data);
+        RestaurantModel
+            .addOrder(data)
+            .then(response => {
+                if (response.error) {
+                    EventBus.publish('order-checkout-error', response.error);
+                } else {
+                    EventBus.publish('set-page', {url: '/'});
+                }
+            }).catch(err => {
+                console.log(err);
+                EventBus.publish('order-checkout-error', err);
+        });
     }
 }
 
