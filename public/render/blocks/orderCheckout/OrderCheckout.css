@@ -1,6 +1,6 @@
 .order-confirmation {
     width: 80%;
-    height: 80%;
+    height: 90%;
     padding: 20px;
     box-shadow: 0px 4px 100px #D6D6D6;
     grid-area: order-confirmation;
@@ -19,7 +19,7 @@
 .order-checkout__confirm-paper {
     display: flex;
     width: 80%;
-    height: 80%;
+    height: 90%;
     margin: 10px;
     flex-direction: column;
     align-items: flex-start;
