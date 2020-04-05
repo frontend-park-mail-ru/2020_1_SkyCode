@@ -35,7 +35,6 @@ class BasketController extends BaseController {
 		}
 
 		EventBus.publish('set-page', {url: `/restaurants/${RestaurantController.restaurantId}`});
-		console.log(this.basket);
 	}
 }
 

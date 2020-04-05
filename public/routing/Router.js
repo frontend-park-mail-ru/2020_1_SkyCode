@@ -84,7 +84,7 @@ class Router {
         this._registerPage(LoginSignupController, '/signup');
         this._registerPage(RestaurantController, '/restaurants/:int');
         this._registerPage(CheckoutController, '/checkout');
-        this._registerPage(AddProductByRestaurantController, '/add');
+        this._registerPage(AddProductByRestaurantController, '/restaurants/:int/add');
     }
 
     _registerPage(controller, path) {

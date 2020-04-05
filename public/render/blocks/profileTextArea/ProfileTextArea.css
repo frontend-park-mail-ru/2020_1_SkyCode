@@ -1,6 +1,6 @@
 .profile-view__profile-area {
     grid-area: profile-area;
-    height: 400px;
+    height: 90%;
     width: 80%;
     justify-self: center;
     align-self: center;
@@ -13,7 +13,11 @@
 }
 
 .profile-area__button-array {
+    width: 20%;
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .profile-area__title {
