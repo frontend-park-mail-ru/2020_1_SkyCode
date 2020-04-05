@@ -1,6 +1,6 @@
 import Component from '../../Component.js';
 import Input from '../../elements/input/Input.js';
-import NeonButton from '../../elements/neonButton/neonButton.js';
+import NeonButton from '../../elements/neonButton/NeonButton.js';
 import EventBus from '../../../services/Events/EventBus.js';
 import BasketController from '../../../controllers/BasketController.js';
 import ErrorBlock from '../errorBlock/ErrorBlock.js';
