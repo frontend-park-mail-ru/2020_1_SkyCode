@@ -11,14 +11,6 @@ export default class Validation {
         let validity = inputElement.validity;
         let isValid = validity.valid;
 
-        // if (inputElement.type === 'email') {
-        //     let isOk = inputElement.value.match(/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/);
-        //     if (isOk === null) {
-        //         errors.push('Not right email form');
-        //         isValid = false;
-        //     }
-        // }
-
         if (isValid) return [true, errors];
 
         if (validity.valueMissing){
