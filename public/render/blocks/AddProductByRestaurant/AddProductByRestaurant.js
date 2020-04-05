@@ -82,7 +82,11 @@ export default class AddProductByRestaurant extends Component {
 	}
 
 	bind() {
-		EventBus.subscribe('add-product-error', (message) => {
+		EventBus.subscribe('add-product-error add-product-image-error', (message) => {
+			this.context.generalError.addMessage(message);
+		});
+
+		EventBus.subscribe('add-product-image-error', (message) => {
 			this.context.generalError.addMessage(message);
 		});
 
@@ -90,7 +94,11 @@ export default class AddProductByRestaurant extends Component {
 	}
 
 	unbind() {
-		EventBus.unsubscribe('add-product-error', (message) => {
+		EventBus.unsubscribe('add-product-error add-product-image-error', (message) => {
+			this.context.generalError.addMessage(message);
+		});
+
+		EventBus.unsubscribe('add-product-image-error', (message) => {
 			this.context.generalError.addMessage(message);
 		});
 
