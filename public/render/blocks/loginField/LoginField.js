@@ -8,7 +8,7 @@ import Validation from '../../../services/InputValidation.js';
 export default class LoginField extends Component {
     constructor({classes}) {
         super(classes, {
-            identifierInput: new Input({
+            phoneInput: new Input({
                 classes: 'login-field__input',
                 id: 'login-field__email-input',
                 type: 'tel',
@@ -23,7 +23,7 @@ export default class LoginField extends Component {
                 placeholder: 'password',
                 isRequired: true,
             }),
-            identifierErrorField: new ErrorBlock({
+            phoneErrorField: new ErrorBlock({
                 id: 'indent-input-err',
             }),
             passwordErrorField: new ErrorBlock({
@@ -39,11 +39,11 @@ export default class LoginField extends Component {
             text: 'Log In',
             callback: () => {
                 this.context.generalErrorField.clean();
-
                 let validationFlag = true;
+
                 validationFlag = Validation.inputValidation(
-                    this.context.identifierInput,
-                    this.context.identifierErrorField,
+                    this.context.phoneInput,
+                    this.context.phoneErrorField,
                 );
 
                 validationFlag = Validation.inputValidation(
@@ -56,7 +56,7 @@ export default class LoginField extends Component {
                 }
 
                 const data = {
-                    phone: this.context.identifierInput.domElement.value,
+                    phone: this.context.phoneInput.domElement.value,
                     password: this.context.passwordInput.domElement.value
                 };
                 EventBus.publish('login', data);
