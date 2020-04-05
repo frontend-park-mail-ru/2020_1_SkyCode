@@ -1,5 +1,5 @@
 import Component from '../../Component.js';
-import NeonButton from '../../elements/neonButton/neonButton.js';
+import NeonButton from '../../elements/neonButton/NeonButton.js';
 import EventBus from '../../../services/Events/EventBus.js';
 
 export default class ProductCard extends Component {

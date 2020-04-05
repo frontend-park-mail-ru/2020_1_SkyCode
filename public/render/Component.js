@@ -81,7 +81,10 @@ export default class Component {
     }
 
     html() {
-        return Handlebars.templates[this.constructor.name + '.hbs'](this.context);
+        // eslint-disable-next-line no-undef
+        return Handlebars.templates[
+            this.constructor.name + '.hbs'
+        ](this.context);
     }
 
     set id(id) {
@@ -99,13 +102,13 @@ export default class Component {
 
         const me = document.getElementsByClassName(this.strClasses);
         if (me.length === 0) {
-            return;
+            return undefined;
         }
 
         return me[0];
     }
 
     get state() {
-        return {}; // Состояния будут реализованы позже
+        return {};
     }
 }
