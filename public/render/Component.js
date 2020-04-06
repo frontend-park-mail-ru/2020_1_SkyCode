@@ -50,7 +50,7 @@ export default class Component {
         this.context.classes.push(addClasses);
     }
 
-    get strClasses() {
+    get classes() {
         return this.context.classes.join(' ');
     }
 

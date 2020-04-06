@@ -12,6 +12,7 @@
     transition: 0.2s;
     outline: none;
     border: 0;
+    cursor: pointer;
 }
 
 .profile-text-area__submit-phone {
