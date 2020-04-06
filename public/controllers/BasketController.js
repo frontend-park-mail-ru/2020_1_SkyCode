@@ -68,6 +68,9 @@ class BasketController extends BaseController {
             this.basket.product[id].amount--;
         }
 
+        EventBus.publish('set-page', {
+            url: `/restaurants/${RestaurantController.restaurantId}`,
+        });
     }
     
     personAmountChangeHandler(personNum) {
