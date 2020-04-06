@@ -28,22 +28,12 @@ class AddProductByRestaurantController extends BaseController {
             'add-product-by-restaurant',
             this.addProductHandler.bind(this),
         );
-
-        EventBus.subscribe(
-            'add-product-img-restaurant',
-            this.addProductImgHandler.bind(this),
-        );
     }
 
     stopCatchEvents() {
         EventBus.unsubscribe(
             'add-product-by-restaurant',
             this.addProductHandler.bind(this),
-        );
-
-        EventBus.unsubscribe(
-            'add-product-img-restaurant',
-            this.addProductImgHandler.bind(this),
         );
     }
 
@@ -52,7 +42,10 @@ class AddProductByRestaurantController extends BaseController {
             .addProduct(this.restaurant, data)
             .then((response) => {
                 if (response.error) {
-                    EventBus.publish('add-product-error', response.error);
+                    EventBus.publish(
+                        'add-product-by-restaurant-error',
+                        response.error,
+                    );
                 } else if (response.message) {
                     EventBus.publish('set-page', {
                         url: `/restaurants/${this.restaurant}`,
@@ -60,20 +53,10 @@ class AddProductByRestaurantController extends BaseController {
                 }
             })
             .catch((err) => {
-                EventBus.publish('add-product-error', err);
-            });
-    }
-
-    addProductImgHandler(data) {
-        RestaurantModel.addProductImage(1, data).then((response) => {
-            if (response.error) {
-                EventBus.publish('add-product-image-error', response.error);
-            } else if (response.message) {
-                EventBus.publish('set-page', {url: '/add'});
-            }
-        })
-            .catch((err) => {
-                EventBus.publish('add-product-image-error', err);
+                EventBus.publish(
+                    'add-product-by-restaurant-error',
+                    err,
+                );
             });
     }
 }
