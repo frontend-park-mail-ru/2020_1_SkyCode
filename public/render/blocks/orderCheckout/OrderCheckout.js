@@ -66,7 +66,7 @@ export default class OrderCheckout extends Component {
                     text: 'Confirm',
                     callback: () => {
                         this.context.GeneralError.clean();
-                        let validationFlag = true;
+                        let validationFlag;
 
                         validationFlag = Validation.inputValidation(
                             this.context.PhoneInput,

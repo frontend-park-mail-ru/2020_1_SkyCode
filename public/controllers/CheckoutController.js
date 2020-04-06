@@ -1,6 +1,5 @@
 import BaseController from './BaseController.js';
 import CheckoutView from '../render/views/CheckoutView/CheckoutView.js';
-import Mocks from '../mocks.js';
 import UserModel from '../models/UserModel.js';
 import BasketController from './BasketController.js';
 import EventBus from '../services/Events/EventBus.js';
