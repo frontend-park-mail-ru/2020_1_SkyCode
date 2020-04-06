@@ -32,3 +32,7 @@
     font-size: 30px;
     cursor: pointer;
 }
+
+.profile-update__logout-btn{
+    margin-left: 15px;
+}

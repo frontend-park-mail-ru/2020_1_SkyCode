@@ -12,7 +12,7 @@ export default class RestaurantCategories extends Component {
             categories.push(new RestaurantCategory({
                 categoryName: categoryData.text,
                 classes: 'restaurant-category-bar__category',
-                href: '#',
+                href: '',
             }));
         }
 

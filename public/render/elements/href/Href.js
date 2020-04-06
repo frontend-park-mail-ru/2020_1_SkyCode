@@ -23,6 +23,7 @@ export default class Href extends Component {
             console.log('href ' + this.href + ' clicked');
             EventBus.publish('set-page', {url: this.context.href});
         }.bind(this);
+        console.log('qwe');
     }
 
     unbind() {
