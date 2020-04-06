@@ -97,6 +97,7 @@ class Mocks {
             this._categories.push({
                 src: `/static/categories/cat${i}.svg`,
                 text: texts[i - 1],
+                id: i,
             });
         }
 
@@ -105,6 +106,7 @@ class Mocks {
             this._categories.push({
                 src: `/static/categories/cat${i}.jpg`,
                 text: texts[i - 1],
+                id: i,
             });
         }
     }

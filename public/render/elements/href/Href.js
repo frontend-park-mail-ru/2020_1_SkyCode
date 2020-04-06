@@ -2,13 +2,11 @@ import Component from '../../Component.js';
 import EventBus from '../../../services/Events/EventBus.js';
 
 export default class Href extends Component {
-    constructor({text, href, classes = 'href'}) {
-        super();
-        this.addClasses(classes);
-        this.addContextData({
+    constructor({text, href, classes = 'href', id}) {
+        super(classes, {
             text,
             href,
-        }, false);
+        }, id);
     }
 
     bind() {

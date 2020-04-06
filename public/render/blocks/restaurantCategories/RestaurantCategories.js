@@ -1,5 +1,6 @@
 import Component from '../../Component.js';
 import RestaurantCategory from '../restaurantСategory/RestaurantCategory.js';
+import RestaurantController from '../../../controllers/RestaurantController.js';
 
 
 export default class RestaurantCategories extends Component {
@@ -12,7 +13,8 @@ export default class RestaurantCategories extends Component {
             categories.push(new RestaurantCategory({
                 categoryName: categoryData.text,
                 classes: 'restaurant-category-bar__category',
-                href: '',
+                href: `/restaurants/${RestaurantController.restaurantId}`,
+                id: categoryData.id,
             }));
         }
 
