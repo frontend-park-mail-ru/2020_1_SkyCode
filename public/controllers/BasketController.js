@@ -22,6 +22,7 @@ class BasketController extends BaseController {
         );
         EventBus.subscribe('success-login', this.CheckBasketHandler.bind(this));
         EventBus.subscribe('log-out', this.cleanBasketHandler.bind(this));
+        EventBus.subscribe('delete-prod', this.deleteProductHandler.bind(this));
     }
 
     stopCatchEvents() {
@@ -32,6 +33,7 @@ class BasketController extends BaseController {
         );
         EventBus.unsubscribe('success-login', this.CheckBasketHandler.bind(this));
         EventBus.unsubscribe('log-out', this.cleanBasketHandler.bind(this));
+        EventBus.unsubscribe('delete-prod', this.deleteProductHandler.bind(this));
     }
 
     productNumber() {
@@ -54,6 +56,22 @@ class BasketController extends BaseController {
             url: `/restaurants/${RestaurantController.restaurantId}`,
         });
     }
+
+    deleteProductHandler(id) {
+        console.log(id);
+        if (id in this.basket.product) {
+
+            if (this.basket.product[id].amount === 1) {
+                delete this.basket.product[id];
+            } else if (this.basket.product[id].amount > 1) {
+                this.basket.product[id].amount--;
+            }
+
+            EventBus.publish('set-page', {
+                url: `/restaurants/${RestaurantController.restaurantId}`,
+            });
+        }
+    }
     
     personAmountChangeHandler(personNum) {
         if (personNum > 0) {
@@ -72,7 +90,6 @@ class BasketController extends BaseController {
     }
 
     cleanBasketHandler(data) {
-        console.log('CLEAN');
         this.basket = {
             owner: -1,
             product: {},
