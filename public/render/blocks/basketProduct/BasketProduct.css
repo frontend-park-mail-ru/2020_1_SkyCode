@@ -11,7 +11,8 @@
 }
 
 .basket__basket-product:hover {
-    background: linear-gradient(90deg, transparent, orangered);
+    background: linear-gradient(90deg, transparent, gray);
+    border-radius: 5px;
     cursor: pointer;
 }
 
