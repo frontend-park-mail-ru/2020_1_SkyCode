@@ -9,6 +9,7 @@ import UserModel from '../models/UserModel.js';
 class LoginSignupController extends BaseController {
     constructor(title = 'login-signup page') {
         super(title);
+        this.profileId = 0;
     }
 
     execute() {
@@ -64,6 +65,8 @@ class LoginSignupController extends BaseController {
             .then((response) => {
                 if (response.User) {
                     EventBus.publish('set-page', {url: '/'});
+                    this.profileId = response.User.id;
+                    EventBus.publish('success-login', response.User.id);
                 }
 
                 if (response.error) {

@@ -19,6 +19,7 @@ class MainController extends BaseController {
                 actionArr: actions,
                 categoryArr: categories,
                 restaurantArr: response.Restaurants,
+                products: BasketController.basket.product,
             }));
         })
             .catch((err) => {
@@ -27,7 +28,7 @@ class MainController extends BaseController {
                     actionArr: Mocks.actions,
                     categoryArr: Mocks.categories,
                     restaurantArr: Mocks.restaurants,
-                    products: BasketController.basket,
+                    products: BasketController.basket.product,
                 }));
             });
     }
