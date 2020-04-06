@@ -8,8 +8,7 @@ import SelectTimeButton from '../../blocks/selectTimeButton/SelectTimeButton.js'
 import RestaurantList from '../../blocks/restaurantList/RestaurantList.js';
 
 class MainView extends Component {
-    constructor({actionArr, categoryArr, restaurantArr,
-        profile, products}) {
+    constructor({actionArr, categoryArr, restaurantArr}) {
         super();
 
         this.addContextData({
@@ -33,8 +32,6 @@ class MainView extends Component {
             }),
             order: new Order({
                 classes: 'order',
-                profile,
-                basket: products,
             }),
             restaurantList: new RestaurantList({
                 classes: 'main-view__restaurant-list',

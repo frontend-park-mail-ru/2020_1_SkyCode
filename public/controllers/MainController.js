@@ -19,7 +19,6 @@ class MainController extends BaseController {
                 actionArr: actions,
                 categoryArr: categories,
                 restaurantArr: response.Restaurants,
-                products: BasketController.basket,
             }));
         })
             .catch((err) => {

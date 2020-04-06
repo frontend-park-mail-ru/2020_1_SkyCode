@@ -10,8 +10,8 @@ class AddProductByRestaurantController extends BaseController {
         super(title);
     }
 
-    execute(state) {
-        this.restaurant = state.matchData[0];
+    execute(matchData) {
+        this.restaurant = matchData[0];
         UserModel.getUser().then((response) => {
             if (response.User.role === 'Moderator'
                 || response.User.role === 'Admin') {

@@ -10,7 +10,7 @@ class CheckoutController extends BaseController {
         super(title);
     }
 
-    execute({personNum = 1}) {
+    execute() {
         UserModel
             .getUser()
             .then((response) => {
@@ -20,7 +20,7 @@ class CheckoutController extends BaseController {
                     super.execute(new CheckoutView({
                         profile: response.User,
                         basket: BasketController.basket,
-                        personNum,
+                        personNum: BasketController.persons,
                     }));
                 }
             })

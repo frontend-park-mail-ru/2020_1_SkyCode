@@ -12,13 +12,14 @@ class RestaurantController extends BaseController {
         this.restaurantId = 0;
     }
 
-    execute(state) {
-        this.restaurantId = state.matchData[0];
+    execute(matchData) {
+        this.restaurantId = matchData[0];
         RestaurantModel.getRestaurant(this.restaurantId).then((response) => {
             RestaurantModel.getProducts(this.restaurantId).then((products) => {
                 const categoryArr = Mocks.categories;
                 const basket = BasketController.basket;
-                super.execute(new RestaurantView({restaurant: response,
+                super.execute(new RestaurantView({
+                    restaurant: response,
                     products,
                     basket,
                     categoryArr}));

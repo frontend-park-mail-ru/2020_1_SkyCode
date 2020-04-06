@@ -12,10 +12,18 @@ class BasketController extends BaseController {
 
     startCatchEvents() {
         EventBus.subscribe('add-product', this.addProductHandler.bind(this));
+        EventBus.subscribe(
+            'person-amount-change',
+            this.personAmountChangeHandler.bind(this),
+        );
     }
 
     stopCatchEvents() {
         EventBus.unsubscribe('add-product', this.addProductHandler.bind(this));
+        EventBus.unsubscribe(
+            'person-amount-change',
+            this.personAmountChangeHandler.bind(this),
+        );
     }
 
     productNumber() {
@@ -37,6 +45,12 @@ class BasketController extends BaseController {
         EventBus.publish('set-page', {
             url: `/restaurants/${RestaurantController.restaurantId}`,
         });
+    }
+    
+    personAmountChangeHandler(personNum) {
+        if (personNum > 0) {
+            this.persons = personNum;
+        }
     }
 }
 
