@@ -15,7 +15,8 @@ export default class Basket extends Component {
                 imageHref: `/images/${basket[id].image}`,
                 quantity: basket[id].amount,
                 cost: basket[id].price,
-                id: basket[id].id,
+                id: `prod-in-basket-${basket[id].id}`,
+                mainId: id,
             }));
         }
 

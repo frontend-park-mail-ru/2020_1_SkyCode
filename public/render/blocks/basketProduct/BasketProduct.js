@@ -1,9 +1,9 @@
 import Component from '../../Component.js';
 import Img from '../../elements/img/Img.js';
-import EventBus from '../../../services/Events/EventBus';
+import EventBus from '../../../services/Events/EventBus.js';
 
 export default class BasketProduct extends Component {
-    constructor({classes, imageHref, name, quantity, cost, id}) {
+    constructor({classes, imageHref, name, quantity, cost, id, mainId}) {
         super(classes, {
             img: new Img({
                 classes: 'basket-product__img',
@@ -14,6 +14,7 @@ export default class BasketProduct extends Component {
             quantity,
             price: quantity * cost,
         }, id);
+        this.mainId = mainId;
     }
 
     bind() {
@@ -23,7 +24,7 @@ export default class BasketProduct extends Component {
         }
 
         node.onclick = () => {
-            EventBus.publish('delete-prod', this.id);
+            EventBus.publish('delete-prod', this.mainId);
             console.log('Del');
         };
     }
