@@ -8,7 +8,7 @@ import BasketController from '../../../controllers/BasketController.js';
 
 export default class Order extends Component {
     constructor({
-        basket = BasketController.basket,
+        basket = BasketController.basket.product,
         classes = 'order',
         withCheckoutButton = true,
         personNum = BasketController.persons,

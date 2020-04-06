@@ -100,7 +100,7 @@ export default class Component {
             return document.getElementById(this.id);
         }
 
-        const me = document.getElementsByClassName(this.strClasses);
+        const me = document.getElementsByClassName(this.classes);
         if (me.length === 0) {
             return undefined;
         }

@@ -19,7 +19,7 @@ class CheckoutController extends BaseController {
                 } else {
                     super.execute(new CheckoutView({
                         profile: response.User,
-                        basket: BasketController.basket,
+                        basket: BasketController.basket.product,
                         personNum: BasketController.persons,
                     }));
                 }

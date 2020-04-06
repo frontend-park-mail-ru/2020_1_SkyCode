@@ -17,7 +17,7 @@ class RestaurantController extends BaseController {
         RestaurantModel.getRestaurant(this.restaurantId).then((response) => {
             RestaurantModel.getProducts(this.restaurantId).then((products) => {
                 const categoryArr = Mocks.categories;
-                const basket = BasketController.basket;
+                const basket = BasketController.basket.product;
                 super.execute(new RestaurantView({
                     restaurant: response,
                     products,
