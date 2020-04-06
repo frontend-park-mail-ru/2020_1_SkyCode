@@ -1,6 +1,5 @@
 import BaseController from './BaseController.js';
 import CheckoutView from '../render/views/CheckoutView/CheckoutView.js';
-import Mocks from '../mocks.js';
 import UserModel from '../models/UserModel.js';
 import BasketController from './BasketController.js';
 import EventBus from '../services/Events/EventBus.js';
@@ -11,32 +10,35 @@ class CheckoutController extends BaseController {
         super(title);
     }
 
-    run({personNum = 1}) {
+    execute() {
         UserModel
             .getUser()
             .then((response) => {
                 if (response.error === 'Unauthorized') {
                     EventBus.publish('redirect', {url: '/login'});
                 } else {
-                    super.run(new CheckoutView({
+                    super.execute(new CheckoutView({
                         profile: response.User,
                         basket: BasketController.basket,
-                        personNum,
+                        personNum: BasketController.persons,
                     }));
                 }
             })
-            .catch((err) => console.log(err));
+            .catch((err) => {
+                console.log(err);
+                EventBus.publish('redirect', {url: '/'});
+            });
     }
 
     startCatchEvents() {
-        EventBus.subscribe('checkout', this.checkoutCb.bind(this));
+        EventBus.subscribe('checkout', this.checkoutHandler.bind(this));
     }
 
     stopCatchEvents() {
-        EventBus.unsubscribe('checkout', this.checkoutCb.bind(this));
+        EventBus.unsubscribe('checkout', this.checkoutHandler.bind(this));
     }
 
-    checkoutCb(data) {
+    checkoutHandler(data) {
         RestaurantModel
             .addOrder(data)
             .then((response) => {

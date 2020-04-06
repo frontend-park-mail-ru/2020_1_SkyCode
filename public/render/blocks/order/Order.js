@@ -7,10 +7,12 @@ import Href from '../../elements/href/Href.js';
 import BasketController from '../../../controllers/BasketController.js';
 
 export default class Order extends Component {
-    constructor({basket,
+    constructor({
+        basket = BasketController.basket,
         classes = 'order',
         withCheckoutButton = true,
-        personNum = 1}) {
+        personNum = BasketController.persons,
+    }) {
         super();
         this.addClasses(classes);
         this.addContextData({
@@ -39,7 +41,7 @@ export default class Order extends Component {
             personInput: new PersonInput({
                 classes: 'order__person-input',
                 label: 'Persons:',
-                value: personNum,
+                personNum,
             }),
         });
 

@@ -39,7 +39,7 @@ export default class LoginField extends Component {
             text: 'Log In',
             callback: () => {
                 this.context.generalErrorField.clean();
-                let validationFlag = true;
+                let validationFlag;
 
                 validationFlag = Validation.inputValidation(
                     this.context.phoneInput,

@@ -85,24 +85,12 @@ module.exports = {
         'quote-props':              ['error', 'as-needed'],
         'semi-spacing':             ['error'],
         'semi-style':               ['error'],
-        // 'sort-keys':                ['warn'],
         'space-before-blocks':      ['error'],
         'space-in-parens':          ['error'],
         'space-infix-ops': ['error', {
             'int32Hint': true,
         }],
         'space-unary-ops':          ['error'],
-        // 'spaced-comment': ['error', 'always', {
-        //     'line': {
-        //         'markers': ['/'],
-        //         'exceptions': ['-', '+'],
-        //     },
-        //     'block': {
-        //         'markers': ['!'],
-        //         'exceptions': ['*'],
-        //         'balanced': true,
-        //     },
-        // }],
         'switch-colon-spacing':     ['error'],
         'template-tag-spacing':     ['error'],
         'wrap-regex':               ['error'],

@@ -9,14 +9,14 @@ class ProfileController extends BaseController {
         super(title);
     }
 
-    run() {
+    execute() {
         UserModel
             .getUser()
             .then((response) => {
                 if (response.error === 'Unauthorized') {
                     EventBus.publish('redirect', {url: '/login'});
                 } else {
-                    super.run(new ProfileView({profile: response}));
+                    super.execute(new ProfileView({profile: response}));
                 }
             })
             .catch((err) => {
@@ -25,18 +25,24 @@ class ProfileController extends BaseController {
     }
 
     startCatchEvents() {
-        EventBus.subscribe('update-user', this.updateBioCb.bind(this));
-        EventBus.subscribe('avatar-update', this.updateAvatarCb.bind(this));
-        EventBus.subscribe('log-out', this.logOut.bind(this));
+        EventBus.subscribe('update-user', this.updateBioHandler.bind(this));
+        EventBus.subscribe('log-out', this.logoutHandler.bind(this));
+        EventBus.subscribe(
+            'avatar-update',
+            this.updateAvatarHandler.bind(this),
+        );
     }
 
     stopCatchEvents() {
-        EventBus.unsubscribe('update-user', this.updateBioCb.bind(this));
-        EventBus.unsubscribe('avatar-update', this.updateAvatarCb.bind(this));
-        EventBus.unsubscribe('log-out', this.logOut.bind(this));
+        EventBus.unsubscribe('update-user', this.updateBioHandler.bind(this));
+        EventBus.unsubscribe('log-out', this.logoutHandler.bind(this));
+        EventBus.unsubscribe(
+            'avatar-update',
+            this.updateAvatarHandler.bind(this),
+        );
     }
 
-    logOut() {
+    logoutHandler() {
         console.log('qwer');
         SessionModel.logout().then((response) => {
             if (response.error) {
@@ -51,7 +57,7 @@ class ProfileController extends BaseController {
             });
     }
 
-    updateBioCb(data) {
+    updateBioHandler(data) {
         UserModel
             .updateUser(data)
             .then((response) => {
@@ -67,7 +73,7 @@ class ProfileController extends BaseController {
             });
     }
 
-    updateAvatarCb(data) {
+    updateAvatarHandler(data) {
         UserModel
             .updateAvatar(data)
             .then((response) => {

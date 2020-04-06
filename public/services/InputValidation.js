@@ -1,7 +1,6 @@
 export default class Validation {
     static inputValidation(inputComponent, errFieldComponent) {
         const [isValid, errors] = this.inputCheck(inputComponent.domElement);
-
         this.showErrors(errFieldComponent, errors);
         return isValid;
     }
@@ -17,12 +16,40 @@ export default class Validation {
             errors.push('Required field');
         }
 
+        if (validity.typeMismatch) {
+            errors.push('Wrong type');
+        }
+
         if (validity.patternMismatch) {
             errors.push('Wrong format');
         }
 
         if (validity.tooLong) {
             errors.push(`Must be less than ${inputElement.maxLength} symbols`);
+        }
+
+        if (validity.tooShort) {
+            errors.push(`Must be less than ${inputElement.minLength} symbols`);
+        }
+
+        if (validity.rangeUnderflow) {
+            errors.push(`Must be more than ${inputElement.min}`);
+        }
+
+        if (validity.rangeOverflow) {
+            errors.push(`Must be less than ${inputElement.max}`);
+        }
+
+        if (validity.stepMismatch) {
+            errors.push(`Must have step ${inputElement.step}`);
+        }
+
+        if (validity.badInput) {
+            errors.push('Browser can\'t convert your input');
+        }
+
+        if (validity.customError) {
+            errors.push('unexpected error... lights off... ');
         }
 
         return [false, errors];

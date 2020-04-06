@@ -11,20 +11,19 @@ class MainController extends BaseController {
         super(title);
     }
 
-    run() {
+    execute() {
         RestaurantModel.getRestaurants().then((response) => {
             const actions = Mocks.actions;
             const categories = Mocks.categories;
-            super.run(new MainView({
+            super.execute(new MainView({
                 actionArr: actions,
                 categoryArr: categories,
                 restaurantArr: response.Restaurants,
-                products: BasketController.basket,
             }));
         })
             .catch((err) => {
                 console.log(err);
-                super.run(new MainView({
+                super.execute(new MainView({
                     actionArr: Mocks.actions,
                     categoryArr: Mocks.categories,
                     restaurantArr: Mocks.restaurants,
