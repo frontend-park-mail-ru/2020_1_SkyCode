@@ -30,14 +30,6 @@ class BaseController {
         void 0;
     }
 
-    get state() {
-        if (this._view === undefined) {
-            return undefined;
-        }
-
-        return this._view.state;
-    }
-
     get title() {
         return this._title;
     }

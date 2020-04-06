@@ -7,6 +7,7 @@ import ProfileController from '../controllers/ProfileController.js';
 import LoginSignupController from '../controllers/LoginSignupController.js';
 import RestaurantController from '../controllers/RestaurantController.js';
 import CheckoutController from '../controllers/CheckoutController.js';
+// eslint-disable-next-line max-len
 import AddProductByRestaurantController from '../controllers/AddProductByRestaurantController.js';
 import BasketController from '../controllers/BasketController.js';
 
@@ -68,7 +69,7 @@ class Router {
     }
 
     _setNewHistoryRecord(page, url) {
-        history.pushState(page.state, page.title, url);
+        history.pushState({}, page.title, url);
     }
 
     _registerAllPages() {
