@@ -18,7 +18,9 @@
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
-    "stylecow": "^7.4.0"
+    "stylecow": "^7.4.0",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

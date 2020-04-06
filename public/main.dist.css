@@ -632,6 +632,10 @@
 	text-align: center;
 	font-size: 14px;
 }
+.basket__basket-product:hover {
+	background: linear-gradient(90deg, transparent, orangered);
+	cursor: pointer;
+}
 .basket-product__price {
 	color: #C4C4C4;
 	text-align: right;
@@ -2158,6 +2162,10 @@
 	align-items: center;
 	text-align: center;
 	font-size: 14px;
+}
+.basket__basket-product:hover {
+	background: linear-gradient(90deg, transparent, orangered);
+	cursor: pointer;
 }
 .basket-product__price {
 	color: #C4C4C4;
