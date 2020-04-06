@@ -1,6 +1,6 @@
 import Component from '../../Component.js';
 import Img from '../../elements/img/Img.js';
-import EventBus from '../../../services/Events/EventBus';
+import EventBus from '../../../services/Events/EventBus.js';
 
 export default class BasketProduct extends Component {
     constructor({classes, imageHref, name, quantity, cost, id}) {
