@@ -6,10 +6,12 @@ import Order from '../../blocks/order/Order.js';
 // eslint-disable-next-line max-len
 import SelectTimeButton from '../../blocks/selectTimeButton/SelectTimeButton.js';
 import RestaurantList from '../../blocks/restaurantList/RestaurantList.js';
+import template from './MainView.hbs';
 
 class MainView extends Component {
     constructor({actionArr, categoryArr, restaurantArr}) {
         super();
+        super.template = template;
 
         this.addContextData({
             label: 'Restaurants',
@@ -38,6 +40,8 @@ class MainView extends Component {
                 restaurantArr,
             }),
         }, true);
+
+        debugger
     }
 }
 

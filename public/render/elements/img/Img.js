@@ -1,4 +1,5 @@
 import Component from '../../Component.js';
+import template from './Img.hbs';
 
 export default class Img extends Component {
     constructor({classes, src, alt}) {
@@ -6,5 +7,7 @@ export default class Img extends Component {
             src,
             alt,
         });
+
+        super.template = template;
     }
 }

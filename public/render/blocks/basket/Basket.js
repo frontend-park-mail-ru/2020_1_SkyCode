@@ -1,10 +1,12 @@
 import Component from '../../Component.js';
 import BasketProduct from '../basketProduct/BasketProduct.js';
+import template from './Basket.hbs';
 
 
 export default class Basket extends Component {
     constructor({classes, basket}) {
         super(classes);
+        super.template = template;
 
         const basketProducts = [];
 

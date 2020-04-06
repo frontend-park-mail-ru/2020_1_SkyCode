@@ -1,5 +1,6 @@
 import Component from '../../Component.js';
 import Input from '../../elements/input/Input.js';
+import template from './PlaceTimeCard.hbs';
 
 export default class PlaceTimeCard extends Component {
     constructor({
@@ -21,5 +22,7 @@ export default class PlaceTimeCard extends Component {
                 src: '/static/clock.svg',
             }),
         });
+
+        super.template = template;
     }
 }

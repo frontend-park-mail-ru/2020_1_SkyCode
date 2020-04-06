@@ -1,9 +1,11 @@
 import Component from '../../Component.js';
+import template from './Button.hbs';
 
 export default class Button extends Component {
     constructor({text, callback, classes = 'button', id}) {
         super(classes, {text}, id);
         this.callback = callback;
+        super.template = template;
     }
 
     bind() {

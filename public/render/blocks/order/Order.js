@@ -5,6 +5,7 @@ import Basket from '../basket/Basket.js';
 import PersonInput from '../personInput/PersonInput.js';
 import Href from '../../elements/href/Href.js';
 import BasketController from '../../../controllers/BasketController.js';
+import template from './Order.hbs';
 
 export default class Order extends Component {
     constructor({
@@ -14,6 +15,8 @@ export default class Order extends Component {
         personNum = BasketController.persons,
     }) {
         super();
+        super.template = template;
+
         this.addClasses(classes);
         this.addContextData({
             title: 'My Order',

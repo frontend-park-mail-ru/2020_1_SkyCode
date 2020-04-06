@@ -1,7 +1,7 @@
 import Component from '../../Component.js';
 import Input from '../../elements/input/Input.js';
 import EventBus from '../../../services/Events/EventBus.js';
-
+import template from './ImageHref.hbs';
 
 export default class ImageHref extends Component {
     constructor({
@@ -18,6 +18,7 @@ export default class ImageHref extends Component {
             }),
             href,
         });
+        super.template = template;
     }
 
     bind() {

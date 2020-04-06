@@ -1,10 +1,11 @@
 import Component from '../../Component.js';
+import template from './ErrorBlock.hbs';
 
 export default class ErrorBlock extends Component {
     constructor({classes, id, text}) {
         super(classes, {
             text,
-        }, id);
+        }, id, template);
     }
 
     appendClasses(classes) {

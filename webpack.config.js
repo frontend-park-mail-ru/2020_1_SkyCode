@@ -7,6 +7,15 @@ module.exports = {
         filename: 'main.js',
         path: path.resolve(__dirname, 'public'),
     },
-    mode: 'production',
+    mode: 'development',
+
+    module: {
+        rules: [
+            {
+                test: /\.hbs$/,
+                loader: 'handlebars-loader',
+            }
+        ]
+    }
 };
 /* eslint-enable */

@@ -1,6 +1,7 @@
 import Component from '../../Component.js';
 import RestaurantCategory from '../restaurantСategory/RestaurantCategory.js';
 import RestaurantController from '../../../controllers/RestaurantController.js';
+import template from './RestaurantCategories.hbs';
 
 
 export default class RestaurantCategories extends Component {
@@ -17,6 +18,8 @@ export default class RestaurantCategories extends Component {
                 id: categoryData.id,
             }));
         }
+
+        super.template = template;
 
         this.addContextData({categories}, true);
     }

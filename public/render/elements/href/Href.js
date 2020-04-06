@@ -1,5 +1,6 @@
 import Component from '../../Component.js';
 import EventBus from '../../../services/Events/EventBus.js';
+import template from './Href.hbs';
 
 export default class Href extends Component {
     constructor({text, href, classes = 'href', id}) {
@@ -7,6 +8,7 @@ export default class Href extends Component {
             text,
             href,
         }, id);
+        super.template = template;
     }
 
     bind() {

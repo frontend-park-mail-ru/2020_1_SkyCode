@@ -1,5 +1,6 @@
 import Component from '../../Component.js';
 import ProductCard from '../productCard/ProductCard.js';
+import template from './Products.hbs';
 
 export default class Products extends Component {
     constructor({classes, productArr}) {
@@ -18,5 +19,6 @@ export default class Products extends Component {
         }
 
         this.addContextData({products}, true);
+        super.template = template;
     }
 }

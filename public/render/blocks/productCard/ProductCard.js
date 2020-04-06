@@ -1,6 +1,7 @@
 import Component from '../../Component.js';
 import NeonButton from '../../elements/neonButton/NeonButton.js';
 import EventBus from '../../../services/Events/EventBus.js';
+import template from './ProductCard.hbs';
 
 export default class ProductCard extends Component {
     constructor({classes, product}) {
@@ -16,5 +17,7 @@ export default class ProductCard extends Component {
                 },
             }),
         });
+
+        super.template = template;
     }
 }

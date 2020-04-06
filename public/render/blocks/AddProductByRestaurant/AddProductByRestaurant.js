@@ -4,6 +4,7 @@ import NeonButton from '../../elements/neonButton/NeonButton.js';
 import EventBus from '../../../services/Events/EventBus.js';
 import ErrorBlock from '../errorBlock/ErrorBlock.js';
 import Validation from '../../../services/InputValidation.js';
+import template from './AddProductByRestaurant.hbs';
 
 export default class AddProductByRestaurant extends Component {
     constructor({classes}) {
@@ -44,6 +45,8 @@ export default class AddProductByRestaurant extends Component {
                 id: 'general-error',
             }),
         });
+
+        super.template = template;
 
         this.addContextData({
             submitButton: new NeonButton({

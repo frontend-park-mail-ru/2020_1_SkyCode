@@ -1,9 +1,10 @@
 import Component from '../../Component.js';
+import template from './NeonButton.hbs';
 
 export default class NeonButton extends Component {
     constructor({classes, text, callback}) {
         super(classes, {text});
-
+        super.template = template;
         this.callback = callback;
     }
 
