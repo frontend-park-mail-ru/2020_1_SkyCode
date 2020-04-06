@@ -3,7 +3,7 @@
 # Edit at https://www.gitignore.io/?templates=node,linux,macos,executable,jetbrains+all
 
 ### generated files
-**/*.dist.*
+*.dist.*
 ### precompiled files
 precompiled.js
 
