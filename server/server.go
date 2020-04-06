@@ -41,18 +41,9 @@ func resourceHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	http.HandleFunc("/controllers/", resourceHandler)
-	http.HandleFunc("/handlebars/", resourceHandler)
-	http.HandleFunc("/models/", resourceHandler)
-	http.HandleFunc("/render/", resourceHandler)
-	http.HandleFunc("/routing/", resourceHandler)
-	http.HandleFunc("/services/", resourceHandler)
 	http.HandleFunc("/static/", resourceHandler)
-	http.HandleFunc("/main.css", resourceHandler)
 	http.HandleFunc("/main.dist.css", resourceHandler)
-	http.HandleFunc("/index.js", resourceHandler)
 	http.HandleFunc("/main.js", resourceHandler)
-	http.HandleFunc("/mocks.js", resourceHandler)
 	http.HandleFunc("/images/", imageHandler)
 
 	http.HandleFunc("/", mainHandler)
