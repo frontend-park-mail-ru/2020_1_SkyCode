@@ -1,0 +1,145 @@
+
+.header__profile-button {
+    width: 30px;
+    height: 30px;
+    margin: 10px;
+    outline: none;
+}
+
+.search-field__input-field {
+    background: #F8F8F8;
+    height: 30px;
+    min-width: 50px;
+    border-radius: 0 30px 30px 0;
+    border: none;
+    outline: none;
+    vertical-align: middle;
+    width: 100%;
+}
+
+.search-field__input-button {
+    background: #F8F8F8;
+    border: none;
+    outline: none;
+    height: 31px;
+    width: 50px;
+    min-width: 50px;
+    border-radius: 30px 0 0 30px;
+}
+
+.place-time-card__change-place-button {
+    grid-area: change-place-button;
+    width: 15px;
+    height: 15px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    outline: none;
+}
+
+.place-time-card__change-time-button {
+    grid-area: change-time-button;
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+    margin-top: 10px;
+    outline: none;
+}
+
+.person-input__input {
+    background: #F8F8F8;
+    border: 0;
+    border-top: 1px solid #d2d0d0;
+    border-bottom: 1px solid #d2d0d0;
+
+
+    text-align: center;
+    width: 30px;
+}
+
+
+.profile-text-area__input {
+    width: 80%;
+    text-align: left;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 10px;
+    height: 25px;
+
+    background: #FFFFFF;
+    box-shadow: 4px 6px 100px #9E9E9E;
+    border: 1px;
+    outline: 1px;
+
+    border-radius: 30px;
+}
+
+.signup-field__input {
+    width: 200px;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    background: #FFFFFF;
+    box-shadow: 4px 6px 100px #9E9E9E;
+    border: 1px;
+    outline: 1px;
+
+    height: 25px;
+    border-radius: 30px;
+}
+
+
+.profile-avatar-area__image-input {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.add-product-by-restaurant__image-input {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.login-field__input {
+    width: 200px;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    background: #FFFFFF;
+    box-shadow: 4px 6px 100px #9E9E9E;
+    border: 1px;
+    outline: 1px;
+    height: 25px;
+    border-radius: 30px;
+}
+
+.order-checkout__input {
+    width: 90%;
+    text-align: start;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 10px;
+
+    background: #FFFFFF;
+    box-shadow: 4px 6px 100px #9E9E9E;
+    border: 1px;
+    outline: 1px;
+    height: 25px;
+    border-radius: 30px;
+}
+
+.add-product-by-restaurant__input {
+    width: 90%;
+    text-align: start;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 10px;
+
+    background: #FFFFFF;
+    box-shadow: 4px 6px 100px #9E9E9E;
+    border: 1px;
+    outline: 1px;
+    height: 25px;
+    border-radius: 30px;
+}
+

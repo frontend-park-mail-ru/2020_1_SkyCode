@@ -1,0 +1,14 @@
+@import "../restaurant/Restaurant.css";
+
+.main-view__restaurant-list {
+    grid-area: restaurant-list;
+
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+
+    margin-top: 70px;
+    margin-bottom: 100px;
+}
+

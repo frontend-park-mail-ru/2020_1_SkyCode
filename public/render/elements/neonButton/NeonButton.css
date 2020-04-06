@@ -1,0 +1,97 @@
+.neon-button {
+    position: relative;
+    display: inline-block;
+    padding: 7px 15px;
+    /*color: #F6D471;*/
+    color: #2196f3;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 1px;
+    overflow: hidden;
+    transition: 0.2s;
+    outline: none;
+    border: 0;
+    cursor: pointer;
+}
+
+.profile-text-area__submit-phone {
+    height: 20px;
+    width: 20px;
+}
+
+.neon-button__line {
+    position: absolute;
+    display: block;
+}
+
+.neon-button__line--top {
+     top: 0;
+     left: -100%;
+     width: 100%;
+     height: 2px;
+     background: linear-gradient(90deg, transparent, #2196f3);
+ }
+
+.neon-button:hover .neon-button__line--top {
+    left: 100%;
+    transition: 0.5s;
+    transition-delay: 0.12s;
+}
+
+.neon-button__line--bottom {
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg, transparent, #2196f3);
+}
+
+.neon-button:hover .neon-button__line--bottom {
+    right: 100%;
+    transition: 0.5s;
+    transition-delay: 0.12s;
+}
+
+.neon-button__line--left {
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(0deg, transparent, #2196f3);
+}
+
+.neon-button:hover .neon-button__line--left {
+    bottom: 100%;
+    transition: 0.5s;
+    transition-delay: 0s;
+}
+
+.neon-button__line--right {
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, #2196f3);
+}
+
+.neon-button:hover .neon-button__line--right {
+    top: 100%;
+    transition: 0.5s;
+    transition-delay: 0s;
+}
+
+.neon-button:hover {
+    box-shadow: 0 0 10px #2196f3;
+    background-color: #2196f3;
+    color: #FFFFFF;
+    transition-delay: 0.45s;
+}
+
+.signup-field__submit-button {
+    margin-top: 20px;
+}
+
+.login-field__submit-button {
+    margin-top: 30px;
+}

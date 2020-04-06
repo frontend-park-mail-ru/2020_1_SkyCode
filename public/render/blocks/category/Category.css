@@ -1,0 +1,44 @@
+.category-bar__category {
+    height: 150px;
+    width: 75px;
+    border-radius: 50px;
+    background: white;
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border: 0;
+    position: relative;
+    text-align: center;
+    margin: 10px;
+}
+
+.category-bar__category:hover {
+    height: 150px;
+    width: 75px;
+    border-radius: 50px;
+    background: #F6D471;
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border: 0;
+    position: relative;
+    text-align: center;
+    margin: 10px;
+}
+
+.category-bar__image {
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+    border: 1px solid grey;
+    position: absolute;
+    top: 7px;
+    left: 7px;
+}
+
+.category-bar__legend {
+    font-size: 14px;
+
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+    top: 10px;
+}

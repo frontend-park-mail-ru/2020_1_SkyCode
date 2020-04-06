@@ -1,67 +1,61 @@
 export default class Validation {
-    static validationCheck() {
-        let valid = true;
-        let isValid, messages;
-        let f = document.getElementsByTagName('form')[0];
-
-        for (let i of f.elements){
-            if (i !== f.lastElementChild){
-                [isValid, messages] = Validation.inputCheck(i);
-
-                if (!isValid){
-                    console.log(messages);
-                    console.log(i);
-
-                    Validation.setErrors(i, ...messages);
-                    valid = false;
-                } else {
-                    Validation.setErrors(i, '');
-                }
-            }
-        }
-
-        return valid;
+    static inputValidation(inputComponent, errFieldComponent) {
+        const [isValid, errors] = this.inputCheck(inputComponent.domElement);
+        this.showErrors(errFieldComponent, errors);
+        return isValid;
     }
 
-    static inputCheck(input) {
-        let invalidates = Array();
-        let validity = input.validity;
-        let isValid = validity.valid;
+    static inputCheck(inputElement) {
+        const errors = [];
+        const validity = inputElement.validity;
+        const isValid = validity.valid;
 
-        if (input.type === 'email') {
-            let isOk = input.value.match(/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/);
-            if (isOk === null) {
-                invalidates.push('Email does not match pattern');
-                isValid = false;
-            }
+        if (isValid) return [true, errors];
+
+        if (validity.valueMissing) {
+            errors.push('Required field');
         }
 
-
-        if (isValid) return [true, invalidates];
-
-        if (validity.valueMissing){
-            invalidates.push('Required field');
+        if (validity.typeMismatch) {
+            errors.push('Wrong type');
         }
 
-        if (validity.patternMismatch){
-            invalidates.push('Pattern mismatch');
+        if (validity.patternMismatch) {
+            errors.push('Wrong format');
         }
 
-        if (validity.tooLong){
-            invalidates.push('Must be less than 256 symbols');
+        if (validity.tooLong) {
+            errors.push(`Must be less than ${inputElement.maxLength} symbols`);
         }
 
-        return [false, invalidates];
+        if (validity.tooShort) {
+            errors.push(`Must be less than ${inputElement.minLength} symbols`);
+        }
+
+        if (validity.rangeUnderflow) {
+            errors.push(`Must be more than ${inputElement.min}`);
+        }
+
+        if (validity.rangeOverflow) {
+            errors.push(`Must be less than ${inputElement.max}`);
+        }
+
+        if (validity.stepMismatch) {
+            errors.push(`Must have step ${inputElement.step}`);
+        }
+
+        if (validity.badInput) {
+            errors.push('Browser can\'t convert your input');
+        }
+
+        if (validity.customError) {
+            errors.push('unexpected error... lights off... ');
+        }
+
+        return [false, errors];
     }
 
-    static setErrors(input, ...messages) {
-        let errFieldName = input.name + '__err';
-        let errField = document.getElementsByClassName(errFieldName)[0];
-        errField.innerHTML = messages.join('\n') + '\n';
-    }
-
-    static setError(errClass, ...messages) {
-        let errField = document.getElementsByClassName(errClass)[0];
-        errField.innerHTML = messages.join('\n') + '\n';
+    static showErrors(errComponent, errors) {
+        errComponent.replaceMessage(errors.join('\n'));
     }
 }

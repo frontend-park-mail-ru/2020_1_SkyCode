@@ -1,0 +1,23 @@
+@import "../../elements/img/Img.css";
+
+.basket__basket-product {
+    display: flex;
+    margin: 10px;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+
+    font-size: 14px;
+}
+
+.basket__basket-product:hover {
+    background: linear-gradient(90deg, transparent, gray);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.basket-product__price {
+    color: #C4C4C4;
+    text-align: right;
+    margin-left: 10px;
+}

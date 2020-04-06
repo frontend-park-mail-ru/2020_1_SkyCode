@@ -1,0 +1,7 @@
+.main-view__select-time-button {
+    grid-area: select-time-button;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}

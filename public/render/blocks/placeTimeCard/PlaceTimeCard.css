@@ -1,0 +1,35 @@
+@import "../../elements/input/Input.css";
+
+.order__place-time-card {
+    grid-area: place-time-card;
+    display: grid;
+    grid-template-rows: 50% 50%;
+    grid-template-columns: min-content 1fr min-content;
+    grid-template-areas:
+            "place-text         place-text   change-place-button"
+            "change-time-button time-text    time-text";
+
+    background: #2196f3;
+
+    margin: 10px 10px 10px 20px;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.place-time-card__place-text {
+    grid-area: place-text;
+
+    font-size: 14px;
+
+    color: white;
+}
+
+.place-time-card__time-text {
+    grid-area: time-text;
+
+    font-size: 14px;
+
+    color: white;
+
+    margin-top: 10px;
+}

@@ -1,0 +1,33 @@
+.basket-product__img {
+    border-radius: 15px;
+    width: 80px;
+    height: 40px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.restaurant__img {
+    width: 230px;
+    height: 114px;
+    border-radius: 15px;
+}
+
+.restaurant__rate-img {
+    width: 10px;
+    height: 10px;
+}
+
+
+.profile-avatar-area__image {
+    width: 100px;
+    border: 2px black;
+}
+
+
+.restaurantBanner__img {
+    width: 822px;
+    height: 180px;
+    border-radius: 15px;
+}
+

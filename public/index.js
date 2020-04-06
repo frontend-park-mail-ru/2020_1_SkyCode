@@ -1,5 +1,5 @@
-import MainView from './views/MainView/mainView.js';
+import EventBus from './services/Events/EventBus.js';
+// eslint-disable-next-line no-unused-vars
+import Router from './routing/Router.js';
 
-const application = document.getElementById('application');
-
-MainView.render(application);
+EventBus.publish('set-page', {url: window.location.pathname});

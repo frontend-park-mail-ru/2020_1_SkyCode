@@ -1,0 +1,22 @@
+@import "../category/Category.css";
+
+.category-bar {
+    grid-area: category-bar;
+}
+
+.category-bar__container-scroll-hider {
+    overflow: hidden;
+}
+
+.category-bar__container {
+    overflow-x: scroll;
+
+    margin-bottom: -20px;
+}
+
+.category-bar__list {
+    display: flex;
+    list-style-type: none;
+
+    padding-inline-start: 0;
+}

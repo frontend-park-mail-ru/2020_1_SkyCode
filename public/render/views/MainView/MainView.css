@@ -1,0 +1,68 @@
+@import "../../blocks/header/Header.css";
+@import "../../blocks/actionBar/ActionBar.css";
+@import "../../blocks/categoryBar/CategoryBar.css";
+@import "../../blocks/order/Order.css";
+@import "../../blocks/selectTimeButton/SelectTimeButton.css";
+@import "../../blocks/restaurantList/RestaurantList.css";
+
+.main-view {
+    display: grid;
+    grid-template-rows:
+            min-content
+            auto;
+    grid-template-columns: 5fr 5fr 3fr;
+    grid-template-areas:
+            "header       header     order"
+            "main-area    main-area  order";
+
+    background: #FFFFFF;
+}
+
+.main-view > * {
+    min-width: 0;
+}
+
+.main-view__label {
+    grid-area: label;
+
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: start;
+
+
+
+    font-size: 26px;
+    text-align: left;
+}
+
+.main-view__main-area {
+    grid-area: main-area;
+}
+
+.main-view__scroll-hider {
+    overflow: hidden;
+    padding-right: 10px;
+    margin-left: 88px;
+    margin-right: 88px;
+}
+
+.main-view__scrolled-area {
+    overflow-y: scroll;
+    height: 100vh;
+    margin-right: -14px;
+}
+
+.main-view__main-grid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows:
+            min-content
+            min-content
+            min-content
+            auto;
+    grid-template-areas:
+            "action-bar         action-bar"
+            "label              select-time-button"
+            "category-bar       category-bar"
+            "restaurant-list    restaurant-list";
+}

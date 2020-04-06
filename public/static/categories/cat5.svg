@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Steak</title><g id="Steak"><path d="M13,.5C2,.5,1.5,6.5,1.5,8c0,4,5.25,2.75,7.5,5,2,2,4,6.5,7,6.5s6.5-8,6.5-11.5S19,.5,13,.5Z" style="fill:none;stroke:#303c42;stroke-linecap:round;stroke-linejoin:round"/><path d="M22.5,8v4c0,3.5-3.5,11.5-6.5,11.5S11,19,9,17c-2.25-2.25-7.5-1-7.5-5V8" style="fill:none;stroke:#303c42;stroke-linecap:round;stroke-linejoin:round"/><ellipse cx="10.5" cy="6" rx="3" ry="1.5" style="fill:none;stroke:#303c42;stroke-linecap:round;stroke-linejoin:round"/><path d="M9.5,10.5c2,0,8.5-2,10-2" style="fill:none;stroke:#303c42;stroke-linecap:round;stroke-linejoin:round"/><path d="M12,13c1.5,0,5-1.5,7-1.5" style="fill:none;stroke:#303c42;stroke-linecap:round;stroke-linejoin:round"/></g>
+	<metadata>
+		<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+			<rdf:Description about="https://iconscout.com/legal#licenses" dc:title="food; eat; steak; grill; bbq" dc:description="food; eat; steak; grill; bbq" dc:publisher="Iconscout" dc:date="2017-02-16" dc:format="image/svg+xml" dc:language="en">
+				<dc:creator>
+					<rdf:Bag>
+						<rdf:li>Alpár - Etele Méder</rdf:li>
+					</rdf:Bag>
+				</dc:creator>
+			</rdf:Description>
+		</rdf:RDF>
+    </metadata></svg>

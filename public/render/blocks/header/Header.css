@@ -1,0 +1,16 @@
+
+@import "../../elements/hamburgerButton/HamburgerButton.css";
+@import "../../elements/href/Href.css";
+@import "../searchField/SearchField.css";
+@import "../../elements/input/Input.css";
+
+.header {
+    grid-area: header;
+    display: grid;
+    height: 86px;
+    grid-template-columns: min-content min-content auto min-content;
+    grid-template-rows: auto;
+    width: 100%;
+}
+
+
