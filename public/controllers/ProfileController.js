@@ -9,14 +9,14 @@ class ProfileController extends BaseController {
         super(title);
     }
 
-    run() {
+    execute() {
         UserModel
             .getUser()
             .then((response) => {
                 if (response.error === 'Unauthorized') {
                     EventBus.publish('redirect', {url: '/login'});
                 } else {
-                    super.run(new ProfileView({profile: response}));
+                    super.execute(new ProfileView({profile: response}));
                 }
             })
             .catch((err) => {

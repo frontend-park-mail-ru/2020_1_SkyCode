@@ -11,19 +11,19 @@ class LoginSignupController extends BaseController {
         super(title);
     }
 
-    run() {
+    execute() {
         UserModel
             .getUser()
             .then((answer) =>  {
                 if (answer.error === 'Unauthorized') {
-                    super.run(new LoginSignupView());
+                    super.execute(new LoginSignupView());
                 } else {
                     EventBus.publish('redirect', {url: '/me'});
                 }
             })
             .catch((err) => {
                 console.log(err);
-                super.run(new LoginSignupView());
+                super.execute(new LoginSignupView());
             });
     }
 

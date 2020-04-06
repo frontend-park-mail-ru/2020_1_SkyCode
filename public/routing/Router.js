@@ -17,7 +17,7 @@ class Router {
     constructor() {
         this._pages = [];
         this._registerAllPages();
-        this._initControllers();
+        this._initAdditionalControllers();
         EventBus.subscribe('set-page', (this._goto).bind(this));
         EventBus.subscribe('redirect', (this._redirect).bind(this));
         window.onpopstate = (this._handlePopState).bind(this);
@@ -35,10 +35,10 @@ class Router {
         let matchData;
 
         [this._currentController, matchData] = this._matchUrl(window.location.pathname) || [Controller404];
-        this._currentController.run(document.location, matchData);
+        this._currentController.execute(document.location, matchData);
     }
 
-    _initControllers() {
+    _initAdditionalControllers() {
         BasketController.startCatchEvents();
     }
 
@@ -52,7 +52,7 @@ class Router {
 
         [this._currentController, state.matchData] = this._matchUrl(url) || [Controller404];
         history.replaceState(this._currentController.state, this._currentController.title, url);
-        this._currentController.run(state);
+        this._currentController.execute(state);
     }
 
     _goto({url}) {
@@ -66,7 +66,7 @@ class Router {
 
         [this._currentController, state.matchData] = this._matchUrl(url) || [Controller404];
         this._setNewHistoryRecord(this._currentController, url);
-        this._currentController.run(state);
+        this._currentController.execute(state);
     }
 
     _savePageStateInHistory(page) {

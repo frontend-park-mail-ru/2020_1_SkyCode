@@ -9,12 +9,12 @@ class AddProductByRestaurantController extends BaseController {
         super(title);
     }
 
-    run(state) {
+    execute(state) {
         this.restaurant = state.matchData[0];
         UserModel.getUser().then((response) => {
             if (response.User.role === 'Moderator'
                 || response.User.role === 'Admin') {
-                super.run(new AddProductByRestaurantView());
+                super.execute(new AddProductByRestaurantView());
             } else {
                 EventBus.publish('set-page', {url: '/'});
             }

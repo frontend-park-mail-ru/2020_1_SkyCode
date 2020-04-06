@@ -10,21 +10,24 @@ class CheckoutController extends BaseController {
         super(title);
     }
 
-    run({personNum = 1}) {
+    execute({personNum = 1}) {
         UserModel
             .getUser()
             .then((response) => {
                 if (response.error === 'Unauthorized') {
                     EventBus.publish('redirect', {url: '/login'});
                 } else {
-                    super.run(new CheckoutView({
+                    super.execute(new CheckoutView({
                         profile: response.User,
                         basket: BasketController.basket,
                         personNum,
                     }));
                 }
             })
-            .catch((err) => console.log(err));
+            .catch((err) => {
+                console.log(err);
+                EventBus.publish('redirect', {url: '/'});
+            });
     }
 
     startCatchEvents() {
