@@ -31,14 +31,14 @@ class CheckoutController extends BaseController {
     }
 
     startCatchEvents() {
-        EventBus.subscribe('checkout', this.checkoutCb.bind(this));
+        EventBus.subscribe('checkout', this.checkoutHandler.bind(this));
     }
 
     stopCatchEvents() {
-        EventBus.unsubscribe('checkout', this.checkoutCb.bind(this));
+        EventBus.unsubscribe('checkout', this.checkoutHandler.bind(this));
     }
 
-    checkoutCb(data) {
+    checkoutHandler(data) {
         RestaurantModel
             .addOrder(data)
             .then((response) => {

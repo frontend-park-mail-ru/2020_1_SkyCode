@@ -11,11 +11,11 @@ class BasketController extends BaseController {
     }
 
     startCatchEvents() {
-        EventBus.subscribe('add-product', this.addProductCb.bind(this));
+        EventBus.subscribe('add-product', this.addProductHandler.bind(this));
     }
 
     stopCatchEvents() {
-        EventBus.unsubscribe('add-product', this.addProductCb.bind(this));
+        EventBus.unsubscribe('add-product', this.addProductHandler.bind(this));
     }
 
     productNumber() {
@@ -26,7 +26,7 @@ class BasketController extends BaseController {
         return 0 === this.productNumber();
     }
 
-    addProductCb(data) {
+    addProductHandler(data) {
         if (data.id in this.basket) {
             this.basket[data.id].amount++;
         } else {

@@ -1,4 +1,5 @@
 import BaseController from './BaseController.js';
+// eslint-disable-next-line max-len
 import AddProductByRestaurantView from '../render/views/AddProductByRestaurantView/AddProductByRestaurantView.js';
 import EventBus from '../services/Events/EventBus.js';
 import RestaurantModel from '../models/RestaurantModel.js';
@@ -25,28 +26,28 @@ class AddProductByRestaurantController extends BaseController {
     startCatchEvents() {
         EventBus.subscribe(
             'add-product-by-restaurant',
-            this.addProductCb.bind(this),
+            this.addProductHandler.bind(this),
         );
 
         EventBus.subscribe(
             'add-product-img-restaurant',
-            this.addProductImgCb.bind(this),
+            this.addProductImgHandler.bind(this),
         );
     }
 
     stopCatchEvents() {
         EventBus.unsubscribe(
             'add-product-by-restaurant',
-            this.addProductCb.bind(this),
+            this.addProductHandler.bind(this),
         );
 
         EventBus.unsubscribe(
             'add-product-img-restaurant',
-            this.addProductImgCb.bind(this),
+            this.addProductImgHandler.bind(this),
         );
     }
 
-    addProductCb(data) {
+    addProductHandler(data) {
         RestaurantModel
             .addProduct(this.restaurant, data)
             .then((response) => {
@@ -63,7 +64,7 @@ class AddProductByRestaurantController extends BaseController {
             });
     }
 
-    addProductImgCb(data) {
+    addProductImgHandler(data) {
         RestaurantModel.addProductImage(1, data).then((response) => {
             if (response.error) {
                 EventBus.publish('add-product-image-error', response.error);
