@@ -40,8 +40,6 @@ class MainView extends Component {
                 restaurantArr,
             }),
         }, true);
-
-        debugger
     }
 }
 
