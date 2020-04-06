@@ -11,33 +11,33 @@ class LoginSignupController extends BaseController {
         super(title);
     }
 
-    run() {
+    execute() {
         UserModel
             .getUser()
             .then((answer) =>  {
                 if (answer.error === 'Unauthorized') {
-                    super.run(new LoginSignupView());
+                    super.execute(new LoginSignupView());
                 } else {
                     EventBus.publish('redirect', {url: '/me'});
                 }
             })
             .catch((err) => {
                 console.log(err);
-                super.run(new LoginSignupView());
+                super.execute(new LoginSignupView());
             });
     }
 
     startCatchEvents() {
-        EventBus.subscribe('signup', this.signupCb.bind(this));
-        EventBus.subscribe('login', this.loginCb.bind(this));
+        EventBus.subscribe('signup', this.signupHandler.bind(this));
+        EventBus.subscribe('login', this.loginHandler.bind(this));
     }
 
     stopCatchEvents() {
-        EventBus.unsubscribe('signup', this.signupCb.bind(this));
-        EventBus.unsubscribe('login', this.loginCb.bind(this));
+        EventBus.unsubscribe('signup', this.signupHandler.bind(this));
+        EventBus.unsubscribe('login', this.loginHandler.bind(this));
     }
 
-    signupCb(data) {
+    signupHandler(data) {
         data.phone = data.phone.replace(/[()-]/g, '');
 
         UserModel
@@ -56,7 +56,7 @@ class LoginSignupController extends BaseController {
             });
     }
 
-    loginCb(data) {
+    loginHandler(data) {
         data.phone = data.phone.replace(/[()-]/g, '');
 
         SessionModel

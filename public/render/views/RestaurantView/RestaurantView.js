@@ -1,5 +1,6 @@
-// eslint-disable max-len
+// eslint-disable-next-line max-len
 import RestaurantCategories from '../../blocks/restaurantCategories/RestaurantCategories.js';
+// eslint-disable-next-line max-len
 import RestaurantBanner from '../../blocks/restaurantBanner/restaurantBanner.js';
 import Component from '../../Component.js';
 import Header from '../../blocks/header/Header.js';
@@ -7,7 +8,7 @@ import Order from '../../blocks/order/Order.js';
 import Products from '../../blocks/products/Products.js';
 
 class RestaurantView extends Component {
-    constructor({restaurant, products, basket, categoryArr}) {
+    constructor({restaurant, products, categoryArr}) {
         super();
 
         this.addContextData({
@@ -16,7 +17,6 @@ class RestaurantView extends Component {
             }),
             order: new Order({
                 classes: 'order',
-                basket,
             }),
             restaurantBanner: new RestaurantBanner({
                 classes: 'restaurantBanner',

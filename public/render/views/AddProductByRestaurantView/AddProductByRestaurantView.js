@@ -1,3 +1,4 @@
+// eslint-disable-next-line max-len
 import AddProductByRestaurant from '../../blocks/AddProductByRestaurant/AddProductByRestaurant.js';
 import Component from '../../Component.js';
 import Header from '../../blocks/header/Header.js';

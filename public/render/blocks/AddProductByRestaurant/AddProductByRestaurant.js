@@ -23,7 +23,8 @@ export default class AddProductByRestaurant extends Component {
                 id: 'add-product-by-restaurant__cost-input',
                 type: 'number',
                 placeholder: 'Price',
-                min: 0,
+                min: '0',
+                max: 10000,
                 isRequired: true,
             }),
             costError: new ErrorBlock({
@@ -50,7 +51,7 @@ export default class AddProductByRestaurant extends Component {
                 text: 'Add',
                 callback: () => {
                     this.context.generalError.clean();
-                    let validationFlag = true;
+                    let validationFlag;
 
                     validationFlag = Validation.inputValidation(
                         this.context.nameInput,
@@ -92,28 +93,20 @@ export default class AddProductByRestaurant extends Component {
 
     bind() {
         EventBus.subscribe(
-            'add-product-error add-product-image-error',
+            'add-product-by-restaurant-error',
             (message) => {
                 this.context.generalError.addMessage(message);
             });
-
-        EventBus.subscribe('add-product-image-error', (message) => {
-            this.context.generalError.addMessage(message);
-        });
 
         super.bind();
     }
 
     unbind() {
         EventBus.unsubscribe(
-            'add-product-error add-product-image-error',
+            'add-product-by-restaurant-error',
             (message) => {
                 this.context.generalError.addMessage(message);
             });
-
-        EventBus.unsubscribe('add-product-image-error', (message) => {
-            this.context.generalError.addMessage(message);
-        });
 
         super.unbind();
     }

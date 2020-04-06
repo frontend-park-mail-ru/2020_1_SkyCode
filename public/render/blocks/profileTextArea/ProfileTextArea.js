@@ -69,7 +69,7 @@ export default class ProfileTextArea extends Component {
                     callback: () => {
                         this.context.generalErrorField.clean();
 
-                        let validationFlag = true;
+                        let validationFlag;
 
                         validationFlag = Validation.inputValidation(
                             this.context.fNameInput,
