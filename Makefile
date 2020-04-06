@@ -1,4 +1,4 @@
-all: build main run
+all: build stylecow main run
 
 build:
 	cd ./public/handlebars; ./precompile.sh
@@ -9,4 +9,6 @@ run:
 main:
 	google-chrome http://127.0.0.1:8080
 
+stylecow:
+	stylecow
 
