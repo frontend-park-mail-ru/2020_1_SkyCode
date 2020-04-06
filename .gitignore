@@ -2,8 +2,6 @@
 # Created by https://www.gitignore.io/api/node,linux,macos,executable,jetbrains+all
 # Edit at https://www.gitignore.io/?templates=node,linux,macos,executable,jetbrains+all
 
-### generated files
-public/*.dist.*
 ### precompiled files
 precompiled.js
 

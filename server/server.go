@@ -51,6 +51,7 @@ func main() {
 	http.HandleFunc("/main.css", resourceHandler)
 	http.HandleFunc("/main.dist.css", resourceHandler)
 	http.HandleFunc("/index.js", resourceHandler)
+	http.HandleFunc("/main.js", resourceHandler)
 	http.HandleFunc("/mocks.js", resourceHandler)
 	http.HandleFunc("/images/", imageHandler)
 
