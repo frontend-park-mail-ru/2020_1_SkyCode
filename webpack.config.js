@@ -7,6 +7,6 @@ module.exports = {
         filename: 'main.js',
         path: path.resolve(__dirname, 'public'),
     },
-    mode: 'development',
+    mode: 'production',
 };
 /* eslint-enable */
