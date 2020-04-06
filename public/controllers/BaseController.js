@@ -41,11 +41,6 @@ class BaseController {
     get title() {
         return this._title;
     }
-
-    log(message) {
-        const start = '\n' + this.constructor.name + ':\t';
-        console.log(start + message);
-    }
 }
 
 export default BaseController;
