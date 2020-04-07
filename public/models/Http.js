@@ -18,17 +18,17 @@ class Http {
 
         if (body != null) {
             req.body = body;
-            if (headers === true) {
-                if (type === 'json') {
-                    req.headers = {
-                        'Content-Type': 'application/json',
-                        'X-Csrf-Token': localStorage.getItem('token')
-                    };
-                } else if (type === 'file') {
-                    req.headers = {
-                        'X-Csrf-Token': localStorage.getItem('token')
-                    };
-                }
+        }
+        if (headers === true) {
+            if (type === 'json') {
+                req.headers = {
+                    'Content-Type': 'application/json',
+                    'X-Csrf-Token': localStorage.getItem('token')
+                };
+            } else if (type === 'file') {
+                req.headers = {
+                    'X-Csrf-Token': localStorage.getItem('token')
+                };
             }
         }
         return fetch(`${this.serverPath}${path}`, req);
