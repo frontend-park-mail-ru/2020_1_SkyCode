@@ -2,15 +2,31 @@ import Http from './Http.js';
 
 class SessionModel {
     login(data) {
-        return Http.fetchPost({path: '/api/v1/signin',
+        return Http.fetchPost({
+            path: '/api/v1/signin',
             body: JSON.stringify(data),
-        }).then((res) => res.json());
+        })
+            .then((response) => {
+                const token = response.headers.get('X-Csrf-Token');
+                console.log(typeof (token));
+                if (token) {
+                    localStorage.setItem('token', token);
+                }
+                return response.json();
+            });
     }
 
     logout() {
         return Http.fetchPost({
             path: '/api/v1/logout',
-        }).then((response) => response.json());
+        })
+            .then((response) => {
+                const token = response.headers.get('X-Csrf-Token');
+                if (token) {
+                    localStorage.setItem('token', token);
+                }
+                return response.json();
+            });
     }
 }
 

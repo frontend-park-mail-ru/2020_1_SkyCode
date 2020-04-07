@@ -22,6 +22,11 @@ class Http {
                 if (type === 'json') {
                     req.headers = {
                         'Content-Type': 'application/json',
+                        'X-Csrf-Token': localStorage.getItem('token')
+                    };
+                } else if (type === 'file') {
+                    req.headers = {
+                        'X-Csrf-Token': localStorage.getItem('token')
                     };
                 }
             }
