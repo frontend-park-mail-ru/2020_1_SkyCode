@@ -19,7 +19,6 @@ export default class Href extends Component {
             event.preventDefault();
             EventBus.publish('set-page', {url: this.context.href});
         }.bind(this);
-        console.log('qwe');
     }
 
     unbind() {

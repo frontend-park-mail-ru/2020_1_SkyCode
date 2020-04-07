@@ -95,7 +95,7 @@ export default class OrderCheckout extends Component {
                         }
 
                         const products = [];
-                        const basket = BasketController.basket;
+                        const basket = BasketController.basket.product;
                         for (const id in basket) {
                             const productItem = {
                                 productId: parseInt(id),
@@ -109,7 +109,7 @@ export default class OrderCheckout extends Component {
                             address: this.context.AddressInput.domElement.value,
                             email: this.context.EmailInput.domElement.value,
                             comment: this.context.CommentInput.domElement.value,
-                            personNum: BasketController.persons,
+                            personNum: parseInt(BasketController.persons),
                             price: BasketController.total,
                             products,
                         };
