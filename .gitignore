@@ -1,5 +1,5 @@
-./public/main.js
-./public/main.dist.css
+main.js
+main.dist.css
 # Created by https://www.gitignore.io/api/node,linux,macos,executable,jetbrains+all
 # Edit at https://www.gitignore.io/?templates=node,linux,macos,executable,jetbrains+all
 
