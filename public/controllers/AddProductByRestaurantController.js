@@ -24,14 +24,7 @@ class AddProductByRestaurantController extends BaseController {
     }
 
     startCatchEvents() {
-        EventBus.subscribe(
-            'add-product-by-restaurant',
-            this.addProductHandler.bind(this),
-        );
-    }
-
-    stopCatchEvents() {
-        EventBus.unsubscribe(
+        this.subscribe(
             'add-product-by-restaurant',
             this.addProductHandler.bind(this),
         );

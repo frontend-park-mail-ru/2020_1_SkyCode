@@ -1,7 +1,6 @@
 import BaseController from './BaseController.js';
 import EventBus from '../services/Events/EventBus.js';
 import RestaurantController from './RestaurantController.js';
-import ProfileController from './ProfileController.js';
 
 class BasketController extends BaseController {
     constructor() {
@@ -15,25 +14,14 @@ class BasketController extends BaseController {
     }
 
     startCatchEvents() {
-        EventBus.subscribe('add-product', this.addProductHandler.bind(this));
-        EventBus.subscribe(
+        this.subscribe('add-product', this.addProductHandler.bind(this));
+        this.subscribe(
             'person-amount-change',
             this.personAmountChangeHandler.bind(this),
         );
-        EventBus.subscribe('success-login', this.CheckBasketHandler.bind(this));
-        EventBus.subscribe('log-out', this.cleanBasketHandler.bind(this));
-        EventBus.subscribe('delete-prod', this.deleteProductHandler.bind(this));
-    }
-
-    stopCatchEvents() {
-        EventBus.unsubscribe('add-product', this.addProductHandler.bind(this));
-        EventBus.unsubscribe(
-            'person-amount-change',
-            this.personAmountChangeHandler.bind(this),
-        );
-        EventBus.unsubscribe('success-login', this.CheckBasketHandler.bind(this));
-        EventBus.unsubscribe('log-out', this.cleanBasketHandler.bind(this));
-        EventBus.unsubscribe('delete-prod', this.deleteProductHandler.bind(this));
+        this.subscribe('success-login', this.CheckBasketHandler.bind(this));
+        this.subscribe('log-out', this.cleanBasketHandler.bind(this));
+        this.subscribe('delete-prod', this.deleteProductHandler.bind(this));
     }
 
     productNumber() {
@@ -60,7 +48,6 @@ class BasketController extends BaseController {
     deleteProductHandler(id) {
         console.log(id);
         if (id in this.basket.product) {
-
             if (this.basket.product[id].amount === 1) {
                 delete this.basket.product[id];
             } else if (this.basket.product[id].amount > 1) {
@@ -72,7 +59,7 @@ class BasketController extends BaseController {
             });
         }
     }
-    
+
     personAmountChangeHandler(personNum) {
         if (personNum > 0) {
             this.persons = personNum;

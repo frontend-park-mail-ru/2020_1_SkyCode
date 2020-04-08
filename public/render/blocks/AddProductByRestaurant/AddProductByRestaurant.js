@@ -92,22 +92,12 @@ export default class AddProductByRestaurant extends Component {
     }
 
     bind() {
-        EventBus.subscribe(
+        this.subscribe(
             'add-product-by-restaurant-error',
             (message) => {
                 this.context.generalError.addMessage(message);
             });
 
         super.bind();
-    }
-
-    unbind() {
-        EventBus.unsubscribe(
-            'add-product-by-restaurant-error',
-            (message) => {
-                this.context.generalError.addMessage(message);
-            });
-
-        super.unbind();
     }
 }

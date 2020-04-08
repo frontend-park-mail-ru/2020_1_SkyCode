@@ -29,13 +29,8 @@ class LoginSignupController extends BaseController {
     }
 
     startCatchEvents() {
-        EventBus.subscribe('signup', this.signupHandler.bind(this));
-        EventBus.subscribe('login', this.loginHandler.bind(this));
-    }
-
-    stopCatchEvents() {
-        EventBus.unsubscribe('signup', this.signupHandler.bind(this));
-        EventBus.unsubscribe('login', this.loginHandler.bind(this));
+        this.subscribe('signup', this.signupHandler.bind(this));
+        this.subscribe('login', this.loginHandler.bind(this));
     }
 
     signupHandler(data) {

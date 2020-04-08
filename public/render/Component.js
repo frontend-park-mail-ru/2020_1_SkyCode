@@ -1,8 +1,16 @@
+import EventBus from '../services/Events/EventBus';
+
 export default class Component {
     constructor(classes, contextObj, id) {
         this.toString = this.html;
 
-        // TemplateData --- информация, передающаяся в template
+        /*
+         * UnsubscribeArr --- Массив, сохраниющий функции отписки
+         * От событий
+         */
+        this._unsubscribeArr = [];
+
+        // ContextData --- информация, передающаяся в template
         this._context = {};
         // Добавляем классы
         this.addContextData({classes: []}, false);
@@ -54,6 +62,10 @@ export default class Component {
         return this.context.classes.join(' ');
     }
 
+    subscribe(events, callback) {
+        this._unsubscribeArr.push(EventBus.subscribe(events, callback));
+    }
+
     bind() {
         for (const value of Object.values(this.context)) {
             if (Array.isArray(value)) {
@@ -71,6 +83,10 @@ export default class Component {
     }
 
     unbind() {
+        for (const unsubscribe of this._unsubscribeArr) {
+            unsubscribe();
+        }
+
         for (const value of Object.values(this.context)) {
             if (!(value instanceof Component)) {
                 continue;

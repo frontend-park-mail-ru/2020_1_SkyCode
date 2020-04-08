@@ -31,11 +31,7 @@ class CheckoutController extends BaseController {
     }
 
     startCatchEvents() {
-        EventBus.subscribe('checkout', this.checkoutHandler.bind(this));
-    }
-
-    stopCatchEvents() {
-        EventBus.unsubscribe('checkout', this.checkoutHandler.bind(this));
+        this.subscribe('checkout', this.checkoutHandler.bind(this));
     }
 
     checkoutHandler(data) {

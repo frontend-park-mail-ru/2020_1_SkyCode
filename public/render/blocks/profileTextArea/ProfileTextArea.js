@@ -119,13 +119,13 @@ export default class ProfileTextArea extends Component {
             EventBus.publish('avatar-update', formData);
         });
 
-        EventBus.subscribe('update-bio-error', (message) => {
+        this.subscribe('update-bio-error', (message) => {
             this.context
                 .generalErrorField
                 .addMessage(message);
         });
 
-        EventBus.subscribe('update-avatar-error', (message) => {
+        this.subscribe('update-avatar-error', (message) => {
             this.context
                 .avatarErrorField
                 .addMessage(message);

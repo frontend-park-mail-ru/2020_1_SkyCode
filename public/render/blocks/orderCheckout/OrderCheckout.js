@@ -120,18 +120,10 @@ export default class OrderCheckout extends Component {
     }
 
     bind() {
-        EventBus.subscribe('order-checkout-error', (message) => {
+        this.subscribe('order-checkout-error', (message) => {
             this.context.GeneralError.addMessage(message);
         });
 
         super.bind();
-    }
-
-    unbind() {
-        EventBus.unsubscribe('order-checkout-error', (message) => {
-            this.context.GeneralError.addMessage(message);
-        });
-
-        super.unbind();
     }
 }

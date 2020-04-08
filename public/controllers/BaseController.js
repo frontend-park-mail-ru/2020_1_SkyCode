@@ -1,8 +1,10 @@
 'use strict';
+import EventBus from '../services/Events/EventBus.js';
 
 class BaseController {
     constructor(title) {
         this._title = title;
+        this._unsubscribeArr = [];
     }
 
     // У вьюхи должны быть методы bind, unbind, html и геттер state
@@ -23,11 +25,18 @@ class BaseController {
     }
 
     startCatchEvents() {
+        /* Redefine it to subscribe all events you need */
         void 0;
     }
 
+    subscribe(events, callback) {
+        this._unsubscribeArr.push(EventBus.subscribe(events, callback));
+    }
+
     stopCatchEvents() {
-        void 0;
+        for (const unsubscribe of this._unsubscribeArr) {
+            unsubscribe();
+        }
     }
 
     get title() {

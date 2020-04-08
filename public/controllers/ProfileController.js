@@ -25,18 +25,9 @@ class ProfileController extends BaseController {
     }
 
     startCatchEvents() {
-        EventBus.subscribe('update-user', this.updateBioHandler.bind(this));
-        EventBus.subscribe('log-out', this.logoutHandler.bind(this));
-        EventBus.subscribe(
-            'avatar-update',
-            this.updateAvatarHandler.bind(this),
-        );
-    }
-
-    stopCatchEvents() {
-        EventBus.unsubscribe('update-user', this.updateBioHandler.bind(this));
-        EventBus.unsubscribe('log-out', this.logoutHandler.bind(this));
-        EventBus.unsubscribe(
+        this.subscribe('update-user', this.updateBioHandler.bind(this));
+        this.subscribe('log-out', this.logoutHandler.bind(this));
+        this.subscribe(
             'avatar-update',
             this.updateAvatarHandler.bind(this),
         );
