@@ -6,11 +6,12 @@ import BasketController from '../../../controllers/BasketController.js';
 import ErrorBlock from '../errorBlock/ErrorBlock.js';
 import Validation from '../../../services/InputValidation.js';
 import template from './OrderCheckout.hbs';
+import PhoneInput from '../../elements/phoneInput/PhoneInput.js';
 
 export default class OrderCheckout extends Component {
     constructor({classes, phone, address, email, profile}) {
         super(classes, {
-            PhoneInput: new Input({
+            PhoneInput: new PhoneInput({
                 classes: 'order-checkout__input',
                 id: 'order-checkout__phone-input',
                 type: 'tel',
@@ -19,9 +20,7 @@ export default class OrderCheckout extends Component {
                     + ')' + phone.slice(4, 7)
                     + '-' + phone.slice(7, 9)
                     + '-' + phone.slice(9, 11),
-                placeholder: '8(800)555-35-35',
                 isRequired: true,
-                pattern: '\\d\\(\\d{3}\\)\\d{3}-\\d{2}-\\d{2}',
             }),
             PhoneError: new ErrorBlock({
                 id: 'phone-input-error',

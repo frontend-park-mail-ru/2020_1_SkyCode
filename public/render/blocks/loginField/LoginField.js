@@ -5,17 +5,15 @@ import EventBus from '../../../services/Events/EventBus.js';
 import ErrorBlock from '../errorBlock/ErrorBlock.js';
 import Validation from '../../../services/InputValidation.js';
 import template from './LoginField.hbs';
+import PhoneInput from '../../elements/phoneInput/PhoneInput';
 
 export default class LoginField extends Component {
     constructor({classes}) {
         super(classes, {
-            phoneInput: new Input({
+            phoneInput: new PhoneInput({
                 classes: 'login-field__input',
                 id: 'login-field__email-input',
-                type: 'tel',
-                placeholder: '8(800)555-35-35',
                 isRequired: true,
-                pattern: '\\d\\(\\d{3}\\)\\d{3}-\\d{2}-\\d{2}',
             }),
             passwordInput: new Input({
                 classes: 'login-field__input',

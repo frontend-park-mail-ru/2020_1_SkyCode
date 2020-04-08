@@ -5,6 +5,7 @@ import EventBus from '../../../services/Events/EventBus.js';
 import ErrorBlock from '../errorBlock/ErrorBlock.js';
 import Validation from '../../../services/InputValidation.js';
 import template from './SignupField.hbs';
+import PhoneInput from '../../elements/phoneInput/PhoneInput';
 
 export default class SignupField extends Component {
     constructor({classes}) {
@@ -23,13 +24,10 @@ export default class SignupField extends Component {
                 placeholder: 'last name',
                 isRequired: true,
             }),
-            phoneInput: new Input({
+            phoneInput: new PhoneInput({
                 classes: 'signup-field__input',
                 id: 'signup-field__phone-input',
-                type: 'phone',
-                placeholder: '8(800)555-35-35',
                 isRequired: true,
-                pattern: '\\d\\(\\d{3}\\)\\d{3}-\\d{2}-\\d{2}',
             }),
             passwordInput1: new Input({
                 classes: 'signup-field__input',
