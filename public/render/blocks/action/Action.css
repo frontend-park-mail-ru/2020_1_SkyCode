@@ -1,6 +1,6 @@
 .action-bar__action {
     border-radius: 15px;
-    width: 266px;
+    width: auto;
     height: 130px;
 
     cursor: pointer;
