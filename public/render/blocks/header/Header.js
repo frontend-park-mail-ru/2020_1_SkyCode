@@ -3,10 +3,12 @@ import Href from '../../elements/href/Href.js';
 import HamburgerButton from '../../elements/hamburgerButton/HamburgerButton.js';
 import Input from '../../elements/input/Input.js';
 import SearchField from '../searchField/SearchField.js';
+import template from './Header.hbs';
 
 export default class Header extends Component {
     constructor({classes = 'header'} = {}) {
         super();
+        super.template = template;
         this.addContextData({
             hamburgerButton: new HamburgerButton({
                 classes: 'header__hamburger-button',

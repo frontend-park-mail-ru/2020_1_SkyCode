@@ -8,5 +8,14 @@ module.exports = {
         path: path.resolve(__dirname, 'public'),
     },
     mode: 'production',
+
+    module: {
+        rules: [
+            {
+                test: /\.hbs$/,
+                loader: 'handlebars-loader',
+            }
+        ]
+    }
 };
 /* eslint-enable */

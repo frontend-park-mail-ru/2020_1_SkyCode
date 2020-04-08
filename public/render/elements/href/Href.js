@@ -1,12 +1,14 @@
 import Component from '../../Component.js';
 import EventBus from '../../../services/Events/EventBus.js';
+import template from './Href.hbs';
 
 export default class Href extends Component {
-    constructor({text, href, classes = 'href', id}) {
+    constructor({text, href: ref, classes = 'href', id}) {
         super(classes, {
             text,
-            href,
+            ref,
         }, id);
+        super.template = template;
     }
 
     bind() {
@@ -17,7 +19,7 @@ export default class Href extends Component {
 
         me.onclick = function(event) {
             event.preventDefault();
-            EventBus.publish('set-page', {url: this.context.href});
+            EventBus.publish('set-page', {url: this.context.ref});
         }.bind(this);
     }
 

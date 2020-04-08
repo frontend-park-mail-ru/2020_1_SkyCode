@@ -1,5 +1,6 @@
 import Component from '../../Component.js';
 import Img from '../../elements/img/Img.js';
+import template from './restaurantBanner.hbs';
 
 export default class restaurantBanner extends Component {
     constructor({classes, imgHref, name, rate}) {
@@ -13,5 +14,7 @@ export default class restaurantBanner extends Component {
             }),
             rate,
         });
+
+        super.template = template;
     }
 }

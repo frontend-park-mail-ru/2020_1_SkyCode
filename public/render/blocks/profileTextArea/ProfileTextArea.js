@@ -5,6 +5,7 @@ import EventBus from '../../../services/Events/EventBus.js';
 import Img from '../../elements/img/Img.js';
 import ErrorBlock from '../errorBlock/ErrorBlock.js';
 import Validation from '../../../services/InputValidation.js';
+import template from './ProfileTextArea.hbs';
 
 export default class ProfileTextArea extends Component {
     constructor({classes, data}) {
@@ -60,6 +61,8 @@ export default class ProfileTextArea extends Component {
                 id: 'profile-general-error',
             }),
         });
+
+        super.template = template;
 
         this.addContextData({
             SubmitButton:

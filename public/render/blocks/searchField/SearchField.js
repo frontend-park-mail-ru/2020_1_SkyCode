@@ -1,9 +1,13 @@
 import Component from '../../Component.js';
 import Input from '../../elements/input/Input.js';
+import template from './SearchField.hbs';
 
 export default class SearchField extends Component {
     constructor({classes = 'search-field', callback}) {
         super();
+
+        super.template = template;
+
         this.addClasses(classes);
         this.addContextData({
             inputButton: new Input({

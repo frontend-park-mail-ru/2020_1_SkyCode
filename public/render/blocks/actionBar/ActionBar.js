@@ -1,9 +1,12 @@
 import Component from '../../Component.js';
 import Action from '../action/Action.js';
+import template from './ActionBar.hbs';
 
 export default class ActionBar extends Component {
     constructor({classes = 'action-bar', actionArr}) {
         super();
+        super.template = template;
+
         this.addClasses(classes);
 
         const actions = [];

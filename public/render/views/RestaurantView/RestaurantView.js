@@ -6,10 +6,13 @@ import Component from '../../Component.js';
 import Header from '../../blocks/header/Header.js';
 import Order from '../../blocks/order/Order.js';
 import Products from '../../blocks/products/Products.js';
+import template from './RestaurantView.hbs';
 
 class RestaurantView extends Component {
     constructor({restaurant, products, categoryArr}) {
         super();
+
+        super.template = template;
 
         this.addContextData({
             header: new Header({

@@ -5,6 +5,7 @@ import EventBus from '../../../services/Events/EventBus.js';
 import BasketController from '../../../controllers/BasketController.js';
 import ErrorBlock from '../errorBlock/ErrorBlock.js';
 import Validation from '../../../services/InputValidation.js';
+import template from './OrderCheckout.hbs';
 
 export default class OrderCheckout extends Component {
     constructor({classes, phone, address, email, profile}) {
@@ -58,6 +59,8 @@ export default class OrderCheckout extends Component {
                 id: 'general-error',
             }),
         });
+
+        super.template = template;
 
         this.addContextData({
             SubmitButton:

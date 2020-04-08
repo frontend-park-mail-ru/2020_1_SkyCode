@@ -1,6 +1,6 @@
 export default class Component {
-    constructor(classes, contextObj, id) {
-        this.toString = this.html;
+    constructor(classes, contextObj, id, template) {
+        this.toString = () => template(this.context);
 
         // TemplateData --- информация, передающаяся в template
         this._context = {};
@@ -19,6 +19,10 @@ export default class Component {
             this._id = id;
             this.addContextData({id});
         }
+    }
+
+    set template(template) {
+        this.toString = () => template(this.context);
     }
 
     static isComponent(object) {
@@ -78,13 +82,6 @@ export default class Component {
 
             value.unbind();
         }
-    }
-
-    html() {
-        // eslint-disable-next-line no-undef
-        return Handlebars.templates[
-            this.constructor.name + '.hbs'
-        ](this.context);
     }
 
     set id(id) {

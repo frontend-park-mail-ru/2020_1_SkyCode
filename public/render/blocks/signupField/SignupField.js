@@ -4,6 +4,7 @@ import NeonButton from '../../elements/neonButton/NeonButton.js';
 import EventBus from '../../../services/Events/EventBus.js';
 import ErrorBlock from '../errorBlock/ErrorBlock.js';
 import Validation from '../../../services/InputValidation.js';
+import template from './SignupField.hbs';
 
 export default class SignupField extends Component {
     constructor({classes}) {
@@ -63,6 +64,8 @@ export default class SignupField extends Component {
                 id: 'signup-general-error',
             }),
         });
+
+        super.template = template;
 
         this.addContextData({
             submitButton: new NeonButton({

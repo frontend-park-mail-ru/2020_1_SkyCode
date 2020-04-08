@@ -2,6 +2,7 @@ import Component from '../../Component.js';
 import Input from '../../elements/input/Input.js';
 import Button from '../../elements/button/Button.js';
 import EventBus from '../../../services/Events/EventBus.js';
+import template from './PersonInput.hbs';
 
 export default class PersonInput extends Component {
     constructor({classes, label, personNum = 1}) {
@@ -16,6 +17,8 @@ export default class PersonInput extends Component {
                 max: 1000,
             }),
         });
+
+        super.template = template;
 
         const incrementCallback = (add) => () => {
             const input = this.context.input.domElement;

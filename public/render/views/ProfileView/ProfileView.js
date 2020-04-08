@@ -1,6 +1,7 @@
 import Component from '../../Component.js';
 import Header from '../../blocks/header/Header.js';
 import ProfileTextArea from '../../blocks/profileTextArea/ProfileTextArea.js';
+import template from './ProfileView.hbs';
 
 export default class ProfileView extends Component {
     constructor({profile}) {
@@ -14,5 +15,7 @@ export default class ProfileView extends Component {
                 data: profile,
             }),
         });
+
+        super.template = template;
     }
 }

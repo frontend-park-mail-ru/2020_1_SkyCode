@@ -1,4 +1,5 @@
 import Component from '../../Component.js';
+import template from './Input.hbs';
 
 export default class Input extends Component {
     constructor({
@@ -13,7 +14,6 @@ export default class Input extends Component {
         isRequired,
         pattern,
         maxlength,
-
     }) {
         super(classes, {
             src,
@@ -26,5 +26,7 @@ export default class Input extends Component {
             pattern,
             maxlength,
         }, id);
+
+        super.template = template;
     }
 }

@@ -1,6 +1,7 @@
 import Component from '../../Component.js';
 import Img from '../../elements/img/Img.js';
 import EventBus from '../../../services/Events/EventBus.js';
+import template from './BasketProduct.hbs';
 
 export default class BasketProduct extends Component {
     constructor({classes, imageHref, name, quantity, cost, id, mainId}) {
@@ -14,6 +15,7 @@ export default class BasketProduct extends Component {
             quantity,
             price: quantity * cost,
         }, id);
+        super.template = template;
         this.mainId = mainId;
     }
 
