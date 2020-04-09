@@ -6,6 +6,7 @@ import PersonInput from '../personInput/PersonInput.js';
 import Href from '../../elements/href/Href.js';
 import BasketController from '../../../controllers/BasketController.js';
 import template from './Order.hbs';
+import EventBus from '../../../services/Events/EventBus';
 
 export default class Order extends Component {
     constructor({
@@ -20,14 +21,7 @@ export default class Order extends Component {
         this.addClasses(classes);
         this.addContextData({
             title: 'My Order',
-            total: () => {
-                let sum = 0;
-                for (const id in basket) {
-                    sum += basket[id].price * basket[id].amount;
-                }
-                BasketController.total = sum;
-                return sum;
-            },
+            total: this.countTotal(basket),
             profileButton: new ImageHref({
                 classes: 'order__profile-href',
                 imageClasses: 'order__profile-image',
@@ -57,5 +51,29 @@ export default class Order extends Component {
                 }),
             });
         }
+    }
+
+    setTotal(basket) {
+        document.getElementById('total')
+            .innerText = String(this.countTotal(basket));
+    }
+
+    countTotal(basket) {
+        let sum = 0;
+        for (const id in basket) {
+            sum += basket[id].price * basket[id].amount;
+        }
+        BasketController.total = sum;
+        return sum;
+    }
+
+    bind() {
+        EventBus.subscribe('basket-changed', this.setTotal.bind(this));
+        super.bind();
+    }
+
+    unbind() {
+        EventBus.unsubscribe('basket-changed', this.setTotal.bind(this));
+        super.unbind();
     }
 }

@@ -51,7 +51,7 @@ class BasketController extends BaseController {
             this.basket.product[data.id] = data;
             this.basket.product[data.id].amount = 1;
         }
-
+        debugger;
         EventBus.publish('basket-changed', this.basket.product);
     }
 
