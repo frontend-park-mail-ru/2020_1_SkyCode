@@ -45,6 +45,8 @@ class CheckoutController extends BaseController {
                 if (response.error) {
                     EventBus.publish('order-checkout-error', response.error);
                 } else {
+                    alert('Заказ успешно отправлен.')
+                    EventBus.publish('checkout-success', {});
                     EventBus.publish('set-page', {url: '/'});
                 }
             })
