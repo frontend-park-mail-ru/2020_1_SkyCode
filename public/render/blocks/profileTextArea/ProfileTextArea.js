@@ -67,7 +67,7 @@ export default class ProfileTextArea extends Component {
         this.addContextData({
             SubmitButton:
                 new NeonButton({
-                    text: 'Save',
+                    text: 'Обновить',
                     classes: 'profile-update__submit-btn',
                     callback: () => {
                         this.context.generalErrorField.clean();
@@ -104,7 +104,7 @@ export default class ProfileTextArea extends Component {
 
             LogoutButton:
                 new NeonButton({
-                    text: 'Log Out',
+                    text: 'Выйти',
                     classes: 'profile-update__logout-btn',
                     callback: () => {
                         EventBus.publish('log-out');

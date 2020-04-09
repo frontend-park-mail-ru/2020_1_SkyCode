@@ -30,7 +30,7 @@ export default class OrderCheckout extends Component {
                 id: 'order-checkout__address-input',
                 type: 'text',
                 value: address,
-                placeholder: 'Enter your address',
+                placeholder: 'Введите адрес доставки',
                 isRequired: true,
             }),
             AddressError: new ErrorBlock({
@@ -52,7 +52,7 @@ export default class OrderCheckout extends Component {
                 classes: 'order-checkout__input',
                 id: 'order-checkout__comment-input',
                 type: 'text',
-                placeholder: 'Enter your comment',
+                placeholder: 'Пожелания',
             }),
             GeneralError: new ErrorBlock({
                 id: 'general-error',
@@ -65,7 +65,7 @@ export default class OrderCheckout extends Component {
             SubmitButton:
                 new NeonButton({
                     classes: 'order-checkout__confirm',
-                    text: 'Confirm',
+                    text: 'Заказать',
                     callback: () => {
                         this.context.GeneralError.clean();
                         let validationFlag;
