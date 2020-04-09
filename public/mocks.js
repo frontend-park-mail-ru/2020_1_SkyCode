@@ -65,14 +65,14 @@ class Mocks {
         this._categories = [];
 
         const texts = [
-            'All',
-            'Burgers',
-            'Pizza',
-            'Asian',
-            'Barbecue',
-            'Desserts',
-            'Thai',
-            'Sushi',
+            'Все',
+            'Бургеры',
+            'Пицца',
+            'Азия',
+            'Барбекю',
+            'Десерты',
+            'Тай',
+            'Суши',
 
             'Магазины',
             'Завтраки',
@@ -115,7 +115,7 @@ class Mocks {
         this._products = [{
             imageHref: 'static/basket/BBQBurger.jpg',
             quantity: 1,
-            name: 'BBQ Burger',
+            name: 'BBQ Бургер',
             cost: 339,
         }, {
             imageHref: 'static/basket/FrenchFries.jpg',
