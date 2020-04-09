@@ -29,7 +29,7 @@ export default class Validation {
         }
 
         if (validity.tooShort) {
-            errors.push(`Must be less than ${inputElement.minLength} symbols`);
+            errors.push(`Must be more than ${inputElement.minLength} symbols`);
         }
 
         if (validity.rangeUnderflow) {

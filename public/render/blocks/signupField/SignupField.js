@@ -14,14 +14,14 @@ export default class SignupField extends Component {
                 classes: 'signup-field__input',
                 id: 'signup-field__fname-input',
                 type: 'text',
-                placeholder: 'first name',
+                placeholder: 'Имя',
                 isRequired: true,
             }),
             lNameInput: new Input({
                 classes: 'signup-field__input',
                 id: 'signup-field__lname-input',
                 type: 'text',
-                placeholder: 'last name',
+                placeholder: 'Фамилия',
                 isRequired: true,
             }),
             phoneInput: new PhoneInput({
@@ -33,14 +33,14 @@ export default class SignupField extends Component {
                 classes: 'signup-field__input',
                 id: 'signup-field__password-input1',
                 type: 'password',
-                placeholder: 'GoodyGoody456',
+                placeholder: 'Пароль',
                 isRequired: true,
             }),
             passwordInput2: new Input({
                 classes: 'signup-field__input',
                 id: 'signup-field__password-input2',
                 type: 'password',
-                placeholder: 'GoodyGoody456',
+                placeholder: 'Пароль',
                 isRequired: true,
             }),
             firstNameErrorField: new ErrorBlock({
@@ -68,7 +68,7 @@ export default class SignupField extends Component {
         this.addContextData({
             submitButton: new NeonButton({
                 classes: 'signup-field__submit',
-                text: 'Sign Up',
+                text: 'Зарегистрироваться',
                 callback: () => {
                     this.context.generalErrorField.clean();
 

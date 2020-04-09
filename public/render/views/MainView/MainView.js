@@ -14,11 +14,11 @@ class MainView extends Component {
         super.template = template;
 
         this.addContextData({
-            label: 'Restaurants',
+            label: 'Рестораны',
             selectTimeButton: new SelectTimeButton({
                 classes: 'main-view__select-time-button',
                 imageHref: 'static/clock.svg',
-                text: 'Delivery: now',
+                text: 'Доставка: сейчас',
                 callback: () => 0,
             }),
             header: new Header({

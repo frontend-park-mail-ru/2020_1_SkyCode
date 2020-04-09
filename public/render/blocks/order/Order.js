@@ -20,7 +20,7 @@ export default class Order extends Component {
 
         this.addClasses(classes);
         this.addContextData({
-            title: 'My Order',
+            title: 'Заказ',
             total: this.countTotal(basket),
             profileButton: new ImageHref({
                 classes: 'order__profile-href',
@@ -37,7 +37,7 @@ export default class Order extends Component {
             }),
             personInput: new PersonInput({
                 classes: 'order__person-input',
-                label: 'Persons:',
+                label: 'Гостей:',
                 personNum,
             }),
         });
@@ -46,7 +46,7 @@ export default class Order extends Component {
             this.addContextData({
                 checkout: new Href({
                     classes: 'order__checkout',
-                    text: 'Checkout',
+                    text: 'Заказать',
                     href: '/checkout',
                 }),
             });

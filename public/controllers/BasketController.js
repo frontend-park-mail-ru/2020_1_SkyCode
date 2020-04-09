@@ -20,6 +20,7 @@ class BasketController extends BaseController {
             'person-amount-change',
             this.personAmountChangeHandler.bind(this),
         );
+        EventBus.subscribe('checkout-success', this.cleanBasketHandler.bind(this))
         EventBus.subscribe('success-login', this.CheckBasketHandler.bind(this));
         EventBus.subscribe('log-out', this.cleanBasketHandler.bind(this));
         EventBus.subscribe('delete-prod', this.deleteProductHandler.bind(this));
@@ -33,6 +34,7 @@ class BasketController extends BaseController {
         );
         EventBus.unsubscribe('success-login', this.CheckBasketHandler.bind(this));
         EventBus.unsubscribe('log-out', this.cleanBasketHandler.bind(this));
+        EventBus.unsubscribe('checkout-success', this.cleanBasketHandler.bind(this))
         EventBus.unsubscribe('delete-prod', this.deleteProductHandler.bind(this));
     }
 
