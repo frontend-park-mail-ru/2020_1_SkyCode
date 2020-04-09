@@ -41,9 +41,7 @@
 
 .main-view__scroll-hider {
     overflow: hidden;
-    padding-right: 10px;
     margin-left: 88px;
-    margin-right: 88px;
 }
 
 .main-view__scrolled-area {
