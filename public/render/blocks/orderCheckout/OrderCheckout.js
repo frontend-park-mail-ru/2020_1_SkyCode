@@ -29,6 +29,8 @@ export default class OrderCheckout extends Component {
                 classes: 'order-checkout__input',
                 id: 'order-checkout__address-input',
                 type: 'text',
+                minlength: '5',
+                maxlength: '255',
                 value: address,
                 placeholder: 'Enter your address',
                 isRequired: true,
@@ -53,6 +55,7 @@ export default class OrderCheckout extends Component {
                 id: 'order-checkout__comment-input',
                 type: 'text',
                 placeholder: 'Enter your comment',
+                maxlength: 255,
             }),
             GeneralError: new ErrorBlock({
                 id: 'general-error',
