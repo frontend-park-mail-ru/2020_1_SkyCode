@@ -5,6 +5,7 @@ import EventBus from '../../../services/Events/EventBus.js';
 import ErrorBlock from '../errorBlock/ErrorBlock.js';
 import Validation from '../../../services/InputValidation.js';
 import template from './SignupField.hbs';
+import PhoneInput from '../../elements/phoneInput/PhoneInput';
 
 export default class SignupField extends Component {
     constructor({classes}) {
@@ -13,36 +14,33 @@ export default class SignupField extends Component {
                 classes: 'signup-field__input',
                 id: 'signup-field__fname-input',
                 type: 'text',
-                placeholder: 'first name',
+                placeholder: 'Имя',
                 isRequired: true,
             }),
             lNameInput: new Input({
                 classes: 'signup-field__input',
                 id: 'signup-field__lname-input',
                 type: 'text',
-                placeholder: 'last name',
+                placeholder: 'Фамилия',
                 isRequired: true,
             }),
-            phoneInput: new Input({
+            phoneInput: new PhoneInput({
                 classes: 'signup-field__input',
                 id: 'signup-field__phone-input',
-                type: 'phone',
-                placeholder: '8(800)555-35-35',
                 isRequired: true,
-                pattern: '\\d\\(\\d{3}\\)\\d{3}-\\d{2}-\\d{2}',
             }),
             passwordInput1: new Input({
                 classes: 'signup-field__input',
                 id: 'signup-field__password-input1',
                 type: 'password',
-                placeholder: 'GoodyGoody456',
+                placeholder: 'Пароль',
                 isRequired: true,
             }),
             passwordInput2: new Input({
                 classes: 'signup-field__input',
                 id: 'signup-field__password-input2',
                 type: 'password',
-                placeholder: 'GoodyGoody456',
+                placeholder: 'Пароль',
                 isRequired: true,
             }),
             firstNameErrorField: new ErrorBlock({
@@ -70,7 +68,7 @@ export default class SignupField extends Component {
         this.addContextData({
             submitButton: new NeonButton({
                 classes: 'signup-field__submit',
-                text: 'Sign Up',
+                text: 'Зарегистрироваться',
                 callback: () => {
                     this.context.generalErrorField.clean();
 

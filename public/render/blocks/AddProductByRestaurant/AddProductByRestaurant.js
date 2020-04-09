@@ -13,7 +13,7 @@ export default class AddProductByRestaurant extends Component {
                 classes: 'add-product-by-restaurant__input',
                 id: 'add-product-by-restaurant__name-input',
                 type: 'text',
-                placeholder: 'Name',
+                placeholder: 'Название',
                 isRequired: true,
             }),
             nameError: new ErrorBlock({
@@ -23,7 +23,7 @@ export default class AddProductByRestaurant extends Component {
                 classes: 'add-product-by-restaurant__input',
                 id: 'add-product-by-restaurant__cost-input',
                 type: 'number',
-                placeholder: 'Price',
+                placeholder: 'Цена',
                 min: '0',
                 max: 10000,
                 isRequired: true,
@@ -51,7 +51,7 @@ export default class AddProductByRestaurant extends Component {
         this.addContextData({
             submitButton: new NeonButton({
                 classes: 'add-product-by-restaurant__submit',
-                text: 'Add',
+                text: 'Добавить',
                 callback: () => {
                     this.context.generalError.clean();
                     let validationFlag;

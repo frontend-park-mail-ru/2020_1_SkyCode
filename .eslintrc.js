@@ -50,7 +50,7 @@ module.exports = {
         'lines-between-class-members': ['error', 'always'],
         'max-depth':                ['error', 3],
         'max-len':               ['error', {
-            'code': 80,
+            'code': 100,
         }],
         'multiline-comment-style':  ['error', 'starred-block'],
         'new-cap':                  ['error'],
