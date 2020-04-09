@@ -1,6 +1,7 @@
 import Component from '../../Component.js';
 import BasketProduct from '../basketProduct/BasketProduct.js';
 import template from './Basket.hbs';
+import EventBus from '../../../services/Events/EventBus.js';
 
 
 export default class Basket extends Component {
@@ -8,6 +9,10 @@ export default class Basket extends Component {
         super(classes);
         super.template = template;
 
+        this.addBasketContext(basket);
+    }
+
+    addBasketContext(basket) {
         const basketProducts = [];
 
         for (const id in basket) {
@@ -23,5 +28,20 @@ export default class Basket extends Component {
         }
 
         super.addContextData({basketProducts});
+    }
+
+    basketChangedHandler(basket) {
+        this.addBasketContext(basket);
+        this.domElement.innerHTML = this.toString();
+    }
+
+    bind() {
+        EventBus.subscribe('basket-changed', this.basketChangedHandler.bind(this));
+        super.bind();
+    }
+
+    unbind() {
+        EventBus.unsubscribe('basket-changed', this.basketChangedHandler.bind(this));
+        super.unbind();
     }
 }

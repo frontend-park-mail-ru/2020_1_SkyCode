@@ -52,27 +52,22 @@ class BasketController extends BaseController {
             this.basket.product[data.id].amount = 1;
         }
 
-        EventBus.publish('set-page', {
-            url: `/restaurants/${RestaurantController.restaurantId}`,
-        });
+        EventBus.publish('basket-changed', this.basket.product);
     }
 
     deleteProductHandler(id) {
         console.log(id);
         if (id in this.basket.product) {
-
             if (this.basket.product[id].amount === 1) {
                 delete this.basket.product[id];
             } else if (this.basket.product[id].amount > 1) {
                 this.basket.product[id].amount--;
             }
 
-            EventBus.publish('set-page', {
-                url: `/restaurants/${RestaurantController.restaurantId}`,
-            });
+            EventBus.publish('basket-changed', this.basket.product);
         }
     }
-    
+
     personAmountChangeHandler(personNum) {
         if (personNum > 0) {
             this.persons = personNum;
