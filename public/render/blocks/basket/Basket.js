@@ -33,6 +33,7 @@ export default class Basket extends Component {
     basketChangedHandler(basket) {
         this.addBasketContext(basket);
         this.domElement.innerHTML = this.toString();
+        super.bind();
     }
 
     bind() {
