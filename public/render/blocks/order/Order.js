@@ -19,7 +19,7 @@ export default class Order extends Component {
 
         this.addClasses(classes);
         this.addContextData({
-            title: 'My Order',
+            title: 'Заказ',
             total: () => {
                 let sum = 0;
                 for (const id in basket) {
@@ -43,7 +43,7 @@ export default class Order extends Component {
             }),
             personInput: new PersonInput({
                 classes: 'order__person-input',
-                label: 'Persons:',
+                label: 'Гостей:',
                 personNum,
             }),
         });
@@ -52,7 +52,7 @@ export default class Order extends Component {
             this.addContextData({
                 checkout: new Href({
                     classes: 'order__checkout',
-                    text: 'Checkout',
+                    text: 'Заказать',
                     href: '/checkout',
                 }),
             });

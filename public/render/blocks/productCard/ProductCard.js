@@ -4,14 +4,15 @@ import EventBus from '../../../services/Events/EventBus.js';
 import template from './ProductCard.hbs';
 
 export default class ProductCard extends Component {
-    constructor({classes, product}) {
+    constructor({id, product}) {
         super('product-card', {
             imgSrc: `/images/${product.image}`,
             productName: product.name,
             productPrice: product.price,
             button: new NeonButton({
-                text: 'Add',
-                classes,
+                classes: 'product-card-button',
+                text: 'Добавить',
+                id,
                 callback: () => {
                     EventBus.publish('add-product', product);
                 },

@@ -5,8 +5,8 @@ import template from './PlaceTimeCard.hbs';
 export default class PlaceTimeCard extends Component {
     constructor({
         classes = 'place-time-card',
-        place = '23, Lomonosova st.',
-        time = '35 min.',
+        place = 'ул. Ломономова, 23',
+        time = '35 мин.',
     }) {
         super(classes, {
             place,

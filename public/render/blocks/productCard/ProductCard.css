@@ -35,13 +35,18 @@
 .product-card__description {
     font-size: 14px;
     color: #C4C4C4;
-    margin: 0 90px 0 0 ;
+    margin: 0 50px 0 0 ;
 }
 
 .product-card__flex-container {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     padding-left: 10px;
+}
+
+.product-card-button {
+    margin-right: 5px;
+    margin-bottom: 20px;
 }

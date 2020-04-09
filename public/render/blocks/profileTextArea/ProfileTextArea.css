@@ -13,7 +13,7 @@
 }
 
 .profile-area__button-array {
-    width: 20%;
+    width: 30%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

@@ -17,7 +17,7 @@ export default class SearchField extends Component {
             }),
             inputField: new Input({
                 type: 'text',
-                placeholder: 'Search',
+                placeholder: 'Искать',
                 classes: 'search-field__input-field',
             }),
         }, true);
