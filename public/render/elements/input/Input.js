@@ -14,6 +14,7 @@ export default class Input extends Component {
         isRequired,
         pattern,
         maxlength,
+        minlength,
     }) {
         super(classes, {
             src,
@@ -25,6 +26,7 @@ export default class Input extends Component {
             isRequired,
             pattern,
             maxlength,
+            minlength,
         }, id);
 
         super.template = template;

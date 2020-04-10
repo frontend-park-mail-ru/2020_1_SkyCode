@@ -19,7 +19,7 @@ export default class LoginField extends Component {
                 classes: 'login-field__input',
                 id: 'login-field__password-input',
                 type: 'password',
-                placeholder: 'password',
+                placeholder: 'Пароль',
                 isRequired: true,
             }),
             phoneErrorField: new ErrorBlock({
@@ -37,7 +37,7 @@ export default class LoginField extends Component {
 
         this.addContextData({submitButton: new NeonButton({
             classes: 'login-field__submit',
-            text: 'Log In',
+            text: 'Войти',
             callback: () => {
                 this.context.generalErrorField.clean();
                 let validationFlag;
