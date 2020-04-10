@@ -97,10 +97,12 @@
 .add-product-by-restaurant__image-input {
     opacity: 0;
     visibility: hidden;
+    height: 0;
 }
 
 .add-restaurant__image-input {
     opacity: 0;
+    height: 0;
     visibility: hidden;
 }
 
