@@ -7,14 +7,14 @@ class Textarea extends Component {
         isRequired,
         palceholder,
         maxLength,
-        value,
+        minLength,
         id,
     }) {
         super(classes, {
             isRequired,
             palceholder,
-            value,
             maxLength,
+            minLength,
         }, id, template);
     }
 }

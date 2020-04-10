@@ -15,6 +15,7 @@ export default class AddRestaurant extends Component {
                 id: 'add-restaurant__name-input',
                 type: 'text',
                 placeholder: 'Название',
+                minlength: 4,
                 isRequired: true,
             }),
             nameError: new ErrorBlock({
@@ -25,7 +26,8 @@ export default class AddRestaurant extends Component {
                 id: 'add-restaurant__desc-textarea',
                 placeholder: 'Описание',
                 maxlength: 255,
-                isRequired: false,
+                minLength: 4,
+                isRequired: true,
             }),
             descError: new ErrorBlock({
                 id: 'desc-error',
