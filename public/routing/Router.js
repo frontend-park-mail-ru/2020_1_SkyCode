@@ -7,7 +7,6 @@ import ProfileController from '../controllers/ProfileController.js';
 import LoginSignupController from '../controllers/LoginSignupController.js';
 import RestaurantController from '../controllers/RestaurantController.js';
 import CheckoutController from '../controllers/CheckoutController.js';
-// eslint-disable-next-line max-len
 import AddProductByRestaurantController from '../controllers/AddProductByRestaurantController.js';
 import BasketController from '../controllers/BasketController.js';
 
@@ -30,9 +29,9 @@ class Router {
         }
 
         let matchData;
-        // eslint-disable-next-line max-len
-        [this._currentController, matchData] = this._matchUrl(window.location.pathname) || [Controller404];
-        this._currentController.execute(document.location, matchData);
+        [this._currentController, matchData] = this._matchUrl(window.location.pathname)
+            || [Controller404];
+        this._currentController.execute(matchData);
     }
 
     _initAdditionalControllers() {
@@ -45,14 +44,14 @@ class Router {
         }
 
         let matchData;
-        // eslint-disable-next-line max-len
-        [this._currentController, matchData] = this._matchUrl(url) || [Controller404];
+        [this._currentController, matchData] = this._matchUrl(url)
+            || [Controller404];
         history.replaceState(
             this._currentController.state,
             this._currentController.title,
             url,
         );
-        
+
         this._currentController.execute(matchData);
     }
 
@@ -62,8 +61,8 @@ class Router {
         }
 
         let matchData;
-        // eslint-disable-next-line max-len
-        [this._currentController, matchData] = this._matchUrl(url) || [Controller404];
+        [this._currentController, matchData] = this._matchUrl(url)
+            || [Controller404];
         this._setNewHistoryRecord(this._currentController, url);
         this._currentController.execute(matchData);
     }
@@ -73,7 +72,6 @@ class Router {
     }
 
     _registerAllPages() {
-        /* eslint-disable */
         this._registerPage(MainController,                      '/');
         this._registerPage(ProfileController,                   '/me');
         this._registerPage(LoginSignupController,               '/login');
@@ -81,7 +79,6 @@ class Router {
         this._registerPage(RestaurantController,                '/restaurants/:int');
         this._registerPage(CheckoutController,                  '/checkout');
         this._registerPage(AddProductByRestaurantController,    '/restaurants/:int/add');
-        /* eslint-enable */
     }
 
     _registerPage(controller, path) {
