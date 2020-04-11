@@ -187,6 +187,12 @@
 .add-product-by-restaurant__image-input {
 	opacity: 0;
 	visibility: hidden;
+	height: 0;
+}
+.add-restaurant__image-input {
+	opacity: 0;
+	height: 0;
+	visibility: hidden;
 }
 .login-field__input {
 	width: 200px;
@@ -214,6 +220,19 @@
 	border-radius: 30px;
 }
 .add-product-by-restaurant__input {
+	width: 90%;
+	text-align: start;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding-left: 10px;
+	background: #FFFFFF;
+	box-shadow: 4px 6px 100px #9E9E9E;
+	border: 1px;
+	outline: 1px;
+	height: 25px;
+	border-radius: 30px;
+}
+.add-restaurant__input {
 	width: 90%;
 	text-align: start;
 	margin-top: 5px;
@@ -312,6 +331,12 @@
 .add-product-by-restaurant__image-input {
 	opacity: 0;
 	visibility: hidden;
+	height: 0;
+}
+.add-restaurant__image-input {
+	opacity: 0;
+	height: 0;
+	visibility: hidden;
 }
 .login-field__input {
 	width: 200px;
@@ -339,6 +364,19 @@
 	border-radius: 30px;
 }
 .add-product-by-restaurant__input {
+	width: 90%;
+	text-align: start;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding-left: 10px;
+	background: #FFFFFF;
+	box-shadow: 4px 6px 100px #9E9E9E;
+	border: 1px;
+	outline: 1px;
+	height: 25px;
+	border-radius: 30px;
+}
+.add-restaurant__input {
 	width: 90%;
 	text-align: start;
 	margin-top: 5px;
@@ -537,6 +575,12 @@
 .add-product-by-restaurant__image-input {
 	opacity: 0;
 	visibility: hidden;
+	height: 0;
+}
+.add-restaurant__image-input {
+	opacity: 0;
+	height: 0;
+	visibility: hidden;
 }
 .login-field__input {
 	width: 200px;
@@ -564,6 +608,19 @@
 	border-radius: 30px;
 }
 .add-product-by-restaurant__input {
+	width: 90%;
+	text-align: start;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding-left: 10px;
+	background: #FFFFFF;
+	box-shadow: 4px 6px 100px #9E9E9E;
+	border: 1px;
+	outline: 1px;
+	height: 25px;
+	border-radius: 30px;
+}
+.add-restaurant__input {
 	width: 90%;
 	text-align: start;
 	margin-top: 5px;
@@ -954,6 +1011,12 @@
 .add-product-by-restaurant__image-input {
 	opacity: 0;
 	visibility: hidden;
+	height: 0;
+}
+.add-restaurant__image-input {
+	opacity: 0;
+	height: 0;
+	visibility: hidden;
 }
 .login-field__input {
 	width: 200px;
@@ -981,6 +1044,19 @@
 	border-radius: 30px;
 }
 .add-product-by-restaurant__input {
+	width: 90%;
+	text-align: start;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding-left: 10px;
+	background: #FFFFFF;
+	box-shadow: 4px 6px 100px #9E9E9E;
+	border: 1px;
+	outline: 1px;
+	height: 25px;
+	border-radius: 30px;
+}
+.add-restaurant__input {
 	width: 90%;
 	text-align: start;
 	margin-top: 5px;
@@ -1360,6 +1436,12 @@
 .add-product-by-restaurant__image-input {
 	opacity: 0;
 	visibility: hidden;
+	height: 0;
+}
+.add-restaurant__image-input {
+	opacity: 0;
+	height: 0;
+	visibility: hidden;
 }
 .login-field__input {
 	width: 200px;
@@ -1387,6 +1469,19 @@
 	border-radius: 30px;
 }
 .add-product-by-restaurant__input {
+	width: 90%;
+	text-align: start;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding-left: 10px;
+	background: #FFFFFF;
+	box-shadow: 4px 6px 100px #9E9E9E;
+	border: 1px;
+	outline: 1px;
+	height: 25px;
+	border-radius: 30px;
+}
+.add-restaurant__input {
 	width: 90%;
 	text-align: start;
 	margin-top: 5px;
@@ -1485,6 +1580,12 @@
 .add-product-by-restaurant__image-input {
 	opacity: 0;
 	visibility: hidden;
+	height: 0;
+}
+.add-restaurant__image-input {
+	opacity: 0;
+	height: 0;
+	visibility: hidden;
 }
 .login-field__input {
 	width: 200px;
@@ -1512,6 +1613,19 @@
 	border-radius: 30px;
 }
 .add-product-by-restaurant__input {
+	width: 90%;
+	text-align: start;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding-left: 10px;
+	background: #FFFFFF;
+	box-shadow: 4px 6px 100px #9E9E9E;
+	border: 1px;
+	outline: 1px;
+	height: 25px;
+	border-radius: 30px;
+}
+.add-restaurant__input {
 	width: 90%;
 	text-align: start;
 	margin-top: 5px;
@@ -1807,6 +1921,12 @@
 .add-product-by-restaurant__image-input {
 	opacity: 0;
 	visibility: hidden;
+	height: 0;
+}
+.add-restaurant__image-input {
+	opacity: 0;
+	height: 0;
+	visibility: hidden;
 }
 .login-field__input {
 	width: 200px;
@@ -1834,6 +1954,19 @@
 	border-radius: 30px;
 }
 .add-product-by-restaurant__input {
+	width: 90%;
+	text-align: start;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding-left: 10px;
+	background: #FFFFFF;
+	box-shadow: 4px 6px 100px #9E9E9E;
+	border: 1px;
+	outline: 1px;
+	height: 25px;
+	border-radius: 30px;
+}
+.add-restaurant__input {
 	width: 90%;
 	text-align: start;
 	margin-top: 5px;
@@ -1932,6 +2065,12 @@
 .add-product-by-restaurant__image-input {
 	opacity: 0;
 	visibility: hidden;
+	height: 0;
+}
+.add-restaurant__image-input {
+	opacity: 0;
+	height: 0;
+	visibility: hidden;
 }
 .login-field__input {
 	width: 200px;
@@ -1959,6 +2098,19 @@
 	border-radius: 30px;
 }
 .add-product-by-restaurant__input {
+	width: 90%;
+	text-align: start;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding-left: 10px;
+	background: #FFFFFF;
+	box-shadow: 4px 6px 100px #9E9E9E;
+	border: 1px;
+	outline: 1px;
+	height: 25px;
+	border-radius: 30px;
+}
+.add-restaurant__input {
 	width: 90%;
 	text-align: start;
 	margin-top: 5px;
@@ -2071,6 +2223,12 @@
 .add-product-by-restaurant__image-input {
 	opacity: 0;
 	visibility: hidden;
+	height: 0;
+}
+.add-restaurant__image-input {
+	opacity: 0;
+	height: 0;
+	visibility: hidden;
 }
 .login-field__input {
 	width: 200px;
@@ -2098,6 +2256,19 @@
 	border-radius: 30px;
 }
 .add-product-by-restaurant__input {
+	width: 90%;
+	text-align: start;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding-left: 10px;
+	background: #FFFFFF;
+	box-shadow: 4px 6px 100px #9E9E9E;
+	border: 1px;
+	outline: 1px;
+	height: 25px;
+	border-radius: 30px;
+}
+.add-restaurant__input {
 	width: 90%;
 	text-align: start;
 	margin-top: 5px;
@@ -2488,6 +2659,12 @@
 .add-product-by-restaurant__image-input {
 	opacity: 0;
 	visibility: hidden;
+	height: 0;
+}
+.add-restaurant__image-input {
+	opacity: 0;
+	height: 0;
+	visibility: hidden;
 }
 .login-field__input {
 	width: 200px;
@@ -2515,6 +2692,19 @@
 	border-radius: 30px;
 }
 .add-product-by-restaurant__input {
+	width: 90%;
+	text-align: start;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding-left: 10px;
+	background: #FFFFFF;
+	box-shadow: 4px 6px 100px #9E9E9E;
+	border: 1px;
+	outline: 1px;
+	height: 25px;
+	border-radius: 30px;
+}
+.add-restaurant__input {
 	width: 90%;
 	text-align: start;
 	margin-top: 5px;
@@ -2859,7 +3049,7 @@
 	width: 80%;
 	height: 80%;
 	margin: 20px;
-	box-shadow: 0px 4px 100px #D6D6D6;
+	box-shadow: 0 4px 100px #D6D6D6;
 	padding: 20px;
 	display: flex;
 	flex-direction: column;
@@ -2876,18 +3066,14 @@
 	margin-left: 5px;
 }
 .order-card__container {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	justify-content: flex-start;
-	margin: 20px 20px 20px 20px;
+	margin: 30px 30px 30px 30px;
 	width: 400px;
 	height: 400px;
 	position: relative;
-	perspective: 500px;
+	perspective: 1000px;
 }
 .order-card__title-section,
-.order-card__product-section-list {
+.order-card__product-section {
 	position: absolute;
 	width: 100%;
 	height: 100%;
@@ -2906,33 +3092,33 @@
 	box-shadow: 0 0 10px #2196f3, 0 0 15px #2196f3;
 	color: #FFFFFF;
 }
-.order-card__product-section-list {
-	background-color: #F6D471;
-	box-shadow: 0 0 10px #F6D471, 0 0 15px #F6D471;
+.order-card__product-section {
+	background-color: #FFFFFF;
+	box-shadow: 0 0 10px #D6D6D6, 0 0 15px #D6D6D6;
 	color: black;
 	transform: rotateY(180deg);
 }
 .order-card__container:hover .order-card__title-section {
 	transform: rotateY(180deg);
 }
-.order-card__container:hover .order-card__product-section-list {
+.order-card__container:hover .order-card__product-section {
 	transform: rotateY(360deg);
 }
 .order-card__product-section-list {
-	width: 80%;
+	width: 100%;
 	list-style: none;
 }
 .order-card__product-section-list_product {
 	width: 300px;
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
-	align-items: flex-end;
-	margin: 10px 10px 10px 0px;
+	justify-content: flex-start;
+	align-items: flex-start;
+	margin: 10px 10px 10px 10px;
 }
 .order-card__title-section_title {
 	font-size: 40px;
-	margin: 10px 10px 10px 10px;
+	margin: 10px 40px 10px 10px;
 }
 .order-card__title-section_time {
 	font-size: 30px;
@@ -2948,19 +3134,27 @@
 	margin: 10px 10px 10px 10px;
 }
 .order-card__product-section-list_name {
-	margin-right: 90px;
+	width: 100px;
+	overflow: hidden;
+	margin-right: 110px;
 }
 .order-card__product-section-list_count {
 	color: gray;
-	margin-right: 20px;
+	width: 40px;
+	margin-right: 50px;
 }
 .order-card__product-section-list_total {
 	width: 300px;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	align-items: flex-end;
-	margin: 10px 10px 10px 0px;
+	align-items: flex-start;
+	margin: 10px 10px 10px 10px;
+}
+.separator {
+	float: left;
+	width: 350px;
+	border-top: 1px solid #bbb;
 }
 .order-history__container {
 	width: 100%;
@@ -2972,6 +3166,7 @@
 	border-radius: 5px;
 	overflow: scroll;
 	flex-wrap: wrap;
+	margin-top: 20px;
 }
 .order-history__container::-webkit-scrollbar {
 	width: 0;
@@ -2980,16 +3175,55 @@
 .order-history__main-content {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+	justify-content: flex-start;
+	align-items: flex-start;
 }
 .order-history__main-content_title {
 	font-size: 30px;
-	float: left;
+	margin-left: 30px;
 	margin-bottom: 20px;
 }
+.add-restaurant__textarea {
+	min-width: 90%;
+	text-align: start;
+	margin-top: 5px;
+	max-width: 90%;
+	margin-bottom: 5px;
+	padding: 20px;
+	background: #FFFFFF;
+	box-shadow: 4px 6px 100px #c8c8c8;
+	border: 1px;
+	outline: 1px;
+	height: 120px;
+	border-radius: 30px;
+}
+.add-restaurant {
+	width: 60%;
+	height: 80%;
+	margin: 20px;
+	box-shadow: 0 4px 100px #D6D6D6;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: flex-start;
+	align-self: center;
+}
+.add-restaurant__label {
+	margin: 5px;
+}
+.add-restaurant__title {
+	font-size: 26px;
+}
+.add-restaurant__button {
+	margin-left: 5px;
+}
+.add-restaurant-view {
+	display: flex;
+	flex-direction: column;
+}
 body {
-	font-family: 'Varela Round', sans-serif;
+	font-family: 'Comfortaa', cursive;
 	font-style: normal;
 	font-weight: normal;
 	padding: 0;
