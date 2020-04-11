@@ -9,6 +9,7 @@ import RestaurantController from '../controllers/RestaurantController.js';
 import CheckoutController from '../controllers/CheckoutController.js';
 import AddProductByRestaurantController from '../controllers/AddProductByRestaurantController.js';
 import BasketController from '../controllers/BasketController.js';
+import AddRestaurantController from '../controllers/AddRestaurantController.js';
 
 
 class Router {
@@ -76,6 +77,7 @@ class Router {
         this._registerPage(ProfileController,                   '/me');
         this._registerPage(LoginSignupController,               '/login');
         this._registerPage(LoginSignupController,               '/signup');
+        this._registerPage(AddRestaurantController,                  '/restaurants/add');
         this._registerPage(RestaurantController,                '/restaurants/:int');
         this._registerPage(CheckoutController,                  '/checkout');
         this._registerPage(AddProductByRestaurantController,    '/restaurants/:int/add');

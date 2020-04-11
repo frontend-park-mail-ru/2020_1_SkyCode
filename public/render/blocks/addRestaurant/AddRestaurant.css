@@ -1,5 +1,7 @@
-.add-product-by-restaurant {
-    width: 80%;
+@import "../../elements/textarea/Textarea.css";
+
+.add-restaurant {
+    width: 60%;
     height: 80%;
     margin: 20px;
     box-shadow: 0 4px 100px #D6D6D6;
@@ -8,16 +10,17 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
+    align-self: center;
 }
 
-.add-product-by-restaurant__label {
+.add-restaurant__label {
     margin: 5px;
 }
 
-.add-product-by-restaurant__title {
+.add-restaurant__title {
     font-size: 26px;
 }
 
-.add-product-by-restaurant__button {
+.add-restaurant__button {
     margin-left: 5px;
 }

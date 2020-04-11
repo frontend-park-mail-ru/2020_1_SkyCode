@@ -1,6 +1,21 @@
 import Http from './Http.js';
 
 class RestaurantModel {
+    addRestaurant(body) {
+        return Http.fetchPost({
+            path: '/api/v1/restaurants',
+            body,
+            type: 'file',
+        })
+            .then((response) => {
+                const token = response.headers.get('X-Csrf-Token');
+                if (token) {
+                    localStorage.setItem('token', token);
+                }
+                return response.json();
+            });
+    }
+
     getRestaurant(id) {
         return Http.fetchGet({
             path: `/api/v1/restaurants/${id}`,
