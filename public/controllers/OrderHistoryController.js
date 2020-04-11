@@ -3,6 +3,7 @@ import OrderHistoryView
 import OrderModel from '../models/OrderModel.js';
 import BaseController from './BaseController.js';
 import EventBus from '../services/Events/EventBus';
+import UserModel from '../models/UserModel';
 
 class OrderHistoryController extends BaseController {
     constructor(title = 'Orders') {
@@ -10,13 +11,22 @@ class OrderHistoryController extends BaseController {
     }
 
     execute() {
-        OrderModel.getOrders(1, 5)
+        UserModel.getUser()
             .then((response) => {
-                if (response.orders) {
-                    super.execute(new OrderHistoryView(response.orders));
+                if (response.User) {
+                    OrderModel.getOrders(1, 5)
+                        .then((response) => {
+                            if (response.orders) {
+                                super.execute(new OrderHistoryView(response.orders));
+                            }
+                        })
+                        .catch((err) => console.log(err));
+                } else {
+                    EventBus.publish('redirect', {url: '/'});
                 }
             })
             .catch((err) => console.log(err));
+
     }
 
     startCatchEvents() {
