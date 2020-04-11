@@ -117,6 +117,7 @@ export default class OrderCheckout extends Component {
                             comment: this.context.CommentInput.domElement.value,
                             personNum: parseInt(BasketController.persons),
                             price: BasketController.total,
+                            restId: parseInt(BasketController.basket.restaurant),
                             products,
                         };
                         EventBus.publish('checkout', data);

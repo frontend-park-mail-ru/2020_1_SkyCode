@@ -7,6 +7,7 @@ class BasketController extends BaseController {
     constructor() {
         super();
         this.basket = {
+            restaurant: RestaurantController.restaurantId,
             owner: -1,
             product: {},
         };
@@ -47,13 +48,19 @@ class BasketController extends BaseController {
     }
 
     addProductHandler(data) {
+        if (Object.entries(this.basket.product).length === 0) {
+            this.basket.restaurant = RestaurantController.restaurantId;
+        }
+        if (this.basket.restaurant !== RestaurantController.restaurantId) {
+            this.cleanBasketHandler();
+            this.basket.restaurant = RestaurantController.restaurantId;
+        }
         if (data.id in this.basket.product) {
             this.basket.product[data.id].amount++;
         } else {
             this.basket.product[data.id] = data;
             this.basket.product[data.id].amount = 1;
         }
-        debugger;
         EventBus.publish('basket-changed', this.basket.product);
     }
 

@@ -4,7 +4,9 @@
 @import "render/views/RestaurantView/RestaurantView.css";
 @import "render/views/CheckoutView/CheckoutView.css";
 @import "render/views/AddProductByRestaurantView/AddProductByRestaurantView.css";
+@import "render/views/OrderHistoryView/OrderHistoryView.css";
 @import "render/views/AddRestaurantView/AddRestaurantView.css";
+
 
 body {
     font-family: 'Varela Round', sans-serif;

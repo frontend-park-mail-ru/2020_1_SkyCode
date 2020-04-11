@@ -1,0 +1,14 @@
+@import "../../blocks/orderHistory/orderHistory.css";
+
+.order-history__main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.order-history__main-content_title {
+    font-size: 30px;
+    float: left;
+    margin-bottom: 20px;
+}

@@ -4,6 +4,7 @@ import UserModel from '../models/UserModel.js';
 import BasketController from './BasketController.js';
 import EventBus from '../services/Events/EventBus.js';
 import RestaurantModel from '../models/RestaurantModel.js';
+import OrderModel from '../models/OrderModel';
 
 class CheckoutController extends BaseController {
     constructor(title = 'confirm') {
@@ -32,6 +33,7 @@ class CheckoutController extends BaseController {
 
     startCatchEvents() {
         EventBus.subscribe('checkout', this.checkoutHandler.bind(this));
+
     }
 
     stopCatchEvents() {
@@ -45,7 +47,7 @@ class CheckoutController extends BaseController {
                 if (response.error) {
                     EventBus.publish('order-checkout-error', response.error);
                 } else {
-                    alert('Заказ успешно отправлен.')
+                    alert('Заказ успешно отправлен.');
                     EventBus.publish('checkout-success', {});
                     EventBus.publish('set-page', {url: '/'});
                 }
@@ -55,6 +57,8 @@ class CheckoutController extends BaseController {
                 EventBus.publish('order-checkout-error', err);
             });
     }
+
+
 }
 
 export default new CheckoutController();

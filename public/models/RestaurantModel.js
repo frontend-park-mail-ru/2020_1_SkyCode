@@ -29,9 +29,9 @@ class RestaurantModel {
             });
     }
 
-    getProducts(id) {
+    getProducts(id, page, count) {
         return Http.fetchGet({
-            path: `/api/v1/restaurants/${id}/product`,
+            path: `/api/v1/restaurants/${id}/product?page=${page}&count=${count}`,
         })
             .then((response) => {
                 const token = response.headers.get('X-Csrf-Token');
@@ -42,9 +42,9 @@ class RestaurantModel {
             });
     }
 
-    getRestaurants() {
+    getRestaurants(page, count) {
         return Http.fetchGet({
-            path: '/api/v1/restaurants',
+            path: `/api/v1/restaurants?page=${page}&count=${count}`,
         })
             .then((response) => {
                 const token = response.headers.get('X-Csrf-Token');
