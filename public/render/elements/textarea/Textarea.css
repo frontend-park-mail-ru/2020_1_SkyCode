@@ -1,0 +1,16 @@
+
+.add-restaurant__textarea {
+    min-width: 90%;
+    text-align: start;
+    margin-top: 5px;
+    max-width: 90%;
+    margin-bottom: 5px;
+    padding: 20px;
+
+    background: #FFFFFF;
+    box-shadow: 4px 6px 100px #c8c8c8;
+    border: 1px;
+    outline: 1px;
+    height: 120px;
+    border-radius: 30px;
+}

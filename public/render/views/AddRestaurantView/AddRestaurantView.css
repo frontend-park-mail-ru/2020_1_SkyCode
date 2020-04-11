@@ -1,0 +1,6 @@
+@import "../../blocks/addRestaurant/AddRestaurant.css";
+
+.add-restaurant-view {
+    display: flex;
+    flex-direction: column;
+}
