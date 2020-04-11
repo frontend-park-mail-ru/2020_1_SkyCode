@@ -1,0 +1,95 @@
+.order-card__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: 20px 20px 20px 20px;
+    width: 400px;
+    height: 400px;
+    position: relative;
+    perspective: 500px;
+
+}
+
+.order-card__title-section, .order-card__product-section-list {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    transition: 1s;
+    backface-visibility: hidden;
+    border-radius: 10px;
+}
+
+.order-card__title-section {
+    background: #2196f3;
+    box-shadow: 0 0 10px #2196f3, 0 0 15px #2196f3;
+    color: #FFFFFF;
+}
+.order-card__product-section-list {
+    background-color: #F6D471;
+    box-shadow: 0 0 10px #F6D471, 0 0 15px #F6D471;
+    color: black;
+    transform: rotateY(180deg);
+}
+.order-card__container:hover .order-card__title-section {transform: rotateY(180deg);}
+.order-card__container:hover .order-card__product-section-list {transform: rotateY(360deg);}
+
+
+.order-card__product-section-list {
+    width: 80%;
+    list-style: none;
+}
+
+.order-card__product-section-list_product {
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 10px 10px 10px 0px;
+}
+
+.order-card__title-section_title {
+    font-size: 40px;
+    margin: 10px 10px 10px 40px;
+}
+
+.order-card__title-section_time {
+    font-size: 30px;
+    margin: 10px 10px 10px 40px;
+}
+
+.order-card__title-section_address {
+    font-size: 25px;
+    margin: 10px 10px 10px 40px;
+    overflow: hidden;
+}
+
+.order-card__title-section_status {
+    font-size: 20px;
+    margin: 10px 10px 10px 40px;
+}
+
+.order-card__product-section-list_name {
+    margin-right: 90px;
+}
+
+.order-card__product-section-list_count {
+    color: gray;
+    margin-right: 20px;
+}
+
+.order-card__product-section-list_total {
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 10px 10px 10px 0px;
+}

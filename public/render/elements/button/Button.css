@@ -25,7 +25,7 @@
 }
 
 .select-time-button__image-button {
-    background: #EA8B65 url("../../../static/clock.svg") no-repeat;
+    background: #F6D471 url("../../../static/clock.svg") no-repeat;
 
     height: 37px;
     width: 37px;
@@ -39,7 +39,7 @@
 .select-time-button__text-button {
     margin-right: 10px;
 
-    background: #EA8B65;
+    background: #F6D471;
     height: 37px;
     border: 0;
     outline: 0;
