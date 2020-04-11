@@ -110,6 +110,13 @@ export default class ProfileTextArea extends Component {
                         EventBus.publish('log-out');
                     },
                 }),
+            ordersButton: new NeonButton({
+                text: 'Заказы',
+                classes: 'orders-btn',
+                callback: () => {
+                    EventBus.publish('redirect', {url: '/orders'});
+                },
+            }),
         });
     }
 

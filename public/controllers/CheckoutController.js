@@ -49,7 +49,7 @@ class CheckoutController extends BaseController {
                 } else {
                     alert('Заказ успешно отправлен.');
                     EventBus.publish('checkout-success', {});
-                    EventBus.publish('set-page', {url: '/'});
+                    EventBus.publish('set-page', {url: '/orders'});
                 }
             })
             .catch((err) => {
