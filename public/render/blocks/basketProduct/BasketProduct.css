@@ -21,3 +21,9 @@
     text-align: right;
     margin-left: 10px;
 }
+
+.basket-product__img-container {
+    height: 80px;
+    width: 80px;
+    overflow: hidden;
+}
