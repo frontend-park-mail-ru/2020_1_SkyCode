@@ -17,7 +17,6 @@ export default class ActionBar extends Component {
                 id: 'action-bar__left-button',
                 text: '<',
                 callback: this.scroll(-190),
-                isHidden: true,
             }),
             RightButton: new Button({
                 classes: [
@@ -53,8 +52,10 @@ export default class ActionBar extends Component {
 
             setTimeout(() => {
                 const pos = Math.ceil(container.scrollLeft);
-                document.getElementById(leftButtonId).hidden = pos === minScrollLeft;
-                document.getElementById(rightButtonId).hidden = pos === maxScrollLeft;
+                const leftVisibility = pos === minScrollLeft ? 'hidden' : 'visible';
+                const rightVisibility = pos === maxScrollLeft ? 'hidden' : 'visible';
+                document.getElementById(leftButtonId).style.visibility = leftVisibility;
+                document.getElementById(rightButtonId).style.visibility = rightVisibility;
             }, 500);
         }.bind(this);
     }

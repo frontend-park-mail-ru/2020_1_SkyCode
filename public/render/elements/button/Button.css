@@ -31,12 +31,14 @@
     top: 120px;
     left: 15px;
     z-index: 1;
+    visibility: hidden;
 }
 
 .action-bar__left-button {
     position: relative;
     left: 15px;
     top: 100px;
+    visibility: hidden;
 }
 
 .person-input__minus-button {

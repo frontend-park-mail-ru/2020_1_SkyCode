@@ -16,7 +16,6 @@ export default class CategoryBar extends Component {
                 id: 'category-bar__left-button',
                 text: '<',
                 callback: this.scroll(-190),
-                isHidden: true,
             }),
             RightButton: new Button({
                 classes: [
@@ -44,7 +43,7 @@ export default class CategoryBar extends Component {
 
     scroll(value,
         leftButtonId = 'category-bar__left-button',
-        rightButtonId = 'catogory-bar__right-button') {
+        rightButtonId = 'category-bar__right-button') {
         return function() {
             const container = document.getElementsByClassName('category-bar__container')[0];
             container.scrollLeft += value;
@@ -54,8 +53,10 @@ export default class CategoryBar extends Component {
 
             setTimeout(() => {
                 const pos = Math.ceil(container.scrollLeft);
-                document.getElementById(leftButtonId).hidden = pos === minScrollLeft;
-                document.getElementById(rightButtonId).hidden = pos === maxScrollLeft;
+                const leftVisibility = pos === minScrollLeft ? 'hidden' : 'visible';
+                const rightVisibility = pos === maxScrollLeft ? 'hidden' : 'visible';
+                document.getElementById(leftButtonId).style.visibility = leftVisibility;
+                document.getElementById(rightButtonId).style.visibility = rightVisibility;
             }, 500);
         }.bind(this);
     }
