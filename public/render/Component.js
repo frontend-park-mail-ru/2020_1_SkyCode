@@ -54,6 +54,10 @@ export default class Component {
         this.context.classes += addClasses.join(' ') + ' ';
     }
 
+    get classes() {
+        return this.context.classes;
+    }
+
     bind() {
         for (const value of Object.values(this.context)) {
             if (Array.isArray(value)) {
