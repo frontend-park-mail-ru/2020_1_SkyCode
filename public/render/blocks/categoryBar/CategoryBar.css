@@ -10,6 +10,7 @@
 
 .category-bar__container {
     overflow-x: scroll;
+    scroll-behavior: smooth;
 
     margin-bottom: -20px;
 }

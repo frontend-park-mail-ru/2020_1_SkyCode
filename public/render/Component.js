@@ -5,7 +5,7 @@ export default class Component {
         // TemplateData --- информация, передающаяся в template
         this._context = {};
         // Добавляем классы
-        this.addContextData({classes: []}, false);
+        this.addContextData({classes: ''}, false);
 
         if (classes) {
             this.addClasses(classes);
@@ -51,11 +51,7 @@ export default class Component {
             addClasses = classes.split(' ');
         }
 
-        this.context.classes.push(addClasses);
-    }
-
-    get classes() {
-        return this.context.classes.join(' ');
+        this.context.classes += addClasses.join(' ') + ' ';
     }
 
     bind() {
