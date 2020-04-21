@@ -11,6 +11,8 @@ import AddProductByRestaurantController from '../controllers/AddProductByRestaur
 import BasketController from '../controllers/BasketController.js';
 import OrderHistoryController from '../controllers/OrderHistoryController';
 import AddRestaurantController from '../controllers/AddRestaurantController.js';
+import SupportChatController from '../controllers/SupportChatController.js';
+import AdminChatListController from '../controllers/AdminChatListController';
 
 
 class Router {
@@ -78,16 +80,19 @@ class Router {
         this._registerPage(ProfileController,                   '/me');
         this._registerPage(LoginSignupController,               '/login');
         this._registerPage(LoginSignupController,               '/signup');
-        this._registerPage(AddRestaurantController,                  '/restaurants/add');
+        this._registerPage(AddRestaurantController,             '/restaurants/add');
         this._registerPage(RestaurantController,                '/restaurants/:int');
         this._registerPage(CheckoutController,                  '/checkout');
         this._registerPage(AddProductByRestaurantController,    '/restaurants/:int/add');
         this._registerPage(OrderHistoryController,              '/orders');
+        this._registerPage(SupportChatController,               '/support');
+        this._registerPage(AdminChatListController,             '/chats');
+        this._registerPage(SupportChatController,               '/chat/:hash');
     }
 
     _registerPage(controller, path) {
         this._pages.push({
-            pattern: new RegExp('^' + path.replace(/:\w+/, '(\\w+)') + '$'),
+            pattern: new RegExp('^' + path.replace(/:\w+/, '([\\w-]+)') + '$'),
             page: controller,
         });
     }

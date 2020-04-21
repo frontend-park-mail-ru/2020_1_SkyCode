@@ -15,7 +15,7 @@ export default class Products extends Component {
             }));
         }
 
-        this.addContextData({products}, true);
+        this.addContextData({products});
         super.template = template;
     }
 }

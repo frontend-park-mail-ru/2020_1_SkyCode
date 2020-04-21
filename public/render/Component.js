@@ -93,7 +93,9 @@ export default class Component {
     }
 
     get domElement() {
+        console.log("id", this._id);
         if (this._id) {
+            console.log(document.getElementById(this.id));
             return document.getElementById(this.id);
         }
 

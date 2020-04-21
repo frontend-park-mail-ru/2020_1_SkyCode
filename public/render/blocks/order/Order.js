@@ -6,7 +6,8 @@ import PersonInput from '../personInput/PersonInput.js';
 import Href from '../../elements/href/Href.js';
 import BasketController from '../../../controllers/BasketController.js';
 import template from './Order.hbs';
-import EventBus from '../../../services/Events/EventBus';
+import EventBus from '../../../services/Events/EventBus.js';
+import SupportChat from '../supportChat/supportChat.js';
 
 export default class Order extends Component {
     constructor({
@@ -27,6 +28,15 @@ export default class Order extends Component {
                 imageClasses: 'order__profile-image',
                 src: '/static/profile.png',
                 href: '/login',
+            }),
+            supportButton: new ImageHref({
+                classes: 'support-button',
+                src: '/static/support.svg',
+                imageClasses: 'order__profile-image',
+                href: '/support',
+                cb: () => {
+                    window.open('http://89.208.199.114:8080/support');
+                },
             }),
             placeTimeCard: new PlaceTimeCard({
                 classes: 'order__place-time-card',
