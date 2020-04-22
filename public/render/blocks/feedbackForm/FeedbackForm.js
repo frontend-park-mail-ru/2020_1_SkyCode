@@ -4,10 +4,17 @@ import template from './FeedbackForm.hbs';
 import RestaurantModel from '../../../models/RestaurantModel';
 import Textarea from '../../elements/textarea/Textarea';
 import NumberInput from '../../elements/numberInput/NumberInput';
+import EventBus from '../../../services/Events/EventBus';
 
 
 export default class FeedbackForm extends Component {
-    constructor({classes, rate = 0, text, restaurantId}) {
+    constructor({
+        classes,
+        rate = 0,
+        text,
+        restaurantId,
+        oldReview,
+    }) {
         super(classes, {
             RateInput: new NumberInput({
                 classes: 'feedback-form__rate-input',
@@ -25,6 +32,7 @@ export default class FeedbackForm extends Component {
                 maxLength: 255,
                 isRequired: true,
                 placeholder: 'Поделитесь своими впечатлениями',
+                value: text,
             }),
         });
 
@@ -32,21 +40,34 @@ export default class FeedbackForm extends Component {
         super.addContextData({
             SubmitButton: new Button({
                 classes: 'feedback-form__submit',
-                text: 'Сохранить',
+                text: oldReview === null ? 'Сохранить' : 'Изменить',
                 callback: () => {
                     const body = {
-                        rate: Number(this.context.RateInput.domElement.value),
+                        rate: Number(this.context.RateInput.getValue()),
                         text: this.context.TextInput.domElement.value,
                     };
 
-                    RestaurantModel
-                        .addRestaurantReview(restaurantId, JSON.stringify(body))
-                        .then((response) => {
-                            console.log('success fetch:' + response);
-                        })
-                        .catch((err) => {
-                            console.log('err fetch:' + err);
-                        });
+                    if (oldReview === null) {
+                        RestaurantModel
+                            .addRestaurantReview(restaurantId, JSON.stringify(body))
+                            .then((response) => {
+                                console.log('success fetch:' + response);
+                                EventBus.publish('redirect', {url: window.location.pathname});
+                            })
+                            .catch((err) => {
+                                console.log('err fetch:' + err);
+                            });
+                    } else {
+                        RestaurantModel
+                            .changeRestaurantReview(oldReview.id, JSON.stringify(body))
+                            .then((response) => {
+                                console.log('success fetch:' + response);
+                                EventBus.publish('redirect', {url: window.location.pathname});
+                            })
+                            .catch((err) => {
+                                console.log('err fetch:' + err);
+                            });
+                    }
                 },
             }),
         });

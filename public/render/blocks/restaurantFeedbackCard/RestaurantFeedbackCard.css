@@ -1,6 +1,39 @@
-
-.restaurant-feedback-card__first-row {
+.restaurant-feedback__card {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: #F8F8F8;
+    border: 1px solid #D6D6D6;
+    padding: 20px;
     border-radius: 20px;
+
+    margin-top: 20px;
+}
+
+.restaurant-feedback-card__first-line {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.restaurant-feedback-card__rate {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.restaurant-feedback-card__date {
+    margin-bottom: 20px;
+}
+
+
+.restaurant-feedback-card__name {
+    display: block;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    font-weight: bold;
+    margin: 0 0 20px 0;
+    line-height: 36px;
 }

@@ -1,47 +1,70 @@
 .feedback-form__rate-input {
-    background-color: #F6D471;
+    background-color: #F8F8F8;
     border-color: #2196f3;
-    width: 50px;
+    width: 20px;
     height: 30px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-family: 'Comfortaa', cursive;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.feedback-form-vertical {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.feedback-form-horizontal {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .number-input__internals {
     background-color: inherit;
     border-color: inherit;
+    width: inherit;
+    height: inherit;
+    color: inherit;
+    font-size: inherit;
+    text-align: center;
+    font-family: inherit;
+    outline: none;
 }
 
 .number-input__internals-vertical {
-    width: inherit;
 }
 
 .number-input__internals-horizontal {
-    height: inherit;
 }
 
 .number-input__input-vertical {
     border-width: 0 1px;
+    text-align: center;
 }
 
 .number-input__input-horizontal {
     border-width: 1px 0;
+    text-align: center;
 }
 
 .number-input__plus-button-vertical {
     border-width: 1px 1px 0 1px;
-    border-radius: 15px 15px / 0 0;
+    border-radius: 15px 15px 0 0;
 }
 
 .number-input__plus-button-horizontal {
     border-width: 1px 1px 1px 0;
-    border-radius: 0 15px / 15px 0;
+    border-radius: 0 15px 15px 0;
 }
 
 .number-input__minus-button-vertical {
     border-width: 0 1px 1px 1px;
-    border-radius: 0 0 / 15px 15px;
+    border-radius: 0 0 15px 15px;
 }
 
 .number-input__minus-button-horizontal {
     border-width: 1px 0 1px 1px;
-    border-radius: 15px 0 / 0 15px;
+    border-radius: 15px 0 0 15px;
 }

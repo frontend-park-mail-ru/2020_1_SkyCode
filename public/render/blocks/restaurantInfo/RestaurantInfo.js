@@ -17,7 +17,7 @@ export default class RestaurantInfo extends Component {
                 restaurant,
             }),
 
-            Description: 'Мы просто бомба (заменить)',
+            Description: restaurant.description,
         });
         super.template = template;
     }

@@ -7,7 +7,7 @@ import RestaurantFeedbackCard
     from '../restaurantFeedbackCard/RestaurantFeedbackCard.js';
 
 export default class RestaurantFeedback extends Component {
-    constructor({classes, restaurant, feedback, restaurantId}) {
+    constructor({classes, restaurant, allReview: allReviews, currentReview, restaurantId}) {
         super(classes, {
             RestaurantBanner: new RestaurantBanner({
                 classes: 'restaurantBanner',
@@ -22,20 +22,21 @@ export default class RestaurantFeedback extends Component {
             }),
             FeedbackForm: new FeedbackForm({
                 classes: 'restaurant-feedback__feedback-form',
-                rate: 5,
-                text: '',
+                rate: (currentReview && currentReview.rate) || 5,
+                text: currentReview && currentReview.text,
                 restaurantId,
+                oldReview: currentReview,
             }),
         });
 
         const Feedback = [];
-        for (const feed of feedback) {
+        for (const review of allReviews) {
             Feedback.push(new RestaurantFeedbackCard({
                 classes: 'restaurant-feedback__card',
-                name: feed.name,
-                rate: feed.rate,
-                text: feed.text,
-                date: feed.date,
+                name: review.author.firstName + ' ' + review.author.lastName,
+                rate: review.rate,
+                text: review.text,
+                date: review.date,
             }));
         }
 

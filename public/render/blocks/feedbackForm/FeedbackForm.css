@@ -2,6 +2,11 @@
 @import "../../elements/button/Button.css";
 @import "../../elements/numberInput/NumberInput.css";
 
+.feedback-form__rate {
+    display: flex;
+    margin: 0 20px 0 20px;
+}
+
 .feedback-form__first-line {
     display: flex;
     flex-wrap: wrap;
@@ -13,7 +18,6 @@
     flex-direction: column;
     flex-wrap: wrap;
 
-    margin: 0 60px 0 60px;
     background-color: #F8F8F8;
     border: 1px solid #D6D6D6;
     padding: 20px;
@@ -22,4 +26,5 @@
 
 .restaurant-feedback__label {
     margin: 0 0 20px 0;
+    line-height: 36px;
 }

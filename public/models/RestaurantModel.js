@@ -56,6 +56,19 @@ class RestaurantModel {
             });
     }
 
+    changeRestaurantReview(id, body) {
+        return Http.fetchPut({
+            path: `/api/v1/reviews/${id}`,
+            body,
+        })
+            .then((response) => {
+                const token = response.headers.get('X-Csrf-Token');
+                if (token) {
+                    localStorage.setItem('token', token);
+                }
+                return response.json();
+            });
+    }
 
     getProducts(id, page, count) {
         return Http.fetchGet({

@@ -8,7 +8,7 @@ import RestaurantFeedback
 export default class RestaurantInfoView extends Component {
     constructor({
         classes = 'restaurant-info-view',
-        feedback,
+        feedbackObject,
         restaurant,
     }) {
         super(classes, {
@@ -22,8 +22,9 @@ export default class RestaurantInfoView extends Component {
             Main: new RestaurantFeedback({
                 classes: 'restaurant-feedback',
                 restaurantId: restaurant.id,
+                currentReview: feedbackObject.current,
+                allReview: feedbackObject.reviews,
                 restaurant,
-                feedback,
             }),
         });
 

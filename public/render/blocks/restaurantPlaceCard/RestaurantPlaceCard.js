@@ -5,8 +5,8 @@ import template from './RestaurantPlaceCard.hbs';
 export default class RestaurantPlaceCard extends Component {
     constructor({classes, restaurant}) {
         super(classes, {
-            City: 'Москва (заменить)',
-            Address: 'Ул. Ленина 1к1 (заменить)',
+            City: 'Город ресторана',
+            Address: 'Адрес ресторана',
         });
 
         super.template = template;

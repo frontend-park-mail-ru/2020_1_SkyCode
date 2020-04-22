@@ -38,15 +38,12 @@
     background-color: #F6D471;
     color: black;
 
-    height: 20px;
-    width: 120px;
     outline: 0;
-
-    line-height: 20px;
+    width: 150px;
+    line-height: 36px;
     text-align: center;
     text-decoration: none;
 
     border-radius: 15px;
-    padding: 5px;
     margin-right: 60px;
 }

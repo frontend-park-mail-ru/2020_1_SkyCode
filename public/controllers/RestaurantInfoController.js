@@ -52,10 +52,10 @@ class RestaurantInfoController extends BaseController {
                     throw err;
                 }),
         ])
-            .then(([ , restaurant, {reviews: feedback}]) => {
+            .then(([ , restaurant, feedbackObject]) => {
                 super.execute(new RestaurantInfoView({
                     restaurant,
-                    feedback,
+                    feedbackObject,
                 }));
             })
             .catch((err) => {

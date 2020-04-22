@@ -21,14 +21,16 @@ export default class NumberInput extends Component {
         let minusButtonClasses = 'number-input__minus-button';
         const addition = isVertical ? '-vertical' : '-horizontal';
 
+        classes += ' ' + 'feedback-form' + addition;
+
         // Добавление ко всем классам нужного суффикса
-        [classes, inputClasses, plusButtonClasses, minusButtonClasses]
-        = [classes, inputClasses, plusButtonClasses, minusButtonClasses]
+        [inputClasses, plusButtonClasses, minusButtonClasses]
+        = [inputClasses, plusButtonClasses, minusButtonClasses]
                 .map((string) => string + addition);
 
         // Добавление ко всем классам нужных доп классов
-        [classes, inputClasses, plusButtonClasses, minusButtonClasses]
-        = [classes, inputClasses, plusButtonClasses, minusButtonClasses]
+        [inputClasses, plusButtonClasses, minusButtonClasses]
+        = [inputClasses, plusButtonClasses, minusButtonClasses]
                 .map((string) => string
                     + ' '
                     + 'number-input__internals'
@@ -53,15 +55,17 @@ export default class NumberInput extends Component {
                 text: '+',
                 classes: plusButtonClasses,
                 callback: () => {
-                    const value = this.context.Input.domElement.value;
+                    let value = Number(this.context.Input.domElement.value);
                     if (max <= value) {
                         return;
                     }
 
-                    this.context.Input.domElement.value += 1;
+                    value++;
+
+                    this.context.Input.domElement.value = value;
                     EventBus.publish(
                         NumberInput.changeEvent(this.changeEventBasis),
-                        value + 1,
+                        value,
                     );
                 },
             }),
@@ -70,21 +74,27 @@ export default class NumberInput extends Component {
                 text: '-',
                 classes: minusButtonClasses,
                 callback: () => {
-                    const value = this.context.Input.domElement.value;
+                    let value = Number(this.context.Input.domElement.value);
                     if (min >= value) {
                         return;
                     }
 
-                    this.context.Input.domElement.value -= 1;
+                    value--;
+
+                    this.context.Input.domElement.value = value;
                     EventBus.publish(
                         NumberInput.changeEvent(this.changeEventBasis),
-                        value - 1,
+                        value,
                     );
                 },
             }),
         });
 
         this.changeEventBasis = changeEventBasis;
+    }
+
+    getValue() {
+        return this.context.Input.domElement.value;
     }
 
     static changeEvent(basis) {
