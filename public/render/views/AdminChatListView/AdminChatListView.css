@@ -1,0 +1,14 @@
+@import "../../blocks/chatList/chatList.css";
+
+.chat-list-view {
+    display: grid;
+    grid-template-areas:
+            "header header header"
+            ". chat-list-area .";
+    grid-template-columns: 1fr 7fr 1fr;
+    grid-template-rows:  1fr 1fr 5fr;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+}

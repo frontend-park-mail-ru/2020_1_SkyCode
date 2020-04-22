@@ -232,6 +232,32 @@
 	height: 25px;
 	border-radius: 30px;
 }
+.message_input {
+	width: 650px;
+	text-align: start;
+	margin: 10px;
+	padding-left: 10px;
+	font-size: 18px;
+	background: #FFFFFF;
+	box-shadow: 4px 6px 100px #9E9E9E;
+	border: 1px;
+	outline: 1px;
+	height: 30px;
+	border-radius: 30px;
+}
+.chat__username {
+	width: 750px;
+	text-align: start;
+	margin: 10px;
+	padding-left: 10px;
+	font-size: 16px;
+	background: #FFFFFF;
+	box-shadow: 4px 6px 100px #9E9E9E;
+	border: 1px;
+	outline: 1px;
+	height: 30px;
+	border-radius: 30px;
+}
 .add-restaurant__input {
 	width: 90%;
 	text-align: start;
@@ -376,6 +402,32 @@
 	height: 25px;
 	border-radius: 30px;
 }
+.message_input {
+	width: 650px;
+	text-align: start;
+	margin: 10px;
+	padding-left: 10px;
+	font-size: 18px;
+	background: #FFFFFF;
+	box-shadow: 4px 6px 100px #9E9E9E;
+	border: 1px;
+	outline: 1px;
+	height: 30px;
+	border-radius: 30px;
+}
+.chat__username {
+	width: 750px;
+	text-align: start;
+	margin: 10px;
+	padding-left: 10px;
+	font-size: 16px;
+	background: #FFFFFF;
+	box-shadow: 4px 6px 100px #9E9E9E;
+	border: 1px;
+	outline: 1px;
+	height: 30px;
+	border-radius: 30px;
+}
 .add-restaurant__input {
 	width: 90%;
 	text-align: start;
@@ -483,12 +535,14 @@
 	list-style-type: none;
 	padding-inline-start: 0;
 }
-.order__profile-href {
+.order__profile-href,
+.order__support-href {
 	grid-area: profile;
 	justify-self: right;
 	margin: 10px;
 }
-.order__profile-image {
+.order__profile-image,
+.order__support-image {
 	width: 30px;
 	height: 30px;
 	border-radius: 100%;
@@ -618,6 +672,32 @@
 	border: 1px;
 	outline: 1px;
 	height: 25px;
+	border-radius: 30px;
+}
+.message_input {
+	width: 650px;
+	text-align: start;
+	margin: 10px;
+	padding-left: 10px;
+	font-size: 18px;
+	background: #FFFFFF;
+	box-shadow: 4px 6px 100px #9E9E9E;
+	border: 1px;
+	outline: 1px;
+	height: 30px;
+	border-radius: 30px;
+}
+.chat__username {
+	width: 750px;
+	text-align: start;
+	margin: 10px;
+	padding-left: 10px;
+	font-size: 16px;
+	background: #FFFFFF;
+	box-shadow: 4px 6px 100px #9E9E9E;
+	border: 1px;
+	outline: 1px;
+	height: 30px;
 	border-radius: 30px;
 }
 .add-restaurant__input {
@@ -1056,6 +1136,32 @@
 	height: 25px;
 	border-radius: 30px;
 }
+.message_input {
+	width: 650px;
+	text-align: start;
+	margin: 10px;
+	padding-left: 10px;
+	font-size: 18px;
+	background: #FFFFFF;
+	box-shadow: 4px 6px 100px #9E9E9E;
+	border: 1px;
+	outline: 1px;
+	height: 30px;
+	border-radius: 30px;
+}
+.chat__username {
+	width: 750px;
+	text-align: start;
+	margin: 10px;
+	padding-left: 10px;
+	font-size: 16px;
+	background: #FFFFFF;
+	box-shadow: 4px 6px 100px #9E9E9E;
+	border: 1px;
+	outline: 1px;
+	height: 30px;
+	border-radius: 30px;
+}
 .add-restaurant__input {
 	width: 90%;
 	text-align: start;
@@ -1075,6 +1181,58 @@
 }
 .person-input__input-container {
 	display: flex;
+}
+.message-container {
+	margin: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+	border-radius: 10px;
+	box-shadow: 0 4px 100px #D6D6D6;
+}
+.messgae__text {
+	font-size: 18px;
+	margin: 5px 10px 2px 10px;
+}
+.messgae__user {
+	font-size: 12px;
+	color: #9E9E9E;
+	margin: 2px 5px 5px 10px;
+}
+.chat {
+	position: relative;
+	grid-area: chat-area;
+	width: 800px;
+	height: 500px;
+	border-radius: 10px;
+	box-shadow: 0 4px 100px #D6D6D6;
+	justify-self: center;
+	align-self: center;
+}
+.chat__header {
+	background: #2196f3;
+	height: 50px;
+	border-radius: 10px 10px 0 0;
+	color: #FFFFFF;
+}
+.chat__messages {
+	height: 400px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	padding: 10px;
+}
+.chat__title {
+	padding: 10px;
+	font-size: 20px;
+}
+.chat__input-container {
+	position: absolute;
+	bottom: 0;
+	width: 800px;
+	height: 50px;
+	border-radius: 0 0 10px 10px;
+	background: #F8F8F8;
 }
 .order {
 	grid-area: order;
@@ -1107,6 +1265,11 @@
 	margin-right: 35px;
 	margin-left: 35px;
 	text-align: right;
+}
+.order__buttons {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
 }
 .main-view__select-time-button {
 	grid-area: select-time-button;
@@ -1481,6 +1644,32 @@
 	height: 25px;
 	border-radius: 30px;
 }
+.message_input {
+	width: 650px;
+	text-align: start;
+	margin: 10px;
+	padding-left: 10px;
+	font-size: 18px;
+	background: #FFFFFF;
+	box-shadow: 4px 6px 100px #9E9E9E;
+	border: 1px;
+	outline: 1px;
+	height: 30px;
+	border-radius: 30px;
+}
+.chat__username {
+	width: 750px;
+	text-align: start;
+	margin: 10px;
+	padding-left: 10px;
+	font-size: 16px;
+	background: #FFFFFF;
+	box-shadow: 4px 6px 100px #9E9E9E;
+	border: 1px;
+	outline: 1px;
+	height: 30px;
+	border-radius: 30px;
+}
 .add-restaurant__input {
 	width: 90%;
 	text-align: start;
@@ -1623,6 +1812,32 @@
 	border: 1px;
 	outline: 1px;
 	height: 25px;
+	border-radius: 30px;
+}
+.message_input {
+	width: 650px;
+	text-align: start;
+	margin: 10px;
+	padding-left: 10px;
+	font-size: 18px;
+	background: #FFFFFF;
+	box-shadow: 4px 6px 100px #9E9E9E;
+	border: 1px;
+	outline: 1px;
+	height: 30px;
+	border-radius: 30px;
+}
+.chat__username {
+	width: 750px;
+	text-align: start;
+	margin: 10px;
+	padding-left: 10px;
+	font-size: 16px;
+	background: #FFFFFF;
+	box-shadow: 4px 6px 100px #9E9E9E;
+	border: 1px;
+	outline: 1px;
+	height: 30px;
 	border-radius: 30px;
 }
 .add-restaurant__input {
@@ -1966,6 +2181,32 @@
 	height: 25px;
 	border-radius: 30px;
 }
+.message_input {
+	width: 650px;
+	text-align: start;
+	margin: 10px;
+	padding-left: 10px;
+	font-size: 18px;
+	background: #FFFFFF;
+	box-shadow: 4px 6px 100px #9E9E9E;
+	border: 1px;
+	outline: 1px;
+	height: 30px;
+	border-radius: 30px;
+}
+.chat__username {
+	width: 750px;
+	text-align: start;
+	margin: 10px;
+	padding-left: 10px;
+	font-size: 16px;
+	background: #FFFFFF;
+	box-shadow: 4px 6px 100px #9E9E9E;
+	border: 1px;
+	outline: 1px;
+	height: 30px;
+	border-radius: 30px;
+}
 .add-restaurant__input {
 	width: 90%;
 	text-align: start;
@@ -2110,6 +2351,32 @@
 	height: 25px;
 	border-radius: 30px;
 }
+.message_input {
+	width: 650px;
+	text-align: start;
+	margin: 10px;
+	padding-left: 10px;
+	font-size: 18px;
+	background: #FFFFFF;
+	box-shadow: 4px 6px 100px #9E9E9E;
+	border: 1px;
+	outline: 1px;
+	height: 30px;
+	border-radius: 30px;
+}
+.chat__username {
+	width: 750px;
+	text-align: start;
+	margin: 10px;
+	padding-left: 10px;
+	font-size: 16px;
+	background: #FFFFFF;
+	box-shadow: 4px 6px 100px #9E9E9E;
+	border: 1px;
+	outline: 1px;
+	height: 30px;
+	border-radius: 30px;
+}
 .add-restaurant__input {
 	width: 90%;
 	text-align: start;
@@ -2131,12 +2398,14 @@
 	grid-template-rows: auto;
 	width: 100%;
 }
-.order__profile-href {
+.order__profile-href,
+.order__support-href {
 	grid-area: profile;
 	justify-self: right;
 	margin: 10px;
 }
-.order__profile-image {
+.order__profile-image,
+.order__support-image {
 	width: 30px;
 	height: 30px;
 	border-radius: 100%;
@@ -2266,6 +2535,32 @@
 	border: 1px;
 	outline: 1px;
 	height: 25px;
+	border-radius: 30px;
+}
+.message_input {
+	width: 650px;
+	text-align: start;
+	margin: 10px;
+	padding-left: 10px;
+	font-size: 18px;
+	background: #FFFFFF;
+	box-shadow: 4px 6px 100px #9E9E9E;
+	border: 1px;
+	outline: 1px;
+	height: 30px;
+	border-radius: 30px;
+}
+.chat__username {
+	width: 750px;
+	text-align: start;
+	margin: 10px;
+	padding-left: 10px;
+	font-size: 16px;
+	background: #FFFFFF;
+	box-shadow: 4px 6px 100px #9E9E9E;
+	border: 1px;
+	outline: 1px;
+	height: 30px;
 	border-radius: 30px;
 }
 .add-restaurant__input {
@@ -2704,6 +2999,32 @@
 	height: 25px;
 	border-radius: 30px;
 }
+.message_input {
+	width: 650px;
+	text-align: start;
+	margin: 10px;
+	padding-left: 10px;
+	font-size: 18px;
+	background: #FFFFFF;
+	box-shadow: 4px 6px 100px #9E9E9E;
+	border: 1px;
+	outline: 1px;
+	height: 30px;
+	border-radius: 30px;
+}
+.chat__username {
+	width: 750px;
+	text-align: start;
+	margin: 10px;
+	padding-left: 10px;
+	font-size: 16px;
+	background: #FFFFFF;
+	box-shadow: 4px 6px 100px #9E9E9E;
+	border: 1px;
+	outline: 1px;
+	height: 30px;
+	border-radius: 30px;
+}
 .add-restaurant__input {
 	width: 90%;
 	text-align: start;
@@ -2723,6 +3044,58 @@
 }
 .person-input__input-container {
 	display: flex;
+}
+.message-container {
+	margin: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+	border-radius: 10px;
+	box-shadow: 0 4px 100px #D6D6D6;
+}
+.messgae__text {
+	font-size: 18px;
+	margin: 5px 10px 2px 10px;
+}
+.messgae__user {
+	font-size: 12px;
+	color: #9E9E9E;
+	margin: 2px 5px 5px 10px;
+}
+.chat {
+	position: relative;
+	grid-area: chat-area;
+	width: 800px;
+	height: 500px;
+	border-radius: 10px;
+	box-shadow: 0 4px 100px #D6D6D6;
+	justify-self: center;
+	align-self: center;
+}
+.chat__header {
+	background: #2196f3;
+	height: 50px;
+	border-radius: 10px 10px 0 0;
+	color: #FFFFFF;
+}
+.chat__messages {
+	height: 400px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	padding: 10px;
+}
+.chat__title {
+	padding: 10px;
+	font-size: 20px;
+}
+.chat__input-container {
+	position: absolute;
+	bottom: 0;
+	width: 800px;
+	height: 50px;
+	border-radius: 0 0 10px 10px;
+	background: #F8F8F8;
 }
 .order {
 	grid-area: order;
@@ -2755,6 +3128,11 @@
 	margin-right: 35px;
 	margin-left: 35px;
 	text-align: right;
+}
+.order__buttons {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
 }
 .restaurantBanner {
 	position: relative;
@@ -3221,6 +3599,50 @@
 .add-restaurant-view {
 	display: flex;
 	flex-direction: column;
+}
+.support-chat-view {
+	display: grid;
+	grid-template-areas: 'header header header' '. chat-area .';
+	grid-template-columns: 1fr 7fr 1fr;
+	grid-template-rows: 1fr 1fr 5fr;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+.chat-item {
+	height: 50px;
+	width: 700px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+	border-radius: 10px;
+	box-shadow: 0 4px 100px #D6D6D6;
+	margin: 10px;
+	padding: 5px;
+}
+.chat-list {
+	width: 800px;
+	height: 500px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	overflow-y: scroll;
+	border-radius: 10px;
+	box-shadow: 0 4px 100px #D6D6D6;
+	justify-self: center;
+	align-self: center;
+	grid-area: chat-list-area;
+}
+.chat-list-view {
+	display: grid;
+	grid-template-areas: 'header header header' '. chat-list-area .';
+	grid-template-columns: 1fr 7fr 1fr;
+	grid-template-rows: 1fr 1fr 5fr;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
 }
 body {
 	font-family: 'Comfortaa', cursive;
