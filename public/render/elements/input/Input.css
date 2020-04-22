@@ -151,6 +151,34 @@
     border-radius: 30px;
 }
 
+.message_input {
+    width: 650px;
+    text-align: start;
+    margin: 10px;
+    padding-left: 10px;
+    font-size: 18px;
+    background: #FFFFFF;
+    box-shadow: 4px 6px 100px #9E9E9E;
+    border: 1px;
+    outline: 1px;
+    height: 30px;
+    border-radius: 30px;
+}
+
+.chat__username {
+    width: 750px;
+    text-align: start;
+    margin: 10px;
+    padding-left: 10px;
+    font-size: 16px;
+    background: #FFFFFF;
+    box-shadow: 4px 6px 100px #9E9E9E;
+    border: 1px;
+    outline: 1px;
+    height: 30px;
+    border-radius: 30px;
+}
+
 .add-restaurant__input {
     width: 90%;
     text-align: start;

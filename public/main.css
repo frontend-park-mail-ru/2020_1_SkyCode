@@ -7,6 +7,8 @@
 @import "render/views/OrderHistoryView/OrderHistoryView.css";
 @import "render/views/AddRestaurantView/AddRestaurantView.css";
 @import "render/views/RestaurantInfoView/RestaurantInfoView.css";
+@import "render/views/SupportChatView/SupportChatView.css";
+@import "render/views/AdminChatListView/AdminChatListView.css";
 
 
 body {

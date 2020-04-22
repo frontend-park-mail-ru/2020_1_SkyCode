@@ -12,6 +12,9 @@ import BasketController from '../controllers/BasketController.js';
 import OrderHistoryController from '../controllers/OrderHistoryController';
 import AddRestaurantController from '../controllers/AddRestaurantController.js';
 import RestaurantInfoController from '../controllers/RestaurantInfoController.js';
+import SupportChatController from '../controllers/SupportChatController.js';
+import AdminChatListController from '../controllers/AdminChatListController';
+
 
 class Router {
     constructor() {
@@ -84,11 +87,14 @@ class Router {
         this._registerPage(AddProductByRestaurantController,    '/restaurants/:int/add');
         this._registerPage(RestaurantInfoController,            '/restaurants/:int/info');
         this._registerPage(OrderHistoryController,              '/orders');
+        this._registerPage(SupportChatController,               '/support');
+        this._registerPage(AdminChatListController,             '/chats');
+        this._registerPage(SupportChatController,               '/chat/:hash');
     }
 
     _registerPage(controller, path) {
         this._pages.push({
-            pattern: new RegExp('^' + path.replace(/:\w+/, '(\\w+)') + '$'),
+            pattern: new RegExp('^' + path.replace(/:\w+/, '([\\w-]+)') + '$'),
             page: controller,
         });
     }

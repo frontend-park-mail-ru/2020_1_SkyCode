@@ -1,0 +1,41 @@
+@import "../message/message.css";
+
+.chat {
+    position: relative;
+    grid-area: chat-area;
+    width: 800px;
+    height: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 100px #D6D6D6;
+    justify-self: center;
+    align-self: center;
+}
+
+.chat__header {
+    background: #2196f3;
+    height: 50px;
+    border-radius: 10px 10px 0 0;
+    color: #FFFFFF;
+}
+
+.chat__messages {
+    height: 400px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding: 10px;
+}
+
+.chat__title {
+    padding: 10px;
+    font-size: 20px;
+}
+
+.chat__input-container {
+    position: absolute;
+    bottom: 0;
+    width: 800px;
+    height: 50px;
+    border-radius: 0 0 10px 10px;
+    background: #F8F8F8;
+
+}

@@ -9,6 +9,7 @@ export default class ImageHref extends Component {
         href,
         classes = 'imageHref',
         imageClasses = 'imageClasses',
+        cb,
     }) {
         super(classes, {
             image: new Input({
@@ -18,21 +19,25 @@ export default class ImageHref extends Component {
             }),
             href,
         });
+        this.callback = cb;
+        if (this.callback === 'undefined') {
+            this.callback = function(event) {
+                event.preventDefault();
+                console.log('href ' + this.href + ' clicked');
+                EventBus.publish('set-page', {url: this.context.href});
+            }.bind(this);
+        }
         super.template = template;
     }
 
-    bind() {
+    bind(callback) {
         const me = super.domElement;
         if (me === undefined) {
             console.trace('cat\' ret myself from DOM');
             return;
         }
 
-        me.onclick = function(event) {
-            event.preventDefault();
-            console.log('href ' + this.href + ' clicked');
-            EventBus.publish('set-page', {url: this.context.href});
-        }.bind(this);
+        me.onclick = this.callback.bind(this);
     }
 
     unbind() {
