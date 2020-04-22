@@ -1,0 +1,12 @@
+.chat-item {
+    height: 50px;
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    border-radius: 10px;
+    box-shadow: 0 4px 100px #D6D6D6;
+    margin: 10px;
+    padding: 5px;
+}

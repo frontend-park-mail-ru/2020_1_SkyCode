@@ -2,10 +2,12 @@ import BaseController from './BaseController.js';
 import SupportChatView from '../render/views/SupportChatView/SupportChatView.js';
 import EventBus from '../services/Events/EventBus';
 import Message from '../render/blocks/message/message';
+import UserModel from '../models/UserModel';
 
 class SupportChatController extends BaseController {
     constructor(title = 'support chat') {
         super(title);
+        this.countuser = 0;
     }
 
     execute(matchData) {
@@ -13,7 +15,7 @@ class SupportChatController extends BaseController {
 
         const chatId = matchData[0];
 
-        console.log("ID",chatId);
+        console.log('ID', chatId);
         if (chatId !== undefined) {
             this.socket = new WebSocket(`ws://89.208.199.114:5000/api/v1/chats/${chatId}/join`);
         }
@@ -21,10 +23,10 @@ class SupportChatController extends BaseController {
             this.socket = new WebSocket('ws://89.208.199.114:5000/api/v1/chat');
         }
 
-        this.socket.onopen = function(e) {
-            console.log('WebSocket Open');
-            EventBus.publish('websock-conn', {});
-        };
+        // this.socket.onopen = function(e) {
+        //     console.log('WebSocket Open');
+        //     EventBus.publish('websock-conn', {});
+        // };
 
         this.socket.onmessage = function(e) {
             const data = JSON.parse(e.data);
@@ -41,19 +43,36 @@ class SupportChatController extends BaseController {
 
                 document.getElementsByClassName('chat__messages')[0].outerHTML = domEl.outerHTML;
             }
-        };
-        super.execute(new SupportChatView());
+            if (data.joined) {
+                this.countuser++;
+                if (this.countuser === 2) {
+                    EventBus.publish('support-connected', {});
+                }
+            }
 
+        };
+
+        UserModel.getUser()
+            .then((response) => {
+                if (response.User) {
+                    this.username = response.User.firstName;
+                    this.socket.send(JSON.stringify({full_name: this.username}));
+                    super.execute(new SupportChatView({username: response.User.firstName}));
+                } else {
+                    super.execute(new SupportChatView({}));
+                }
+            })
+            .catch((err) => console.log(err));
     }
 
     startCatchEvents() {
-        EventBus.subscribe('send-message', this.SendMessage.bind(this));
-        EventBus.subscribe('websock-conn', this.InitialMsg.bind(this));
+        EventBus.subscribe('send-msg', this.SendMessage.bind(this));
+        EventBus.subscribe('join-chat', this.InitialMsg.bind(this));
     }
 
     stopCatchEvents() {
-        EventBus.unsubscribe('send-message', this.SendMessage.bind(this));
-        EventBus.unsubscribe('websock-conn', this.InitialMsg.bind(this));
+        EventBus.unsubscribe('send-msg', this.SendMessage.bind(this));
+        EventBus.unsubscribe('join-chat', this.InitialMsg.bind(this));
     }
 
     SendMessage(data) {
@@ -61,8 +80,11 @@ class SupportChatController extends BaseController {
         this.socket.send(data);
     }
 
-    InitialMsg() {
-        this.socket.send(JSON.stringify({full_name: 'Philipp'}));
+    InitialMsg(data) {
+        this.socket.send(data);
+        this.username = JSON.parse(data).full_name;
+        super.stop();
+        super.execute(new SupportChatView({username: this.username}));
     }
 }
 
