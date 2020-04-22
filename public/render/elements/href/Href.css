@@ -34,23 +34,30 @@
     justify-self: right;
 }
 
-/*.order-checkout__confirm {*/
-/*    display: flex;*/
-/*    justify-content: center;*/
-/*    align-items: center;*/
+.restaurant-feedback__back-href {
+    background-color: #F6D471;
+    color: black;
 
-/*    background: #F6D471;*/
-/*    border-radius: 15px;*/
+    outline: 0;
+    width: 150px;
+    line-height: 36px;
+    text-align: center;
+    text-decoration: none;
 
-/*    width: 150px;*/
-/*    font-size: 17px;*/
-/*    color: black;*/
-/*    line-height: 25px;*/
-/*    text-decoration: none;*/
+    border-radius: 15px;
+    margin-right: 60px;
+}
 
-/*    outline: 0;*/
-/*    border: 0;*/
-/*    text-align: center;*/
+.restaurant-view__info {
+    background-color: #F6D471;
+    color: black;
 
-/*    margin-top: 20px;*/
-/*}*/
+    outline: 0;
+    width: 150px;
+    line-height: 36px;
+    text-align: center;
+    text-decoration: none;
+
+    border-radius: 15px;
+    margin-right: 60px;
+}

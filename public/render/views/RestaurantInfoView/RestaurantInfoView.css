@@ -1,0 +1,19 @@
+@import "../../blocks/restaurantInfo/RestaurantInfo.css";
+@import "../../blocks/header/Header.css";
+@import "../../blocks/restaurantFeedback/RestaurantFeedback.css";
+@import "../../blocks/restaurantFeedbackCard/RestaurantFeedbackCard.css";
+
+
+.restaurant-info-view {
+    display: grid;
+    grid-template-rows:
+            min-content
+            auto;
+    grid-template-columns: 5fr 5fr 3fr;
+    grid-template-areas:
+            "header     header  sidebar"
+            "main       main    sidebar";
+
+    background: #FFFFFF;
+    height: 100vh;
+}

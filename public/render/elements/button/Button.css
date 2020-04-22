@@ -1,3 +1,15 @@
+.feedback-form__submit {
+    background-color: lightgreen;
+    color: black;
+    width: 130px;
+    outline: 0;
+    line-height: 36px;
+    text-align: center;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    border: none;
+    font-family: inherit;
+}
 
 .scroll-bar__button {
     border-radius: 100%;

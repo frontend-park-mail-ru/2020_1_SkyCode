@@ -1,11 +1,13 @@
 
-.order__profile-href, .order__support-href {
+
+.corner-profile-href, .order__support-href {
     grid-area: profile;
     justify-self: right;
     margin: 10px;
+    align-self: end;
 }
 
-.order__profile-image, .order__support-image {
+.corner-profile-image, .order__support-image {
     width: 30px;
     height: 30px;
     border-radius: 100%;

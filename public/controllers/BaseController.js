@@ -5,7 +5,7 @@ class BaseController {
         this._title = title;
     }
 
-    // У вьюхи должны быть методы bind, unbind, html и геттер state
+    // У вьюхи должны быть методы bind, unbind, html
     execute(view) {
         this._view = view;
         document.body.innerHTML = this._view.toString();
