@@ -11,7 +11,7 @@ import AddProductByRestaurantController from '../controllers/AddProductByRestaur
 import BasketController from '../controllers/BasketController.js';
 import OrderHistoryController from '../controllers/OrderHistoryController';
 import AddRestaurantController from '../controllers/AddRestaurantController.js';
-
+import RestaurantInfoController from '../controllers/RestaurantInfoController.js';
 
 class Router {
     constructor() {
@@ -78,10 +78,11 @@ class Router {
         this._registerPage(ProfileController,                   '/me');
         this._registerPage(LoginSignupController,               '/login');
         this._registerPage(LoginSignupController,               '/signup');
-        this._registerPage(AddRestaurantController,                  '/restaurants/add');
+        this._registerPage(AddRestaurantController,             '/restaurants/add');
         this._registerPage(RestaurantController,                '/restaurants/:int');
         this._registerPage(CheckoutController,                  '/checkout');
         this._registerPage(AddProductByRestaurantController,    '/restaurants/:int/add');
+        this._registerPage(RestaurantInfoController,            '/restaurants/:int/info');
         this._registerPage(OrderHistoryController,              '/orders');
     }
 

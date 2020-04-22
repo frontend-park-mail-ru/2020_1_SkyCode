@@ -1,6 +1,4 @@
-// eslint-disable-next-line max-len
 import RestaurantCategories from '../../blocks/restaurantCategories/RestaurantCategories.js';
-// eslint-disable-next-line max-len
 import RestaurantBanner from '../../blocks/restaurantBanner/restaurantBanner.js';
 import Component from '../../Component.js';
 import Header from '../../blocks/header/Header.js';

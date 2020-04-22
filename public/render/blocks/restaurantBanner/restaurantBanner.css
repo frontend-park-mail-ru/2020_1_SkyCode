@@ -3,11 +3,11 @@
     grid-area: restaurant-banner;
     border-radius: 15px;
     height: 180px;
-    margin: 0 100px 0 100px;
+    margin: 0 60px 0 60px;
 }
 
 .restaurantBanner__img-container {
-    width: 882px;
+    width: 100%;
     height: 180px;
     border-radius: 15px;
     outline-width: 0;
@@ -32,7 +32,7 @@
     top: 128px;
     height: 52px;
     background: #F8F8F8;
-    border-radius: 0px 15px;
+    border-radius: 0 15px;
 }
 
 .restaurantBanner__name {

@@ -1,4 +1,18 @@
 
+.feedback-form__submit {
+    background-color: lightgreen;
+    color: black;
+    width: 100px;
+    outline: 0;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 15px;
+    padding: 5px;
+    margin-bottom: 20px;
+    border: none;
+    font-family: inherit;
+}
+
 .person-input__minus-button {
     background: #F8F8F8;
     outline: 0;

@@ -23,8 +23,8 @@ export default class Order extends Component {
             title: 'Заказ',
             total: this.countTotal(basket),
             profileButton: new ImageHref({
-                classes: 'order__profile-href',
-                imageClasses: 'order__profile-image',
+                classes: 'corner-profile-href',
+                imageClasses: 'corner-profile-image',
                 src: '/static/profile.png',
                 href: '/login',
             }),

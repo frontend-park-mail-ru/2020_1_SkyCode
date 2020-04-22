@@ -1,0 +1,25 @@
+@import "../../elements/input/Input.css";
+@import "../../elements/button/Button.css";
+@import "../../elements/numberInput/NumberInput.css";
+
+.feedback-form__first-line {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.restaurant-feedback__feedback-form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    margin: 0 60px 0 60px;
+    background-color: #F8F8F8;
+    border: 1px solid #D6D6D6;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.restaurant-feedback__label {
+    margin: 0 0 20px 0;
+}

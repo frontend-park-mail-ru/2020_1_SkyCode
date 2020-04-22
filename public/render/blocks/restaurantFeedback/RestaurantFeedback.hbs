@@ -1,0 +1,16 @@
+<main class="{{classes}}">
+    {{{RestaurantBanner}}}
+    <div class="restaurant-feedback__middle-bar">
+        <h3>Отзывы:</h3>
+        {{{BackHref}}}
+    </div>
+
+    {{{FeedbackForm}}}
+    <ul>
+        {{#each Feedback}}
+        <li>{{{this}}}</li>
+        {{else}}
+            Ваш отзыв будет первым.
+        {{/each}}
+    </ul>
+</main>

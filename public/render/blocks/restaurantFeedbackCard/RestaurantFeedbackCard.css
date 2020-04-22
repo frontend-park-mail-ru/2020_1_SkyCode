@@ -1,0 +1,6 @@
+
+.restaurant-feedback-card__first-row {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 20px;
+}
