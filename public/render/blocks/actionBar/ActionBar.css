@@ -10,6 +10,7 @@
 
 .action-bar__container {
     overflow-x: scroll;
+    scroll-behavior: smooth;
 }
 
 .action-bar__list {

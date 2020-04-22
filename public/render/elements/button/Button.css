@@ -1,4 +1,3 @@
-
 .feedback-form__submit {
     background-color: lightgreen;
     color: black;
@@ -11,6 +10,48 @@
     margin-bottom: 20px;
     border: none;
     font-family: inherit;
+}
+
+.scroll-bar__button {
+    border-radius: 100%;
+    outline: 0;
+    background: #F8F8F8;
+    border: 1px solid #d2d0d0;
+    box-shadow: 0 0 10px rgba(80, 80, 80, 0.5);
+    width: 40px;
+    height: 40px;
+}
+
+.scroll-bar__button:hover {
+    background: #F6D471;
+}
+
+.category-bar__right-button {
+    position: relative;
+    top: 120px;
+    left: calc(100vw * 10 / 13 - 180px);
+    z-index: 1;
+}
+
+.action-bar__right-button {
+    position: relative;
+    top: 100px;
+    left: calc(100vw * 10 / 13 - 180px);
+}
+
+.category-bar__left-button {
+    position: relative;
+    top: 120px;
+    left: 15px;
+    z-index: 1;
+    visibility: hidden;
+}
+
+.action-bar__left-button {
+    position: relative;
+    left: 15px;
+    top: 100px;
+    visibility: hidden;
 }
 
 .person-input__minus-button {
