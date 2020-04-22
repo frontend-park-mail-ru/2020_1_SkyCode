@@ -47,3 +47,17 @@
     border-radius: 15px;
     margin-right: 60px;
 }
+
+.restaurant-view__info {
+    background-color: #F6D471;
+    color: black;
+
+    outline: 0;
+    width: 150px;
+    line-height: 36px;
+    text-align: center;
+    text-decoration: none;
+
+    border-radius: 15px;
+    margin-right: 60px;
+}

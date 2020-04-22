@@ -5,6 +5,7 @@ import Header from '../../blocks/header/Header.js';
 import Order from '../../blocks/order/Order.js';
 import Products from '../../blocks/products/Products.js';
 import template from './RestaurantView.hbs';
+import Href from '../../elements/href/Href';
 
 class RestaurantView extends Component {
     constructor({restaurant, products, categoryArr}) {
@@ -28,6 +29,11 @@ class RestaurantView extends Component {
             categories: new RestaurantCategories({categoryArr}),
             products: new Products({classes: 'products',
                 productArr: products}),
+            InfoHref: new Href({
+                classes: 'restaurant-view__info',
+                text: 'О нас / отзывы',
+                href: `/restaurants/${restaurant.id}/info`,
+            })
         }, true);
     }
 }
