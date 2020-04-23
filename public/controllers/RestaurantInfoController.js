@@ -21,7 +21,6 @@ class RestaurantInfoController extends BaseController {
                         throw 'unauthorized';
                     }
                     if (response.error) {
-                        console.log(response.error);
                         EventBus.publish('redirect', {url: '/'});
                         throw response.error;
                     }
@@ -59,8 +58,7 @@ class RestaurantInfoController extends BaseController {
                 }));
             })
             .catch((err) => {
-                console.log(err);
-                EventBus.publish('redirect', {url: '/'});
+                console.log('info controller error', err);
             });
     }
 }

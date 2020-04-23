@@ -1,6 +1,6 @@
 class Http {
     constructor() {
-        this.serverPath = 'http://89.208.199.114:6001';
+        this.serverPath = 'http://89.208.199.114:5000';
     }
 
     fetchRequest({
