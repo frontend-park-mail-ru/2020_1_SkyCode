@@ -3,6 +3,13 @@
 @import "../feedbackForm/FeedbackForm.css";
 @import "../restaurantFeedbackCard/RestaurantFeedbackCard.css";
 
+.restaurant-feedback__login-signup-invitation {
+    background-color: #F8F8F8;
+    border: 1px solid #D6D6D6;
+    padding: 20px;
+    border-radius: 20px;
+}
+
 .restaurant-feedback__list-scroll-hider {
     overflow: hidden;
 
