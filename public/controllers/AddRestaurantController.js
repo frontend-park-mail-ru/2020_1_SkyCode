@@ -14,17 +14,17 @@ class AddRestaurantController extends BaseController {
     execute() {
         UserModel.getUser()
             .then((response) => {
-                if (response.error) {
-                    console.log(response.error);
-                }
-
-                if (response.User.role === 'Moderator'
-                || response.User.role === 'Admin') {
-                    super.execute(new AddRestaurantView());
-                } else {
-                    EventBus.publish('set-page', {url: '/'});
-                }
-            })
+                    if (response.error) {
+                        EventBus.publish('set-page', {url: '/login'});
+                    }
+                    if (response.User.role === 'Moderator'
+                        || response.User.role === 'Admin') {
+                        super.execute(new AddRestaurantView());
+                    } else {
+                        EventBus.publish('set-page', {url: '/'});
+                    }
+                },
+            )
             .catch((error) => {
                 console.log(error);
             });

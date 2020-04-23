@@ -87,7 +87,7 @@ class Router {
         this._registerPage(OrderHistoryController,              '/orders');
         this._registerPage(SupportChatController,               '/support');
         this._registerPage(AdminChatListController,             '/chats');
-        this._registerPage(SupportChatController,               '/chat/:hash');
+        this._registerPage(SupportChatController,               '/chats/:hash');
     }
 
     _registerPage(controller, path) {

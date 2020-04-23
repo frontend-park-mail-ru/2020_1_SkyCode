@@ -3,6 +3,7 @@ import SupportChatView from '../render/views/SupportChatView/SupportChatView.js'
 import EventBus from '../services/Events/EventBus';
 import Message from '../render/blocks/message/message';
 import UserModel from '../models/UserModel';
+import ChatModel from '../models/ChatModel';
 
 class SupportChatController extends BaseController {
     constructor(title = 'support chat') {
@@ -30,12 +31,10 @@ class SupportChatController extends BaseController {
 
         this.socket.onmessage = function(e) {
             const data = JSON.parse(e.data);
-            console.log(data);
             localStorage.setItem('chat_id', data.chat_id);
-            localStorage.setItem('full_name', data.full_name);
             if (data.message) {
                 EventBus.publish('new-message', data);
-                const el = new Message('msg', data.message, data.full_name);
+                const el = new Message('msg', data.message, data.user_name);
                 let domEl = document.getElementsByClassName('chat__messages')[0];
                 domEl.innerHTML += el;
 
@@ -56,12 +55,18 @@ class SupportChatController extends BaseController {
             .then((response) => {
                 if (response.User) {
                     this.username = response.User.firstName;
-                    this.socket.send(JSON.stringify({full_name: this.username}));
+                    this.socket.send(JSON.stringify({user_name: this.username, chat_id: localStorage.getItem('chat_id')}));
                     super.execute(new SupportChatView({username: response.User.firstName}));
-                } else {
-                    super.execute(new SupportChatView({}));
-                }
-            })
+                    ChatModel.getChatHistory(localStorage.getItem('chat_id')).then((response) => {
+                        for (const msg of response) {
+                            const el = new Message('msg', msg.message, msg.user_name);
+                            let domEl = document.getElementsByClassName('chat__messages')[0];
+                            domEl.innerHTML += el;
+                        }
+                        document.getElementsByClassName('chat__messages')[0].outerHTML = domEl.outerHTML;
+
+                    }).catch((err) => console.log(err))
+            }})
             .catch((err) => console.log(err));
     }
 
