@@ -11,6 +11,17 @@ class ChatModel {
                 return response.json();
             });
     }
+
+    getChatHistory(chatId) {
+        return Http.fetchGet({path: `/api/v1/chats/${chatId}/details`})
+            .then((response) => {
+                const token = response.headers.get('X-Csrf-Token');
+                if (token) {
+                    localStorage.setItem('token', token);
+                }
+                return response.json();
+            });
+    }
 }
 
 export default new ChatModel();
