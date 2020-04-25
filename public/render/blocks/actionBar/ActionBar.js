@@ -40,23 +40,37 @@ export default class ActionBar extends Component {
         this.addContextData({actions}, true);
     }
 
-    scroll(value,
-        leftButtonId = 'action-bar__left-button',
-        rightButtonId = 'action-bar__right-button') {
+    scroll(value) {
         return function() {
             const list = document.getElementsByClassName('action-bar__list')[0];
             list.scrollLeft += value;
+        }.bind(this);
+    }
 
-            const minScrollLeft = 0;
-            const maxScrollLeft = list.scrollWidth - list.clientWidth;
+    bind() {
+        const list = document.getElementsByClassName('action-bar__list')[0];
+        const minScrollLeft = 0;
+        const leftButtonId = 'action-bar__left-button';
+        const rightButtonId = 'action-bar__right-button';
 
+        let hasTimer = false;
+
+        list.onscroll = () => {
+            if (hasTimer) {
+                return;
+            }
+            hasTimer = true;
             setTimeout(() => {
+                const maxScrollLeft = list.scrollWidth - list.clientWidth + 1;
                 const pos = Math.ceil(list.scrollLeft);
                 const leftVisibility = pos === minScrollLeft ? 'hidden' : 'visible';
                 const rightVisibility = pos === maxScrollLeft ? 'hidden' : 'visible';
                 document.getElementById(leftButtonId).style.visibility = leftVisibility;
                 document.getElementById(rightButtonId).style.visibility = rightVisibility;
+                hasTimer = false;
             }, 500);
-        }.bind(this);
+        };
+
+        super.bind();
     }
 }
