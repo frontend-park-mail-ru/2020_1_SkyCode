@@ -44,14 +44,14 @@ export default class ActionBar extends Component {
         leftButtonId = 'action-bar__left-button',
         rightButtonId = 'action-bar__right-button') {
         return function() {
-            const container = document.getElementsByClassName('action-bar__container')[0];
-            container.scrollLeft += value;
+            const list = document.getElementById('action-bar__list');
+            list.scrollLeft += value;
 
             const minScrollLeft = 0;
-            const maxScrollLeft = container.scrollWidth - container.clientWidth;
+            const maxScrollLeft = list.scrollWidth - list.clientWidth;
 
             setTimeout(() => {
-                const pos = Math.ceil(container.scrollLeft);
+                const pos = Math.ceil(list.scrollLeft);
                 const leftVisibility = pos === minScrollLeft ? 'hidden' : 'visible';
                 const rightVisibility = pos === maxScrollLeft ? 'hidden' : 'visible';
                 document.getElementById(leftButtonId).style.visibility = leftVisibility;

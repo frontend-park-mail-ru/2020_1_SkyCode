@@ -26,30 +26,30 @@
 }
 
 .category-bar__right-button {
-    position: relative;
-    top: 120px;
-    left: calc(100vw * 10 / 13 - 180px);
+    position: absolute;
+    top: 220px;
+    left: calc(100vw * 10 / 13 - 60px);
     z-index: 1;
 }
 
 .action-bar__right-button {
-    position: relative;
-    top: 100px;
-    left: calc(100vw * 10 / 13 - 180px);
+    position: absolute;
+    top: 120px;
+    left: calc(100vw * 10 / 13 - 60px);
 }
 
 .category-bar__left-button {
-    position: relative;
-    top: 120px;
+    position: absolute;
+    top: 220px;
     left: 15px;
     z-index: 1;
     visibility: hidden;
 }
 
 .action-bar__left-button {
-    position: relative;
-    left: 15px;
-    top: 100px;
+    position: absolute;
+    left: 80px;
+    top: 120px;
     visibility: hidden;
 }
 

@@ -39,9 +39,9 @@
     grid-area: main-area;
 }
 
-.main-view__scroll-hider {
+.main-view__belt {
     overflow: hidden;
-    margin-left: 88px;
+    margin-left: 60px;
 }
 
 .main-view__scrolled-area {
@@ -50,17 +50,18 @@
     margin-right: -14px;
 }
 
-.main-view__main-grid {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    grid-template-rows:
-            min-content
-            min-content
-            min-content
-            auto;
-    grid-template-areas:
-            "action-bar         action-bar"
-            "label              select-time-button"
-            "category-bar       category-bar"
-            "restaurant-list    restaurant-list";
+.main-view__container {
+    display: flex;
+    flex-direction: column;
+    /*grid-template-columns: 50% 50%;*/
+    /*grid-template-rows:*/
+    /*        min-content*/
+    /*        min-content*/
+    /*        min-content*/
+    /*        auto;*/
+    /*grid-template-areas:*/
+    /*        "action-bar         action-bar"*/
+    /*        "label              select-time-button"*/
+    /*        "category-bar       category-bar"*/
+    /*        "restaurant-list    restaurant-list";*/
 }

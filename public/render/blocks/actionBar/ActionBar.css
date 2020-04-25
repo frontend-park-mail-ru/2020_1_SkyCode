@@ -1,21 +1,18 @@
 @import "../action/Action.css";
 
 .action-bar {
-    grid-area: action-bar;
-}
-
-.action-bar__container-scroll-hider {
-    overflow: hidden;
-}
-
-.action-bar__container {
-    overflow-x: scroll;
-    scroll-behavior: smooth;
+    height: fit-content;
 }
 
 .action-bar__list {
+    grid-area: action-bar;
     display: flex;
     list-style-type: none;
+
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+
+    height: inherit;
 
     /* standart rewrite*/
     margin-block-start: 0;
@@ -27,5 +24,10 @@
 }
 
 .action-bar__li {
-    margin: 15px;
+    margin-left: 20px;
+    height: inherit;
+}
+
+.action-bar__li:first-child {
+    margin-left: 0;
 }
