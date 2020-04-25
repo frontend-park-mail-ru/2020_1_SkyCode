@@ -192,3 +192,18 @@
     height: 25px;
     border-radius: 30px;
 }
+
+#suggest {
+    width: 400px;
+    text-align: start;
+    margin: 10px 10px 50px 10px;
+    padding-left: 10px;
+    font-size: 18px;
+    background: #FFFFFF;
+    box-shadow: 4px 6px 100px #9E9E9E;
+    border: 1px;
+    outline: 1px;
+    height: 30px;
+    border-radius: 30px;
+    z-index: 1;
+}

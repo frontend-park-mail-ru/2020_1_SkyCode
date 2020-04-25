@@ -27,7 +27,6 @@ export default class BasketProduct extends Component {
 
         node.onclick = () => {
             EventBus.publish('delete-prod', this.mainId);
-            console.log('Del');
         };
     }
 

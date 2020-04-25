@@ -14,7 +14,6 @@ class AdminChatListController extends BaseController {
                 if (response.error) {
                     EventBus.publish('set-page', {url: '/login'});
                 }
-                console.log(response);
                 super.execute(new AdminChatListView({chatArray: response}));
             })
             .catch((err) => {

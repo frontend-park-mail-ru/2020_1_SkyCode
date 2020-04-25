@@ -13,13 +13,10 @@ export default class Href extends Component {
 
 
     bind() {
-        console.log('ZZZ', this);
         const me = super.domElement;
         if (me === undefined) {
             return;
         }
-
-        console.log("ME", me);
 
         me.onclick = function(event) {
             event.preventDefault();

@@ -12,11 +12,8 @@ class SupportChatController extends BaseController {
     }
 
     execute(matchData) {
-        // const socket = new WebSocket('ws://89.208.199.114:5000/api/v1/chat');
-
         const chatId = matchData[0];
 
-        console.log('ID', chatId);
         if (chatId !== undefined) {
             this.socket = new WebSocket(`ws://89.208.199.114:5000/api/v1/chats/${chatId}/join`);
         }
@@ -24,10 +21,6 @@ class SupportChatController extends BaseController {
             this.socket = new WebSocket('ws://89.208.199.114:5000/api/v1/chat');
         }
 
-        // this.socket.onopen = function(e) {
-        //     console.log('WebSocket Open');
-        //     EventBus.publish('websock-conn', {});
-        // };
 
         this.socket.onmessage = function(e) {
             const data = JSON.parse(e.data);
@@ -81,7 +74,6 @@ class SupportChatController extends BaseController {
     }
 
     SendMessage(data) {
-        console.log(data);
         this.socket.send(data);
     }
 

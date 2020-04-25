@@ -8,7 +8,6 @@ class SessionModel {
         })
             .then((response) => {
                 const token = response.headers.get('X-Csrf-Token');
-                console.log(typeof (token));
                 if (token) {
                     localStorage.setItem('token', token);
                 }

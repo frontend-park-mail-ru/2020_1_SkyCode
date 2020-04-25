@@ -12,7 +12,6 @@ export default class ChatList extends Component {
         const chatComponents = [];
 
         for (const chat of chatArr) {
-            console.log("QQQ", chat);
             chatComponents.push(new ChatItem({
                 classes: `chat-item-${chat.chat_id}`,
                 id: chat.chat_id,
@@ -22,8 +21,6 @@ export default class ChatList extends Component {
                 },
             }));
         }
-
-        console.log(chatComponents);
 
         this.addContextData({ChatList: chatComponents});
     }

@@ -7,7 +7,7 @@ import Href from '../../elements/href/Href.js';
 import BasketController from '../../../controllers/BasketController.js';
 import template from './Order.hbs';
 import EventBus from '../../../services/Events/EventBus.js';
-import SupportChat from '../supportChat/supportChat.js';
+import SupportChatController from '../../../controllers/SupportChatController.js';
 
 export default class Order extends Component {
     constructor({
@@ -35,7 +35,8 @@ export default class Order extends Component {
                 imageClasses: 'order__profile-image',
                 href: '/support',
                 cb: () => {
-                    window.open('http://89.208.199.114:8080/support');
+                    EventBus.publish('set-page', {url: '/support'});
+                    //SupportChatController.win = window.open('http://89.208.199.114:8080/support', '_blank', 'width=100,height=200,left=100,top=100,menubar=no,toolbar=no');
                 },
             }),
             placeTimeCard: new PlaceTimeCard({

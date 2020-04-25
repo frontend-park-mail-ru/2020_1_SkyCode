@@ -10,13 +10,9 @@ export default class OrderHistory extends Component {
 
         const ordersObj = [];
 
-        console.log(orders);
-
         for (const orderItem of orders) {
             ordersObj.push(new OrderCard('order', orderItem));
         }
-
-        console.log(ordersObj);
 
         super.addContextData({
             orders: ordersObj,

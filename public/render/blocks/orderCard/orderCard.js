@@ -7,7 +7,6 @@ export default class OrderCard extends Component {
     constructor(classes, orderItem) {
         super();
         super.template = template;
-        console.log(orderItem);
         super.addContextData({
             restaurantName: orderItem.rest_name,
             time: orderItem.created_at,

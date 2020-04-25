@@ -13,7 +13,10 @@ import OrderHistoryController from '../controllers/OrderHistoryController';
 import AddRestaurantController from '../controllers/AddRestaurantController.js';
 import SupportChatController from '../controllers/SupportChatController.js';
 import AdminChatListController from '../controllers/AdminChatListController';
-
+import MapController from '../controllers/MapController.js';
+import LocationController from '../controllers/LocationController.js';
+import AdminRestaurantListController from '../controllers/AdminRestaurantListController.js';
+import AddRestaurantPointController from '../controllers/AddRestaurantPointController';
 
 class Router {
     constructor() {
@@ -80,14 +83,18 @@ class Router {
         this._registerPage(ProfileController,                   '/me');
         this._registerPage(LoginSignupController,               '/login');
         this._registerPage(LoginSignupController,               '/signup');
-        this._registerPage(AddRestaurantController,             '/restaurants/add');
+        this._registerPage(AddRestaurantController,             '/admin/restaurants/add');
         this._registerPage(RestaurantController,                '/restaurants/:int');
         this._registerPage(CheckoutController,                  '/checkout');
-        this._registerPage(AddProductByRestaurantController,    '/restaurants/:int/add');
+        this._registerPage(AddProductByRestaurantController,    '/admin/restaurants/:int/add');
         this._registerPage(OrderHistoryController,              '/orders');
         this._registerPage(SupportChatController,               '/support');
-        this._registerPage(AdminChatListController,             '/chats');
-        this._registerPage(SupportChatController,               '/chats/:hash');
+        this._registerPage(AdminChatListController,             '/admin/chats');
+        this._registerPage(SupportChatController,               '/admin/chats/:hash');
+        this._registerPage(MapController,                       '/map');
+        this._registerPage(LocationController,                  '/location');
+        this._registerPage(AdminRestaurantListController,       '/admin/restaurants');
+        this._registerPage(AddRestaurantPointController,        '/admin/restaurants/:id');
     }
 
     _registerPage(controller, path) {

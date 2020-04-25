@@ -30,14 +30,16 @@ export default class ImageHref extends Component {
         super.template = template;
     }
 
-    bind(callback) {
+    bind() {
         const me = super.domElement;
         if (me === undefined) {
             console.trace('cat\' ret myself from DOM');
             return;
         }
 
-        me.onclick = this.callback.bind(this);
+        me.onclick = () => {
+            this.callback();
+        };
     }
 
     unbind() {

@@ -44,7 +44,20 @@ class RestaurantModel {
 
     getRestaurants(page, count) {
         return Http.fetchGet({
-            path: `/api/v1/restaurants?page=${page}&count=${count}`,
+            path: `/api/v1/restaurants?page=${page}&count=${count}`
+        })
+            .then((response) => {
+                const token = response.headers.get('X-Csrf-Token');
+                if (token) {
+                    localStorage.setItem('token', token);
+                }
+                return response.json();
+            });
+    }
+
+    getRestaurantsByAddress(page, count, address) {
+        return Http.fetchGet({
+            path: `/api/v1/restaurants_point?page=${page}&count=${count}&address=${address}`,
         })
             .then((response) => {
                 const token = response.headers.get('X-Csrf-Token');
@@ -97,6 +110,19 @@ class RestaurantModel {
                 }
                 return response.json();
             });
+    }
+
+    addPoint(body, id) {
+        return Http.fetchPost({
+            path: `/api/v1/restaurants/${id}/points`,
+            body: JSON.stringify(body),
+        }).then((response) => {
+            const token = response.headers.get('X-Csrf-Token');
+            if (token) {
+                localStorage.setItem('token', token);
+            }
+            return response.json();
+        });
     }
 }
 
