@@ -1,7 +1,7 @@
 import Component from '../../Component.js';
 import Header from '../../blocks/header/Header.js';
 import template from './AdminRestaurantListView.hbs';
-import RestaurantsList from '../../blocks/restaurantsList/RestaurantsList.js';
+import RestaurantsList from '../../blocks/restaurantsList/restaurantsList.js';
 
 export default class AdminRestaurantsListView extends Component {
     constructor({restaurantsArray}) {

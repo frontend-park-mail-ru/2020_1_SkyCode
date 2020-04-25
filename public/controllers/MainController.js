@@ -111,7 +111,7 @@ class MainController extends BaseController {
                         console.log(this.geopos);
                         localStorage.setItem('deliveryGeo', this.address);
                         localStorage.setItem('latitude', this.geopos.latitude);
-                        localStorage.setItem('longitude', this.geopos.longitude)
+                        localStorage.setItem('longitude', this.geopos.longitude);
                         document.getElementsByClassName('place-time-card__place-text')[0].innerHTML =
                             localStorage.getItem('deliveryGeo');
                         return;
