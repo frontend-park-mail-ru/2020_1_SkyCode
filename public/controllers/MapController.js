@@ -101,7 +101,8 @@ class MapController extends BaseController {
                     if (response.geopos) {
                         this.geopos = response.geopos;
                         localStorage.setItem('deliveryGeo', this.address);
-                        localStorage.setItem('deliveryGeopos', this.geopos);
+                        localStorage.setItem('latitude', this.geopos.latitude);
+                        localStorage.setItem('longitude', this.geopos.longitude);
                         document.getElementsByClassName('place-time-card__place-text')[0].innerHTML =
                             localStorage.getItem('deliveryGeo');
                         EventBus.publish('set-page', {url: window.location.pathname});
