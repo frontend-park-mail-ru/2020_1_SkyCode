@@ -1,7 +1,7 @@
 import Component from '../../Component.js';
 import template from './restaurantsList.hbs';
 import EventBus from '../../../services/Events/EventBus.js';
-import RestaurantItem from '../restaurantItem/restaurantItem';
+import RestaurantItem from '../restaurantItem/restaurantItem.js';
 
 export default class RestaurantsList extends Component {
     constructor({classes, restaurantsArr}) {
