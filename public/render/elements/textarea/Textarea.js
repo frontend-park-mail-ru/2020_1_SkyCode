@@ -8,6 +8,8 @@ class Textarea extends Component {
         palceholder,
         maxLength,
         minLength,
+        disabled = false,
+        value,
         id,
     }) {
         super(classes, {
@@ -15,6 +17,8 @@ class Textarea extends Component {
             palceholder,
             maxLength,
             minLength,
+            disabled,
+            value,
         }, id, template);
     }
 }

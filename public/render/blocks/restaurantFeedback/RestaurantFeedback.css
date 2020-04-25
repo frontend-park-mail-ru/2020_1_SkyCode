@@ -1,0 +1,41 @@
+@import "../restaurantBanner/restaurantBanner.css";
+@import "../../elements/href/Href.css";
+@import "../feedbackForm/FeedbackForm.css";
+@import "../restaurantFeedbackCard/RestaurantFeedbackCard.css";
+
+.restaurant-feedback__list-scroll-hider {
+    overflow: hidden;
+
+    margin-right: 60px;
+    margin-left: 60px;
+}
+
+.restaurant-feedback__list-container {
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    height: calc(100vh - 326px);
+
+    margin-right: -10px;
+}
+
+.restaurant-feedback__list {
+    /*display: flex;*/
+    /*flex-wrap: wrap;*/
+    /*flex-direction: row;*/
+    /*justify-content: space-between;*/
+
+    display: flex;
+    flex-direction: column;
+}
+
+.restaurant-info__feedback {
+    display: flex;
+    flex-direction: column;
+}
+
+.restaurant-feedback__middle-bar {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 60px;
+    align-items: center;
+}

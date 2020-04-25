@@ -20,12 +20,12 @@ export default class ImageHref extends Component {
             href,
         });
         this.callback = cb;
-        if (this.callback === 'undefined') {
-            this.callback = function(event) {
+        if (this.callback === undefined) {
+            this.callback = (event) => {
                 event.preventDefault();
                 console.log('href ' + this.href + ' clicked');
-                EventBus.publish('set-page', {url: this.context.href});
-            }.bind(this);
+                EventBus.publish('set-page', {url: this.href});
+            };
         }
         super.template = template;
     }

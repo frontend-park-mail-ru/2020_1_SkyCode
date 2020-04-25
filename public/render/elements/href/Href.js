@@ -11,7 +11,6 @@ export default class Href extends Component {
         super.template = template;
     }
 
-
     bind() {
         const me = super.domElement;
         if (me === undefined) {

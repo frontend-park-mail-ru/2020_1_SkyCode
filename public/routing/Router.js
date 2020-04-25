@@ -11,6 +11,7 @@ import AddProductByRestaurantController from '../controllers/AddProductByRestaur
 import BasketController from '../controllers/BasketController.js';
 import OrderHistoryController from '../controllers/OrderHistoryController';
 import AddRestaurantController from '../controllers/AddRestaurantController.js';
+import RestaurantInfoController from '../controllers/RestaurantInfoController.js';
 import SupportChatController from '../controllers/SupportChatController.js';
 import AdminChatListController from '../controllers/AdminChatListController';
 import MapController from '../controllers/MapController.js';
@@ -87,6 +88,7 @@ class Router {
         this._registerPage(RestaurantController,                '/restaurants/:int');
         this._registerPage(CheckoutController,                  '/checkout');
         this._registerPage(AddProductByRestaurantController,    '/admin/restaurants/:int/add');
+        this._registerPage(RestaurantInfoController,            '/restaurants/:int/info');
         this._registerPage(OrderHistoryController,              '/orders');
         this._registerPage(SupportChatController,               '/support');
         this._registerPage(AdminChatListController,             '/admin/chats');
