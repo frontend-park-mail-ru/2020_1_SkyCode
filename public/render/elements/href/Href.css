@@ -1,13 +1,14 @@
 
 .header__logo {
-    padding: 10px;
     outline: none;
     text-decoration: none;
     color: black;
 
     font-size: 30px;
-    line-height: 36px;
-    position: center;
+    height: inherit;
+    line-height: inherit;
+
+    margin: 0 20px;
 }
 
 .order__checkout {

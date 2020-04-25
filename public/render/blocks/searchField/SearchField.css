@@ -1,7 +1,7 @@
 @import "../../elements/input/Input.css";
 
 .header__search-field {
-    height: 44px;
+    flex-grow: 1;
     display: flex;
-    padding: 10px;
+    height: inherit;
 }

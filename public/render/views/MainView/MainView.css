@@ -9,11 +9,11 @@
     display: grid;
     grid-template-rows:
             min-content
-            auto;
-    grid-template-columns: 5fr 5fr 3fr;
+            1fr;
+    grid-template-columns: 10fr 3fr;
     grid-template-areas:
-            "header       header     order"
-            "main-area    main-area  order";
+            "header       order"
+            "main-area    order";
 
     background: #FFFFFF;
 }

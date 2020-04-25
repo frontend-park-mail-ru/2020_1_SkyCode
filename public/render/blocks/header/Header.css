@@ -6,11 +6,13 @@
 
 .header {
     grid-area: header;
-    display: grid;
-    height: 86px;
-    grid-template-columns: min-content min-content auto min-content;
-    grid-template-rows: auto;
+
+    display: flex;
+
+    box-sizing: border-box;
+    height: 100%;
     width: 100%;
+    padding: 20px;
 }
 
 

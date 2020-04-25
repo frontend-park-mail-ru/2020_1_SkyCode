@@ -13,5 +13,5 @@ stylecow:
 	stylecow
 
 webpack:
-	webpack &
+	webpack
 

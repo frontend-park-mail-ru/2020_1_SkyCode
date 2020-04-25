@@ -1,8 +1,6 @@
 
 .header__hamburger-button {
-    margin-top: 15px;
-    margin-left: 20px;
-    margin-right: 5px;
+    height: inherit;
 }
 
 .hamburger-button__hamburger-line {
