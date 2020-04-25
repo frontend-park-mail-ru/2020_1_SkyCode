@@ -1,11 +1,18 @@
 @import "../../elements/img/Img.css";
 
 .restaurant-list__restaurant {
-    width: 230px;
-    height: 150px;
+    /*max-width: 300px;*/
+    /*max-height: 200px;*/
+    /*text-decoration: none;*/
+    /*color: black;*/
+    /*margin-bottom: 30px;*/
+
+    width: 25%;
+    margin-right: 40px;
+    margin-top: 20px;
+
     text-decoration: none;
     color: black;
-    margin-bottom: 30px;
 }
 
 .restaurant__avg-time {
@@ -21,9 +28,10 @@
 }
 
 .restaurant__image {
-    height: 114px;
-    overflow: hidden;
     border-radius: 15px;
+    width: 100%;
+    height: 66%;
+    overflow: hidden;
 }
 
 .restaurant__name {

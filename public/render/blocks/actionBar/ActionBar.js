@@ -44,7 +44,7 @@ export default class ActionBar extends Component {
         leftButtonId = 'action-bar__left-button',
         rightButtonId = 'action-bar__right-button') {
         return function() {
-            const list = document.getElementById('action-bar__list');
+            const list = document.getElementsByClassName('action-bar__list')[0];
             list.scrollLeft += value;
 
             const minScrollLeft = 0;

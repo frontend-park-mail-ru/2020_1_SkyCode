@@ -45,7 +45,7 @@ export default class CategoryBar extends Component {
         leftButtonId = 'category-bar__left-button',
         rightButtonId = 'category-bar__right-button') {
         return function() {
-            const container = document.getElementsByClassName('category-bar__container')[0];
+            const container = document.getElementsByClassName(this.context.classes)[0];
             container.scrollLeft += value;
 
             const minScrollLeft = 0;

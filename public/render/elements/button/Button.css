@@ -19,6 +19,7 @@
     box-shadow: 0 0 10px rgba(80, 80, 80, 0.5);
     width: 40px;
     height: 40px;
+    z-index: 1;
 }
 
 .scroll-bar__button:hover {
@@ -26,32 +27,32 @@
 }
 
 .category-bar__right-button {
-    position: absolute;
-    top: 220px;
-    left: calc(100vw * 10 / 13 - 60px);
-    z-index: 1;
+    position: relative;
+    top: 100px;
+    left: calc(100vw * 10 / 13 - 160px);
 }
 
 .action-bar__right-button {
-    position: absolute;
-    top: 120px;
-    left: calc(100vw * 10 / 13 - 60px);
-}
-
-.category-bar__left-button {
-    position: absolute;
-    top: 220px;
-    left: 15px;
-    z-index: 1;
-    visibility: hidden;
+    position: relative;
+    top: 85px;
+    left: calc(100vw * 10 / 13 - 160px);
 }
 
 .action-bar__left-button {
-    position: absolute;
-    left: 80px;
-    top: 120px;
+    position: relative;
+    left: 15px;
+    top: 85px;
     visibility: hidden;
 }
+
+.category-bar__left-button {
+    position: relative;
+    top: 100px;
+    left: 15px;
+    visibility: hidden;
+}
+
+
 
 .person-input__minus-button {
     background: #F8F8F8;

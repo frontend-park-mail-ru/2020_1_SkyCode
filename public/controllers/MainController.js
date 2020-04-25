@@ -20,12 +20,20 @@ class MainController extends BaseController {
                 super.execute(new MainView({
                     actionArr: actions,
                     categoryArr: categories,
-                    restaurantArr: response.restaurants,
+                    restaurantArr: Mocks.restaurants,
                     products: BasketController.basket.product,
                 }));
             })
             .catch((err) => {
                 console.log(err);
+                const actions = Mocks.actions;
+                const categories = Mocks.categories;
+                super.execute(new MainView({
+                    actionArr: actions,
+                    categoryArr: categories,
+                    restaurantArr: Mocks.restaurants,
+                    products: BasketController.basket.product,
+                }));
             });
     }
 }

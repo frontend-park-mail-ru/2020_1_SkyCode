@@ -2,17 +2,19 @@
 
 .action-bar {
     height: fit-content;
+    grid-area: action-bar;
+    /* Скрываем scrollbar */
+    margin-bottom: -20px;
+    /* Скрываем кнопки */
+    /*margin-top: -20px;*/
 }
 
 .action-bar__list {
-    grid-area: action-bar;
     display: flex;
     list-style-type: none;
 
     overflow-x: scroll;
     scroll-behavior: smooth;
-
-    height: inherit;
 
     /* standart rewrite*/
     margin-block-start: 0;
@@ -24,10 +26,6 @@
 }
 
 .action-bar__li {
-    margin-left: 20px;
+    margin-right: 20px;
     height: inherit;
-}
-
-.action-bar__li:first-child {
-    margin-left: 0;
 }
