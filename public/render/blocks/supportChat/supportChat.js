@@ -24,7 +24,6 @@ export default class SupportChat extends Component {
                         chat_id: localStorage.getItem('chat_id'),
                         user_name: username,
                     });
-                    console.log('send');
                     this.context.Input.domElement.value = '';
                     EventBus.publish('send-msg', data);},},
             ),

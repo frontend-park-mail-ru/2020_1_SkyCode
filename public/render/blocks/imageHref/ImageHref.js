@@ -37,7 +37,9 @@ export default class ImageHref extends Component {
             return;
         }
 
-        me.onclick = this.callback.bind(this);
+        me.onclick = () => {
+            this.callback();
+        };
     }
 
     unbind() {

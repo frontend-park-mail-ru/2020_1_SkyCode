@@ -1,0 +1,40 @@
+@import "../../blocks/header/Header.css";
+@import "../../blocks/order/Order.css";
+
+
+.map-view {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 10fr 3fr;
+    grid-template-areas:
+            "main order";
+}
+
+.main-content {
+    height: 90vh;
+    overflow: scroll;
+    grid-area: main-content;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+            "map"
+}
+
+.main {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr 9fr;
+    grid-template-areas:
+            "header"
+            "main-content";
+}
+
+#map {
+    height: 600px;
+    width: 900px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 20px #D6D6D6;
+    grid-area: map;
+    justify-self: center;
+    align-self: center;
+}

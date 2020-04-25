@@ -1,0 +1,14 @@
+@import "../../blocks/addRestaurantPoint/addRestaurantPoint.css";
+
+.add-rest-point-view {
+    display: grid;
+    grid-template-areas:
+            "header header header"
+            ". add-point .";
+    grid-template-columns: 1fr 7fr 1fr;
+    grid-template-rows:  1fr 1fr 5fr;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+}

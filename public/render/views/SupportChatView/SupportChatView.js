@@ -6,7 +6,6 @@ import SupportChat from '../../blocks/supportChat/supportChat.js';
 export default class SupportChatView extends Component {
     constructor({username}) {
         super();
-        console.log(username);
         this.addContextData({
             Header: new Header({
                 classes: 'header',

@@ -9,6 +9,8 @@
 @import "render/views/RestaurantInfoView/RestaurantInfoView.css";
 @import "render/views/SupportChatView/SupportChatView.css";
 @import "render/views/AdminChatListView/AdminChatListView.css";
+@import "render/views/MapView/MapView.css";
+@import "render/views/AdminRestaurantListView/AdminRestaurantListView.css";
 
 
 body {

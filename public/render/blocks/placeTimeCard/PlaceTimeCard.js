@@ -1,15 +1,16 @@
 import Component from '../../Component.js';
 import Input from '../../elements/input/Input.js';
 import template from './PlaceTimeCard.hbs';
+import EventBus from '../../../services/Events/EventBus';
 
 export default class PlaceTimeCard extends Component {
     constructor({
         classes = 'place-time-card',
-        place = 'ул. Ломономова, 23',
+        place = 'Введите адрес',
         time = '35 мин.',
     }) {
         super(classes, {
-            place,
+            place: localStorage.getItem('deliveryGeo'),
             time,
             changePlaceButton: new Input({
                 type: 'image',
@@ -24,5 +25,13 @@ export default class PlaceTimeCard extends Component {
         });
 
         super.template = template;
+    }
+
+    bind() {
+        document.getElementsByClassName('place-time-card__change-place-button')[0].addEventListener('click', (e) => {
+            e.preventDefault();
+            EventBus.publish('change-location', {});
+        })
+        super.bind();
     }
 }

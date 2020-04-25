@@ -7,7 +7,6 @@ export default class OrderHistoryView extends Component {
     constructor(orders) {
         super();
         super.template = template;
-        console.log(orders);
         super.addContextData({
             orders: new OrderHistory({orders}),
             header: new Header({
