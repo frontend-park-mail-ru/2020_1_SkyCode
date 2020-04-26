@@ -3,10 +3,17 @@
 .category-bar {
     grid-area: category-bar;
     height: fit-content;
+    width: calc((100% - 20px) * 10 / 13);
     /* Скрываем scrollbar */
     margin-bottom: -20px;
     /* Скрываем кнопки */
     margin-top: -30px;
+}
+
+@media (max-width: 1024px) {
+    .category-bar {
+        width: calc(100% - 20px);
+    }
 }
 
 .category-bar__list {
