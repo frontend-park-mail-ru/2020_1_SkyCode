@@ -15,6 +15,13 @@
     color: black;
 }
 
+@media (max-width: 768px) {
+    .restaurant-list__restaurant {
+        width: 70%;
+        justify-self: center;
+    }
+}
+
 .restaurant__avg-time {
     position: relative;
 
@@ -35,13 +42,16 @@
 }
 
 .restaurant__name {
+    display: flex;
     position: relative;
-    left: -70px;
+    left: 10px;
+    top: -10px;
     font-size: 14px;
 }
 
 .restaurant__rate {
     position: relative;
+    top: -30px;
     left: 10px;
     font-size: 11px;
 }

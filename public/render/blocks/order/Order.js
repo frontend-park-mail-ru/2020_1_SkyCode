@@ -94,6 +94,6 @@ export default class Order extends Component {
         const order = this.domElement;
         order.style.right = '0';
 
-        setTimeout(() => order.style.right = '', 500);
+        setTimeout(() => order.style.right = '', 1000);
     }
 }

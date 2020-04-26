@@ -47,13 +47,20 @@
     font-weight: normal;
 }
 
+
 .main-view__main-area {
     grid-area: main-area;
 }
 
 .main-view__belt {
     overflow: hidden;
-    margin-left: 60px;
+    margin-left: 80px;
+}
+
+@media (max-width: 768px) {
+    .main-view__belt {
+        margin-left: 15px;
+    }
 }
 
 .main-view__scrolled-area {

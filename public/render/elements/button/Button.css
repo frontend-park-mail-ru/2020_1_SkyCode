@@ -55,7 +55,8 @@
     background: #F8F8F8;
     border-top-left-radius: 100px;
     border-bottom-left-radius: 100px;
-    border-left: 1px solid #D6D6D6;
+    border: none;
+    border-left: 1px solid #000000;
     z-index: 2;
 
     outline: 0;

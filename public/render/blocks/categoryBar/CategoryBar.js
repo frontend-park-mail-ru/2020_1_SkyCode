@@ -54,9 +54,20 @@ export default class CategoryBar extends Component {
         const leftButtonId = 'category-bar__left-button';
         const rightButtonId = 'category-bar__right-button';
 
+        if (window.matchMedia('(max-width: 768px)')) {
+            document.getElementById(leftButtonId).style.visibility = 'hidden';
+            document.getElementById(rightButtonId).style.visibility = 'hidden';
+        }
+
         let hasTimer = false;
 
         list.onscroll = () => {
+            if (window.matchMedia('(max-width: 768px)')) {
+                document.getElementById(leftButtonId).style.visibility = 'hidden';
+                document.getElementById(rightButtonId).style.visibility = 'hidden';
+                return;
+            }
+
             if (hasTimer) {
                 return;
             }

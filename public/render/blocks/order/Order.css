@@ -44,13 +44,20 @@
 
 @media (max-width: 1024px) {
     .order {
-        right: -500px;
+        right: -5000px;
         width: 50vw;
     }
+}
 
-    .order:hover {
-        right: 0;
+@media (max-width: 768px) {
+    .order {
+        right: -5000px;
+        width: calc(100vw - 70px);
     }
+}
+
+.order:hover {
+    right: 0;
 }
 
 .order__title {

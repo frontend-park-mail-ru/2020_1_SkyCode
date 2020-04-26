@@ -5,7 +5,8 @@ import template from './Restaurant.hbs';
 
 export default class Restaurant extends Component {
     constructor({classes, name, imageHref, rate, avgDeliveryTime, href}) {
-        super(classes, {name,
+        super(classes, {
+            name,
             rate,
             href,
             avgDeliveryMinTime: avgDeliveryTime,
