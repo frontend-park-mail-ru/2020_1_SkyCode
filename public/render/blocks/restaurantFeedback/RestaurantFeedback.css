@@ -7,15 +7,10 @@
     display: flex;
     justify-content: space-between;
 
-    width: calc(100% * 10 / 13);
-    margin-top: 50px;
+    width: 100%;
+    margin: 50px 0;
 }
 
-@media (max-width: 1024px) {
-    .restaurant-feedback__info-bar {
-        width: 100%
-    }
-}
 
 .restaurant-feedback__label {
     display: inline;
@@ -33,7 +28,7 @@
     grid-area: main-area;
     display: flex;
     flex-direction: column;
-    width: calc(100vw - 240px)
+    width: 100%
 }
 
 .restaurant-feedback__belt {

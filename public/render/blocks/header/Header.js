@@ -14,7 +14,6 @@ export default class Header extends Component {
             HamburgerButton: new HamburgerButton({
                 classes: 'header__hamburger-button',
                 callback: () => {
-                    console.log('kek');
                     EventBus.publish('hamburger-button-clicked');
                 },
             }),
