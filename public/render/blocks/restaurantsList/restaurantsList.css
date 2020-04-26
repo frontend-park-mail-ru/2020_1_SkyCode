@@ -1,17 +1,27 @@
 @import "../restaurantItem/restaurantItem.css";
 
-.restaurants-list {
-    width: 800px;
-    height: 500px;
-
+.restaurants-list__container {
+    width: 100%;
+    height: 400px;
+    top: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     overflow-y: scroll;
-    border-radius: 10px;
-    box-shadow: 0 4px 100px #D6D6D6;
+}
+
+.restaurants-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 500px;
+    width: 800px;
+    grid-area: restaurants-list-area;
     justify-self: center;
     align-self: center;
-    grid-area: restaurants-list-area;
+    box-shadow: 0 4px 100px #D6D6D6;
+    border-radius: 10px;
+    padding: 15px;
 }
