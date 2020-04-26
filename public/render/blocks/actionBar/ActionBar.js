@@ -53,7 +53,7 @@ export default class ActionBar extends Component {
         const leftButtonId = 'action-bar__left-button';
         const rightButtonId = 'action-bar__right-button';
 
-        if (window.matchMedia('(max-width: 768px)')) {
+        if (window.matchMedia('(max-width: 768px)').matches) {
             document.getElementById(leftButtonId).style.visibility = 'hidden';
             document.getElementById(rightButtonId).style.visibility = 'hidden';
         }
@@ -61,7 +61,7 @@ export default class ActionBar extends Component {
         let hasTimer = false;
 
         list.onscroll = () => {
-            if (window.matchMedia('(max-width: 768px)')) {
+            if (window.matchMedia('(max-width: 768px)').matches) {
                 document.getElementById(leftButtonId).style.visibility = 'hidden';
                 document.getElementById(rightButtonId).style.visibility = 'hidden';
                 return;
