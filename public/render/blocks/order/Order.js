@@ -93,6 +93,7 @@ export default class Order extends Component {
     showOrderHandler() {
         const order = this.domElement;
         order.style.right = '0';
+        order.click();
 
         setTimeout(() => order.style.right = '', 1000);
     }
