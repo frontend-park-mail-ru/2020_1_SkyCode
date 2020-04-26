@@ -9,7 +9,7 @@ export default class ImageHref extends Component {
         href,
         classes = 'imageHref',
         imageClasses = 'imageClasses',
-        cb,
+        needNewWindow = false,
     }) {
         super(classes, {
             image: new Input({
@@ -18,15 +18,8 @@ export default class ImageHref extends Component {
                 src,
             }),
             href,
+            needNewWindow,
         });
-        this.callback = cb;
-        if (this.callback === undefined) {
-            this.callback = (event) => {
-                event.preventDefault();
-                console.log('href ' + this.href + ' clicked');
-                EventBus.publish('set-page', {url: this.href});
-            };
-        }
         super.template = template;
     }
 
@@ -37,8 +30,10 @@ export default class ImageHref extends Component {
             return;
         }
 
-        me.onclick = () => {
-            this.callback();
+        me.onclick = (event) => {
+            event.preventDefault();
+            console.log('href ' + this.href + ' clicked');
+            EventBus.publish('set-page', {url: this.href});
         };
     }
 

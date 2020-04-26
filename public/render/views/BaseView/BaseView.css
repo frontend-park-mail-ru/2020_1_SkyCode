@@ -1,0 +1,15 @@
+.base-view {
+    display: grid;
+    grid-template-rows:
+            min-content
+            1fr;
+    grid-template-areas:
+            "header"
+            "main-area";
+
+    background: #FFFFFF;
+}
+
+.base-view > * {
+    min-width: 0;
+}

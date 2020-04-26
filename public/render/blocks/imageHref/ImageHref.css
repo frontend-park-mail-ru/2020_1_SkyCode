@@ -1,10 +1,6 @@
 
 
-.corner-profile-href, .order__support-href {
-
-}
-
-.corner-profile-image, .order__support-image {
+.icon-bar-profile-image, .order__support-image, .icon-bar-basket-image {
     width: 30px;
     height: 30px;
     border-radius: 100%;

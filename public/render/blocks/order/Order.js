@@ -32,15 +32,11 @@ export default class Order extends Component {
                 href: '/login',
             }),
             supportButton: new ImageHref({
-                classes: 'support-button',
+                classes: 'order__support-href',
                 src: '/static/support.svg',
-                imageClasses: 'order__profile-image',
+                imageClasses: 'order__support-image',
                 href: '/support',
-                cb: () => {
-                    EventBus.publish('set-page', {url: '/support'});
-                    // eslint-disable-next-line max-len
-                    //SupportChatController.win = window.open('http://89.208.199.114:8080/support', '_blank', 'width=100,height=200,left=100,top=100,menubar=no,toolbar=no');
-                },
+                needNewWindow: true,
             }),
             placeTimeCard: new PlaceTimeCard({
                 classes: 'order__place-time-card',

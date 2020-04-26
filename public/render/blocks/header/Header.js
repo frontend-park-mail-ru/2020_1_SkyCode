@@ -10,31 +10,33 @@ export default class Header extends Component {
         super();
         super.template = template;
         this.addContextData({
-            hamburgerButton: new HamburgerButton({
+            HamburgerButton: new HamburgerButton({
                 classes: 'header__hamburger-button',
                 callback: () => {
                     console.log('hamburgerButton clicked');
                 },
             }),
 
-            logo: new Href({
+            Logo: new Href({
                 text: 'Delivery',
                 href: '/',
                 classes: 'header__logo',
             }),
 
-            searchField: new SearchField({
+            SearchField: new SearchField({
                 callback: () => {
                     console.log('searchFieldButton clicked');
                 },
                 classes: 'header__search-field',
             }),
 
-            profileButton: new Input({
+            ProfileButton: new Input({
                 type: 'image',
                 src: '/static/profile.png',
                 classes: 'header__profile-button',
             }),
+
+            IconBar: new IconBar(),
         }, true);
 
         this.addClasses(classes);
