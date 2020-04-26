@@ -31,6 +31,10 @@
     width: 100%
 }
 
+.restaurant-feedback__main-area:last-child {
+    margin-bottom: 500px;
+}
+
 .restaurant-feedback__belt {
     overflow: hidden;
     margin: 0 60px;
@@ -45,5 +49,4 @@
 .restaurant-feedback__scrolled-area {
     overflow-y: scroll;
     height: 100vh;
-    margin-right: -14px;
 }
