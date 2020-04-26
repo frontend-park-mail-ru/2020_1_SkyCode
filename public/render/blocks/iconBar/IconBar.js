@@ -19,7 +19,6 @@ export default class IconBar extends Component {
                 src: '/static/support.svg',
                 imageClasses: 'icon-bar-support-image',
                 href: '/support',
-                needNewWindow: true,
             }),
             Basket: new Img({
                 classes: 'icon-bar-basket-image',
