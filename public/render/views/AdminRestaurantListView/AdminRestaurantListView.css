@@ -1,6 +1,6 @@
 @import "../../blocks/restaurantsList/restaurantsList.css";
 
-.chat-list-view {
+.restaurants-list-view {
     display: grid;
     grid-template-areas:
             "header header header"

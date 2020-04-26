@@ -10,8 +10,10 @@
 @import "render/views/SupportChatView/SupportChatView.css";
 @import "render/views/AdminChatListView/AdminChatListView.css";
 @import "render/views/MapView/MapView.css";
+@import "render/views/AddRestaurantPointView/AddRestaurantPointView.css";
 @import "render/views/AdminRestaurantListView/AdminRestaurantListView.css";
 @import "render/views/BaseView/BaseView.css";
+
 
 
 body {
