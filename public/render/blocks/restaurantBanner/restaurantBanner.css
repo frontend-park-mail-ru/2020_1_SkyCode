@@ -29,10 +29,9 @@
 .restaurantBanner__info {
     display: flex;
     flex-direction: row;
-    align-items: center;
     position: relative;
     left: 0;
-    width: 20%;
+    width: fit-content;
     top: -50px;
     height: 52px;
     background: #F8F8F8;
