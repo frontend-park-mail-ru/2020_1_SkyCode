@@ -116,8 +116,6 @@
 }
 
 .select-time-button__text-button {
-    margin-right: 30px;
-
     background: #F6D471;
     height: 37px;
     border: 0;
@@ -131,6 +129,7 @@
 
     border-bottom-right-radius: 20px;
     border-top-right-radius: 20px;
+    margin-right: 100px;
 }
 
 /*.profile-text-area__submit {*/

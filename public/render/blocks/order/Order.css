@@ -9,7 +9,7 @@
     right: -5000px;
 
     height: 100vh;
-    width: 100%;
+    width: 30%;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -20,6 +20,12 @@
 
     padding: 20px;
     z-index: 1;
+}
+
+@media (max-width: 600px) {
+    .order {
+        width: 100%;
+    }
 }
 
 .order__title {

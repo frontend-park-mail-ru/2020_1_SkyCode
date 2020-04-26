@@ -5,14 +5,8 @@
 @import "../../blocks/products/ProductList.css";
 
 .restaurant-view {
-    display: grid;
-    grid-template-rows:
-            min-content
-            1fr;
-    grid-template-columns: 1fr;
-    grid-template-areas:
-            "header"
-            "main-area";
+    display: flex;
+    flex-direction: column;
 
     background: #FFFFFF;
 }
@@ -25,14 +19,8 @@
     display: flex;
     justify-content: space-between;
 
-    width: calc(100% * 10 / 13);
+    width: 100%;
     margin-top: 50px;
-}
-
-@media (max-width: 1024px) {
-    .restaurant-view__info-bar {
-        width: 100%
-    }
 }
 
 .restaurant-view__label {
@@ -46,20 +34,14 @@
     font-weight: normal;
 }
 
-
 .restaurant-view__main-area {
     grid-area: main-area;
 }
 
 .restaurant-view__belt {
     overflow: hidden;
-    margin-left: 80px;
-}
-
-@media (max-width: 768px) {
-    .restaurant-view__belt {
-        margin-left: 15px;
-    }
+    margin: 0 80px;
+    height: 100vh;
 }
 
 .restaurant-view__scrolled-area {
