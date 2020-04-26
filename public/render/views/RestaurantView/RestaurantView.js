@@ -33,7 +33,7 @@ class RestaurantView extends Component {
                 classes: 'restaurant-view__info',
                 text: 'О нас / отзывы',
                 href: `/restaurants/${restaurant.id}/info`,
-            })
+            }),
         }, true);
     }
 }

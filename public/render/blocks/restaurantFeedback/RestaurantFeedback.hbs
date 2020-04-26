@@ -8,7 +8,16 @@
     <div class="restaurant-feedback__list-scroll-hider">
         <div class="restaurant-feedback__list-container">
             <div class="restaurant-feedback__list">
-                {{{FeedbackForm}}}
+
+                {{#if user}}
+                    {{{FeedbackForm}}}
+                {{else}}
+                    <div class="restaurant-feedback__login-signup-invitation">
+                        Чтобы оставить отзыв,
+                        {{{LoginHref}}} или {{{SignupHref}}}
+                    </div>
+                {{/if}}
+
 
                 {{#each Feedback}}
                     {{{this}}}

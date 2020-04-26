@@ -15,18 +15,7 @@ class RestaurantInfoController extends BaseController {
         Promise.all([
             UserModel
                 .getUser()
-                .then((response) => {
-                    if (response.error === 'Unauthorized') {
-                        EventBus.publish('redirect', {url: '/login'});
-                        throw 'unauthorized';
-                    }
-                    if (response.error) {
-                        console.log(response.error);
-                        EventBus.publish('redirect', {url: '/'});
-                        throw response.error;
-                    }
-                    return true;
-                }),
+                .then((response) => response.User),
 
             RestaurantModel
                 .getRestaurant(id)
@@ -52,14 +41,15 @@ class RestaurantInfoController extends BaseController {
                     throw err;
                 }),
         ])
-            .then(([ , restaurant, feedbackObject]) => {
+            .then(([user, restaurant, feedbackObject]) => {
                 super.execute(new RestaurantInfoView({
+                    user,
                     restaurant,
                     feedbackObject,
                 }));
             })
             .catch((err) => {
-                console.log(err);
+                console.log('info controller error', err);
                 EventBus.publish('redirect', {url: '/'});
             });
     }
