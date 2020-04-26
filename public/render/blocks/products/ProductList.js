@@ -1,21 +1,22 @@
 import Component from '../../Component.js';
 import ProductCard from '../productCard/ProductCard.js';
-import template from './Products.hbs';
+import template from './ProductList.hbs';
 
-export default class Products extends Component {
+export default class ProductList extends Component {
     constructor({classes, productArr}) {
         super();
         this.addClasses(classes);
 
-        const products = [];
+        const Products = [];
         for (const product of productArr) {
-            products.push(new ProductCard({
+            Products.push(new ProductCard({
                 id: `product-card-${product.id}`,
+                classes: 'product-list__product-card',
                 product,
             }));
         }
 
-        this.addContextData({products});
+        this.addContextData({Products});
         super.template = template;
     }
 }

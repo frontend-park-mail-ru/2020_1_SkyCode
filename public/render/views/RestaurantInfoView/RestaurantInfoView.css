@@ -8,12 +8,16 @@
     display: grid;
     grid-template-rows:
             min-content
-            auto;
-    grid-template-columns: 5fr 5fr 3fr;
+            1fr;
+    grid-template-columns: 1fr;
     grid-template-areas:
-            "header     header  sidebar"
-            "main       main    sidebar";
+            "header"
+            "main-area";
 
     background: #FFFFFF;
-    height: 100vh;
 }
+
+.restaurant-info-view > * {
+    min-width: 0;
+}
+

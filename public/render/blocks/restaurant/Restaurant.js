@@ -5,8 +5,10 @@ import template from './Restaurant.hbs';
 
 export default class Restaurant extends Component {
     constructor({classes, name, imageHref, rate, avgDeliveryTime, href}) {
-        super(classes, {name,
-            rate,
+        const strRate = rate === 0 ? '⭐' : '⭐'.repeat(Math.round(Number(rate)));
+        super(classes, {
+            name,
+            rate: strRate,
             href,
             avgDeliveryMinTime: avgDeliveryTime,
             avgDeliveryMaxTime: avgDeliveryTime + 5,
@@ -15,11 +17,7 @@ export default class Restaurant extends Component {
                 src: imageHref,
                 alt: 'can\'t load image',
             }),
-            rateImg: new Img({
-                classes: 'restaurant__rate-img',
-                src: 'static/star.svg',
-                alt: 'cat\'t ;load star image',
-            })});
+        });
 
         super.template = template;
     }

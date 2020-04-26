@@ -40,23 +40,48 @@ export default class ActionBar extends Component {
         this.addContextData({actions}, true);
     }
 
-    scroll(value,
-        leftButtonId = 'action-bar__left-button',
-        rightButtonId = 'action-bar__right-button') {
+    scroll(value) {
         return function() {
-            const container = document.getElementsByClassName('action-bar__container')[0];
-            container.scrollLeft += value;
+            const list = document.getElementsByClassName('action-bar__list')[0];
+            list.scrollLeft += value;
+        }.bind(this);
+    }
 
-            const minScrollLeft = 0;
-            const maxScrollLeft = container.scrollWidth - container.clientWidth;
+    bind() {
+        const list = document.getElementsByClassName('action-bar__list')[0];
+        const minScrollLeft = 0;
+        const leftButtonId = 'action-bar__left-button';
+        const rightButtonId = 'action-bar__right-button';
 
+        if (window.matchMedia('(max-width: 768px)').matches) {
+            document.getElementById(leftButtonId).style.visibility = 'hidden';
+            document.getElementById(rightButtonId).style.visibility = 'hidden';
+        }
+
+        let hasTimer = false;
+
+        list.onscroll = () => {
+            if (window.matchMedia('(max-width: 768px)').matches) {
+                document.getElementById(leftButtonId).style.visibility = 'hidden';
+                document.getElementById(rightButtonId).style.visibility = 'hidden';
+                return;
+            }
+
+            if (hasTimer) {
+                return;
+            }
+            hasTimer = true;
             setTimeout(() => {
-                const pos = Math.ceil(container.scrollLeft);
+                const maxScrollLeft = list.scrollWidth - list.clientWidth + 1;
+                const pos = Math.ceil(list.scrollLeft);
                 const leftVisibility = pos === minScrollLeft ? 'hidden' : 'visible';
                 const rightVisibility = pos === maxScrollLeft ? 'hidden' : 'visible';
                 document.getElementById(leftButtonId).style.visibility = leftVisibility;
                 document.getElementById(rightButtonId).style.visibility = rightVisibility;
+                hasTimer = false;
             }, 500);
-        }.bind(this);
+        };
+
+        super.bind();
     }
 }

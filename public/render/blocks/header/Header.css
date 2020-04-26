@@ -6,11 +6,19 @@
 
 .header {
     grid-area: header;
-    display: grid;
-    height: 86px;
-    grid-template-columns: min-content min-content auto min-content;
-    grid-template-rows: auto;
-    width: 100%;
+
+    display: flex;
+
+    box-sizing: border-box;
+    height: 100%;
+    width: calc(100vw * 10 / 13);
+    padding: 20px;
+}
+
+@media (max-width: 1024px) {
+    .header {
+        width: 100vw;
+    }
 }
 
 

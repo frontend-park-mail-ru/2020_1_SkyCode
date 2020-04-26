@@ -1,11 +1,13 @@
-<a href="{{href}}" class="restaurant-list__restaurant {{classes}}">
-    <div class="restaurant__image">
-        {{{img}}}
-    </div>
-    <span class="restaurant__avg-time">
+<div class="restaurant-list__restaurant {{classes}}">
+    <a href="{{href}}" class="restaurant-list__restaurant {{classes}}">
+        <div class="restaurant__image">
+            {{{img}}}
+        </div>
+        <span class="restaurant__avg-time">
             {{avgDeliveryMinTime}} - {{avgDeliveryMaxTime}} min
     </span>
-    <span class="restaurant__name">{{name}}</span>
-    <br/>
-    <span class="restaurant__rate">{{{rateImg}}}{{rate}}</span>
-</a>
+        <span class="restaurant__name">{{name}}</span>
+        <br/>
+        <span class="restaurant__rate">{{{rateImg}}}{{rate}}</span>
+    </a>
+</div>

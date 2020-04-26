@@ -1,16 +1,20 @@
 <div class="restaurant-view">
-    <div class="main">
-        {{{header}}}
-        <div class="main-content">
-            {{{restaurantBanner}}}
-            <div class="restaurant-view__middle-bar">
-                <span>Категории:</span>
-                {{{InfoHref}}}
+    {{{Order}}}
+    {{{OrderButton}}}
+    {{{header}}}
+    <main class="restaurant-view__main-area">
+        <div class="restaurant-view__belt">
+            <div class="restaurant-view__scrolled-area">
+                {{{Banner}}}
+                <div class="restaurant-view__info-bar">
+                    <h2 class="restaurant-view__label">Блюда</h2>
+                    {{{InfoHref}}}
+                </div>
+                {{{Categories}}}
+                {{{Products}}}
             </div>
-            {{{categories}}}
-            {{{products}}}
         </div>
-    </div>
-    {{{order}}}
-</>
+    </main>
+</div>
+
 

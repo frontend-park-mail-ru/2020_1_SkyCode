@@ -2,6 +2,9 @@
 @import "../restaurantPlaceCard/RestaurantPlaceCard.css";
 
 .restaurant-info {
+    position: fixed;
+    right: 0;
+
     display: flex;
     flex-direction: column;
     padding: 25px;
@@ -10,9 +13,7 @@
     height: 100%;
 }
 
-.restaurant-info__profile-button-container {
+.restaurant-info__order-buttons {
     display: flex;
     flex-direction: row-reverse;
-    margin-right: -25px;
-    margin-top: -25px;
 }

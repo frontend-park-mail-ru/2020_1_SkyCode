@@ -14,7 +14,7 @@ export default class RestaurantList extends Component {
                 classes: `restaurant-list__restaurant-${restaurant.id}`,
                 name: restaurant.name,
                 avgDeliveryTime: 30,
-                rate: restaurant.rating,
+                rate: restaurant.rate,
                 imageHref: `/images/${restaurant.image}`,
                 href: `/restaurants/${restaurant.id}`,
             }));

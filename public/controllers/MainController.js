@@ -42,7 +42,7 @@ class MainController extends BaseController {
                     }));
 
                     this.getValidAddress();
-
+                    // eslint-disable-next-line max-len
                     RestaurantModel.getRestaurantsByAddress(1, 50, localStorage.getItem('deliveryGeo'))
                         .then((response) => {
                             super.execute(new MainView({
@@ -97,7 +97,7 @@ class MainController extends BaseController {
         ymaps.ready(init);
 
         function init() {
-            var suggestView = new ymaps.SuggestView('suggest');
+            const suggestView = new ymaps.SuggestView('suggest');
         }
 
         document.getElementsByClassName('swal2-confirm')[0].addEventListener('click', (e) => {
@@ -106,14 +106,13 @@ class MainController extends BaseController {
             MapModel.getCoordinates(this.address)
                 .then((response) => {
                     if (response.geopos) {
-
                         this.geopos = response.geopos;
                         console.log(this.geopos);
                         localStorage.setItem('deliveryGeo', this.address);
                         localStorage.setItem('latitude', this.geopos.latitude);
                         localStorage.setItem('longitude', this.geopos.longitude);
-                        document.getElementsByClassName('place-time-card__place-text')[0].innerHTML =
-                            localStorage.getItem('deliveryGeo');
+                        document.getElementsByClassName('place-time-card__place-text')[0].innerHTML
+                            = localStorage.getItem('deliveryGeo');
                         return;
                     } else {
                         Swal.fire({
@@ -127,7 +126,6 @@ class MainController extends BaseController {
                     }
                 });
         });
-
     }
 }
 

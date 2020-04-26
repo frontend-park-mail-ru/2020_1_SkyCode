@@ -6,6 +6,8 @@ import Order from '../../blocks/order/Order.js';
 import SelectTimeButton from '../../blocks/selectTimeButton/SelectTimeButton.js';
 import RestaurantList from '../../blocks/restaurantList/RestaurantList.js';
 import template from './MainView.hbs';
+import Button from '../../elements/button/Button';
+import EventBus from '../../../services/Events/EventBus';
 
 class MainView extends Component {
     constructor({actionArr, categoryArr, restaurantArr}) {
@@ -37,6 +39,13 @@ class MainView extends Component {
             restaurantList: new RestaurantList({
                 classes: 'main-view__restaurant-list',
                 restaurantArr,
+            }),
+            OrderButton: new Button({
+                classes: 'main-view__order-button',
+                text: 'K',
+                callback: () => {
+                    EventBus.publish('show-order');
+                },
             }),
         }, true);
     }

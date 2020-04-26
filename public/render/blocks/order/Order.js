@@ -7,6 +7,8 @@ import Href from '../../elements/href/Href.js';
 import BasketController from '../../../controllers/BasketController.js';
 import template from './Order.hbs';
 import EventBus from '../../../services/Events/EventBus.js';
+import SupportChat from '../supportChat/supportChat.js';
+import Button from '../../elements/button/Button';
 import SupportChatController from '../../../controllers/SupportChatController.js';
 
 export default class Order extends Component {
@@ -36,6 +38,7 @@ export default class Order extends Component {
                 href: '/support',
                 cb: () => {
                     EventBus.publish('set-page', {url: '/support'});
+                    // eslint-disable-next-line max-len
                     //SupportChatController.win = window.open('http://89.208.199.114:8080/support', '_blank', 'width=100,height=200,left=100,top=100,menubar=no,toolbar=no');
                 },
             }),
@@ -80,11 +83,21 @@ export default class Order extends Component {
 
     bind() {
         EventBus.subscribe('basket-changed', this.setTotal.bind(this));
+        EventBus.subscribe('show-order', this.showOrderHandler.bind(this));
         super.bind();
     }
 
     unbind() {
         EventBus.unsubscribe('basket-changed', this.setTotal.bind(this));
+        EventBus.subscribe('show-order', this.showOrderHandler.bind(this));
         super.unbind();
+    }
+
+    showOrderHandler() {
+        const order = this.domElement;
+        order.style.right = '0';
+        order.click();
+
+        setTimeout(() => order.style.right = '', 1000);
     }
 }
