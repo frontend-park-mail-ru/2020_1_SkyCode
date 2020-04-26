@@ -1,10 +1,7 @@
 import Component from '../../Component.js';
 import template from './RestaurantInfoView.hbs';
-import Header from '../../blocks/header/Header.js';
-import RestaurantInfo from '../../blocks/restaurantInfo/RestaurantInfo.js';
-import RestaurantFeedback
-    from '../../blocks/restaurantFeedback/RestaurantFeedback.js';
-import RestaurantBanner from '../../blocks/restaurantBanner/restaurantBanner';
+import RestaurantInfoMainArea
+    from '../../blocks/restaurantInfoMainArea/RestaurantInfoMainArea';
 
 export default class RestaurantInfoView extends Component {
     constructor({
@@ -14,14 +11,7 @@ export default class RestaurantInfoView extends Component {
         user,
     }) {
         super(classes, {
-            Header: new Header({
-                classes: 'header',
-            }),
-            Sidebar: new RestaurantInfo({
-                classes: 'restaurant-info',
-                restaurant,
-            }),
-            Main: new RestaurantFeedback({
+            BaseView: new RestaurantInfoMainArea({
                 classes: 'restaurant-feedback',
                 restaurantId: restaurant.id,
                 currentReview: feedbackObject.current,
@@ -34,3 +24,4 @@ export default class RestaurantInfoView extends Component {
         this.template = template;
     }
 }
+
