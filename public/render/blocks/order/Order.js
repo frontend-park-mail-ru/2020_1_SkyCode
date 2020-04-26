@@ -8,6 +8,7 @@ import BasketController from '../../../controllers/BasketController.js';
 import template from './Order.hbs';
 import EventBus from '../../../services/Events/EventBus.js';
 import SupportChat from '../supportChat/supportChat.js';
+import Button from '../../elements/button/Button';
 
 export default class Order extends Component {
     constructor({
@@ -79,11 +80,20 @@ export default class Order extends Component {
 
     bind() {
         EventBus.subscribe('basket-changed', this.setTotal.bind(this));
+        EventBus.subscribe('show-order', this.showOrderHandler.bind(this));
         super.bind();
     }
 
     unbind() {
         EventBus.unsubscribe('basket-changed', this.setTotal.bind(this));
+        EventBus.subscribe('show-order', this.showOrderHandler.bind(this));
         super.unbind();
+    }
+
+    showOrderHandler() {
+        const order = this.domElement;
+        order.style.right = '0';
+
+        setTimeout(() => order.style.right = '', 500);
     }
 }

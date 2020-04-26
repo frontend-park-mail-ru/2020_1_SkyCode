@@ -17,11 +17,10 @@ class MainController extends BaseController {
             .then((response) => {
                 const actions = Mocks.actions;
                 const categories = Mocks.categories;
-                response.restaurants.push(Mocks.restaurants);
                 super.execute(new MainView({
                     actionArr: actions,
                     categoryArr: categories,
-                    restaurantArr: response.restaurants,
+                    restaurantArr: Mocks.restaurants,
                     products: BasketController.basket.product,
                 }));
             })

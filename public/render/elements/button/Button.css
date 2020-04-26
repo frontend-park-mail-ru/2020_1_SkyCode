@@ -38,6 +38,29 @@
     left: calc(100vw * 10 / 13 - 160px);
 }
 
+@media (max-width: 1024px) {
+    .category-bar__right-button, .action-bar__right-button{
+        left: calc(100vw - 160px);
+    }
+}
+
+.main-view__order-button {
+    position: fixed;
+
+    right: 0;
+    top: 50%;
+
+    width: 40px;
+    height: 80px;
+    background: #F8F8F8;
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+    border-left: 1px solid #D6D6D6;
+    z-index: 2;
+
+    outline: 0;
+}
+
 .action-bar__left-button {
     position: relative;
     left: 15px;
@@ -92,7 +115,7 @@
 }
 
 .select-time-button__text-button {
-    margin-right: 10px;
+    margin-right: 30px;
 
     background: #F6D471;
     height: 37px;

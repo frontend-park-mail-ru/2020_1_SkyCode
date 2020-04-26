@@ -10,10 +10,10 @@
     grid-template-rows:
             min-content
             1fr;
-    grid-template-columns: 10fr 3fr;
+    grid-template-columns: 1fr;
     grid-template-areas:
-            "header       order"
-            "main-area    order";
+            "header"
+            "main-area";
 
     background: #FFFFFF;
 }
@@ -26,7 +26,14 @@
     display: flex;
     justify-content: space-between;
 
+    width: calc(100% * 10 / 13);
     margin-top: 50px;
+}
+
+@media (max-width: 1024px) {
+    .main-view__info-bar {
+        width: 100%
+    }
 }
 
 .main-view__label {

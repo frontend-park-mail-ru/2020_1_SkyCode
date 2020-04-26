@@ -11,8 +11,14 @@
 
     box-sizing: border-box;
     height: 100%;
-    width: 100%;
+    width: calc(100vw * 10 / 13);
     padding: 20px;
+}
+
+@media (max-width: 1024px) {
+    .header {
+        width: 100vw;
+    }
 }
 
 
