@@ -1,6 +1,7 @@
 
 .header__hamburger-button {
     height: inherit;
+    z-index: 2;
 }
 
 .hamburger-button__hamburger-line {

@@ -24,7 +24,7 @@ class MainController extends BaseController {
                     super.execute(new MainView({
                         actionArr: actions,
                         categoryArr: categories,
-                        restaurantArr: response.restaurants,
+                        restaurantArr: Mocks.restaurants,
                         products: BasketController.basket.product,
                     }));
                 })

@@ -26,7 +26,7 @@ export default class IconBar extends Component {
                 id: 'icon-bar-basket-href',
                 src: '/static/shopping-basket.svg',
                 callback: () => {
-                    EventBus.publish('open-basket-button-clicked');
+                    EventBus.publish('order-button-clicked');
                 },
             }),
         });

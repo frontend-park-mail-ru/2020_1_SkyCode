@@ -1,5 +1,6 @@
 @import "../../blocks/iconedHeader/IconedHeader.css";
 @import "../../blocks/wavingMenue/WavingMenue.css";
+@import "../../blocks/order/Order.css";
 
 .base-view {
     display: grid;

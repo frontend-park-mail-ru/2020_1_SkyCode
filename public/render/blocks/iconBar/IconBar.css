@@ -10,6 +10,7 @@
 
 .iconed-header__icon-bar > * {
     margin-left: 20px;
+    z-index: 2;
 }
 
 .iconed-header__icon-bar:last-child {
