@@ -42,11 +42,15 @@
 
 @media (max-width: 768px) {
     .restaurant-feedback__belt {
-        margin-left: 15px;
+        margin: 0 15px;
     }
 }
 
 .restaurant-feedback__scrolled-area {
     overflow-y: scroll;
-    height: 100vh;
+    height: 90vh;
+}
+
+.restaurant-feedback__scrolled-area:last-child {
+    margin-bottom: 100px;
 }
