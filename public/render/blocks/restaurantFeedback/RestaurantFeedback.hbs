@@ -1,36 +1,17 @@
-<main class="{{classes}}">
-    <div class="restaurant-feedback__middle-bar">
-        <h3>Отзывы:</h3>
-        {{{BackHref}}}
-    </div>
 
-    <div class="restaurant-feedback__list-scroll-hider">
-        <div class="restaurant-feedback__list-container">
-            <div class="restaurant-feedback__list">
-                {{{FeedbackForm}}}
 
-                {{#each Feedback}}
-                    {{{this}}}
-                {{else}}
-                    Ваш отзыв будет первым.
-                {{/each}}
-            </div>
-        </div>
-    </div>
-</main>
 
-<main class="main-view__main-area">
-    <div class="main-view__belt">
-
-        <div class="main-view__scrolled-area">
-
-            <div class="main-view__info-bar">
-                <h2 class="main-view__label">Отзывы</h2>
+<main class="restaurant-feedback__main-area">
+    <div class="restaurant-feedback__belt">
+        <div class="restaurant-feedback__scrolled-area">
+            {{{RestaurantBanner}}}
+            <div class="restaurant-feedback__info-bar">
+                <h2 class="restaurant-feedback__label">Отзывы</h2>
                 {{{BackHref}}}
             </div>
 
-            {{{RestaurantBanner}}}
             {{{FeedbackForm}}}
+            <hr>
             {{#each Feedback}}
                 {{{this}}}
             {{else}}
