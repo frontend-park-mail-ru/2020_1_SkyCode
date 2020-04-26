@@ -4,6 +4,7 @@ import HamburgerButton from '../../elements/hamburgerButton/HamburgerButton.js';
 import Input from '../../elements/input/Input.js';
 import SearchField from '../searchField/SearchField.js';
 import template from './Header.hbs';
+import EventBus from '../../../services/Events/EventBus';
 
 export default class Header extends Component {
     constructor({classes = 'header'} = {}) {
@@ -13,7 +14,8 @@ export default class Header extends Component {
             HamburgerButton: new HamburgerButton({
                 classes: 'header__hamburger-button',
                 callback: () => {
-                    console.log('hamburgerButton clicked');
+                    console.log('kek');
+                    EventBus.publish('hamburger-button-clicked');
                 },
             }),
 
@@ -35,9 +37,7 @@ export default class Header extends Component {
                 src: '/static/profile.png',
                 classes: 'header__profile-button',
             }),
-
-            IconBar: new IconBar(),
-        }, true);
+        });
 
         this.addClasses(classes);
     }

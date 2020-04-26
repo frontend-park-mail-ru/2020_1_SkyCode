@@ -1,0 +1,17 @@
+.icon-bar {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+}
+
+.iconed-header__icon-bar {
+    padding: 20px 20px 20px 0;
+}
+
+.iconed-header__icon-bar > * {
+    margin-left: 20px;
+}
+
+.iconed-header__icon-bar:last-child {
+    margin-left: 0;
+}

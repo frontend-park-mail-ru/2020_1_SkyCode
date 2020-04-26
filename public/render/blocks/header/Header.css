@@ -6,19 +6,16 @@
 
 .header {
     grid-area: header;
-
     display: flex;
-
     box-sizing: border-box;
     height: 100%;
-    width: calc(100vw * 10 / 13);
+    width: 100%;
     padding: 20px;
 }
 
-@media (max-width: 1024px) {
-    .header {
-        width: 100vw;
-    }
+.iconed-header__header {
+    flex-grow: 1;
 }
+
 
 

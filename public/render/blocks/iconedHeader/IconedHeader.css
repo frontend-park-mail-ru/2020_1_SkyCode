@@ -1,0 +1,7 @@
+@import "../header/Header.css";
+@import "../iconBar/IconBar.css";
+
+.iconed-header {
+    grid-area: header;
+    display: flex;
+}

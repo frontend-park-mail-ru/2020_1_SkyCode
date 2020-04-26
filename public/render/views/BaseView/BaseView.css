@@ -1,3 +1,6 @@
+@import "../../blocks/iconedHeader/IconedHeader.css";
+@import "../../blocks/wavingMenue/WavingMenue.css";
+
 .base-view {
     display: grid;
     grid-template-rows:

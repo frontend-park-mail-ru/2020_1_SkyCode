@@ -1,16 +1,19 @@
-import Component from '../../Component';
-import Header from '../../blocks/header/Header.js';
-
+import Component from '../../Component.js';
+import IconedHeader from '../../blocks/iconedHeader/IconedHeader.js';
+import template from './BaseView.hbs';
+import WavingMenue from '../../blocks/wavingMenue/WavingMenue.js';
 
 export default class BaseView extends Component {
-    constructor({MainArea, RightSideBar}) {
-        const Header = new Header();
-        const LeftSideBar = new LeftMenue();
-        super('base-view', {
+    constructor() {
+        const Header = new IconedHeader();
+        const LeftBar = new WavingMenue({});
+
+        super('', {
             Header,
-            LeftSideBar,
-            RightSideBar,
-            MainArea,
+            LeftBar,
+            // RightSideBar,
+            // MainArea,
         });
+        super.template = template;
     }
 }

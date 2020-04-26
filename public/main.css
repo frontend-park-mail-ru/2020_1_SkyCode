@@ -11,6 +11,7 @@
 @import "render/views/AdminChatListView/AdminChatListView.css";
 @import "render/views/MapView/MapView.css";
 @import "render/views/AdminRestaurantListView/AdminRestaurantListView.css";
+@import "render/views/BaseView/BaseView.css";
 
 
 body {

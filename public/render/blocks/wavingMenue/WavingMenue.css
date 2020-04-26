@@ -1,0 +1,9 @@
+.waving-menue {
+    position: fixed;
+    left: -5000px;
+    background: #C4C4C4;
+    border-right: #9E9E9E;
+    width: 33%;
+    padding-top: 75px;
+    height: 100vh;
+}

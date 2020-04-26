@@ -1,7 +1,8 @@
 import Component from '../../Component.js';
 import ImageHref from '../imageHref/ImageHref.js';
-import Img from '../../elements/img/Img';
-import EventBus from '../../../services/Events/EventBus';
+import Img from '../../elements/img/Img.js';
+import EventBus from '../../../services/Events/EventBus.js';
+import template from './IconBar.hbs';
 
 
 export default class IconBar extends Component {
@@ -21,13 +22,14 @@ export default class IconBar extends Component {
                 needNewWindow: true,
             }),
             Basket: new Img({
-                classes: 'icon-bar-basket-href',
-                imageClasses: 'icon-bar-basket-image',
+                classes: 'icon-bar-basket-image',
                 id: 'icon-bar-basket-href',
+                src: '/static/shopping-basket.svg',
                 callback: () => {
-                    EventBus.publish('basket-button-clicked');
+                    EventBus.publish('open-basket-button-clicked');
                 },
             }),
         });
+        super.template = template;
     }
 }
