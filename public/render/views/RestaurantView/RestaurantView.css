@@ -34,6 +34,12 @@
     font-weight: normal;
 }
 
+@media (max-width: 400px) {
+    .restaurant-view__label {
+        display: none;
+    }
+}
+
 .restaurant-view__main-area {
     grid-area: main-area;
 }
@@ -42,6 +48,12 @@
     overflow: hidden;
     margin: 0 80px;
     height: 100vh;
+}
+
+@media (max-width: 600px) {
+    .restaurant-view__belt {
+        margin: 0 15px;
+    }
 }
 
 .restaurant-view__scrolled-area {

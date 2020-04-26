@@ -16,3 +16,12 @@
     margin: 60px 0 200px;
 }
 
+@media (max-width: 600px) {
+    .restaurant-view__product-list {
+        justify-content: center;
+    }
+    .restaurant-view__product-list > * {
+        width: 35%;
+        min-width: 150px;
+    }
+}
