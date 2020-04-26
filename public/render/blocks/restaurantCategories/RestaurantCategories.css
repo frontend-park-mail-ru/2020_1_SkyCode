@@ -1,7 +1,7 @@
 @import "../restaurantСategory/RestaurantCategory.css";
 
 .restaurant-categories {
-    width: calc(100vw * 10 / 13 - 70px);
+    width: 100%;
 }
 
 @media (max-width: 1024px) {

@@ -14,42 +14,28 @@ import SupportChatController from '../../../controllers/SupportChatController.js
 export default class Order extends Component {
     constructor({
         basket = BasketController.basket.product,
-        classes = 'order',
+        classes = '',
         withCheckoutButton = true,
         personNum = BasketController.persons,
+        isVisible = false,
     }) {
+        classes = (classes === '') ? 'order' : classes + ' order';
         super();
         super.template = template;
+        this.visible = isVisible;
 
         this.addClasses(classes);
         this.addContextData({
-            title: 'Заказ',
-            total: this.countTotal(basket),
-            profileButton: new ImageHref({
-                classes: 'corner-profile-href',
-                imageClasses: 'corner-profile-image',
-                src: '/static/profile.png',
-                href: '/login',
-            }),
-            supportButton: new ImageHref({
-                classes: 'support-button',
-                src: '/static/support.svg',
-                imageClasses: 'order__profile-image',
-                href: '/support',
-                cb: () => {
-                    EventBus.publish('set-page', {url: '/support'});
-                    // eslint-disable-next-line max-len
-                    //SupportChatController.win = window.open('http://89.208.199.114:8080/support', '_blank', 'width=100,height=200,left=100,top=100,menubar=no,toolbar=no');
-                },
-            }),
-            placeTimeCard: new PlaceTimeCard({
+            Title: 'Заказ',
+            Total: this.countTotal(basket),
+            PlaceTimeCard: new PlaceTimeCard({
                 classes: 'order__place-time-card',
             }),
-            basket: new Basket({
+            Basket: new Basket({
                 classes: 'order__basket',
                 basket,
             }),
-            personInput: new PersonInput({
+            PersonInput: new PersonInput({
                 classes: 'order__person-input',
                 label: 'Гостей:',
                 personNum,
@@ -58,7 +44,7 @@ export default class Order extends Component {
 
         if (withCheckoutButton) {
             this.addContextData({
-                checkout: new Href({
+                Checkout: new Href({
                     classes: 'order__checkout',
                     text: 'Заказать',
                     href: '/checkout',
@@ -82,22 +68,42 @@ export default class Order extends Component {
     }
 
     bind() {
+        this.appear();
         EventBus.subscribe('basket-changed', this.setTotal.bind(this));
-        EventBus.subscribe('show-order', this.showOrderHandler.bind(this));
+        EventBus.subscribe('order-button-clicked', this.orderButtonHandler.bind(this));
         super.bind();
+        this.disappear();
     }
 
     unbind() {
+        this.appear();
         EventBus.unsubscribe('basket-changed', this.setTotal.bind(this));
-        EventBus.subscribe('show-order', this.showOrderHandler.bind(this));
+        EventBus.subscribe('order-button-clicked', this.orderButtonHandler.bind(this));
         super.unbind();
+        this.disappear();
     }
 
-    showOrderHandler() {
-        const order = this.domElement;
-        order.style.right = '0';
-        order.click();
+    orderButtonHandler() {
+        if (this.isVisible) {
+            this.disappear();
+        } else {
+            this.appear();
+        }
+    }
 
-        setTimeout(() => order.style.right = '', 1000);
+    appear() {
+        if (!this.isVisible) {
+            const order = this.domElement;
+            order.style.right = '0';
+            this.isVisible = true;
+        }
+    }
+
+    disappear() {
+        if (this.isVisible) {
+            const order = this.domElement;
+            order.style.right = '-5000px';
+            this.isVisible = false;
+        }
     }
 }

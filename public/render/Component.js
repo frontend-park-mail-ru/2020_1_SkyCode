@@ -51,7 +51,11 @@ export default class Component {
             addClasses = classes.split(' ');
         }
 
-        this.context.classes += addClasses.join(' ') + ' ';
+        if (this.context.classes !== '') {
+            this.context.classes += ' ';
+        }
+
+        this.context.classes += addClasses.join(' ');
     }
 
     get classes() {

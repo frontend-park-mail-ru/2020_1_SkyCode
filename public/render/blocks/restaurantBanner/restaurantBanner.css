@@ -1,24 +1,12 @@
 .restaurant-banner {
     border-radius: 15px;
-    width: calc(100vw * 10 / 13 - 100px);
+    max-width: 100%;
     height: 200px;
     box-sizing: border-box;
 }
 
-@media (max-width: 1024px) {
-    .restaurant-banner {
-        width: calc(100vw - 100px);
-    }
-}
-
-@media (max-width: 768px) {
-    .restaurant-banner {
-        width: calc(100vw - 40px);
-    }
-}
-
 .restaurantBanner__img {
-    width: 100%;
+    max-width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 15px;

@@ -1,0 +1,20 @@
+@import "../../blocks/iconedHeader/IconedHeader.css";
+@import "../../blocks/wavingMenue/WavingMenue.css";
+@import "../../blocks/order/Order.css";
+
+.base-view {
+    display: grid;
+    grid-template-rows:
+            min-content
+            1fr;
+    grid-template-areas:
+            "header"
+            "main-area";
+
+    background: #FFFFFF;
+    padding-bottom: 300px;
+}
+
+.base-view > * {
+    min-width: 0;
+}

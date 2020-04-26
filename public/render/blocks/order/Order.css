@@ -4,71 +4,37 @@
 @import "../personInput/PersonInput.css";
 @import "../supportChat/supportChat.css";
 
-.order-button {
-    position: fixed;
-
-    right: 0;
-    top: 50%;
-
-    width: 40px;
-    height: 80px;
-    background: #F8F8F8;
-    border-top-left-radius: 100px;
-    border-bottom-left-radius: 100px;
-    border-left: 1px solid #D6D6D6;
-    z-index: 2;
-}
-
-.main-view__order-button:hover {
-
-}
-
 .order {
     position: fixed;
-    right: 0;
+    right: -5000px;
 
     height: 100vh;
-    width: calc((100vw - 40px) * 3 / 13);
+    width: 30%;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-content: space-between;
 
     background: #F8F8F8;
-
     border-left: 1px solid #D6D6D6;
 
     padding: 20px;
-    z-index: 3;
+    z-index: 1;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 600px) {
     .order {
-        right: -5000px;
-        width: 50vw;
+        width: 100%;
     }
-}
-
-@media (max-width: 768px) {
-    .order {
-        right: -5000px;
-        width: calc(100vw - 70px);
-    }
-}
-
-.order:hover {
-    right: 0;
-}
-
-.order:focus-within {
-    right: 0;
 }
 
 .order__title {
     font-weight: normal;
     font-size: 18px;
     text-align: left;
+    margin-top: 60px;
 }
+
 
 .order__total {
     display: flex;

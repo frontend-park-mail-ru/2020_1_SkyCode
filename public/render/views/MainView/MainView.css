@@ -6,14 +6,9 @@
 @import "../../blocks/restaurantList/RestaurantList.css";
 
 .main-view {
-    display: grid;
-    grid-template-rows:
-            min-content
-            1fr;
-    grid-template-columns: 10fr 3fr;
-    grid-template-areas:
-            "header  icons"
-            "main-area ...";
+    grid-area: main-area;
+    display: flex;
+    flex-direction: column;
 
     background: #FFFFFF;
 }
@@ -26,15 +21,16 @@
     display: flex;
     justify-content: space-between;
 
-    width: calc(100% * 10 / 13);
+    width: 100%;
+    /*width: calc(100% * 10 / 13);*/
     margin-top: 50px;
 }
 
-@media (max-width: 1024px) {
-    .main-view__info-bar {
-        width: 100%
-    }
-}
+/*@media (max-width: 1024px) {*/
+/*    .main-view__info-bar {*/
+/*        width: 100%;*/
+/*    }*/
+/*}*/
 
 .main-view__label {
     display: inline;
@@ -50,22 +46,28 @@
 
 .main-view__main-area {
     grid-area: main-area;
+    display: flex;
+    flex-direction: column;
+
+    background: #FFFFFF;
 }
 
 .main-view__belt {
     overflow: hidden;
-    margin-left: 80px;
+    width: 100%;
+    height: 100vh;
+    margin: 0 80px;
 }
 
-@media (max-width: 768px) {
-    .main-view__belt {
-        margin-left: 15px;
-    }
-}
+/*@media (max-width: 768px) {*/
+/*    .main-view__belt {*/
+/*        margin: 0 15px;*/
+/*    }*/
+/*}*/
 
 .main-view__scrolled-area {
     overflow-y: scroll;
-    height: 100vh;
+    height: 100%;
     margin-right: -14px;
 }
 

@@ -28,10 +28,20 @@ export default class PlaceTimeCard extends Component {
     }
 
     bind() {
+        // eslint-disable-next-line max-len
         document.getElementsByClassName('place-time-card__change-place-button')[0].addEventListener('click', (e) => {
             e.preventDefault();
             EventBus.publish('change-location', {});
-        })
+        });
         super.bind();
+    }
+
+    unbind() {
+        // eslint-disable-next-line max-len
+        document.getElementsByClassName('place-time-card__change-place-button')[0].addEventListener('click', (e) => {
+            e.preventDefault();
+            EventBus.publish('change-location', {});
+        });
+        super.unbind();
     }
 }

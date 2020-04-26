@@ -5,3 +5,9 @@
     display: flex;
     height: inherit;
 }
+
+@media (max-width: 600px) {
+    .header__search-field {
+        display: none;
+    }
+}

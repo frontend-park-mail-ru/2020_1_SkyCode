@@ -3,18 +3,19 @@
 .action-bar {
     height: fit-content;
     grid-area: action-bar;
-    width: calc((100% - 30px) * 10 / 13);
+    width: 100%;
+    /*width: calc((100% - 30px) * 10 / 13);*/
     /* Скрываем scrollbar */
     margin-bottom: -20px;
     /* Скрываем кнопки */
     /*margin-top: -20px;*/
 }
 
-@media (max-width: 1024px) {
-    .action-bar {
-        width: calc(100% - 30px);
-    }
-}
+/*@media (max-width: 1024px) {*/
+/*    .action-bar {*/
+/*        width: calc(100% - 30px);*/
+/*    }*/
+/*}*/
 
 .action-bar__list {
     display: flex;
