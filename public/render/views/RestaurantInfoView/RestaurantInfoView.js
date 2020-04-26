@@ -4,6 +4,7 @@ import Header from '../../blocks/header/Header.js';
 import RestaurantInfo from '../../blocks/restaurantInfo/RestaurantInfo.js';
 import RestaurantFeedback
     from '../../blocks/restaurantFeedback/RestaurantFeedback.js';
+import RestaurantBanner from '../../blocks/restaurantBanner/restaurantBanner';
 
 export default class RestaurantInfoView extends Component {
     constructor({

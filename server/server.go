@@ -42,10 +42,10 @@ func resourceHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	http.HandleFunc("/static/", resourceHandler)
-	http.HandleFunc("/images/", resourceHandler)
+// 	http.HandleFunc("/images/", resourceHandler)
 	http.HandleFunc("/main.dist.css", resourceHandler)
 	http.HandleFunc("/main.js", resourceHandler)
-// 	http.HandleFunc("/images/", imageHandler)
+	http.HandleFunc("/images/", imageHandler)
 
 	http.HandleFunc("/", mainHandler)
 
