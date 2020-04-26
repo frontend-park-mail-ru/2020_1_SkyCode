@@ -1,10 +1,6 @@
 
 
 .corner-profile-href, .order__support-href {
-    grid-area: profile;
-    justify-self: right;
-    margin: 10px;
-    align-self: end;
 }
 
 .corner-profile-image, .order__support-image {

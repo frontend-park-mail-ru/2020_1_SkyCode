@@ -12,16 +12,17 @@
 }
 
 .order__checkout {
-    grid-area: checkout;
-
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 
     background: #F6D471;
     border-radius: 15px 0 0 15px;
 
-    width: 150px;
+    width: fit-content;
+    box-sizing: border-box;
+    padding: 0 40px 0 10px;
+
     font-size: 20px;
     color: black;
     line-height: 36px;
@@ -29,10 +30,9 @@
 
     outline: 0;
     border: 0;
-    text-align: center;
+    text-align: left;
 
-    margin: auto 0 20px 20px;
-    justify-self: right;
+    margin: auto -20px 20px 0;
 }
 
 .restaurant-feedback__back-href {

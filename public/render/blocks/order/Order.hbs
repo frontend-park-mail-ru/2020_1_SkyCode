@@ -4,25 +4,25 @@
         {{{supportButton}}}
     </div>
 
-    <div class="order__title">
+    <h3 class="order__title">
         {{title}}
-    </div>
+    </h3>
 
     {{{placeTimeCard}}}
     {{{basket}}}
 
-    <div class="order__total-text">
-        Итого:
-    </div>
-
     <div class="order__total">
-        ₽ <span id="total">{{total}}</span>
+        <div>Итого:</div>
+        <div class="order__total-sum">
+            ₽ <span id="total">{{total}}</span>
+        </div>
     </div>
 
-    <div style="grid-area: hline">
-        <hr>
+    <div><hr></div>
+
+    <div class="order__footer">
+        {{{personInput}}}
+        {{{checkout}}}
     </div>
 
-    {{{personInput}}}
-    {{{checkout}}}
 </div>
