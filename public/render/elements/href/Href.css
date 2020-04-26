@@ -1,4 +1,18 @@
 
+.restaurant-feedback__login-signup-href {
+    background-color: lightgreen;
+    color: black;
+    width: fit-content;
+    outline: 0;
+    line-height: 36px;
+    text-align: center;
+    border-radius: 15px;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    border: none;
+    font-family: inherit;
+}
+
 .header__logo {
     outline: none;
     text-decoration: none;

@@ -43,7 +43,6 @@ class ProfileController extends BaseController {
     }
 
     logoutHandler() {
-        console.log('qwer');
         SessionModel.logout().then((response) => {
             if (response.error) {
                 EventBus.publish('logout-error', response.error);

@@ -5,7 +5,6 @@ import ChatList from '../../blocks/chatList/chatList.js';
 
 export default class AdminChatListView extends Component {
     constructor({chatArray}) {
-        console.log("!", chatArray);
         super();
         this.addContextData({
             Header: new Header({

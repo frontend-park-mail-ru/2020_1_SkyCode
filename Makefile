@@ -3,7 +3,7 @@ all: build stylecow webpack main run
 build:
 	cd ./public/handlebars; ./precompile.sh
 
-run: 
+run:
 	cd server; go run server.go
 
 main:
@@ -14,4 +14,3 @@ stylecow:
 
 webpack:
 	webpack
-

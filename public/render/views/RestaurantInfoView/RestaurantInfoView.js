@@ -11,6 +11,7 @@ export default class RestaurantInfoView extends Component {
         classes = 'restaurant-info-view',
         feedbackObject,
         restaurant,
+        user,
     }) {
         super(classes, {
             Header: new Header({
@@ -26,6 +27,7 @@ export default class RestaurantInfoView extends Component {
                 currentReview: feedbackObject.current,
                 allReview: feedbackObject.reviews,
                 restaurant,
+                user,
             }),
         });
 

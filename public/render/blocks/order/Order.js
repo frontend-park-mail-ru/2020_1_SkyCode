@@ -9,6 +9,7 @@ import template from './Order.hbs';
 import EventBus from '../../../services/Events/EventBus.js';
 import SupportChat from '../supportChat/supportChat.js';
 import Button from '../../elements/button/Button';
+import SupportChatController from '../../../controllers/SupportChatController.js';
 
 export default class Order extends Component {
     constructor({
@@ -36,7 +37,9 @@ export default class Order extends Component {
                 imageClasses: 'order__profile-image',
                 href: '/support',
                 cb: () => {
-                    window.open('http://89.208.199.114:8080/support');
+                    EventBus.publish('set-page', {url: '/support'});
+                    // eslint-disable-next-line max-len
+                    //SupportChatController.win = window.open('http://89.208.199.114:8080/support', '_blank', 'width=100,height=200,left=100,top=100,menubar=no,toolbar=no');
                 },
             }),
             placeTimeCard: new PlaceTimeCard({

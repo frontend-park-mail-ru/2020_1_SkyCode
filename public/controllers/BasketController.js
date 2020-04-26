@@ -65,7 +65,6 @@ class BasketController extends BaseController {
     }
 
     deleteProductHandler(id) {
-        console.log(id);
         if (id in this.basket.product) {
             if (this.basket.product[id].amount === 1) {
                 delete this.basket.product[id];
@@ -84,7 +83,6 @@ class BasketController extends BaseController {
     }
 
     CheckBasketHandler(data) {
-        console.log(this.basket.owner, data);
         if (this.basket.owner !== data) {
             this.basket = {
                 owner: data,

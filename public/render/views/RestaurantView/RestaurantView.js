@@ -44,6 +44,7 @@ class RestaurantView extends Component {
                     EventBus.publish('show-order');
                 },
             }),
+
         }, true);
     }
 }

@@ -12,18 +12,15 @@ export default class ChatList extends Component {
         const chatComponents = [];
 
         for (const chat of chatArr) {
-            console.log("QQQ", chat);
             chatComponents.push(new ChatItem({
                 classes: `chat-item-${chat.chat_id}`,
                 id: chat.chat_id,
                 user: chat.user_name,
                 callback: () => {
-                    EventBus.publish('set-page', {url: `/chats/${chat.chat_id}`});
+                    EventBus.publish('set-page', {url: `/admin/chats/${chat.chat_id}`});
                 },
             }));
         }
-
-        console.log(chatComponents);
 
         this.addContextData({ChatList: chatComponents});
     }
