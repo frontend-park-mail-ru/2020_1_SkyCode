@@ -1,6 +1,7 @@
-@import "../restaurant/Restaurant.css";
+@import "../productCard/ProductCard.css";
 
-.main-view__restaurant-list {
+
+.restaurant-view__product-list {
     width: calc(100% * 10 / 13);
 
     display: flex;
@@ -16,14 +17,13 @@
 }
 
 @media (max-width: 1024px) {
-    .main-view__restaurant-list {
+    .restaurant-view__product-list {
         width: 100%;
     }
 }
 
 @media (max-width: 768px) {
-    .main-view__restaurant-list {
+    .restaurant-view__product-list {
         justify-content: center;
     }
 }
-

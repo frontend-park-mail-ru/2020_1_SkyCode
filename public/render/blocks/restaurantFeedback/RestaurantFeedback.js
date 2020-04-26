@@ -10,7 +10,7 @@ export default class RestaurantFeedback extends Component {
     constructor({classes, restaurant, allReview: allReviews, currentReview, restaurantId}) {
         super(classes, {
             RestaurantBanner: new RestaurantBanner({
-                classes: 'restaurantBanner',
+                classes: 'restaurant-banner',
                 imgHref: `/images/${restaurant.image}`,
                 rate: restaurant.rating,
                 name: restaurant.name,

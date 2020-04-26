@@ -4,8 +4,8 @@ import EventBus from '../../../services/Events/EventBus.js';
 import template from './ProductCard.hbs';
 
 export default class ProductCard extends Component {
-    constructor({id, product}) {
-        super('product-card', {
+    constructor({id, product, classes}) {
+        super(classes, {
             imgSrc: `/images/${product.image}`,
             productName: product.name,
             productPrice: product.price,
