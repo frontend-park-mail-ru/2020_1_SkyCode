@@ -59,6 +59,12 @@
     margin: 0 80px;
 }
 
+@media (max-width: 800px) {
+    .main-view__belt {
+        margin: 0 80px;
+    }
+}
+
 /*@media (max-width: 768px) {*/
 /*    .main-view__belt {*/
 /*        margin: 0 15px;*/
