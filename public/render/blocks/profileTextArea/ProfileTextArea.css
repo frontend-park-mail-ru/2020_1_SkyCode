@@ -13,11 +13,25 @@
 }
 
 .profile-area__button-array {
-    width: 40%;
+    width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: flex-start;
+}
+
+.profile-area__button-array > * {
+    margin-left: 15px;
+}
+
+@media (max-width: 700px) {
+    .profile-area__button-array {
+        flex-direction: column;
+    }
+
+    .profile-area__button-array > * {
+        width: 150px;
+        margin-bottom: 15px;
+    }
 }
 
 .profile-area__title {
@@ -34,5 +48,5 @@
 }
 
 .profile-update__logout-btn{
-    margin-left: 15px;
+    /*margin: 15px;*/
 }
