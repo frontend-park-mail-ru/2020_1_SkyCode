@@ -19,7 +19,7 @@ export default class FeedbackForm extends Component {
             RateInput: new NumberInput({
                 classes: 'feedback-form__rate-input',
                 id: 'feedback-form__rate-input',
-                min: 0,
+                min: 1,
                 max: 5,
                 value: rate,
                 changeEventBasis: 'feedback-rate',

@@ -27,7 +27,7 @@ export default class RestaurantInfoMainArea extends Component {
                 text: 'Назад',
                 href: `/restaurants/${restaurant.id}`,
             }),
-
+            user,
         });
 
         if (user === undefined) {
@@ -54,7 +54,6 @@ export default class RestaurantInfoMainArea extends Component {
                     restaurantId,
                     oldReview: currentReview,
                 }),
-                user,
             });
         }
 

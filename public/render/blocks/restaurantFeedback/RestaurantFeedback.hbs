@@ -1,20 +1,30 @@
+<main class="{{classes}}">
+    {{{RestaurantBanner}}}
+    <div class="restaurant-feedback__middle-bar">
+        <h3>Отзывы:</h3>
+        {{{BackHref}}}
+    </div>
 
-<main class="restaurant-feedback__main-area">
-    <div class="restaurant-feedback__belt">
-        <div class="restaurant-feedback__scrolled-area">
-            {{{RestaurantBanner}}}
-            <div class="restaurant-feedback__info-bar">
-                <h2 class="restaurant-feedback__label">Отзывы</h2>
-                {{{BackHref}}}
+    <div class="restaurant-feedback__list-scroll-hider">
+        <div class="restaurant-feedback__list-container">
+            <div class="restaurant-feedback__list">
+
+                {{#if user}}
+                    {{{FeedbackForm}}}
+                {{else}}
+                    <div class="restaurant-feedback__login-signup-invitation">
+                        Чтобы оставить отзыв,
+                        {{{LoginHref}}} или {{{SignupHref}}}
+                    </div>
+                {{/if}}
+
+
+                {{#each Feedback}}
+                    {{{this}}}
+                {{else}}
+                    Ваш отзыв будет первым.
+                {{/each}}
             </div>
-
-            {{{FeedbackForm}}}
-            <hr>
-            {{#each Feedback}}
-                {{{this}}}
-            {{else}}
-                Ваш отзыв будет первым.
-            {{/each}}
         </div>
     </div>
 </main>
