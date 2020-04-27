@@ -31,7 +31,7 @@ export default class OrderCheckout extends Component {
                 type: 'text',
                 minlength: '5',
                 maxlength: '255',
-                value: address,
+                value: localStorage.getItem('deliveryGeo'),
                 placeholder: 'Введите адрес доставки',
                 isRequired: true,
             }),
