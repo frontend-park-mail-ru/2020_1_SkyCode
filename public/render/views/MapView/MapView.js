@@ -15,6 +15,7 @@ export default class MapView extends Component {
             }),
             order: new Order({
                 classes: 'order',
+                isVisible: true,
             }),
         }, true);
     }

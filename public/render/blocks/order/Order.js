@@ -72,7 +72,9 @@ export default class Order extends Component {
         EventBus.subscribe('basket-changed', this.setTotal.bind(this));
         EventBus.subscribe('order-button-clicked', this.orderButtonHandler.bind(this));
         super.bind();
-        this.disappear();
+        if (this.isVisible === false) {
+            this.disappear();
+        }
     }
 
     unbind() {
