@@ -28,6 +28,12 @@ export default class IconBar extends Component {
                     EventBus.publish('order-button-clicked');
                 },
             }),
+            Map: new ImageHref({
+                classes: 'icon map-href',
+                src: '/static/map-pin.svg',
+                href: '/map',
+                imageClasses: 'map-image',
+            }),
         });
         super.template = template;
     }
