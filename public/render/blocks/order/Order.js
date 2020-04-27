@@ -22,7 +22,8 @@ export default class Order extends Component {
         classes = (classes === '') ? 'order' : classes + ' order';
         super();
         super.template = template;
-        this.visible = isVisible;
+        this.isVisible = true;
+        this.needToHide = !isVisible;
 
         this.addClasses(classes);
         this.addContextData({
@@ -72,7 +73,7 @@ export default class Order extends Component {
         EventBus.subscribe('basket-changed', this.setTotal.bind(this));
         EventBus.subscribe('order-button-clicked', this.orderButtonHandler.bind(this));
         super.bind();
-        if (this.isVisible === false) {
+        if (this.needToHide) {
             this.disappear();
         }
     }
