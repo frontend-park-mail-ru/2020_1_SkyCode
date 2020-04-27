@@ -15,6 +15,7 @@ class MapController extends BaseController {
     }
 
     execute() {
+
         super.execute(new MapView({}));
         ymaps.ready(init);
 
@@ -56,10 +57,11 @@ class MapController extends BaseController {
             myMap.geoObjects.add(myCollection);
             myMap.geoObjects.events.add('balloonopen', (e) => {
                 const id = e.get('target')['properties'].get('balloonContent');
-                document.getElementById(id).addEventListener('click', (e) => {
-                    e.preventDefault();
-                    EventBus.publish('set-page', {url: `/restaurants/${id}`});
-                });
+                document.getElementById(id)
+                    .addEventListener('click', (e) => {
+                        e.preventDefault();
+                        EventBus.publish('set-page', {url: `/restaurants/${id}`});
+                    });
                 console.log(id);
             });
         }
