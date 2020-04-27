@@ -15,6 +15,12 @@
     box-shadow: 0 4px 100px #D6D6D6;
 }
 
+@media (max-width: 800px) {
+    .login-signup__login {
+        margin-bottom: 40px;
+    }
+}
+
 .login-signup__login:hover {
     width: 50%;
     height: 90%;

@@ -3,8 +3,6 @@
 .action-bar {
     height: fit-content;
     grid-area: action-bar;
-    width: 100%;
-    /*width: calc((100% - 30px) * 10 / 13);*/
     /* Скрываем scrollbar */
     margin-bottom: -20px;
     /* Скрываем кнопки */

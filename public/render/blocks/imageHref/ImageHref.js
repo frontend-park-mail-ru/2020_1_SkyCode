@@ -32,8 +32,7 @@ export default class ImageHref extends Component {
 
         me.onclick = (event) => {
             event.preventDefault();
-            console.log('href ' + this.href + ' clicked');
-            EventBus.publish('set-page', {url: this.href});
+            EventBus.publish('set-page', {url: this.context.href});
         };
     }
 

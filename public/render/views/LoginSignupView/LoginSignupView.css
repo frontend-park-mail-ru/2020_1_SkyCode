@@ -13,3 +13,12 @@
     height: 100vh;
     font-size: 20px;
 }
+
+@media (max-width: 800px) {
+    .login-signup-view {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        overflow: auto;
+    }
+}

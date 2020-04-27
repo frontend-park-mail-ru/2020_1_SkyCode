@@ -5,3 +5,10 @@
     grid-area: header;
     display: flex;
 }
+
+@media (max-width: 470px) {
+    .iconed-header {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

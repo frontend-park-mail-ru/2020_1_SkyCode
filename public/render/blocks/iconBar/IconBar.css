@@ -8,11 +8,13 @@
     padding: 20px 20px 20px 0;
 }
 
+.icon:last-child {
+    margin-left: 0;
+}
+
 .iconed-header__icon-bar > * {
     margin-left: 20px;
     z-index: 2;
 }
 
-.iconed-header__icon-bar:last-child {
-    margin-left: 0;
-}
+

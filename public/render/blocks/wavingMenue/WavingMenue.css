@@ -6,7 +6,7 @@
     width: 33%;
     padding-top: 75px;
     height: 100vh;
-    z-index: 1;
+    z-index: 2;
 }
 
 @media (max-width: 600px) {
