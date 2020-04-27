@@ -94,7 +94,7 @@ export default class Order extends Component {
     appear() {
         if (!this.isVisible) {
             const order = this.domElement;
-            order.style.right = '0';
+            order.style.display = 'flex';
             this.isVisible = true;
         }
     }
@@ -102,7 +102,7 @@ export default class Order extends Component {
     disappear() {
         if (this.isVisible) {
             const order = this.domElement;
-            order.style.right = '-5000px';
+            order.style.display = 'none';
             this.isVisible = false;
         }
     }

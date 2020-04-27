@@ -72,7 +72,7 @@ export default class ActionBar extends Component {
             }
             hasTimer = true;
             setTimeout(() => {
-                const maxScrollLeft = list.scrollWidth - list.clientWidth + 1;
+                const maxScrollLeft = list.scrollWidth - list.clientWidth;
                 const pos = Math.ceil(list.scrollLeft);
                 const leftVisibility = pos === minScrollLeft ? 'hidden' : 'visible';
                 const rightVisibility = pos === maxScrollLeft ? 'hidden' : 'visible';

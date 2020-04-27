@@ -19,23 +19,25 @@
     box-shadow: 0 0 10px rgba(80, 80, 80, 0.5);
     width: 40px;
     height: 40px;
+    line-height: 39px;
     z-index: 1;
 }
 
 .scroll-bar__button:hover {
     background: #F6D471;
+    font-weight: bolder;
 }
 
 .category-bar__right-button {
     position: relative;
     top: 100px;
-    left: calc(100vw - 180px);
+    left: calc(100% - 100px);
 }
 
 .action-bar__right-button {
     position: relative;
     top: 85px;
-    left: calc(100vw - 180px);
+    left: calc(100% - 100px);
 }
 
 /*@media (max-width: 1024px) {*/
@@ -129,7 +131,7 @@
 
     border-bottom-right-radius: 20px;
     border-top-right-radius: 20px;
-    margin-right: 100px;
+    margin-right: 10px;
 }
 
 /*.profile-text-area__submit {*/

@@ -6,7 +6,7 @@
 
 .order {
     position: fixed;
-    right: -5000px;
+    right: 0;
 
     height: 100vh;
     width: 30%;
@@ -19,7 +19,9 @@
     border-left: 1px solid #D6D6D6;
 
     padding: 20px;
-    z-index: 1;
+    z-index: 2;
+
+    transition: display 1.5s ease-in-out;
 }
 
 @media (max-width: 600px) {
