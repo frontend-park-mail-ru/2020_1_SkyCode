@@ -10,11 +10,6 @@ export default class RestaurantFeedbackCard extends Component {
             Rate: strRate,
             Date: date,
             Text: text,
-            // Text: new Textarea({
-            //     classes: 'restaurant-feedback-card__textarea',
-            //     disabled: true,
-            //     value: text,
-            // }),
         });
 
         super.template = template;
