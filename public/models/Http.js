@@ -35,29 +35,54 @@ class Http {
     }
 
     async fetchGet({path}) {
-        return await this.fetchRequest({method: 'GET',
+        const response = await this.fetchRequest({method: 'GET',
             path,
-            m: 'cors'});
+            m: 'cors',
+        });
+
+        Http.retreiveCSRFToken(response);
+        return response;
     }
 
     async fetchPost({path, body, type = 'json'}) {
-        return await this.fetchRequest({method: 'POST',
+        const response = await this.fetchRequest({method: 'POST',
             path,
             body,
-            type});
+            type,
+        });
+
+        Http.retreiveCSRFToken(response);
+        return response;
     }
 
     async fetchPut({path, body, type = 'json'}) {
-        return await this.fetchRequest({method: 'PUT',
+        const response = await this.fetchRequest({method: 'PUT',
             path,
             body,
-            type});
+            type,
+        });
+
+        Http.retreiveCSRFToken(response);
+        return response;
     }
 
     async fetchDelete({path, body}) {
-        return await this.fetchRequest({method: 'DELETE',
+        const response = await this.fetchRequest({method: 'DELETE',
             path,
-            body});
+            body,
+        });
+
+        Http.retreiveCSRFToken(response);
+        return response;
+    }
+
+    static retreiveCSRFToken(response) {
+        const token = response.headers.get('X-Csrf-Token');
+        if (token) {
+            localStorage.setItem('token', token);
+        }
+
+        return response;
     }
 }
 
