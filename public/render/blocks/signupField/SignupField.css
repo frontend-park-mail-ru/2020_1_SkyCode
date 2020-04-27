@@ -32,3 +32,27 @@
     font-weight: bold;
     margin: 40px;
 }
+
+@media (max-width: 800px) {
+    .signup-field__title {
+        display: none;
+    }
+
+    .login-field__title {
+        display: none;
+    }
+
+    input {
+        margin: 0;
+    }
+
+    #login-pretitle {
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    #signup-pretitle {
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+}
