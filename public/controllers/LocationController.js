@@ -1,5 +1,6 @@
 import BaseController from './BaseController.js';
 import MapView from '../render/views/MapView/MapView';
+import GeneralMapView from '../render/views/GeneralMapView/GeneralMapView.js';
 import Swal from 'sweetalert2';
 
 class LocationController extends BaseController {
@@ -8,7 +9,7 @@ class LocationController extends BaseController {
     }
 
     execute() {
-        super.execute(new MapView({}));
+        super.execute(new GeneralMapView({}));
 
     }
 }
