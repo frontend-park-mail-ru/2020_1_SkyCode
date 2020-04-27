@@ -8,16 +8,18 @@
     grid-template-columns: 10fr 3fr;
     grid-template-areas:
             "main order";
+
 }
 
 .main-content {
+    grid-area: main-area;
     height: 90vh;
     overflow: scroll;
-    grid-area: main-content;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-areas:
-            "map"
+            "map";
+
 }
 
 .main {

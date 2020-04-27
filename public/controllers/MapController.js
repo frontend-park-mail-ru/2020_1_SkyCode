@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import MapModel from '../models/MapModel';
 import MainController from './MainController';
 import RestaurantModel from '../models/RestaurantModel';
+import GeneralMapView from '../render/views/GeneralMapView/GeneralMapView.js';
 
 class MapController extends BaseController {
     constructor(title = 'Map') {
@@ -16,7 +17,7 @@ class MapController extends BaseController {
 
     execute() {
 
-        super.execute(new MapView({}));
+        super.execute(new GeneralMapView({}));
         ymaps.ready(init);
 
         function init() {

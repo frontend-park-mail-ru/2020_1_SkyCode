@@ -11,7 +11,6 @@ export default class MapView extends Component {
         super.template = template;
 
         this.addContextData({
-            header: new IconedHeader(),
             order: new Order({
                 classes: 'order',
                 isVisible: true,
