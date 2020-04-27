@@ -1,5 +1,6 @@
 import BaseController from './BaseController.js';
-import SupportChatView from '../render/views/SupportChatView/SupportChatView.js';
+import SupportChatView
+    from '../render/views/SupportChatView/SupportChatView.js';
 import EventBus from '../services/Events/EventBus';
 import Message from '../render/blocks/message/message';
 import UserModel from '../models/UserModel';
@@ -13,6 +14,14 @@ class SupportChatController extends BaseController {
 
     execute(matchData) {
         const chatId = matchData[0];
+
+        UserModel.getUser()
+            .then((response) => {
+                if (response.error) {
+                    EventBus.publish('set-page', {url: '/login'});
+                }
+            })
+            .catch((err) => console.log(err));
 
         if (chatId !== undefined) {
             this.socket = new WebSocket(`ws://89.208.199.114:5000/api/v1/chats/${chatId}/join`);
@@ -48,18 +57,24 @@ class SupportChatController extends BaseController {
             .then((response) => {
                 if (response.User) {
                     this.username = response.User.firstName;
-                    this.socket.send(JSON.stringify({user_name: this.username, chat_id: localStorage.getItem('chat_id')}));
+                    this.socket.send(JSON.stringify({
+                        user_name: this.username,
+                        chat_id: localStorage.getItem('chat_id'),
+                    }));
                     super.execute(new SupportChatView({username: response.User.firstName}));
-                    ChatModel.getChatHistory(localStorage.getItem('chat_id')).then((response) => {
-                        for (const msg of response) {
-                            const el = new Message('msg', msg.message, msg.user_name);
-                            let domEl = document.getElementsByClassName('chat__messages')[0];
-                            domEl.innerHTML += el;
-                        }
-                        document.getElementsByClassName('chat__messages')[0].outerHTML = domEl.outerHTML;
+                    ChatModel.getChatHistory(localStorage.getItem('chat_id'))
+                        .then((response) => {
+                            for (const msg of response) {
+                                const el = new Message('msg', msg.message, msg.user_name);
+                                let domEl = document.getElementsByClassName('chat__messages')[0];
+                                domEl.innerHTML += el;
+                            }
+                            document.getElementsByClassName('chat__messages')[0].outerHTML = domEl.outerHTML;
 
-                    }).catch((err) => console.log(err))
-            }})
+                        })
+                        .catch((err) => console.log(err));
+                }
+            })
             .catch((err) => console.log(err));
     }
 
