@@ -11,10 +11,10 @@
 
 .checkout-view {
     display: grid;
-    grid-template-columns: 10fr 3fr;
+    grid-template-columns: 1fr;
 
     grid-template-areas:
-            "header-order order";
+            "header-order";
 
     background: #FFFFFF;
 }
