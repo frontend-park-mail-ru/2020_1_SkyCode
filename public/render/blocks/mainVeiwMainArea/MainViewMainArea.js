@@ -28,9 +28,6 @@ export default class MainViewMainArea extends Component {
                 classes: 'category-bar',
                 categoryArr,
             }),
-            order: new Order({
-                classes: 'order',
-            }),
             restaurantList: new RestaurantList({
                 classes: 'main-view__restaurant-list',
                 restaurantArr,
