@@ -2,7 +2,6 @@ import Component from '../../Component.js';
 import Action from '../action/Action.js';
 import template from './ActionBar.hbs';
 import Button from '../../elements/button/Button';
-import actionStyles from '../action/Action.css';
 
 export default class ActionBar extends Component {
     constructor({classes = 'action-bar', actionArr}) {
@@ -33,7 +32,7 @@ export default class ActionBar extends Component {
 
         for (const actionData of actionArr) {
             actions.push(new Action({
-                classes: actionStyles.actionBar__action,
+                classes: 'actionBar__action',
                 src: actionData.src,
                 alt: actionData.alt,
             }));
