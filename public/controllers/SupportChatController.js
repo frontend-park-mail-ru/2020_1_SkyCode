@@ -62,7 +62,7 @@ class SupportChatController extends BaseController {
                         chat_id: localStorage.getItem('chat_id'),
                     }));
                     super.execute(new SupportChatView({username: response.User.firstName}));
-                    ChatModel.getChatHistory(localStorage.getItem('chat_id'))
+                    ChatModel.getChatHistory((chatId !== undefined) ? chatId : localStorage.getItem('chat_id'))
                         .then((response) => {
                             for (const msg of response) {
                                 const el = new Message('msg', msg.message, msg.user_name);
