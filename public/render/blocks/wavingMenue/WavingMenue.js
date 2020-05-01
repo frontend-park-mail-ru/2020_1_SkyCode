@@ -3,7 +3,7 @@ import EventBus from '../../../services/Events/EventBus.js';
 import template from './WavingMenue.hbs';
 
 export default class WavingMenue extends Component {
-    constructor({classes}) {
+    constructor({classes} = {}) {
         classes = classes || 'waving-menue';
         super(classes);
         this.isVisible = false;

@@ -3,18 +3,14 @@
 @import "../../blocks/order/Order.css";
 
 .base-view {
-    display: grid;
-    grid-template-rows:
-            min-content
-            1fr;
-    grid-template-areas:
-            "header"
-            "main-area";
-
     background: #FFFFFF;
-    padding-bottom: 300px;
 }
 
 .base-view > * {
     min-width: 0;
+}
+
+.base-container {
+    overflow: hidden;
+    margin: 0 100px;
 }
