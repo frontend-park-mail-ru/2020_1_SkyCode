@@ -9,7 +9,7 @@ class BaseController {
     execute(view) {
         this._view = view;
         document.body.innerHTML = this._view.toString();
-        this._view.bind();
+        // this._view.bind();
         this.startCatchEvents();
     }
 

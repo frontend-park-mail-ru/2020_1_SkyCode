@@ -1,20 +1,18 @@
 import Component from '../../Component.js';
-import IconedHeader from '../../blocks/iconedHeader/IconedHeader.js';
 import template from './BaseView.hbs';
-import WavingMenue from '../../blocks/wavingMenue/WavingMenue.js';
 
 export default class BaseView extends Component {
     constructor({
-        MainArea,
-        Header = new IconedHeader(),
-        LeftBar = new WavingMenue(),
-    }) {
+        Main,
+        Header,
+        LeftBar,
+    } = {}) {
         super();
         this.addContextData({
             Header,
             LeftBar,
-            MainArea,
+            Main,
         });
-        super.template = template;
+        this.template = template;
     }
 }
