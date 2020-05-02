@@ -14,7 +14,13 @@
     overflow: hidden;
     padding-top: 10vh;
     box-sizing: border-box;
-    height: 90vh;
+    height: 100vh;
+}
+
+@media (max-width: 600px) {
+    .base-container {
+        height: 90vh;
+    }
 }
 
 .base-view__header {
