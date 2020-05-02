@@ -1,5 +1,4 @@
 import Component from '../../Component.js';
-import Action from '../action/Action.js';
 import template from './ActionBar.hbs';
 import Button from '../../elements/button/Button.js';
 
@@ -31,11 +30,10 @@ export default class ActionBar extends Component {
         const actions = [];
 
         for (const actionData of actionArr) {
-            actions.push(new Action({
-                classes: 'action-bar__action',
+            actions.push({
                 src: actionData.src,
                 alt: actionData.alt,
-            }));
+            });
         }
 
         this.addContextData({actions}, true);
