@@ -10,18 +10,18 @@ export default class IconBar extends Component {
         super(classes, {
             Profile: new ImageHref({
                 classes: 'icon-bar-profile-href icon',
-                imageClasses: 'icon-bar-profile-image',
+                imageClasses: 'icon-bar__profile-image',
                 src: '/static/profile.png',
                 href: '/login',
             }),
             Support: new ImageHref({
                 classes: 'order__support-href icon',
                 src: '/static/support.svg',
-                imageClasses: 'icon-bar-support-image',
+                imageClasses: 'icon-bar__support-image',
                 href: '/support',
             }),
             Basket: new Img({
-                classes: 'icon-bar-basket-image icon',
+                classes: 'icon-bar__basket-image icon',
                 id: 'icon-bar-basket-href',
                 src: '/static/shopping-basket.svg',
                 callback: () => {
@@ -32,7 +32,13 @@ export default class IconBar extends Component {
                 classes: 'icon map-href',
                 src: '/static/map-pin.svg',
                 href: '/map',
-                imageClasses: 'map-image',
+                imageClasses: 'icon-bar__map-image',
+            }),
+            OrderHistory: new ImageHref({
+                classes: 'icon order-history-href',
+                src: '/static/order_history.svg',
+                href: '/order_history',
+                imageClasses: 'icon-bar__history-image',
             }),
         });
         super.template = template;

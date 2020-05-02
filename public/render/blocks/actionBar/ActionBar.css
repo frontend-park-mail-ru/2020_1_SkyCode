@@ -9,12 +9,6 @@
     /*margin-top: -20px;*/
 }
 
-/*@media (max-width: 1024px) {*/
-/*    .action-bar {*/
-/*        width: calc(100% - 30px);*/
-/*    }*/
-/*}*/
-
 .action-bar__list {
     display: flex;
     list-style-type: none;
