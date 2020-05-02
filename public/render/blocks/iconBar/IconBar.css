@@ -4,17 +4,18 @@
     justify-content: flex-start;
 }
 
-.iconed-header__icon-bar {
-    padding: 20px 20px 20px 0;
+@media (max-width: 600px) {
+    .icon-bar {
+        width: 100%;
+        justify-content: space-evenly;
+    }
+}
+
+.icon {
+    margin-left: 20px;
+    z-index: 2;
 }
 
 .icon:last-child {
     margin-left: 0;
 }
-
-.iconed-header__icon-bar > * {
-    margin-left: 20px;
-    z-index: 2;
-}
-
-

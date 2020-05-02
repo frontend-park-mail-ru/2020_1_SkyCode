@@ -12,4 +12,11 @@
 
 .base-container {
     overflow: hidden;
+    padding-top: 10vh;
+    box-sizing: border-box;
+    height: 90vh;
+}
+
+.base-view__header {
+    position: fixed;
 }

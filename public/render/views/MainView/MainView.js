@@ -17,7 +17,7 @@ export default class MainView extends BaseView {
                 categoryArr,
                 restaurantArr,
             }),
-            Header: new IconedHeader(),
+            Header: new IconedHeader({classes: 'base-view__header'}),
             LeftBar: new WavingMenue(),
         });
     }

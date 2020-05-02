@@ -6,13 +6,12 @@
 @import "../../blocks/restaurantList/RestaurantList.css";
 
 .main-view {
-    grid-area: main-area;
     display: flex;
     flex-direction: column;
     background: #FFFFFF;
 
     overflow-y: scroll;
-    height: 100%;
+    height: 100vh;
 }
 
 .main-view__info-bar {
