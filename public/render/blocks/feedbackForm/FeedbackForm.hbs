@@ -1,8 +1,13 @@
 <div class="{{classes}}">
     <div class="feedback-form__first-line">
         <h3 class="restaurant-feedback__label">Ваш отзыв</h3>
-        <div class="feedback-form__rate">⭐&nbsp;{{{RateInput}}}</div>
         {{{SubmitButton}}}
+        <div class="feedback-form__stars-and-rate">
+            <span id="feedback-form__stars">{{rate}}</span>
+            <div class="feedback-form__rate">
+                {{{RateInput}}}
+            </div>
+        </div>
     </div>
     {{{TextInput}}}
 </div>

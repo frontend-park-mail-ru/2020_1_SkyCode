@@ -2,13 +2,21 @@
     background-color: lightgreen;
     color: black;
     width: 130px;
+    height: 35px;
     outline: 0;
     line-height: 36px;
     text-align: center;
     border-radius: 15px;
-    margin-bottom: 20px;
+    margin: 0 20px 20px;
+    /*margin: 20px 0;*/
     border: none;
     font-family: inherit;
+}
+
+@media (max-width: 500px) {
+    .feedback-form__submit {
+        margin: 20px 30px 20px 0;
+    }
 }
 
 .scroll-bar__button {

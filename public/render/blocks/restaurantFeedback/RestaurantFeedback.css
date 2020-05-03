@@ -14,8 +14,22 @@
     display: flex;
     justify-content: space-between;
 
-    width: 100%;
-    margin: 50px 0;
+    margin: 0 70px 50px;
+}
+
+.restaurant-feedback__container {
+    margin: 0 70px 200px;
+}
+
+@media (max-width: 600px) {
+    .restaurant-feedback__info-bar {
+        margin: 0 0 50px;
+    }
+
+    .restaurant-feedback__container {
+        margin: 0 0 200px;
+        padding: 0 10px;
+    }
 }
 
 
@@ -28,6 +42,7 @@
     margin-inline-start: 0;
     margin-inline-end: 0;
     font-weight: normal;
+    margin-right: 20px;
 }
 
 
@@ -42,22 +57,5 @@
     margin-bottom: 500px;
 }
 
-.restaurant-feedback__belt {
-    overflow: hidden;
-    margin: 0 60px;
-}
 
-@media (max-width: 768px) {
-    .restaurant-feedback__belt {
-        margin: 0 15px;
-    }
-}
 
-.restaurant-feedback__scrolled-area {
-    overflow-y: scroll;
-    height: 90vh;
-}
-
-.restaurant-feedback__scrolled-area:last-child {
-    margin-bottom: 100px;
-}

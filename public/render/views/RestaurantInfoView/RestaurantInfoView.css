@@ -5,14 +5,11 @@
 
 
 .restaurant-info-view {
-    display: grid;
-    grid-template-rows:
-            min-content
-            1fr;
-    grid-template-columns: 1fr;
-    grid-template-areas:
-            "header"
-            "main-area";
+    overflow-y: scroll;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
 
     background: #FFFFFF;
 }

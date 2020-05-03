@@ -15,7 +15,9 @@ export default class FeedbackForm extends Component {
         restaurantId,
         oldReview,
     }) {
+        const strRate = rate === 0 ? '⭐' : '⭐'.repeat(Math.round(Number(rate)));
         super(classes, {
+            rate: strRate,
             RateInput: new NumberInput({
                 classes: 'feedback-form__rate-input',
                 id: 'feedback-form__rate-input',
@@ -71,5 +73,21 @@ export default class FeedbackForm extends Component {
                 },
             }),
         });
+    }
+
+    bind() {
+        EventBus.subscribe(NumberInput.changeEvent('feedback-rate'), (rate) => {
+            const strRate = rate === 0 ? '⭐' : '⭐'.repeat(Math.round(Number(rate)));
+            document.getElementById('feedback-form__stars').innerText = strRate;
+        });
+        super.bind();
+    }
+
+    unbind() {
+        EventBus.unsubscribe(NumberInput.changeEvent('feedback-rate'), (rate) => {
+            const strRate = rate === 0 ? '⭐' : '⭐'.repeat(Math.round(Number(rate)));
+            document.getElementById('feedback-form__stars').innerText = strRate;
+        });
+        super.unbind();
     }
 }
