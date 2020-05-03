@@ -1,4 +1,6 @@
 .neon-button {
+    width: fit-content;
+    height: fit-content;
     position: relative;
     display: inline-block;
     padding: 7px 15px;
@@ -88,10 +90,10 @@
     transition-delay: 0.45s;
 }
 
-.signup-field__submit-button {
-    margin-top: 20px;
+.signup-field__submit {
+    margin-left: 10px;
 }
 
-.login-field__submit-button {
+.login-field__submit {
     margin-top: 30px;
 }
