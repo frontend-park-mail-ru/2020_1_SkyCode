@@ -1,10 +1,29 @@
 @import "../../blocks/orderHistory/orderHistory.css";
 
-.order-history__main-content {
+.order-history__view {
+    overflow-y: scroll;
+    height: 80vh;
+    width: 100%;
+}
+
+.order-history-view__container {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 1000px) {
+    .order-history-view__container {
+        width: 800px;
+    }
+}
+
+@media (max-width: 600px) {
+    .order-history-view__container {
+        width: 100%;
+    }
 }
 
 .order-history__main-content_title {

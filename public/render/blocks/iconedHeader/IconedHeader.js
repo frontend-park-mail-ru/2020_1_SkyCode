@@ -6,7 +6,7 @@ import template from './IconedHeader.hbs';
 export default class IconedHeader extends Component {
     constructor({
         classes,
-        HeaderComponent = new Header(),
+        HeaderComponent = new Header({classes: 'iconed-header__header'}),
         Icons = new IconBar(),
     } = {},
     ) {

@@ -4,12 +4,14 @@
 @import "../personInput/PersonInput.css";
 @import "../supportChat/supportChat.css";
 
+
 .order {
     position: fixed;
+    top: 0;
     right: 0;
 
     height: 100vh;
-    width: 30%;
+    width: 250px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -24,6 +26,32 @@
     transition: display 1.5s ease-in-out;
 }
 
+.checkout-view__order {
+    position: fixed;
+    top: 0;
+    right: 0;
+
+    height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+
+    background: #F8F8F8;
+    border-left: 1px solid #D6D6D6;
+
+    padding: 20px;
+    z-index: 1;
+
+    transition: display 1.5s ease-in-out;
+}
+
+@media (max-width: 800px) {
+    .checkout-view__order {
+        position: unset;
+    }
+}
+
 @media (max-width: 600px) {
     .order {
         width: 100%;
@@ -35,12 +63,6 @@
     font-size: 18px;
     text-align: left;
     margin-top: 60px;
-}
-
-@media (max-width: 500px) {
-    .order__title {
-        display: none;
-    }
 }
 
 

@@ -1,21 +1,14 @@
 @import "../../blocks/orderCheckout/OrderCheckout.css";
 
-.header-order-container {
-    display: grid;
-    grid-area: header-order;
-    grid-template-rows: 1fr 8fr;
-    grid-template-areas:
-            "header"
-            "order-confirmation";
+.checkout-view {
+    display: flex;
 }
 
-.checkout-view {
-    display: grid;
-    grid-template-columns: 1fr;
-
-    grid-template-areas:
-            "header-order";
-
-    background: #FFFFFF;
+@media (max-width: 800px) {
+    .checkout-view {
+        flex-direction: column;
+        height: 80vh;
+        overflow-y: scroll;
+    }
 }
 

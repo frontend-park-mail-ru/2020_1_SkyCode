@@ -1,19 +1,1 @@
 @import "../orderCard/orderCard.css";
-
-.order-history__container {
-    width: 100%;
-    height: 800px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    border-radius: 5px;
-    overflow: scroll;
-    flex-wrap: wrap;
-    margin-top: 20px;
-}
-
-.order-history__container::-webkit-scrollbar {
-    width: 0;
-    background: rgba(255, 255, 255, 0.0);
-}

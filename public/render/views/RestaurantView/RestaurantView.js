@@ -8,6 +8,7 @@ import RestaurantCategories
     from '../../blocks/restaurantCategories/RestaurantCategories';
 import ProductList from '../../blocks/products/ProductList';
 import Href from '../../elements/href/Href';
+import Order from '../../blocks/order/Order';
 
 export default class RestaurantView extends BaseView {
     constructor({restaurant, products, categoryArr}) {
@@ -19,6 +20,9 @@ export default class RestaurantView extends BaseView {
             }),
             Header: new IconedHeader({classes: 'base-view__header'}),
             LeftBar: new WavingMenue(),
+            AddOnes: [
+                new Order(),
+            ],
         });
     }
 }

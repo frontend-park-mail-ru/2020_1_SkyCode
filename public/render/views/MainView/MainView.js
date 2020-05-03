@@ -7,6 +7,7 @@ import ActionBar from '../../blocks/actionBar/ActionBar';
 import CategoryBar from '../../blocks/categoryBar/CategoryBar';
 import RestaurantList from '../../blocks/restaurantList/RestaurantList';
 import Component from '../../Component';
+import Order from '../../blocks/order/Order';
 
 export default class MainView extends BaseView {
     constructor({actionArr, categoryArr, restaurantArr}) {
@@ -18,6 +19,9 @@ export default class MainView extends BaseView {
             }),
             Header: new IconedHeader({classes: 'base-view__header'}),
             LeftBar: new WavingMenue(),
+            AddOnes: [
+                new Order(),
+            ],
         });
     }
 }
