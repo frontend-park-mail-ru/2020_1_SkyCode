@@ -3,11 +3,11 @@
     width: 30px;
     height: 30px;
     outline: none;
-    z-index: 3;
 }
 
 .icon-bar__profile-image, .icon-bar__basket-image, .icon-bar__map-image{
     border-radius: 100%;
+    z-index: 3;
 }
 
 .icon-bar__support-image, .icon-bar__history-image {

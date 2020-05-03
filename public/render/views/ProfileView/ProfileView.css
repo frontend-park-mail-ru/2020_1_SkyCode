@@ -2,14 +2,7 @@
 @import "../../blocks/header/Header.css";
 
 .profile-view {
-    display: grid;
-    grid-template-areas:
-            "header header header"
-            ". profile-area .";
-    grid-template-columns: 1fr 7fr 1fr;
-    grid-template-rows:  1fr 1fr 5fr;
+    display: flex;
+    height: 80vh;
     justify-content: center;
-    align-items: center;
-
-    height: 100%;
 }

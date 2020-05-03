@@ -6,6 +6,12 @@
     margin-bottom: 10px;
 }
 
+.icon {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
 .icon-bar-basket-image {
     width: 30px;
     height: 30px;

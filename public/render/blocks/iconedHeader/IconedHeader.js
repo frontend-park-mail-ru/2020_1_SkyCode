@@ -6,12 +6,13 @@ import template from './IconedHeader.hbs';
 export default class IconedHeader extends Component {
     constructor({
         classes,
-        headerClasses = 'iconed-header__header',
-        iconsClasses = 'iconed-header__icon-bar'} = {},
+        HeaderComponent = new Header(),
+        Icons = new IconBar(),
+    } = {},
     ) {
         super(classes, {
-            Header: new Header({classes: headerClasses}),
-            Icons: new IconBar({classes: iconsClasses}),
+            Header: HeaderComponent,
+            Icons,
         });
         super.template = template;
     }
