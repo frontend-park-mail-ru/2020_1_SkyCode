@@ -5,7 +5,7 @@
 
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: space-evenly;
 
     list-style-type: none;
     padding-inline-start: 0;
@@ -14,20 +14,3 @@
 
     margin: 60px 0 200px;
 }
-
-/*@media (max-width: 1024px) {*/
-/*    .main-view__restaurant-list {*/
-/*        width: 100%;*/
-/*    }*/
-/*}*/
-
-@media (max-width: 600px) {
-    .main-view__restaurant-list {
-        justify-content: center;
-    }
-    .main-view__restaurant-list > * {
-        width: 35%;
-        min-width: 300px;
-    }
-}
-
