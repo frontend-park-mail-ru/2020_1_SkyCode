@@ -1,5 +1,6 @@
 import Component from '../../Component.js';
 import template from './Button.hbs';
+import EventBus from '../../../services/Events/EventBus';
 
 export default class Button extends Component {
     constructor({text, callback, classes = 'button', id, isHidden = false}) {
@@ -17,7 +18,10 @@ export default class Button extends Component {
             return;
         }
 
-        node.onclick = this.callback;
+        node.onclick = () => {
+            this.callback();
+            EventBus.publish(this.id + '-clicked');
+        };
     }
 
     unbind() {

@@ -8,7 +8,6 @@ import CategoryBar from '../../blocks/categoryBar/CategoryBar';
 import RestaurantList from '../../blocks/restaurantList/RestaurantList';
 import Component from '../../Component';
 
-
 export default class MainView extends BaseView {
     constructor({actionArr, categoryArr, restaurantArr}) {
         super({

@@ -1,20 +1,12 @@
 @import "../category/Category.css";
 
 .category-bar {
-    grid-area: category-bar;
     height: fit-content;
-    /*width: calc((100% - 20px) * 10 / 13);*/
-    /* Скрываем scrollbar */
-    margin-bottom: -20px;
-    /* Скрываем кнопки */
-    margin-top: -30px;
 }
 
-/*@media (max-width: 1024px) {*/
-/*    .category-bar {*/
-/*        width: calc(100% - 20px);*/
-/*    }*/
-/*}*/
+.category-bar__container {
+    margin: 0 70px;
+}
 
 .category-bar__list {
     display: flex;
@@ -25,4 +17,11 @@
     padding-inline-start: 0;
     margin-block-start: 0;
     margin-block-end: 0;
+}
+
+@media (max-width: 600px) {
+    .category-bar__container {
+        margin: 0;
+        width: 100%;
+    }
 }

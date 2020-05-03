@@ -17,10 +17,13 @@
 .main-view__info-bar {
     display: flex;
     justify-content: space-between;
+    margin: 40px 70px 0;
+}
 
-    width: 100%;
-    /*width: calc(100% * 10 / 13);*/
-    margin-top: 50px;
+@media (max-width: 600px) {
+    .main-view__info-bar {
+        margin-left: 10px;
+    }
 }
 
 .main-view__label {

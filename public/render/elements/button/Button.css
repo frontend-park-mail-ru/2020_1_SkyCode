@@ -36,15 +36,9 @@
 
 .action-bar__right-button {
     position: relative;
-    top: 85px;
-    left: calc(100% - 100px);
+    top: calc(50% - 30px);
+    left: calc(50% - 37px);
 }
-
-/*@media (max-width: 1024px) {*/
-/*    .category-bar__right-button, .action-bar__right-button{*/
-/*        left: calc(100vw - 160px);*/
-/*    }*/
-/*}*/
 
 .main-view__order-button {
     position: fixed;
@@ -66,15 +60,15 @@
 
 .action-bar__left-button {
     position: relative;
-    left: 15px;
-    top: 85px;
+    left: calc(-50% + 37px);
+    top: calc(50% + 10px);
     visibility: hidden;
 }
 
 .category-bar__left-button {
     position: relative;
     top: 100px;
-    left: 15px;
+    left: 18px;
     visibility: hidden;
 }
 
