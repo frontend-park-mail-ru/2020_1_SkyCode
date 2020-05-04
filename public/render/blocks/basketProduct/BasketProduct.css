@@ -3,14 +3,14 @@
 .basket__basket-product {
     display: flex;
     margin: 10px 0;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     text-align: center;
     font-size: 14px;
 }
 
 .basket__basket-product:hover {
-    background: linear-gradient(90deg, transparent, red);
+    background: linear-gradient(270deg, transparent, red);
     border-radius: 5px;
     cursor: pointer;
 }
@@ -37,6 +37,7 @@
     width: 3cm;
     flex-direction: column;
     justify-content: space-evenly;
+    flex-grow: 1;
     align-items: center;
     text-align: center;
 }

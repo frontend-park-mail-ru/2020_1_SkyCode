@@ -8,13 +8,11 @@
     padding-inline-start: 0;
     margin-block-start: 0;
     margin-block-end: 0;
-    margin: 20px 70px 200px;
+    margin: 20px 0 200px 70px;
 }
 
 @media (max-width: 600px) {
     .restaurant-view__product-list {
-        flex-direction: column;
         justify-content: center;
-        margin: 20px 0 200px;
     }
 }

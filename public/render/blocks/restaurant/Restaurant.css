@@ -2,26 +2,16 @@
 
 .restaurant-list__restaurant {
     width: 25%;
-    margin-right: 50px;
+    margin-right: 70px;
     margin-bottom: 50px;
 
     text-decoration: none;
     color: black;
 }
 
-.restaurant-list__restaurant:nth-child(3n) {
-    margin-right: 0;
-}
-
 @media (max-width: 850px) {
     .restaurant-list__restaurant {
         width: 40%;
-    }
-    .restaurant-list__restaurant:nth-child(3n) {
-        margin-right: 50px;
-    }
-    .restaurant-list__restaurant:nth-child(2n) {
-        margin-right: 0;
     }
 }
 
@@ -37,14 +27,6 @@
     .restaurant-list__restaurant {
         justify-self: center;
         width: 80%;
-    }
-
-    .restaurant-list__restaurant:nth-child(n) {
-        margin-right: 0;
-    }
-
-    .restaurant__container {
-        max-height: 300px;
     }
 }
 
