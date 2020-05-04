@@ -2,18 +2,24 @@
 
 .order__basket {
     grid-area: basket;
+    margin: 10px 0;
 }
 
 .basket__scroll-hider {
     overflow: hidden;
 }
 
-/**/
 .basket__scrolled-area {
     overflow-x: hidden;
     overflow-y: scroll;
-    max-height: 300px;
+    max-height: 250px;
     margin-right: -14px;
+}
+
+@media (max-width: 600px) {
+    .basket__scrolled-area {
+        max-height: 200px;
+    }
 }
 
 .basket__list {

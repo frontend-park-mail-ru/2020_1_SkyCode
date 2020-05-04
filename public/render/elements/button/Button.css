@@ -2,13 +2,21 @@
     background-color: lightgreen;
     color: black;
     width: 130px;
+    height: 35px;
     outline: 0;
     line-height: 36px;
     text-align: center;
     border-radius: 15px;
-    margin-bottom: 20px;
+    margin: 0 20px 20px;
+    /*margin: 20px 0;*/
     border: none;
     font-family: inherit;
+}
+
+@media (max-width: 500px) {
+    .feedback-form__submit {
+        margin: 20px 30px 20px 0;
+    }
 }
 
 .scroll-bar__button {
@@ -36,15 +44,9 @@
 
 .action-bar__right-button {
     position: relative;
-    top: 85px;
-    left: calc(100% - 100px);
+    top: calc(50% - 30px);
+    left: calc(50% - 37px);
 }
-
-/*@media (max-width: 1024px) {*/
-/*    .category-bar__right-button, .action-bar__right-button{*/
-/*        left: calc(100vw - 160px);*/
-/*    }*/
-/*}*/
 
 .main-view__order-button {
     position: fixed;
@@ -66,15 +68,15 @@
 
 .action-bar__left-button {
     position: relative;
-    left: 15px;
-    top: 85px;
+    left: calc(-50% + 37px);
+    top: calc(50% + 10px);
     visibility: hidden;
 }
 
 .category-bar__left-button {
     position: relative;
     top: 100px;
-    left: 15px;
+    left: 18px;
     visibility: hidden;
 }
 

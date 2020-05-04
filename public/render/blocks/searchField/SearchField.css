@@ -3,6 +3,11 @@
 .header__search-field {
     flex-grow: 1;
     display: flex;
-    height: inherit;
+}
+
+@media (max-width: 400px) {
+    .header__search-field {
+        flex-grow: 0;
+    }
 }
 

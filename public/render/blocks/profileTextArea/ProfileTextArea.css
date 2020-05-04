@@ -1,6 +1,6 @@
 .profile-view__profile-area {
     grid-area: profile-area;
-    height: 90%;
+    height: 92%;
     width: 80%;
     justify-self: center;
     align-self: center;
@@ -13,9 +13,9 @@
 }
 
 .profile-area__button-array {
-    width: 100%;
+    width: fit-content;
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
     justify-content: flex-start;
 }
 
@@ -23,15 +23,13 @@
     margin-left: 15px;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 600px) {
     .profile-area__button-array {
-        flex-direction: column;
+        display: none;
     }
+}
 
-    .profile-area__button-array > * {
-        width: 150px;
-        margin-bottom: 15px;
-    }
+@media (max-width: 700px) {
 }
 
 .profile-area__title {

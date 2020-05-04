@@ -5,16 +5,17 @@
 }
 
 .iconed-header__icon-bar {
-    padding: 20px 20px 20px 0;
+    background: rgba(255, 255, 255, .9);
 }
 
-.icon:last-child {
-    margin-left: 0;
+@media (max-width: 600px) {
+    .icon-bar {
+        width: 100%;
+        justify-content: space-evenly;
+    }
 }
 
-.iconed-header__icon-bar > * {
+.icon {
     margin-left: 20px;
     z-index: 2;
 }
-
-

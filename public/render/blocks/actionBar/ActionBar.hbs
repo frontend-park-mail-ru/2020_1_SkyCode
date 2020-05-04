@@ -1,13 +1,12 @@
-<div class="{{classes}}">
-    {{{LeftButton}}}
-    {{{RightButton}}}
-    <ul class="action-bar__list">
-        {{#each actions}}
-            <li class="action-bar__li">
-                {{{this}}}
-            </li>
-        {{else}}
-            <p>Can't load actions.</p>
-        {{/each}}
-    </ul>
+<div class="action-bar {{classes}}">
+    {{{LeftButton}}}{{{RightButton}}}
+    <div class="action-bar__container">
+        <div class="action-bar__list">
+            {{#each actions}}
+                <img src="{{this.src}}" class="action-bar__li" alt="{{this.alt}}">
+            {{else}}
+                <p>Can't load actions.</p>
+            {{/each}}
+        </div>
+    </div>
 </div>

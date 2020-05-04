@@ -5,19 +5,19 @@
 
 
 .restaurant-info-view {
-    display: grid;
-    grid-template-rows:
-            min-content
-            1fr;
-    grid-template-columns: 1fr;
-    grid-template-areas:
-            "header"
-            "main-area";
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
 
     background: #FFFFFF;
 }
 
-.restaurant-info-view > * {
-    min-width: 0;
+@media (max-width: 600px) {
+    .restaurant-info-view {
+        box-sizing: border-box;
+        padding: 0 30px;
+    }
 }
 

@@ -6,6 +6,7 @@ import Img from '../../elements/img/Img.js';
 import ErrorBlock from '../errorBlock/ErrorBlock.js';
 import Validation from '../../../services/InputValidation.js';
 import template from './ProfileTextArea.hbs';
+import ImageHref from '../imageHref/ImageHref';
 
 export default class ProfileTextArea extends Component {
     constructor({classes, data}) {
@@ -66,9 +67,10 @@ export default class ProfileTextArea extends Component {
 
         this.addContextData({
             SubmitButton:
-                new NeonButton({
-                    text: 'Обновить',
-                    classes: 'profile-update__submit-btn',
+                new Img({
+                    id: 'profile-area__refresh',
+                    src: '/static/refresh.svg',
+                    classes: 'icon',
                     callback: () => {
                         this.context.generalErrorField.clean();
 
@@ -103,19 +105,17 @@ export default class ProfileTextArea extends Component {
                 }),
 
             LogoutButton:
-                new NeonButton({
-                    text: 'Выйти',
-                    classes: 'profile-update__logout-btn',
+                new Img({
+                    id: 'profile-area__log-out',
+                    classes: 'icon',
+                    src: '/static/sign-out.svg',
                     callback: () => {
                         EventBus.publish('log-out');
                     },
                 }),
-            ordersButton: new NeonButton({
-                text: 'Заказы',
-                classes: 'orders-btn',
-                callback: () => {
-                    EventBus.publish('redirect', {url: '/orders'});
-                },
+            ordersButton: new ImageHref({
+                src: '/static/order_history.svg',
+                href: '/orders',
             }),
         });
     }

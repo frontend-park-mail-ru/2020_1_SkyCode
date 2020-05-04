@@ -3,18 +3,34 @@
 @import "../../blocks/order/Order.css";
 
 .base-view {
-    display: grid;
-    grid-template-rows:
-            min-content
-            1fr;
-    grid-template-areas:
-            "header"
-            "main-area";
-
     background: #FFFFFF;
-    padding-bottom: 300px;
+    overflow: hidden;
+    box-sizing: content-box;
+    width: 100%;
 }
 
 .base-view > * {
     min-width: 0;
+}
+
+.base-container {
+    overflow: scroll;
+    padding-top: 10vh;
+    height: 90vh;
+    box-sizing: content-box;
+    width: 100%;
+}
+
+@media (max-width: 600px) {
+    .base-container {
+        height: 80vh;
+    }
+}
+
+.base-view__header {
+    position: fixed;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }

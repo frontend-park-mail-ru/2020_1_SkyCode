@@ -1,21 +1,45 @@
 <div class="{{classes}}">
     <div id="signup-pretitle">Впервые у нас?</div>
     <div class="signup-field__title">Зарегистрироваться</div>
-    <label for="signup-field__fname-input">Имя</label>
-    {{{fNameInput}}}
-    {{{firstNameErrorField}}}
-    <label for="signup-field__lname-input">Фамилия</label>
-    {{{lNameInput}}}
-    {{{lastNameErrorField}}}
-    <label for="signup-field__phone-input">Телефон</label>
-    {{{phoneInput}}}
-    {{{phoneErrorField}}}
-    <label for="signup-field__password-input1">Пароль</label>
-    {{{passwordInput1}}}
-    {{{password1ErrorField}}}
-    <label for="signup-field__password-input2">Подтвердите пароль</label>
-    {{{passwordInput2}}}
-    {{{password2ErrorField}}}
-    {{{submitButton}}}
+
+    <div class="singup-field__row-container">
+        <div class="singup-field__col-container">
+            <label for="signup-field__fname-input">Имя</label>
+            {{{fNameInput}}}
+            <div>{{{firstNameErrorField}}}</div>
+        </div>
+
+        <div class="singup-field__col-container">
+            <label for="signup-field__lname-input">Фамилия</label>
+            {{{lNameInput}}}
+            {{{lastNameErrorField}}}
+        </div>
+    </div>
+
+    <div class="singup-field__row-container">
+        <div class="singup-field__col-container">
+            <label for="signup-field__password-input1">Пароль</label>
+            <div>{{{passwordInput1}}}</div>
+            <div>{{{password1ErrorField}}}</div>
+        </div>
+        <div class="singup-field__col-container">
+            <label for="signup-field__password-input2">Подтверждение</label>
+            <div>{{{passwordInput2}}}</div>
+            <div>{{{password2ErrorField}}}</div>
+        </div>
+    </div>
+
+    <div class="singup-field__row-container">
+        <div class="singup-field__col-container">
+            <label for="signup-field__phone-input">Телефон</label>
+            {{{phoneInput}}}
+            {{{phoneErrorField}}}
+        </div>
+
+        <div class="singup-field__col-container">
+            {{{submitButton}}}
+        </div>
+    </div>
+
     {{{generalErrorField}}}
 </div>

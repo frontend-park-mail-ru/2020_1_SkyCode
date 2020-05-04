@@ -6,8 +6,20 @@
     border: 1px solid #D6D6D6;
     padding: 20px;
     border-radius: 20px;
+    margin-top: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
 
-    margin-top: 20px;
+.restaurant-feedback-card__second-line {
+    background: white;
+    border-radius: 20px;
+    border: 1px solid #D6D6D6;
+    padding: 20px;
+}
+
+.restaurant-feedback-card__date-and-rate {
+    display: flex;
+    flex-direction: column;
 }
 
 .restaurant-feedback-card__first-line {
@@ -19,6 +31,7 @@
 .restaurant-feedback-card__rate {
     display: flex;
     margin-bottom: 20px;
+    margin-left: auto;
 }
 
 .restaurant-feedback-card__date {

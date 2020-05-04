@@ -92,7 +92,7 @@ export default class OrderCheckout extends Component {
                         if (BasketController.isEmpty()) {
                             this.context
                                 .GeneralError
-                                .addMessage('Your basket is empty');
+                                .addMessage('Ваша корзина пуста');
                             validationFlag = false;
                         }
 
@@ -100,8 +100,8 @@ export default class OrderCheckout extends Component {
                             return;
                         }
 
-                        const products = [];
                         const basket = BasketController.basket.product;
+                        const products = [];
                         for (const id in basket) {
                             const productItem = {
                                 productId: parseInt(id),

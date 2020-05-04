@@ -49,6 +49,8 @@ export default class NumberInput extends Component {
             }),
             isVertical,
         });
+
+        this.changedEvent = changeEventBasis;
         super.template = template;
         this.addContextData({
             PlusButton: new Button({
@@ -64,7 +66,7 @@ export default class NumberInput extends Component {
 
                     this.context.Input.domElement.value = value;
                     EventBus.publish(
-                        NumberInput.changeEvent(this.changeEventBasis),
+                        NumberInput.changeEvent(this.changedEvent),
                         value,
                     );
                 },
@@ -83,14 +85,12 @@ export default class NumberInput extends Component {
 
                     this.context.Input.domElement.value = value;
                     EventBus.publish(
-                        NumberInput.changeEvent(this.changeEventBasis),
+                        NumberInput.changeEvent(this.changedEvent),
                         value,
                     );
                 },
             }),
         });
-
-        this.changeEventBasis = changeEventBasis;
     }
 
     getValue() {

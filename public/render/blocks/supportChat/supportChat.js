@@ -22,12 +22,14 @@ export default class SupportChat extends Component {
                     const data = JSON.stringify({
                         message: this.context.Input.domElement.value,
                         chat_id: localStorage.getItem('chat_id'),
-                        user_name: username,
+                        username,
                     });
                     this.context.Input.domElement.value = '';
-                    EventBus.publish('send-msg', data);},},
-            ),
+                    EventBus.publish('send-msg', data);
+                },
+            }),
         });
+
         super.template = template;
     }
 }

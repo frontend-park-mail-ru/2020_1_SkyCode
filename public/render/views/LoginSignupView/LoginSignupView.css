@@ -2,23 +2,19 @@
 @import "../../blocks/loginField/LoginField.css";
 
 .login-signup-view {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    grid-template-rows: min-content 1fr;
-
-    grid-template-areas:
-            "header header"
-            "login signup";
-
-    height: 100vh;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    margin-top: 3vh;
     font-size: 20px;
+    justify-content: space-evenly;
 }
 
 @media (max-width: 800px) {
     .login-signup-view {
         display: flex;
         flex-direction: column;
-        height: 100vh;
+        height: 90vh;
         overflow: auto;
     }
 }

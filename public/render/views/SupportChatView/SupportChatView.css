@@ -1,12 +1,6 @@
 .support-chat-view {
-    display: grid;
-    grid-template-areas:
-            "header header header"
-            ". chat-area .";
-    grid-template-columns: 1fr 7fr 1fr;
-    grid-template-rows:  1fr 1fr 5fr;
+    display: flex;
     justify-content: center;
-    align-items: center;
-
+    width: 100%;
     height: 100%;
 }

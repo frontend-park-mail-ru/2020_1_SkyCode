@@ -1,5 +1,5 @@
 import Component from '../../Component.js';
-import template from './orderHistory.hbs'
+import template from './orderHistory.hbs';
 import OrderCard from '../orderCard/orderCard';
 
 export default class OrderHistory extends Component {

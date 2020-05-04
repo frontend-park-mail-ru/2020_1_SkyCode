@@ -6,23 +6,24 @@
         <div class="order-card__title-section_status">{{status}}</div>
     </div>
     <div class="order-card__product-section">
-        <ul class="order-card__product-section-list">
+        <div class="order-card__product-section-list">
             {{#each products}}
-                <li class="order-card__product-section-list_product">
+                <div class="order-card__product-section-list_product">
                     <div class="order-card__product-section-list_name">{{this.name}}</div>
-                    <div class="order-card__product-section-list_count">{{this.count}}  шт</div>
-                    <div class="order-card__product-section-list_price">{{this.price}}</div>
-                </li>
-                <li>
+                    <div class="order-card__product-section-list_count">{{this.count}} шт</div>
+                    <div class="order-card__product-section-list_price">{{this.price}}₽</div>
+                </div>
+                <div>
                     <hr class="separator">
-                </li>
+                </div>
             {{/each}}
-            <li class="order-card__product-section-list_total">
+            <div class="order-card__product-section-list_total">
                 <div>Итого</div>
-                {{total}}
-            </li>
-            {{{button}}}
-        </ul>
+                {{total}}₽
+            </div>
+        </div>
+
+        {{{button}}}
     </div>
 </div>
 

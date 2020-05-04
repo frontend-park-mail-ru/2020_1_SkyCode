@@ -14,12 +14,11 @@ import SupportChatController from '../../../controllers/SupportChatController.js
 export default class Order extends Component {
     constructor({
         basket = BasketController.basket.product,
-        classes = '',
+        classes = 'order',
         withCheckoutButton = true,
         personNum = BasketController.persons,
         isVisible = false,
-    }) {
-        classes = (classes === '') ? 'order' : classes + ' order';
+    } = {}) {
         super();
         super.template = template;
         this.isVisible = true;

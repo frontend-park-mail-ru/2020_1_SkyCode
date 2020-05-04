@@ -1,14 +1,11 @@
 @import "../../blocks/restaurantsList/restaurantsList.css";
 
 .restaurants-list-view {
-    display: grid;
-    grid-template-areas:
-            "header header header"
-            ". restaurants-list-area .";
-    grid-template-columns: 1fr 7fr 1fr;
-    grid-template-rows:  1fr 1fr 5fr;
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    height: 100%;
+
     justify-content: center;
     align-items: center;
-
-    height: 100%;
 }

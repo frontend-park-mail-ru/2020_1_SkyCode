@@ -7,6 +7,8 @@
 .restaurant-view {
     display: flex;
     flex-direction: column;
+    height: 100%;
+    width: 100%;
 
     background: #FFFFFF;
 }
@@ -19,8 +21,17 @@
     display: flex;
     justify-content: space-between;
 
-    width: 100%;
-    margin-top: 50px;
+    margin: 0 70px 20px;
+}
+
+@media (max-width: 600px) {
+    .restaurant-view {
+        padding: 0 30px;
+        box-sizing: border-box;
+    }
+    .restaurant-view__info-bar {
+        margin: 0 0 20px;
+    }
 }
 
 .restaurant-view__label {
@@ -38,31 +49,4 @@
     .restaurant-view__label {
         display: none;
     }
-}
-
-.restaurant-view__main-area {
-    grid-area: main-area;
-}
-
-.restaurant-view__belt {
-    overflow: hidden;
-    margin: 0 80px;
-    height: 100vh;
-}
-
-@media (max-width: 600px) {
-    .restaurant-view__belt {
-        margin: 0 15px;
-    }
-}
-
-.restaurant-view__scrolled-area {
-    overflow-y: scroll;
-    height: 100vh;
-    margin-right: -14px;
-}
-
-.restaurant-view__container {
-    display: flex;
-    flex-direction: column;
 }
