@@ -191,11 +191,11 @@
 }
 
 .add-restaurant__input {
-    width: 90%;
-    text-align: start;
-    margin-top: 5px;
-    margin-bottom: 5px;
     padding-left: 10px;
+    margin-right: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: start;
 
     background: #FFFFFF;
     box-shadow: 4px 6px 100px #9E9E9E;
