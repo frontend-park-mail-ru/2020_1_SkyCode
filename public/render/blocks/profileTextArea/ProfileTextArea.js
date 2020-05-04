@@ -68,6 +68,7 @@ export default class ProfileTextArea extends Component {
         this.addContextData({
             SubmitButton:
                 new Img({
+                    id: 'profile-area__refresh',
                     src: '/static/refresh.svg',
                     classes: 'icon',
                     callback: () => {
@@ -105,6 +106,7 @@ export default class ProfileTextArea extends Component {
 
             LogoutButton:
                 new Img({
+                    id: 'profile-area__log-out',
                     classes: 'icon',
                     src: '/static/sign-out.svg',
                     callback: () => {

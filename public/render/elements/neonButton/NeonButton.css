@@ -22,6 +22,12 @@
     width: 20px;
 }
 
+.send_button {
+    margin-right: 10px;
+    width: 90px;
+    box-sizing: border-box;
+}
+
 .neon-button__line {
     position: absolute;
     display: block;

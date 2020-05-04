@@ -162,6 +162,7 @@
 }
 
 .message_input {
+    width: 100%;
     flex-grow: 1;
     text-align: start;
     margin: 10px;
