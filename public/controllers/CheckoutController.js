@@ -4,7 +4,6 @@ import UserModel from '../models/UserModel.js';
 import BasketController from './BasketController.js';
 import EventBus from '../services/Events/EventBus.js';
 import RestaurantModel from '../models/RestaurantModel.js';
-import OrderModel from '../models/OrderModel';
 import Swal from 'sweetalert2';
 
 class CheckoutController extends BaseController {
@@ -34,7 +33,6 @@ class CheckoutController extends BaseController {
 
     startCatchEvents() {
         EventBus.subscribe('checkout', this.checkoutHandler.bind(this));
-
     }
 
     stopCatchEvents() {
@@ -52,8 +50,8 @@ class CheckoutController extends BaseController {
                         icon: 'success',
                         title: 'Your work has been saved',
                         showConfirmButton: false,
-                        timer: 3500
-                    })
+                        timer: 3500,
+                    });
                     EventBus.publish('checkout-success', {});
                     EventBus.publish('set-page', {url: '/orders'});
                 }
@@ -63,8 +61,6 @@ class CheckoutController extends BaseController {
                 EventBus.publish('order-checkout-error', err);
             });
     }
-
-
 }
 
 export default new CheckoutController();

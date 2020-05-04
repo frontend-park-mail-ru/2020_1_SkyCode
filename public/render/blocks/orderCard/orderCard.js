@@ -29,6 +29,5 @@ export default class OrderCard extends Component {
                 }),
             });
         }
-
     }
 }

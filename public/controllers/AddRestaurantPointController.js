@@ -18,7 +18,7 @@ class AddRestaurantPointController extends BaseController {
                 ymaps.ready(init);
 
                 function init() {
-                    var suggestView = new ymaps.SuggestView('suggest');
+                    const suggestView = new ymaps.SuggestView('suggest');
                 }
             })
             .catch((err) => console.log(err));

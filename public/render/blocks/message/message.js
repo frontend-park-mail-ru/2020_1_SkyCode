@@ -11,7 +11,7 @@ export default class Message extends Component {
 
         this.addContextData({
             text: message,
-            user: user,
+            user,
         });
     }
 }

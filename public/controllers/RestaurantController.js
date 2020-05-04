@@ -10,7 +10,6 @@ class RestaurantController extends BaseController {
     constructor(title = 'Restaurant') {
         super(title);
         this.restaurantId = 0;
-
     }
 
     execute(matchData) {

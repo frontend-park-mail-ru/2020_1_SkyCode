@@ -26,7 +26,6 @@ class OrderHistoryController extends BaseController {
                 }
             })
             .catch((err) => console.log(err));
-
     }
 
     startCatchEvents() {

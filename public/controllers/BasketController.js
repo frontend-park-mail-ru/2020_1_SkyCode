@@ -1,7 +1,6 @@
 import BaseController from './BaseController.js';
 import EventBus from '../services/Events/EventBus.js';
 import RestaurantController from './RestaurantController.js';
-import ProfileController from './ProfileController.js';
 
 class BasketController extends BaseController {
     constructor() {
@@ -21,7 +20,7 @@ class BasketController extends BaseController {
             'person-amount-change',
             this.personAmountChangeHandler.bind(this),
         );
-        EventBus.subscribe('checkout-success', this.cleanBasketHandler.bind(this))
+        EventBus.subscribe('checkout-success', this.cleanBasketHandler.bind(this));
         EventBus.subscribe('success-login', this.CheckBasketHandler.bind(this));
         EventBus.subscribe('log-out', this.cleanBasketHandler.bind(this));
         EventBus.subscribe('delete-prod', this.deleteProductHandler.bind(this));
@@ -35,7 +34,7 @@ class BasketController extends BaseController {
         );
         EventBus.unsubscribe('success-login', this.CheckBasketHandler.bind(this));
         EventBus.unsubscribe('log-out', this.cleanBasketHandler.bind(this));
-        EventBus.unsubscribe('checkout-success', this.cleanBasketHandler.bind(this))
+        EventBus.unsubscribe('checkout-success', this.cleanBasketHandler.bind(this));
         EventBus.unsubscribe('delete-prod', this.deleteProductHandler.bind(this));
     }
 
@@ -91,7 +90,7 @@ class BasketController extends BaseController {
         }
     }
 
-    cleanBasketHandler(data) {
+    cleanBasketHandler() {
         this.basket = {
             owner: -1,
             product: {},

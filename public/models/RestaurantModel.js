@@ -85,7 +85,7 @@ class RestaurantModel {
 
     getRestaurants(page, count) {
         return Http.fetchGet({
-            path: `/api/v1/restaurants?page=${page}&count=${count}`
+            path: `/api/v1/restaurants?page=${page}&count=${count}`,
         })
             .then((response) => {
                 const token = response.headers.get('X-Csrf-Token');

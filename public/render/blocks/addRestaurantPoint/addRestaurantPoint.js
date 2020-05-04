@@ -1,10 +1,10 @@
 import Component from '../../Component.js';
-import template from './addRestaurantPoint.hbs'
+import template from './addRestaurantPoint.hbs';
 import NeonButton from '../../elements/neonButton/NeonButton';
 import EventBus from '../../../services/Events/EventBus.js';
 
 export default class AddRestaurantPoint extends Component {
-    constructor({classes, name, id}) {
+    constructor({classes, name}) {
         super(classes, {
             RestaurantName: name,
         });

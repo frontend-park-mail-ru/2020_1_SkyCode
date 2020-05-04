@@ -37,7 +37,7 @@ class SupportChatController extends BaseController {
             if (data.message) {
                 EventBus.publish('new-message', data);
                 const el = new Message('msg', data.message, data.user_name);
-                let domEl = document.getElementsByClassName('chat__messages')[0];
+                const domEl = document.getElementsByClassName('chat__messages')[0];
                 domEl.innerHTML += el;
 
                 domEl.scrollTop = domEl.scrollHeight;
@@ -50,7 +50,6 @@ class SupportChatController extends BaseController {
                     EventBus.publish('support-connected', {});
                 }
             }
-
         };
 
         UserModel.getUser()
@@ -66,11 +65,10 @@ class SupportChatController extends BaseController {
                         .then((response) => {
                             for (const msg of response) {
                                 const el = new Message('msg', msg.message, msg.user_name);
-                                let domEl = document.getElementsByClassName('chat__messages')[0];
+                                const domEl = document.getElementsByClassName('chat__messages')[0];
                                 domEl.innerHTML += el;
                             }
                             document.getElementsByClassName('chat__messages')[0].outerHTML = domEl.outerHTML;
-
                         })
                         .catch((err) => console.log(err));
                 }
