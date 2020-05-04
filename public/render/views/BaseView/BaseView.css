@@ -4,6 +4,9 @@
 
 .base-view {
     background: #FFFFFF;
+    overflow: hidden;
+    box-sizing: content-box;
+    width: 100%;
 }
 
 .base-view > * {
@@ -11,19 +14,17 @@
 }
 
 .base-container {
-    overflow: hidden;
+    overflow: scroll;
     padding-top: 10vh;
-    box-sizing: border-box;
     height: 100vh;
-}
-
-@media (max-width: 600px) {
-    .base-container {
-        height: 90vh;
-        margin: 0 30px;
-    }
+    box-sizing: content-box;
+    width: 100%;
 }
 
 .base-view__header {
     position: fixed;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }

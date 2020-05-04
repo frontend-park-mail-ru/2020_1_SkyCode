@@ -10,8 +10,7 @@
     flex-direction: column;
     background: #FFFFFF;
 
-    overflow-y: scroll;
-    height: 100vh;
+    height: 100%;
 }
 
 .main-view__info-bar {

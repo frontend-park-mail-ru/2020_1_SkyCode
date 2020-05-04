@@ -7,8 +7,8 @@
 .restaurant-view {
     display: flex;
     flex-direction: column;
-    overflow-y: scroll;
-    height: 100vh;
+    height: 100%;
+    width: 100%;
 
     background: #FFFFFF;
 }
@@ -25,6 +25,9 @@
 }
 
 @media (max-width: 600px) {
+    .restaurant-view {
+        margin: 0 30px;
+    }
     .restaurant-view__info-bar {
         margin: 0 0 20px;
     }
