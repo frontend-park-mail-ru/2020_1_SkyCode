@@ -22,7 +22,7 @@ class OrderHistoryController extends BaseController {
                         })
                         .catch((err) => console.log(err));
                 } else {
-                    EventBus.publish('redirect', {url: '/'});
+                    EventBus.publish('redirect', {url: '/login'});
                 }
             })
             .catch((err) => console.log(err));
