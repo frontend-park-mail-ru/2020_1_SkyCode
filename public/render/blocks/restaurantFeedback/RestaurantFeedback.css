@@ -5,13 +5,15 @@
 
 .restaurant-feedback__login-signup-invitation {
     background-color: #F8F8F8;
-    border: 1px solid #D6D6D6;
+    border: 3px solid #4d3434;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     padding: 20px;
     border-radius: 20px;
 }
 
 .restaurant-feedback__info-bar {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
 
     margin: 0 70px 50px;
@@ -20,18 +22,6 @@
 .restaurant-feedback__container {
     margin: 0 70px 200px;
 }
-
-@media (max-width: 600px) {
-    .restaurant-feedback__info-bar {
-        margin: 0 0 50px;
-    }
-
-    .restaurant-feedback__container {
-        margin: 0 0 200px;
-        padding: 0 10px;
-    }
-}
-
 
 .restaurant-feedback__label {
     display: inline;
@@ -43,7 +33,25 @@
     margin-inline-end: 0;
     font-weight: normal;
     margin-right: 20px;
+    margin-top: 20px
 }
+
+@media (max-width: 600px) {
+    .restaurant-feedback__container {
+        margin: 0 0 200px;
+        padding: 0 10px;
+    }
+    .restaurant-feedback__info-bar {
+        margin: 0 0 50px;
+    }
+}
+
+@media (max-width: 450px) {
+    .restaurant-feedback__info-bar{
+        justify-content: center;
+    }
+}
+
 
 
 .restaurant-feedback__main-area {

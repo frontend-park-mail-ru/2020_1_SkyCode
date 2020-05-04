@@ -14,7 +14,10 @@
     background: #FFFFFF;
 }
 
-.restaurant-info-view > * {
-    min-width: 0;
+@media (max-width: 600px) {
+    .restaurant-info-view {
+        box-sizing: border-box;
+        padding: 0 30px;
+    }
 }
 

@@ -4,5 +4,7 @@
 .profile-view {
     display: flex;
     height: 80vh;
+    /*width: 100%;*/
+    /*height: 100%;*/
     justify-content: center;
 }

@@ -58,6 +58,13 @@
     text-decoration: none;
 
     border-radius: 15px;
+    margin-top: 20px;
+}
+
+@media (max-width: 450px) {
+    .restaurant-feedback__back-href{
+        margin-right: 20px;
+    }
 }
 
 .restaurant-view__info {

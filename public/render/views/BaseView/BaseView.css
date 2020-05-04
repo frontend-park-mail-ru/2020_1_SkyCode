@@ -16,9 +16,15 @@
 .base-container {
     overflow: scroll;
     padding-top: 10vh;
-    height: 100vh;
+    height: 90vh;
     box-sizing: content-box;
     width: 100%;
+}
+
+@media (max-width: 600px) {
+    .base-container {
+        height: 80vh;
+    }
 }
 
 .base-view__header {

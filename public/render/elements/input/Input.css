@@ -162,7 +162,7 @@
 }
 
 .message_input {
-    width: 650px;
+    flex-grow: 1;
     text-align: start;
     margin: 10px;
     padding-left: 10px;

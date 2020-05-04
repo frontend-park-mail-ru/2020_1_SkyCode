@@ -30,14 +30,6 @@
 }
 
 @media (max-width: 700px) {
-    .profile-area__button-array {
-        flex-direction: column;
-    }
-
-    .profile-area__button-array > * {
-        width: 150px;
-        margin-bottom: 15px;
-    }
 }
 
 .profile-area__title {
