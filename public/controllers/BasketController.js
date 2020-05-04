@@ -40,7 +40,7 @@ class BasketController extends BaseController {
     }
 
     productNumber() {
-        return Object.keys(this.basket).length;
+        return Object.keys(this.basket.product).length;
     }
 
     isEmpty() {
