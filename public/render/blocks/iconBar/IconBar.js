@@ -46,4 +46,17 @@ export default class IconBar extends Component {
 
         super.template = template;
     }
+
+    bind() {
+        let active = false;
+        EventBus.subscribe('order-button-clicked', () => {
+            if (active) {
+                this.domElement.style.background = 'rgba(255, 255, 255, .9)';
+            } else {
+                this.domElement.style.background = 'rgba(0, 0, 0, 0)';
+            }
+            active = !active;
+        });
+        super.bind();
+    }
 }

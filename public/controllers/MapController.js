@@ -1,27 +1,24 @@
 import BaseController from './BaseController.js';
-import MapView from '../render/views/MapView/MapView.js';
 import NeonButton from '../render/elements/neonButton/NeonButton';
 import EventBus from '../services/Events/EventBus';
 import Swal from 'sweetalert2';
 import MapModel from '../models/MapModel';
 import MainController from './MainController';
 import RestaurantModel from '../models/RestaurantModel';
-import GeneralMapView from '../render/views/GeneralMapView/GeneralMapView.js';
+import MapView from '../render/views/MapView/MapView.js';
 
 class MapController extends BaseController {
     constructor(title = 'Map') {
         super(title);
-        let UserGeo = [];
+        const UserGeo = [];
         this.startCatchEvents();
     }
 
     execute() {
-
-        super.execute(new GeneralMapView({}));
+        super.execute(new MapView());
         ymaps.ready(init);
 
         function init() {
-
             const myMap = new ymaps.Map('map', {
                 center: [localStorage.getItem('longitude'), localStorage.getItem('latitude')],
                 zoom: 17,
@@ -93,7 +90,7 @@ class MapController extends BaseController {
         ymaps.ready(init);
 
         function init() {
-            var suggestView = new ymaps.SuggestView('suggest');
+            const suggestView = new ymaps.SuggestView('suggest');
         }
 
         document.getElementsByClassName('swal2-confirm')[0].addEventListener('click', (e) => {
@@ -106,11 +103,9 @@ class MapController extends BaseController {
                         localStorage.setItem('deliveryGeo', this.address);
                         localStorage.setItem('latitude', this.geopos.latitude);
                         localStorage.setItem('longitude', this.geopos.longitude);
-                        document.getElementsByClassName('place-time-card__place-text')[0].innerHTML =
-                            localStorage.getItem('deliveryGeo');
+                        document.getElementsByClassName('place-time-card__place-text')[0].innerHTML
+                            = localStorage.getItem('deliveryGeo');
                         EventBus.publish('set-page', {url: window.location.pathname});
-
-                        return;
                     } else {
                         Swal.fire({
                             icon: 'error',

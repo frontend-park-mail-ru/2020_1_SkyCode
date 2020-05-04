@@ -1,9 +1,9 @@
 .basket-product__img {
     border-radius: 15px;
-    height: 40px;
-    margin-right: 10px;
-    margin-left: 10px;
+    height: 2cm;
+    width: 3cm;
     margin-bottom: 10px;
+    object-fit: cover;
 }
 
 .icon {

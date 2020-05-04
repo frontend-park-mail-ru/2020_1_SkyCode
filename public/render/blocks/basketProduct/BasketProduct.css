@@ -2,29 +2,47 @@
 
 .basket__basket-product {
     display: flex;
-    margin: 10px;
-    justify-content: space-between;
+    margin: 10px 0;
+    justify-content: center;
     align-items: center;
     text-align: center;
-
     font-size: 14px;
 }
 
 .basket__basket-product:hover {
-    background: linear-gradient(90deg, transparent, gray);
+    background: linear-gradient(90deg, transparent, red);
     border-radius: 5px;
     cursor: pointer;
 }
 
 .basket-product__price {
-    color: #C4C4C4;
-    text-align: right;
-    margin-left: 10px;
+    color: #000000;
+    font-weight: bold;
+    width: 2cm;
 }
 
 .basket-product__img-container {
     border-radius: 15px;
-    height: 40px;
-    max-width: 80px;
+    height: 2cm;
+    width: 3cm;
+
     overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin-left: 10px;
+}
+
+.basket-product__info-container {
+    display: flex;
+    height: 2cm;
+    width: 3cm;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    .basket-product__info-container {
+        flex-direction: row;
+    }
 }
