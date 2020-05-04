@@ -14,8 +14,8 @@ func mainHandler(w http.ResponseWriter, r *http.Request) {
 func imageHandler(w http.ResponseWriter, r *http.Request) {
 	filename := r.URL.Path
 	fmt.Println(filename)
-	http.ServeFile(w, r, "../public/static"+filename)
-// 	http.ServeFile(w, r, "../../backend"+filename)
+// 	http.ServeFile(w, r, "../public/static"+filename)
+	http.ServeFile(w, r, "../../backend"+filename)
 }
 
 func resourceHandler(w http.ResponseWriter, r *http.Request) {
