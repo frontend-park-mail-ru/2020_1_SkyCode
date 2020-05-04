@@ -57,7 +57,6 @@ export default class IconBar extends Component {
             }
             active = !active;
         });
-        debugger
         super.bind();
     }
 }

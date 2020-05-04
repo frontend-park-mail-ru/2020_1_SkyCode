@@ -72,35 +72,7 @@ export default class ProfileTextArea extends Component {
                     src: '/static/refresh.svg',
                     classes: 'icon',
                     callback: () => {
-                        this.context.generalErrorField.clean();
-
-                        let validationFlag;
-
-                        validationFlag = Validation.inputValidation(
-                            this.context.fNameInput,
-                            this.context.firstNameErrorField,
-                        );
-
-                        validationFlag = Validation.inputValidation(
-                            this.context.lNameInput,
-                            this.context.lastNameErrorField,
-                        ) && validationFlag;
-
-                        validationFlag = Validation.inputValidation(
-                            this.context.EmailInput,
-                            this.context.emailErrorField,
-                        ) && validationFlag;
-
-                        if (validationFlag === false) {
-                            return;
-                        }
-
-                        const data = {
-                            firstName: this.context.fNameInput.domElement.value,
-                            lastName: this.context.lNameInput.domElement.value,
-                            email: this.context.EmailInput.domElement.value,
-                        };
-                        EventBus.publish('update-user', data);
+                        EventBus.publish('profile-view__update-user');
                     },
                 }),
 
@@ -139,6 +111,38 @@ export default class ProfileTextArea extends Component {
             this.context
                 .avatarErrorField
                 .addMessage(message);
+        });
+
+        EventBus.subscribe('profile-view__update-user', () => {
+            this.context.generalErrorField.clean();
+
+            let validationFlag;
+
+            validationFlag = Validation.inputValidation(
+                this.context.fNameInput,
+                this.context.firstNameErrorField,
+            );
+
+            validationFlag = Validation.inputValidation(
+                this.context.lNameInput,
+                this.context.lastNameErrorField,
+            ) && validationFlag;
+
+            validationFlag = Validation.inputValidation(
+                this.context.EmailInput,
+                this.context.emailErrorField,
+            ) && validationFlag;
+
+            if (validationFlag === false) {
+                return;
+            }
+
+            const data = {
+                firstName: this.context.fNameInput.domElement.value,
+                lastName: this.context.lNameInput.domElement.value,
+                email: this.context.EmailInput.domElement.value,
+            };
+            EventBus.publish('update-user', data);
         });
 
         super.bind();
