@@ -52,7 +52,6 @@ export default class PhoneInput extends Input {
 
             this.domElement.value = newValue;
         };
-        super.bind();
     }
 
     unbind() {

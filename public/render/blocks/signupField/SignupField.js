@@ -35,10 +35,12 @@ export default class SignupField extends Component {
                 type: 'password',
                 placeholder: 'Пароль',
                 isRequired: true,
+                minlength: '7',
             }),
             passwordInput2: new Input({
                 classes: 'signup-field__input',
                 id: 'signup-field__password-input2',
+                minlength: '7',
                 type: 'password',
                 placeholder: 'Пароль',
                 isRequired: true,
@@ -128,6 +130,41 @@ export default class SignupField extends Component {
     bind() {
         EventBus.subscribe('signup-error', (message) => {
             this.context.generalErrorField.addMessage(message);
+        });
+
+        EventBus.subscribe(Input.oninputEvent(this.context.passwordInput2.id), () => {
+            Validation.inputValidation(
+                this.context.passwordInput2,
+                this.context.password2ErrorField,
+            );
+        });
+
+        EventBus.subscribe(Input.oninputEvent(this.context.passwordInput1.id), () => {
+            Validation.inputValidation(
+                this.context.passwordInput1,
+                this.context.password1ErrorField,
+            );
+        });
+
+        EventBus.subscribe(Input.oninputEvent(this.context.phoneInput.id), () => {
+            Validation.inputValidation(
+                this.context.phoneInput,
+                this.context.phoneErrorField,
+            );
+        });
+
+        EventBus.subscribe(Input.oninputEvent(this.context.lNameInput.id), () => {
+            Validation.inputValidation(
+                this.context.lNameInput,
+                this.context.lastNameErrorField,
+            );
+        });
+
+        EventBus.subscribe(Input.oninputEvent(this.context.fNameInput.id), () => {
+            Validation.inputValidation(
+                this.context.fNameInput,
+                this.context.firstNameErrorField,
+            );
         });
 
         super.bind();

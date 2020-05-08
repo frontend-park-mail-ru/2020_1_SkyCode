@@ -19,6 +19,7 @@ export default class LoginField extends Component {
                 classes: 'login-field__input',
                 id: 'login-field__password-input',
                 type: 'password',
+                minlength: '7',
                 placeholder: 'Пароль',
                 isRequired: true,
             }),
@@ -68,6 +69,20 @@ export default class LoginField extends Component {
     bind() {
         EventBus.subscribe('login-error', (message) => {
             this.context.generalErrorField.addMessage(message);
+        });
+
+        EventBus.subscribe(Input.oninputEvent(this.context.passwordInput.id), () => {
+            Validation.inputValidation(
+                this.context.passwordInput,
+                this.context.passwordErrorField,
+            );
+        });
+
+        EventBus.subscribe(Input.oninputEvent(this.context.phoneInput.id), () => {
+            Validation.inputValidation(
+                this.context.phoneInput,
+                this.context.phoneErrorField,
+            );
         });
 
         super.bind();
