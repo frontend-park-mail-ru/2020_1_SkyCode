@@ -1,7 +1,6 @@
 
 .header__hamburger-button {
     z-index: 3;
-    pointer-events: none;
 }
 
 .hamburger-button__hamburger-line {

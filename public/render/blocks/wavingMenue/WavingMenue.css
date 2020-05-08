@@ -1,23 +1,39 @@
 .waving-menue {
     position: fixed;
-    left: -5000px;
-    background: #C4C4C4;
-    border-right: #9E9E9E;
+    background: linear-gradient(0, #b4b4b4, white);
     width: 33%;
-    padding-top: 75px;
-    height: 100vh;
+    height: 90vh;
     z-index: 2;
+
+    transition: opacity .55s;
+    opacity: 0;
+    display: none;
 }
 
 @media (max-width: 600px) {
     .waving-menue {
-        position: fixed;
-        left: -5000px;
-        background: #C4C4C4;
-        border-right: #9E9E9E;
         width: 100%;
-        padding-top: 75px;
-        height: 100vh;
-        z-index: 1;
+        padding-top: 10vh;
+        height: 80vh;
     }
+}
+
+.waving-menue__hider {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .70);
+    z-index: 2;
+    transition: opacity .55s;
+
+    opacity: 0;
+    display: none;
+}
+
+.waving-menue__header {
+    margin-left: 40px;
+}
+
+.waving-menue__list {
+    list-style: none;
 }

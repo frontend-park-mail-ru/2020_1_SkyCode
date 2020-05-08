@@ -1,6 +1,20 @@
+<div class="waving-menue__hider"></div>
 <aside class="{{classes}} 'waving-menue'">
-    <ul>
-        <li>some hyperlink</li>
-        <li>ano hyperlink</li>
-    </ul>
+    <nav>
+        <ul class="waving-menue__list">
+            {{#each userHrefs}}
+                <li>{{{this}}}</li>
+            {{/each}}
+        </ul>
+
+
+        {{#if adminHref}}
+            <h2 class="waving-menue__header">Администратору:</h2>
+            <ul>
+                {{#each adminHref}}
+                    <li>{{{this}}}</li>
+                {{/each}}
+            </ul>
+        {{/if}}
+    </nav>
 </aside>
