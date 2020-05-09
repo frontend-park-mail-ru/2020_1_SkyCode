@@ -7,39 +7,21 @@ class RestaurantModel {
             body,
             type: 'file',
         })
-            .then((response) => {
-                const token = response.headers.get('X-Csrf-Token');
-                if (token) {
-                    localStorage.setItem('token', token);
-                }
-                return response.json();
-            });
+            .then((response) => response.json());
     }
 
     getRestaurant(id) {
         return Http.fetchGet({
             path: `/api/v1/restaurants/${id}`,
         })
-            .then((response) => {
-                const token = response.headers.get('X-Csrf-Token');
-                if (token) {
-                    localStorage.setItem('token', token);
-                }
-                return response.json();
-            });
+            .then((response) => response.json());
     }
 
     getRestaurantReviews(id, page, count) {
         return Http.fetchGet({
             path: `/api/v1/restaurants/${id}/reviews?count=${count}&page=${page}`,
         })
-            .then((response) => {
-                const token = response.headers.get('X-Csrf-Token');
-                if (token) {
-                    localStorage.setItem('token', token);
-                }
-                return response.json();
-            });
+            .then((response) => response.json());
     }
 
     addRestaurantReview(id, body) {
@@ -47,13 +29,7 @@ class RestaurantModel {
             path: `/api/v1/restaurants/${id}/reviews`,
             body,
         })
-            .then((response) => {
-                const token = response.headers.get('X-Csrf-Token');
-                if (token) {
-                    localStorage.setItem('token', token);
-                }
-                return response.json();
-            });
+            .then((response) => response.json());
     }
 
     changeRestaurantReview(id, body) {
@@ -61,52 +37,28 @@ class RestaurantModel {
             path: `/api/v1/reviews/${id}`,
             body,
         })
-            .then((response) => {
-                const token = response.headers.get('X-Csrf-Token');
-                if (token) {
-                    localStorage.setItem('token', token);
-                }
-                return response.json();
-            });
+            .then((response) => response.json());
     }
 
     getProducts(id, page, count) {
         return Http.fetchGet({
             path: `/api/v1/restaurants/${id}/product?page=${page}&count=${count}`,
         })
-            .then((response) => {
-                const token = response.headers.get('X-Csrf-Token');
-                if (token) {
-                    localStorage.setItem('token', token);
-                }
-                return response.json();
-            });
+            .then((response) => response.json());
     }
 
     getRestaurants(page, count) {
         return Http.fetchGet({
             path: `/api/v1/restaurants?page=${page}&count=${count}`,
         })
-            .then((response) => {
-                const token = response.headers.get('X-Csrf-Token');
-                if (token) {
-                    localStorage.setItem('token', token);
-                }
-                return response.json();
-            });
+            .then((response) => response.json());
     }
 
     getRestaurantsByAddress(page, count, address) {
         return Http.fetchGet({
             path: `/api/v1/restaurants_point?page=${page}&count=${count}&address=${address}`,
         })
-            .then((response) => {
-                const token = response.headers.get('X-Csrf-Token');
-                if (token) {
-                    localStorage.setItem('token', token);
-                }
-                return response.json();
-            });
+            .then((response) => response.json());
     }
 
     addProduct(id, body) {
@@ -115,13 +67,7 @@ class RestaurantModel {
             body,
             type: 'file',
         })
-            .then((response) => {
-                const token = response.headers.get('X-Csrf-Token');
-                if (token) {
-                    localStorage.setItem('token', token);
-                }
-                return response.json();
-            });
+            .then((response) => response.json());
     }
 
     addProductImage(id, body) {
@@ -130,13 +76,7 @@ class RestaurantModel {
             body,
             type: 'file',
         })
-            .then((response) => {
-                const token = response.headers.get('X-Csrf-Token');
-                if (token) {
-                    localStorage.setItem('token', token);
-                }
-                return response.json();
-            });
+            .then((response) => response.json());
     }
 
     addOrder(body) {
@@ -144,26 +84,14 @@ class RestaurantModel {
             path: '/api/v1/orders/checkout',
             body: JSON.stringify(body),
         })
-            .then((response) => {
-                const token = response.headers.get('X-Csrf-Token');
-                if (token) {
-                    localStorage.setItem('token', token);
-                }
-                return response.json();
-            });
+            .then((response) => response.json());
     }
 
     addPoint(body, id) {
         return Http.fetchPost({
             path: `/api/v1/restaurants/${id}/points`,
             body: JSON.stringify(body),
-        }).then((response) => {
-            const token = response.headers.get('X-Csrf-Token');
-            if (token) {
-                localStorage.setItem('token', token);
-            }
-            return response.json();
-        });
+        }).then((response) => response.json());
     }
 }
 
