@@ -5,15 +5,13 @@ class SessionModel {
         return Http.fetchPost({
             path: '/api/v1/signin',
             body: JSON.stringify(data),
-        })
-            .then((response) => response.json());
+        });
     }
 
     logout() {
         return Http.fetchPost({
             path: '/api/v1/logout',
-        })
-            .then((response) => response.json());
+        });
     }
 }
 

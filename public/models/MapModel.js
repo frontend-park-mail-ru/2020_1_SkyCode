@@ -4,7 +4,7 @@ class MapModel {
     getCoordinates(address) {
         return Http.fetchGet({
             path: `/api/v1/check_address?address=${address}`,
-        }).then((response) => response.json());
+        });
     }
 }
 
