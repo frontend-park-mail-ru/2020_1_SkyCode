@@ -1,6 +1,6 @@
 class Http {
     constructor() {
-        this.serverPath = 'http://89.208.199.114:5000';
+        this.serverPath = 'https://89.208.199.114:8081';
     }
 
     fetchRequest({
@@ -37,34 +37,41 @@ class Http {
             .then((response) => response.json());
     }
 
-    async fetchGet({path}, useCache = true) {
-        if (useCache && Object.prototype.hasOwnProperty.call(sessionStorage, path)) {
-            const cacheRecord = JSON.parse(sessionStorage[path]);
-            const second = 1000;
-            const minute = second * 60;
-            const fiveMinutes = minute * 5;
-
-            if (Date.now() - cacheRecord.created < fiveMinutes) {
-                return cacheRecord.response;
-            }
-        }
-
-        const response = await this.fetchRequest({
+    async fetchGet({path}) {
+        return await this.fetchRequest({
             method: 'GET',
             path,
         });
-
-        if (Object.prototype.hasOwnProperty.call(response, 'error')) {
-            return response;
-        }
-
-        sessionStorage[path] = JSON.stringify({
-            created: Date.now(),
-            response,
-        });
-
-        return response;
     }
+    /*
+     *     If (useCache && Object.prototype.hasOwnProperty.call(sessionStorage, path)) {
+     *         const cacheRecord = JSON.parse(sessionStorage[path]);
+     *         const second = 1000;
+     *         const minute = second * 60;
+     *         const fiveMinutes = minute * 5;
+     *
+     *         if (Date.now() - cacheRecord.created < fiveMinutes) {
+     *             return cacheRecord.response;
+     *         }
+     *     }
+     *
+     *     const response = await this.fetchRequest({
+     *         method: 'GET',
+     *         path,
+     *     });
+     *
+     *     if (Object.prototype.hasOwnProperty.call(response, 'error')) {
+     *         return response;
+     *     }
+     *
+     *     sessionStorage[path] = JSON.stringify({
+     *         created: Date.now(),
+     *         response,
+     *     });
+     *
+     *     return response;
+     * }
+     */
 
     async fetchPost({path, body, type = 'json'}) {
         return await this.fetchRequest({
