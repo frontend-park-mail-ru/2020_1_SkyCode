@@ -11,7 +11,7 @@ export default class IconBar extends Component {
             classes: 'icon-bar-profile-href icon',
             imageClasses: 'icon-bar__profile-image',
             src: '/static/profile.png',
-            href: '/login',
+            href: '/me',
         }),
         new ImageHref({
             classes: 'order__support-href icon',

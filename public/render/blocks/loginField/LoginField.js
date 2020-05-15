@@ -3,14 +3,13 @@ import Input from '../../elements/input/Input.js';
 import NeonButton from '../../elements/neonButton/NeonButton.js';
 import EventBus from '../../../services/Events/EventBus.js';
 import Event from '../../../services/Events/Events';
-import Validation from '../../../services/InputValidation.js';
 import template from './LoginField.hbs';
 import PhoneInput from '../../elements/phoneInput/PhoneInput';
 import CheckedInput from '../../elements/checkedInput/CheckedInput';
 import ErrorBlock from '../errorBlock/ErrorBlock';
 
 export default class LoginField extends Component {
-    constructor({classes}) {
+    constructor({classes = ''} = {}) {
         super(classes, {
             phoneInput: new CheckedInput({
                 label: 'Телефон',
@@ -38,25 +37,34 @@ export default class LoginField extends Component {
 
         super.template = template;
 
-        this.addContextData({submitButton: new NeonButton({
-            classes: 'login-field__submit',
-            text: 'Войти',
-            callback: () => {
-                this.context.generalErrorField.clean();
-                const isValid = this.context.phoneInput.isValid()
+        this.addContextData({
+            submitButton: new NeonButton({
+                classes: 'login-field__submit',
+                text: 'Войти',
+                callback: () => {
+                    this.context.generalErrorField.clean();
+                    const isValid = this.context.phoneInput.isValid()
                     && this.context.passwordInput.isValid();
 
-                if (!isValid) {
-                    return;
-                }
+                    if (!isValid) {
+                        return;
+                    }
 
-                const data = {
-                    phone: this.context.phoneInput.value(),
-                    password: this.context.passwordInput.value(),
-                };
-                EventBus.publish('login', data);
-            },
-        })});
+                    const data = {
+                        phone: this.context.phoneInput.value(),
+                        password: this.context.passwordInput.value(),
+                    };
+                    EventBus.publish('login', data);
+                },
+            }),
+            signupButton: new NeonButton({
+                classes: 'login-field__goto-signup',
+                text: 'Регистрация',
+                callback: () => {
+                    EventBus.publish(Event.signupRequest);
+                },
+            }),
+        });
     }
 
     bind() {
@@ -69,7 +77,7 @@ export default class LoginField extends Component {
 
     unbind() {
         EventBus.unsubscribe(Event.loginError, (message) => {
-            debugger
+            debugger;
             this.context.generalErrorField.addMessage(message);
         });
 

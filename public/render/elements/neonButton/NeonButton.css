@@ -17,6 +17,11 @@
     cursor: pointer;
 }
 
+.login-field__goto-signup, .singup-field__goto-login {
+    color: black;
+    background: transparent;
+}
+
 .profile-text-area__submit-phone {
     height: 20px;
     width: 20px;
@@ -94,6 +99,12 @@
     background-color: #F6D471;
     color: black;
     transition-delay: 0.45s;
+}
+
+.login-field__goto-signup:hover, .singup-field__goto-login:hover {
+    box-shadow: 0 0 10px #2196f3;
+    background-color: #2196f3;
+    color: white;
 }
 
 .signup-field__submit {

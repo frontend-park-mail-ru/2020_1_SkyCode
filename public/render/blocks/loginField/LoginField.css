@@ -2,6 +2,16 @@
     height: fit-content;
     box-shadow: 0 0 10px #D6D6D6;
     border-radius: 15px;
+    background-color: white;
+    position: relative;
+    padding: 20px;
+    width: 300px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
 }
 
 .login-signup__login {

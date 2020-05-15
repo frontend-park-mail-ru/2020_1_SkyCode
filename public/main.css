@@ -1,3 +1,11 @@
+@import "render/elements/button/Button.css";
+@import "render/elements/hamburgerButton/HamburgerButton.css";
+@import "render/elements/href/Href.css";
+@import "render/elements/img/Img.css";
+@import "render/elements/input/Input.css";
+@import "render/elements/checkedInput/CheckedInput.css";
+@import "render/elements/neonButton/NeonButton.css";
+@import "render/elements/textarea/Textarea.css";
 @import "render/views/MainView/MainView.css";
 @import "render/views/ProfileView/ProfileView.css";
 @import "render/views/LoginSignupView/LoginSignupView.css";
@@ -12,14 +20,6 @@
 @import "render/views/AddRestaurantPointView/AddRestaurantPointView.css";
 @import "render/views/AdminRestaurantListView/AdminRestaurantListView.css";
 @import "render/views/BaseView/BaseView.css";
-@import "render/elements/checkedInput/CheckedInput.css";
-@import "render/elements/button/Button.css";
-@import "render/elements/hamburgerButton/HamburgerButton.css";
-@import "render/elements/href/Href.css";
-@import "render/elements/img/Img.css";
-@import "render/elements/input/Input.css";
-@import "render/elements/neonButton/NeonButton.css";
-@import "render/elements/textarea/Textarea.css";
 @import "render/blocks/actionBar/ActionBar.css";
 @import "render/blocks/AddProductByRestaurant/AddProductByRestaurant.css";
 @import "render/blocks/addRestaurant/AddRestaurant.css";
@@ -36,6 +36,8 @@
 @import "render/blocks/iconedHeader/IconedHeader.css";
 @import "render/blocks/imageHref/ImageHref.css";
 @import "render/blocks/loginField/LoginField.css";
+@import "render/blocks/LoginPopup/LoginPopup.css";
+@import "render/blocks/SignupPopup/SignupPopup.css";
 @import "render/blocks/message/message.css";
 @import "render/blocks/order/Order.css";
 @import "render/blocks/orderCard/orderCard.css";

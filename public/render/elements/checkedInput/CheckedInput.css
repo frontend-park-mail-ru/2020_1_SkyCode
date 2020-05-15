@@ -40,6 +40,7 @@
 
 .checked-input__input::-webkit-input-placeholder {
     opacity: 0;
+    color: #cac6c6;
 }
 
 .checked-input__input:focus::-webkit-input-placeholder{

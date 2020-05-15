@@ -1,4 +1,3 @@
-import LoginSignupView from '../render/views/LoginSignupView/LoginSignupView.js';
 import EventBus from '../services/Events/EventBus.js';
 import Event from '../services/Events/Events.js';
 import SessionModel from '../models/SessionModel.js';
@@ -6,26 +5,38 @@ import BaseController from './BaseController.js';
 import UserModel from '../models/UserModel.js';
 
 
-class LoginSignupController extends BaseController {
+class UserController extends BaseController {
     constructor(title = 'login-signup page') {
         super(title);
         this.profileId = 0;
+        this.logined = false;
+        this.updateUserInfo();
+        setInterval(() => {
+            this.updateUserInfo();
+        }, 1000 * 60 * 5);
     }
 
-    execute() {
-        UserModel
-            .getUser()
-            .then((answer) =>  {
-                if (answer.error === 'Unauthorized') {
-                    super.execute(new LoginSignupView());
+    updateUserInfo() {
+        if (!this.logined) return;
+
+        UserModel.getUser()
+            .then((response) => {
+                if (response.User) {
+                    this.logined = true;
+                    this.User = response.User;
                 } else {
-                    EventBus.publish(Event.redirect, {url: '/me'});
+                    this.logined = false;
                 }
-            })
-            .catch((err) => {
-                console.log(err);
-                super.execute(new LoginSignupView());
             });
+    }
+
+    getUser() {
+        if (!this.logined) return null;
+        return this.User;
+    }
+
+    isLogined() {
+        return this.logined;
     }
 
     startCatchEvents() {
@@ -45,7 +56,8 @@ class LoginSignupController extends BaseController {
             .createUser(data)
             .then((response) => {
                 if (response.message) {
-                    EventBus.publish(Event.setPage, {url: '/'});
+                    this.updateUserInfo();
+                    EventBus.publish(Event.successSignup);
                 }
 
                 if (response.error) {
@@ -64,8 +76,10 @@ class LoginSignupController extends BaseController {
             .login(data)
             .then((response) => {
                 if (response.User) {
-                    EventBus.publish(Event.setPage, {url: '/'});
                     this.profileId = response.User.id;
+                    this.User = response.User;
+                    this.logined = true;
+
                     EventBus.publish(Event.successLogin, response.User.id);
                 }
 
@@ -79,4 +93,4 @@ class LoginSignupController extends BaseController {
     }
 }
 
-export default new LoginSignupController();
+export default new UserController();

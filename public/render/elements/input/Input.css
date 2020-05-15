@@ -1,3 +1,13 @@
+.input {
+    outline: none;
+    font-size: 20px;
+    line-height: 20px;
+    background-color: transparent;
+    transition: 0.3s;
+    border: none;
+    font-family: 'Comfortaa', cursive;
+}
+
 .header__profile-button {
     width: 30px;
     height: 30px;
@@ -98,16 +108,6 @@
     opacity: 0;
     height: 0;
     visibility: hidden;
-}
-
-.input {
-    outline: none;
-    font-size: 20px;
-    line-height: 20px;
-    background-color: transparent;
-    transition: 0.3s;
-    border: none;
-    font-family: 'Comfortaa', cursive;
 }
 
 .order-checkout__input {

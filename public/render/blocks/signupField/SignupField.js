@@ -2,14 +2,14 @@ import Component from '../../Component.js';
 import Input from '../../elements/input/Input.js';
 import NeonButton from '../../elements/neonButton/NeonButton.js';
 import EventBus from '../../../services/Events/EventBus.js';
+import Event from '../../../services/Events/Events.js';
 import ErrorBlock from '../errorBlock/ErrorBlock.js';
-import Validation from '../../../services/InputValidation.js';
 import template from './SignupField.hbs';
 import PhoneInput from '../../elements/phoneInput/PhoneInput';
 import CheckedInput from '../../elements/checkedInput/CheckedInput';
 
 export default class SignupField extends Component {
-    constructor({classes}) {
+    constructor({classes = ''} = {}) {
         super(classes, {
             fNameInput: new CheckedInput({
                 label: 'Имя',
@@ -17,7 +17,7 @@ export default class SignupField extends Component {
                     classes: 'signup-field__input',
                     id: 'signup-field__fname-input',
                     type: 'text',
-                    placeholder: 'Имя',
+                    placeholder: 'Александр',
                     isRequired: true,
                     minlength: '4',
                 }),
@@ -28,7 +28,7 @@ export default class SignupField extends Component {
                     classes: 'signup-field__input',
                     id: 'signup-field__lname-input',
                     type: 'text',
-                    placeholder: 'Фамилия',
+                    placeholder: 'Постников',
                     isRequired: true,
                     minlength: '4',
                 }),
@@ -76,104 +76,53 @@ export default class SignupField extends Component {
                 callback: () => {
                     this.context.generalErrorField.clean();
 
-                    let validationFlag;
-                    validationFlag = Validation.inputValidation(
-                        this.context.fNameInput,
-                        this.context.firstNameErrorField,
-                    );
+                    const isValid = this.context.fNameInput.isValid()
+                        && this.context.lNameInput.isValid()
+                        && this.context.phoneInput.isValid()
+                        && this.context.passwordInput1.isValid()
+                        && this.context.passwordInput2.isValid();
 
-                    validationFlag = Validation.inputValidation(
-                        this.context.lNameInput,
-                        this.context.lastNameErrorField,
-                    ) && validationFlag;
-
-                    validationFlag = Validation.inputValidation(
-                        this.context.phoneInput,
-                        this.context.phoneErrorField,
-                    ) && validationFlag;
-
-                    validationFlag = Validation.inputValidation(
-                        this.context.passwordInput1,
-                        this.context.password1ErrorField,
-                    ) && validationFlag;
-
-                    validationFlag = Validation.inputValidation(
-                        this.context.passwordInput2,
-                        this.context.password2ErrorField,
-                    ) && validationFlag;
-
-                    if (this.context.passwordInput1.domElement.value
-                        !== this.context.passwordInput2.domElement.value) {
-                        validationFlag = false;
-                        this.context.password1ErrorField.addMessage(
-                            'Passwords must be equal',
-                        );
-                        this.context.password2ErrorField.addMessage(
-                            'Passwords must be equal',
-                        );
+                    if (!isValid) {
+                        return;
                     }
 
-                    if (validationFlag === false) {
+                    if (this.context.passwordInput1.value()
+                        !== this.context.passwordInput2.value()) {
+                        this.context.generalErrorField.addMessage(
+                            'Пароли должны совпадать',
+                        );
                         return;
                     }
 
                     const data = {
-                        firstName: this.context.fNameInput.domElement.value,
-                        lastName: this.context.lNameInput.domElement.value,
-                        phone: this.context.phoneInput.domElement.value,
-                        password: this.context.passwordInput1.domElement.value,
+                        firstName: this.context.fNameInput.value(),
+                        lastName: this.context.lNameInput.value(),
+                        phone: this.context.phoneInput.value(),
+                        password: this.context.passwordInput1.value(),
                     };
-                    EventBus.publish('signup', data);
+                    EventBus.publish(Event.signup, data);
+                },
+            }),
+            LoginButton: new NeonButton({
+                classes: 'singup-field__goto-login',
+                text: 'Вход',
+                callback: () => {
+                    EventBus.publish(Event.loginRequest);
                 },
             }),
         });
     }
 
     bind() {
-        EventBus.subscribe('signup-error', (message) => {
+        EventBus.subscribe(Event.signupError, (message) => {
             this.context.generalErrorField.addMessage(message);
-        });
-
-        EventBus.subscribe(Input.oninputEvent(this.context.passwordInput2.id), () => {
-            Validation.inputValidation(
-                this.context.passwordInput2,
-                this.context.password2ErrorField,
-            );
-        });
-
-        EventBus.subscribe(Input.oninputEvent(this.context.passwordInput1.id), () => {
-            Validation.inputValidation(
-                this.context.passwordInput1,
-                this.context.password1ErrorField,
-            );
-        });
-
-        EventBus.subscribe(Input.oninputEvent(this.context.phoneInput.id), () => {
-            Validation.inputValidation(
-                this.context.phoneInput,
-                this.context.phoneErrorField,
-            );
-        });
-
-        EventBus.subscribe(Input.oninputEvent(this.context.lNameInput.id), () => {
-            Validation.inputValidation(
-                this.context.lNameInput,
-                this.context.lastNameErrorField,
-            );
-        });
-
-        EventBus.subscribe(Input.oninputEvent(this.context.fNameInput.id), () => {
-            Validation.inputValidation(
-                this.context.fNameInput,
-                this.context.firstNameErrorField,
-            );
         });
 
         super.bind();
     }
 
     unbind() {
-        EventBus.unsubscribe('signup-error', (message) => {
+        EventBus.unsubscribe(Event.signupError, (message) => {
             this.context.generalErrorField.addMessage(message);
         });
 

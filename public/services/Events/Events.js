@@ -10,6 +10,7 @@ class Events {
         this.personAmountChange = 'person-amount-change';
         this.checkoutSuccess = 'checkout-success';
         this.successLogin = 'success-login';
+        this.successSignup = 'success-signup';
         this.logout = 'logout';
         this.deleteProd = 'delete-prod';
         this.basketChanged = 'basket-changed';
@@ -30,6 +31,8 @@ class Events {
         this.updateAvatarError = 'update-avatar-error';
         this.newMessage = 'new-message';
         this.supportConnected = 'support-connected';
+        this.loginRequest = 'login-request';
+        this.signupRequest = 'signup-request';
     }
 }
 
