@@ -1,6 +1,6 @@
 class Http {
     constructor() {
-        this.serverPath = 'http://89.208.199.114:5000';
+        this.serverPath = 'https://skydelivery.site:8081';
     }
 
     fetchRequest({
