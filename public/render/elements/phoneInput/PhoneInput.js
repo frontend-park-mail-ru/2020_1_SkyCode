@@ -11,6 +11,8 @@ export default class PhoneInput extends Input {
             type: 'tel',
             pattern: '\\d\\(\\d{3}\\)\\d{3}-\\d{2}-\\d{2}',
         });
+
+        this.lastLength = 0;
     }
 
     correct() {
@@ -49,6 +51,16 @@ export default class PhoneInput extends Input {
             newValue = newValue.slice(0, -1);
         }
 
+        if (this.lastLength < newValue.length) {
+            for (const i in additionSymbolsMap) {
+                if (newValue.length === Number(i)) {
+                    newValue += additionSymbolsMap[i];
+                    break;
+                }
+            }
+        }
+
+        this.lastLength = newValue.length;
         this.domElement.value = newValue;
     }
 

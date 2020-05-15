@@ -1,5 +1,3 @@
-@import "../productCard/ProductCard.css";
-
 .restaurant-view__product-list {
     display: flex;
     flex-wrap: wrap;

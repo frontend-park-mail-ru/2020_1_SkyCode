@@ -1,7 +1,3 @@
-@import "../../elements/input/Input.css";
-@import "../../elements/button/Button.css";
-@import "../../elements/numberInput/NumberInput.css";
-
 .feedback-form__rate {
     display: flex;
     margin: 10px 20px 0 20px;

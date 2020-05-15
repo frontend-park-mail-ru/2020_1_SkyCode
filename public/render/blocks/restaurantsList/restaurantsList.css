@@ -1,6 +1,3 @@
-@import "../restaurantItem/restaurantItem.css";
-
-
 .restaurants-list {
     display: flex;
     flex-direction: column;

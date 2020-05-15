@@ -1,6 +1,3 @@
-@import "../imageHref/ImageHref.css";
-@import "../restaurantPlaceCard/RestaurantPlaceCard.css";
-
 .restaurant-info {
     position: fixed;
     right: 0;

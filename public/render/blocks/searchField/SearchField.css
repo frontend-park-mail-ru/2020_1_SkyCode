@@ -1,5 +1,3 @@
-@import "../../elements/input/Input.css";
-
 .header__search-field {
     flex-grow: 1;
     display: flex;

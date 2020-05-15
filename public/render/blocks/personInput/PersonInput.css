@@ -1,6 +1,3 @@
-@import "../../elements/button/Button.css";
-@import "../../elements/input/Input.css";
-
 .order__person-input {
     grid-area: person-input;
     margin-bottom: 20px;

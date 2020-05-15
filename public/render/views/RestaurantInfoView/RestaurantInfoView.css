@@ -1,9 +1,3 @@
-@import "../../blocks/restaurantInfo/RestaurantInfo.css";
-@import "../../blocks/header/Header.css";
-@import "../../blocks/restaurantFeedback/RestaurantFeedback.css";
-@import "../../blocks/restaurantFeedbackCard/RestaurantFeedbackCard.css";
-
-
 .restaurant-info-view {
     height: 100%;
     width: 100%;

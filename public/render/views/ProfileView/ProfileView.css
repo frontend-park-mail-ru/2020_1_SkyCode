@@ -1,6 +1,3 @@
-@import "../../blocks/profileTextArea/ProfileTextArea.css";
-@import "../../blocks/header/Header.css";
-
 .profile-view {
     display: flex;
     height: 80vh;

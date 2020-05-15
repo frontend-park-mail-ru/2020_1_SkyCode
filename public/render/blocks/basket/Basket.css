@@ -1,5 +1,3 @@
-@import "../basketProduct/BasketProduct.css";
-
 .order__basket {
     grid-area: basket;
     margin: 10px 0;

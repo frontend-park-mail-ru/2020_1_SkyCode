@@ -6,7 +6,7 @@ import WavingMenue from '../../blocks/wavingMenue/WavingMenue';
 import RestaurantBanner from '../../blocks/restaurantBanner/restaurantBanner';
 import RestaurantCategories
     from '../../blocks/restaurantCategories/RestaurantCategories';
-import ProductList from '../../blocks/products/ProductList';
+import ProductList from '../../blocks/productList/ProductList';
 import Href from '../../elements/href/Href';
 import Order from '../../blocks/order/Order';
 

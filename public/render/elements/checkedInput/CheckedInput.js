@@ -56,7 +56,7 @@ export default class CheckedInput extends Component {
     }
 
     unbind() {
-        this.domElement.oninput = null;
+        this.context.Input.domElement.oninput = null;
         this.context.Input.domElement.onblur = null;
     }
 }

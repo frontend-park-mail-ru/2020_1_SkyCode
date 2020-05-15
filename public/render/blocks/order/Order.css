@@ -1,10 +1,3 @@
-@import "../imageHref/ImageHref.css";
-@import "../placeTimeCard/PlaceTimeCard.css";
-@import "../basket/Basket.css";
-@import "../personInput/PersonInput.css";
-@import "../supportChat/supportChat.css";
-
-
 .order {
     position: fixed;
     top: 0;

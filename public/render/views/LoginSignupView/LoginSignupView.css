@@ -1,6 +1,3 @@
-@import "../../blocks/signupField/SignupField.css";
-@import "../../blocks/loginField/LoginField.css";
-
 .login-signup-view {
     display: flex;
     height: 100%;

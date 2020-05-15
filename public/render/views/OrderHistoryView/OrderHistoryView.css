@@ -1,5 +1,3 @@
-@import "../../blocks/orderHistory/orderHistory.css";
-
 .order-history-view__container {
     height: 100%;
     display: flex;
