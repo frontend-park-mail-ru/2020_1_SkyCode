@@ -17,6 +17,7 @@ export default class LoginPopup extends Component {
     bind() {
         EventBus.subscribe(Events.loginRequest, this.appear.bind(this));
         EventBus.subscribe(Events.signupRequest, this.disappear.bind(this));
+        EventBus.subscribe(Events.successLogin, this.disappear.bind(this));
         document.getElementsByClassName('login-popup__hider')[0]
             .onclick = () => {
                 this.disappear();
@@ -29,6 +30,7 @@ export default class LoginPopup extends Component {
     unbind() {
         EventBus.unsubscribe(Events.loginRequest, this.appear.bind(this));
         EventBus.unsubscribe(Events.signupRequest, this.disappear.bind(this));
+        EventBus.unsubscribe(Events.successLogin, this.disappear.bind(this));
         document.getElementsByClassName('login-popup__hider')[0]
             .onclick = null;
         super.unbind();

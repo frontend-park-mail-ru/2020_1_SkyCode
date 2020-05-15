@@ -31,8 +31,9 @@ class Router {
         this._registerAllPages();
         this._initAdditionalControllers();
         this._initConstantSidebars();
-        EventBus.subscribe('set-page', (this._goto).bind(this));
-        EventBus.subscribe('redirect', (this._redirect).bind(this));
+        EventBus.subscribe(Events.setPage, (this._goto).bind(this));
+        EventBus.subscribe(Events.redirect, (this._redirect).bind(this));
+        EventBus.subscribe(Events.successLogin, this._successLoginSetPage.bind(this));
         window.onpopstate = (this._handlePopState).bind(this);
     }
 
@@ -93,6 +94,7 @@ class Router {
 
         if (pageRecord.needLogin) {
             if (!UserController.logined) {
+                pageRecord.url = url;
                 this.loginNeededRecord = pageRecord;
                 this.loginNeededMatchData = matchData;
                 EventBus.publish(Events.loginRequest);
@@ -106,6 +108,15 @@ class Router {
         this._currentController = pageRecord.page;
         this._setNewHistoryRecord(this._currentController, url);
         this._currentController.execute(matchData);
+    }
+
+    _successLoginSetPage() {
+        if (this._currentController) {
+            this._currentController.stop();
+        }
+        this._currentController = this.loginNeededRecord.page;
+        this._setNewHistoryRecord(this._currentController, this.loginNeededRecord.url);
+        this._currentController.execute(this.loginNeededMatchData);
     }
 
     _setNewHistoryRecord(page, url) {

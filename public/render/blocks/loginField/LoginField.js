@@ -77,7 +77,6 @@ export default class LoginField extends Component {
 
     unbind() {
         EventBus.unsubscribe(Event.loginError, (message) => {
-            debugger;
             this.context.generalErrorField.addMessage(message);
         });
 
