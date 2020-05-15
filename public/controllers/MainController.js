@@ -7,6 +7,7 @@ import RestaurantModel from '../models/RestaurantModel.js';
 import BasketController from './BasketController.js';
 import Swal from 'sweetalert2';
 import EventBus from '../services/Events/EventBus';
+import Event from '../services/Events/Events';
 import MapModel from '../models/MapModel';
 
 class MainController extends BaseController {
@@ -61,11 +62,11 @@ class MainController extends BaseController {
     }
 
     startCatchEvents() {
-        EventBus.subscribe('new-location', this.GetRestaurantsByAddress.bind(this));
+        EventBus.subscribe(Event.newLocation, this.GetRestaurantsByAddress.bind(this));
     }
 
     stopCatchEvents() {
-        EventBus.unsubscribe('new-location', this.GetRestaurantsByAddress.bind(this));
+        EventBus.unsubscribe(Event.newLocation, this.GetRestaurantsByAddress.bind(this));
     }
 
     GetRestaurantsByAddress() {

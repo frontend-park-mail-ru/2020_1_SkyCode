@@ -2,6 +2,7 @@ import BaseController from './BaseController.js';
 import SupportChatView
     from '../render/views/SupportChatView/SupportChatView.js';
 import EventBus from '../services/Events/EventBus';
+import Event from '../services/Events/Events';
 import Message from '../render/blocks/message/message';
 import UserModel from '../models/UserModel';
 import ChatModel from '../models/ChatModel';
@@ -18,7 +19,7 @@ class SupportChatController extends BaseController {
         UserModel.getUser()
             .then((response) => {
                 if (response.error) {
-                    EventBus.publish('set-page', {url: '/login'});
+                    EventBus.publish(Event.setPage, {url: '/login'});
                 }
             })
             .catch((err) => console.log(err));
@@ -35,7 +36,7 @@ class SupportChatController extends BaseController {
             const data = JSON.parse(e.data);
             localStorage.setItem('chat_id', data.chat_id);
             if (data.message) {
-                EventBus.publish('new-message', data);
+                EventBus.publish(Event.newMessage, data);
                 const el = new Message('msg', data.message, data.user_name);
                 const domEl = document.getElementsByClassName('chat__messages')[0];
                 domEl.innerHTML += el;
@@ -47,7 +48,7 @@ class SupportChatController extends BaseController {
             if (data.joined) {
                 this.countuser++;
                 if (this.countuser === 2) {
-                    EventBus.publish('support-connected', {});
+                    EventBus.publish(Event.supportConnected, {});
                 }
             }
         };

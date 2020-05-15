@@ -3,6 +3,7 @@ import OrderHistoryView
 import OrderModel from '../models/OrderModel.js';
 import BaseController from './BaseController.js';
 import EventBus from '../services/Events/EventBus';
+import Event from '../services/Events/Events';
 import UserModel from '../models/UserModel';
 
 class OrderHistoryController extends BaseController {
@@ -22,25 +23,25 @@ class OrderHistoryController extends BaseController {
                         })
                         .catch((err) => console.log(err));
                 } else {
-                    EventBus.publish('redirect', {url: '/login'});
+                    EventBus.publish(Event.redirect, {url: '/login'});
                 }
             })
             .catch((err) => console.log(err));
     }
 
     startCatchEvents() {
-        EventBus.subscribe('delete-order', this.delOrderHandler.bind(this));
+        EventBus.subscribe(Event.deleteOrder, this.delOrderHandler.bind(this));
     }
 
     stopCatchEvents() {
-        EventBus.unsubscribe('delete-order', this.delOrderHandler.bind(this));
+        EventBus.unsubscribe(Event.deleteOrder, this.delOrderHandler.bind(this));
     }
 
     delOrderHandler(data) {
         OrderModel.deleteOrder(data.id)
             .then((response) => {
                 if (response.message) {
-                    EventBus.publish('redirect', {url: '/orders'});
+                    EventBus.publish(Event.redirect, {url: '/orders'});
                 }
             })
             .catch((err) => console.log(err));

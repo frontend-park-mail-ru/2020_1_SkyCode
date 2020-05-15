@@ -1,6 +1,7 @@
 import BaseController from './BaseController.js';
 import UserModel from '../models/UserModel.js';
 import EventBus from '../services/Events/EventBus';
+import Event from '../services/Events/Events.js';
 import RestaurantModel from '../models/RestaurantModel';
 import AddRestaurantView
     from '../render/views/AddRestaurantView/AddRestaurantView';
@@ -15,13 +16,13 @@ class AddRestaurantController extends BaseController {
         UserModel.getUser()
             .then((response) => {
                 if (response.error) {
-                    EventBus.publish('set-page', {url: '/login'});
+                    EventBus.publish(Event.setPage, {url: '/login'});
                 }
                 if (response.User.role === 'Moderator'
                         || response.User.role === 'Admin') {
                     super.execute(new AddRestaurantView());
                 } else {
-                    EventBus.publish('set-page', {url: '/'});
+                    EventBus.publish(Event.setPage, {url: '/'});
                 }
             },
             )
@@ -32,14 +33,14 @@ class AddRestaurantController extends BaseController {
 
     startCatchEvents() {
         EventBus.subscribe(
-            'add-restaurant',
+            Event.addRestaurant,
             this.addRestaurantHandler.bind(this),
         );
     }
 
     stopCatchEvents() {
         EventBus.subscribe(
-            'add-restaurant',
+            Event.addRestaurant,
             this.addRestaurantHandler.bind(this),
         );
     }
@@ -50,11 +51,11 @@ class AddRestaurantController extends BaseController {
             .then((response) => {
                 if (response.error) {
                     EventBus.publish(
-                        'add-restaurant-error',
+                        Event.addRestaurantError,
                         response.error,
                     );
                 } else if (response.message) {
-                    EventBus.publish('set-page', {
+                    EventBus.publish(Event.setPage, {
                         // Лучше переводить на страницу ресторана
                         url: '/',
                     });
@@ -62,7 +63,7 @@ class AddRestaurantController extends BaseController {
             })
             .catch((err) => {
                 EventBus.publish(
-                    'add-restaurant-error',
+                    Event.addRestaurantError,
                     err,
                 );
             });

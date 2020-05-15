@@ -1,5 +1,6 @@
 import BaseController from './BaseController.js';
 import EventBus from '../services/Events/EventBus.js';
+import Event from '../services/Events/Events.js';
 import RestaurantController from './RestaurantController.js';
 
 class BasketController extends BaseController {
@@ -15,27 +16,27 @@ class BasketController extends BaseController {
     }
 
     startCatchEvents() {
-        EventBus.subscribe('add-product', this.addProductHandler.bind(this));
+        EventBus.subscribe(Event.addProduct, this.addProductHandler.bind(this));
         EventBus.subscribe(
-            'person-amount-change',
+            Event.personAmountChange,
             this.personAmountChangeHandler.bind(this),
         );
-        EventBus.subscribe('checkout-success', this.cleanBasketHandler.bind(this));
-        EventBus.subscribe('success-login', this.CheckBasketHandler.bind(this));
-        EventBus.subscribe('log-out', this.cleanBasketHandler.bind(this));
-        EventBus.subscribe('delete-prod', this.deleteProductHandler.bind(this));
+        EventBus.subscribe(Event.checkoutSuccess, this.cleanBasketHandler.bind(this));
+        EventBus.subscribe(Event.successLogin, this.CheckBasketHandler.bind(this));
+        EventBus.subscribe(Event.logout, this.cleanBasketHandler.bind(this));
+        EventBus.subscribe(Event.deleteProd, this.deleteProductHandler.bind(this));
     }
 
     stopCatchEvents() {
-        EventBus.unsubscribe('add-product', this.addProductHandler.bind(this));
+        EventBus.unsubscribe(Event.addProduct, this.addProductHandler.bind(this));
         EventBus.unsubscribe(
-            'person-amount-change',
+            Event.personAmountChange,
             this.personAmountChangeHandler.bind(this),
         );
-        EventBus.unsubscribe('success-login', this.CheckBasketHandler.bind(this));
-        EventBus.unsubscribe('log-out', this.cleanBasketHandler.bind(this));
-        EventBus.unsubscribe('checkout-success', this.cleanBasketHandler.bind(this));
-        EventBus.unsubscribe('delete-prod', this.deleteProductHandler.bind(this));
+        EventBus.unsubscribe(Event.successLogin, this.CheckBasketHandler.bind(this));
+        EventBus.unsubscribe(Event.logout, this.cleanBasketHandler.bind(this));
+        EventBus.unsubscribe(Event.checkoutSuccess, this.cleanBasketHandler.bind(this));
+        EventBus.unsubscribe(Event.deleteProd, this.deleteProductHandler.bind(this));
     }
 
     productNumber() {
@@ -60,7 +61,7 @@ class BasketController extends BaseController {
             this.basket.product[data.id] = data;
             this.basket.product[data.id].amount = 1;
         }
-        EventBus.publish('basket-changed', this.basket.product);
+        EventBus.publish(Event.basketChanged, this.basket.product);
     }
 
     deleteProductHandler(id) {
@@ -71,7 +72,7 @@ class BasketController extends BaseController {
                 this.basket.product[id].amount--;
             }
 
-            EventBus.publish('basket-changed', this.basket.product);
+            EventBus.publish(Event.basketChanged, this.basket.product);
         }
     }
 

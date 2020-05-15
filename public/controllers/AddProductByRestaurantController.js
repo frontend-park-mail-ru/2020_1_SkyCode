@@ -2,6 +2,7 @@ import BaseController from './BaseController.js';
 // eslint-disable-next-line max-len
 import AddProductByRestaurantView from '../render/views/AddProductByRestaurantView/AddProductByRestaurantView.js';
 import EventBus from '../services/Events/EventBus.js';
+import Event from '../services/Events/Events.js';
 import RestaurantModel from '../models/RestaurantModel.js';
 import UserModel from '../models/UserModel.js';
 
@@ -17,7 +18,7 @@ class AddProductByRestaurantController extends BaseController {
                 || response.User.role === 'Admin') {
                 super.execute(new AddProductByRestaurantView());
             } else {
-                EventBus.publish('set-page', {url: '/'});
+                EventBus.publish(Event.setPage, {url: '/'});
             }
         })
             .catch((err) => console.log(err));
@@ -25,14 +26,14 @@ class AddProductByRestaurantController extends BaseController {
 
     startCatchEvents() {
         EventBus.subscribe(
-            'add-product-by-restaurant',
+            Event.addProductByRestaurant,
             this.addProductHandler.bind(this),
         );
     }
 
     stopCatchEvents() {
         EventBus.unsubscribe(
-            'add-product-by-restaurant',
+            Event.addProductByRestaurant,
             this.addProductHandler.bind(this),
         );
     }
@@ -43,18 +44,18 @@ class AddProductByRestaurantController extends BaseController {
             .then((response) => {
                 if (response.error) {
                     EventBus.publish(
-                        'add-product-by-restaurant-error',
+                        Event.addProductByRestaurantError,
                         response.error,
                     );
                 } else if (response.message) {
-                    EventBus.publish('set-page', {
+                    EventBus.publish(Event.setPage, {
                         url: `/restaurants/${this.restaurant}`,
                     });
                 }
             })
             .catch((err) => {
                 EventBus.publish(
-                    'add-product-by-restaurant-error',
+                    Event.addProductByRestaurantError,
                     err,
                 );
             });

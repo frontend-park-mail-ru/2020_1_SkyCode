@@ -1,6 +1,7 @@
 import BaseController from './BaseController.js';
 import UserModel from '../models/UserModel';
 import EventBus from '../services/Events/EventBus';
+import Event from '../services/Events/Events';
 import RestaurantModel from '../models/RestaurantModel.js';
 import RestaurantInfoView
     from '../render/views/RestaurantInfoView/RestaurantInfoView.js';
@@ -51,7 +52,7 @@ class RestaurantInfoController extends BaseController {
             })
             .catch((err) => {
                 console.log('info controller error', err);
-                EventBus.publish('redirect', {url: '/'});
+                EventBus.publish(Event.redirect, {url: '/'});
             });
     }
 }

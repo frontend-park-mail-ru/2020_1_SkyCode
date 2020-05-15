@@ -2,6 +2,7 @@ import BaseController from './BaseController.js';
 import ChatModel from '../models/ChatModel.js';
 import AdminChatListView from '../render/views/AdminChatListView/AdminChatListView.js';
 import EventBus from '../services/Events/EventBus';
+import Event from '../services/Events/Events.js';
 
 class AdminChatListController extends BaseController {
     constructor(title = 'chat list') {
@@ -12,7 +13,7 @@ class AdminChatListController extends BaseController {
         ChatModel.getChats()
             .then((response) => {
                 if (response.error) {
-                    EventBus.publish('set-page', {url: '/login'});
+                    EventBus.publish(Event.setPage, {url: '/login'});
                 }
                 super.execute(new AdminChatListView({chatArray: response}));
             })

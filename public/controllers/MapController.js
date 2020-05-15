@@ -1,6 +1,7 @@
 import BaseController from './BaseController.js';
 import NeonButton from '../render/elements/neonButton/NeonButton';
 import EventBus from '../services/Events/EventBus';
+import Event from '../services/Events/Events';
 import Swal from 'sweetalert2';
 import MapModel from '../models/MapModel';
 import MainController from './MainController';
@@ -58,7 +59,7 @@ class MapController extends BaseController {
                 document.getElementById(id)
                     .addEventListener('click', (e) => {
                         e.preventDefault();
-                        EventBus.publish('set-page', {url: `/restaurants/${id}`});
+                        EventBus.publish(Event.setPage, {url: `/restaurants/${id}`});
                     });
                 console.log(id);
             });
@@ -67,11 +68,11 @@ class MapController extends BaseController {
 
 
     startCatchEvents() {
-        EventBus.subscribe('change-location', this.ChangeLocation.bind(this));
+        EventBus.subscribe(Event.changeLocation, this.ChangeLocation.bind(this));
     }
 
     stopCatchEvents() {
-        EventBus.unsubscribe('change-location', this.ChangeLocation.bind(this));
+        EventBus.unsubscribe(Event.changeLocation, this.ChangeLocation.bind(this));
     }
 
     ChangeLocation() {
@@ -105,7 +106,7 @@ class MapController extends BaseController {
                         localStorage.setItem('longitude', this.geopos.longitude);
                         document.getElementsByClassName('place-time-card__place-text')[0].innerHTML
                             = localStorage.getItem('deliveryGeo');
-                        EventBus.publish('set-page', {url: window.location.pathname});
+                        EventBus.publish(Event.setPage, {url: window.location.pathname});
                     } else {
                         Swal.fire({
                             icon: 'error',

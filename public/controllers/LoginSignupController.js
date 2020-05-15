@@ -1,6 +1,6 @@
-// eslint-disable-next-line max-len
 import LoginSignupView from '../render/views/LoginSignupView/LoginSignupView.js';
 import EventBus from '../services/Events/EventBus.js';
+import Event from '../services/Events/Events.js';
 import SessionModel from '../models/SessionModel.js';
 import BaseController from './BaseController.js';
 import UserModel from '../models/UserModel.js';
@@ -19,7 +19,7 @@ class LoginSignupController extends BaseController {
                 if (answer.error === 'Unauthorized') {
                     super.execute(new LoginSignupView());
                 } else {
-                    EventBus.publish('redirect', {url: '/me'});
+                    EventBus.publish(Event.redirect, {url: '/me'});
                 }
             })
             .catch((err) => {
@@ -29,13 +29,13 @@ class LoginSignupController extends BaseController {
     }
 
     startCatchEvents() {
-        EventBus.subscribe('signup', this.signupHandler.bind(this));
-        EventBus.subscribe('login', this.loginHandler.bind(this));
+        EventBus.subscribe(Event.signup, this.signupHandler.bind(this));
+        EventBus.subscribe(Event.login, this.loginHandler.bind(this));
     }
 
     stopCatchEvents() {
-        EventBus.unsubscribe('signup', this.signupHandler.bind(this));
-        EventBus.unsubscribe('login', this.loginHandler.bind(this));
+        EventBus.unsubscribe(Event.signup, this.signupHandler.bind(this));
+        EventBus.unsubscribe(Event.login, this.loginHandler.bind(this));
     }
 
     signupHandler(data) {
@@ -45,11 +45,11 @@ class LoginSignupController extends BaseController {
             .createUser(data)
             .then((response) => {
                 if (response.message) {
-                    EventBus.publish('set-page', {url: '/'});
+                    EventBus.publish(Event.setPage, {url: '/'});
                 }
 
                 if (response.error) {
-                    EventBus.publish('signup-error', response.error);
+                    EventBus.publish(Event.signupError, response.error);
                 }
             })
             .catch((err) => {
@@ -64,13 +64,13 @@ class LoginSignupController extends BaseController {
             .login(data)
             .then((response) => {
                 if (response.User) {
-                    EventBus.publish('set-page', {url: '/'});
+                    EventBus.publish(Event.setPage, {url: '/'});
                     this.profileId = response.User.id;
-                    EventBus.publish('success-login', response.User.id);
+                    EventBus.publish(Event.successLogin, response.User.id);
                 }
 
                 if (response.error) {
-                    EventBus.publish('login-error', response.error);
+                    EventBus.publish(Event.loginError, response.error);
                 }
             })
             .catch((err) => {

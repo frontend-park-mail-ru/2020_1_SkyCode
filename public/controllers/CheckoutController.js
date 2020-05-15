@@ -3,6 +3,7 @@ import CheckoutView from '../render/views/CheckoutView/CheckoutView.js';
 import UserModel from '../models/UserModel.js';
 import BasketController from './BasketController.js';
 import EventBus from '../services/Events/EventBus.js';
+import Event from '../services/Events/Events.js';
 import RestaurantModel from '../models/RestaurantModel.js';
 import Swal from 'sweetalert2';
 
@@ -16,7 +17,7 @@ class CheckoutController extends BaseController {
             .getUser()
             .then((response) => {
                 if (response.error === 'Unauthorized') {
-                    EventBus.publish('redirect', {url: '/login'});
+                    EventBus.publish(Event.redirect, {url: '/login'});
                 } else {
                     super.execute(new CheckoutView({
                         profile: response.User,
@@ -27,16 +28,16 @@ class CheckoutController extends BaseController {
             })
             .catch((err) => {
                 console.log(err);
-                EventBus.publish('redirect', {url: '/'});
+                EventBus.publish(Event.redirect, {url: '/'});
             });
     }
 
     startCatchEvents() {
-        EventBus.subscribe('checkout', this.checkoutHandler.bind(this));
+        EventBus.subscribe(Event.checkout, this.checkoutHandler.bind(this));
     }
 
     stopCatchEvents() {
-        EventBus.unsubscribe('checkout', this.checkoutHandler.bind(this));
+        EventBus.unsubscribe(Event.checkout, this.checkoutHandler.bind(this));
     }
 
     checkoutHandler(data) {
@@ -44,7 +45,7 @@ class CheckoutController extends BaseController {
             .addOrder(data)
             .then((response) => {
                 if (response.error) {
-                    EventBus.publish('order-checkout-error', response.error);
+                    EventBus.publish(Event.orderCheckoutError, response.error);
                 } else {
                     Swal.fire({
                         icon: 'success',
@@ -52,13 +53,13 @@ class CheckoutController extends BaseController {
                         showConfirmButton: false,
                         timer: 3500,
                     });
-                    EventBus.publish('checkout-success', {});
-                    EventBus.publish('set-page', {url: '/orders'});
+                    EventBus.publish(Event.checkoutSuccess, {});
+                    EventBus.publish(Event.setPage, {url: '/orders'});
                 }
             })
             .catch((err) => {
                 console.log(err);
-                EventBus.publish('order-checkout-error', err);
+                EventBus.publish(Event.orderCheckoutError, err);
             });
     }
 }

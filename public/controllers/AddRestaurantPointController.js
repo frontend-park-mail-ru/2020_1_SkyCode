@@ -3,6 +3,7 @@ import AddRestaurantPointView
     from '../render/views/AddRestaurantPointView/AddRestaurantPointView.js';
 import RestaurantModel from '../models/RestaurantModel.js';
 import EventBus from '../services/Events/EventBus.js';
+import Event from '../services/Events/Events.js';
 import Swal from 'sweetalert2';
 
 class AddRestaurantPointController extends BaseController {
@@ -25,11 +26,11 @@ class AddRestaurantPointController extends BaseController {
     }
 
     startCatchEvents() {
-        EventBus.subscribe('add-restaurant-point', this.AddPoint.bind(this));
+        EventBus.subscribe(Event.addRestaurantPoint, this.AddPoint.bind(this));
     }
 
     stopCatchEvents() {
-        EventBus.unsubscribe('add-restaurant-point', this.AddPoint.bind(this));
+        EventBus.unsubscribe(Event.addRestaurantPoint, this.AddPoint.bind(this));
     }
 
     AddPoint(data) {
@@ -37,7 +38,7 @@ class AddRestaurantPointController extends BaseController {
         RestaurantModel.addPoint(data, this.restId)
             .then((response) => {
                 if (response.message) {
-                    EventBus.publish('set-page', {url: `/admin/restaurants/${this.restId}`});
+                    EventBus.publish(Event.setPage, {url: `/admin/restaurants/${this.restId}`});
                 }
                 if (response.error) {
                     Swal.fire({
