@@ -34,6 +34,19 @@ export default class Component {
     }
 
     addContextData(contextObject) {
+        for (const i in contextObject) {
+            if (Array.isArray(contextObject[i])) {
+                for (const j in contextObject[i]) {
+                    if (contextObject[i][j] instanceof Component) {
+                        contextObject[i][j].contextParent = this;
+                    }
+                }
+            } else {
+                if (contextObject[i] instanceof Component) {
+                    contextObject[i].contextParent = this;
+                }
+            }
+        }
         Object.assign(this.context, contextObject);
     }
 

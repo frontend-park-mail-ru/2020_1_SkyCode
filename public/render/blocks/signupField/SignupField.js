@@ -107,7 +107,9 @@ export default class SignupField extends Component {
                 classes: 'singup-field__goto-login',
                 text: 'Вход',
                 callback: () => {
-                    EventBus.publish(Event.loginRequest);
+                    EventBus.publish(Event.loginRequest, {
+                        isStatic: this.contextParent.isStatic,
+                    });
                 },
             }),
         });

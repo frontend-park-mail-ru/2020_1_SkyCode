@@ -61,7 +61,9 @@ export default class LoginField extends Component {
                 classes: 'login-field__goto-signup',
                 text: 'Регистрация',
                 callback: () => {
-                    EventBus.publish(Event.signupRequest);
+                    EventBus.publish(Event.signupRequest, {
+                        isStatic: this.contextParent.isStatic,
+                    });
                 },
             }),
         });

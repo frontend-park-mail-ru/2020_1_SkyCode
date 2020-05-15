@@ -97,7 +97,9 @@ class Router {
                 pageRecord.url = url;
                 this.loginNeededRecord = pageRecord;
                 this.loginNeededMatchData = matchData;
-                EventBus.publish(Events.loginRequest);
+                EventBus.publish(Events.loginRequest, {
+                    isStatic: this._currentController === undefined,
+                });
                 return;
             }
         }

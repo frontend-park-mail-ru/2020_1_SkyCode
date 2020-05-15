@@ -11,6 +11,7 @@ export default class SignupPopup extends Component {
         this.addContextData({
             SignupField: new SignupField(),
         });
+        this.isStatic = false;
         this.template = temp;
     }
 
@@ -36,11 +37,30 @@ export default class SignupPopup extends Component {
         super.unbind();
     }
 
-    appear() {
+    appear({isStatic = false}) {
+        this.isStatic = isStatic;
+        if (isStatic) this.becomeStatic();
+
         this.domElement.style.display = 'flex';
     }
 
     disappear() {
+        if (this.isStatic) {
+            this.isStatic = false;
+            this.becomeNotStatic();
+        }
         this.domElement.style.display = 'none';
+    }
+
+    becomeStatic() {
+        document.getElementsByClassName('signup-popup__hider')[0]
+            .onclick = null;
+    }
+
+    becomeNotStatic() {
+        document.getElementsByClassName('signup-popup__hider')[0]
+            .onclick = () => {
+            this.disappear();
+        };
     }
 }

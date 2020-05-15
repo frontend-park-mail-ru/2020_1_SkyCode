@@ -12,6 +12,7 @@ export default class LoginPopup extends Component {
             LoginField: new LoginField(),
         });
         this.template = temp;
+        this.isStatic = false;
     }
 
     bind() {
@@ -36,11 +37,30 @@ export default class LoginPopup extends Component {
         super.unbind();
     }
 
-    appear() {
+    appear({isStatic = false}) {
+        this.isStatic = isStatic;
+        if (isStatic) this.becomeStatic();
+
         this.domElement.style.display = 'flex';
     }
 
     disappear() {
+        if (this.isStatic) {
+            this.isStatic = false;
+            this.becomeNotStatic();
+        }
         this.domElement.style.display = 'none';
+    }
+
+    becomeStatic() {
+        document.getElementsByClassName('login-popup__hider')[0]
+            .onclick = null;
+    }
+
+    becomeNotStatic() {
+        document.getElementsByClassName('login-popup__hider')[0]
+            .onclick = () => {
+                this.disappear();
+            };
     }
 }
