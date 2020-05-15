@@ -7,44 +7,50 @@ import ErrorBlock from '../errorBlock/ErrorBlock.js';
 import Validation from '../../../services/InputValidation.js';
 import template from './ProfileTextArea.hbs';
 import ImageHref from '../imageHref/ImageHref';
+import CheckedInput from '../../elements/checkedInput/CheckedInput';
 
 export default class ProfileTextArea extends Component {
     constructor({classes, data}) {
         super(classes, {
-            fNameInput: new Input({
-                classes: 'profile-text-area__input',
-                id: 'fname-input',
-                type: 'text',
-                value: data.User.firstName,
-                placeholder: 'first name',
-                isRequired: true,
+            fNameInput: new CheckedInput({
+                label: 'Ваше имя',
+                Input: new Input({
+                    classes: '',
+                    id: 'fname-input',
+                    type: 'text',
+                    value: data.User.firstName,
+                    placeholder: 'Михаил',
+                    isRequired: true,
+                    minlength: 4,
+                }),
             }),
-            firstNameErrorField: new ErrorBlock({
-                id: 'profile-first-name-error',
+
+            lNameInput: new CheckedInput({
+                label: 'Ваша фамилия',
+                Input: new Input({
+                    classes: '',
+                    id: 'lname-input',
+                    type: 'text',
+                    value: data.User.lastName,
+                    placeholder: 'Волынов',
+                    isRequired: true,
+                    minlength: 4,
+                }),
             }),
-            lNameInput: new Input({
-                classes: 'profile-text-area__input',
-                id: 'lname-input',
-                type: 'text',
-                value: data.User.lastName,
-                placeholder: 'last name',
-                isRequired: true,
+
+            EmailInput: new CheckedInput({
+                label: 'Ваша почта',
+                Input: new Input({
+                    classes: '',
+                    id: 'email-input',
+                    type: 'email',
+                    value: data.User.email,
+                    // eslint-disable-next-line max-len
+                    pattern: '^([A-Za-z0-9_\\-\\.])+@([A-Za-z0-9_\\-\\.])+\\.([A-Za-z]{2,4})$',
+                    placeholder: 'email@example.com',
+                }),
             }),
-            lastNameErrorField: new ErrorBlock({
-                id: 'profile-second-name-error',
-            }),
-            EmailInput: new Input({
-                classes: 'profile-text-area__input',
-                id: 'email-input',
-                type: 'email',
-                value: data.User.email,
-                // eslint-disable-next-line max-len
-                pattern: '^([A-Za-z0-9_\\-\\.])+@([A-Za-z0-9_\\-\\.])+\\.([A-Za-z]{2,4})$',
-                placeholder: 'email@example.com',
-            }),
-            emailErrorField: new ErrorBlock({
-                id: 'profile-email-error',
-            }),
+
             Image: new Img({
                 classes: 'profile-avatar-area__image',
                 src: `/images/${data.User.profile_photo}`,
@@ -67,10 +73,11 @@ export default class ProfileTextArea extends Component {
 
         this.addContextData({
             SubmitButton:
-                new Img({
-                    id: 'profile-area__refresh',
+                new NeonButton({
+                    id: 'profile-area__submit',
                     src: '/static/refresh.svg',
-                    classes: 'icon',
+                    classes: 'profile-area__submit',
+                    text: 'Обновить',
                     callback: () => {
                         EventBus.publish('profile-view__update-user');
                     },

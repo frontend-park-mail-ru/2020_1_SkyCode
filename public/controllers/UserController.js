@@ -18,7 +18,6 @@ class UserController extends BaseController {
 
     updateUserInfo() {
         console.log('update user info');
-        if (!this.logined) return;
 
         UserModel.getUser()
             .then((response) => {
@@ -71,6 +70,11 @@ class UserController extends BaseController {
     }
 
     loginHandler(data) {
+        if (this.logined) {
+            EventBus.publish(Event.successLogin, this.User.id);
+            return;
+        }
+
         data.phone = data.phone.replace(/[()-]/g, '');
 
         SessionModel

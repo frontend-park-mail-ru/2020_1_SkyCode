@@ -25,14 +25,6 @@ export default class ProfileHeader extends IconedHeader {
                         imageClasses: 'icon-bar__support-image',
                         href: '/support',
                     }),
-                    new Img({
-                        src: '/static/refresh.svg',
-                        id: 'icon-bar__update',
-                        classes: 'icon',
-                        callback: () => {
-                            EventBus.publish('profile-view__update-user');
-                        },
-                    }),
                     new ImageHref({
                         classes: 'icon map-href',
                         src: '/static/map-pin.svg',

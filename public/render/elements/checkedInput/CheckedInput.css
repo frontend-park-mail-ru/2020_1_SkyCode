@@ -1,6 +1,7 @@
 .checked-input {
     position: relative;
     padding-top: 30px;
+    width: 90%;
 }
 
 .checked-input__error {
@@ -18,6 +19,7 @@
     top: 25px;
     font-size: 25px;
     pointer-events: none;
+    width: 100%;
 }
 
 .checked-input__input:focus {
@@ -25,7 +27,7 @@
 }
 
 .checked-input__input {
-    width: 250px;
+    width: 100%;
     margin-top: 5px;
     margin-bottom: 5px;
     text-align: center;

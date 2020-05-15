@@ -1,26 +1,21 @@
 .profile-view__profile-area {
-    grid-area: profile-area;
-    height: 92%;
-    width: 80%;
+    width: fit-content;
     justify-self: center;
     align-self: center;
-    box-shadow: 0px 4px 100px #D6D6D6;
+    box-shadow: 0 4px 100px #D6D6D6;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-around;
+    align-items: center;
+    justify-content: center;
     padding: 20px;
+    border-radius: 15px;
 }
 
 .profile-area__button-array {
-    width: fit-content;
+    width: 90%;
     display: flex;
     flex-direction: row-reverse;
-    justify-content: flex-start;
-}
-
-.profile-area__button-array > * {
-    margin-left: 15px;
+    justify-content: space-between;
 }
 
 @media (max-width: 600px) {
