@@ -1,15 +1,14 @@
 
-.icon {
-    width: 30px;
-    height: 30px;
-    outline: none;
-}
 
 .icon-bar__profile-image, .icon-bar__basket-image, .icon-bar__map-image{
     border-radius: 100%;
     z-index: 3;
+    outline: none;
+    width: 30px;
 }
 
 .icon-bar__support-image, .icon-bar__history-image {
     border-radius: 0;
+    outline: none;
+    width: 30px;
 }

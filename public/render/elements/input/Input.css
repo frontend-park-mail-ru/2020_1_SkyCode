@@ -84,21 +84,6 @@
     border-radius: 30px;
 }
 
-.signup-field__input {
-    width: 200px;
-    text-align: center;
-    margin-top: 5px;
-    margin-bottom: 5px;
-
-    background: #FFFFFF;
-    box-shadow: 4px 6px 100px #9E9E9E;
-    border: 1px;
-    outline: 1px;
-
-    height: 25px;
-    border-radius: 30px;
-}
-
 
 .profile-avatar-area__image-input {
     opacity: 0;
@@ -117,18 +102,14 @@
     visibility: hidden;
 }
 
-.login-field__input {
-    width: 200px;
-    text-align: center;
-    margin-top: 5px;
-    margin-bottom: 5px;
-
-    background: #FFFFFF;
-    box-shadow: 4px 6px 100px #9E9E9E;
-    border: 1px;
-    outline: 1px;
-    height: 25px;
-    border-radius: 30px;
+.input {
+    outline: none;
+    font-size: 20px;
+    line-height: 20px;
+    background-color: transparent;
+    transition: 0.3s;
+    border: none;
+    font-family: 'Comfortaa', cursive;
 }
 
 .order-checkout__input {

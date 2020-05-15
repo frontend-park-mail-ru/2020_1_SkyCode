@@ -6,59 +6,61 @@ import ErrorBlock from '../errorBlock/ErrorBlock.js';
 import Validation from '../../../services/InputValidation.js';
 import template from './SignupField.hbs';
 import PhoneInput from '../../elements/phoneInput/PhoneInput';
+import CheckedInput from '../../elements/checkedInput/CheckedInput';
 
 export default class SignupField extends Component {
     constructor({classes}) {
         super(classes, {
-            fNameInput: new Input({
-                classes: 'signup-field__input',
-                id: 'signup-field__fname-input',
-                type: 'text',
-                placeholder: 'Имя',
-                isRequired: true,
+            fNameInput: new CheckedInput({
+                label: 'Имя',
+                Input: new Input({
+                    classes: 'signup-field__input',
+                    id: 'signup-field__fname-input',
+                    type: 'text',
+                    placeholder: 'Имя',
+                    isRequired: true,
+                    minlength: '4',
+                }),
             }),
-            lNameInput: new Input({
-                classes: 'signup-field__input',
-                id: 'signup-field__lname-input',
-                type: 'text',
-                placeholder: 'Фамилия',
-                isRequired: true,
+            lNameInput: new CheckedInput({
+                label: 'Фамилия',
+                Input: new Input({
+                    classes: 'signup-field__input',
+                    id: 'signup-field__lname-input',
+                    type: 'text',
+                    placeholder: 'Фамилия',
+                    isRequired: true,
+                    minlength: '4',
+                }),
             }),
-            phoneInput: new PhoneInput({
-                classes: 'signup-field__input',
-                id: 'signup-field__phone-input',
-                isRequired: true,
+            phoneInput: new CheckedInput({
+                label: 'Телефон',
+                Input: new PhoneInput({
+                    classes: 'signup-field__input',
+                    id: 'signup-field__phone-input',
+                    isRequired: true,
+                }),
             }),
-            passwordInput1: new Input({
-                classes: 'signup-field__input',
-                id: 'signup-field__password-input1',
-                type: 'password',
-                placeholder: 'Пароль',
-                isRequired: true,
-                minlength: '7',
+            passwordInput1: new CheckedInput({
+                label: 'Пароль',
+                Input: new Input({
+                    classes: 'signup-field__input',
+                    id: 'signup-field__password-input1',
+                    type: 'password',
+                    placeholder: 'elevator3plant',
+                    isRequired: true,
+                    minlength: '7',
+                }),
             }),
-            passwordInput2: new Input({
-                classes: 'signup-field__input',
-                id: 'signup-field__password-input2',
-                minlength: '7',
-                type: 'password',
-                placeholder: 'Пароль',
-                isRequired: true,
-            }),
-            firstNameErrorField: new ErrorBlock({
-                id: 'first-name-input-err',
-            }),
-            lastNameErrorField: new ErrorBlock({
-                id: 'last-name-input-err',
-            }),
-            phoneErrorField: new ErrorBlock({
-                id: 'phone-error',
-            }),
-            password1ErrorField: new ErrorBlock({
-                id: 'password1-error',
-            }),
-            password2ErrorField: new ErrorBlock({
-                id: 'password2-error',
+            passwordInput2: new CheckedInput({
+                label: 'Подтверждение',
+                Input: new Input({
+                    classes: 'signup-field__input',
+                    id: 'signup-field__password-input2',
+                    type: 'password',
+                    placeholder: 'elevator3plant',
+                    isRequired: true,
+                }),
             }),
             generalErrorField: new ErrorBlock({
                 id: 'signup-general-error',

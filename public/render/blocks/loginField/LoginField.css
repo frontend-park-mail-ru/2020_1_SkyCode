@@ -1,12 +1,17 @@
 @import "../errorBlock/ErrorBlock.css";
 
+.login-field {
+    height: fit-content;
+    box-shadow: 0 0 10px #D6D6D6;
+    border-radius: 15px;
+}
+
 .login-signup__login {
     background: #FFFFFF;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 4px 100px #D6D6D6;
     padding: 20px;
 }
 

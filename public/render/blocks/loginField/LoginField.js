@@ -2,32 +2,34 @@ import Component from '../../Component.js';
 import Input from '../../elements/input/Input.js';
 import NeonButton from '../../elements/neonButton/NeonButton.js';
 import EventBus from '../../../services/Events/EventBus.js';
-import ErrorBlock from '../errorBlock/ErrorBlock.js';
+import Event from '../../../services/Events/Events';
 import Validation from '../../../services/InputValidation.js';
 import template from './LoginField.hbs';
 import PhoneInput from '../../elements/phoneInput/PhoneInput';
+import CheckedInput from '../../elements/checkedInput/CheckedInput';
+import ErrorBlock from '../errorBlock/ErrorBlock';
 
 export default class LoginField extends Component {
     constructor({classes}) {
         super(classes, {
-            phoneInput: new PhoneInput({
-                classes: 'login-field__input',
-                id: 'login-field__email-input',
-                isRequired: true,
+            phoneInput: new CheckedInput({
+                label: 'Телефон',
+                Input: new PhoneInput({
+                    classes: 'login-field__input',
+                    id: 'login-field__email-input',
+                    isRequired: true,
+                }),
             }),
-            passwordInput: new Input({
-                classes: 'login-field__input',
-                id: 'login-field__password-input',
-                type: 'password',
-                minlength: '7',
-                placeholder: 'Пароль',
-                isRequired: true,
-            }),
-            phoneErrorField: new ErrorBlock({
-                id: 'indent-input-err',
-            }),
-            passwordErrorField: new ErrorBlock({
-                id: 'password-input-err',
+            passwordInput: new CheckedInput({
+                label: 'Пароль',
+                Input: new Input({
+                    classes: 'login-field__input',
+                    id: 'login-field__password-input',
+                    minlength: '7',
+                    type: 'password',
+                    isRequired: true,
+                    placeholder: 'elevator3plant',
+                }),
             }),
             generalErrorField: new ErrorBlock({
                 id: 'login-general-error',
@@ -41,25 +43,16 @@ export default class LoginField extends Component {
             text: 'Войти',
             callback: () => {
                 this.context.generalErrorField.clean();
-                let validationFlag;
+                const isValid = this.context.phoneInput.isValid()
+                    && this.context.passwordInput.isValid();
 
-                validationFlag = Validation.inputValidation(
-                    this.context.phoneInput,
-                    this.context.phoneErrorField,
-                );
-
-                validationFlag = Validation.inputValidation(
-                    this.context.passwordInput,
-                    this.context.passwordErrorField,
-                ) && validationFlag;
-
-                if (validationFlag === false) {
+                if (!isValid) {
                     return;
                 }
 
                 const data = {
-                    phone: this.context.phoneInput.domElement.value,
-                    password: this.context.passwordInput.domElement.value,
+                    phone: this.context.phoneInput.value(),
+                    password: this.context.passwordInput.value(),
                 };
                 EventBus.publish('login', data);
             },
@@ -71,25 +64,12 @@ export default class LoginField extends Component {
             this.context.generalErrorField.addMessage(message);
         });
 
-        EventBus.subscribe(Input.oninputEvent(this.context.passwordInput.id), () => {
-            Validation.inputValidation(
-                this.context.passwordInput,
-                this.context.passwordErrorField,
-            );
-        });
-
-        EventBus.subscribe(Input.oninputEvent(this.context.phoneInput.id), () => {
-            Validation.inputValidation(
-                this.context.phoneInput,
-                this.context.phoneErrorField,
-            );
-        });
-
         super.bind();
     }
 
     unbind() {
-        EventBus.unsubscribe('login-error', (message) => {
+        EventBus.unsubscribe(Event.loginError, (message) => {
+            debugger
             this.context.generalErrorField.addMessage(message);
         });
 

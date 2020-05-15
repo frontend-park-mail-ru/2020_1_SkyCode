@@ -90,9 +90,9 @@
 }
 
 .neon-button:hover {
-    box-shadow: 0 0 10px #2196f3;
-    background-color: #2196f3;
-    color: #FFFFFF;
+    box-shadow: 0 0 10px #F6D471;
+    background-color: #F6D471;
+    color: black;
     transition-delay: 0.45s;
 }
 
@@ -101,5 +101,5 @@
 }
 
 .login-field__submit {
-    margin-top: 30px;
+    border-radius: 2px;
 }

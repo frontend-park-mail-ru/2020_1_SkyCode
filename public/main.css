@@ -13,7 +13,7 @@
 @import "render/views/AddRestaurantPointView/AddRestaurantPointView.css";
 @import "render/views/AdminRestaurantListView/AdminRestaurantListView.css";
 @import "render/views/BaseView/BaseView.css";
-
+@import "render/elements/checkedInput/CheckedInput.css";
 
 
 body {
