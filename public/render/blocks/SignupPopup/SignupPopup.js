@@ -17,8 +17,8 @@ export default class SignupPopup extends Component {
 
     bind() {
         EventBus.subscribe(Events.signupRequest, this.appear.bind(this));
-        EventBus.subscribe(Events.loginRequest, this.disappear.bind(this));
-        EventBus.subscribe(Events.successSignup, this.disappear.bind(this));
+        EventBus.subscribe(Events.loginRequest, this.quiteDisappear.bind(this));
+        EventBus.subscribe(Events.successSignup, this.quiteDisappear.bind(this));
         document.getElementsByClassName('signup-popup__hider')[0]
             .onclick = () => {
                 this.disappear();
@@ -30,14 +30,14 @@ export default class SignupPopup extends Component {
 
     unbind() {
         EventBus.unsubscribe(Events.signupRequest, this.appear.bind(this));
-        EventBus.unsubscribe(Events.loginRequest, this.disappear.bind(this));
-        EventBus.subscribe(Events.successSignup, this.disappear.bind(this));
+        EventBus.unsubscribe(Events.loginRequest, this.quiteDisappear.bind(this));
+        EventBus.subscribe(Events.successSignup, this.quiteDisappear.bind(this));
         document.getElementsByClassName('signup-popup__hider')[0]
             .onclick = null;
         super.unbind();
     }
 
-    appear({isStatic = false}) {
+    appear({isStatic = false} = {}) {
         this.isStatic = isStatic;
         if (isStatic) this.becomeStatic();
 
@@ -45,6 +45,15 @@ export default class SignupPopup extends Component {
     }
 
     disappear() {
+        if (this.isStatic) {
+            this.isStatic = false;
+            this.becomeNotStatic();
+        }
+        this.domElement.style.display = 'none';
+        EventBus.publish(Events.signPopDisappear);
+    }
+
+    quiteDisappear() {
         if (this.isStatic) {
             this.isStatic = false;
             this.becomeNotStatic();
@@ -60,7 +69,7 @@ export default class SignupPopup extends Component {
     becomeNotStatic() {
         document.getElementsByClassName('signup-popup__hider')[0]
             .onclick = () => {
-            this.disappear();
-        };
+                this.disappear();
+            };
     }
 }

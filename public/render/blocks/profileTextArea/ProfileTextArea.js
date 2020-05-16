@@ -8,10 +8,18 @@ import Validation from '../../../services/InputValidation.js';
 import template from './ProfileTextArea.hbs';
 import ImageHref from '../imageHref/ImageHref';
 import CheckedInput from '../../elements/checkedInput/CheckedInput';
+import Events from '../../../services/Events/Events';
 
 export default class ProfileTextArea extends Component {
     constructor({classes, data}) {
+        const imgSrc = data.User.profile_photo ? `/images/${data.User.profile_photo}`
+            : '/static/Portrait_Placeholder.png';
+
+        const message = sessionStorage.message;
+        sessionStorage.message = '';
+
         super(classes, {
+            message,
             fNameInput: new CheckedInput({
                 label: 'Ваше имя',
                 Input: new Input({
@@ -53,7 +61,8 @@ export default class ProfileTextArea extends Component {
 
             Image: new Img({
                 classes: 'profile-avatar-area__image',
-                src: `/images/${data.User.profile_photo}`,
+                src: imgSrc,
+                alt: 'profile avatar',
             }),
             avatarErrorField: new ErrorBlock({
                 id: 'profile-avatar-error',
@@ -89,7 +98,7 @@ export default class ProfileTextArea extends Component {
                     classes: 'icon',
                     src: '/static/sign-out.svg',
                     callback: () => {
-                        EventBus.publish('log-out');
+                        EventBus.publish(Events.logout);
                     },
                 }),
             ordersButton: new ImageHref({
@@ -111,45 +120,32 @@ export default class ProfileTextArea extends Component {
         EventBus.subscribe('update-bio-error', (message) => {
             this.context
                 .generalErrorField
-                .addMessage(message);
+                .addMessage('Пользователь с таким email уже существует');
+            // .addMessage(message);
         });
 
         EventBus.subscribe('update-avatar-error', (message) => {
             this.context
                 .avatarErrorField
-                .addMessage(message);
+                .addMessage('Ошибка обновления аватара');
+            // .addMessage(message);
         });
 
         EventBus.subscribe('profile-view__update-user', () => {
             this.context.generalErrorField.clean();
 
-            let validationFlag;
+            const isValid = this.context.fNameInput.isValid()
+                && this.context.lNameInput.isValid()
+                && this.context.EmailInput.isValid();
 
-            validationFlag = Validation.inputValidation(
-                this.context.fNameInput,
-                this.context.firstNameErrorField,
-            );
-
-            validationFlag = Validation.inputValidation(
-                this.context.lNameInput,
-                this.context.lastNameErrorField,
-            ) && validationFlag;
-
-            validationFlag = Validation.inputValidation(
-                this.context.EmailInput,
-                this.context.emailErrorField,
-            ) && validationFlag;
-
-            if (validationFlag === false) {
-                return;
-            }
+            if (!isValid) return;
 
             const data = {
-                firstName: this.context.fNameInput.domElement.value,
-                lastName: this.context.lNameInput.domElement.value,
-                email: this.context.EmailInput.domElement.value,
+                firstName: this.context.fNameInput.value(),
+                lastName: this.context.lNameInput.value(),
+                email: this.context.EmailInput.value(),
             };
-            EventBus.publish('update-user', data);
+            EventBus.publish(Events.updateUser, data);
         });
 
         super.bind();

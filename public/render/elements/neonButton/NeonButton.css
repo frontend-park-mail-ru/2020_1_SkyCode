@@ -114,3 +114,7 @@
 .login-field__submit {
     border-radius: 2px;
 }
+
+.feedback-form__submit {
+    margin-top: 20px;
+}

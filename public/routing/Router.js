@@ -33,6 +33,8 @@ class Router {
         this._initConstantSidebars();
         EventBus.subscribe(Events.setPage, (this._goto).bind(this));
         EventBus.subscribe(Events.redirect, (this._redirect).bind(this));
+        EventBus.subscribe(Events.logPopDisappear, this._cleanLoginNeededRecords.bind(this));
+        EventBus.subscribe(Events.signPopDisappear, this._cleanLoginNeededRecords.bind(this));
         EventBus.subscribe(Events.successLogin, this._successLoginSetPage.bind(this));
         window.onpopstate = (this._handlePopState).bind(this);
     }
@@ -43,9 +45,10 @@ class Router {
             this._currentController.stop();
         }
 
-        let matchData;
-        [this._currentController, matchData] = this._matchUrl(window.location.pathname)
+        let matchData, pageRecord;
+        [pageRecord, matchData] = this._matchUrl(window.location.pathname)
             || [Controller404];
+        this._currentController = pageRecord.page;
         this._currentController.execute(matchData);
     }
 
@@ -112,7 +115,17 @@ class Router {
         this._currentController.execute(matchData);
     }
 
+    _cleanLoginNeededRecords() {
+        this.loginNeededRecord = null;
+        this.loginNeededMatchData = null;
+    }
+
+
     _successLoginSetPage() {
+        if (this.loginNeededRecord === null) {
+            return;
+        }
+
         if (this._currentController) {
             this._currentController.stop();
         }

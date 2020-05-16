@@ -1,10 +1,10 @@
 .input {
     outline: none;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 20px;
     background-color: transparent;
     transition: 0.3s;
-    border: none;
+    border-width: 0;
     font-family: 'Comfortaa', cursive;
 }
 

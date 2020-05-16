@@ -8,6 +8,10 @@ import RestaurantFeedbackCard
     from '../../blocks/restaurantFeedbackCard/RestaurantFeedbackCard.js';
 import IconedHeader from '../../blocks/iconedHeader/IconedHeader';
 import WavingMenue from '../../blocks/wavingMenue/WavingMenue';
+import NeonButton from '../../elements/neonButton/NeonButton';
+import EventBus from '../../../services/Events/EventBus';
+import Events from '../../../services/Events/Events';
+import UserController from '../../../controllers/UserController';
 
 
 export default class RestaurantInfoView extends BaseView {
@@ -39,8 +43,10 @@ class MainArea extends Component {
         allReview: allReviews,
         currentReview,
         restaurantId,
-        user,
     }) {
+        const message = sessionStorage.message || '';
+        sessionStorage.message = '';
+
         super(classes, {
             RestaurantBanner: new RestaurantBanner({
                 classes: 'restaurant-banner',
@@ -53,22 +59,27 @@ class MainArea extends Component {
                 text: 'Назад',
                 href: `/restaurants/${restaurant.id}`,
             }),
-            user,
+            userLogined: UserController.logined,
+            message,
         });
 
-        if (user === undefined) {
+        if (!UserController.logined) {
             this.addContextData({
-                LoginHref: new Href({
-                    classes: 'restaurant-feedback__login-signup-href',
+                Login: new NeonButton({
+                    classes: 'restaurant-feedback__login-signup',
                     text: 'Войдите',
-                    href: '/login',
                     id: 'restaurant-feedback__login',
+                    callback: () => {
+                        EventBus.publish(Events.loginRequest);
+                    },
                 }),
-                SignupHref: new Href({
-                    classes: 'restaurant-feedback__login-signup-href',
+                Signup: new NeonButton({
+                    classes: 'restaurant-feedback__login-signup',
                     text: 'Зарегестрируйтесь',
-                    href: '/signup',
                     id: 'restaurant-feedback__signup',
+                    callback: () => {
+                        EventBus.publish(Events.signupRequest);
+                    },
                 }),
             });
         } else {
@@ -96,5 +107,25 @@ class MainArea extends Component {
 
         super.addContextData({Feedback});
         super.template = template;
+    }
+
+    bind() {
+        EventBus.subscribe(Events.successLogin, () => {
+            EventBus.publish(Events.setPage, {url: window.location.pathname});
+        });
+        EventBus.subscribe(Events.successSignup, () => {
+            EventBus.publish(Events.setPage, {url: window.location.pathname});
+        });
+        super.bind();
+    }
+
+    unbind() {
+        EventBus.unsubscribe(Events.successLogin, () => {
+            EventBus.publish(Events.setPage, {url: window.location.pathname});
+        });
+        EventBus.unsubscribe(Events.successSignup, () => {
+            EventBus.publish(Events.setPage, {url: window.location.pathname});
+        });
+        super.unbind();
     }
 }

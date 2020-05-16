@@ -15,7 +15,7 @@ class ProfileController extends BaseController {
             .getUser()
             .then((response) => {
                 if (response.error === 'Unauthorized') {
-                    EventBus.publish(Event.redirect, {url: '/login'});
+                    EventBus.publish(Event.redirect, {url: '/'});
                 } else {
                     super.execute(new ProfileView({profile: response}));
                 }
@@ -48,7 +48,8 @@ class ProfileController extends BaseController {
             if (response.error) {
                 EventBus.publish(Event.logoutError, response.error);
             } else {
-                EventBus.publish(Event.setPage, {url: '/login'});
+                EventBus.publish(Event.successLogout);
+                EventBus.publish(Event.setPage, {url: '/'});
             }
         })
             .catch((err) => {
@@ -64,6 +65,7 @@ class ProfileController extends BaseController {
                 if (response.error) {
                     EventBus.publish(Event.updateBioError, response.error);
                 } else {
+                    sessionStorage.message = 'Данные обновлены';
                     EventBus.publish(Event.setPage, {url: '/me'});
                 }
             })

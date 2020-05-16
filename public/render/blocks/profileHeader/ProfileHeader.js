@@ -3,6 +3,7 @@ import IconBar from '../iconBar/IconBar';
 import Img from '../../elements/img/Img';
 import EventBus from '../../../services/Events/EventBus';
 import ImageHref from '../imageHref/ImageHref';
+import Events from '../../../services/Events/Events';
 
 
 export default class ProfileHeader extends IconedHeader {
@@ -16,7 +17,7 @@ export default class ProfileHeader extends IconedHeader {
                         id: 'icon-bar__logout',
                         src: '/static/sign-out.svg',
                         callback: () => {
-                            EventBus.publish('log-out');
+                            EventBus.publish(Events.logout);
                         },
                     }),
                     new ImageHref({

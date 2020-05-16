@@ -5,6 +5,8 @@ import RestaurantModel from '../../../models/RestaurantModel';
 import Textarea from '../../elements/textarea/Textarea';
 import NumberInput from '../../elements/numberInput/NumberInput';
 import EventBus from '../../../services/Events/EventBus';
+import NeonButton from '../../elements/neonButton/NeonButton';
+import Events from '../../../services/Events/Events';
 
 
 export default class FeedbackForm extends Component {
@@ -41,11 +43,11 @@ export default class FeedbackForm extends Component {
         super.template = template;
         super.addContextData({
             SubmitButton: new Button({
-                classes: 'feedback-form__submit',
+                classes: 'feedback-form__submit neon-button',
                 text: oldReview === null ? 'Сохранить' : 'Изменить',
                 callback: () => {
                     const body = {
-                        rate: Number(this.context.RateInput.getValue()),
+                        rate: Number(this.context.RateInput.value()),
                         text: this.context.TextInput.domElement.value,
                     };
 
@@ -53,21 +55,25 @@ export default class FeedbackForm extends Component {
                         RestaurantModel
                             .addRestaurantReview(restaurantId, JSON.stringify(body))
                             .then((response) => {
-                                console.log('success fetch:' + response);
-                                EventBus.publish('redirect', {url: window.location.pathname});
+                                sessionStorage.message = 'Ваш отзыв успешно'
+                                    + ' добавлен';
+                                EventBus.publish(Events.setPage, {url: window.location.pathname});
                             })
                             .catch((err) => {
-                                console.log('err fetch:' + err);
+                                sessionStorage.message = 'Ошибка добавления'
+                                    + ' отзыва';
                             });
                     } else {
                         RestaurantModel
                             .changeRestaurantReview(oldReview.id, JSON.stringify(body))
                             .then((response) => {
-                                console.log('success fetch:' + response);
-                                EventBus.publish('redirect', {url: window.location.pathname});
+                                sessionStorage.message = 'Ваш отзыв успешно'
+                                    + ' изменён';
+                                EventBus.publish(Events.setPage, {url: window.location.pathname});
                             })
                             .catch((err) => {
-                                console.log('err fetch:' + err);
+                                sessionStorage.message = 'Ошибка изменения'
+                                    + ' отзыва';
                             });
                     }
                 },

@@ -11,6 +11,7 @@ class Events {
         this.checkoutSuccess = 'checkout-success';
         this.successLogin = 'success-login';
         this.successSignup = 'success-signup';
+        this.successLogout = 'success-logout';
         this.logout = 'logout';
         this.deleteProd = 'delete-prod';
         this.basketChanged = 'basket-changed';
@@ -33,6 +34,16 @@ class Events {
         this.supportConnected = 'support-connected';
         this.loginRequest = 'login-request';
         this.signupRequest = 'signup-request';
+        this.signPopDisappear = 'signup-popup-disappear';
+        this.logPopDisappear = 'login-popup-disappear';
+    }
+
+    prodAdded(id) {
+        return this.addProduct + String(id);
+    }
+
+    prodDeleted(id) {
+        return this.deleteProd + String(id);
     }
 }
 

@@ -17,8 +17,8 @@ export default class LoginPopup extends Component {
 
     bind() {
         EventBus.subscribe(Events.loginRequest, this.appear.bind(this));
-        EventBus.subscribe(Events.signupRequest, this.disappear.bind(this));
-        EventBus.subscribe(Events.successLogin, this.disappear.bind(this));
+        EventBus.subscribe(Events.signupRequest, this.quiteDisappear.bind(this));
+        EventBus.subscribe(Events.successLogin, this.quiteDisappear.bind(this));
         document.getElementsByClassName('login-popup__hider')[0]
             .onclick = () => {
                 this.disappear();
@@ -30,14 +30,14 @@ export default class LoginPopup extends Component {
 
     unbind() {
         EventBus.unsubscribe(Events.loginRequest, this.appear.bind(this));
-        EventBus.unsubscribe(Events.signupRequest, this.disappear.bind(this));
-        EventBus.unsubscribe(Events.successLogin, this.disappear.bind(this));
+        EventBus.unsubscribe(Events.signupRequest, this.quiteDisappear.bind(this));
+        EventBus.unsubscribe(Events.successLogin, this.quiteDisappear.bind(this));
         document.getElementsByClassName('login-popup__hider')[0]
             .onclick = null;
         super.unbind();
     }
 
-    appear({isStatic = false}) {
+    appear({isStatic = false} = {}) {
         this.isStatic = isStatic;
         if (isStatic) this.becomeStatic();
 
@@ -45,6 +45,15 @@ export default class LoginPopup extends Component {
     }
 
     disappear() {
+        if (this.isStatic) {
+            this.isStatic = false;
+            this.becomeNotStatic();
+        }
+        this.domElement.style.display = 'none';
+        EventBus.publish(Events.logPopDisappear);
+    }
+
+    quiteDisappear() {
         if (this.isStatic) {
             this.isStatic = false;
             this.becomeNotStatic();

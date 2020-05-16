@@ -23,6 +23,7 @@ class BasketController extends BaseController {
         );
         EventBus.subscribe(Event.checkoutSuccess, this.cleanBasketHandler.bind(this));
         EventBus.subscribe(Event.successLogin, this.CheckBasketHandler.bind(this));
+        EventBus.subscribe(Event.successSignup, this.CheckBasketHandler.bind(this));
         EventBus.subscribe(Event.logout, this.cleanBasketHandler.bind(this));
         EventBus.subscribe(Event.deleteProd, this.deleteProductHandler.bind(this));
     }
@@ -83,12 +84,7 @@ class BasketController extends BaseController {
     }
 
     CheckBasketHandler(data) {
-        if (this.basket.owner !== data) {
-            this.basket = {
-                owner: data,
-                product: {},
-            };
-        }
+        this.basket.owner = data;
     }
 
     cleanBasketHandler() {

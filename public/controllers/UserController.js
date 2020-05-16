@@ -42,11 +42,16 @@ class UserController extends BaseController {
     startCatchEvents() {
         EventBus.subscribe(Event.signup, this.signupHandler.bind(this));
         EventBus.subscribe(Event.login, this.loginHandler.bind(this));
+        EventBus.subscribe(Event.successLogout, this.successLogoutHandler.bind(this));
     }
 
     stopCatchEvents() {
         EventBus.unsubscribe(Event.signup, this.signupHandler.bind(this));
         EventBus.unsubscribe(Event.login, this.loginHandler.bind(this));
+    }
+
+    successLogoutHandler() {
+        this.logined = false;
     }
 
     signupHandler(data) {
@@ -84,7 +89,6 @@ class UserController extends BaseController {
                     this.profileId = response.User.id;
                     this.User = response.User;
                     this.logined = true;
-
                     EventBus.publish(Event.successLogin, response.User.id);
                 }
 

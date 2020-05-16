@@ -1,4 +1,3 @@
-import Input from '../input/Input.js';
 import temp from './CheckedInput.hbs';
 import Component from '../../Component';
 

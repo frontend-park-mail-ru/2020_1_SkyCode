@@ -54,7 +54,7 @@ export default class LoginField extends Component {
                         phone: this.context.phoneInput.value(),
                         password: this.context.passwordInput.value(),
                     };
-                    EventBus.publish('login', data);
+                    EventBus.publish(Event.login, data);
                 },
             }),
             signupButton: new NeonButton({

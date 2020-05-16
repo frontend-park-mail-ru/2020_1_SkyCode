@@ -1,7 +1,6 @@
 import Component from '../../Component.js';
 import template from './Input.hbs';
 import EventBus from '../../../services/Events/EventBus';
-import Validation from '../../../services/InputValidation';
 
 export default class Input extends Component {
     constructor({
@@ -68,9 +67,11 @@ export default class Input extends Component {
             errors.push('Обязательное поле');
         }
 
-        if (validity.typeMismatch) {
-            errors.push('Неверный тип');
-        }
+        /*
+         * If (validity.typeMismatch) {
+         *     errors.push('Неверный тип');
+         * }
+         */
 
         if (validity.patternMismatch) {
             errors.push('Неверный формат');

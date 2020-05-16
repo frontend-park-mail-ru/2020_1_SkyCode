@@ -17,7 +17,7 @@
     position: absolute;
     transition: .3s;
     top: 25px;
-    font-size: 25px;
+    font-size: 20px;
     pointer-events: none;
     width: 100%;
 }
@@ -36,8 +36,9 @@
 
 .checked-input__input:focus+.checked-input__label,
 .checked-input__input:not(:placeholder-shown)+.checked-input__label{
-    top: 0;
+    top: 10px;
     color: #cac6c6;
+    font-size: 15px;
 }
 
 .checked-input__input::-webkit-input-placeholder {

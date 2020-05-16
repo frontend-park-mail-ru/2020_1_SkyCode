@@ -6,6 +6,10 @@
     border-radius: 20px;
 }
 
+.restaurant-feedback__message {
+    margin-top: 20px;
+}
+
 .restaurant-feedback__info-bar {
     display: flex;
     flex-wrap: wrap;
