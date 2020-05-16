@@ -13,7 +13,6 @@ class RestaurantInfoController extends BaseController {
 
     execute(matchData) {
         const id = matchData[0];
-        console.log('qwer');
         Promise.all([
             UserModel
                 .getUser()
@@ -52,7 +51,7 @@ class RestaurantInfoController extends BaseController {
             })
             .catch((err) => {
                 console.log('info controller error', err);
-                EventBus.publish(Event.redirect, {url: '/'});
+                EventBus.publish(Event.setPage, {url: '/'});
             });
     }
 }

@@ -1,6 +1,7 @@
 import BaseController from './BaseController.js';
 import ChatModel from '../models/ChatModel.js';
-import AdminChatListView from '../render/views/AdminChatListView/AdminChatListView.js';
+import AdminChatListView
+    from '../render/views/AdminChatListView/AdminChatListView.js';
 import EventBus from '../services/Events/EventBus';
 import Event from '../services/Events/Events.js';
 
@@ -13,12 +14,13 @@ class AdminChatListController extends BaseController {
         ChatModel.getChats()
             .then((response) => {
                 if (response.error) {
-                    EventBus.publish(Event.setPage, {url: '/login'});
+                    throw response.error;
                 }
                 super.execute(new AdminChatListView({chatArray: response}));
             })
             .catch((err) => {
                 console.log(err);
+                EventBus.publish(Event.setPage, {url: '/'});
             });
     }
 }

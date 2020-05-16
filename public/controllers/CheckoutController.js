@@ -6,6 +6,7 @@ import EventBus from '../services/Events/EventBus.js';
 import Event from '../services/Events/Events.js';
 import RestaurantModel from '../models/RestaurantModel.js';
 import Swal from 'sweetalert2';
+import UserController from './UserController';
 
 class CheckoutController extends BaseController {
     constructor(title = 'confirm') {
@@ -13,23 +14,11 @@ class CheckoutController extends BaseController {
     }
 
     execute() {
-        UserModel
-            .getUser()
-            .then((response) => {
-                if (response.error === 'Unauthorized') {
-                    EventBus.publish(Event.redirect, {url: '/login'});
-                } else {
-                    super.execute(new CheckoutView({
-                        profile: response.User,
-                        basket: BasketController.basket.product,
-                        personNum: BasketController.persons,
-                    }));
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-                EventBus.publish(Event.redirect, {url: '/'});
-            });
+        super.execute(new CheckoutView({
+            profile: UserController.User,
+            basket: BasketController.basket.product,
+            personNum: BasketController.persons,
+        }));
     }
 
     startCatchEvents() {

@@ -12,18 +12,11 @@ class OrderHistoryController extends BaseController {
     }
 
     execute() {
-        UserModel.getUser()
+        OrderModel
+            .getOrders(1, 5)
             .then((response) => {
-                if (response.User) {
-                    OrderModel.getOrders(1, 5)
-                        .then((response) => {
-                            if (response.orders) {
-                                super.execute(new OrderHistoryView(response.orders));
-                            }
-                        })
-                        .catch((err) => console.log(err));
-                } else {
-                    EventBus.publish(Event.redirect, {url: '/login'});
+                if (response.orders) {
+                    super.execute(new OrderHistoryView(response.orders));
                 }
             })
             .catch((err) => console.log(err));

@@ -12,6 +12,9 @@ import NeonButton from '../../elements/neonButton/NeonButton';
 import EventBus from '../../../services/Events/EventBus';
 import Events from '../../../services/Events/Events';
 import UserController from '../../../controllers/UserController';
+import IconBar from '../../blocks/iconBar/IconBar';
+import ImageHref from '../../blocks/imageHref/ImageHref';
+import Img from '../../elements/img/Img';
 
 
 export default class RestaurantInfoView extends BaseView {
@@ -29,7 +32,37 @@ export default class RestaurantInfoView extends BaseView {
                 restaurant,
                 user,
             }),
-            Header: new IconedHeader({classes: 'base-view__header'}),
+            Header: new IconedHeader({
+                classes: 'base-view__header',
+                Icons: new IconBar({
+                    Icons: [
+                        new ImageHref({
+                            classes: 'icon-bar-profile-href icon',
+                            imageClasses: 'icon-bar__profile-image',
+                            src: '/static/profile.png',
+                            href: '/me',
+                        }),
+                        new ImageHref({
+                            classes: 'order__support-href icon',
+                            src: '/static/support.svg',
+                            imageClasses: 'icon-bar__support-image',
+                            href: '/support',
+                        }),
+                        new ImageHref({
+                            classes: 'icon map-href',
+                            src: '/static/map-pin.svg',
+                            href: '/map',
+                            imageClasses: 'icon-bar__map-image',
+                        }),
+                        new ImageHref({
+                            classes: 'icon order-history-href',
+                            src: '/static/order_history.svg',
+                            href: '/orders',
+                            imageClasses: 'icon-bar__history-image',
+                        }),
+                    ],
+                }),
+            }),
             LeftBar: new WavingMenue(),
         });
     }

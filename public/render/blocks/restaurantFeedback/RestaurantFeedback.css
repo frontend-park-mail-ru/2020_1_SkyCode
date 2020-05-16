@@ -7,7 +7,12 @@
 }
 
 .restaurant-feedback__message {
-    margin-top: 20px;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-style: italic;
 }
 
 .restaurant-feedback__info-bar {
@@ -15,7 +20,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
 
-    margin: 0 70px 50px;
+    margin: 20px 70px;
 }
 
 .restaurant-feedback__container {
@@ -31,23 +36,22 @@
     margin-inline-start: 0;
     margin-inline-end: 0;
     font-weight: normal;
-    margin-right: 20px;
-    margin-top: 20px
 }
 
 @media (max-width: 600px) {
     .restaurant-feedback__container {
         margin: 0 0 200px;
-        padding: 0 10px;
     }
     .restaurant-feedback__info-bar {
-        margin: 0 0 50px;
+        margin: 20px 0;
     }
 }
 
 @media (max-width: 450px) {
     .restaurant-feedback__info-bar{
         justify-content: center;
+        align-items: center;
+        flex-direction: column;
     }
 }
 

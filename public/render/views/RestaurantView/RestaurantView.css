@@ -37,6 +37,8 @@
     margin-inline-start: 0;
     margin-inline-end: 0;
     font-weight: normal;
+
+    margin-top: 20px;
 }
 
 @media (max-width: 400px) {

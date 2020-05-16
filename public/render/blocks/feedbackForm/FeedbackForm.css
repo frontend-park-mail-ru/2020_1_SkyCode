@@ -5,8 +5,25 @@
 
 .feedback-form__first-line {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
+}
+
+.feedback-form__second-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media (max-width: 600px) {
+    .feedback-form__first-line {
+        flex-direction: column;
+    }
+
+    .feedback-form__second-line {
+        width: 100%;
+        flex-direction: row-reverse;
+    }
 }
 
 .restaurant-feedback__feedback-form {

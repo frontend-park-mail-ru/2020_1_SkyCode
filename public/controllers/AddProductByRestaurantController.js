@@ -13,15 +13,7 @@ class AddProductByRestaurantController extends BaseController {
 
     execute(matchData) {
         this.restaurant = matchData[0];
-        UserModel.getUser().then((response) => {
-            if (response.User.role === 'Moderator'
-                || response.User.role === 'Admin') {
-                super.execute(new AddProductByRestaurantView());
-            } else {
-                EventBus.publish(Event.setPage, {url: '/'});
-            }
-        })
-            .catch((err) => console.log(err));
+        new AddProductByRestaurantView();
     }
 
     startCatchEvents() {

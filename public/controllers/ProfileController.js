@@ -4,6 +4,7 @@ import UserModel from '../models/UserModel.js';
 import EventBus from '../services/Events/EventBus.js';
 import Event from '../services/Events/Events.js';
 import SessionModel from '../models/SessionModel.js';
+import UserController from './UserController';
 
 class ProfileController extends BaseController {
     constructor(title = 'profile page') {
@@ -11,18 +12,7 @@ class ProfileController extends BaseController {
     }
 
     execute() {
-        UserModel
-            .getUser()
-            .then((response) => {
-                if (response.error === 'Unauthorized') {
-                    EventBus.publish(Event.redirect, {url: '/'});
-                } else {
-                    super.execute(new ProfileView({profile: response}));
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+        super.execute(new ProfileView({profile: UserController.User}));
     }
 
     startCatchEvents() {

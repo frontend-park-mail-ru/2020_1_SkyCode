@@ -44,7 +44,7 @@ class MainArea extends Component {
                 productArr: products}),
             InfoHref: new Href({
                 classes: 'restaurant-view__info',
-                text: 'О нас / отзывы',
+                text: 'Отзывы',
                 href: `/restaurants/${restaurant.id}/info`,
             }),
         });

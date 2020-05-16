@@ -6,17 +6,21 @@ import Controller404 from '../controllers/Controller404.js';
 import ProfileController from '../controllers/ProfileController.js';
 import RestaurantController from '../controllers/RestaurantController.js';
 import CheckoutController from '../controllers/CheckoutController.js';
-import AddProductByRestaurantController from '../controllers/AddProductByRestaurantController.js';
+import AddProductByRestaurantController
+    from '../controllers/AddProductByRestaurantController.js';
 import BasketController from '../controllers/BasketController.js';
 import OrderHistoryController from '../controllers/OrderHistoryController';
 import AddRestaurantController from '../controllers/AddRestaurantController.js';
-import RestaurantInfoController from '../controllers/RestaurantInfoController.js';
+import RestaurantInfoController
+    from '../controllers/RestaurantInfoController.js';
 import SupportChatController from '../controllers/SupportChatController.js';
 import AdminChatListController from '../controllers/AdminChatListController';
 import MapController from '../controllers/MapController.js';
 import LocationController from '../controllers/LocationController.js';
-import AdminRestaurantListController from '../controllers/AdminRestaurantListController.js';
-import AddRestaurantPointController from '../controllers/AddRestaurantPointController';
+import AdminRestaurantListController
+    from '../controllers/AdminRestaurantListController.js';
+import AddRestaurantPointController
+    from '../controllers/AddRestaurantPointController';
 import UserController from '../controllers/UserController';
 import LoginPopup from '../render/blocks/LoginPopup/LoginPopup';
 import Events from '../services/Events/Events';
@@ -26,7 +30,7 @@ class Router {
     constructor() {
         this.loginNeededRecord = null;
         this.loginNeededMatchData = null;
-        this._currentController = undefined;
+        this._currentController = null;
         this._pages = [];
         this._registerAllPages();
         this._initAdditionalControllers();
@@ -105,6 +109,15 @@ class Router {
                 });
                 return;
             }
+
+            if (pageRecord.needAdmin && UserController.User.role !== 'Admin') {
+                if (this._currentController === null) {
+                    this.loginNeededRecord = null;
+                    this.loginNeededMatchData = null;
+                    EventBus.publish(Events.setPage, {url: '/'});
+                }
+                return;
+            }
         }
 
         if (this._currentController) {
@@ -139,28 +152,29 @@ class Router {
     }
 
     _registerAllPages() {
-        this._registerPage(MainController,                      '/');
-        this._registerPage(ProfileController,                   '/me', true);
-        this._registerPage(AddRestaurantController,             '/admin/restaurants/add', true);
-        this._registerPage(RestaurantController,                '/restaurants/:int');
-        this._registerPage(CheckoutController,                  '/checkout', true);
-        this._registerPage(AddProductByRestaurantController,    '/admin/restaurants/:int/add', true);
-        this._registerPage(RestaurantInfoController,            '/restaurants/:int/info');
-        this._registerPage(OrderHistoryController,              '/orders', true);
-        this._registerPage(SupportChatController,               '/support');
-        this._registerPage(AdminChatListController,             '/admin/chats', true);
-        this._registerPage(SupportChatController,               '/admin/chats/:hash');
-        this._registerPage(MapController,                       '/map', true);
-        this._registerPage(LocationController,                  '/location');
-        this._registerPage(AdminRestaurantListController,       '/admin/restaurants', true);
-        this._registerPage(AddRestaurantPointController,        '/admin/restaurants/:id', true);
+        this._registerPage(MainController, '/');
+        this._registerPage(ProfileController, '/me', true);
+        this._registerPage(RestaurantController, '/restaurants/:int');
+        this._registerPage(CheckoutController, '/checkout', true);
+        this._registerPage(RestaurantInfoController, '/restaurants/:int/info');
+        this._registerPage(OrderHistoryController, '/orders', true);
+        this._registerPage(SupportChatController, '/support');
+        this._registerPage(MapController, '/map');
+        this._registerPage(LocationController, '/location');
+        this._registerPage(AddRestaurantController, '/admin/restaurants/add', true, true);
+        this._registerPage(AddProductByRestaurantController, '/admin/restaurants/:int/add', true, true);
+        this._registerPage(AdminChatListController, '/admin/chats', true, true);
+        this._registerPage(SupportChatController, '/admin/chats/:hash', true, true);
+        this._registerPage(AdminRestaurantListController, '/admin/restaurants', true, true);
+        this._registerPage(AddRestaurantPointController, '/admin/restaurants/:id', true, true);
     }
 
-    _registerPage(controller, path, needLogin = false) {
+    _registerPage(controller, path, needLogin = false, needAdmin = false) {
         this._pages.push({
             pattern: new RegExp('^' + path.replace(/:\w+/, '([\\w-]+)') + '$'),
             page: controller,
             needLogin,
+            needAdmin,
         });
     }
 

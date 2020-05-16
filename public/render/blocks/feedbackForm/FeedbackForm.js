@@ -43,11 +43,12 @@ export default class FeedbackForm extends Component {
         super.template = template;
         super.addContextData({
             SubmitButton: new Button({
-                classes: 'feedback-form__submit neon-button',
+                id: 'feedback-form__submit-button',
+                classes: 'feedback-form__submit',
                 text: oldReview === null ? 'Сохранить' : 'Изменить',
                 callback: () => {
                     const body = {
-                        rate: Number(this.context.RateInput.value()),
+                        rate: Number(this.context.RateInput.getValue()),
                         text: this.context.TextInput.domElement.value,
                     };
 

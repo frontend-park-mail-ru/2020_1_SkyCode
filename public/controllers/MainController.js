@@ -114,7 +114,6 @@ class MainController extends BaseController {
                         localStorage.setItem('longitude', this.geopos.longitude);
                         document.getElementsByClassName('place-time-card__place-text')[0].innerHTML
                             = localStorage.getItem('deliveryGeo');
-                        return;
                     } else {
                         Swal.fire({
                             icon: 'error',

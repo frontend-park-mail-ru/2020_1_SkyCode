@@ -14,15 +14,15 @@ class AdminRestaurantListController extends BaseController {
         RestaurantModel.getRestaurants(1, 50)
             .then((response) => {
                 if (response.error) {
-                    EventBus.publish(Event.setPage, {url: '/'});
+                    throw response.error;
                 }
-                console.log(response);
                 super.execute(new AdminRestaurantsListView({
                     restaurantsArray: response.restaurants,
                 }));
             })
             .catch((err) => {
                 console.log(err);
+                EventBus.publish(Event.setPage, {url: '/'});
             });
     }
 }
