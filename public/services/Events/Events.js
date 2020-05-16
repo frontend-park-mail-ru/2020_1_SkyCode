@@ -36,6 +36,7 @@ class Events {
         this.signupRequest = 'signup-request';
         this.signPopDisappear = 'signup-popup-disappear';
         this.logPopDisappear = 'login-popup-disappear';
+        this.profileViewUpdateUser = 'profile-view__update-user';
     }
 
     prodAdded(id) {

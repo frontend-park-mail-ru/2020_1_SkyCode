@@ -81,6 +81,11 @@ body {
     font-size: 12px;
 }
 
+.message {
+    font-size: 18px;
+    font-style: italic;
+}
+
 /** REMOVE INPUT NUMBER CONTROLLERS **/
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,

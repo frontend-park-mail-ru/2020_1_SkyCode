@@ -88,7 +88,7 @@ export default class ProfileTextArea extends Component {
                     classes: 'profile-area__submit',
                     text: 'Обновить',
                     callback: () => {
-                        EventBus.publish('profile-view__update-user');
+                        EventBus.publish(Events.profileViewUpdateUser);
                     },
                 }),
 
@@ -132,7 +132,7 @@ export default class ProfileTextArea extends Component {
             // .addMessage(message);
         });
 
-        EventBus.subscribe('profile-view__update-user', () => {
+        EventBus.subscribe(Events.profileViewUpdateUser, () => {
             this.context.generalErrorField.clean();
 
             const isValid = this.context.fNameInput.isValid()
