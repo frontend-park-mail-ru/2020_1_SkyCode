@@ -5,6 +5,7 @@ import template from './ProductCard.hbs';
 import Events from '../../../services/Events/Events';
 import NumberInput from '../../elements/numberInput/NumberInput';
 import BasketController from '../../../controllers/BasketController';
+import Button from '../../elements/button/Button';
 
 export default class ProductCard extends Component {
     constructor({id, product, classes}) {
@@ -27,7 +28,7 @@ export default class ProductCard extends Component {
         }, id, template);
 
         this.addContextData({
-            button: new NeonButton({
+            button: new Button({
                 classes: 'product-card-button',
                 text: 'Добавить',
                 id: 'product-card__add-button-' + product.name + product.id,

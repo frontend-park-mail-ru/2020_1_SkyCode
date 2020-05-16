@@ -64,6 +64,8 @@
 .product-card__description {
     font-size: 14px;
     color: #575757;
+    display: flex;
+    align-items: center;
 }
 
 .product-card-button {
@@ -74,5 +76,6 @@
     display: flex;
     top: -23px;
     position: relative;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding: 0 10px;
 }

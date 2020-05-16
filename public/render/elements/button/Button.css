@@ -1,4 +1,23 @@
+.product-card-button {
+    background-color: #2196f3;
+    color: #F6D471;
+    width: fit-content;
+    height: fit-content;
+    padding: 7px 15px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    transition: 0.2s;
+    outline: none;
+    cursor: pointer;
+    border-radius: 15px;
+    border: none;
+}
 
+.product-card-button:hover {
+    box-shadow: 0 0 10px #F6D471;
+    background-color: #F6D471;
+    color: black;
+}
 
 @media (max-width: 500px) {
     .feedback-form__submit {
