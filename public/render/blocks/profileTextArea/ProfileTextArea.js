@@ -95,13 +95,14 @@ export default class ProfileTextArea extends Component {
             LogoutButton:
                 new Img({
                     id: 'profile-area__log-out',
-                    classes: 'icon',
+                    classes: 'icon profile-area-icon',
                     src: '/static/sign-out.svg',
                     callback: () => {
                         EventBus.publish(Events.logout);
                     },
                 }),
             ordersButton: new ImageHref({
+                imageClasses: 'icon profile-area-icon',
                 src: '/static/order_history.svg',
                 href: '/orders',
             }),
