@@ -16,6 +16,7 @@ export default class Input extends Component {
         pattern,
         maxlength,
         minlength,
+        isDisabled,
     }) {
         super(classes, {
             src,
@@ -28,6 +29,7 @@ export default class Input extends Component {
             pattern,
             maxlength,
             minlength,
+            isDisabled,
         }, id);
 
         super.template = template;

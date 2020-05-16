@@ -48,6 +48,7 @@ export default class NumberInput extends Component {
                 max,
                 min,
                 value,
+                isDisabled: true,
             }),
             isVertical,
         }, id, template);

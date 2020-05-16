@@ -1,6 +1,10 @@
 <input  class="{{classes}} input"
         type="{{type}}"
 
+        {{#if isDisabled}}
+            disabled
+        {{/if}}
+
         {{#if placeholder}}
             placeholder="{{placeholder}}"
         {{/if}}
