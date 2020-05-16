@@ -25,6 +25,7 @@ class EventBus {
     }
 
     publish(event, data) {
+        console.log(event, data);
         const callbacks = this.events[event];
         if (!callbacks || !callbacks.length) {
             return;

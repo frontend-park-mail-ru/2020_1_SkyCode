@@ -151,4 +151,41 @@ export default class ProfileTextArea extends Component {
 
         super.bind();
     }
+
+    unbind() {
+        this.context.AvatarInput.domElement.onchange = null;
+
+        EventBus.unsubscribe(Events.updateBioError, (message) => {
+            this.context
+                .generalErrorField
+                .addMessage('Пользователь с таким email уже существует');
+            // .addMessage(message);
+        });
+
+        EventBus.unsubscribe(Events.updateAvatarError, (message) => {
+            this.context
+                .avatarErrorField
+                .addMessage('Ошибка обновления аватара');
+            // .addMessage(message);
+        });
+
+        EventBus.unsubscribe(Events.profileViewUpdateUser, () => {
+            this.context.generalErrorField.clean();
+
+            const isValid = this.context.fNameInput.isValid()
+                && this.context.lNameInput.isValid()
+                && this.context.EmailInput.isValid();
+
+            if (!isValid) return;
+
+            const data = {
+                firstName: this.context.fNameInput.value(),
+                lastName: this.context.lNameInput.value(),
+                email: this.context.EmailInput.value(),
+            };
+            EventBus.publish(Events.updateUser, data);
+        });
+
+        super.unbind();
+    }
 }
