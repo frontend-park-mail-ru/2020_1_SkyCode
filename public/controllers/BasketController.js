@@ -62,7 +62,7 @@ class BasketController extends BaseController {
             this.basket.product[data.id] = data;
             this.basket.product[data.id].amount = 1;
         }
-        EventBus.publish(Event.basketChanged, this.basket.product);
+        EventBus.publish(Event.updateBasket, this.basket.product);
     }
 
     deleteProductHandler(id) {
@@ -73,7 +73,7 @@ class BasketController extends BaseController {
                 this.basket.product[id].amount--;
             }
 
-            EventBus.publish(Event.basketChanged, this.basket.product);
+            EventBus.publish(Event.updateBasket, this.basket.product);
         }
     }
 

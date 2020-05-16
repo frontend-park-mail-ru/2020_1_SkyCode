@@ -14,7 +14,7 @@ class Events {
         this.successLogout = 'success-logout';
         this.logout = 'logout';
         this.deleteProd = 'delete-prod';
-        this.basketChanged = 'basket-changed';
+        this.updateBasket = 'update-basket';
         this.redirect = 'redirect';
         this.checkout = 'checkout';
         this.orderCheckoutError = 'order-checkout-error';

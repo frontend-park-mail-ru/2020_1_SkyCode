@@ -2,6 +2,7 @@ import Component from '../../Component.js';
 import BasketProduct from '../basketProduct/BasketProduct.js';
 import template from './Basket.hbs';
 import EventBus from '../../../services/Events/EventBus.js';
+import Events from '../../../services/Events/Events';
 
 
 export default class Basket extends Component {
@@ -37,12 +38,12 @@ export default class Basket extends Component {
     }
 
     bind() {
-        EventBus.subscribe('basket-changed', this.basketChangedHandler.bind(this));
+        EventBus.subscribe(Events.updateBasket, this.basketChangedHandler.bind(this));
         super.bind();
     }
 
     unbind() {
-        EventBus.unsubscribe('basket-changed', this.basketChangedHandler.bind(this));
+        EventBus.unsubscribe(Events.updateBasket, this.basketChangedHandler.bind(this));
         super.unbind();
     }
 }

@@ -1,4 +1,4 @@
-all: build stylecow main webpack
+all: build stylecow webpack
 
 build:
 	cd ./public/handlebars; ./precompile.sh
