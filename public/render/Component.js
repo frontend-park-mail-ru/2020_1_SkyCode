@@ -33,6 +33,14 @@ export default class Component {
         return this._context;
     }
 
+    removeContextData(contextObject) {
+        for (const prop of contextObject) {
+            if (prop in this.context) {
+                delete this.context[prop];
+            }
+        }
+    }
+
     addContextData(contextObject) {
         for (const i in contextObject) {
             if (Array.isArray(contextObject[i])) {
@@ -93,11 +101,17 @@ export default class Component {
 
     unbind() {
         for (const value of Object.values(this.context)) {
-            if (!(value instanceof Component)) {
-                continue;
+            if (Array.isArray(value)) {
+                value.forEach((value) => {
+                    if (Component.isComponent(value)) {
+                        value.unbind();
+                    }
+                });
             }
 
-            value.unbind();
+            if (Component.isComponent(value)) {
+                value.unbind();
+            }
         }
     }
 

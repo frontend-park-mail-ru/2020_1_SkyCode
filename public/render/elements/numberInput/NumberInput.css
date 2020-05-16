@@ -1,3 +1,15 @@
+
+.basket-product__product-num {
+    background-color: #F8F8F8;
+    border-color: #2196f3;
+    width: 30px;
+    height: 70px;
+    font-size: 18px;
+    font-family: 'Comfortaa', cursive;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
 .feedback-form__rate-input {
     background-color: #F8F8F8;
     border-color: #2196f3;

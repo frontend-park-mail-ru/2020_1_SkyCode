@@ -1,16 +1,10 @@
 .basket__basket-product {
     display: flex;
     margin: 10px 0;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     align-items: center;
     text-align: center;
     font-size: 14px;
-}
-
-.basket__basket-product:hover {
-    background: linear-gradient(270deg, transparent, red);
-    border-radius: 5px;
-    cursor: pointer;
 }
 
 .basket-product__price {
@@ -32,10 +26,8 @@
 .basket-product__info-container {
     display: flex;
     height: 2cm;
-    width: 3cm;
     flex-direction: column;
     justify-content: space-evenly;
-    flex-grow: 1;
     align-items: center;
     text-align: center;
 }

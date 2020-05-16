@@ -39,11 +39,11 @@ class Events {
         this.profileViewUpdateUser = 'profile-view__update-user';
     }
 
-    prodAdded(id) {
+    addProductRequest(id) {
         return this.addProduct + String(id);
     }
 
-    prodDeleted(id) {
+    delProductRequest(id) {
         return this.deleteProd + String(id);
     }
 }

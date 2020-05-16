@@ -2,40 +2,55 @@ import Component from '../../Component.js';
 import Img from '../../elements/img/Img.js';
 import EventBus from '../../../services/Events/EventBus.js';
 import template from './BasketProduct.hbs';
+import NumberInput from '../../elements/numberInput/NumberInput';
+import Events from '../../../services/Events/Events';
 
 export default class BasketProduct extends Component {
-    constructor({classes, imageHref, name, quantity, cost, id, mainId}) {
+    constructor({classes, imageHref, name, quantity, cost, id, mainId: prodId}) {
+        const changeEventInputBasis = 'basket-product_input-' + id;
         super(classes, {
             img: new Img({
                 classes: 'basket-product__img',
                 src: imageHref,
                 alt: 'can\'t load picture',
             }),
+            Input: new NumberInput({
+                classes: 'basket-product__product-num',
+                id: 'basket-product_input-' + id,
+                min: '0',
+                max: '9999',
+                value: quantity,
+                changeEventBasis: changeEventInputBasis,
+                isVertical: true,
+            }),
             name,
-            quantity,
             price: quantity * cost,
-        }, id);
-        super.template = template;
-        this.mainId = mainId;
+        }, id, template);
+        this.prodId = prodId;
+        this.changeEventInputBasis = changeEventInputBasis;
     }
 
     bind() {
-        const node = super.domElement;
-        if (node === undefined) {
-            return;
-        }
+        EventBus.subscribe(NumberInput.minusEvent(this.changeEventInputBasis), () => {
+            EventBus.publish(Events.delProductRequest(this.prodId));
+        });
 
-        node.onclick = () => {
-            EventBus.publish('delete-prod', this.mainId);
-        };
+        EventBus.subscribe(NumberInput.plusEvent(this.changeEventInputBasis), () => {
+            EventBus.publish(Events.addProductRequest(this.prodId));
+        });
+
+        super.bind();
     }
 
     unbind() {
-        const node = super.domElement;
-        if (node  === undefined) {
-            return;
-        }
+        EventBus.unsubscribe(NumberInput.minusEvent(this.changeEventInputBasis), () => {
+            EventBus.publish(Events.delProductRequest(this.prodId));
+        });
 
-        node.onclick = null;
+        EventBus.unsubscribe(NumberInput.plusEvent(this.changeEventInputBasis), () => {
+            EventBus.publish(Events.addProductRequest(this.prodId));
+        });
+
+        super.unbind();
     }
 }

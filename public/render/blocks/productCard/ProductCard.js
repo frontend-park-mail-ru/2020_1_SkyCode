@@ -81,7 +81,34 @@ export default class ProductCard extends Component {
                 this.showAddButton();
             }
         });
+        EventBus.subscribe(Events.addProductRequest(this.product.id), () => {
+            this.context.Input.plus();
+        });
+        EventBus.subscribe(Events.delProductRequest(this.product.id), () => {
+            this.context.Input.minus();
+        });
 
         super.bind();
+    }
+
+    unbind() {
+        EventBus.unsubscribe(NumberInput.plusEvent(this.numInputEventBasis), () => {
+            EventBus.publish(Events.addProduct, this.product);
+        });
+        EventBus.unsubscribe(NumberInput.minusEvent(this.numInputEventBasis), (num) => {
+            EventBus.publish(Events.deleteProd, this.product.id);
+            if (0 === Number(num)) {
+                this.hideNumberInput();
+                this.showAddButton();
+            }
+        });
+        EventBus.unsubscribe(Events.addProductRequest(this.product.id), () => {
+            this.context.Input.plus();
+        });
+        EventBus.unsubscribe(Events.delProductRequest(this.product.id), () => {
+            this.context.Input.minus();
+        });
+
+        super.unbind();
     }
 }
