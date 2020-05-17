@@ -72,8 +72,11 @@
     width: 100%;
     list-style: none;
     display: flex;
+    height: 100%;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+    overflow: scroll;
 }
 
 .order-card__product-section-list_product {
@@ -162,8 +165,7 @@
     }
 
     .order-card__product-section-list_name,
-    .order-card__product-section-list_count,
-    .order-card__product-section-list_product {
+    .order-card__product-section-list_count {
         padding: 0;
     }
 }

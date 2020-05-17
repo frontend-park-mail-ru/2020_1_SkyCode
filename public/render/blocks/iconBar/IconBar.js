@@ -3,6 +3,7 @@ import ImageHref from '../imageHref/ImageHref.js';
 import Img from '../../elements/img/Img.js';
 import EventBus from '../../../services/Events/EventBus.js';
 import template from './IconBar.hbs';
+import Events from '../../../services/Events/Events';
 
 
 export default class IconBar extends Component {
@@ -27,11 +28,13 @@ export default class IconBar extends Component {
                 EventBus.publish('order-button-clicked');
             },
         }),
-        new ImageHref({
+        new Img({
             classes: 'icon map-href',
             src: '/static/map-pin.svg',
-            href: '/map',
             imageClasses: 'icon-bar__map-image',
+            callback: () => {
+                EventBus.publish(Events.geoRequest);
+            },
         }),
         new ImageHref({
             classes: 'icon order-history-href',

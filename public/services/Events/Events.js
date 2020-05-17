@@ -12,6 +12,7 @@ class Events {
         this.successLogin = 'success-login';
         this.successSignup = 'success-signup';
         this.successLogout = 'success-logout';
+        this.successGeo = 'success-geo';
         this.logout = 'logout';
         this.deleteProd = 'delete-prod';
         this.updateBasket = 'update-basket';
@@ -34,9 +35,12 @@ class Events {
         this.supportConnected = 'support-connected';
         this.loginRequest = 'login-request';
         this.signupRequest = 'signup-request';
+        this.geoRequest = 'geo-request';
         this.signPopDisappear = 'signup-popup-disappear';
         this.logPopDisappear = 'login-popup-disappear';
+        this.geoPopDisappear = 'geo-popup-disappear';
         this.profileViewUpdateUser = 'profile-view__update-user';
+        this.askGeoError = 'ask-geo-error';
     }
 
     addProductRequest(id) {

@@ -25,11 +25,12 @@ import UserController from '../controllers/UserController';
 import LoginPopup from '../render/blocks/LoginPopup/LoginPopup';
 import Events from '../services/Events/Events';
 import SignupPopup from '../render/blocks/SignupPopup/SignupPopup';
+import GeoPopup from '../render/blocks/GeoPopup/GeoPopup';
 
 class Router {
     constructor() {
-        this.loginNeededRecord = null;
-        this.loginNeededMatchData = null;
+        this.deferredRecord = null;
+        this.deferredMatchData = null;
         this._currentController = null;
         this._pages = [];
         this._registerAllPages();
@@ -37,9 +38,12 @@ class Router {
         this._initConstantSidebars();
         EventBus.subscribe(Events.setPage, (this._goto).bind(this));
         EventBus.subscribe(Events.redirect, (this._redirect).bind(this));
-        EventBus.subscribe(Events.logPopDisappear, this._cleanLoginNeededRecords.bind(this));
-        EventBus.subscribe(Events.signPopDisappear, this._cleanLoginNeededRecords.bind(this));
-        EventBus.subscribe(Events.successLogin, this._successLoginSetPage.bind(this));
+        EventBus.subscribe(Events.logPopDisappear, this._cleanDeferredRecords.bind(this));
+        EventBus.subscribe(Events.signPopDisappear, this._cleanDeferredRecords.bind(this));
+        EventBus.subscribe(Events.geoPopDisappear, this._cleanDeferredRecords.bind(this));
+        EventBus.subscribe(Events.successLogin, this._executeDeferredPage.bind(this));
+        EventBus.subscribe(Events.successSignup, this._executeDeferredPage.bind(this));
+        EventBus.subscribe(Events.successGeo, this._executeDeferredPage.bind(this));
         window.onpopstate = (this._handlePopState).bind(this);
     }
 
@@ -71,6 +75,11 @@ class Router {
         document.getElementById('signup').innerHTML = signupPopup.toString();
         signupPopup.bind();
         signupPopup.disappear();
+
+        const geoPopup = new GeoPopup();
+        document.getElementById('geo').innerHTML = geoPopup.toString();
+        geoPopup.bind();
+        geoPopup.disappear();
     }
 
     _redirect({url}) {
@@ -102,20 +111,32 @@ class Router {
         if (pageRecord.needLogin) {
             if (!UserController.logined) {
                 pageRecord.url = url;
-                this.loginNeededRecord = pageRecord;
-                this.loginNeededMatchData = matchData;
+                this.deferredRecord = pageRecord;
+                this.deferredMatchData = matchData;
                 EventBus.publish(Events.loginRequest, {
-                    isStatic: this._currentController === undefined,
+                    isStatic: this._currentController === null,
                 });
                 return;
             }
 
             if (pageRecord.needAdmin && UserController.User.role !== 'Admin') {
                 if (this._currentController === null) {
-                    this.loginNeededRecord = null;
-                    this.loginNeededMatchData = null;
+                    this.deferredRecord = null;
+                    this.deferredMatchData = null;
                     EventBus.publish(Events.setPage, {url: '/'});
                 }
+                return;
+            }
+        }
+
+        if (pageRecord.needGeo) {
+            if (localStorage.getItem('deliveryGeo') === null) {
+                pageRecord.url = url;
+                this.deferredRecord = pageRecord;
+                this.deferredMatchData = matchData;
+                EventBus.publish(Events.geoRequest, {
+                    isStatic: this._currentController === null,
+                });
                 return;
             }
         }
@@ -128,23 +149,23 @@ class Router {
         this._currentController.execute(matchData);
     }
 
-    _cleanLoginNeededRecords() {
-        this.loginNeededRecord = null;
-        this.loginNeededMatchData = null;
+    _cleanDeferredRecords() {
+        this.deferredRecord = null;
+        this.deferredMatchData = null;
     }
 
 
-    _successLoginSetPage() {
-        if (this.loginNeededRecord === null) {
+    _executeDeferredPage() {
+        if (this.deferredRecord === null) {
             return;
         }
 
         if (this._currentController) {
             this._currentController.stop();
         }
-        this._currentController = this.loginNeededRecord.page;
-        this._setNewHistoryRecord(this._currentController, this.loginNeededRecord.url);
-        this._currentController.execute(this.loginNeededMatchData);
+        this._currentController = this.deferredRecord.page;
+        this._setNewHistoryRecord(this._currentController, this.deferredRecord.url);
+        this._currentController.execute(this.deferredMatchData);
     }
 
     _setNewHistoryRecord(page, url) {
@@ -152,29 +173,34 @@ class Router {
     }
 
     _registerAllPages() {
-        this._registerPage(MainController, '/');
-        this._registerPage(ProfileController, '/me', true);
+        this._registerPage(MainController, '/', {needGeo: true});
+        this._registerPage(ProfileController, '/me', {needLogin: true});
         this._registerPage(RestaurantController, '/restaurants/:int');
-        this._registerPage(CheckoutController, '/checkout', true);
+        this._registerPage(CheckoutController, '/checkout', {needLogin: true});
         this._registerPage(RestaurantInfoController, '/restaurants/:int/info');
-        this._registerPage(OrderHistoryController, '/orders', true);
+        this._registerPage(OrderHistoryController, '/orders', {needLogin: true});
         this._registerPage(SupportChatController, '/support');
         this._registerPage(MapController, '/map');
         this._registerPage(LocationController, '/location');
-        this._registerPage(AddRestaurantController, '/admin/restaurants/add', true, true);
-        this._registerPage(AddProductByRestaurantController, '/admin/restaurants/:int/add', true, true);
-        this._registerPage(AdminChatListController, '/admin/chats', true, true);
-        this._registerPage(SupportChatController, '/admin/chats/:hash', true, true);
-        this._registerPage(AdminRestaurantListController, '/admin/restaurants', true, true);
-        this._registerPage(AddRestaurantPointController, '/admin/restaurants/:id', true, true);
+        this._registerPage(AddRestaurantController, '/admin/restaurants/add', {needAdmin: true});
+        this._registerPage(AddProductByRestaurantController, '/admin/restaurants/:int/add', {needAdmin: true});
+        this._registerPage(AdminChatListController, '/admin/chats', {needAdmin: true});
+        this._registerPage(SupportChatController, '/admin/chats/:hash', {needAdmin: true});
+        this._registerPage(AdminRestaurantListController, '/admin/restaurants', {needAdmin: true});
+        this._registerPage(AddRestaurantPointController, '/admin/restaurants/:id', {needAdmin: true});
     }
 
-    _registerPage(controller, path, needLogin = false, needAdmin = false) {
+    _registerPage(controller, path, {
+        needAdmin = false,
+        needLogin = needAdmin,
+        needGeo = false,
+    } = {}) {
         this._pages.push({
             pattern: new RegExp('^' + path.replace(/:\w+/, '([\\w-]+)') + '$'),
             page: controller,
             needLogin,
             needAdmin,
+            needGeo,
         });
     }
 

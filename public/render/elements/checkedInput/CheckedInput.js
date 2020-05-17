@@ -2,11 +2,12 @@ import temp from './CheckedInput.hbs';
 import Component from '../../Component';
 
 export default class CheckedInput extends Component {
-    constructor({Input, label}) {
+    constructor({Input, label, botError = false} = {}) {
         Input.addClasses('checked-input__input');
         super('', {
             Input,
             label,
+            botError,
         });
 
         this.timeoutId = null;

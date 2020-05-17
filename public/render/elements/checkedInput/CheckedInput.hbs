@@ -1,5 +1,11 @@
 <div class="checked-input">
-    {{{Input}}}
-    <div class="checked-input__label checked-input__label-down" id="{{labelId}}">{{label}}</div>
-    <div class="checked-input__error" id={{errId}}></div>
+    {{#if botError}}
+        <div class="checked-input__error" id={{errId}}></div>
+        {{{Input}}}
+        <div class="checked-input__label checked-input__label-down" id="{{labelId}}">{{label}}</div>
+        {{else}}
+        {{{Input}}}
+        <div class="checked-input__label checked-input__label-down" id="{{labelId}}">{{label}}</div>
+        <div class="checked-input__error" id={{errId}}></div>
+    {{/if}}
 </div>

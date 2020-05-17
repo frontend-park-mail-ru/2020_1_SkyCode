@@ -7,6 +7,7 @@ import ErrorBlock from '../errorBlock/ErrorBlock.js';
 import Validation from '../../../services/InputValidation.js';
 import template from './OrderCheckout.hbs';
 import PhoneInput from '../../elements/phoneInput/PhoneInput.js';
+import Button from '../../elements/button/Button';
 
 export default class OrderCheckout extends Component {
     constructor({classes, phone, address, email, profile}) {
@@ -67,8 +68,8 @@ export default class OrderCheckout extends Component {
 
         this.addContextData({
             SubmitButton:
-                new NeonButton({
-                    classes: 'order-checkout__confirm',
+                new Button({
+                    classes: 'product-card-button',
                     text: 'Заказать',
                     callback: () => {
                         this.context.GeneralError.clean();
