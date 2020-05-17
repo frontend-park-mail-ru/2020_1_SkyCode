@@ -20,6 +20,11 @@ export default class GeoPopup extends Component {
                 text: 'Подтвердить',
                 id: 'geo-popup-submit',
                 callback: () => {
+                    let isNewGeo = false;
+                    if (localStorage.getItem('deliveryGeo') === null) {
+                        isNewGeo = true;
+                    }
+
                     localStorage.setItem(
                         'deliveryGeo',
                         sessionStorage.getItem('deliveryGeo'),
@@ -33,6 +38,10 @@ export default class GeoPopup extends Component {
                         sessionStorage.getItem('longitude'),
                     );
                     EventBus.publish(Events.successGeo);
+                    if (!isNewGeo) {
+                        sessionStorage.message = 'Адрес успешно изменён';
+                        EventBus.publish(Events.setPage, {url: '/'});
+                    }
                 },
             }),
         });
@@ -66,6 +75,10 @@ export default class GeoPopup extends Component {
     }
 
     unbind() {
+        EventBus.unsubscribe(Events.geoConfirmationRequest, this.confirmAppear.bind(this));
+        EventBus.unsubscribe(Events.stopGeoConfirmation, this.confirmDisappear.bind(this));
+        EventBus.unsubscribe(Events.successGeo, this.disappear.bind(this));
+        EventBus.unsubscribe(Events.successGeo, this.tryRefresh.bind(this));
         EventBus.unsubscribe(Events.geoRequest, this.appear.bind(this));
         document.getElementsByClassName('geo-popup__hider')[0]
             .onclick = null;
@@ -89,6 +102,7 @@ export default class GeoPopup extends Component {
             this.isStatic = false;
             this.becomeNotStatic();
         }
+
         this.domElement.style.display = 'none';
         EventBus.publish(Events.geoPopDisappear);
     }
