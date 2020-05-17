@@ -109,6 +109,30 @@ class Router {
             || [Controller404];
 
         if (pageRecord.needLogin) {
+            if (pageRecord.needAdmin && UserController.logined
+                && UserController.User.role !== 'Admin') {
+                if (this._currentController === null) {
+                    this.deferredRecord = pageRecord;
+                    this.deferredMatchData = matchData;
+                    sessionStorage.message = 'Недостаточно прав для перехода'
+                        + ' по данному url';
+                    EventBus.publish(Events.setPage, {url: '/'});
+                }
+                return;
+            }
+
+            if (pageRecord.needSupport && UserController.logined
+                && UserController.User.role !== 'Support') {
+                if (this._currentController === null) {
+                    this.deferredRecord = pageRecord;
+                    this.deferredMatchData = matchData;
+                    sessionStorage.message = 'Недостаточно прав для перехода'
+                        + ' по данному url';
+                    EventBus.publish(Events.setPage, {url: '/'});
+                }
+                return;
+            }
+
             if (!UserController.logined) {
                 pageRecord.url = url;
                 this.deferredRecord = pageRecord;
@@ -116,15 +140,6 @@ class Router {
                 EventBus.publish(Events.loginRequest, {
                     isStatic: this._currentController === null,
                 });
-                return;
-            }
-
-            if (pageRecord.needAdmin && UserController.User.role !== 'Admin') {
-                if (this._currentController === null) {
-                    this.deferredRecord = pageRecord;
-                    this.deferredMatchData = matchData;
-                    EventBus.publish(Events.setPage, {url: '/'});
-                }
                 return;
             }
         }
@@ -184,20 +199,22 @@ class Router {
         this._registerPage(LocationController, '/location');
         this._registerPage(AddRestaurantController, '/admin/restaurants/add', {needAdmin: true});
         this._registerPage(AddProductByRestaurantController, '/admin/restaurants/:int/add', {needAdmin: true});
-        this._registerPage(AdminChatListController, '/admin/chats', {needAdmin: true});
+        this._registerPage(AdminChatListController, '/support/chats', {needSupport: true});
         this._registerPage(SupportChatController, '/admin/chats/:hash', {needAdmin: true});
         this._registerPage(AdminRestaurantListController, '/admin/restaurants', {needAdmin: true});
-        this._registerPage(AddRestaurantPointController, '/admin/restaurants/:id', {needAdmin: true});
+        this._registerPage(AddRestaurantPointController, '/admin/restaurants/:id/add/point', {needAdmin: true});
     }
 
     _registerPage(controller, path, {
         needAdmin = false,
-        needLogin = needAdmin,
+        needSupport = false,
+        needLogin = needAdmin || needSupport,
         needGeo = false,
     } = {}) {
         this._pages.push({
             pattern: new RegExp('^' + path.replace(/:\w+/, '([\\w-]+)') + '$'),
             page: controller,
+            needSupport,
             needLogin,
             needAdmin,
             needGeo,

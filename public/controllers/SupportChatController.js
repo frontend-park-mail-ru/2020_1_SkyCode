@@ -6,6 +6,7 @@ import Event from '../services/Events/Events';
 import Message from '../render/blocks/message/message';
 import UserModel from '../models/UserModel';
 import ChatModel from '../models/ChatModel';
+import UserController from './UserController';
 
 class SupportChatController extends BaseController {
     constructor(title = 'support chat') {
@@ -16,23 +17,22 @@ class SupportChatController extends BaseController {
     execute(matchData) {
         const chatId = matchData[0];
 
-        UserModel.getUser()
-            .then((response) => {
-                if (response.error) {
-                    EventBus.publish(Event.setPage, {url: '/login'});
-                }
-            })
-            .catch((err) => console.log(err));
-
         if (chatId !== undefined) {
             this.socket = new WebSocket(`wss://skydelivery.site:8081/api/v1/chats/${chatId}/join`);
-        }
-        if (chatId === undefined) {
+        } else {
             this.socket = new WebSocket('wss://skydelivery.site:8081/api/v1/chat');
         }
 
+        this.socket.onopen = () => {
+            const initMessage = JSON.stringify({
+                user_name: UserController.User.firstName,
+                chat_id: localStorage.getItem('chat_id'),
+            });
+            this.socket.send(initMessage);
+        };
 
-        this.socket.onmessage = function(e) {
+        this.socket.onmessage = (e) => {
+            console.log('MESSAGE!' + e);
             const data = JSON.parse(e.data);
             localStorage.setItem('chat_id', data.chat_id);
             if (data.message) {
@@ -40,7 +40,6 @@ class SupportChatController extends BaseController {
                 const el = new Message('msg', data.message, data.user_name);
                 const domEl = document.getElementsByClassName('chat__messages')[0];
                 domEl.innerHTML += el;
-
                 domEl.scrollTop = domEl.scrollHeight;
 
                 document.getElementsByClassName('chat__messages')[0].outerHTML = domEl.outerHTML;
@@ -53,26 +52,17 @@ class SupportChatController extends BaseController {
             }
         };
 
-        UserModel.getUser()
+        super.execute(new SupportChatView({username: UserController.User.firstName}));
+        ChatModel.getChatHistory((chatId !== undefined) ? chatId : localStorage.getItem('chat_id'))
             .then((response) => {
-                if (response.User) {
-                    this.username = response.User.firstName;
-                    this.socket.send(JSON.stringify({
-                        user_name: this.username,
-                        chat_id: localStorage.getItem('chat_id'),
-                    }));
-                    super.execute(new SupportChatView({username: response.User.firstName}));
-                    ChatModel.getChatHistory((chatId !== undefined) ? chatId : localStorage.getItem('chat_id'))
-                        .then((response) => {
-                            for (const msg of response) {
-                                const el = new Message('msg', msg.message, msg.user_name);
-                                const domEl = document.getElementsByClassName('chat__messages')[0];
-                                domEl.innerHTML += el;
-                            }
-                            document.getElementsByClassName('chat__messages')[0].outerHTML = domEl.outerHTML;
-                        })
-                        .catch((err) => console.log(err));
+                if (!Array.isArray(response)) return;
+
+                for (const msg of response) {
+                    const el = new Message('msg', msg.message, msg.user_name);
+                    const domEl = document.getElementsByClassName('chat__messages')[0];
+                    domEl.innerHTML += el;
                 }
+                document.getElementsByClassName('chat__messages')[0].outerHTML = domEl.outerHTML;
             })
             .catch((err) => console.log(err));
     }

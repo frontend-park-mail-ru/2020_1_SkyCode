@@ -14,6 +14,7 @@
 
 @media (max-width: 600px) {
     .restaurants-list {
+        box-shadow: none;
         border-radius: 0;
         width: 100%;
         height: 100%;

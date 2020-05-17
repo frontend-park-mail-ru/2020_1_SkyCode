@@ -1,6 +1,7 @@
 <div class="waving-menue__hider"></div>
 <aside class="{{classes}} 'waving-menue'">
     <nav>
+        <h2 class="waving-menue__header">Клиенту:</h2>
         <ul class="waving-menue__list">
             {{#each userHrefs}}
                 <li>{{{this}}}</li>
@@ -10,8 +11,17 @@
 
         {{#if adminHrefs}}
             <h2 class="waving-menue__header">Администратору:</h2>
-            <ul>
+            <ul class="waving-menue__list">
                 {{#each adminHrefs}}
+                    <li>{{{this}}}</li>
+                {{/each}}
+            </ul>
+        {{/if}}
+
+        {{#if supportHrefs}}
+            <h2 class="waving-menue__header">Саппорту:</h2>
+            <ul class="waving-menue__list">
+                {{#each supportHrefs}}
                     <li>{{{this}}}</li>
                 {{/each}}
             </ul>

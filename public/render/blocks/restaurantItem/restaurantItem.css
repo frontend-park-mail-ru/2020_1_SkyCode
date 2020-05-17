@@ -1,5 +1,4 @@
 .restaurant-item {
-    height: 40px;
     box-sizing: border-box;
     padding: 10px;
     display: flex;
@@ -12,4 +11,12 @@
     margin: 15px;
     cursor: pointer;
 }
+
+.restaurant-item__name {
+    font-size: 20px;
+    width: 100%;
+    font-weight: bold;
+}
+
+
 

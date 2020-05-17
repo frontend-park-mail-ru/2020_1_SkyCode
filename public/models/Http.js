@@ -26,11 +26,11 @@ class Http {
                     'Content-Type': 'application/json',
                 });
             }
-            if (method === 'POST' || method === 'PUT' || method === 'DELETE') {
-                Object.assign(req.headers, {
-                    'X-Csrf-Token': localStorage.getItem('token'),
-                });
-            }
+            // If (method === 'POST' || method === 'PUT' || method === 'DELETE') {
+            Object.assign(req.headers, {
+                'X-Csrf-Token': localStorage.getItem('token'),
+            });
+            // }
         }
         return fetch(`${this.serverPath}${path}`, req)
             .then((response) => Http.retCSRFToken(response))

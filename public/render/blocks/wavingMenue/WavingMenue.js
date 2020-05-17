@@ -44,19 +44,19 @@ export default class WavingMenue extends Component {
                 href: '/admin/restaurants',
             }));
 
-            adminHrefs.push(new Href({
-                classes: 'waving-menue__href',
-                text: 'Добавление ресторана',
-                href: '/admin/restaurants/add',
-            }));
+            this.addContextData({adminHrefs});
+        }
 
-            adminHrefs.push(new Href({
+        if (UserController.logined && UserController.User.role === 'Support') {
+            const supportHrefs = [];
+
+            supportHrefs.push(new Href({
                 classes: 'waving-menue__href',
                 text: 'Список чатов',
-                href: '/admin/chats',
+                href: '/support/chats',
             }));
 
-            this.addContextData({adminHrefs});
+            this.addContextData({supportHrefs});
         }
 
         this.isVisible = false;
@@ -91,7 +91,6 @@ export default class WavingMenue extends Component {
 
         document.body.getElementsByClassName('waving-menue__hider')[0]
             .onclick = null;
-
 
         super.unbind();
     }
