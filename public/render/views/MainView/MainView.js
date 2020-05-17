@@ -30,7 +30,11 @@ class MainArea extends Component {
     constructor({actionArr, categoryArr, restaurantArr}) {
         super();
         this.template = temp;
+        const message = sessionStorage.message;
+        sessionStorage.message = '';
+
         this.addContextData({
+            message,
             label: 'Рестораны',
             selectTimeButton: new SelectTimeButton({
                 classes: 'main-view__select-time-button',

@@ -13,7 +13,7 @@ export default class WavingMenue extends Component {
         userHrefs.push(new Href({
             classes: 'waving-menue__href',
             text: 'Профиль',
-            href: '/profile',
+            href: '/me',
         }));
 
         userHrefs.push(new Href({
@@ -42,6 +42,12 @@ export default class WavingMenue extends Component {
                 classes: 'waving-menue__href',
                 text: 'Управление ресторанами',
                 href: '/admin/restaurants',
+            }));
+
+            adminHrefs.push(new Href({
+                classes: 'waving-menue__href',
+                text: 'Добавление ресторана',
+                href: '/admin/restaurants/add',
             }));
 
             adminHrefs.push(new Href({

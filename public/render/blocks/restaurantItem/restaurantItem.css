@@ -1,6 +1,5 @@
 .restaurant-item {
     height: 40px;
-    width: 100%;
     box-sizing: border-box;
     padding: 10px;
     display: flex;
@@ -8,9 +7,9 @@
     align-items: flex-start;
     justify-content: center;
     border-radius: 10px;
-    box-shadow: 0 4px 100px #D6D6D6;
+    box-shadow: 0 0 10px #D6D6D6;
+    background-color: #D6D6D6;
     margin: 15px;
-
     cursor: pointer;
 }
 

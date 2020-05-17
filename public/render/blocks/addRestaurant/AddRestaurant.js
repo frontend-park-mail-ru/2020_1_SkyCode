@@ -6,6 +6,7 @@ import ErrorBlock from '../errorBlock/ErrorBlock.js';
 import Validation from '../../../services/InputValidation.js';
 import template from './AddRestaurant.hbs';
 import Textarea from '../../elements/textarea/Textarea';
+import Events from '../../../services/Events/Events';
 
 export default class AddRestaurant extends Component {
     constructor({classes}) {
@@ -26,7 +27,7 @@ export default class AddRestaurant extends Component {
                 id: 'add-restaurant__desc-textarea',
                 placeholder: 'Описание',
                 maxlength: 255,
-                minLength: 4,
+                minLength: 10,
                 isRequired: true,
             }),
             descError: new ErrorBlock({
@@ -89,7 +90,7 @@ export default class AddRestaurant extends Component {
                         'Description',
                         this.context.descInput.domElement.value,
                     );
-                    EventBus.publish('add-restaurant', formData);
+                    EventBus.publish(Events.addRestaurant, formData);
                 },
             }),
         });

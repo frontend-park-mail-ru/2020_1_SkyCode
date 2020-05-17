@@ -1,7 +1,7 @@
 .waving-menue {
     position: fixed;
     background: linear-gradient(0, #b4b4b4, white);
-    width: 33%;
+    width: 300px;
     height: 90vh;
     z-index: 2;
 

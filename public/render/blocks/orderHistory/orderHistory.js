@@ -8,14 +8,16 @@ export default class OrderHistory extends Component {
 
         super.template = template;
 
-        const ordersObj = [];
+        if (orders) {
+            const ordersObj = [];
 
-        for (const orderItem of orders) {
-            ordersObj.push(new OrderCard('order', orderItem));
+            for (const orderItem of orders) {
+                ordersObj.push(new OrderCard('order', orderItem));
+            }
+
+            super.addContextData({
+                orders: ordersObj,
+            });
         }
-
-        super.addContextData({
-            orders: ordersObj,
-        });
     }
 }

@@ -113,7 +113,7 @@
     border-bottom-left-radius: 15px;
     border-top-left-radius: 15px;
 
-    height: 20px;
+    height: 24px;
 }
 
 .person-input__plus-button {
@@ -126,7 +126,7 @@
     border-bottom-right-radius: 15px;
     border-top-right-radius: 15px;
 
-    height: 20px;
+    height: 24px;
 }
 
 .select-time-button__image-button {

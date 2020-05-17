@@ -2,6 +2,7 @@ import Component from '../../Component.js';
 import template from './restaurantsList.hbs';
 import EventBus from '../../../services/Events/EventBus.js';
 import RestaurantItem from '../restaurantItem/restaurantItem.js';
+import Href from '../../elements/href/Href';
 
 export default class RestaurantsList extends Component {
     constructor({classes, restaurantsArr}) {
@@ -23,8 +24,13 @@ export default class RestaurantsList extends Component {
             }));
         }
 
-        console.log(restsComponents);
-
-        this.addContextData({RestaurantsList: restsComponents});
+        this.addContextData({
+            RestaurantsList: restsComponents,
+            AddRest: new Href({
+                text: 'Добавить ресторан',
+                href: '/admin/restaurants/add',
+                classes: 'add-restaurant__href',
+            }),
+        });
     }
 }

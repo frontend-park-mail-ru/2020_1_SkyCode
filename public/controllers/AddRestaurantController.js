@@ -32,26 +32,27 @@ class AddRestaurantController extends BaseController {
 
     addRestaurantHandler(data) {
         RestaurantModel
-        .addRestaurant(data)
-        .then((response) => {
-            if (response.error) {
+            .addRestaurant(data)
+            .then((response) => {
+                if (response.error) {
+                    EventBus.publish(
+                        Event.addRestaurantError,
+                        response.error,
+                    );
+                } else if (response.message) {
+                    sessionStorage.message = 'Ресторан успешно создан';
+                    EventBus.publish(Event.setPage, {
+                    // Лучше переводить на страницу ресторана
+                        url: '/admin/restaurants/add',
+                    });
+                }
+            })
+            .catch((err) => {
                 EventBus.publish(
                     Event.addRestaurantError,
-                    response.error,
+                    err,
                 );
-            } else if (response.message) {
-                EventBus.publish(Event.setPage, {
-                    // Лучше переводить на страницу ресторана
-                    url: '/',
-                });
-            }
-        })
-        .catch((err) => {
-            EventBus.publish(
-                Event.addRestaurantError,
-                err,
-            );
-        });
+            });
     }
 }
 

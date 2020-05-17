@@ -1,16 +1,15 @@
 .restaurants-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    height: 80%;
+    height: fit-content;
     width: 80%;
-    grid-area: restaurants-list-area;
-    justify-self: center;
-    align-self: center;
-    box-shadow: 0 4px 100px #D6D6D6;
+    box-shadow: 0 0 10px #D6D6D6;
     border-radius: 10px;
     padding: 15px;
+    margin-top: 100px;
+    margin-bottom: 10px
+}
+
+.restaurants-list__header {
+    text-align: center;
 }
 
 @media (max-width: 600px) {

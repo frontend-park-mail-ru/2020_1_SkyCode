@@ -12,6 +12,12 @@
     margin: 40px 70px 0;
 }
 
+@media (max-width: 700px) {
+    .main-view__info-bar {
+        flex-direction: column;
+    }
+}
+
 @media (max-width: 600px) {
     .main-view__info-bar {
         margin: 40px 0 0;
@@ -28,4 +34,5 @@
     margin-inline-start: 0;
     margin-inline-end: 0;
     font-weight: normal;
+    text-align: center;
 }

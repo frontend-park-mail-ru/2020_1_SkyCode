@@ -1,7 +1,7 @@
 import Component from '../../Component.js';
 import Restaurant from '../restaurant/Restaurant.js';
 import template from './RestaurantList.hbs';
-
+import Href from '../../elements/href/Href';
 
 export default class RestaurantList extends Component {
     constructor({classes, restaurantArr}) {
@@ -20,6 +20,8 @@ export default class RestaurantList extends Component {
             }));
         }
 
-        this.addContextData({restaurantComponents});
+        this.addContextData({
+            restaurantComponents,
+        });
     }
 }

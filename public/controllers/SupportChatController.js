@@ -25,10 +25,10 @@ class SupportChatController extends BaseController {
             .catch((err) => console.log(err));
 
         if (chatId !== undefined) {
-            this.socket = new WebSocket(`ws://89.208.199.114:5000/api/v1/chats/${chatId}/join`);
+            this.socket = new WebSocket(`wss://skydelivery.site:8081/api/v1/chats/${chatId}/join`);
         }
         if (chatId === undefined) {
-            this.socket = new WebSocket('ws://89.208.199.114:5000/api/v1/chat');
+            this.socket = new WebSocket('wss://skydelivery.site:8081/api/v1/chat');
         }
 
 
