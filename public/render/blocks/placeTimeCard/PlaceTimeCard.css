@@ -12,12 +12,6 @@
     border-radius: 15px;
 }
 
-@media (max-width: 500px) {
-    .order__place-time-card {
-        margin-top: 30px;
-    }
-}
-
 .place-time-card__place-text {
     grid-area: place-text;
     font-size: 14px;
