@@ -41,6 +41,9 @@ class Events {
         this.geoPopDisappear = 'geo-popup-disappear';
         this.profileViewUpdateUser = 'profile-view__update-user';
         this.askGeoError = 'ask-geo-error';
+        this.geoConfirmed = 'geo-confirmed';
+        this.geoConfirmationRequest = 'geo-confirmation-request';
+        this.stopGeoConfirmation = 'stop-geo-confirmation';
     }
 
     addProductRequest(id) {

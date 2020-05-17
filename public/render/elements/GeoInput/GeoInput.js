@@ -25,11 +25,12 @@ export default class GeoInput extends Input {
                 if (response.geopos) {
                     this.geopos = response.geopos;
                     console.log(this.geopos);
-                    localStorage.setItem('deliveryGeo', address);
-                    localStorage.setItem('latitude', this.geopos.latitude);
-                    localStorage.setItem('longitude', this.geopos.longitude);
-                    EventBus.publish(Events.successGeo);
+                    sessionStorage.setItem('deliveryGeo', address);
+                    sessionStorage.setItem('latitude', this.geopos.latitude);
+                    sessionStorage.setItem('longitude', this.geopos.longitude);
+                    EventBus.publish(Events.geoConfirmationRequest);
                 } else {
+                    EventBus.publish(Events.stopGeoConfirmation);
                     document.getElementById(this.contextParent.errFieldId())
                         .innerText = 'с точностью до дома';
                 }

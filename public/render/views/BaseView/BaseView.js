@@ -22,7 +22,7 @@ export default class BaseView extends Component {
     bind() {
         let active = false;
         EventBus.subscribe('order-button-clicked', () => {
-            const newWidth = (active) ? '100%' : 'calc(100% - 270px)';
+            const newWidth = (active) ? '100%' : 'calc(100% - 305px)';
             document.getElementsByClassName('base-container')[0]
                 .style.width = newWidth;
             active = !active;

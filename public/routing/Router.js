@@ -40,7 +40,7 @@ class Router {
         EventBus.subscribe(Events.redirect, (this._redirect).bind(this));
         EventBus.subscribe(Events.logPopDisappear, this._cleanDeferredRecords.bind(this));
         EventBus.subscribe(Events.signPopDisappear, this._cleanDeferredRecords.bind(this));
-        EventBus.subscribe(Events.geoPopDisappear, this._cleanDeferredRecords.bind(this));
+        // EventBus.subscribe(Events.geoPopDisappear, this._cleanDeferredRecords.bind(this));
         EventBus.subscribe(Events.successLogin, this._executeDeferredPage.bind(this));
         EventBus.subscribe(Events.successSignup, this._executeDeferredPage.bind(this));
         EventBus.subscribe(Events.successGeo, this._executeDeferredPage.bind(this));
@@ -121,8 +121,8 @@ class Router {
 
             if (pageRecord.needAdmin && UserController.User.role !== 'Admin') {
                 if (this._currentController === null) {
-                    this.deferredRecord = null;
-                    this.deferredMatchData = null;
+                    this.deferredRecord = pageRecord;
+                    this.deferredMatchData = matchData;
                     EventBus.publish(Events.setPage, {url: '/'});
                 }
                 return;

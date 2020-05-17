@@ -16,13 +16,44 @@ export default class GeoPopup extends Component {
                 Input: new GeoInput(),
                 label: 'Введите адрес доставки',
             }),
+            Submit: new NeonButton({
+                text: 'Подтвердить',
+                id: 'geo-popup-submit',
+                callback: () => {
+                    localStorage.setItem(
+                        'deliveryGeo',
+                        sessionStorage.getItem('deliveryGeo'),
+                    );
+                    localStorage.setItem(
+                        'latitude',
+                        sessionStorage.getItem('latitude'),
+                    );
+                    localStorage.setItem(
+                        'longitude',
+                        sessionStorage.getItem('longitude'),
+                    );
+                    EventBus.publish(Events.successGeo);
+                },
+            }),
         });
 
         this.template = temp;
         this.isStatic = false;
     }
 
+    confirmDisappear() {
+        this.context.Submit.domElement.style.display = 'none';
+    }
+
+    confirmAppear() {
+        this.context.Submit.domElement.style.display = 'block';
+    }
+
     bind() {
+        this.confirmDisappear();
+
+        EventBus.subscribe(Events.geoConfirmationRequest, this.confirmAppear.bind(this));
+        EventBus.subscribe(Events.stopGeoConfirmation, this.confirmDisappear.bind(this));
         EventBus.subscribe(Events.successGeo, this.disappear.bind(this));
         EventBus.subscribe(Events.geoRequest, this.appear.bind(this));
         document.getElementsByClassName('geo-popup__hider')[0]
@@ -59,7 +90,7 @@ export default class GeoPopup extends Component {
             this.becomeNotStatic();
         }
         this.domElement.style.display = 'none';
-        EventBus.publish(Events.logPopDisappear);
+        EventBus.publish(Events.geoPopDisappear);
     }
 
     quiteDisappear() {

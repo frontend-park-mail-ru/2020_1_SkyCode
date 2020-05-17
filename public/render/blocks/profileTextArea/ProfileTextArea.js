@@ -12,7 +12,7 @@ import Events from '../../../services/Events/Events';
 
 export default class ProfileTextArea extends Component {
     constructor({classes, data}) {
-        const imgSrc = data.User.profile_photo ? `/images/${data.User.profile_photo}`
+        const imgSrc = data.profile_photo ? `/images/${data.profile_photo}`
             : '/static/Portrait_Placeholder.png';
 
         const message = sessionStorage.message;
@@ -26,7 +26,7 @@ export default class ProfileTextArea extends Component {
                     classes: '',
                     id: 'fname-input',
                     type: 'text',
-                    value: data.User.firstName,
+                    value: data.firstName,
                     placeholder: 'Михаил',
                     isRequired: true,
                     minlength: 4,
@@ -39,7 +39,7 @@ export default class ProfileTextArea extends Component {
                     classes: '',
                     id: 'lname-input',
                     type: 'text',
-                    value: data.User.lastName,
+                    value: data.lastName,
                     placeholder: 'Волынов',
                     isRequired: true,
                     minlength: 4,
@@ -52,7 +52,7 @@ export default class ProfileTextArea extends Component {
                     classes: '',
                     id: 'email-input',
                     type: 'email',
-                    value: data.User.email,
+                    value: data.email,
                     // eslint-disable-next-line max-len
                     pattern: '^([A-Za-z0-9_\\-\\.])+@([A-Za-z0-9_\\-\\.])+\\.([A-Za-z]{2,4})$',
                     placeholder: 'email@example.com',

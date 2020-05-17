@@ -2,6 +2,7 @@ import Component from '../../Component.js';
 import EventBus from '../../../services/Events/EventBus.js';
 import template from './WavingMenue.hbs';
 import Href from '../../elements/href/Href';
+import UserController from '../../../controllers/UserController';
 
 export default class WavingMenue extends Component {
     constructor({classes} = {}) {
@@ -33,6 +34,24 @@ export default class WavingMenue extends Component {
             href: '/orders',
         }));
         this.addContextData({userHrefs});
+
+        if (UserController.logined && UserController.User.role === 'Admin') {
+            const adminHrefs = [];
+
+            adminHrefs.push(new Href({
+                classes: 'waving-menue__href',
+                text: 'Управление ресторанами',
+                href: '/admin/restaurants',
+            }));
+
+            adminHrefs.push(new Href({
+                classes: 'waving-menue__href',
+                text: 'Список чатов',
+                href: '/admin/chats',
+            }));
+
+            this.addContextData({adminHrefs});
+        }
 
         this.isVisible = false;
         super.template = template;

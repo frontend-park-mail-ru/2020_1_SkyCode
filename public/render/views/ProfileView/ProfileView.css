@@ -1,6 +1,5 @@
 .profile-view {
     display: flex;
-    height: 100vh;
     justify-content: center;
     overflow-x: hidden;
 }
