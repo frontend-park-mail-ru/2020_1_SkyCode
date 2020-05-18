@@ -50,6 +50,7 @@ class UserController extends BaseController {
 
     successLogoutHandler() {
         this.logined = false;
+        this.User = null;
     }
 
     signupHandler(data) {

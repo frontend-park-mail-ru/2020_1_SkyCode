@@ -4,61 +4,45 @@ import Href from '../../elements/href/Href';
 
 export default class RestaurantItem extends Component {
     constructor({classes, name, id}) {
+        const hrefClass = 'admin-restaurant-list__href';
         super(classes, {
             Name: name,
-            GeoPointHref: new Href({
-                id: id + 'geo-point-href',
-                text: 'Добавление точки',
-                href: `/admin/restaurants/${id}/add/point`,
-                classes: 'admin-restaurant-list__href',
-            }),
-            TagsHref: new Href({
-                id: id + 'tag-gref',
-                text: 'Изменение тегов',
-                href: `/admin/restaurants/${id}/change/tags`,
-                classes: 'admin-restaurant-list__href',
-            }),
+            Hrefs: [
+                new Href({
+                    id: id + '_geo-point-href',
+                    text: 'Добавление точки',
+                    href: `/admin/restaurants/${id}/add/point`,
+                    classes: hrefClass,
+                }),
+                new Href({
+                    id: id + '_tag-href',
+                    text: 'Изменение тегов',
+                    href: `/admin/restaurants/${id}/change/tags`,
+                    classes: hrefClass,
+                }),
+            ],
         }, id, template);
     }
 
-    showList() {
-        this.context.GeoPointHref.domElement.style.display = 'block';
-        this.context.TagsHref.domElement.style.display = 'block';
-        this.isVisible = true;
-    }
-
-    hideList() {
-        this.context.GeoPointHref.domElement.style.display = 'none';
-        this.context.TagsHref.domElement.style.display = 'none';
-        this.isVisible = false;
-    }
-
     bind() {
-        const node = this.domElement.firstElementChild;
-        if (node === undefined) {
-            return;
-        }
+        const me = this.domElement;
+        me.onclick = () => {
+            Array.prototype.forEach.call(
+                document.getElementsByClassName('restaurant-item'),
+                (li) => {
+                    li.className = 'restaurant-item';
+                },
+            );
 
-        node.onclick = () => {
-            if (this.isVisible) {
-                this.hideList();
-            } else {
-                this.showList();
-            }
+            me.classList.add('restaurant-item__clicked');
         };
 
         super.bind();
-        this.hideList();
     }
 
     unbind() {
-        this.showList();
-        const node = super.domElement.firstElementChild;
-        if (node === undefined || this.callback === undefined) {
-            return;
-        }
-
-        node.onclick = null;
+        const me = this.domElement;
+        me.onclick = null;
         super.unbind();
     }
 }

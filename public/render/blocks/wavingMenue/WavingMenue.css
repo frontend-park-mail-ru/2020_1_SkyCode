@@ -5,7 +5,7 @@
     height: 90vh;
     z-index: 2;
 
-    transition: opacity .55s;
+    transition: .55s;
     opacity: 0;
     display: none;
 }

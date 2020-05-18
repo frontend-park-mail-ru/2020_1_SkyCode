@@ -58,7 +58,6 @@
 @import "render/blocks/restaurantItem/restaurantItem.css";
 @import "render/blocks/restaurantList/RestaurantList.css";
 @import "render/blocks/restaurantPlaceCard/RestaurantPlaceCard.css";
-@import "render/blocks/restaurantsList/restaurantsList.css";
 @import "render/blocks/restaurantСategory/RestaurantCategory.css";
 @import "render/blocks/searchField/SearchField.css";
 @import "render/blocks/selectTimeButton/SelectTimeButton.css";
@@ -75,6 +74,7 @@ body {
     margin: 0;
     height: 100vh;
     overflow: hidden;
+    letter-spacing: 1px;
 }
 
 .error {

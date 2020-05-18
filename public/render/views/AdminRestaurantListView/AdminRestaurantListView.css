@@ -1,9 +1,17 @@
 .restaurants-list-view {
-    display: flex;
-    width: 100%;
-    box-sizing: border-box;
-    height: 100%;
+    padding: 30px;
+    min-width: 250px;
+    width: 60%;
+    margin: 0 auto;
+}
 
-    justify-content: center;
-    align-items: center;
+@media (max-width: 650px) {
+    .restaurants-list-view {
+        width: 80%;
+        padding: 0;
+    }
+}
+
+.restaurants-list__header {
+    text-align: center;
 }

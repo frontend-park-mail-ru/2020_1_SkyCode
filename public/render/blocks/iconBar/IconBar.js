@@ -54,7 +54,7 @@ export default class IconBar extends Component {
         let active = false;
         EventBus.subscribe('order-button-clicked', () => {
             if (active) {
-                this.domElement.style.background = 'rgba(255, 255, 255, .9)';
+                this.domElement.style.background = 'white';
             } else {
                 this.domElement.style.background = 'rgba(0, 0, 0, 0)';
             }

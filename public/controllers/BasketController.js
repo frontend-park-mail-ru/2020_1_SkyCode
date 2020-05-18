@@ -24,7 +24,6 @@ class BasketController extends BaseController {
         EventBus.subscribe(Event.checkoutSuccess, this.cleanBasketHandler.bind(this));
         EventBus.subscribe(Event.successLogin, this.CheckBasketHandler.bind(this));
         EventBus.subscribe(Event.successSignup, this.CheckBasketHandler.bind(this));
-        EventBus.subscribe(Event.logout, this.cleanBasketHandler.bind(this));
         EventBus.subscribe(Event.deleteProd, this.deleteProductHandler.bind(this));
     }
 
@@ -35,7 +34,6 @@ class BasketController extends BaseController {
             this.personAmountChangeHandler.bind(this),
         );
         EventBus.unsubscribe(Event.successLogin, this.CheckBasketHandler.bind(this));
-        EventBus.unsubscribe(Event.logout, this.cleanBasketHandler.bind(this));
         EventBus.unsubscribe(Event.checkoutSuccess, this.cleanBasketHandler.bind(this));
         EventBus.unsubscribe(Event.deleteProd, this.deleteProductHandler.bind(this));
     }

@@ -1,6 +1,7 @@
 import Component from '../../Component.js';
 import template from './BaseView.hbs';
 import EventBus from '../../../services/Events/EventBus';
+import Events from '../../../services/Events/Events';
 
 export default class BaseView extends Component {
     constructor({
@@ -27,7 +28,6 @@ export default class BaseView extends Component {
                 .style.width = newWidth;
             active = !active;
         });
-
         super.bind();
     }
 

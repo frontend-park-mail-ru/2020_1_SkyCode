@@ -11,24 +11,28 @@ export default class WavingMenue extends Component {
         const userHrefs = [];
 
         userHrefs.push(new Href({
+            id: 'waving-menue__profile-href',
             classes: 'waving-menue__href',
             text: 'Профиль',
             href: '/me',
         }));
 
         userHrefs.push(new Href({
+            id: 'waving-menue__support-href',
             classes: 'waving-menue__href',
             text: 'Поддержка',
             href: '/support',
         }));
 
         userHrefs.push(new Href({
+            id: 'waving-menue__map-href',
             classes: 'waving-menue__href',
             text: 'Карта',
             href: '/map',
         }));
 
         userHrefs.push(new Href({
+            id: 'waving-menue__history-href',
             classes: 'waving-menue__href',
             text: 'История заказов',
             href: '/orders',
@@ -39,6 +43,7 @@ export default class WavingMenue extends Component {
             const adminHrefs = [];
 
             adminHrefs.push(new Href({
+                id: 'waving-menue__rest-href',
                 classes: 'waving-menue__href',
                 text: 'Управление ресторанами',
                 href: '/admin/restaurants',
@@ -51,6 +56,7 @@ export default class WavingMenue extends Component {
             const supportHrefs = [];
 
             supportHrefs.push(new Href({
+                id: 'waving-menue__chats-href',
                 classes: 'waving-menue__href',
                 text: 'Список чатов',
                 href: '/support/chats',

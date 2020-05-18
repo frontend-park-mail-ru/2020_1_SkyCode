@@ -2,7 +2,13 @@
 .waving-menue__href {
     color: black;
     line-height: 40px;
-    margin-left: 30px;
+    display: list-item;
+}
+
+@media (max-width: 600px) {
+    .admin-restaurant-list__href {
+        font-size: 13px;
+    }
 }
 
 .restaurant-feedback__login-signup-href {
@@ -83,6 +89,11 @@
     align-items: center;
     border-radius: 15px;
     transition: 0.2s;
+}
+
+.add-restaurant__href:hover{
+    box-shadow: 0 0 10px #F6D471;
+    width: 225px;
 }
 
 .restaurant-view__info:hover,

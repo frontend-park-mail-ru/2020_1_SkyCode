@@ -4,19 +4,38 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: flex-start;
     border-radius: 10px;
     box-shadow: 0 0 10px #D6D6D6;
-    background-color: #D6D6D6;
+    background-color: white;
     margin: 15px;
-    cursor: pointer;
+    max-height: 38px;
+    overflow: hidden;
+    transition: max-height 1s ease;
+}
+
+.restaurant-item:not(:hover) {
+    max-height: 38px;
+}
+
+.restaurant-item:hover {
+    box-shadow: 0 0 10px #F6D471;
 }
 
 .restaurant-item__name {
     font-size: 20px;
     width: 100%;
     font-weight: bold;
+    cursor: pointer;
 }
 
+.restaurant-item__clicked {
+    max-height: 1000px;
+    box-shadow: 0 0 10px #F6D471;
+}
 
-
+@media (max-width: 500px) {
+    .restaurant-item {
+        font-size: 16px;
+    }
+}
