@@ -1,10 +1,4 @@
 .restaurant-list__restaurant {
-    /*width: 25%;*/
-    /*margin-right: 70px;*/
-    /*margin-bottom: 50px;*/
-
-    /*text-decoration: none;*/
-    /*color: black;*/
     width: 25%;
     min-width: 200px;
     margin-right: 70px;
@@ -20,17 +14,12 @@
         width: 40%;
     }
 }
-/*@media (max-width: 600px) {*/
-/*    .restaurant-list__restaurant {*/
-/*        justify-self: center;*/
-/*        width: 80%;*/
-/*    }*/
-/*}*/
+
 @media (max-width: 600px) {
     /*@media (max-width: 850px) {*/
     .restaurant-list__restaurant {
         justify-self: center;
-        min-width: 200px;
+        min-width: 230px;
     }
 }
 
