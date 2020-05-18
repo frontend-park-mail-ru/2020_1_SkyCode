@@ -72,9 +72,10 @@ class ProfileController extends BaseController {
                 if (response.error) {
                     EventBus.publish(Event.updateAvatarError, response.error);
                 } else {
+                    console.log('timeout started');
                     setTimeout(() => {
                         EventBus.publish(Event.setPage, {url: '/me'});
-                    }, 300);
+                    }, 500);
                 }
             })
             .catch((err) => {
