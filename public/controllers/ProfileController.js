@@ -34,14 +34,15 @@ class ProfileController extends BaseController {
     }
 
     logoutHandler() {
-        SessionModel.logout().then((response) => {
-            if (response.error) {
-                EventBus.publish(Event.logoutError, response.error);
-            } else {
-                EventBus.publish(Event.successLogout);
-                EventBus.publish(Event.setPage, {url: '/'});
-            }
-        })
+        SessionModel.logout()
+            .then((response) => {
+                if (response.error) {
+                    EventBus.publish(Event.logoutError, response.error);
+                } else {
+                    EventBus.publish(Event.successLogout);
+                    EventBus.publish(Event.setPage, {url: '/'});
+                }
+            })
             .catch((err) => {
                 EventBus.publish(Event.logoutError, 'Bad connection');
                 console.log(err);
@@ -72,10 +73,11 @@ class ProfileController extends BaseController {
                 if (response.error) {
                     EventBus.publish(Event.updateAvatarError, response.error);
                 } else {
-                    console.log('timeout started');
-                    setTimeout(() => {
-                        EventBus.publish(Event.setPage, {url: '/me'});
-                    }, 500);
+                    UserController
+                        .updateUserInfo()
+                        .then(() => {
+                            EventBus.publish(Event.setPage, {url: '/me'});
+                        });
                 }
             })
             .catch((err) => {

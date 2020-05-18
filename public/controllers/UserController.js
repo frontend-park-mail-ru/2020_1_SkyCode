@@ -17,9 +17,7 @@ class UserController extends BaseController {
     }
 
     updateUserInfo() {
-        console.log('update user info');
-
-        UserModel.getUser()
+        return UserModel.getUser()
             .then((response) => {
                 if (response.User) {
                     this.logined = true;
