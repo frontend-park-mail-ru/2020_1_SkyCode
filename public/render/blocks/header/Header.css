@@ -16,7 +16,7 @@
 
 .iconed-header__header {
     flex-grow: 1;
-    background: rgba(255, 255, 255, .9);
+    background-color: white;
 }
 
 @media (max-width: 400px) {

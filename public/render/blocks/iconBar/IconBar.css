@@ -6,7 +6,7 @@
 }
 
 .iconed-header__icon-bar {
-    background: rgba(255, 255, 255, .9);
+    background: white;
 }
 
 @media (max-width: 600px) {
