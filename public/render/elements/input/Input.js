@@ -17,6 +17,7 @@ export default class Input extends Component {
         maxlength,
         minlength,
         isDisabled,
+        isChecked,
     }) {
         super(classes, {
             src,
@@ -30,6 +31,7 @@ export default class Input extends Component {
             maxlength,
             minlength,
             isDisabled,
+            isChecked,
         }, id);
 
         super.template = template;

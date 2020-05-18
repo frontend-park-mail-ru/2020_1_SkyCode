@@ -1,6 +1,10 @@
 <input  class="{{classes}} input"
         type="{{type}}"
 
+        {{#if  isChecked}}
+            checked
+        {{/if}}
+
         {{#if isDisabled}}
             disabled
         {{/if}}

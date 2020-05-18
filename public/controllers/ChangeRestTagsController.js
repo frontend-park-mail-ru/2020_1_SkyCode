@@ -2,8 +2,10 @@ import BaseController from './BaseController';
 import RestaurantModel from '../models/RestaurantModel';
 import EventBus from '../services/Events/EventBus';
 import Events from '../services/Events/Events';
+import ChangeRestTagsView
+    from '../render/views/ChangeRestTagsView/ChangeRestTagsView';
 
-class AddRestaurantTagController extends BaseController {
+class ChangeRestTagsController extends BaseController {
     execute([restId]) {
         RestaurantModel
             .getRestaurant(restId)
@@ -12,13 +14,13 @@ class AddRestaurantTagController extends BaseController {
                     throw restaurant.error;
                 }
 
-                super.execute(restaurant);
+                super.execute(new ChangeRestTagsView({restaurant}));
             })
             .catch((err) => {
                 console.log(err);
                 EventBus.publish(Events.setPage, {url: '/'});
             });
-
-        super.execute(view);
     }
 }
+
+export default new ChangeRestTagsController();

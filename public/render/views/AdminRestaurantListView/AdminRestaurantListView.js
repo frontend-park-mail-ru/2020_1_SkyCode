@@ -24,6 +24,8 @@ class MainArea extends Component {
     constructor({restaurantsArray}) {
         super();
         super.template = template;
+        const message = sessionStorage.message;
+        sessionStorage.message = '';
 
         const restsComponents = [];
         for (const rest of restaurantsArray) {
@@ -35,6 +37,7 @@ class MainArea extends Component {
         }
 
         this.addContextData({
+            message,
             RestaurantsList: restsComponents,
             AddRest: new Href({
                 id: 'rest-list__add-rest',

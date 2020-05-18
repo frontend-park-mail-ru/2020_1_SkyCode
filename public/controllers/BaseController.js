@@ -1,7 +1,7 @@
 'use strict';
 
 class BaseController {
-    constructor(title) {
+    constructor(title = 'untitled') {
         this._title = title;
     }
 

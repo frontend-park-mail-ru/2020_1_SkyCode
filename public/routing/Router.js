@@ -26,6 +26,9 @@ import LoginPopup from '../render/blocks/LoginPopup/LoginPopup';
 import Events from '../services/Events/Events';
 import SignupPopup from '../render/blocks/SignupPopup/SignupPopup';
 import GeoPopup from '../render/blocks/GeoPopup/GeoPopup';
+import ChangeRestTagsView
+    from '../render/views/ChangeRestTagsView/ChangeRestTagsView';
+import ChangeRestTagsController from '../controllers/ChangeRestTagsController';
 
 class Router {
     constructor() {
@@ -197,6 +200,7 @@ class Router {
         this._registerPage(SupportChatController, '/support');
         this._registerPage(MapController, '/map');
         this._registerPage(LocationController, '/location');
+        this._registerPage(ChangeRestTagsController, '/admin/restaurants/:id/change/tags', {needAdmin: true});
         this._registerPage(AddRestaurantController, '/admin/restaurants/add', {needAdmin: true});
         this._registerPage(AddProductByRestaurantController, '/admin/restaurants/:int/add', {needAdmin: true});
         this._registerPage(AdminChatListController, '/support/chats', {needSupport: true});

@@ -15,3 +15,7 @@
 .restaurants-list__header {
     text-align: center;
 }
+
+.restaurant-list-view__message {
+    margin: 30px 0;
+}
