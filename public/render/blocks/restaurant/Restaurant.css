@@ -73,6 +73,10 @@
 .restaurant__info {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    height: 45px;
+    position: relative;
+    top: -15px;
 }
 
 .restaurant__name {

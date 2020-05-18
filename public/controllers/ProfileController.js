@@ -72,7 +72,9 @@ class ProfileController extends BaseController {
                 if (response.error) {
                     EventBus.publish(Event.updateAvatarError, response.error);
                 } else {
-                    EventBus.publish(Event.setPage, {url: '/me'});
+                    setTimeout(() => {
+                        EventBus.publish(Event.setPage, {url: '/me'});
+                    }, 300);
                 }
             })
             .catch((err) => {
