@@ -123,4 +123,8 @@ export default class Input extends Component {
     isValid() {
         return this.check() === '';
     }
+
+    focus() {
+        this.domElement.focus();
+    }
 }

@@ -97,6 +97,13 @@ export default class Order extends Component {
         if (!this.isVisible) {
             const order = this.domElement;
             order.style.display = 'flex';
+            if (BasketController.isEmpty()) {
+                document.getElementsByClassName('order__checkout')[0]
+                    .style.visibility = 'hidden';
+            } else {
+                document.getElementsByClassName('order__checkout')[0]
+                    .style.visibility = 'visible';
+            }
             this.isVisible = true;
         }
     }

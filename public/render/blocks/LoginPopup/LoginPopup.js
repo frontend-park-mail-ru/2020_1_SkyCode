@@ -16,6 +16,9 @@ export default class LoginPopup extends Component {
     }
 
     bind() {
+        EventBus.subscribe(Events.escButPressed, () => {
+            if (!this.isStatic) this.disappear.bind(this);
+        });
         EventBus.subscribe(Events.loginRequest, this.appear.bind(this));
         EventBus.subscribe(Events.signupRequest, this.quiteDisappear.bind(this));
         EventBus.subscribe(Events.successLogin, this.quiteDisappear.bind(this));
@@ -29,6 +32,9 @@ export default class LoginPopup extends Component {
     }
 
     unbind() {
+        EventBus.subscribe(Events.escButPressed, () => {
+            if (!this.isStatic) this.disappear.bind(this);
+        });
         EventBus.unsubscribe(Events.loginRequest, this.appear.bind(this));
         EventBus.unsubscribe(Events.signupRequest, this.quiteDisappear.bind(this));
         EventBus.unsubscribe(Events.successLogin, this.quiteDisappear.bind(this));
@@ -42,6 +48,7 @@ export default class LoginPopup extends Component {
         if (isStatic) this.becomeStatic();
 
         this.domElement.style.display = 'flex';
+        this.context.LoginField.focusOnPhoneInput();
     }
 
     disappear() {

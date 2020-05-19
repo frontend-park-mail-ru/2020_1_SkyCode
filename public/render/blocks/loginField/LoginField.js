@@ -69,6 +69,10 @@ export default class LoginField extends Component {
         });
     }
 
+    focusOnPhoneInput() {
+        this.context.phoneInput.focus();
+    }
+
     bind() {
         EventBus.subscribe('login-error', (message) => {
             this.context.generalErrorField.addMessage(message);

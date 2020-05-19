@@ -16,6 +16,7 @@ export default class SignupPopup extends Component {
     }
 
     bind() {
+        EventBus.subscribe(Events.escButPressed, this.disappear.bind(this));
         EventBus.subscribe(Events.signupRequest, this.appear.bind(this));
         EventBus.subscribe(Events.loginRequest, this.quiteDisappear.bind(this));
         EventBus.subscribe(Events.successSignup, this.quiteDisappear.bind(this));
@@ -29,6 +30,7 @@ export default class SignupPopup extends Component {
     }
 
     unbind() {
+        EventBus.unsubscribe(Events.escButPressed, this.disappear.bind(this));
         EventBus.unsubscribe(Events.signupRequest, this.appear.bind(this));
         EventBus.unsubscribe(Events.loginRequest, this.quiteDisappear.bind(this));
         EventBus.subscribe(Events.successSignup, this.quiteDisappear.bind(this));
@@ -42,6 +44,7 @@ export default class SignupPopup extends Component {
         if (isStatic) this.becomeStatic();
 
         this.domElement.style.display = 'flex';
+        this.context.SignupField.focusOnFNameInput();
     }
 
     disappear() {

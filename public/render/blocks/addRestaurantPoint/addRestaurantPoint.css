@@ -6,14 +6,25 @@
     border-radius: 15px;
     box-shadow: 0 4px 100px #D6D6D6;
     grid-area: add-point;
-    padding: 20px;
-    line-height: 60px;
-    text-align: center;
+    padding: 30px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 700px) {
     .add-restaurant-point {
-        height: 100%;
-        font-size: 15px;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    .add-restaurant-point__title {
+        font-size: 30px;
+        text-align: center;
     }
 }
+
+@media (max-width: 400px) {
+    .add-restaurant-point__title {
+        font-size: 20px;
+        text-align: center;
+    }
+}
+
+

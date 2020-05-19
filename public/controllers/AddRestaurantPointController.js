@@ -4,7 +4,6 @@ import AddRestaurantPointView
 import RestaurantModel from '../models/RestaurantModel.js';
 import EventBus from '../services/Events/EventBus.js';
 import Event from '../services/Events/Events.js';
-import Swal from 'sweetalert2';
 
 class AddRestaurantPointController extends BaseController {
     constructor(title = 'Админка') {
@@ -15,12 +14,8 @@ class AddRestaurantPointController extends BaseController {
         this.restId = matchData[0];
         RestaurantModel.getRestaurant(this.restId)
             .then((response) => {
+                this.restName = response.name;
                 super.execute(new AddRestaurantPointView({restaurant: response}));
-                ymaps.ready(init);
-
-                function init() {
-                    const suggestView = new ymaps.SuggestView('suggest');
-                }
             })
             .catch((err) => console.log(err));
     }
@@ -34,18 +29,15 @@ class AddRestaurantPointController extends BaseController {
     }
 
     AddPoint(data) {
-        console.log('POINT ADDED');
         RestaurantModel.addPoint(data, this.restId)
             .then((response) => {
                 if (response.message) {
-                    EventBus.publish(Event.setPage, {url: `/admin/restaurants/${this.restId}`});
+                    sessionStorage.message = 'Точка успешно добавлена';
+                    EventBus.publish(Event.setPage, {url: '/admin/restaurants'});
                 }
                 if (response.error) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Ошибка',
-                        text: 'Попробуйте ввести более точный адрес.',
-                    });
+                    sessionStorage.message = 'Ошибка: ' + response.error;
+                    EventBus.publish(Event.setPage, {url: window.location.pathname});
                 }
             })
             .catch((err) => console.log(err));

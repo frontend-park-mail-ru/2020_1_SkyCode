@@ -115,6 +115,10 @@ export default class SignupField extends Component {
         });
     }
 
+    focusOnFNameInput() {
+        this.context.fNameInput.focus();
+    }
+
     bind() {
         EventBus.subscribe(Event.signupError, (message) => {
             this.context.generalErrorField.addMessage(message);

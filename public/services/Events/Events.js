@@ -44,6 +44,7 @@ class Events {
         this.geoConfirmed = 'geo-confirmed';
         this.geoConfirmationRequest = 'geo-confirmation-request';
         this.stopGeoConfirmation = 'stop-geo-confirmation';
+        this.escButPressed = 'escape-button-pressed';
     }
 
     addProductRequest(id) {

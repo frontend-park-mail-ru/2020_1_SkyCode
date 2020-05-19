@@ -114,24 +114,24 @@ class Router {
         if (pageRecord.needLogin) {
             if (pageRecord.needAdmin && UserController.logined
                 && UserController.User.role !== 'Admin') {
+                sessionStorage.message = 'Недостаточно прав для перехода'
+                + ' по данному url';
                 if (this._currentController === null) {
-                    this.deferredRecord = pageRecord;
-                    this.deferredMatchData = matchData;
-                    sessionStorage.message = 'Недостаточно прав для перехода'
-                        + ' по данному url';
                     EventBus.publish(Events.setPage, {url: '/'});
+                } else {
+                    this._reload();
                 }
                 return;
             }
 
             if (pageRecord.needSupport && UserController.logined
                 && UserController.User.role !== 'Support') {
+                sessionStorage.message = 'Недостаточно прав для перехода'
+                + ' по данному url';
                 if (this._currentController === null) {
-                    this.deferredRecord = pageRecord;
-                    this.deferredMatchData = matchData;
-                    sessionStorage.message = 'Недостаточно прав для перехода'
-                        + ' по данному url';
                     EventBus.publish(Events.setPage, {url: '/'});
+                } else {
+                    this._reload();
                 }
                 return;
             }
@@ -191,22 +191,60 @@ class Router {
     }
 
     _registerAllPages() {
-        this._registerPage(MainController, '/', {needGeo: true});
-        this._registerPage(ProfileController, '/me', {needLogin: true});
+        this._registerPage(MainController, '/', {
+            needGeo: true,
+            button: 'm',
+        });
+        this._registerPage(ProfileController, '/me', {
+            needLogin: true,
+            button: 'p',
+        });
         this._registerPage(RestaurantController, '/restaurants/:int');
-        this._registerPage(CheckoutController, '/checkout', {needLogin: true});
+        this._registerPage(CheckoutController, '/checkout', {
+            needLogin: true,
+        });
         this._registerPage(RestaurantInfoController, '/restaurants/:int/info');
-        this._registerPage(OrderHistoryController, '/orders', {needLogin: true});
-        this._registerPage(SupportChatController, '/support');
+        this._registerPage(OrderHistoryController, '/orders', {
+            needLogin: true,
+            button: 'o',
+        });
+        this._registerPage(SupportChatController, '/support', {
+            button: 's',
+        });
         this._registerPage(MapController, '/map');
         this._registerPage(LocationController, '/location');
         this._registerPage(ChangeRestTagsController, '/admin/restaurants/:id/change/tags', {needAdmin: true});
         this._registerPage(AddRestaurantController, '/admin/restaurants/add', {needAdmin: true});
         this._registerPage(AddProductByRestaurantController, '/admin/restaurants/:int/add', {needAdmin: true});
-        this._registerPage(AdminChatListController, '/support/chats', {needSupport: true});
+        this._registerPage(AdminChatListController, '/support/chats', {
+            needSupport: true,
+            button: 'c',
+        });
         this._registerPage(SupportChatController, '/admin/chats/:hash', {needAdmin: true});
-        this._registerPage(AdminRestaurantListController, '/admin/restaurants', {needAdmin: true});
+        this._registerPage(AdminRestaurantListController, '/admin/restaurants', {
+            needAdmin: true,
+            button: 'r',
+        });
         this._registerPage(AddRestaurantPointController, '/admin/restaurants/:id/add/point', {needAdmin: true});
+        this._registerHotKeys();
+    }
+
+    _registerHotKeys() {
+        const eBus = EventBus;
+        const events = Events;
+
+        let keyDownFuncBody = 'if (e.key === \'Escape\')'
+            + ' eBus.publish(events.escButPressed);';
+
+        for (const record of this._pages) {
+            if (record.button === null) continue;
+            keyDownFuncBody += `else if (e.key === '${record.button}' && e.altKey) 
+                eBus.publish(events.setPage, {url: '${record.path}'});`;
+        }
+
+        console.log('document.body.onkeydown = (e) => {' + keyDownFuncBody + '};');
+
+        eval('document.body.onkeydown = (e) => {' + keyDownFuncBody + '};');
     }
 
     _registerPage(controller, path, {
@@ -214,14 +252,17 @@ class Router {
         needSupport = false,
         needLogin = needAdmin || needSupport,
         needGeo = false,
+        button = null,
     } = {}) {
         this._pages.push({
+            path,
             pattern: new RegExp('^' + path.replace(/:\w+/, '([\\w-]+)') + '$'),
             page: controller,
             needSupport,
             needLogin,
             needAdmin,
             needGeo,
+            button,
         });
     }
 
@@ -233,6 +274,10 @@ class Router {
                 return [pg, matchData.slice(1)];
             }
         }
+    }
+
+    _reload() {
+        EventBus.publish(Events.setPage, {url: window.location.pathname});
     }
 }
 

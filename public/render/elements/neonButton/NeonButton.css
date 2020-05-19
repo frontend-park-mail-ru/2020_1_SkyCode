@@ -46,7 +46,8 @@
      background: linear-gradient(90deg, transparent, #2196f3);
  }
 
-.neon-button:hover .neon-button__line--top {
+.neon-button:hover .neon-button__line--top,
+.neon-button:focus .neon-button__line--top{
     left: 100%;
     transition: 0.5s;
     transition-delay: 0.12s;
@@ -60,7 +61,8 @@
     background: linear-gradient(270deg, transparent, #2196f3);
 }
 
-.neon-button:hover .neon-button__line--bottom {
+.neon-button:hover .neon-button__line--bottom,
+.neon-button:focus .neon-button__line--bottom {
     right: 100%;
     transition: 0.5s;
     transition-delay: 0.12s;
@@ -74,7 +76,8 @@
     background: linear-gradient(0deg, transparent, #2196f3);
 }
 
-.neon-button:hover .neon-button__line--left {
+.neon-button:hover .neon-button__line--left,
+.neon-button:focus .neon-button__line--left{
     bottom: 100%;
     transition: 0.5s;
     transition-delay: 0s;
@@ -88,13 +91,14 @@
     background: linear-gradient(180deg, transparent, #2196f3);
 }
 
-.neon-button:hover .neon-button__line--right {
+.neon-button:hover .neon-button__line--right,
+.neon-button:focus .neon-button__line--right{
     top: 100%;
     transition: 0.5s;
     transition-delay: 0s;
 }
 
-.neon-button:hover {
+.neon-button:hover, .neon-button:focus {
     box-shadow: 0 0 10px #F6D471;
     background-color: #F6D471;
     color: black;
