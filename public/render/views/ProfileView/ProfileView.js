@@ -6,7 +6,8 @@ import WavingMenue from '../../blocks/wavingMenue/WavingMenue';
 import ProfileHeader from '../../blocks/profileHeader/ProfileHeader';
 
 
-export default class ProfileView extends BaseView {
+export default class
+ProfileView extends BaseView {
     constructor({profile}) {
         super({
             Main: new MainArea({profile}),

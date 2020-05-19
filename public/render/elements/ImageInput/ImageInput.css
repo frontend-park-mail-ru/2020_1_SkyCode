@@ -1,0 +1,20 @@
+.img-input__image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.img-input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.img-input__label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}

@@ -7,6 +7,7 @@
 @import "render/elements/neonButton/NeonButton.css";
 @import "render/elements/textarea/Textarea.css";
 @import "render/elements/numberInput/NumberInput.css";
+@import "render/elements/ImageInput/ImageInput.css";
 @import "render/views/MainView/MainView.css";
 @import "render/views/ProfileView/ProfileView.css";
 @import "render/views/LoginSignupView/LoginSignupView.css";
@@ -22,7 +23,7 @@
 @import "render/views/AdminRestaurantListView/AdminRestaurantListView.css";
 @import "render/views/BaseView/BaseView.css";
 @import "render/blocks/actionBar/ActionBar.css";
-@import "render/blocks/AddProductByRestaurant/AddProductByRestaurant.css";
+@import "render/views/AddProductByRestaurantView/AddProductByRestaurant.css";
 @import "render/blocks/addRestaurant/AddRestaurant.css";
 @import "render/blocks/addRestaurantPoint/addRestaurantPoint.css";
 @import "render/blocks/basket/Basket.css";

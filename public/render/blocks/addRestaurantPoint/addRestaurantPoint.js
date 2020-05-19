@@ -50,6 +50,12 @@ export default class AddRestaurantPoint extends Component {
             const suggestView = new ymaps.SuggestView(GeoInput.id('__add-rest-point'));
         }
 
+        this.focusOnAddressInput();
+
         super.bind();
+    }
+
+    focusOnAddressInput() {
+        this.context.AddressInput.focus();
     }
 }

@@ -4,7 +4,7 @@ import AddProductByRestaurantView from '../render/views/AddProductByRestaurantVi
 import EventBus from '../services/Events/EventBus.js';
 import Event from '../services/Events/Events.js';
 import RestaurantModel from '../models/RestaurantModel.js';
-import UserModel from '../models/UserModel.js';
+import Router from '../routing/Router';
 
 class AddProductByRestaurantController extends BaseController {
     constructor(title = 'Add product') {
@@ -13,7 +13,7 @@ class AddProductByRestaurantController extends BaseController {
 
     execute(matchData) {
         this.restaurant = matchData[0];
-        new AddProductByRestaurantView();
+        super.execute(new AddProductByRestaurantView({restName: this.restaurant.name}));
     }
 
     startCatchEvents() {
@@ -46,10 +46,8 @@ class AddProductByRestaurantController extends BaseController {
                 }
             })
             .catch((err) => {
-                EventBus.publish(
-                    Event.addProductByRestaurantError,
-                    err,
-                );
+                sessionStorage.message = 'Ошибка: ' + err;
+                Router.reload();
             });
     }
 }

@@ -15,6 +15,12 @@ export default class RestaurantItem extends Component {
                     classes: hrefClass,
                 }),
                 new Href({
+                    id: id + '_add-product',
+                    href: `/admin/restaurants/${id}/add/product`,
+                    classes: hrefClass,
+                    text: 'Добавление продуктов',
+                }),
+                new Href({
                     id: id + '_tag-href',
                     text: 'Изменение тегов',
                     href: `/admin/restaurants/${id}/change/tags`,

@@ -20,6 +20,10 @@
     }
 }
 
+.add-restaurant-point__title {
+    text-align: center;
+}
+
 @media (max-width: 400px) {
     .add-restaurant-point__title {
         font-size: 20px;

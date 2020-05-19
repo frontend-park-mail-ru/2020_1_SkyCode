@@ -36,7 +36,11 @@ export default class CheckedInput extends Component {
     }
 
     isValid() {
-        return this.context.Input.isValid();
+        const isValid = this.context.Input.isValid();
+        if (isValid === '') return '';
+
+        this.errFieldElement().innerHTML = isValid;
+        return isValid;
     }
 
     value() {

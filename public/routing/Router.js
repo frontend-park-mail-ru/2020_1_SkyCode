@@ -119,7 +119,7 @@ class Router {
                 if (this._currentController === null) {
                     EventBus.publish(Events.setPage, {url: '/'});
                 } else {
-                    this._reload();
+                    this.reload();
                 }
                 return;
             }
@@ -131,7 +131,7 @@ class Router {
                 if (this._currentController === null) {
                     EventBus.publish(Events.setPage, {url: '/'});
                 } else {
-                    this._reload();
+                    this.reload();
                 }
                 return;
             }
@@ -215,7 +215,7 @@ class Router {
         this._registerPage(LocationController, '/location');
         this._registerPage(ChangeRestTagsController, '/admin/restaurants/:id/change/tags', {needAdmin: true});
         this._registerPage(AddRestaurantController, '/admin/restaurants/add', {needAdmin: true});
-        this._registerPage(AddProductByRestaurantController, '/admin/restaurants/:int/add', {needAdmin: true});
+        this._registerPage(AddProductByRestaurantController, '/admin/restaurants/:int/add/product', {needAdmin: true});
         this._registerPage(AdminChatListController, '/support/chats', {
             needSupport: true,
             button: 'c',
@@ -276,7 +276,7 @@ class Router {
         }
     }
 
-    _reload() {
+    reload() {
         EventBus.publish(Events.setPage, {url: window.location.pathname});
     }
 }
