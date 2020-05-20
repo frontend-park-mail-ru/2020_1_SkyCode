@@ -25,9 +25,6 @@ class MainArea extends Component {
     constructor({username}) {
         super();
         this.addContextData({
-            Header: new Header({
-                classes: 'header',
-            }),
             SupportChat: new SupportChat({
                 classes: 'support-chat',
                 username,

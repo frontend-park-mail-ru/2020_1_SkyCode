@@ -61,6 +61,11 @@ export default class GeoPopup extends Component {
     bind() {
         this.confirmDisappear();
 
+        EventBus.subscribe(Events.escButPressed, () => {
+            if (!this.isStatic) {
+                this.disappear();
+            }
+        });
         EventBus.subscribe(Events.geoConfirmationRequest, this.confirmAppear.bind(this));
         EventBus.subscribe(Events.stopGeoConfirmation, this.confirmDisappear.bind(this));
         EventBus.subscribe(Events.successGeo, this.disappear.bind(this));
@@ -75,6 +80,11 @@ export default class GeoPopup extends Component {
     }
 
     unbind() {
+        EventBus.unsubscribe(Events.escButPressed, () => {
+            if (!this.isStatic) {
+                this.disappear();
+            }
+        });
         EventBus.unsubscribe(Events.geoConfirmationRequest, this.confirmAppear.bind(this));
         EventBus.unsubscribe(Events.stopGeoConfirmation, this.confirmDisappear.bind(this));
         EventBus.unsubscribe(Events.successGeo, this.disappear.bind(this));

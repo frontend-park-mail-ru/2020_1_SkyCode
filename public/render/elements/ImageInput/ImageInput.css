@@ -5,7 +5,12 @@
     cursor: pointer;
 }
 
-.img-input {
+.add-product__image-input {
+    position: relative;
+    top: -10px;
+}
+
+.img-input__input {
     opacity: 0;
     width: 0;
     height: 0;

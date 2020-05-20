@@ -1,8 +1,7 @@
-import template from './AddProductByRestaurantView.hbs';
+import template from './AddProductView.hbs';
 import Component from '../../Component';
 import CheckedInput from '../../elements/checkedInput/CheckedInput';
 import Input from '../../elements/input/Input';
-import ErrorBlock from '../../blocks/errorBlock/ErrorBlock';
 import NeonButton from '../../elements/neonButton/NeonButton';
 import ImageInput from '../../elements/ImageInput/ImageInput';
 import Events from '../../../services/Events/Events';
@@ -11,8 +10,9 @@ import BaseView from '../BaseView/BaseView';
 import IconedHeader from '../../blocks/iconedHeader/IconedHeader';
 import WavingMenue from '../../blocks/wavingMenue/WavingMenue';
 import Order from '../../blocks/order/Order';
+import CostInput from '../../elements/CostInput/CostInput';
 
-export default class AddProductByRestaurantView extends BaseView {
+export default class AddProductView extends BaseView {
     constructor({restName}) {
         super({
             Main: new MainArea({restName}),
@@ -36,7 +36,7 @@ class MainArea extends Component {
             NameInput: new CheckedInput({
                 label: 'Название',
                 Input: new Input({
-                    classes: 'add-product-by-restaurant__input',
+                    classes: '',
                     id: 'add-product-by-restaurant__name-input',
                     type: 'text',
                     placeholder: 'продукта',
@@ -46,12 +46,10 @@ class MainArea extends Component {
             }),
             CostInput: new CheckedInput({
                 label: 'Цена',
-                Input: new Input({
-                    classes: 'add-product-by-restaurant__input',
+                Input: new CostInput({
+                    classes: '',
                     id: 'add-product-by-restaurant__cost-input',
-                    type: 'number',
-                    placeholder: 'продукта',
-                    min: '0',
+                    placeholder: 'продукта (₽)',
                     max: 10000,
                     isRequired: true,
                 }),
@@ -59,6 +57,7 @@ class MainArea extends Component {
 
             ImageInput: new ImageInput({
                 id: 'add-product__image-input',
+                classes: 'add-product__image-input',
             }),
         });
 
@@ -69,9 +68,9 @@ class MainArea extends Component {
                 classes: 'add-product-by-restaurant__submit',
                 text: 'Добавить',
                 callback: () => {
-                    const isValid = this.context.NameInput.isValid()
-                        && this.context.CostInput.isValid()
-                        && this.context.ImageInput.isValid();
+                    let isValid = this.context.NameInput.isValid();
+                    isValid = this.context.CostInput.isValid() && isValid;
+                    isValid = this.context.ImageInput.isValid() && isValid;
                     if (!isValid) return;
 
                     const formData = new FormData();
@@ -81,11 +80,11 @@ class MainArea extends Component {
                     );
                     formData.append(
                         'Name',
-                        this.context.NameInput.domElement.value,
+                        this.context.NameInput.value(),
                     );
                     formData.append(
                         'Price',
-                        this.context.CostInput.domElement.value,
+                        this.context.CostInput.value(),
                     );
                     EventBus.publish(Events.addProductByRestaurant, formData);
                 },
@@ -94,22 +93,7 @@ class MainArea extends Component {
     }
 
     bind() {
-        EventBus.subscribe(
-            'add-product-by-restaurant-error',
-            (message) => {
-                this.context.generalError.addMessage(message);
-            });
-
+        setTimeout(() => this.context.NameInput.focus(), 300);
         super.bind();
-    }
-
-    unbind() {
-        EventBus.unsubscribe(
-            'add-product-by-restaurant-error',
-            (message) => {
-                this.context.generalError.addMessage(message);
-            });
-
-        super.unbind();
     }
 }

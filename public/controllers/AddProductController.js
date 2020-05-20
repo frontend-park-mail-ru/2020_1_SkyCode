@@ -1,19 +1,24 @@
 import BaseController from './BaseController.js';
-// eslint-disable-next-line max-len
-import AddProductByRestaurantView from '../render/views/AddProductByRestaurantView/AddProductByRestaurantView.js';
+import AddProductView from '../render/views/AddProductView/AddProductView.js';
 import EventBus from '../services/Events/EventBus.js';
 import Event from '../services/Events/Events.js';
 import RestaurantModel from '../models/RestaurantModel.js';
 import Router from '../routing/Router';
 
-class AddProductByRestaurantController extends BaseController {
+class AddProductController extends BaseController {
     constructor(title = 'Add product') {
         super(title);
     }
 
     execute(matchData) {
-        this.restaurant = matchData[0];
-        super.execute(new AddProductByRestaurantView({restName: this.restaurant.name}));
+        this.restaurantId = matchData[0];
+        RestaurantModel.getRestaurant(matchData[0]).then((restaurant) => {
+            super.execute(new AddProductView({restName: restaurant.name}));
+        })
+            .catch((error) => {
+                sessionStorage.message = 'Ошибка: ' + error;
+                Router.reload();
+            });
     }
 
     startCatchEvents() {
@@ -32,7 +37,7 @@ class AddProductByRestaurantController extends BaseController {
 
     addProductHandler(data) {
         RestaurantModel
-            .addProduct(this.restaurant, data)
+            .addProduct(this.restaurantId, data)
             .then((response) => {
                 if (response.error) {
                     EventBus.publish(
@@ -52,4 +57,4 @@ class AddProductByRestaurantController extends BaseController {
     }
 }
 
-export default new AddProductByRestaurantController();
+export default new AddProductController();

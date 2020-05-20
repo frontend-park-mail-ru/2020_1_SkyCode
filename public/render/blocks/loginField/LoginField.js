@@ -42,7 +42,6 @@ export default class LoginField extends Component {
                 classes: 'login-field__submit',
                 text: 'Войти',
                 callback: () => {
-                    this.context.generalErrorField.clean();
                     const isValid = this.context.phoneInput.isValid()
                     && this.context.passwordInput.isValid();
 

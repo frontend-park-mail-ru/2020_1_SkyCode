@@ -7,6 +7,12 @@
     box-shadow: 0 4px 100px #D6D6D6;
     grid-area: add-point;
     padding: 30px;
+    width: fit-content;
+}
+
+.add-restaurant-point__title {
+    text-align: center;
+    line-height: 45px;
 }
 
 @media (max-width: 700px) {
@@ -18,10 +24,6 @@
         font-size: 30px;
         text-align: center;
     }
-}
-
-.add-restaurant-point__title {
-    text-align: center;
 }
 
 @media (max-width: 400px) {

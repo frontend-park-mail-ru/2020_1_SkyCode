@@ -7,7 +7,7 @@ import ProfileController from '../controllers/ProfileController.js';
 import RestaurantController from '../controllers/RestaurantController.js';
 import CheckoutController from '../controllers/CheckoutController.js';
 import AddProductByRestaurantController
-    from '../controllers/AddProductByRestaurantController.js';
+    from '../controllers/AddProductController.js';
 import BasketController from '../controllers/BasketController.js';
 import OrderHistoryController from '../controllers/OrderHistoryController';
 import AddRestaurantController from '../controllers/AddRestaurantController.js';
@@ -220,7 +220,7 @@ class Router {
             needSupport: true,
             button: 'c',
         });
-        this._registerPage(SupportChatController, '/admin/chats/:hash', {needAdmin: true});
+        this._registerPage(SupportChatController, '/admin/chats/:hash', {needSupport: true});
         this._registerPage(AdminRestaurantListController, '/admin/restaurants', {
             needAdmin: true,
             button: 'r',

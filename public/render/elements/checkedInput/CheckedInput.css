@@ -1,7 +1,6 @@
 .checked-input {
     position: relative;
     padding-top: 30px;
-    width: 90%;
 }
 
 .checked-input__error {

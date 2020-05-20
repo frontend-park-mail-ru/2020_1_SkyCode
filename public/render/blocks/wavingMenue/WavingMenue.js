@@ -40,16 +40,27 @@ export default class WavingMenue extends Component {
         this.addContextData({userHrefs});
 
         if (UserController.logined && UserController.User.role === 'Admin') {
-            const adminHrefs = [];
+            const restManagementHrefs = [];
 
-            adminHrefs.push(new Href({
+            restManagementHrefs.push(new Href({
                 id: 'waving-menue__rest-href',
                 classes: 'waving-menue__href',
                 text: 'Управление ресторанами',
                 href: '/admin/restaurants',
             }));
 
-            this.addContextData({adminHrefs});
+            const tagManagementHrefs = [];
+            tagManagementHrefs.push(new Href({
+                id: 'waving-menue__tag-href',
+                classes: 'waving-menue__href',
+                text: 'Добавление тега',
+                href: 'qwerweqwerqrrqr',
+            }));
+
+            this.addContextData({
+                restManagementHrefs,
+                tagManagementHrefs,
+            });
         }
 
         if (UserController.logined && UserController.User.role === 'Support') {

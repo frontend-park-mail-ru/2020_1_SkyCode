@@ -4,7 +4,6 @@ import SupportChatView
 import EventBus from '../services/Events/EventBus';
 import Event from '../services/Events/Events';
 import Message from '../render/blocks/message/message';
-import UserModel from '../models/UserModel';
 import ChatModel from '../models/ChatModel';
 import UserController from './UserController';
 
@@ -34,15 +33,13 @@ class SupportChatController extends BaseController {
         this.socket.onmessage = (e) => {
             console.log('MESSAGE!' + e);
             const data = JSON.parse(e.data);
+            if (data.user_name === '') data.user_name = UserController.User.firstName;
             localStorage.setItem('chat_id', data.chat_id);
+            const domEl = document.getElementsByClassName('chat__messages')[0];
             if (data.message) {
                 EventBus.publish(Event.newMessage, data);
                 const el = new Message('msg', data.message, data.user_name);
-                const domEl = document.getElementsByClassName('chat__messages')[0];
                 domEl.innerHTML += el;
-                domEl.scrollTop = domEl.scrollHeight;
-
-                document.getElementsByClassName('chat__messages')[0].outerHTML = domEl.outerHTML;
             }
             if (data.joined) {
                 this.countuser++;
@@ -50,19 +47,20 @@ class SupportChatController extends BaseController {
                     EventBus.publish(Event.supportConnected, {});
                 }
             }
+            domEl.scrollTop = 99999;
         };
 
         super.execute(new SupportChatView({username: UserController.User.firstName}));
-        ChatModel.getChatHistory((chatId !== undefined) ? chatId : localStorage.getItem('chat_id'))
+        ChatModel.getChatHistory(chatId !== undefined ? chatId : localStorage.getItem('chat_id'))
             .then((response) => {
                 if (!Array.isArray(response)) return;
 
+                const domEl = document.getElementsByClassName('chat__messages')[0];
                 for (const msg of response) {
                     const el = new Message('msg', msg.message, msg.user_name);
-                    const domEl = document.getElementsByClassName('chat__messages')[0];
                     domEl.innerHTML += el;
                 }
-                document.getElementsByClassName('chat__messages')[0].outerHTML = domEl.outerHTML;
+                domEl.scrollTop = 99999;
             })
             .catch((err) => console.log(err));
     }

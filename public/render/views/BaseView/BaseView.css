@@ -30,3 +30,8 @@
 ::-webkit-scrollbar {
     display: none;
 }
+
+.add-product-by-restaurant__title {
+    text-align: center;
+
+}

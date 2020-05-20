@@ -5,7 +5,7 @@
     display: list-item;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 450px) {
     .admin-restaurant-list__href {
         font-size: 13px;
     }

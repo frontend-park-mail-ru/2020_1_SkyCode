@@ -9,13 +9,19 @@
         </ul>
 
 
-        {{#if adminHrefs}}
+        {{#if restManagementHrefs}}
             <h2 class="waving-menue__header">Администратору:</h2>
             <ul class="waving-menue__list">
-                {{#each adminHrefs}}
+                {{#each restManagementHrefs}}
+                    <li>{{{this}}}</li>
+                {{/each}}
+
+                {{#each tagManagementHrefs}}
                     <li>{{{this}}}</li>
                 {{/each}}
             </ul>
+
+
         {{/if}}
 
         {{#if supportHrefs}}
