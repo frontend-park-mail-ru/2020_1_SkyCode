@@ -18,17 +18,38 @@ class MainController extends BaseController {
     execute() {
         Promise.all([
             RestaurantModel
+                .getRecommendationsByAddress(1, 20, localStorage.getItem('deliveryGeo')),
+            RestaurantModel
                 .getRestaurantsByAddress(1, 50, localStorage.getItem('deliveryGeo')),
             TagModel.all(),
         ])
-            .then(([restResponse, tagsResponse]) => {
-                const actions = Mocks.actions;
-                super.execute(new MainView({
-                    actionArr: actions,
-                    categoryArr: tagsResponse.rest_tags,
-                    restaurantArr: restResponse.restaurants,
-                    products: BasketController.basket.product,
-                }));
+            .then(([recomResponse, restResponse, tagsResponse]) => {
+                if (recomResponse.error) throw recomResponse.error;
+                if (restResponse.error) throw restResponse.error;
+                if (tagsResponse.error) throw tagsResponse.error;
+
+                Promise.all(restResponse.restaurants.map((rest) => RestaurantModel.tags(rest.id)))
+                    .then((tagsArr) => {
+                        tagsArr.map((resp) => {
+                            if (resp.error) throw resp.error;
+                        });
+                        const tagsIds = tagsArr.map((restTagsArr) =>
+                            restTagsArr.tags.map((tag) =>
+                                tag.id));
+
+                        for (let i = 0; i < tagsIds.length; i++) {
+                            restResponse.restaurants[i].tagsIds = tagsIds[i];
+                        }
+
+                        const actions = Mocks.actions;
+                        super.execute(new MainView({
+                            actionArr: actions,
+                            recommendArr: recomResponse.restaurants,
+                            categoryArr: tagsResponse.rest_tags,
+                            restaurantArr: restResponse.restaurants,
+                            products: BasketController.basket.product,
+                        }));
+                    });
             })
             .catch((err) => console.log(err));
     }

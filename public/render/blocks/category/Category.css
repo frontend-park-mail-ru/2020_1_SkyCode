@@ -12,7 +12,12 @@
 }
 
 .category-bar__category:hover {
-    background: #F6D471;
+    background: rgb(246, 212, 113);
+    box-shadow: 0 0 10px rgb(246, 212, 113);
+}
+
+.category-bar__active {
+    background: rgb(246, 212, 113);
 }
 
 .category-bar__image {

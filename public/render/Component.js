@@ -117,6 +117,7 @@ export default class Component {
 
     set id(id) {
         this._id = id;
+        this.addContextData({id});
     }
 
     get id() {

@@ -53,6 +53,12 @@ class RestaurantModel {
         });
     }
 
+    getRecommendationsByAddress(page, count, address) {
+        return Http.fetchGet({
+            path: `/api/v1/restaurants_point_recommendations?page=${page}&count=${count}&address=${address}`,
+        });
+    }
+
     addProduct(id, body) {
         return Http.fetchPost({
             path: `/api/v1/restaurants/${id}/product`,
@@ -71,7 +77,7 @@ class RestaurantModel {
 
     addOrder(body) {
         return Http.fetchPost({
-            path: '/api/v1/orders/checkout',
+            path: '/api/v1/orders',
             body: JSON.stringify(body),
         });
     }

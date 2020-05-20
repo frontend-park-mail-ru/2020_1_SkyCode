@@ -1,77 +1,74 @@
 import Component from '../../Component.js';
-import Category from '../category/Category.js';
-import template from './CategoryBar.hbs';
-import Button from '../../elements/button/Button';
-import EventBus from '../../../services/Events/EventBus';
-import Events from '../../../services/Events/Events';
+import template from './RecommendBar.hbs';
+import Button from '../../elements/button/Button.js';
+import Restaurant from '../restaurant/Restaurant';
 
-export default class CategoryBar extends Component {
-    constructor({categoryArr, classes = 'categoryBar'}) {
+export default class RecommendBar extends Component {
+    constructor({classes = 'recommend-bar', recommendArr}) {
         super(classes);
-
-        super.addContextData({
+        this.addContextData({
             LeftButton: new Button({
                 classes: [
                     'scroll-bar__button',
-                    'category-bar__left-button',
+                    'action-bar__left-button',
                 ],
-                id: 'category-bar__left-button',
+                id: 'recommend-bar__left-button',
                 text: '<',
                 callback: this.scroll(-1),
             }),
             RightButton: new Button({
                 classes: [
                     'scroll-bar__button',
-                    'category-bar__right-button',
+                    'action-bar__right-button',
                 ],
-                id: 'category-bar__right-button',
+                id: 'recommend-bar__right-button',
                 text: '>',
                 callback: this.scroll(1),
             }),
         });
         super.template = template;
+        const recommends = [];
 
-        const categories = [new Category({
-            src: '/static/categories/cat1.svg',
-            text: 'Все',
-            classes: 'category-bar__category category-bar__active',
-            id: '-1',
-        })];
-        for (const categoryData of categoryArr) {
-            categories.push(new Category({
-                id: categoryData.id,
-                src: categoryData.image,
-                text: categoryData.name,
-                classes: 'category-bar__category',
+        for (const restaurant of recommendArr) {
+            recommends.push(new Restaurant({
+                classes: `restaurant-list__restaurant-${restaurant.id}`,
+                name: restaurant.name,
+                avgDeliveryTime: 30,
+                rate: restaurant.rating,
+                imageHref: `/images/${restaurant.image}`,
+                href: `/restaurants/${restaurant.id}`,
             }));
         }
 
-        this.addContextData({categories}, true);
+        this.addContextData({recommends}, true);
     }
 
     scroll(multiplier) {
         return function() {
-            const list = document.getElementsByClassName('category-bar__list')[0];
+            const list = document.getElementsByClassName('recommend-bar__list')[0];
             const child = list.firstElementChild;
-            const fraction = child.offsetWidth;
+            const marginRight = 35;
+            // eslint-disable-next-line no-mixed-operators,
+            const fraction = (child.width + 2 * marginRight);
             list.scrollLeft += multiplier * fraction;
         }.bind(this);
     }
 
     normalize(list) {
         const child = list.firstElementChild;
-        const fraction = child.offsetWidth;
+        const marginRight = 35;
+        const fraction = (child.width + 2 * marginRight);
         const div = Math.round(list.scrollLeft / fraction);
         list.scrollLeft = div * fraction;
     }
 
     bind() {
-        const list = document.getElementsByClassName('category-bar__list')[0];
+        const list = document.getElementsByClassName('recommend-bar__list')[0];
+        const minScrollLeft = 0;
         const leftButton = this.context.LeftButton.domElement;
         const rightButton = this.context.RightButton.domElement;
-        let hasTimer = false;
-        const minScrollLeft = 0;
 
+        let hasTimer = false;
         list.onscroll = () => {
             if (hasTimer) {
                 return;
@@ -89,13 +86,6 @@ export default class CategoryBar extends Component {
                 hasTimer = false;
             }, 300);
         };
-
-        EventBus.subscribe(Events.restCategorySelected, (id) => {
-            for (const cat of this.context.categories) {
-                cat.domElement.className = 'category-bar__category';
-            }
-            document.getElementById(Category.categoryId(id)).className += ' category-bar__active';
-        });
         super.bind();
     }
 }

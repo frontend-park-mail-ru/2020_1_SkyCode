@@ -8,13 +8,15 @@ import CategoryBar from '../../blocks/categoryBar/CategoryBar';
 import RestaurantList from '../../blocks/restaurantList/RestaurantList';
 import Component from '../../Component';
 import Order from '../../blocks/order/Order';
+import RecommendBar from '../../blocks/RecommendBar/RecommendBar';
 
 export default class MainView extends BaseView {
-    constructor({actionArr, categoryArr, restaurantArr}) {
+    constructor({actionArr, categoryArr, recommendArr, restaurantArr}) {
         super({
             Main: new MainArea({
                 actionArr,
                 categoryArr,
+                recommendArr,
                 restaurantArr,
             }),
             Header: new IconedHeader({classes: 'base-view__header'}),
@@ -27,7 +29,7 @@ export default class MainView extends BaseView {
 }
 
 class MainArea extends Component {
-    constructor({actionArr, categoryArr, restaurantArr}) {
+    constructor({actionArr, categoryArr, recommendArr, restaurantArr}) {
         super();
         this.template = temp;
         const message = sessionStorage.message;
@@ -41,6 +43,9 @@ class MainArea extends Component {
                 imageHref: 'static/clock.svg',
                 text: 'Доставка: сейчас',
                 callback: () => 0,
+            }),
+            RecommendBar: new RecommendBar({
+                recommendArr,
             }),
             actionBar: new ActionBar({
                 classes: 'action-bar',

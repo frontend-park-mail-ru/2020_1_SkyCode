@@ -22,8 +22,9 @@
 @import "render/views/AddRestaurantPointView/AddRestaurantPointView.css";
 @import "render/views/AdminRestaurantListView/AdminRestaurantListView.css";
 @import "render/views/BaseView/BaseView.css";
-@import "render/blocks/actionBar/ActionBar.css";
 @import "render/views/AddProductView/AddProductView.css";
+@import "render/blocks/actionBar/ActionBar.css";
+@import "render/blocks/RecommendBar/RecommendBar.css";
 @import "render/blocks/addRestaurant/AddRestaurant.css";
 @import "render/blocks/addRestaurantPoint/addRestaurantPoint.css";
 @import "render/blocks/basket/Basket.css";
