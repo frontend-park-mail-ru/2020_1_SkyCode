@@ -103,7 +103,7 @@ class Router {
         this._currentController.execute(matchData);
     }
 
-    _goto({url}) {
+    _goto({url}, withHistRecords = true) {
         let matchData;
         let pageRecord;
 
@@ -163,7 +163,7 @@ class Router {
             this._currentController.stop();
         }
         this._currentController = pageRecord.page;
-        this._setNewHistoryRecord(this._currentController, url);
+        if (withHistRecords) this._setNewHistoryRecord(this._currentController, url);
         this._currentController.execute(matchData);
     }
 
@@ -242,8 +242,6 @@ class Router {
                 eBus.publish(events.setPage, {url: '${record.path}'});`;
         }
 
-        console.log('document.body.onkeydown = (e) => {' + keyDownFuncBody + '};');
-
         eval('document.body.onkeydown = (e) => {' + keyDownFuncBody + '};');
     }
 
@@ -276,8 +274,10 @@ class Router {
         }
     }
 
-    reload() {
-        EventBus.publish(Events.setPage, {url: window.location.pathname});
+    reload(message = '') {
+        sessionStorage.message = message;
+        EventBus.publish('reload');
+        this._goto({url: window.location.pathname}, false);
     }
 }
 

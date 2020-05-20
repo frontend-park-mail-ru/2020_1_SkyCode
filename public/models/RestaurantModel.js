@@ -82,6 +82,24 @@ class RestaurantModel {
             body: JSON.stringify(body),
         });
     }
+
+    tags(id) {
+        return Http.fetchGet({
+            path: `/api/v1/restaurants/${id}/tag`,
+        });
+    }
+
+    addTag(id, tagId) {
+        return Http.fetchPost({
+            path: `/api/v1/restaurants/${id}/tag/${tagId}`,
+        });
+    }
+
+    deleteTag(id, tagId) {
+        return Http.fetchDelete({
+            path: `/api/v1/restaurants/${id}/tag/${tagId}`,
+        });
+    }
 }
 
 export default new RestaurantModel();

@@ -115,7 +115,7 @@ export default class ProfileTextArea extends Component {
             const formData = new FormData();
             formData.append('avatar', img);
             this.context.avatarErrorField.clean();
-            EventBus.publish('avatar-update', formData);
+            EventBus.publish(Events.avatarUpdate, formData);
         });
 
         EventBus.subscribe('update-bio-error', (message) => {

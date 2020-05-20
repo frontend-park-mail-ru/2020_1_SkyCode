@@ -29,11 +29,15 @@ export default class CategoryBar extends Component {
         });
         super.template = template;
 
-        const categories = [];
+        const categories = [new Category({
+            src: '/static/categories/cat1.svg',
+            text: 'Все',
+            classes: 'category-bar__category',
+        })];
         for (const categoryData of categoryArr) {
             categories.push(new Category({
-                src: categoryData.src,
-                text: categoryData.text,
+                src: categoryData.image,
+                text: categoryData.name,
                 classes: 'category-bar__category',
             }));
         }

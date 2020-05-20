@@ -7,6 +7,7 @@ import RestaurantModel from '../models/RestaurantModel.js';
 import BasketController from './BasketController.js';
 import EventBus from '../services/Events/EventBus';
 import Event from '../services/Events/Events';
+import TagModel from '../models/TagModel';
 
 class MainController extends BaseController {
     constructor(title = 'main page') {
@@ -15,14 +16,17 @@ class MainController extends BaseController {
     }
 
     execute() {
-        RestaurantModel.getRestaurantsByAddress(1, 50, localStorage.getItem('deliveryGeo'))
-            .then((response) => {
+        Promise.all([
+            RestaurantModel
+                .getRestaurantsByAddress(1, 50, localStorage.getItem('deliveryGeo')),
+            TagModel.all(),
+        ])
+            .then(([restResponse, tagsResponse]) => {
                 const actions = Mocks.actions;
-                const categories = Mocks.categories;
                 super.execute(new MainView({
                     actionArr: actions,
-                    categoryArr: categories,
-                    restaurantArr: response.restaurants,
+                    categoryArr: tagsResponse.rest_tags,
+                    restaurantArr: restResponse.restaurants,
                     products: BasketController.basket.product,
                 }));
             })
