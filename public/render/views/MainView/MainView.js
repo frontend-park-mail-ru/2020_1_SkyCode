@@ -44,9 +44,6 @@ class MainArea extends Component {
                 text: 'Доставка: сейчас',
                 callback: () => 0,
             }),
-            RecommendBar: new RecommendBar({
-                recommendArr,
-            }),
             actionBar: new ActionBar({
                 classes: 'action-bar',
                 actionArr,
@@ -60,5 +57,12 @@ class MainArea extends Component {
                 restaurantArr,
             }),
         });
+        if (recommendArr.length > 0) {
+            this.addContextData({
+                RecommendBar: new RecommendBar({
+                    recommendArr,
+                }),
+            });
+        }
     }
 }

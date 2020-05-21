@@ -24,9 +24,9 @@ class MainController extends BaseController {
             TagModel.all(),
         ])
             .then(([recomResponse, restResponse, tagsResponse]) => {
-                if (recomResponse.error) throw recomResponse.error;
-                if (restResponse.error) throw restResponse.error;
-                if (tagsResponse.error) throw tagsResponse.error;
+                if (recomResponse.error) recomResponse.restaurants = [];
+                if (restResponse.error) throw 'restError: ' + restResponse.error;
+                if (tagsResponse.error) throw 'tagsError: ' + tagsResponse.error;
 
                 Promise.all(restResponse.restaurants.map((rest) => RestaurantModel.tags(rest.id)))
                     .then((tagsArr) => {
@@ -51,7 +51,7 @@ class MainController extends BaseController {
                         }));
                     });
             })
-            .catch((err) => console.log(err));
+            .catch((err) => console.log('error: ', err));
     }
 
     startCatchEvents() {
