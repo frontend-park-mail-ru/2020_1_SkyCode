@@ -46,6 +46,8 @@ class Events {
         this.stopGeoConfirmation = 'stop-geo-confirmation';
         this.escButPressed = 'escape-button-pressed';
         this.restCategorySelected = 'rest-category-selected';
+        this.notifRequest = 'notif-request';
+
     }
 
     addProductRequest(id) {

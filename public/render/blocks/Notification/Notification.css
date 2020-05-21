@@ -1,0 +1,13 @@
+.notif-container {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    z-index: 1;
+    padding: 20px;
+    border-radius: 20px 0 20px 20px;
+    max-height: 550px;
+    height: fit-content;
+    position: absolute;
+    left: calc(100% - 432px);
+    top: 60px;
+}

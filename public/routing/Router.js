@@ -26,10 +26,10 @@ import LoginPopup from '../render/blocks/LoginPopup/LoginPopup';
 import Events from '../services/Events/Events';
 import SignupPopup from '../render/blocks/SignupPopup/SignupPopup';
 import GeoPopup from '../render/blocks/GeoPopup/GeoPopup';
-import ChangeRestTagsView
-    from '../render/views/ChangeRestTagsView/ChangeRestTagsView';
 import ChangeRestTagsController from '../controllers/ChangeRestTagsController';
 import AdminOrderController from '../controllers/AdminOrderController';
+import NotificationPopup
+    from '../render/blocks/NotificationPopup/NotificationPopup';
 
 class Router {
     constructor() {
@@ -84,6 +84,11 @@ class Router {
         document.getElementById('geo').innerHTML = geoPopup.toString();
         geoPopup.bind();
         geoPopup.disappear();
+
+        const notifPopup = new NotificationPopup();
+        document.getElementById('notif').innerHTML = notifPopup.toString();
+        notifPopup.bind();
+        notifPopup.disappear();
     }
 
     _redirect({url}) {

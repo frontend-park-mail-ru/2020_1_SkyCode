@@ -23,8 +23,7 @@ export default class OrderItem extends Component {
 
     prepareHtml(order) {
         const datetime = order.created_at;
-        console.log(datetime);
-        const time = datetime.slice(12, 19);
+        const time = datetime.slice(12, 17);
         const date = datetime.slice(0, 10);
 
         let button;
@@ -39,7 +38,7 @@ export default class OrderItem extends Component {
         } else if (order.status === 'Delivering') {
             status = frontStatuses[1];
             button = new NeonButton({
-                text: `Обновить статус до "${frontStatuses[1]}"`,
+                text: `Обновить статус до "${frontStatuses[2]}"`,
                 id: 'order-item' + order.id + '__button',
                 callback: this.updateStatus(status, order.id),
             });

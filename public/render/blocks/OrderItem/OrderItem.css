@@ -1,0 +1,9 @@
+.order-item__name {
+    font-size: 20px;
+    width: 100%;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+}

@@ -30,10 +30,10 @@ export default class IconBar extends Component {
         }),
         new Img({
             classes: 'icon map-href',
-            src: '/static/map-pin.svg',
+            src: '/static/notif.svg',
             imageClasses: 'icon-bar__map-image',
             callback: () => {
-                EventBus.publish(Events.geoRequest);
+                EventBus.publish(Events.notifRequest);
             },
         }),
         new ImageHref({

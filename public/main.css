@@ -28,6 +28,7 @@
 @import "render/blocks/addRestaurant/AddRestaurant.css";
 @import "render/blocks/addRestaurantPoint/addRestaurantPoint.css";
 @import "render/blocks/basket/Basket.css";
+@import "render/blocks/OrderItem/OrderItem.css";
 @import "render/blocks/basketProduct/BasketProduct.css";
 @import "render/blocks/category/Category.css";
 @import "render/blocks/categoryBar/CategoryBar.css";
@@ -42,6 +43,8 @@
 @import "render/blocks/LoginPopup/LoginPopup.css";
 @import "render/blocks/SignupPopup/SignupPopup.css";
 @import "render/blocks/GeoPopup/GeoPopup.css";
+@import "render/blocks/NotificationPopup/NotificationPopup.css";
+@import "render/blocks/Notification/Notification.css";
 @import "render/blocks/message/message.css";
 @import "render/blocks/order/Order.css";
 @import "render/blocks/orderCard/orderCard.css";
