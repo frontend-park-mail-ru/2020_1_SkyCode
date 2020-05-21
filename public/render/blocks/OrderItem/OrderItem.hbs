@@ -1,0 +1,22 @@
+<div class="restaurant-item {{classes}}" id={{id}}>
+    <div class="restaurant-item__name">{{time}}, {{date}}</div>
+    <h3>Текущй статус: {{status}}</h3>
+    {{#if Button}}
+        {{{Button}}}
+    {{/if}}
+
+    <h3>Информация о заказе</h3>
+    <ul>
+        <li>Телефон: {{order.phone}}</li>
+        <li>Комментарий: {{order.comment}}</li>
+        <li>Количество людей: {{order.person_num}}</li>
+        <li>Стоимость: {{order.price}} рублей</li>
+    </ul>
+    <h3>Заказ</h3>
+    <ul>
+        {{#each products}}
+            <li>{{this.name}}</li>
+        {{/each}}
+    </ul>
+
+</div>

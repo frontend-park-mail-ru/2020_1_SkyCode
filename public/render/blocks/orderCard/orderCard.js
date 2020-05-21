@@ -2,6 +2,7 @@ import Component from '../../Component.js';
 import template from './orderCard.hbs';
 import NeonButton from '../../elements/neonButton/NeonButton.js';
 import EventBus from '../../../services/Events/EventBus';
+import Events from '../../../services/Events/Events';
 
 export default class OrderCard extends Component {
     constructor(classes, orderItem) {
@@ -27,7 +28,7 @@ export default class OrderCard extends Component {
                     classes: `delete-button-${orderItem.id}`,
                     text: 'Отменить',
                     callback: () => {
-                        EventBus.publish('delete-order', {
+                        EventBus.publish(Events.deleteOrder, {
                             id: orderItem.id,
                         });
                     },

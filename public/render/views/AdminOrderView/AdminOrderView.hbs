@@ -1,0 +1,9 @@
+<main class="restaurants-list-view">
+    <h1 class="restaurants-list__header">Список заказов</h1>
+    <div id="message" class="message restaurant-list-view__message">{{message}}</div>
+    {{#each OrderList}}
+        {{{this}}}
+    {{else}}
+        Список заказов пуст
+    {{/each}}
+</main>

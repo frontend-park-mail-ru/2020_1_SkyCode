@@ -29,12 +29,14 @@ class MainController extends BaseController {
                 if (tagsResponse.error) throw 'tagsError: ' + tagsResponse.error;
 
                 Promise.all(restResponse.restaurants.map((rest) => RestaurantModel.tags(rest.id)))
-                    .then((tagsArr) => {
-                        tagsArr.map((resp) => {
+                    .then((respArr) => {
+                        respArr.map((resp) => {
                             if (resp.error) throw resp.error;
+                            if (resp.tags === null) resp.tags = [];
                         });
-                        const tagsIds = tagsArr.map((restTagsArr) =>
-                            restTagsArr.tags.map((tag) =>
+
+                        const tagsIds = respArr.map((respObject) =>
+                            respObject.tags.map((tag) =>
                                 tag.id));
 
                         for (let i = 0; i < tagsIds.length; i++) {

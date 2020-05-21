@@ -27,6 +27,7 @@
     width: 100%;
     font-weight: bold;
     cursor: pointer;
+    margin-bottom: 5px;
 }
 
 .restaurant-item__clicked {

@@ -3,6 +3,7 @@ import Input from '../../elements/input/Input.js';
 import Button from '../../elements/button/Button.js';
 import EventBus from '../../../services/Events/EventBus.js';
 import template from './PersonInput.hbs';
+import Events from '../../../services/Events/Events';
 
 export default class PersonInput extends Component {
     constructor({classes, label, personNum = 1}) {
@@ -26,7 +27,7 @@ export default class PersonInput extends Component {
 
             if (input.min <= setValue && setValue <= input.max) {
                 input.value = setValue;
-                EventBus.publish('person-amount-change', input.value);
+                EventBus.publish(Events.personAmountChange, input.value);
             }
         };
 

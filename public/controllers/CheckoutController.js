@@ -38,12 +38,6 @@ class CheckoutController extends BaseController {
                 } else {
                     sessionStorage.message = 'Ваш заказ успешно оформлен';
 
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Your work has been saved',
-                        showConfirmButton: false,
-                        timer: 3500,
-                    });
                     EventBus.publish(Event.checkoutSuccess, {});
                     EventBus.publish(Event.setPage, {url: '/orders'});
                 }

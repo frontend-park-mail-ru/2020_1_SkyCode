@@ -6,7 +6,7 @@ import Events from '../../../services/Events/Events';
 export default class Category extends Component {
     constructor({id, src, text, classes = ''}) {
         super(classes, {
-            src: '/images/' + src,
+            src,
             text,
         }, Category.categoryId(id), template);
         this.catId = id;

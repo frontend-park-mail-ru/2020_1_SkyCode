@@ -8,6 +8,7 @@ import Validation from '../../../services/InputValidation.js';
 import template from './OrderCheckout.hbs';
 import PhoneInput from '../../elements/phoneInput/PhoneInput.js';
 import Button from '../../elements/button/Button';
+import Events from '../../../services/Events/Events';
 
 export default class OrderCheckout extends Component {
     constructor({classes, phone, address, email, profile}) {
@@ -121,7 +122,8 @@ export default class OrderCheckout extends Component {
                             restId: parseInt(BasketController.basket.restaurant),
                             products,
                         };
-                        EventBus.publish('checkout', data);
+
+                        EventBus.publish(Events.checkout, data);
                     },
                 }),
         });

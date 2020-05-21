@@ -1,15 +1,15 @@
 import Component from '../../Component.js';
-import template from './OrderHistoryView.hbs';
-import OrderHistory from '../../blocks/orderHistory/orderHistory.js';
+import template from './AdminOrderView.hbs';
 import BaseView from '../BaseView/BaseView';
 import IconedHeader from '../../blocks/iconedHeader/IconedHeader';
 import WavingMenue from '../../blocks/wavingMenue/WavingMenue';
 import Order from '../../blocks/order/Order';
+import OrderItem from '../../blocks/OrderItem/OrderItem';
 
-export default class OrderHistoryView extends BaseView {
-    constructor(orders) {
+export default class AdminOrderView extends BaseView {
+    constructor({orderArr}) {
         super({
-            Main: new MainArea(orders),
+            Main: new MainArea({orderArr}),
             Header: new IconedHeader({classes: 'base-view__header'}),
             LeftBar: new WavingMenue(),
             AddOnes: [
@@ -20,15 +20,22 @@ export default class OrderHistoryView extends BaseView {
 }
 
 class MainArea extends Component {
-    constructor(orders) {
+    constructor({orderArr = []}) {
+        super();
+        super.template = template;
         const message = sessionStorage.message;
         sessionStorage.message = '';
 
-        super();
-        super.template = template;
-        super.addContextData({
+        const orderComponents = [];
+        for (const order of orderArr) {
+            orderComponents.push(new OrderItem({
+                order,
+            }));
+        }
+
+        this.addContextData({
             message,
-            orders: new OrderHistory({orders}),
+            OrderList: orderComponents,
         });
     }
 }

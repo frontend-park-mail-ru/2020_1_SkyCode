@@ -2,6 +2,7 @@ import Component from '../../Component.js';
 import Input from '../../elements/input/Input.js';
 import template from './PlaceTimeCard.hbs';
 import EventBus from '../../../services/Events/EventBus';
+import Events from '../../../services/Events/Events';
 
 export default class PlaceTimeCard extends Component {
     constructor({
@@ -31,7 +32,7 @@ export default class PlaceTimeCard extends Component {
         // eslint-disable-next-line max-len
         document.getElementsByClassName('place-time-card__change-place-button')[0].addEventListener('click', (e) => {
             e.preventDefault();
-            EventBus.publish('change-location', {});
+            EventBus.publish(Events.geoRequest);
         });
         super.bind();
     }
@@ -40,7 +41,7 @@ export default class PlaceTimeCard extends Component {
         // eslint-disable-next-line max-len
         document.getElementsByClassName('place-time-card__change-place-button')[0].addEventListener('click', (e) => {
             e.preventDefault();
-            EventBus.publish('change-location', {});
+            EventBus.publish(Events.geoRequest);
         });
         super.unbind();
     }

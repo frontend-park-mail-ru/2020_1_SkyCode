@@ -4,7 +4,7 @@ import OrderModel from '../models/OrderModel.js';
 import BaseController from './BaseController.js';
 import EventBus from '../services/Events/EventBus';
 import Event from '../services/Events/Events';
-import UserModel from '../models/UserModel';
+import Router from '../routing/Router';
 
 class OrderHistoryController extends BaseController {
     constructor(title = 'Orders') {
@@ -13,8 +13,10 @@ class OrderHistoryController extends BaseController {
 
     execute() {
         OrderModel
-            .getOrders(1, 5)
+            .getUserOrders(1, 5)
             .then((response) => {
+                if (response.error) throw 'order error: ' + response.error;
+                response.orders = response.orders.reverse();
                 super.execute(new OrderHistoryView(response.orders));
             })
             .catch((err) => console.log(err));
@@ -32,7 +34,7 @@ class OrderHistoryController extends BaseController {
         OrderModel.deleteOrder(data.id)
             .then((response) => {
                 if (response.message) {
-                    EventBus.publish(Event.redirect, {url: '/orders'});
+                    Router.reload('Заказ успешно отменён');
                 }
             })
             .catch((err) => console.log(err));
