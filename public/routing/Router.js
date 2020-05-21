@@ -89,6 +89,7 @@ class Router {
         document.getElementById('notif').innerHTML = notifPopup.toString();
         notifPopup.bind();
         notifPopup.disappear();
+        notifPopup.startWebsocket();
     }
 
     _redirect({url}) {

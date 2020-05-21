@@ -11,6 +11,7 @@ class AdminOrderController extends BaseController {
         OrderModel.getRestOrders(matchData[0])
             .then((response) => {
                 if (response.error) throw 'order error: ' + response.error;
+                if (!response.orders) response.orders = [];
                 super.execute(new AdminOrderView({orderArr: response.orders}));
             })
             .catch((err) => console.log(err));

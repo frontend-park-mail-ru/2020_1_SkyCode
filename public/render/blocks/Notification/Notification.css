@@ -10,4 +10,12 @@
     position: absolute;
     left: calc(100% - 432px);
     top: 60px;
+    overflow: scroll;
+}
+
+.notification {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 10px;
 }

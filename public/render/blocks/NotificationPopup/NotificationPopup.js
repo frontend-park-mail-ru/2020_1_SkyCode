@@ -9,27 +9,48 @@ import NotifModel from '../../../models/NotifModel';
 export default class NotificationPopup extends Component {
     constructor() {
         super('notif-popup', {}, 'notif-popup', temp);
-        if (UserController.logined) {
-            NotifModel.all()
-                .then((response) => {
-                    const notifArr = response.notifications;
-                    const notifComponents = [];
+        const notifComponents = [];
+        this.addContextData({
+            Notifs: notifComponents,
+        });
 
-                    for (const notif of notifArr) {
-                        notifComponents.push(new Notif({notifModel: notif}));
-                    }
-
-                    this.addContextData({
-                        Notifs: notifComponents,
-                    });
-                });
-        }
+        setTimeout(() => {
+            if (UserController.logined) {
+                this.handleLogin();
+            }
+        }, 500);
     }
+
+    /*
+     *     Super('notif-popup', {}, 'notif-popup', temp);
+     *     if (UserController.logined) {
+     *         const notifArr = response.notifications;
+     *         const notifComponents = [];
+     *
+     *         for (const notif of notifArr) {
+     *             notifComponents.push(new Notif({notifModel: notif}));
+     *         }
+     *
+     *         this.addContextData({
+     *             Notifs: notifComponents,
+     *         });
+     *         console.log('all ok');
+     *         NotifModel.all()
+     *             .then((response) => {
+     *                 console.log('all ok');
+     *
+     *             })
+     *             .catch((err) => {
+     *                 console.log('error: ' + err);
+     *             });
+     *     }
+     * }
+     */
 
     handleLogin() {
         NotifModel.all()
             .then((response) => {
-                const notifArr = response.notifications;
+                const notifArr = response.notifications || [];
                 const notifComponents = [];
 
                 for (const notif of notifArr) {
@@ -41,18 +62,29 @@ export default class NotificationPopup extends Component {
                 });
 
                 this.domElement.outerHTML = this.toString();
+                this.bind();
                 this.startWebsocket();
             });
     }
 
     startWebsocket() {
+        if (!UserController.logined) return;
+
         const socket = new WebSocket('wss://skydelivery.site:8081/api/v1/notification_server');
         socket.onopen = (e) => {
             console.log('opened', JSON.stringify(e));
         };
 
         socket.onmessage = (e) => {
-            console.log('message!', JSON.stringify(e));
+            const notifModel = JSON.parse(e.data);
+            console.log('message!', JSON.stringify(notifModel));
+            const notif = new Notif({notifModel});
+
+            this.context.Notifs.push(notif);
+            notif.contextParent = this;
+
+            this.domElement.outerHTML = this.toString();
+            this.bind();
         };
 
         socket.onclose = (e) => {
@@ -61,7 +93,6 @@ export default class NotificationPopup extends Component {
     }
 
     bind() {
-        this.startWebsocket();
         EventBus.subscribe(Events.successLogin, this.handleLogin.bind(this));
         EventBus.subscribe(Events.escButPressed, () => {
             this.disappear.bind(this);
@@ -73,7 +104,6 @@ export default class NotificationPopup extends Component {
             };
 
         super.bind();
-        this.disappear();
     }
 
     unbind() {
