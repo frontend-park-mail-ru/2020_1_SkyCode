@@ -32,6 +32,7 @@ import NotificationPopup
     from '../render/blocks/NotificationPopup/NotificationPopup';
 import IconedHeader from '../render/blocks/iconedHeader/IconedHeader';
 import WavingMenue from '../render/blocks/wavingMenue/WavingMenue';
+import Order from '../render/blocks/order/Order';
 
 class Router {
     constructor() {
@@ -100,6 +101,10 @@ class Router {
         const iconedHeader = new IconedHeader();
         document.getElementById('header').outerHTML = iconedHeader.toString();
         iconedHeader.bind();
+
+        const order = new Order();
+        document.getElementById('order').outerHTML = order.toString();
+        order.bind();
     }
 
     _redirect({url}) {

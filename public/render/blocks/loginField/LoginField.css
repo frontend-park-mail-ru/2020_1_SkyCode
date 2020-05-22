@@ -11,7 +11,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: auto;
+    margin: 10vh auto;
 }
 
 .login-signup__login {

@@ -1,6 +1,13 @@
 .checked-input {
     position: relative;
     padding-top: 30px;
+    width: 80%;
+}
+
+@media (max-width: 500px) {
+    .checked-input {
+        width: 100%;
+    }
 }
 
 .checked-input__error {

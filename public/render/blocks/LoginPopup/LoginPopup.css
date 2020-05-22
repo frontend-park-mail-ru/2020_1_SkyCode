@@ -4,9 +4,19 @@
     height: 100%;
     top: 0;
     left: 0;
-    display: none;
     transition: opacity .3s;
     z-index: 3;
+    overflow-y: scroll;
+
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@media (max-height: 600px) {
+    .login-popup {
+        flex-direction: unset;
+    }
 }
 
 .login-popup__hider {
