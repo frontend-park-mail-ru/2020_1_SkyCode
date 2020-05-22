@@ -52,6 +52,7 @@
     line-height: 39px;
     z-index: 1;
     visibility: hidden;
+    opacity: 0;
 }
 
 .scroll-bar__button:hover {
