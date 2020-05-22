@@ -1,16 +1,11 @@
 .checkout-view {
     grid-area: view;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     overflow-y: scroll;
 }
 
 @media (max-width: 700px) {
     .checkout-view {
+        padding-top: 0;
         height: 80vh;
     }
 }
-
-

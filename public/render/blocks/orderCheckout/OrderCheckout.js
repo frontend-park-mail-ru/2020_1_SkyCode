@@ -17,52 +17,47 @@ export default class OrderCheckout extends Component {
             PhoneInput: new CheckedInput({
                 label: 'Телефон',
                 Input: new PhoneInput({
-                    classes: 'order-checkout__input',
                     id: 'order-checkout__phone-input',
+                    value: phone,
                     isRequired: true,
                 }),
             }),
-            PhoneError: new ErrorBlock({
-                id: 'phone-input-error',
+            AddressInput: new CheckedInput({
+                label: 'Адрес',
+                Input: new Input({
+                    id: 'order-checkout__address-input',
+                    type: 'text',
+                    minlength: '5',
+                    maxlength: '255',
+                    value: localStorage.getItem('deliveryGeo'),
+                    placeholder: 'Введите адрес доставки',
+                    isRequired: true,
+                }),
             }),
-            AddressInput: new Input({
-                classes: 'order-checkout__input',
-                id: 'order-checkout__address-input',
-                type: 'text',
-                minlength: '5',
-                maxlength: '255',
-                value: localStorage.getItem('deliveryGeo'),
-                placeholder: 'Введите адрес доставки',
-                isRequired: true,
+            EmailInput: new CheckedInput({
+                label: 'Почта',
+                Input: new Input({
+                    id: 'order-checkout__email-input',
+                    type: 'email',
+                    value: email,
+                    pattern: '^([A-Za-z0-9_\\-\\.])+@([A-Za-z0-9_\\-\\.])+\\.([A-Za-z]{2,4})$',
+                    placeholder: 'email@example.com',
+                }),
             }),
-            AddressError: new ErrorBlock({
-                id: 'address-input-error',
-            }),
-            EmailInput: new Input({
-                classes: 'order-checkout__input',
-                id: 'order-checkout__email-input',
-                type: 'email',
-                value: email,
-                // eslint-disable-next-line max-len
-                pattern: '^([A-Za-z0-9_\\-\\.])+@([A-Za-z0-9_\\-\\.])+\\.([A-Za-z]{2,4})$',
-                placeholder: 'email@example.com',
-            }),
-            EmailError: new ErrorBlock({
-                id: 'email-input-error',
-            }),
-            CommentInput: new Input({
-                classes: 'order-checkout__input',
-                id: 'order-checkout__comment-input',
-                type: 'text',
-                maxlength: 255,
-                placeholder: 'Пожелания',
+            CommentInput: new CheckedInput({
+                label: 'Комментарии',
+                Input: new Input({
+                    id: 'order-checkout__comment-input',
+                    type: 'text',
+                    maxlength: 255,
+                    placeholder: 'пожелания',
 
+                }),
             }),
             GeneralError: new ErrorBlock({
                 id: 'general-error',
             }),
         });
-
         super.template = template;
 
         this.addContextData({
@@ -72,31 +67,19 @@ export default class OrderCheckout extends Component {
                     text: 'Заказать',
                     callback: () => {
                         this.context.GeneralError.clean();
-                        let validationFlag;
-
-                        validationFlag = Validation.inputValidation(
-                            this.context.PhoneInput,
-                            this.context.PhoneError,
-                        );
-
-                        validationFlag = Validation.inputValidation(
-                            this.context.AddressInput,
-                            this.context.AddressError,
-                        ) && validationFlag;
-
-                        validationFlag = Validation.inputValidation(
-                            this.context.EmailInput,
-                            this.context.EmailError,
-                        ) && validationFlag;
+                        let validFlag = this.context.PhoneInput.isValid();
+                        validFlag = validFlag && this.context.AddressInput.isValid();
+                        validFlag = validFlag && this.context.EmailInput.isValid();
+                        validFlag = validFlag && this.context.CommentInput.isValid();
 
                         if (BasketController.isEmpty()) {
                             this.context
                                 .GeneralError
                                 .addMessage('Ваша корзина пуста');
-                            validationFlag = false;
+                            validFlag = false;
                         }
 
-                        if (validationFlag === false) {
+                        if (validFlag === false) {
                             return;
                         }
 
@@ -109,6 +92,7 @@ export default class OrderCheckout extends Component {
                             };
                             products.push(productItem);
                         }
+
                         const data = {
                             userId: profile.id,
                             phone: this.context.PhoneInput.domElement.value,
@@ -125,6 +109,10 @@ export default class OrderCheckout extends Component {
                     },
                 }),
         });
+
+        setTimeout(() => {
+            this.context.PhoneInput.context.Input.correct();
+        }, 500);
     }
 
     bind() {
