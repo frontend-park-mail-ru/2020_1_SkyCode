@@ -1,5 +1,4 @@
 .profile-view {
-    display: flex;
-    justify-content: center;
+    overflow-y: scroll;
     overflow-x: hidden;
 }

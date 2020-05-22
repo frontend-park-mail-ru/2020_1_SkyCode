@@ -9,7 +9,7 @@
     justify-content: center;
     padding: 20px;
     border-radius: 15px;
-    margin: 20px 0;
+    margin: 20px auto;
 }
 
 .profile-area__main-title {
@@ -26,7 +26,6 @@
 @media (max-width: 600px) {
     .profile-view__profile-area {
         box-shadow: none;
-        width: 100%;
     }
     .profile-area__main-title {
         font-size: 30px;

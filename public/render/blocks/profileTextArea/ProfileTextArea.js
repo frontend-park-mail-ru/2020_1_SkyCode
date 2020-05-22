@@ -84,27 +84,29 @@ export default class ProfileTextArea extends Component {
             SubmitButton:
                 new NeonButton({
                     id: 'profile-area__submit',
-                    src: '/static/refresh.svg',
                     classes: 'profile-area__submit',
-                    text: 'Обновить',
+                    text: 'Сохранить',
                     callback: () => {
                         EventBus.publish(Events.profileViewUpdateUser);
                     },
                 }),
 
             LogoutButton:
-                new Img({
+                new NeonButton({
                     id: 'profile-area__log-out',
-                    classes: 'icon profile-area-icon',
-                    src: '/static/sign-out.svg',
+                    classes: 'profile-area__submit',
+                    text: 'Выйти',
                     callback: () => {
                         EventBus.publish(Events.logout);
                     },
                 }),
-            ordersButton: new ImageHref({
-                imageClasses: 'icon profile-area-icon',
-                src: '/static/order_history.svg',
-                href: '/orders',
+            ordersButton: new NeonButton({
+                text: 'Заказы',
+                id: 'profile-area__orders',
+                classes: 'profile-area__submit',
+                callback: () => {
+                    EventBus.publish(Events.setPage, '/orders');
+                },
             }),
         });
     }
