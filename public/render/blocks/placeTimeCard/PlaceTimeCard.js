@@ -29,6 +29,11 @@ export default class PlaceTimeCard extends Component {
     }
 
     bind() {
+        EventBus.subscribe(Events.successGeo, () => {
+            this.context.place = localStorage.getItem('deliveryGeo');
+            document.getElementsByClassName('place-time-card__place-text')[0]
+                .innerHTML = localStorage.getItem('deliveryGeo');
+        });
         // eslint-disable-next-line max-len
         document.getElementsByClassName('place-time-card__change-place-button')[0].addEventListener('click', (e) => {
             e.preventDefault();
@@ -38,6 +43,11 @@ export default class PlaceTimeCard extends Component {
     }
 
     unbind() {
+        EventBus.unsubscribe(Events.successGeo, () => {
+            this.context.place = localStorage.getItem('deliveryGeo');
+            document.getElementsByClassName('place-time-card__place-text')[0]
+                .innerHTML = localStorage.getItem('deliveryGeo');
+        });
         // eslint-disable-next-line max-len
         document.getElementsByClassName('place-time-card__change-place-button')[0].addEventListener('click', (e) => {
             e.preventDefault();
