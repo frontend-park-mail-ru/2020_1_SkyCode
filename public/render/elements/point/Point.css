@@ -1,0 +1,20 @@
+.point {
+    width: 10px;
+    height: 10px;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.basket-point {
+    position: fixed;
+    top: 22px;
+    right: 139px;
+    display: none;
+}
+
+.notif-point {
+    position: fixed;
+    top: 22px;
+    right: 203px;
+    display: none;
+}

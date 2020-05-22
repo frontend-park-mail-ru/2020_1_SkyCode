@@ -1,10 +1,13 @@
 <aside class="{{classes}}" id="{{id}}">
     <div class="notif-popup__hider"></div>
     <div class="notif-container">
-        {{#each Notifs}}
-            {{{this}}}
+        {{#if Notifs}}
+            <h2>Уведомления:</h2>
+            {{#each Notifs}}
+                {{{this}}}
+            {{/each}}
         {{else}}
-            Уведомлений нет.
-        {{/each}}
+            Новых уведомлений нет
+        {{/if}}
     </div>
 </aside>

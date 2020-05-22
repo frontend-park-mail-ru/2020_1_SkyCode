@@ -1,21 +1,23 @@
-.notif-container {
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    z-index: 1;
-    padding: 20px;
-    border-radius: 20px 0 20px 20px;
-    max-height: 550px;
-    height: fit-content;
-    position: absolute;
-    left: calc(100% - 432px);
-    top: 60px;
-    overflow: scroll;
-}
 
 .notification {
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
     margin: 10px;
+
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #D6D6D6;
+}
+
+.notification:hover {
+    box-shadow: 0 0 10px #F6D471;
+}
+
+.notif__first-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }

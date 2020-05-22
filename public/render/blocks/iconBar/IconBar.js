@@ -4,6 +4,7 @@ import Img from '../../elements/img/Img.js';
 import EventBus from '../../../services/Events/EventBus.js';
 import template from './IconBar.hbs';
 import Events from '../../../services/Events/Events';
+import Point from '../../elements/point/Point';
 
 
 export default class IconBar extends Component {
@@ -45,6 +46,16 @@ export default class IconBar extends Component {
     ]} = {}) {
         super(classes, {
             Icons,
+            BasketPoint: new Point({
+                id: 'basket-point',
+                classes: 'basket-point',
+                color: 'red',
+            }),
+            NotifPoint: new Point({
+                id: 'notif-point',
+                classes: 'notif-point',
+                color: 'orange',
+            }),
         });
 
         super.template = template;
@@ -52,7 +63,22 @@ export default class IconBar extends Component {
 
     bind() {
         let active = false;
+        EventBus.subscribe(Events.addProduct, () => {
+            if (document.getElementsByClassName('order')[0].style.display === 'none') {
+                this.context.BasketPoint.domElement.style.display = 'block';
+            }
+        });
+        EventBus.subscribe(Events.notifReceived, () => {
+            if (document.getElementById('notif-popup').style.display === 'none') {
+                this.context.NotifPoint.domElement.style.display = 'block';
+            }
+        });
+        EventBus.subscribe(Events.notifRequest, () => {
+            this.context.NotifPoint.domElement.style.display = 'none';
+        });
         EventBus.subscribe('order-button-clicked', () => {
+            this.context.BasketPoint.domElement.style.display = 'none';
+
             if (active) {
                 this.domElement.style.background = 'white';
             } else {

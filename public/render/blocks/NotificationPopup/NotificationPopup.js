@@ -76,6 +76,7 @@ export default class NotificationPopup extends Component {
         };
 
         socket.onmessage = (e) => {
+            EventBus.publish(Events.notifReceived);
             const notifModel = JSON.parse(e.data);
             console.log('message!', JSON.stringify(notifModel));
             const notif = new Notif({notifModel});

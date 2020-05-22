@@ -47,7 +47,7 @@ class Events {
         this.escButPressed = 'escape-button-pressed';
         this.restCategorySelected = 'rest-category-selected';
         this.notifRequest = 'notif-request';
-
+        this.notifReceived = 'notif-received';
     }
 
     addProductRequest(id) {
