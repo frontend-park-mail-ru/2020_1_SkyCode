@@ -28,6 +28,7 @@ export default class RecommendBar extends Component {
         });
         super.template = template;
         const recommends = [];
+        if (!recommendArr) recommendArr = [];
 
         for (const restaurant of recommendArr) {
             recommends.push(new Restaurant({
