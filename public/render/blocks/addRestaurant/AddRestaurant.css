@@ -1,12 +1,13 @@
 .add-restaurant {
-    margin: 20px;
-    box-shadow: 0 0px 10px #D6D6D6;
+    box-shadow: 0 0 10px #D6D6D6;
     padding: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
     align-self: center;
+    max-width: 800px;
+    height: 540px;
 }
 
 @media (max-width: 600px) {

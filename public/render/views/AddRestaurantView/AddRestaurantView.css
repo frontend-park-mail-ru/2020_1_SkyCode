@@ -1,4 +1,7 @@
 .add-restaurant-view {
+    grid-area: view;
+    overflow-y: scroll;
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
