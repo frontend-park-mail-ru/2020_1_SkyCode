@@ -8,28 +8,9 @@ import Input from '../../elements/input/Input';
 import NeonButton from '../../elements/neonButton/NeonButton';
 import TagModel from '../../../models/TagModel';
 import RestaurantModel from '../../../models/RestaurantModel';
-import EventBus from '../../../services/Events/EventBus';
-import Events from '../../../services/Events/Events';
 import Router from '../../../routing/Router';
 
-export default class ChangeRestTagsView extends BaseView {
-    constructor({rest, tags, restTagIds}) {
-        super({
-            Main: new MainArea({
-                rest,
-                tags,
-                restTagIds,
-            }),
-            Header: new IconedHeader({classes: 'base-view__header'}),
-            LeftBar: new WavingMenue(),
-            AddOnes: [
-                new Order(),
-            ],
-        });
-    }
-}
-
-class MainArea extends Component {
+export default class ChangeRestTagsView extends Component {
     constructor({rest, tags, restTagIds}) {
         const message = sessionStorage.message;
         sessionStorage.message = '';

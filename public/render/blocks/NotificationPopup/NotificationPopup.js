@@ -70,7 +70,7 @@ export default class NotificationPopup extends Component {
     startWebsocket() {
         if (!UserController.logined) return;
 
-        const socket = new WebSocket('wss://skydelivery.site:8081/api/v1/notification_server');
+        const socket = new WebSocket('wss://skydelivery.site/api/v1/notification_server');
         socket.onopen = (e) => {
             console.log('opened', JSON.stringify(e));
         };
