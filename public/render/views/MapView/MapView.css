@@ -1,21 +1,16 @@
 .main-content {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    grid-area: view;
 }
 
 #map {
-    height: 90%;
-    width: 90%;
+    height: 100%;
+    width: 100%;
     border-radius: 10px;
     box-shadow: 0 4px 20px #D6D6D6;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
     #map {
-        height: 100%;
-        width: 100%;
+        height: 80vh
     }
 }
