@@ -1,14 +1,15 @@
 .restaurants-list-view {
-    padding: 30px;
-    min-width: 250px;
-    width: 60%;
-    margin: 0 auto;
+    grid-area: view;
+    flex-direction: column;
+    background: #FFFFFF;
+    width: inherit;
+    padding: 0 100px;
+    overflow-y: scroll;
 }
 
 @media (max-width: 650px) {
     .restaurants-list-view {
-        width: 80%;
-        padding: 0;
+        padding: 0 50px;
     }
 }
 

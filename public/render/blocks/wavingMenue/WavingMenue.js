@@ -3,11 +3,19 @@ import EventBus from '../../../services/Events/EventBus.js';
 import template from './WavingMenue.hbs';
 import Href from '../../elements/href/Href';
 import UserController from '../../../controllers/UserController';
+import Events from '../../../services/Events/Events';
 
 export default class WavingMenue extends Component {
     constructor({classes} = {}) {
         classes = classes || 'waving-menue';
         super(classes);
+        this.initHrefs();
+        this.isVisible = false;
+        super.template = template;
+        setTimeout(this.tryReboot.bind(this), 500);
+    }
+
+    initHrefs() {
         const userHrefs = [];
 
         userHrefs.push(new Href({
@@ -49,17 +57,8 @@ export default class WavingMenue extends Component {
                 href: '/admin/restaurants',
             }));
 
-            const tagManagementHrefs = [];
-            tagManagementHrefs.push(new Href({
-                id: 'waving-menue__tag-href',
-                classes: 'waving-menue__href',
-                text: 'Добавление тега',
-                href: 'qwerweqwerqrrqr',
-            }));
-
             this.addContextData({
                 restManagementHrefs,
-                tagManagementHrefs,
             });
         }
 
@@ -75,12 +74,22 @@ export default class WavingMenue extends Component {
 
             this.addContextData({supportHrefs});
         }
+    }
 
-        this.isVisible = false;
-        super.template = template;
+    tryReboot() {
+        if (UserController.logined) {
+            this.unbind();
+            this.initHrefs();
+            this.domElement.outerHTML = this.toString();
+            this.bind();
+        }
     }
 
     bind() {
+        EventBus.subscribe(Events.successLogin, this.tryReboot.bind(this));
+        EventBus.subscribe(Events.successSignup, this.tryReboot.bind(this));
+        EventBus.subscribe(Events.successLogout, this.tryReboot.bind(this));
+        EventBus.subscribe(Events.setPage, this.disappear.bind(this));
         EventBus.subscribe('hamburger-button-clicked', () => {
             if (this.isVisible) {
                 this.disappear();
@@ -98,6 +107,10 @@ export default class WavingMenue extends Component {
     }
 
     unbind() {
+        EventBus.unsubscribe(Events.setPage, this.disappear.bind(this));
+        EventBus.unsubscribe(Events.successLogin, this.tryReboot.bind(this));
+        EventBus.unsubscribe(Events.successSignup, this.tryReboot.bind(this));
+        EventBus.subscribe(Events.successLogout, this.tryReboot.bind(this));
         EventBus.unsubscribe('hamburger-button-clicked', () => {
             if (this.isVisible) {
                 this.disappear();

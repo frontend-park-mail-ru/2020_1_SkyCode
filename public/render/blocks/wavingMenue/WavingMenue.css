@@ -1,5 +1,6 @@
 .waving-menue {
     position: fixed;
+    top: 10vh;
     background: linear-gradient(0, #b4b4b4, white);
     width: 350px;
     height: 90vh;

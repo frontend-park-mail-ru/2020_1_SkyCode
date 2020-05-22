@@ -20,6 +20,7 @@ class EventBus {
     unsubscribe(event, callback) {
         if (this.events[event]) {
             const index = this.events[event].indexOf(callback);
+            if (index === -1) return;
             this.events[event].splice(index, 1);
         }
     }
