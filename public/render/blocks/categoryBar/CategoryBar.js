@@ -37,10 +37,11 @@ export default class CategoryBar extends Component {
             classes: 'category-bar__category category-bar__active',
             id: '-1',
         })];
+
         for (const categoryData of categoryArr) {
             categories.push(new Category({
                 id: categoryData.id,
-                src: categoryData.image,
+                src: '/images/' + categoryData.image + '.svg',
                 text: categoryData.name,
                 classes: 'category-bar__category',
             }));
