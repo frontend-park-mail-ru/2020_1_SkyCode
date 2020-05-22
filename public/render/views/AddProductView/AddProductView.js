@@ -6,26 +6,10 @@ import NeonButton from '../../elements/neonButton/NeonButton';
 import ImageInput from '../../elements/ImageInput/ImageInput';
 import Events from '../../../services/Events/Events';
 import EventBus from '../../../services/Events/EventBus';
-import BaseView from '../BaseView/BaseView';
-import IconedHeader from '../../blocks/iconedHeader/IconedHeader';
-import WavingMenue from '../../blocks/wavingMenue/WavingMenue';
-import Order from '../../blocks/order/Order';
 import CostInput from '../../elements/CostInput/CostInput';
 
-export default class AddProductView extends BaseView {
-    constructor({restName}) {
-        super({
-            Main: new MainArea({restName}),
-            Header: new IconedHeader({classes: 'base-view__header'}),
-            LeftBar: new WavingMenue(),
-            AddOnes: [
-                new Order(),
-            ],
-        });
-    }
-}
 
-class MainArea extends Component {
+export default class AddProductView extends Component {
     constructor({classes = '', restName}) {
         const message = sessionStorage.getItem('message');
         sessionStorage.message = '';
