@@ -2,12 +2,12 @@
     height: fit-content;
 }
 
-.category-bar__container {
-    margin: 0 70px;
-}
-
 .category-bar__list {
+    margin-left: 80px;
+    width: calc(100% - 160px);
+
     display: flex;
+    justify-content: space-evenly;
     overflow-x: scroll;
     scroll-behavior: smooth;
 
@@ -17,9 +17,8 @@
     margin-block-end: 0;
 }
 
-@media (max-width: 600px) {
-    .category-bar__container {
-        margin: 0;
-        width: 100%;
+@media (max-width: 980px) {
+    .category-bar__list {
+        justify-content: flex-start;
     }
 }

@@ -8,7 +8,7 @@ class BaseController {
     // У вьюхи должны быть методы bind, unbind, html
     execute(view) {
         this._view = view;
-        document.getElementById('view').innerHTML = this._view.toString();
+        document.getElementById('view').outerHTML = this._view.toString();
         this._view.bind();
         this.startCatchEvents();
     }

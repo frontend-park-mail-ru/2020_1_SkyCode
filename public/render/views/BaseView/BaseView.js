@@ -12,10 +12,7 @@ export default class BaseView extends Component {
     } = {}) {
         super();
         this.addContextData({
-            Header,
-            LeftBar,
             Main,
-            AddOnes,
         });
         this.template = template;
     }

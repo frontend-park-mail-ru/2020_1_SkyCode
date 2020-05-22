@@ -1,25 +1,25 @@
 .restaurant-list__restaurant {
     width: 25%;
-    min-width: 200px;
-    margin-right: 70px;
-    margin-bottom: 50px;
+    min-width: 230px;
+    margin: 10px 70px 50px 0;
 
     text-decoration: none;
     color: black;
 }
 
-@media (max-width: 950px) {
-/*@media (max-width: 850px) {*/
-    .restaurant-list__restaurant {
-        width: 40%;
-    }
+.recommend-bar__restaurant {
+    width: 25%;
+    min-width: 230px;
+    margin: 10px 20px 50px 0;
+
+    text-decoration: none;
+    color: black;
 }
 
 @media (max-width: 600px) {
     /*@media (max-width: 850px) {*/
     .restaurant-list__restaurant {
         justify-self: center;
-        min-width: 230px;
     }
 }
 
@@ -29,7 +29,6 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     border-radius: 15px;
 }
-
 
 
 .restaurant__avg-time {

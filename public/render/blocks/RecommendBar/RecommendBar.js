@@ -31,7 +31,7 @@ export default class RecommendBar extends Component {
 
         for (const restaurant of recommendArr) {
             recommends.push(new Restaurant({
-                classes: `restaurant-list__restaurant-${restaurant.id}`,
+                classes: 'recommend-bar__restaurant',
                 name: restaurant.name,
                 avgDeliveryTime: 30,
                 rate: restaurant.rating,

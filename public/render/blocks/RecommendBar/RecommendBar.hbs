@@ -1,12 +1,10 @@
 <div class="recommend-bar {{classes}}">
     {{{LeftButton}}}{{{RightButton}}}
-    <div class="recommend-bar__container">
-        <div class="recommend-bar__list">
-            {{#each recommends}}
-                {{{this}}}
-            {{else}}
-                <p>Can't load recommends.</p>
-            {{/each}}
-        </div>
+    <div class="recommend-bar__list">
+        {{#each recommends}}
+            {{{this}}}
+        {{else}}
+            <p>Can't load recommends.</p>
+        {{/each}}
     </div>
 </div>

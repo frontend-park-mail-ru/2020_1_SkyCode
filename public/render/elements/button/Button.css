@@ -47,10 +47,11 @@
     background: #F8F8F8;
     border: 1px solid #d2d0d0;
     box-shadow: 0 0 10px rgba(80, 80, 80, 0.5);
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     line-height: 39px;
     z-index: 1;
+    visibility: hidden;
 }
 
 .scroll-bar__button:hover {
@@ -60,14 +61,15 @@
 
 .category-bar__right-button {
     position: relative;
-    top: 100px;
-    left: calc(100% - 100px);
+    top: 110px;
+    left: calc(100% - 120px);
+    visibility: hidden;
 }
 
 .action-bar__right-button {
     position: relative;
-    top: calc(50% - 30px);
-    left: calc(50% - 37px);
+    top: 120px;
+    left: calc(100% - 120px);
 }
 
 .main-view__order-button {
@@ -90,15 +92,15 @@
 
 .action-bar__left-button {
     position: relative;
-    left: calc(-50% + 37px);
-    top: calc(50% + 10px);
+    left: 15px;
+    top: 120px;
     visibility: hidden;
 }
 
 .category-bar__left-button {
     position: relative;
-    top: 100px;
-    left: 18px;
+    top: 110px;
+    left: 15px;
     visibility: hidden;
 }
 

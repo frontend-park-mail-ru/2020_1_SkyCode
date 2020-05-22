@@ -1,29 +1,19 @@
 .recommend-bar {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    /*overflow-x: hidden;*/
-    width: 100%;
-    box-sizing: border-box;
-    margin-top: -80px;
-}
-
-.recommend-bar__container {
-    margin: 0 70px;
+    height: fit-content;
 }
 
 .recommend-bar__list {
-    width: 100%;
     box-sizing: border-box;
-
     display: flex;
     list-style-type: none;
     overflow-x: scroll;
-    align-items: center;
+    align-items: flex-start;
     scroll-behavior: smooth;
-
     padding-inline-start: 10px;
     padding-inline-end: 10px;
+    justify-content: space-evenly;
+    width: calc(100% - 160px);
+    margin-left: 80px;
 }
 
 .recommend-bar__li {

@@ -10,7 +10,7 @@ import Component from '../../Component';
 import Order from '../../blocks/order/Order';
 import RecommendBar from '../../blocks/RecommendBar/RecommendBar';
 
-export default class MainView extends BaseView {
+class MainArea extends BaseView {
     constructor({actionArr, categoryArr, recommendArr, restaurantArr}) {
         super({
             Main: new MainArea({
@@ -28,7 +28,7 @@ export default class MainView extends BaseView {
     }
 }
 
-class MainArea extends Component {
+export default class MainView extends Component {
     constructor({actionArr, categoryArr, recommendArr, restaurantArr}) {
         super();
         this.template = temp;

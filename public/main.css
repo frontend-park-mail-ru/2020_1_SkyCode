@@ -71,6 +71,7 @@
 @import "render/blocks/wavingMenue/WavingMenue.css";
 
 
+
 body {
     font-family: 'Comfortaa', cursive;
     font-style: normal;
@@ -80,6 +81,12 @@ body {
     height: 100vh;
     overflow: hidden;
     letter-spacing: 1px;
+}
+
+.general-view {
+    display: grid;
+    grid-template-areas: "header" "view";
+    grid-template-rows: 10vh 1fr;
 }
 
 .error {

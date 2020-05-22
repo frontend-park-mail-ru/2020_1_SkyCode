@@ -30,6 +30,8 @@ import ChangeRestTagsController from '../controllers/ChangeRestTagsController';
 import AdminOrderController from '../controllers/AdminOrderController';
 import NotificationPopup
     from '../render/blocks/NotificationPopup/NotificationPopup';
+import IconedHeader from '../render/blocks/iconedHeader/IconedHeader';
+import WavingMenue from '../render/blocks/wavingMenue/WavingMenue';
 
 class Router {
     constructor() {
@@ -71,25 +73,33 @@ class Router {
 
     _initConstantSidebars() {
         const loginPopup = new LoginPopup();
-        document.getElementById('login').innerHTML = loginPopup.toString();
+        document.getElementById('login').outerHTML = loginPopup.toString();
         loginPopup.bind();
         loginPopup.disappear();
 
         const signupPopup = new SignupPopup();
-        document.getElementById('signup').innerHTML = signupPopup.toString();
+        document.getElementById('signup').outerHTML = signupPopup.toString();
         signupPopup.bind();
         signupPopup.disappear();
 
         const geoPopup = new GeoPopup();
-        document.getElementById('geo').innerHTML = geoPopup.toString();
+        document.getElementById('geo').outerHTML = geoPopup.toString();
         geoPopup.bind();
         geoPopup.disappear();
 
         const notifPopup = new NotificationPopup();
-        document.getElementById('notif').innerHTML = notifPopup.toString();
+        document.getElementById('notif').outerHTML = notifPopup.toString();
         notifPopup.bind();
         notifPopup.disappear();
         notifPopup.startWebsocket();
+
+        const wavingMenue = new WavingMenue();
+        document.getElementById('waving-menue').outerHTML = wavingMenue.toString();
+        wavingMenue.bind();
+
+        const iconedHeader = new IconedHeader();
+        document.getElementById('header').outerHTML = iconedHeader.toString();
+        iconedHeader.bind();
     }
 
     _redirect({url}) {
