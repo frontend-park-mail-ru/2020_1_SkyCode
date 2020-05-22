@@ -8,26 +8,9 @@ import RestaurantCategories
     from '../../blocks/restaurantCategories/RestaurantCategories';
 import ProductList from '../../blocks/productList/ProductList';
 import Href from '../../elements/href/Href';
-import Order from '../../blocks/order/Order';
 
-export default class RestaurantView extends BaseView {
-    constructor({restaurant, products, categoryArr}) {
-        super({
-            Main: new MainArea({
-                restaurant,
-                products,
-                categoryArr,
-            }),
-            Header: new IconedHeader({classes: 'base-view__header'}),
-            LeftBar: new WavingMenue(),
-            AddOnes: [
-                new Order(),
-            ],
-        });
-    }
-}
 
-class MainArea extends Component {
+export default class RestaurantView extends Component {
     constructor({restaurant, products, categoryArr}) {
         super();
         super.template = temp;
@@ -38,7 +21,7 @@ class MainArea extends Component {
                 rate: restaurant.rating,
                 name: restaurant.name,
             }),
-            Categories: new RestaurantCategories({categoryArr}),
+            // Categories: new RestaurantCategories({categoryArr}),
             Products: new ProductList({
                 classes: 'restaurant-view__product-list',
                 productArr: products}),

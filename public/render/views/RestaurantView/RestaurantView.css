@@ -1,10 +1,13 @@
 .restaurant-view {
+    grid-area: view;
+
     display: flex;
     flex-direction: column;
-    height: 100%;
-    width: 100%;
-
+    width: inherit;
+    height: inherit;
     background: #FFFFFF;
+
+    overflow-y: scroll;
 }
 
 .restaurant-view > * {

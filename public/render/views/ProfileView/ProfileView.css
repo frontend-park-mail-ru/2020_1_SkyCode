@@ -1,4 +1,6 @@
 .profile-view {
+    grid-area: view;
+
     overflow-y: scroll;
     overflow-x: hidden;
 }
