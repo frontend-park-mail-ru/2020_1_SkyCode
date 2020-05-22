@@ -9,20 +9,18 @@ import template from './OrderCheckout.hbs';
 import PhoneInput from '../../elements/phoneInput/PhoneInput.js';
 import Button from '../../elements/button/Button';
 import Events from '../../../services/Events/Events';
+import CheckedInput from '../../elements/checkedInput/CheckedInput';
 
 export default class OrderCheckout extends Component {
     constructor({classes, phone, address, email, profile}) {
         super(classes, {
-            PhoneInput: new PhoneInput({
-                classes: 'order-checkout__input',
-                id: 'order-checkout__phone-input',
-                type: 'tel',
-                value: phone[0]
-                    + '(' + phone.slice(1, 4)
-                    + ')' + phone.slice(4, 7)
-                    + '-' + phone.slice(7, 9)
-                    + '-' + phone.slice(9, 11),
-                isRequired: true,
+            PhoneInput: new CheckedInput({
+                label: 'Телефон',
+                Input: new PhoneInput({
+                    classes: 'order-checkout__input',
+                    id: 'order-checkout__phone-input',
+                    isRequired: true,
+                }),
             }),
             PhoneError: new ErrorBlock({
                 id: 'phone-input-error',
