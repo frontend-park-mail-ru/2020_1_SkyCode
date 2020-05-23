@@ -17,6 +17,22 @@
     margin-block-end: 0;
 }
 
+@media (max-width: 700px) {
+    .category-bar__list {
+        margin-left: 40px;
+        width: calc(100% - 80px);
+    }
+
+}
+
+@media (max-width: 450px) {
+    .category-bar__list {
+        margin-left: 20px;
+        width: calc(100% - 40px);
+    }
+
+}
+
 @media (max-width: 980px) {
     .category-bar__list {
         justify-content: flex-start;

@@ -33,8 +33,10 @@ export default class CheckedInput extends Component {
         this.context.Input.domElement.onblur = () => {
             this.errFieldElement().innerText = this.context.Input.check();
         };
-
-        super.bind();
+        /*
+         * Super.bind() опущен намеренно, ибо Input.bind перезапишет коллбек
+         * На oninput
+         */
     }
 
     isValid() {

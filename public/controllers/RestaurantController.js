@@ -21,6 +21,7 @@ class RestaurantController extends BaseController {
             RestaurantModel.getProducts(this.restaurantId, 1, 10),
         ])
             .then(([restaurant, products]) => {
+                this.restaurantName = restaurant.name;
                 const categoryArr = Mocks.categories;
                 const basket = BasketController.basket.product;
                 super.execute(new RestaurantView({

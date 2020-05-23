@@ -1,21 +1,11 @@
-.chat-list__container {
-    width: 80%;
-    height: 80%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    border-radius: 10px;
-}
 
 .chat-list {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    height: 100%;
-    width: 100%;
-    justify-self: center;
-    align-self: center;
     box-shadow: 0 4px 100px #D6D6D6;
+
+    overflow: scroll;
+    padding: 0 30px;
 }

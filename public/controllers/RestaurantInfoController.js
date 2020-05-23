@@ -14,10 +14,6 @@ class RestaurantInfoController extends BaseController {
     execute(matchData) {
         const id = matchData[0];
         Promise.all([
-            UserModel
-                .getUser()
-                .then((response) => response.User),
-
             RestaurantModel
                 .getRestaurant(id)
                 .then((restaurant) => {
@@ -42,11 +38,12 @@ class RestaurantInfoController extends BaseController {
                     throw err;
                 }),
         ])
-            .then(([user, restaurant, feedbackObject]) => {
+            .then(([restaurant, feedbackObject]) => {
                 super.execute(new RestaurantInfoView({
-                    user,
+                    restaurantId: restaurant.id,
                     restaurant,
-                    feedbackObject,
+                    allReviews: feedbackObject.reviews,
+                    currentReview: feedbackObject.current,
                 }));
             })
             .catch((err) => {

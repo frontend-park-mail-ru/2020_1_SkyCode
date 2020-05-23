@@ -68,6 +68,23 @@ export default class Order extends Component {
     bind() {
         this.appear();
         this.addUnbind(
+            EventBus.subscribe(
+                Events.setPage,
+                this.disappear.bind(this),
+            ),
+        );
+        this.addUnbind(
+            EventBus.subscribe(
+                Events.updateBasket,
+                this.updateBasketHandler.bind(this),
+            ),
+        );
+        this.addUnbind(
+            EventBus.subscribe(
+                Events.restaurantSelected,
+                this.restaurantSelectedHandler.bind(this)),
+        );
+        this.addUnbind(
             EventBus.subscribe(Events.basketChanged, this.setTotal.bind(this)),
         );
         this.addUnbind(
@@ -87,6 +104,25 @@ export default class Order extends Component {
         if (this.needToHide) {
             this.disappear();
         }
+    }
+
+    updateBasketHandler() {
+        if (!BasketController.isEmpty()) return;
+        document.getElementsByClassName('order__title')[0].innerHTML = 'Заказ';
+        document.getElementsByClassName('order__restaurant-href')[0].style.display = 'none';
+    }
+
+    restaurantSelectedHandler(restaurant) {
+        const href = new Href({
+            text: restaurant.name,
+            href: '/restaurants/' + restaurant.id,
+            classes: 'order__restaurant-href',
+            id: 'order__restaurant-href',
+        });
+        document.getElementsByClassName('order__title')[0].innerHTML = 'Заказ в';
+        document.getElementsByClassName('order__restaurant-href')[0].outerHTML = href.toString();
+        href.bind();
+        this.addContextData({href});
     }
 
     unbind() {

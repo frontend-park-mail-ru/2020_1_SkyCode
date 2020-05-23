@@ -26,6 +26,7 @@
 @media (max-width: 600px) {
     .profile-view__profile-area {
         box-shadow: none;
+        width: inherit;
     }
     .profile-area__main-title {
         font-size: 30px;

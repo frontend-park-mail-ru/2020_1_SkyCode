@@ -9,7 +9,7 @@
 }
 
 .feedback-form__text-input {
-    border-radius: 20px;
+    border-radius: 5px;
     padding: 20px;
     width: -webkit-fill-available;
     resize: vertical;

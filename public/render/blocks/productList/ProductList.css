@@ -6,7 +6,7 @@
     padding-inline-start: 0;
     margin-block-start: 0;
     margin-block-end: 0;
-    margin: 20px 0 200px 70px;
+    margin: 20px -70px 0 0;
 }
 
 @media (max-width: 600px) {

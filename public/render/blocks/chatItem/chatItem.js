@@ -18,7 +18,7 @@ export default class ChatItem extends Component {
         }
 
         node.onclick = this.callback;
-        this.bind();
+        super.bind();
     }
 
     unbind() {
@@ -28,6 +28,6 @@ export default class ChatItem extends Component {
         }
 
         node.onclick = null;
-        this.unbind();
+        super.unbind();
     }
 }

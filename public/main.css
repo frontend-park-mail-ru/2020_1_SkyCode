@@ -24,6 +24,7 @@
 @import "render/views/BaseView/BaseView.css";
 @import "render/views/AddProductView/AddProductView.css";
 @import "render/blocks/actionBar/ActionBar.css";
+@import "render/blocks/chatList/chatList.css";
 @import "render/blocks/RecommendBar/RecommendBar.css";
 @import "render/blocks/addRestaurant/AddRestaurant.css";
 @import "render/blocks/addRestaurantPoint/addRestaurantPoint.css";

@@ -11,6 +11,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
 
     font-style: italic;
 }
@@ -20,11 +21,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
 
-    margin: 20px 70px;
-}
-
-.restaurant-feedback__container {
-    margin: 0 70px 200px;
+    margin: 50px 0;
 }
 
 .restaurant-feedback__label {
@@ -37,15 +34,6 @@
     margin-inline-start: 0;
     margin-inline-end: 0;
     font-weight: normal;
-}
-
-@media (max-width: 600px) {
-    .restaurant-feedback__container {
-        margin: 0 0 200px;
-    }
-    .restaurant-feedback__info-bar {
-        margin: 20px 0;
-    }
 }
 
 @media (max-width: 450px) {

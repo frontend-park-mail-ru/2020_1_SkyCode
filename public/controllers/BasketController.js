@@ -62,6 +62,10 @@ class BasketController extends BaseController {
     addProductHandler(data) {
         if (Object.entries(this.basket.product).length === 0) {
             this.basket.restaurant = RestaurantController.restaurantId;
+            EventBus.broadcast(Event.restaurantSelected, {
+                name: RestaurantController.restaurantName,
+                id: RestaurantController.restaurantId,
+            });
         }
         if (this.basket.restaurant !== RestaurantController.restaurantId) {
             this.cleanBasketHandler();

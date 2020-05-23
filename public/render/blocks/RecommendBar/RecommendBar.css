@@ -16,6 +16,20 @@
     margin-left: 80px;
 }
 
+@media (max-width: 700px) {
+    .recommend-bar__list {
+        margin-left: 40px;
+        width: calc(100% - 80px);
+    }
+}
+
+@media (max-width: 450px) {
+    .recommend-bar__list {
+        margin-left: 20px;
+        width: calc(100% - 40px);
+    }
+}
+
 .recommend-bar__li {
     --recommends-per-bar: 4;
     --recommend-horis-margin: 35px;

@@ -95,10 +95,10 @@ export default class OrderCheckout extends Component {
 
                         const data = {
                             userId: profile.id,
-                            phone: this.context.PhoneInput.domElement.value,
-                            address: this.context.AddressInput.domElement.value,
-                            email: this.context.EmailInput.domElement.value,
-                            comment: this.context.CommentInput.domElement.value,
+                            phone: this.context.PhoneInput.value(),
+                            address: this.context.AddressInput.value(),
+                            email: this.context.EmailInput.value(),
+                            comment: this.context.CommentInput.value(),
                             personNum: parseInt(BasketController.persons),
                             price: BasketController.total,
                             restId: parseInt(BasketController.basket.restaurant),

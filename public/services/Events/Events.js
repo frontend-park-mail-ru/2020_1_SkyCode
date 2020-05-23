@@ -49,6 +49,7 @@ class Events {
         this.notifRequest = 'notif-request';
         this.notifReceived = 'notif-received';
         this.basketChanged = 'basket-changed';
+        this.restaurantSelected = 'restaurant-selected';
     }
 
     productAdded(id) {

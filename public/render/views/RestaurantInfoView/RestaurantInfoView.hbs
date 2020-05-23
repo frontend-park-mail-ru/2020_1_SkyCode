@@ -1,4 +1,4 @@
-<main class="restaurant-info-view {{classes}}">
+<main class="restaurant-info-view {{classes}}" id="view">
     {{{RestaurantBanner}}}
     <div class="restaurant-feedback__info-bar">
         <h2 class="restaurant-feedback__label">Отзывы</h2>
@@ -15,7 +15,7 @@
                 {{{Login}}} или {{{Signup}}}
             </div>
         {{/if}}
-        <hr>
+
         {{#each Feedback}}
             {{{this}}}
         {{else}}

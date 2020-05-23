@@ -14,7 +14,7 @@ export default class RestaurantInfoView extends Component {
     constructor({
         classes,
         restaurant,
-        allReview: allReviews,
+        allReviews,
         currentReview,
         restaurantId,
     }) {
@@ -68,6 +68,7 @@ export default class RestaurantInfoView extends Component {
             });
         }
 
+        if (allReviews === null) allReviews = [];
         const Feedback = [];
         for (const review of allReviews) {
             Feedback.push(new RestaurantFeedbackCard({

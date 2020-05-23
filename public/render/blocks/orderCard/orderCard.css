@@ -5,6 +5,10 @@
     margin: 35px;
 }
 
+.order-card__container:last-child {
+    margin-bottom: 100px;
+}
+
 .order-card__title-section {
     position: absolute;
     top: 0;
@@ -54,10 +58,11 @@
     box-shadow: 0 0 10px #D6D6D6, 0 0 15px #D6D6D6;
     color: black;
     transform: rotateY(180deg);
+    opacity: 0;
 }
 
 .order-card__container:hover .order-card__title-section {transform: rotateY(180deg);}
-.order-card__container:hover .order-card__product-section {transform: rotateY(360deg);}
+.order-card__container:hover .order-card__product-section {transform: rotateY(360deg); opacity: 1;}
 
 
 .order-card__product-section-list {

@@ -15,7 +15,7 @@ export default class LoginField extends Component {
                 label: 'Телефон',
                 Input: new PhoneInput({
                     classes: 'login-field__input',
-                    id: 'login-field__email-input',
+                    id: 'login-field__phone-input',
                     isRequired: true,
                 }),
             }),
