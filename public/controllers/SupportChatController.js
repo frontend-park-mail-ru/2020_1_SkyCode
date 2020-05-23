@@ -22,6 +22,7 @@ class SupportChatController extends BaseController {
             this.socket = new WebSocket('wss://skydelivery.site/api/v1/chat');
         }
 
+        debugger
         this.socket.onopen = () => {
             const initMessage = JSON.stringify({
                 user_name: UserController.User.firstName,

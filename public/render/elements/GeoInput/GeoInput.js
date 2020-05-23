@@ -17,7 +17,7 @@ export default class GeoInput extends Input {
     }
 
     check() {
-        const address = document.getElementById(this.id).value;
+        const address = document.getElementById(this.id).value.replace(/\s+/g, ' ').trim();
         MapModel
             .getCoordinates(address)
             .then((response) => {
