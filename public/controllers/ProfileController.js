@@ -5,6 +5,7 @@ import EventBus from '../services/Events/EventBus.js';
 import Event from '../services/Events/Events.js';
 import SessionModel from '../models/SessionModel.js';
 import UserController from './UserController';
+import Router from '../routing/Router';
 
 class ProfileController extends BaseController {
     constructor(title = 'profile page') {
@@ -59,8 +60,11 @@ class ProfileController extends BaseController {
                 if (response.error) {
                     EventBus.broadcast(Event.updateBioError, response.error);
                 } else {
-                    sessionStorage.message = 'Данные обновлены';
-                    EventBus.broadcast(Event.setPage, {url: '/me'});
+                    UserController.updateUserInfo().then(() => Router.reload('Данные обновлены'))
+                        .catch(() => Router.reload('Ошибка обновления'));
+                    setTimeout(() => {
+                        Router.reload('Данные обновлены');
+                    }, 200);
                 }
             })
             .catch((err) => {

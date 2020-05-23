@@ -4,9 +4,7 @@ import NeonButton from '../../elements/neonButton/NeonButton.js';
 import EventBus from '../../../services/Events/EventBus.js';
 import Img from '../../elements/img/Img.js';
 import ErrorBlock from '../errorBlock/ErrorBlock.js';
-import Validation from '../../../services/InputValidation.js';
 import template from './ProfileTextArea.hbs';
-import ImageHref from '../imageHref/ImageHref';
 import CheckedInput from '../../elements/checkedInput/CheckedInput';
 import Events from '../../../services/Events/Events';
 

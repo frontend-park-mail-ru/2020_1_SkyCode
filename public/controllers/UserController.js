@@ -47,6 +47,9 @@ class UserController extends BaseController {
         this.addUnbind(
             EventBus.subscribe(Event.successLogout, this.successLogoutHandler.bind(this)),
         );
+        this.addUnbind(
+            EventBus.subscribe(Event.updaU)
+        )
     }
 
     successLogoutHandler() {
