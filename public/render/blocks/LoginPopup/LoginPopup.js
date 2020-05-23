@@ -57,7 +57,7 @@ export default class LoginPopup extends Component {
             this.becomeNotStatic();
         }
         this.domElement.style.display = 'none';
-        EventBus.publish(Events.logPopDisappear);
+        EventBus.broadcast(Events.logPopDisappear);
     }
 
     quiteDisappear() {

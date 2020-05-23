@@ -17,7 +17,7 @@ export default class ProfileHeader extends IconedHeader {
                         id: 'icon-bar__logout',
                         src: '/static/sign-out.svg',
                         callback: () => {
-                            EventBus.publish(Events.logout);
+                            EventBus.broadcast(Events.logout);
                         },
                     }),
                     new ImageHref({

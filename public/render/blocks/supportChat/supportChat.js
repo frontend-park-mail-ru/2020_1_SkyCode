@@ -25,7 +25,7 @@ export default class SupportChat extends Component {
                         username,
                     });
                     this.context.Input.domElement.value = '';
-                    EventBus.publish('send-msg', data);
+                    EventBus.broadcast('send-msg', data);
                 },
             }),
         });

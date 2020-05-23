@@ -26,7 +26,7 @@ export default class IconBar extends Component {
             id: 'icon-bar-basket-href',
             src: '/static/shopping-basket.svg',
             callback: () => {
-                EventBus.publish('order-button-clicked');
+                EventBus.broadcast('order-button-clicked');
             },
         }),
         new Img({
@@ -34,7 +34,7 @@ export default class IconBar extends Component {
             src: '/static/notif.svg',
             imageClasses: 'icon-bar__map-image',
             callback: () => {
-                EventBus.publish(Events.notifRequest);
+                EventBus.broadcast(Events.notifRequest);
             },
         }),
         new ImageHref({

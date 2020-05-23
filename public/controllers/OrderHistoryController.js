@@ -23,11 +23,12 @@ class OrderHistoryController extends BaseController {
     }
 
     startCatchEvents() {
-        EventBus.subscribe(Event.deleteOrder, this.delOrderHandler.bind(this));
-    }
-
-    stopCatchEvents() {
-        EventBus.unsubscribe(Event.deleteOrder, this.delOrderHandler.bind(this));
+        this.addUnbind(
+            EventBus.subscribe(
+                Event.deleteOrder,
+                this.delOrderHandler.bind(this),
+            ),
+        );
     }
 
     delOrderHandler(data) {

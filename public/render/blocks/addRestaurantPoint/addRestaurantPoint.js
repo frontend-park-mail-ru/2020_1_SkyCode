@@ -37,7 +37,7 @@ export default class AddRestaurantPoint extends Component {
                         address: this.context.AddressInput.value(),
                         radius: parseFloat(this.context.RadiusInput.value()),
                     };
-                    EventBus.publish(Events.addRestaurantPoint, body);
+                    EventBus.broadcast(Events.addRestaurantPoint, body);
                 },
             }),
         });

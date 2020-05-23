@@ -53,7 +53,7 @@ export default class SignupPopup extends Component {
             this.becomeNotStatic();
         }
         this.domElement.style.display = 'none';
-        EventBus.publish(Events.signPopDisappear);
+        EventBus.broadcast(Events.signPopDisappear);
     }
 
     quiteDisappear() {

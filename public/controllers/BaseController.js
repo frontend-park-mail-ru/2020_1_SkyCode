@@ -3,6 +3,11 @@
 class BaseController {
     constructor(title = 'untitled') {
         this._title = title;
+        this.unbindFuncs = [];
+    }
+
+    addUnbind(ubind) {
+        this.unbindFuncs.push(ubind);
     }
 
     // У вьюхи должны быть методы bind, unbind, html
@@ -27,7 +32,7 @@ class BaseController {
     }
 
     stopCatchEvents() {
-        void 0;
+        for (const ubind of this.unbindFuncs) ubind();
     }
 
     get title() {

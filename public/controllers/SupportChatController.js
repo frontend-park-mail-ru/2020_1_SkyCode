@@ -38,14 +38,14 @@ class SupportChatController extends BaseController {
             localStorage.setItem('chat_id', data.chat_id);
             const domEl = document.getElementsByClassName('chat__messages')[0];
             if (data.message) {
-                EventBus.publish(Event.newMessage, data);
+                EventBus.broadcast(Event.newMessage, data);
                 const el = new Message('msg', data.message, data.user_name);
                 domEl.innerHTML += el;
             }
             if (data.joined) {
                 this.countuser++;
                 if (this.countuser === 2) {
-                    EventBus.publish(Event.supportConnected, {});
+                    EventBus.broadcast(Event.supportConnected, {});
                 }
             }
             domEl.scrollTop = 99999;
@@ -67,13 +67,12 @@ class SupportChatController extends BaseController {
     }
 
     startCatchEvents() {
-        EventBus.subscribe('send-msg', this.SendMessage.bind(this));
-        EventBus.subscribe('join-chat', this.InitialMsg.bind(this));
-    }
-
-    stopCatchEvents() {
-        EventBus.unsubscribe('send-msg', this.SendMessage.bind(this));
-        EventBus.unsubscribe('join-chat', this.InitialMsg.bind(this));
+        this.addUnbind(
+            EventBus.subscribe('send-msg', this.SendMessage.bind(this)),
+        );
+        this.addUnbind(
+            EventBus.subscribe('join-chat', this.InitialMsg.bind(this)),
+        );
     }
 
     SendMessage(data) {

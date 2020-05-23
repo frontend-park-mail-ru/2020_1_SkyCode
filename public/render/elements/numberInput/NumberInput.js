@@ -94,11 +94,11 @@ export default class NumberInput extends Component {
         value--;
 
         this.context.Input.domElement.value = value;
-        EventBus.publish(
+        EventBus.broadcast(
             NumberInput.minusEvent(this.changedEvent),
             value,
         );
-        EventBus.publish(
+        EventBus.broadcast(
             NumberInput.changeEvent(this.changedEvent),
             value,
         );
@@ -124,11 +124,11 @@ export default class NumberInput extends Component {
         value++;
 
         this.context.Input.domElement.value = value;
-        EventBus.publish(
+        EventBus.broadcast(
             NumberInput.plusEvent(this.changedEvent),
             value,
         );
-        EventBus.publish(
+        EventBus.broadcast(
             NumberInput.changeEvent(this.changedEvent),
             value,
         );

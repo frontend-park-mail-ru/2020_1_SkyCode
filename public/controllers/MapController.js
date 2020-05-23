@@ -59,7 +59,7 @@ class MapController extends BaseController {
                 document.getElementById(id)
                     .addEventListener('click', (e) => {
                         e.preventDefault();
-                        EventBus.publish(Event.setPage, {url: `/restaurants/${id}`});
+                        EventBus.broadcast(Event.setPage, {url: `/restaurants/${id}`});
                     });
                 console.log(id);
             });
@@ -68,11 +68,12 @@ class MapController extends BaseController {
 
 
     startCatchEvents() {
-        EventBus.subscribe(Event.changeLocation, this.ChangeLocation.bind(this));
-    }
-
-    stopCatchEvents() {
-        EventBus.unsubscribe(Event.changeLocation, this.ChangeLocation.bind(this));
+        this.addUnbind(
+            EventBus.subscribe(
+                Event.changeLocation,
+                this.ChangeLocation.bind(this),
+            ),
+        );
     }
 
     ChangeLocation() {
@@ -106,7 +107,7 @@ class MapController extends BaseController {
                         localStorage.setItem('longitude', this.geopos.longitude);
                         document.getElementsByClassName('place-time-card__place-text')[0].innerHTML
                             = localStorage.getItem('deliveryGeo');
-                        EventBus.publish(Event.setPage, {url: window.location.pathname});
+                        EventBus.broadcast(Event.setPage, {url: window.location.pathname});
                     } else {
                         Swal.fire({
                             icon: 'error',

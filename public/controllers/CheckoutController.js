@@ -22,11 +22,12 @@ class CheckoutController extends BaseController {
     }
 
     startCatchEvents() {
-        EventBus.subscribe(Event.checkout, this.checkoutHandler.bind(this));
-    }
-
-    stopCatchEvents() {
-        EventBus.unsubscribe(Event.checkout, this.checkoutHandler.bind(this));
+        this.addUnbind(
+            EventBus.subscribe(
+                Event.checkout,
+                this.checkoutHandler.bind(this),
+            ),
+        );
     }
 
     checkoutHandler(data) {
@@ -34,17 +35,17 @@ class CheckoutController extends BaseController {
             .addOrder(data)
             .then((response) => {
                 if (response.error) {
-                    EventBus.publish(Event.orderCheckoutError, response.error);
+                    EventBus.broadcast(Event.orderCheckoutError, response.error);
                 } else {
                     sessionStorage.message = 'Ваш заказ успешно оформлен';
 
-                    EventBus.publish(Event.checkoutSuccess, {});
-                    EventBus.publish(Event.setPage, {url: '/orders'});
+                    EventBus.broadcast(Event.checkoutSuccess, {});
+                    EventBus.broadcast(Event.setPage, {url: '/orders'});
                 }
             })
             .catch((err) => {
                 console.log(err);
-                EventBus.publish(Event.orderCheckoutError, err);
+                EventBus.broadcast(Event.orderCheckoutError, err);
             });
     }
 }

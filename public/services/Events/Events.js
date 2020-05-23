@@ -48,13 +48,14 @@ class Events {
         this.restCategorySelected = 'rest-category-selected';
         this.notifRequest = 'notif-request';
         this.notifReceived = 'notif-received';
+        this.basketCEhanged = 'basket-changed';
     }
 
-    addProductRequest(id) {
+    productAdded(id) {
         return this.addProduct + String(id);
     }
 
-    delProductRequest(id) {
+    productDeleted(id) {
         return this.deleteProd + String(id);
     }
 }

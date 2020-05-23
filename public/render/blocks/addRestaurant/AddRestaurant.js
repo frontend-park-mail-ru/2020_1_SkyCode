@@ -90,7 +90,7 @@ export default class AddRestaurant extends Component {
                         'Description',
                         this.context.descInput.domElement.value,
                     );
-                    EventBus.publish(Events.addRestaurant, formData);
+                    EventBus.broadcast(Events.addRestaurant, formData);
                 },
             }),
         });

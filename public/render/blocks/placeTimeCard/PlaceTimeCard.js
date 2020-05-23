@@ -37,7 +37,7 @@ export default class PlaceTimeCard extends Component {
         // eslint-disable-next-line max-len
         document.getElementsByClassName('place-time-card__change-place-button')[0].addEventListener('click', (e) => {
             e.preventDefault();
-            EventBus.publish(Events.geoRequest);
+            EventBus.broadcast(Events.geoRequest);
         });
         super.bind();
     }
@@ -51,7 +51,7 @@ export default class PlaceTimeCard extends Component {
         // eslint-disable-next-line max-len
         document.getElementsByClassName('place-time-card__change-place-button')[0].addEventListener('click', (e) => {
             e.preventDefault();
-            EventBus.publish(Events.geoRequest);
+            EventBus.broadcast(Events.geoRequest);
         });
         super.unbind();
     }

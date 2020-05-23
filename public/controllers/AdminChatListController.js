@@ -20,7 +20,7 @@ class AdminChatListController extends BaseController {
             })
             .catch((err) => {
                 console.log(err);
-                EventBus.publish(Event.setPage, {url: '/'});
+                EventBus.broadcast(Event.setPage, {url: '/'});
             });
     }
 }

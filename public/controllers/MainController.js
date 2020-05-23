@@ -57,11 +57,12 @@ class MainController extends BaseController {
     }
 
     startCatchEvents() {
-        EventBus.subscribe(Event.newLocation, this.GetRestaurantsByAddress.bind(this));
-    }
-
-    stopCatchEvents() {
-        EventBus.unsubscribe(Event.newLocation, this.GetRestaurantsByAddress.bind(this));
+        this.addUnbind(
+            EventBus.subscribe(
+                Event.newLocation,
+                this.GetRestaurantsByAddress.bind(this),
+            ),
+        );
     }
 
     GetRestaurantsByAddress() {

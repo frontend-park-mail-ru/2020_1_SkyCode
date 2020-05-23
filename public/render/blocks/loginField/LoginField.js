@@ -53,14 +53,14 @@ export default class LoginField extends Component {
                         phone: this.context.phoneInput.value(),
                         password: this.context.passwordInput.value(),
                     };
-                    EventBus.publish(Event.login, data);
+                    EventBus.broadcast(Event.login, data);
                 },
             }),
             signupButton: new NeonButton({
                 classes: 'login-field__goto-signup',
                 text: 'Регистрация',
                 callback: () => {
-                    EventBus.publish(Event.signupRequest, {
+                    EventBus.broadcast(Event.signupRequest, {
                         isStatic: this.contextParent.isStatic,
                     });
                 },

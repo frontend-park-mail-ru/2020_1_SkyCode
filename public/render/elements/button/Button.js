@@ -20,7 +20,7 @@ export default class Button extends Component {
 
         node.onclick = () => {
             this.callback();
-            EventBus.publish(this.id + '-clicked');
+            EventBus.broadcast(this.id + '-clicked');
         };
     }
 

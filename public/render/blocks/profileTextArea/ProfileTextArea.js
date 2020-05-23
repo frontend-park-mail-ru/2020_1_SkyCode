@@ -87,7 +87,7 @@ export default class ProfileTextArea extends Component {
                     classes: 'profile-area__submit',
                     text: 'Сохранить',
                     callback: () => {
-                        EventBus.publish(Events.profileViewUpdateUser);
+                        EventBus.broadcast(Events.profileViewUpdateUser);
                     },
                 }),
 
@@ -97,7 +97,7 @@ export default class ProfileTextArea extends Component {
                     classes: 'profile-area__submit',
                     text: 'Выйти',
                     callback: () => {
-                        EventBus.publish(Events.logout);
+                        EventBus.broadcast(Events.logout);
                     },
                 }),
             ordersButton: new NeonButton({
@@ -105,7 +105,7 @@ export default class ProfileTextArea extends Component {
                 id: 'profile-area__orders',
                 classes: 'profile-area__submit',
                 callback: () => {
-                    EventBus.publish(Events.setPage, '/orders');
+                    EventBus.broadcast(Events.setPage, '/orders');
                 },
             }),
         });
@@ -117,7 +117,7 @@ export default class ProfileTextArea extends Component {
             const formData = new FormData();
             formData.append('avatar', img);
             this.context.avatarErrorField.clean();
-            EventBus.publish(Events.avatarUpdate, formData);
+            EventBus.broadcast(Events.avatarUpdate, formData);
         });
 
         EventBus.subscribe('update-bio-error', (message) => {
@@ -148,7 +148,7 @@ export default class ProfileTextArea extends Component {
                 lastName: this.context.lNameInput.value(),
                 email: this.context.EmailInput.value(),
             };
-            EventBus.publish(Events.updateUser, data);
+            EventBus.broadcast(Events.updateUser, data);
         });
 
         super.bind();
@@ -185,7 +185,7 @@ export default class ProfileTextArea extends Component {
                 lastName: this.context.lNameInput.value(),
                 email: this.context.EmailInput.value(),
             };
-            EventBus.publish(Events.updateUser, data);
+            EventBus.broadcast(Events.updateUser, data);
         });
 
         super.unbind();

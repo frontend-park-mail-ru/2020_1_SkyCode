@@ -105,7 +105,7 @@ export default class OrderCheckout extends Component {
                             products,
                         };
 
-                        EventBus.publish(Events.checkout, data);
+                        EventBus.broadcast(Events.checkout, data);
                     },
                 }),
         });

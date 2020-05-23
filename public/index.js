@@ -4,6 +4,6 @@ import Router from './routing/Router.js';
 
 sessionStorage.message = '';
 setTimeout(() => {
-    EventBus.publish('set-page', {url: window.location.pathname});
+    EventBus.broadcast('set-page', {url: window.location.pathname});
 }, 500);
 

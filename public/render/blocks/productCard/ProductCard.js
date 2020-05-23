@@ -33,7 +33,7 @@ export default class ProductCard extends Component {
                 text: 'Добавить',
                 id: 'product-card__add-button-' + product.name + product.id,
                 callback: () => {
-                    EventBus.publish(Events.addProduct, product);
+                    EventBus.broadcast(Events.addProduct, product);
                     this.hideAddButton();
                     this.context.Input.quitePlus();
                     this.showNumberInput();
@@ -43,6 +43,7 @@ export default class ProductCard extends Component {
 
         this.numInputEventBasis = numInputEventBasis;
         this.product = product;
+        this.isPublisher = false;
     }
 
     hideNumberInput() {
@@ -72,20 +73,27 @@ export default class ProductCard extends Component {
     bind() {
         this.hideNeededElements();
         EventBus.subscribe(NumberInput.plusEvent(this.numInputEventBasis), () => {
-            EventBus.publish(Events.addProduct, this.product);
+            this.isPublisher = true;
+            EventBus.broadcast(Events.addProduct, this.product);
+            this.isPublisher = false;
         });
         EventBus.subscribe(NumberInput.minusEvent(this.numInputEventBasis), (num) => {
-            EventBus.publish(Events.deleteProd, this.product.id);
             if (0 === Number(num)) {
                 this.hideNumberInput();
                 this.showAddButton();
             }
+            this.isPublisher = true;
+            EventBus.broadcast(Events.deleteProd, this.product.id);
+            this.isPublisher = false;
         });
-        EventBus.subscribe(Events.addProductRequest(this.product.id), () => {
-            this.context.Input.plus();
+        EventBus.subscribe(Events.productAdded(this.product.id), () => {
+            if (this.isPublisher) return;
+            this.context.Input.quitePlus();
         });
-        EventBus.subscribe(Events.delProductRequest(this.product.id), () => {
-            this.context.Input.minus();
+        EventBus.subscribe(Events.productDeleted(this.product.id), () => {
+            if (this.isPublisher) return;
+            this.context.Input.quiteMinus();
+            this.hideNeededElements();
         });
 
         super.bind();
@@ -93,20 +101,26 @@ export default class ProductCard extends Component {
 
     unbind() {
         EventBus.unsubscribe(NumberInput.plusEvent(this.numInputEventBasis), () => {
-            EventBus.publish(Events.addProduct, this.product);
+            this.isPublisher = true;
+            EventBus.broadcast(Events.addProduct, this.product);
+            this.isPublisher = false;
         });
         EventBus.unsubscribe(NumberInput.minusEvent(this.numInputEventBasis), (num) => {
-            EventBus.publish(Events.deleteProd, this.product.id);
             if (0 === Number(num)) {
                 this.hideNumberInput();
                 this.showAddButton();
             }
+            this.isPublisher = true;
+            EventBus.broadcast(Events.deleteProd, this.product.id);
+            this.isPublisher = false;
         });
-        EventBus.unsubscribe(Events.addProductRequest(this.product.id), () => {
-            this.context.Input.plus();
+        EventBus.unsubscribe(Events.productAdded(this.product.id), () => {
+            if (this.isPublisher) return;
+            this.context.Input.quitePlus();
         });
-        EventBus.unsubscribe(Events.delProductRequest(this.product.id), () => {
-            this.context.Input.minus();
+        EventBus.unsubscribe(Events.productDeleted(this.product.id), () => {
+            if (this.isPublisher) return;
+            this.context.Input.quiteMinus();
         });
 
         super.unbind();

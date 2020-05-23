@@ -28,7 +28,7 @@ class ChangeRestTagsController extends BaseController {
             })
             .catch((err) => {
                 console.log(err);
-                EventBus.publish(Events.setPage, {url: '/'});
+                EventBus.broadcast(Events.setPage, {url: '/'});
             });
     }
 }

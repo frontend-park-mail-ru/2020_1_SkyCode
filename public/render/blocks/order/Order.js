@@ -1,5 +1,4 @@
 import Component from '../../Component.js';
-import ImageHref from '../imageHref/ImageHref.js';
 import PlaceTimeCard from '../placeTimeCard/PlaceTimeCard.js';
 import Basket from '../basket/Basket.js';
 import PersonInput from '../personInput/PersonInput.js';
@@ -7,9 +6,7 @@ import Href from '../../elements/href/Href.js';
 import BasketController from '../../../controllers/BasketController.js';
 import template from './Order.hbs';
 import EventBus from '../../../services/Events/EventBus.js';
-import SupportChat from '../supportChat/supportChat.js';
-import Button from '../../elements/button/Button';
-import SupportChatController from '../../../controllers/SupportChatController.js';
+import Events from '../../../services/Events/Events';
 
 export default class Order extends Component {
     constructor({
@@ -69,7 +66,7 @@ export default class Order extends Component {
 
     bind() {
         this.appear();
-        EventBus.subscribe('basket-changed', this.setTotal.bind(this));
+        EventBus.subscribe(Events.basketChanged, this.setTotal.bind(this));
         EventBus.subscribe('order-button-clicked', this.orderButtonHandler.bind(this));
         super.bind();
         if (this.needToHide) {
@@ -79,7 +76,7 @@ export default class Order extends Component {
 
     unbind() {
         this.appear();
-        EventBus.unsubscribe('basket-changed', this.setTotal.bind(this));
+        EventBus.unsubscribe(Events.basketChanged, this.setTotal.bind(this));
         EventBus.subscribe('order-button-clicked', this.orderButtonHandler.bind(this));
         super.unbind();
         this.disappear();

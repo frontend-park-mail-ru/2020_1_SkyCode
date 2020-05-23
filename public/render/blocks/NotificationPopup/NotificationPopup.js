@@ -76,7 +76,7 @@ export default class NotificationPopup extends Component {
         };
 
         socket.onmessage = (e) => {
-            EventBus.publish(Events.notifReceived);
+            EventBus.broadcast(Events.notifReceived);
             const notifModel = JSON.parse(e.data);
             console.log('message!', JSON.stringify(notifModel));
             const notif = new Notif({notifModel});
@@ -123,7 +123,7 @@ export default class NotificationPopup extends Component {
 
     disappear() {
         this.domElement.style.display = 'none';
-        EventBus.publish(Events.logPopDisappear);
+        EventBus.broadcast(Events.logPopDisappear);
     }
 
     quiteDisappear() {

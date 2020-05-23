@@ -17,7 +17,7 @@ export default class ChatList extends Component {
                 id: chat.chat_id,
                 user: chat.user_name,
                 callback: () => {
-                    EventBus.publish('set-page', {url: `/admin/chats/${chat.chat_id}`});
+                    EventBus.broadcast('set-page', {url: `/admin/chats/${chat.chat_id}`});
                 },
             }));
         }

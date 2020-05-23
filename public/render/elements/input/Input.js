@@ -40,7 +40,7 @@ export default class Input extends Component {
     bind() {
         if (this.domElement) {
             this.domElement.oninput = () => {
-                EventBus.publish(Input.oninputEvent(this.id));
+                EventBus.broadcast(Input.oninputEvent(this.id));
             };
         }
         super.bind();
@@ -49,7 +49,7 @@ export default class Input extends Component {
     unbind() {
         if (this.domElement) {
             this.domElement.oninput = () => {
-                EventBus.publish(Input.oninputEvent(this.id));
+                EventBus.broadcast(Input.oninputEvent(this.id));
             };
         }
         super.unbind();

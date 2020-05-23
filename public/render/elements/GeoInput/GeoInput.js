@@ -27,9 +27,9 @@ export default class GeoInput extends Input {
                     sessionStorage.setItem('latitude', this.geopos.latitude);
                     sessionStorage.setItem('longitude', this.geopos.longitude);
                     this._isValid = true;
-                    EventBus.publish(Events.geoConfirmationRequest);
+                    EventBus.broadcast(Events.geoConfirmationRequest);
                 } else {
-                    EventBus.publish(Events.stopGeoConfirmation);
+                    EventBus.broadcast(Events.stopGeoConfirmation);
                     document.getElementById(this.contextParent.errFieldId())
                         .innerText = 'с точностью до дома';
                 }
@@ -46,7 +46,7 @@ export default class GeoInput extends Input {
     }
 
     unbind() {
-        EventBus.publish(Events.stopGeoConfirmation);
+        EventBus.broadcast(Events.stopGeoConfirmation);
         super.unbind();
     }
 }

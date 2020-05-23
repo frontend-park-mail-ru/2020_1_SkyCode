@@ -58,7 +58,7 @@ export default class FeedbackForm extends Component {
                             .then((response) => {
                                 sessionStorage.message = 'Ваш отзыв успешно'
                                     + ' добавлен';
-                                EventBus.publish(Events.setPage, {url: window.location.pathname});
+                                EventBus.broadcast(Events.setPage, {url: window.location.pathname});
                             })
                             .catch((err) => {
                                 sessionStorage.message = 'Ошибка добавления'
@@ -70,7 +70,7 @@ export default class FeedbackForm extends Component {
                             .then((response) => {
                                 sessionStorage.message = 'Ваш отзыв успешно'
                                     + ' изменён';
-                                EventBus.publish(Events.setPage, {url: window.location.pathname});
+                                EventBus.broadcast(Events.setPage, {url: window.location.pathname});
                             })
                             .catch((err) => {
                                 sessionStorage.message = 'Ошибка изменения'

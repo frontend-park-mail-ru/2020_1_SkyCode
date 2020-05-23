@@ -27,7 +27,7 @@ export default class PersonInput extends Component {
 
             if (input.min <= setValue && setValue <= input.max) {
                 input.value = setValue;
-                EventBus.publish(Events.personAmountChange, input.value);
+                EventBus.broadcast(Events.personAmountChange, input.value);
             }
         };
 

@@ -103,7 +103,7 @@ class MainArea extends Component {
                     text: 'Войдите',
                     id: 'restaurant-feedback__login',
                     callback: () => {
-                        EventBus.publish(Events.loginRequest);
+                        EventBus.broadcast(Events.loginRequest);
                     },
                 }),
                 Signup: new NeonButton({
@@ -111,7 +111,7 @@ class MainArea extends Component {
                     text: 'Зарегестрируйтесь',
                     id: 'restaurant-feedback__signup',
                     callback: () => {
-                        EventBus.publish(Events.signupRequest);
+                        EventBus.broadcast(Events.signupRequest);
                     },
                 }),
             });
@@ -144,20 +144,20 @@ class MainArea extends Component {
 
     bind() {
         EventBus.subscribe(Events.successLogin, () => {
-            EventBus.publish(Events.setPage, {url: window.location.pathname});
+            EventBus.broadcast(Events.setPage, {url: window.location.pathname});
         });
         EventBus.subscribe(Events.successSignup, () => {
-            EventBus.publish(Events.setPage, {url: window.location.pathname});
+            EventBus.broadcast(Events.setPage, {url: window.location.pathname});
         });
         super.bind();
     }
 
     unbind() {
         EventBus.unsubscribe(Events.successLogin, () => {
-            EventBus.publish(Events.setPage, {url: window.location.pathname});
+            EventBus.broadcast(Events.setPage, {url: window.location.pathname});
         });
         EventBus.unsubscribe(Events.successSignup, () => {
-            EventBus.publish(Events.setPage, {url: window.location.pathname});
+            EventBus.broadcast(Events.setPage, {url: window.location.pathname});
         });
         super.unbind();
     }

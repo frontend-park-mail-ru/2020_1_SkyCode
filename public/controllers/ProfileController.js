@@ -16,20 +16,23 @@ class ProfileController extends BaseController {
     }
 
     startCatchEvents() {
-        EventBus.subscribe(Event.updateUser, this.updateBioHandler.bind(this));
-        EventBus.subscribe(Event.logout, this.logoutHandler.bind(this));
-        EventBus.subscribe(
-            Event.avatarUpdate,
-            this.updateAvatarHandler.bind(this),
+        this.addUnbind(
+            EventBus.subscribe(
+                Event.updateUser,
+                this.updateBioHandler.bind(this),
+            ),
         );
-    }
-
-    stopCatchEvents() {
-        EventBus.unsubscribe(Event.updateUser, this.updateBioHandler.bind(this));
-        EventBus.unsubscribe(Event.logout, this.logoutHandler.bind(this));
-        EventBus.unsubscribe(
-            Event.avatarUpdate,
-            this.updateAvatarHandler.bind(this),
+        this.addUnbind(
+            EventBus.subscribe(
+                Event.logout,
+                this.logoutHandler.bind(this),
+            ),
+        );
+        this.addUnbind(
+            EventBus.subscribe(
+                Event.avatarUpdate,
+                this.updateAvatarHandler.bind(this),
+            ),
         );
     }
 
@@ -37,14 +40,14 @@ class ProfileController extends BaseController {
         SessionModel.logout()
             .then((response) => {
                 if (response.error) {
-                    EventBus.publish(Event.logoutError, response.error);
+                    EventBus.broadcast(Event.logoutError, response.error);
                 } else {
-                    EventBus.publish(Event.successLogout);
-                    EventBus.publish(Event.setPage, {url: '/'});
+                    EventBus.broadcast(Event.successLogout);
+                    EventBus.broadcast(Event.setPage, {url: '/'});
                 }
             })
             .catch((err) => {
-                EventBus.publish(Event.logoutError, 'Bad connection');
+                EventBus.broadcast(Event.logoutError, 'Bad connection');
                 console.log(err);
             });
     }
@@ -54,15 +57,15 @@ class ProfileController extends BaseController {
             .updateUser(data)
             .then((response) => {
                 if (response.error) {
-                    EventBus.publish(Event.updateBioError, response.error);
+                    EventBus.broadcast(Event.updateBioError, response.error);
                 } else {
                     sessionStorage.message = 'Данные обновлены';
-                    EventBus.publish(Event.setPage, {url: '/me'});
+                    EventBus.broadcast(Event.setPage, {url: '/me'});
                 }
             })
             .catch((err) => {
                 console.log(err);
-                EventBus.publish(Event.updateBioError, 'Bad connection');
+                EventBus.broadcast(Event.updateBioError, 'Bad connection');
             });
     }
 
@@ -71,18 +74,18 @@ class ProfileController extends BaseController {
             .updateAvatar(data)
             .then((response) => {
                 if (response.error) {
-                    EventBus.publish(Event.updateAvatarError, response.error);
+                    EventBus.broadcast(Event.updateAvatarError, response.error);
                 } else {
                     UserController
                         .updateUserInfo()
                         .then(() => {
-                            EventBus.publish(Event.setPage, {url: '/me'});
+                            EventBus.broadcast(Event.setPage, {url: '/me'});
                         });
                 }
             })
             .catch((err) => {
                 console.log(err);
-                EventBus.publish(Event.updateAvatarError, 'Bad connection');
+                EventBus.broadcast(Event.updateAvatarError, 'Bad connection');
             });
     }
 }

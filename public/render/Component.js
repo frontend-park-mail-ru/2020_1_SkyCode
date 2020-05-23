@@ -1,5 +1,6 @@
 export default class Component {
     constructor(classes, contextObj, id, template) {
+        this.unbindFuncs = [];
         this.toString = () => template(this.context);
 
         // TemplateData --- информация, передающаяся в template
@@ -100,6 +101,8 @@ export default class Component {
     }
 
     unbind() {
+        for (const ubind of this.unbindFuncs) ubind();
+
         for (const value of Object.values(this.context)) {
             if (Array.isArray(value)) {
                 value.forEach((value) => {
@@ -113,6 +116,10 @@ export default class Component {
                 value.unbind();
             }
         }
+    }
+
+    addUnbind(ubind) {
+        this.unbindFuncs.push(ubind);
     }
 
     set id(id) {

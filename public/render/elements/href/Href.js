@@ -20,7 +20,7 @@ export default class Href extends Component {
         me.addEventListener('click', (event) => {
             event.preventDefault();
             event.stopPropagation();
-            EventBus.publish('set-page', {url: this.context.ref});
+            EventBus.broadcast('set-page', {url: this.context.ref});
         });
 
         super.bind();
@@ -35,7 +35,7 @@ export default class Href extends Component {
         me.removeEventListener('click', (event) => {
             event.preventDefault();
             event.stopPropagation();
-            EventBus.publish('set-page', {url: this.context.ref});
+            EventBus.broadcast('set-page', {url: this.context.ref});
         });
     }
 }

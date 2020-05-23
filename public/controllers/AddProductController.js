@@ -22,17 +22,10 @@ class AddProductController extends BaseController {
     }
 
     startCatchEvents() {
-        EventBus.subscribe(
+        this.addUnbind(EventBus.subscribe(
             Event.addProductByRestaurant,
             this.addProductHandler.bind(this),
-        );
-    }
-
-    stopCatchEvents() {
-        EventBus.unsubscribe(
-            Event.addProductByRestaurant,
-            this.addProductHandler.bind(this),
-        );
+        ));
     }
 
     addProductHandler(data) {
@@ -40,12 +33,12 @@ class AddProductController extends BaseController {
             .addProduct(this.restaurantId, data)
             .then((response) => {
                 if (response.error) {
-                    EventBus.publish(
+                    EventBus.broadcast(
                         Event.addProductByRestaurantError,
                         response.error,
                     );
                 } else if (response.message) {
-                    EventBus.publish(Event.setPage, {
+                    EventBus.broadcast(Event.setPage, {
                         url: `/restaurants/${this.restaurant}`,
                     });
                 }

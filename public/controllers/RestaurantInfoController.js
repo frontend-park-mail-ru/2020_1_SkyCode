@@ -51,7 +51,7 @@ class RestaurantInfoController extends BaseController {
             })
             .catch((err) => {
                 console.log('info controller error', err);
-                EventBus.publish(Event.setPage, {url: '/'});
+                EventBus.broadcast(Event.setPage, {url: '/'});
             });
     }
 }

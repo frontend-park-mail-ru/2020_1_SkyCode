@@ -139,7 +139,7 @@ class Router {
                 sessionStorage.message = 'Недостаточно прав для перехода'
                 + ' по данному url';
                 if (this._currentController === null) {
-                    EventBus.publish(Events.setPage, {url: '/'});
+                    EventBus.broadcast(Events.setPage, {url: '/'});
                 } else {
                     this.reload();
                 }
@@ -151,7 +151,7 @@ class Router {
                 sessionStorage.message = 'Недостаточно прав для перехода'
                 + ' по данному url';
                 if (this._currentController === null) {
-                    EventBus.publish(Events.setPage, {url: '/'});
+                    EventBus.broadcast(Events.setPage, {url: '/'});
                 } else {
                     this.reload();
                 }
@@ -162,7 +162,7 @@ class Router {
                 pageRecord.url = url;
                 this.deferredRecord = pageRecord;
                 this.deferredMatchData = matchData;
-                EventBus.publish(Events.loginRequest, {
+                EventBus.broadcast(Events.loginRequest, {
                     isStatic: this._currentController === null,
                 });
                 return;
@@ -174,7 +174,7 @@ class Router {
                 pageRecord.url = url;
                 this.deferredRecord = pageRecord;
                 this.deferredMatchData = matchData;
-                EventBus.publish(Events.geoRequest, {
+                EventBus.broadcast(Events.geoRequest, {
                     isStatic: this._currentController === null,
                 });
                 return;
@@ -299,7 +299,7 @@ class Router {
 
     reload(message = '') {
         sessionStorage.message = message;
-        EventBus.publish('reload');
+        EventBus.broadcast('reload');
         this._goto({url: window.location.pathname}, false);
     }
 }

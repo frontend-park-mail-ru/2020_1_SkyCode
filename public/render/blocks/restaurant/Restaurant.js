@@ -2,6 +2,7 @@ import Component from '../../Component.js';
 import Img from '../../elements/img/Img.js';
 import EventBus from '../../../services/Events/EventBus.js';
 import template from './Restaurant.hbs';
+import Events from '../../../services/Events/Events';
 
 export default class Restaurant extends Component {
     constructor({classes, name, imageHref, rate, avgDeliveryTime, href}) {
@@ -30,7 +31,7 @@ export default class Restaurant extends Component {
 
         me.onclick = function(event) {
             event.preventDefault();
-            EventBus.publish('set-page', {url: this.context.href});
+            EventBus.broadcast(Events.setPage, {url: this.context.href});
         }.bind(this);
     }
 

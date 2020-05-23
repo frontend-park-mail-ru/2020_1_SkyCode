@@ -37,10 +37,10 @@ export default class GeoPopup extends Component {
                         'longitude',
                         sessionStorage.getItem('longitude'),
                     );
-                    EventBus.publish(Events.successGeo);
+                    EventBus.broadcast(Events.successGeo);
                     if (!isNewGeo) {
                         sessionStorage.message = 'Адрес успешно изменён';
-                        EventBus.publish(Events.setPage, {url: '/'});
+                        EventBus.broadcast(Events.setPage, {url: '/'});
                     }
                 },
             }),
@@ -114,7 +114,7 @@ export default class GeoPopup extends Component {
         }
 
         this.domElement.style.display = 'none';
-        EventBus.publish(Events.geoPopDisappear);
+        EventBus.broadcast(Events.geoPopDisappear);
     }
 
     quiteDisappear() {

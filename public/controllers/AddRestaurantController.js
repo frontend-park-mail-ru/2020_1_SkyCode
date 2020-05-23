@@ -4,7 +4,6 @@ import Event from '../services/Events/Events.js';
 import RestaurantModel from '../models/RestaurantModel';
 import AddRestaurantView
     from '../render/views/AddRestaurantView/AddRestaurantView';
-import UserController from './UserController';
 
 
 class AddRestaurantController extends BaseController {
@@ -17,17 +16,10 @@ class AddRestaurantController extends BaseController {
     }
 
     startCatchEvents() {
-        EventBus.subscribe(
+        this.addUnbind(EventBus.subscribe(
             Event.addRestaurant,
             this.addRestaurantHandler.bind(this),
-        );
-    }
-
-    stopCatchEvents() {
-        EventBus.subscribe(
-            Event.addRestaurant,
-            this.addRestaurantHandler.bind(this),
-        );
+        ));
     }
 
     addRestaurantHandler(data) {
@@ -35,20 +27,20 @@ class AddRestaurantController extends BaseController {
             .addRestaurant(data)
             .then((response) => {
                 if (response.error) {
-                    EventBus.publish(
+                    EventBus.broadcast(
                         Event.addRestaurantError,
                         response.error,
                     );
                 } else if (response.message) {
                     sessionStorage.message = 'Ресторан успешно создан';
-                    EventBus.publish(Event.setPage, {
+                    EventBus.broadcast(Event.setPage, {
                     // Лучше переводить на страницу ресторана
                         url: '/admin/restaurants',
                     });
                 }
             })
             .catch((err) => {
-                EventBus.publish(
+                EventBus.broadcast(
                     Event.addRestaurantError,
                     err,
                 );

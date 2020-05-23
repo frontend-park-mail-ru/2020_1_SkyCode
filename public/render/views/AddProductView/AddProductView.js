@@ -70,7 +70,7 @@ export default class AddProductView extends Component {
                         'Price',
                         this.context.CostInput.value(),
                     );
-                    EventBus.publish(Events.addProductByRestaurant, formData);
+                    EventBus.broadcast(Events.addProductByRestaurant, formData);
                 },
             }),
         });

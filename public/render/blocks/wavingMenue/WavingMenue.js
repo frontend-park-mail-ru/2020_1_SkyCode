@@ -86,10 +86,18 @@ export default class WavingMenue extends Component {
     }
 
     bind() {
-        EventBus.subscribe(Events.successLogin, this.tryReboot.bind(this));
-        EventBus.subscribe(Events.successSignup, this.tryReboot.bind(this));
-        EventBus.subscribe(Events.successLogout, this.tryReboot.bind(this));
-        EventBus.subscribe(Events.setPage, this.disappear.bind(this));
+        EventBus.subscribe(Events.setPage, () => {
+            this.disappear();
+        });
+        EventBus.subscribe(Events.successLogin, () => {
+            this.tryReboot();
+        });
+        EventBus.subscribe(Events.successSignup, () => {
+            this.tryReboot();
+        });
+        EventBus.subscribe(Events.successLogout, () => {
+            this.tryReboot();
+        });
         EventBus.subscribe('hamburger-button-clicked', () => {
             if (this.isVisible) {
                 this.disappear();
@@ -107,10 +115,18 @@ export default class WavingMenue extends Component {
     }
 
     unbind() {
-        EventBus.unsubscribe(Events.setPage, this.disappear.bind(this));
-        EventBus.unsubscribe(Events.successLogin, this.tryReboot.bind(this));
-        EventBus.unsubscribe(Events.successSignup, this.tryReboot.bind(this));
-        EventBus.subscribe(Events.successLogout, this.tryReboot.bind(this));
+        EventBus.unsubscribe(Events.setPage, () => {
+            this.disappear();
+        });
+        EventBus.unsubscribe(Events.successLogin, () => {
+            this.tryReboot();
+        });
+        EventBus.unsubscribe(Events.successSignup, () => {
+            this.tryReboot();
+        });
+        EventBus.unsubscribe(Events.successLogout, () => {
+            this.tryReboot();
+        });
         EventBus.unsubscribe('hamburger-button-clicked', () => {
             if (this.isVisible) {
                 this.disappear();

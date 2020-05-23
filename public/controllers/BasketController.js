@@ -2,6 +2,7 @@ import BaseController from './BaseController.js';
 import EventBus from '../services/Events/EventBus.js';
 import Event from '../services/Events/Events.js';
 import RestaurantController from './RestaurantController.js';
+import Events from '../services/Events/Events';
 
 class BasketController extends BaseController {
     constructor() {
@@ -16,26 +17,39 @@ class BasketController extends BaseController {
     }
 
     startCatchEvents() {
-        EventBus.subscribe(Event.addProduct, this.addProductHandler.bind(this));
-        EventBus.subscribe(
-            Event.personAmountChange,
-            this.personAmountChangeHandler.bind(this),
+        this.addUnbind(
+            EventBus.subscribe(Event.addProduct, this.addProductHandler.bind(this)),
         );
-        EventBus.subscribe(Event.checkoutSuccess, this.cleanBasketHandler.bind(this));
-        EventBus.subscribe(Event.successLogin, this.CheckBasketHandler.bind(this));
-        EventBus.subscribe(Event.successSignup, this.CheckBasketHandler.bind(this));
-        EventBus.subscribe(Event.deleteProd, this.deleteProductHandler.bind(this));
-    }
-
-    stopCatchEvents() {
-        EventBus.unsubscribe(Event.addProduct, this.addProductHandler.bind(this));
-        EventBus.unsubscribe(
-            Event.personAmountChange,
-            this.personAmountChangeHandler.bind(this),
+        this.addUnbind(
+            EventBus.subscribe(
+                Event.personAmountChange,
+                this.personAmountChangeHandler.bind(this),
+            ),
         );
-        EventBus.unsubscribe(Event.successLogin, this.CheckBasketHandler.bind(this));
-        EventBus.unsubscribe(Event.checkoutSuccess, this.cleanBasketHandler.bind(this));
-        EventBus.unsubscribe(Event.deleteProd, this.deleteProductHandler.bind(this));
+        this.addUnbind(
+            EventBus.subscribe(
+                Event.checkoutSuccess,
+                this.cleanBasketHandler.bind(this),
+            ),
+        );
+        this.addUnbind(
+            EventBus.subscribe(
+                Event.successLogin,
+                this.CheckBasketHandler.bind(this),
+            ),
+        );
+        this.addUnbind(
+            EventBus.subscribe(
+                Event.successSignup,
+                this.CheckBasketHandler.bind(this),
+            ),
+        );
+        this.addUnbind(
+            EventBus.subscribe(
+                Event.deleteProd,
+                this.deleteProductHandler.bind(this),
+            ),
+        );
     }
 
     productNumber() {
@@ -56,22 +70,27 @@ class BasketController extends BaseController {
         }
         if (data.id in this.basket.product) {
             this.basket.product[data.id].amount++;
+            EventBus.broadcast(Event.productAdded(data.id));
         } else {
             this.basket.product[data.id] = data;
             this.basket.product[data.id].amount = 1;
+            EventBus.broadcast(Event.updateBasket, this.basket.product);
         }
-        EventBus.publish(Event.updateBasket, this.basket.product);
+
+        EventBus.broadcast(Event.basketChanged, this.basket.product);
     }
 
     deleteProductHandler(id) {
         if (id in this.basket.product) {
             if (this.basket.product[id].amount === 1) {
                 delete this.basket.product[id];
+                EventBus.broadcast(Event.updateBasket, this.basket.product);
             } else if (this.basket.product[id].amount > 1) {
                 this.basket.product[id].amount--;
+                EventBus.broadcast(Event.productDeleted(id));
             }
 
-            EventBus.publish(Event.updateBasket, this.basket.product);
+            EventBus.broadcast(Event.basketChanged, this.basket.product);
         }
     }
 

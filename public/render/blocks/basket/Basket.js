@@ -19,6 +19,7 @@ export default class Basket extends Component {
         for (const id in basket) {
             basketProducts.push(new BasketProduct({
                 classes: 'basket__basket-product',
+                product: basket[id],
                 name: basket[id].name,
                 imageHref: `/images/${basket[id].image}`,
                 quantity: basket[id].amount,
@@ -34,17 +35,22 @@ export default class Basket extends Component {
     basketChangedHandler(basket) {
         this.unbind();
         this.addBasketContext(basket);
-        this.domElement.innerHTML = this.toString();
+        this.domElement.outerHTML = this.toString();
         this.bind();
     }
 
     bind() {
-        EventBus.subscribe(Events.updateBasket, this.basketChangedHandler.bind(this));
+        EventBus.subscribe(Events.updateBasket, (basket) => {
+            this.basketChangedHandler(basket);
+        });
+
         super.bind();
     }
 
     unbind() {
-        EventBus.unsubscribe(Events.updateBasket, this.basketChangedHandler.bind(this));
+        EventBus.unsubscribe(Events.updateBasket, (basket) => {
+            this.basketChangedHandler(basket);
+        });
         super.unbind();
     }
 }

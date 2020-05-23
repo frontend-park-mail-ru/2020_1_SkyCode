@@ -28,7 +28,7 @@ export default class OrderCard extends Component {
                     classes: `delete-button-${orderItem.id}`,
                     text: 'Отменить',
                     callback: () => {
-                        EventBus.publish(Events.deleteOrder, {
+                        EventBus.broadcast(Events.deleteOrder, {
                             id: orderItem.id,
                         });
                     },
