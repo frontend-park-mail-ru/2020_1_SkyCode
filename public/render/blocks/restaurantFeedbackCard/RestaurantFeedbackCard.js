@@ -1,6 +1,5 @@
 import Component from '../../Component.js';
 import template from './RestaurantFeedbackCard.hbs';
-import Textarea from '../../elements/textarea/Textarea';
 
 export default class RestaurantFeedbackCard extends Component {
     constructor({classes, name, rate, text, date: timestamp}) {

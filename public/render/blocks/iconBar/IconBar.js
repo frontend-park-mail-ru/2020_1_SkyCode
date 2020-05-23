@@ -63,29 +63,37 @@ export default class IconBar extends Component {
 
     bind() {
         let active = false;
-        EventBus.subscribe(Events.addProduct, () => {
-            if (document.getElementsByClassName('order')[0].style.display === 'none') {
-                this.context.BasketPoint.domElement.style.display = 'block';
-            }
-        });
-        EventBus.subscribe(Events.notifReceived, () => {
-            if (document.getElementById('notif-popup').style.display === 'none') {
-                this.context.NotifPoint.domElement.style.display = 'block';
-            }
-        });
-        EventBus.subscribe(Events.notifRequest, () => {
-            this.context.NotifPoint.domElement.style.display = 'none';
-        });
-        EventBus.subscribe('order-button-clicked', () => {
-            this.context.BasketPoint.domElement.style.display = 'none';
+        this.addUnbind(
+            EventBus.subscribe(Events.addProduct, () => {
+                if (document.getElementsByClassName('order')[0].style.display === 'none') {
+                    this.context.BasketPoint.domElement.style.display = 'block';
+                }
+            }),
+        );
+        this.addUnbind(
+            EventBus.subscribe(Events.notifReceived, () => {
+                if (document.getElementById('notif-popup').style.display === 'none') {
+                    this.context.NotifPoint.domElement.style.display = 'block';
+                }
+            }),
+        );
+        this.addUnbind(
+            EventBus.subscribe(Events.notifRequest, () => {
+                this.context.NotifPoint.domElement.style.display = 'none';
+            }),
+        );
+        this.addUnbind(
+            EventBus.subscribe('order-button-clicked', () => {
+                this.context.BasketPoint.domElement.style.display = 'none';
 
-            if (active) {
-                this.domElement.style.background = 'white';
-            } else {
-                this.domElement.style.background = 'rgba(0, 0, 0, 0)';
-            }
-            active = !active;
-        });
+                if (active) {
+                    this.domElement.style.background = 'white';
+                } else {
+                    this.domElement.style.background = 'rgba(0, 0, 0, 0)';
+                }
+                active = !active;
+            }),
+        );
         super.bind();
     }
 }

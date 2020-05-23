@@ -1,5 +1,4 @@
 import Component from '../../Component';
-import LoginField from '../loginField/LoginField';
 import EventBus from '../../../services/Events/EventBus';
 import Events from '../../../services/Events/Events';
 import temp from './GeoPopup.hbs';
@@ -24,7 +23,6 @@ export default class GeoPopup extends Component {
                     if (localStorage.getItem('deliveryGeo') === null) {
                         isNewGeo = true;
                     }
-
                     localStorage.setItem(
                         'deliveryGeo',
                         sessionStorage.getItem('deliveryGeo'),
@@ -61,15 +59,25 @@ export default class GeoPopup extends Component {
     bind() {
         this.confirmDisappear();
 
-        EventBus.subscribe(Events.escButPressed, () => {
-            if (!this.isStatic) {
-                this.disappear();
-            }
-        });
-        EventBus.subscribe(Events.geoConfirmationRequest, this.confirmAppear.bind(this));
-        EventBus.subscribe(Events.stopGeoConfirmation, this.confirmDisappear.bind(this));
-        EventBus.subscribe(Events.successGeo, this.disappear.bind(this));
-        EventBus.subscribe(Events.geoRequest, this.appear.bind(this));
+        this.addUnbind(
+            EventBus.subscribe(Events.escButPressed, () => {
+                if (!this.isStatic) {
+                    this.disappear();
+                }
+            }),
+        );
+        this.addUnbind(
+            EventBus.subscribe(Events.geoConfirmationRequest, this.confirmAppear.bind(this)),
+        );
+        this.addUnbind(
+            EventBus.subscribe(Events.stopGeoConfirmation, this.confirmDisappear.bind(this)),
+        );
+        this.addUnbind(
+            EventBus.subscribe(Events.successGeo, this.disappear.bind(this)),
+        );
+        this.addUnbind(
+            EventBus.subscribe(Events.geoRequest, this.appear.bind(this)),
+        );
         document.getElementsByClassName('geo-popup__hider')[0]
             .onclick = () => {
                 this.disappear();
@@ -80,16 +88,6 @@ export default class GeoPopup extends Component {
     }
 
     unbind() {
-        EventBus.unsubscribe(Events.escButPressed, () => {
-            if (!this.isStatic) {
-                this.disappear();
-            }
-        });
-        EventBus.unsubscribe(Events.geoConfirmationRequest, this.confirmAppear.bind(this));
-        EventBus.unsubscribe(Events.stopGeoConfirmation, this.confirmDisappear.bind(this));
-        EventBus.unsubscribe(Events.successGeo, this.disappear.bind(this));
-        EventBus.unsubscribe(Events.successGeo, this.tryRefresh.bind(this));
-        EventBus.unsubscribe(Events.geoRequest, this.appear.bind(this));
         document.getElementsByClassName('geo-popup__hider')[0]
             .onclick = null;
         super.unbind();

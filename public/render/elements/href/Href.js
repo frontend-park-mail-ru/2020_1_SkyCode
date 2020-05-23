@@ -17,11 +17,11 @@ export default class Href extends Component {
             return;
         }
 
-        me.addEventListener('click', (event) => {
+        me.onclick = (event) => {
             event.preventDefault();
             event.stopPropagation();
             EventBus.broadcast('set-page', {url: this.context.ref});
-        });
+        };
 
         super.bind();
     }
@@ -32,10 +32,7 @@ export default class Href extends Component {
             return;
         }
 
-        me.removeEventListener('click', (event) => {
-            event.preventDefault();
-            event.stopPropagation();
-            EventBus.broadcast('set-page', {url: this.context.ref});
-        });
+        me.onclick = null;
+        super.unbind();
     }
 }

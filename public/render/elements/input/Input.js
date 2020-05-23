@@ -48,9 +48,7 @@ export default class Input extends Component {
 
     unbind() {
         if (this.domElement) {
-            this.domElement.oninput = () => {
-                EventBus.broadcast(Input.oninputEvent(this.id));
-            };
+            this.domElement.oninput = null;
         }
         super.unbind();
     }

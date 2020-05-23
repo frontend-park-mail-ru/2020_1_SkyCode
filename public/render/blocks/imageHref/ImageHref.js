@@ -34,6 +34,7 @@ export default class ImageHref extends Component {
             event.preventDefault();
             EventBus.broadcast('set-page', {url: this.context.href});
         };
+        super.bind();
     }
 
     unbind() {
@@ -43,5 +44,6 @@ export default class ImageHref extends Component {
         }
 
         me.onclick = null;
+        super.unbind();
     }
 }

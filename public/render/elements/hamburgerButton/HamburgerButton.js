@@ -19,22 +19,26 @@ export default class HamburgerButton extends Component {
     }
 
     bind() {
-        EventBus.subscribe(Events.setPage, this.reboot.bind(this));
+        this.addUnbind(
+            EventBus.subscribe(Events.setPage, this.reboot.bind(this)),
+        );
+
         const me = super.domElement;
         if (me === undefined) {
             return;
         }
 
         me.onclick = this.callback;
+        super.bind();
     }
 
     unbind() {
-        EventBus.unsubscribe(Events.setPage, this.reboot.bind(this));
         const me = super.domElement;
         if (me === undefined) {
             return;
         }
 
         me.onclick = null;
+        super.unbind();
     }
 }

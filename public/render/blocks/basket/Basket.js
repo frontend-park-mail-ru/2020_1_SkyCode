@@ -40,17 +40,11 @@ export default class Basket extends Component {
     }
 
     bind() {
-        EventBus.subscribe(Events.updateBasket, (basket) => {
-            this.basketChangedHandler(basket);
-        });
-
+        this.addUnbind(
+            EventBus.subscribe(Events.updateBasket, (basket) => {
+                this.basketChangedHandler(basket);
+            }),
+        );
         super.bind();
-    }
-
-    unbind() {
-        EventBus.unsubscribe(Events.updateBasket, (basket) => {
-            this.basketChangedHandler(basket);
-        });
-        super.unbind();
     }
 }

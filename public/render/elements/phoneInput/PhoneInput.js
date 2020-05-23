@@ -73,9 +73,4 @@ export default class PhoneInput extends Input {
         }
         return 'Номер набран не полностью';
     }
-
-    unbind() {
-        this.domElement.oninput = null;
-        super.unbind();
-    }
 }

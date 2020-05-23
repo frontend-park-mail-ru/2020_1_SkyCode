@@ -22,6 +22,7 @@ export default class Button extends Component {
             this.callback();
             EventBus.broadcast(this.id + '-clicked');
         };
+        super.bind();
     }
 
     unbind() {
@@ -31,5 +32,6 @@ export default class Button extends Component {
         }
 
         node.onclick = null;
+        super.unbind();
     }
 }

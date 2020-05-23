@@ -94,11 +94,17 @@ export default class NotificationPopup extends Component {
     }
 
     bind() {
-        EventBus.subscribe(Events.successLogin, this.handleLogin.bind(this));
-        EventBus.subscribe(Events.escButPressed, () => {
-            this.disappear.bind(this);
-        });
-        EventBus.subscribe(Events.notifRequest, this.appear.bind(this));
+        this.addUnbind(
+            EventBus.subscribe(Events.successLogin, this.handleLogin.bind(this)),
+        );
+        this.addUnbind(
+            EventBus.subscribe(Events.escButPressed, () => {
+                this.disappear.bind(this);
+            }),
+        );
+        this.addUnbind(
+            EventBus.subscribe(Events.notifRequest, this.appear.bind(this)),
+        );
         document.getElementsByClassName('notif-popup__hider')[0]
             .onclick = () => {
                 this.disappear();
@@ -108,10 +114,6 @@ export default class NotificationPopup extends Component {
     }
 
     unbind() {
-        EventBus.subscribe(Events.escButPressed, () => {
-            this.disappear.bind(this);
-        });
-        EventBus.unsubscribe(Events.notifRequest, this.appear.bind(this));
         document.getElementsByClassName('notif-popup__hider')[0]
             .onclick = null;
         super.unbind();

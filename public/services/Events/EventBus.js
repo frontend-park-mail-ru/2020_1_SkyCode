@@ -1,8 +1,6 @@
 'use strict';
 
 class EventBus {
-    _callbacksMap;
-
     constructor() {
         this._callbacksMap = {};
     }
@@ -38,21 +36,29 @@ class EventBus {
 
             singleUnsubscribe = false;
 
-            events.forEach(event => {
+            strEvents.forEach((event) => {
                 const callbacks = callbacksMap[event];
                 const index = callbacks.indexOf(callback);
-                callbacks.splice(index, 1);
+                delete callbacks[index];
             });
         };
     }
 
     broadcast(event, data) {
-        let callbacks = this._callbacksMap[event.toLowerCase()] || [];
+        let shift = '';
+        for (let i = 0; i < tab; i++) shift += '    ';
+        console.log(shift, event, data);
+        tab += 1;
 
-        callbacks.forEach(callback => {
-            callback(data);
+        if (event === 'product-card__add-button-Биг тейсти9-clicked') {}
+
+        const callbacks = this._callbacksMap[event.toLowerCase()] || [];
+
+        callbacks.forEach((callback) => {
+            if (callback !== undefined) callback(data);
         });
+        tab -= 1;
     }
 }
-
+let tab = 0;
 export default new EventBus();

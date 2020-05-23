@@ -97,22 +97,14 @@ export default class AddRestaurant extends Component {
     }
 
     bind() {
-        EventBus.subscribe(
-            'add-restaurant-error',
-            (message) => {
-                this.context.generalError.addMessage(message);
-            });
+        this.addUnbind(
+            EventBus.subscribe(
+                'add-restaurant-error',
+                (message) => {
+                    this.context.generalError.addMessage(message);
+                }),
+        );
 
         super.bind();
-    }
-
-    unbind() {
-        EventBus.unsubscribe(
-            'add-restaurant-error',
-            (message) => {
-                this.context.generalError.addMessage(message);
-            });
-
-        super.unbind();
     }
 }

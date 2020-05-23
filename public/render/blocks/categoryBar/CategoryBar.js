@@ -91,12 +91,21 @@ export default class CategoryBar extends Component {
             }, 300);
         };
 
-        EventBus.subscribe(Events.restCategorySelected, (id) => {
-            for (const cat of this.context.categories) {
-                cat.domElement.className = 'category-bar__category';
-            }
-            document.getElementById(Category.categoryId(id)).className += ' category-bar__active';
-        });
+        this.addUnbind(
+            EventBus.subscribe(Events.restCategorySelected, (id) => {
+                for (const cat of this.context.categories) {
+                    cat.domElement.className = 'category-bar__category';
+                }
+                document.getElementById(Category.categoryId(id)).className += ' category-bar__active';
+            }),
+        );
+
         super.bind();
+    }
+
+    unbind() {
+        const list = document.getElementsByClassName('category-bar__list')[0];
+        list.onscroll = null;
+        super.unbind();
     }
 }

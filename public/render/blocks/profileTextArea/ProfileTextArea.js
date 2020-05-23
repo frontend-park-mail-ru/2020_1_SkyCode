@@ -120,74 +120,48 @@ export default class ProfileTextArea extends Component {
             EventBus.broadcast(Events.avatarUpdate, formData);
         });
 
-        EventBus.subscribe('update-bio-error', (message) => {
-            this.context
-                .generalErrorField
-                .addMessage('Пользователь с таким email уже существует');
-            // .addMessage(message);
-        });
+        this.addUnbind(
+            EventBus.subscribe('update-bio-error', (message) => {
+                this.context
+                    .generalErrorField
+                    .addMessage('Пользователь с таким email уже существует');
+                // .addMessage(message);
+            }),
+        );
 
-        EventBus.subscribe('update-avatar-error', (message) => {
-            this.context
-                .avatarErrorField
-                .addMessage('Ошибка обновления аватара');
-            // .addMessage(message);
-        });
+        this.addUnbind(
+            EventBus.subscribe('update-avatar-error', (message) => {
+                this.context
+                    .avatarErrorField
+                    .addMessage('Ошибка обновления аватара');
+                // .addMessage(message);
+            }),
+        );
 
-        EventBus.subscribe(Events.profileViewUpdateUser, () => {
-            this.context.generalErrorField.clean();
+        this.addUnbind(
+            EventBus.subscribe(Events.profileViewUpdateUser, () => {
+                this.context.generalErrorField.clean();
 
-            const isValid = this.context.fNameInput.isValid()
-                && this.context.lNameInput.isValid()
-                && this.context.EmailInput.isValid();
+                const isValid = this.context.fNameInput.isValid()
+                    && this.context.lNameInput.isValid()
+                    && this.context.EmailInput.isValid();
 
-            if (!isValid) return;
+                if (!isValid) return;
 
-            const data = {
-                firstName: this.context.fNameInput.value(),
-                lastName: this.context.lNameInput.value(),
-                email: this.context.EmailInput.value(),
-            };
-            EventBus.broadcast(Events.updateUser, data);
-        });
+                const data = {
+                    firstName: this.context.fNameInput.value(),
+                    lastName: this.context.lNameInput.value(),
+                    email: this.context.EmailInput.value(),
+                };
+                EventBus.broadcast(Events.updateUser, data);
+            }),
+        );
 
         super.bind();
     }
 
     unbind() {
         this.context.AvatarInput.domElement.onchange = null;
-
-        EventBus.unsubscribe(Events.updateBioError, (message) => {
-            this.context
-                .generalErrorField
-                .addMessage('Пользователь с таким email уже существует');
-            // .addMessage(message);
-        });
-
-        EventBus.unsubscribe(Events.updateAvatarError, (message) => {
-            this.context
-                .avatarErrorField
-                .addMessage('Ошибка обновления аватара');
-            // .addMessage(message);
-        });
-
-        EventBus.unsubscribe(Events.profileViewUpdateUser, () => {
-            this.context.generalErrorField.clean();
-
-            const isValid = this.context.fNameInput.isValid()
-                && this.context.lNameInput.isValid()
-                && this.context.EmailInput.isValid();
-
-            if (!isValid) return;
-
-            const data = {
-                firstName: this.context.fNameInput.value(),
-                lastName: this.context.lNameInput.value(),
-                email: this.context.EmailInput.value(),
-            };
-            EventBus.broadcast(Events.updateUser, data);
-        });
-
         super.unbind();
     }
 }

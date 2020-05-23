@@ -83,4 +83,10 @@ export default class ActionBar extends Component {
         };
         super.bind();
     }
+
+    unbind() {
+        const list = document.getElementsByClassName('action-bar__list')[0];
+        list.onscroll = null;
+        super.unbind();
+    }
 }

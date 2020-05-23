@@ -1,5 +1,4 @@
 import Component from '../../Component.js';
-import NeonButton from '../../elements/neonButton/NeonButton.js';
 import EventBus from '../../../services/Events/EventBus.js';
 import template from './ProductCard.hbs';
 import Events from '../../../services/Events/Events';
@@ -9,7 +8,7 @@ import Button from '../../elements/button/Button';
 
 export default class ProductCard extends Component {
     constructor({id, product, classes}) {
-        const numInputEventBasis = 'product-card-button__input-' + product.name + product.id;
+        const numInputEventBasis = 'product-card-button__input-product' + product.id;
         const productNum = BasketController.basket.product[product.id]
             ? BasketController.basket.product[product.id].amount : '0';
 
@@ -65,64 +64,48 @@ export default class ProductCard extends Component {
     hideNeededElements() {
         if (this.context.Input.getValue() === '0') {
             this.hideNumberInput();
+            this.showAddButton();
         } else {
             this.hideAddButton();
+            this.showNumberInput();
         }
     }
 
     bind() {
         this.hideNeededElements();
-        EventBus.subscribe(NumberInput.plusEvent(this.numInputEventBasis), () => {
-            this.isPublisher = true;
-            EventBus.broadcast(Events.addProduct, this.product);
-            this.isPublisher = false;
-        });
-        EventBus.subscribe(NumberInput.minusEvent(this.numInputEventBasis), (num) => {
-            if (0 === Number(num)) {
-                this.hideNumberInput();
-                this.showAddButton();
-            }
-            this.isPublisher = true;
-            EventBus.broadcast(Events.deleteProd, this.product.id);
-            this.isPublisher = false;
-        });
-        EventBus.subscribe(Events.productAdded(this.product.id), () => {
-            if (this.isPublisher) return;
-            this.context.Input.quitePlus();
-        });
-        EventBus.subscribe(Events.productDeleted(this.product.id), () => {
-            if (this.isPublisher) return;
-            this.context.Input.quiteMinus();
-            this.hideNeededElements();
-        });
+        this.addUnbind(
+            EventBus.subscribe(
+                NumberInput.plusEvent(this.numInputEventBasis), () => {
+                    this.isPublisher = true;
+                    EventBus.broadcast(Events.addProduct, this.product);
+                    this.isPublisher = false;
+                }),
+        );
+        this.addUnbind(
+            EventBus.subscribe(NumberInput.minusEvent(this.numInputEventBasis), (num) => {
+                if (0 === Number(num)) {
+                    this.hideNumberInput();
+                    this.showAddButton();
+                }
+                this.isPublisher = true;
+                EventBus.broadcast(Events.deleteProd, this.product.id);
+                this.isPublisher = false;
+            }),
+        );
+        this.addUnbind(
+            EventBus.subscribe(Events.productAdded(this.product.id), () => {
+                if (this.isPublisher) return;
+                this.context.Input.quitePlus();
+            }),
+        );
+        this.addUnbind(
+            EventBus.subscribe(Events.productDeleted(this.product.id), () => {
+                if (this.isPublisher) return;
+                this.context.Input.quiteMinus();
+                this.hideNeededElements();
+            }),
+        );
 
         super.bind();
-    }
-
-    unbind() {
-        EventBus.unsubscribe(NumberInput.plusEvent(this.numInputEventBasis), () => {
-            this.isPublisher = true;
-            EventBus.broadcast(Events.addProduct, this.product);
-            this.isPublisher = false;
-        });
-        EventBus.unsubscribe(NumberInput.minusEvent(this.numInputEventBasis), (num) => {
-            if (0 === Number(num)) {
-                this.hideNumberInput();
-                this.showAddButton();
-            }
-            this.isPublisher = true;
-            EventBus.broadcast(Events.deleteProd, this.product.id);
-            this.isPublisher = false;
-        });
-        EventBus.unsubscribe(Events.productAdded(this.product.id), () => {
-            if (this.isPublisher) return;
-            this.context.Input.quitePlus();
-        });
-        EventBus.unsubscribe(Events.productDeleted(this.product.id), () => {
-            if (this.isPublisher) return;
-            this.context.Input.quiteMinus();
-        });
-
-        super.unbind();
     }
 }

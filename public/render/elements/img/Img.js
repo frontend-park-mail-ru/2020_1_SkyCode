@@ -17,6 +17,7 @@ export default class Img extends Component {
         }
 
         node.onclick = this.callback;
+        super.bind();
     }
 
     unbind() {
@@ -26,5 +27,6 @@ export default class Img extends Component {
         }
 
         node.onclick = null;
+        super.unbind();
     }
 }

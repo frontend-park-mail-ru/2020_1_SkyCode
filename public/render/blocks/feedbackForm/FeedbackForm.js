@@ -5,7 +5,6 @@ import RestaurantModel from '../../../models/RestaurantModel';
 import Textarea from '../../elements/textarea/Textarea';
 import NumberInput from '../../elements/numberInput/NumberInput';
 import EventBus from '../../../services/Events/EventBus';
-import NeonButton from '../../elements/neonButton/NeonButton';
 import Events from '../../../services/Events/Events';
 
 
@@ -83,18 +82,12 @@ export default class FeedbackForm extends Component {
     }
 
     bind() {
-        EventBus.subscribe(NumberInput.changeEvent('feedback-rate'), (rate) => {
-            const strRate = rate === 0 ? '⭐' : '⭐'.repeat(Math.round(Number(rate)));
-            document.getElementById('feedback-form__stars').innerText = strRate;
-        });
+        this.addUnbind(
+            EventBus.subscribe(NumberInput.changeEvent('feedback-rate'), (rate) => {
+                const strRate = rate === 0 ? '⭐' : '⭐'.repeat(Math.round(Number(rate)));
+                document.getElementById('feedback-form__stars').innerText = strRate;
+            }),
+        );
         super.bind();
-    }
-
-    unbind() {
-        EventBus.unsubscribe(NumberInput.changeEvent('feedback-rate'), (rate) => {
-            const strRate = rate === 0 ? '⭐' : '⭐'.repeat(Math.round(Number(rate)));
-            document.getElementById('feedback-form__stars').innerText = strRate;
-        });
-        super.unbind();
     }
 }

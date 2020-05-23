@@ -2,7 +2,6 @@ import BaseController from './BaseController.js';
 import EventBus from '../services/Events/EventBus.js';
 import Event from '../services/Events/Events.js';
 import RestaurantController from './RestaurantController.js';
-import Events from '../services/Events/Events';
 
 class BasketController extends BaseController {
     constructor() {
@@ -84,6 +83,7 @@ class BasketController extends BaseController {
         if (id in this.basket.product) {
             if (this.basket.product[id].amount === 1) {
                 delete this.basket.product[id];
+                EventBus.broadcast(Event.productDeleted(id));
                 EventBus.broadcast(Event.updateBasket, this.basket.product);
             } else if (this.basket.product[id].amount > 1) {
                 this.basket.product[id].amount--;

@@ -1,12 +1,7 @@
-import BaseView from '../BaseView/BaseView';
-import IconedHeader from '../../blocks/iconedHeader/IconedHeader';
-import WavingMenue from '../../blocks/wavingMenue/WavingMenue';
-import Order from '../../blocks/order/Order';
 import Component from '../../Component';
 import temp from './ChangeRestTagsView.hbs';
 import Input from '../../elements/input/Input';
 import NeonButton from '../../elements/neonButton/NeonButton';
-import TagModel from '../../../models/TagModel';
 import RestaurantModel from '../../../models/RestaurantModel';
 import Router from '../../../routing/Router';
 

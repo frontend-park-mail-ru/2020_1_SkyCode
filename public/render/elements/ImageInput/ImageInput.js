@@ -70,6 +70,12 @@ export default class ImageInput extends Component {
         super.bind();
     }
 
+    unbind() {
+        this.domElement.onchange = null;
+
+        super.unbind();
+    }
+
     isValid() {
         const error = this.check();
         this.errorElement().innerHTML = error;

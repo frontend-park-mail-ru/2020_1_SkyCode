@@ -19,6 +19,11 @@ export default class Category extends Component {
         super.bind();
     }
 
+    unbind() {
+        this.domElement.onclick = null;
+        super.unbind();
+    }
+
     static categoryId(id) {
         return 'category_' + id;
     }

@@ -33,6 +33,7 @@ export default class Restaurant extends Component {
             event.preventDefault();
             EventBus.broadcast(Events.setPage, {url: this.context.href});
         }.bind(this);
+        super.bind();
     }
 
     unbind() {
@@ -42,5 +43,6 @@ export default class Restaurant extends Component {
         }
 
         me.onclick = null;
+        super.unbind();
     }
 }

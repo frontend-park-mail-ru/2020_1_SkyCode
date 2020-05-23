@@ -1,7 +1,6 @@
 import Component from '../../Component.js';
 import Restaurant from '../restaurant/Restaurant.js';
 import template from './RestaurantList.hbs';
-import Href from '../../elements/href/Href';
 import EventBus from '../../../services/Events/EventBus';
 import Events from '../../../services/Events/Events';
 
@@ -17,12 +16,9 @@ export default class RestaurantList extends Component {
     }
 
     bind() {
-        EventBus.subscribe(Events.restCategorySelected, this.changeCategoryHandler.bind(this));
-        super.bind();
-    }
-
-    unbind() {
-        EventBus.subscribe(Events.restCategorySelected, this.changeCategoryHandler.bind(this));
+        this.addUnbind(
+            EventBus.subscribe(Events.restCategorySelected, this.changeCategoryHandler.bind(this)),
+        );
         super.bind();
     }
 

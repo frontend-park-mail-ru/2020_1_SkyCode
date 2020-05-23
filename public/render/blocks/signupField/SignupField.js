@@ -120,18 +120,12 @@ export default class SignupField extends Component {
     }
 
     bind() {
-        EventBus.subscribe(Event.signupError, (message) => {
-            this.context.generalErrorField.addMessage(message);
-        });
+        this.addUnbind(
+            EventBus.subscribe(Event.signupError, (message) => {
+                this.context.generalErrorField.addMessage(message);
+            }),
+        );
 
         super.bind();
-    }
-
-    unbind() {
-        EventBus.unsubscribe(Event.signupError, (message) => {
-            this.context.generalErrorField.addMessage(message);
-        });
-
-        super.unbind();
     }
 }

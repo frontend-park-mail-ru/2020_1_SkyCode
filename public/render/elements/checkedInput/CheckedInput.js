@@ -33,6 +33,8 @@ export default class CheckedInput extends Component {
         this.context.Input.domElement.onblur = () => {
             this.errFieldElement().innerText = this.context.Input.check();
         };
+
+        super.bind();
     }
 
     isValid() {
@@ -60,6 +62,7 @@ export default class CheckedInput extends Component {
     unbind() {
         this.context.Input.domElement.oninput = null;
         this.context.Input.domElement.onblur = null;
+        super.unbind();
     }
 
     focus() {

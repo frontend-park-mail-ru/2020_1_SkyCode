@@ -33,6 +33,7 @@ export default class SearchField extends Component {
             'search-field__input-button',
         )[0];
         button.onclick = this.callback;
+        super.bind();
     }
 
     unbind() {
@@ -41,5 +42,6 @@ export default class SearchField extends Component {
 
         const but = me.getElementsByClassName('search-field__input-button')[0];
         but.onclick = null;
+        super.unbind();
     }
 }

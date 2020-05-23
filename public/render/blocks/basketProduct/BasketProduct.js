@@ -7,7 +7,7 @@ import Events from '../../../services/Events/Events';
 
 export default class BasketProduct extends Component {
     constructor({classes, imageHref, name, quantity, cost, id, mainId: prodId, product}) {
-        const changeEventInputBasis = 'basket-product_input-' + id;
+        const changeEventInputBasis = 'basket-product_input-1' + id;
         super(classes, {
             img: new Img({
                 classes: 'basket-product__img',
@@ -33,49 +33,37 @@ export default class BasketProduct extends Component {
     }
 
     bind() {
-        EventBus.subscribe(NumberInput.minusEvent(this.changeEventInputBasis), () => {
-            this.isPublisher = true;
-            EventBus.broadcast(Events.deleteProd, this.prodId);
-            this.isPublisher = false;
-        });
+        console.log('!!!', NumberInput.minusEvent(this.changeEventInputBasis));
+        this.addUnbind(
+            EventBus.subscribe(NumberInput.minusEvent(this.changeEventInputBasis), () => {
+                this.isPublisher = true;
+                EventBus.broadcast(Events.deleteProd, this.prodId);
+                this.isPublisher = false;
+            }),
+        );
 
-        EventBus.subscribe(NumberInput.plusEvent(this.changeEventInputBasis), () => {
-            this.isPublisher = true;
-            EventBus.broadcast(Events.addProduct(this.product));
-            this.isPublisher = false;
-        });
+        this.addUnbind(
+            EventBus.subscribe(NumberInput.plusEvent(this.changeEventInputBasis), () => {
+                this.isPublisher = true;
+                EventBus.broadcast(Events.addProduct, this.product);
+                this.isPublisher = false;
+            }),
+        );
 
-        EventBus.subscribe(Events.productAdded(this.prodId), () => {
-            if (this.isPublisher) return;
-            this.context.Input.quitePlus();
-        });
-        EventBus.subscribe(Events.productDeleted(this.prodId), () => {
-            if (this.isPublisher) return;
-            this.context.Input.quiteMinus();
-        });
+        this.addUnbind(
+            EventBus.subscribe(Events.productAdded(this.prodId), () => {
+                if (this.isPublisher) return;
+                this.context.Input.quitePlus();
+            }),
+        );
+
+        this.addUnbind(
+            EventBus.subscribe(Events.productDeleted(this.prodId), () => {
+                if (this.isPublisher) return;
+                this.context.Input.quiteMinus();
+            }),
+        );
 
         super.bind();
-    }
-
-    unbind() {
-        EventBus.unsubscribe(NumberInput.minusEvent(this.changeEventInputBasis), () => {
-            this.isPublisher = true;
-            EventBus.broadcast(Events.deleteProd, this.prodId);
-            this.isPublisher = false;
-        });
-        EventBus.unsubscribe(NumberInput.plusEvent(this.changeEventInputBasis), () => {
-            this.isPublisher = true;
-            EventBus.broadcast(Events.addProduct(this.product));
-            this.isPublisher = false;
-        });
-        EventBus.unsubscribe(Events.productAdded(this.prodId), () => {
-            if (this.isPublisher) return;
-            this.context.Input.quitePlus();
-        });
-        EventBus.unsubscribe(Events.productDeleted(this.prodId), () => {
-            if (this.isPublisher) return;
-            this.context.Input.quiteMinus();
-        });
-        super.unbind();
     }
 }

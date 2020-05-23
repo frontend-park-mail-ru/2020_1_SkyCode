@@ -86,26 +86,35 @@ export default class WavingMenue extends Component {
     }
 
     bind() {
-        EventBus.subscribe(Events.setPage, () => {
-            this.disappear();
-        });
-        EventBus.subscribe(Events.successLogin, () => {
-            this.tryReboot();
-        });
-        EventBus.subscribe(Events.successSignup, () => {
-            this.tryReboot();
-        });
-        EventBus.subscribe(Events.successLogout, () => {
-            this.tryReboot();
-        });
-        EventBus.subscribe('hamburger-button-clicked', () => {
-            if (this.isVisible) {
+        this.addUnbind(
+            EventBus.subscribe(Events.setPage, () => {
                 this.disappear();
-            } else {
-                this.appear();
-            }
-        });
-
+            }),
+        );
+        this.addUnbind(
+            EventBus.subscribe(Events.successLogin, () => {
+                this.tryReboot();
+            }),
+        );
+        this.addUnbind(
+            EventBus.subscribe(Events.successSignup, () => {
+                this.tryReboot();
+            }),
+        );
+        this.addUnbind(
+            EventBus.subscribe(Events.successLogout, () => {
+                this.tryReboot();
+            }),
+        );
+        this.addUnbind(
+            EventBus.subscribe('hamburger-button-clicked', () => {
+                if (this.isVisible) {
+                    this.disappear();
+                } else {
+                    this.appear();
+                }
+            }),
+        );
         document.body.getElementsByClassName('waving-menue__hider')[0]
             .onclick = (e) => {
                 e.preventDefault();
@@ -115,26 +124,6 @@ export default class WavingMenue extends Component {
     }
 
     unbind() {
-        EventBus.unsubscribe(Events.setPage, () => {
-            this.disappear();
-        });
-        EventBus.unsubscribe(Events.successLogin, () => {
-            this.tryReboot();
-        });
-        EventBus.unsubscribe(Events.successSignup, () => {
-            this.tryReboot();
-        });
-        EventBus.unsubscribe(Events.successLogout, () => {
-            this.tryReboot();
-        });
-        EventBus.unsubscribe('hamburger-button-clicked', () => {
-            if (this.isVisible) {
-                this.disappear();
-            } else {
-                this.appear();
-            }
-        });
-
         document.body.getElementsByClassName('waving-menue__hider')[0]
             .onclick = null;
 

@@ -73,18 +73,12 @@ export default class LoginField extends Component {
     }
 
     bind() {
-        EventBus.subscribe('login-error', (message) => {
-            this.context.generalErrorField.addMessage(message);
-        });
+        this.addUnbind(
+            EventBus.subscribe('login-error', (message) => {
+                this.context.generalErrorField.addMessage(message);
+            }),
+        );
 
         super.bind();
-    }
-
-    unbind() {
-        EventBus.unsubscribe(Event.loginError, (message) => {
-            this.context.generalErrorField.addMessage(message);
-        });
-
-        super.unbind();
     }
 }

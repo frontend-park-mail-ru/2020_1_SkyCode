@@ -48,7 +48,7 @@ class Events {
         this.restCategorySelected = 'rest-category-selected';
         this.notifRequest = 'notif-request';
         this.notifReceived = 'notif-received';
-        this.basketCEhanged = 'basket-changed';
+        this.basketChanged = 'basket-changed';
     }
 
     productAdded(id) {

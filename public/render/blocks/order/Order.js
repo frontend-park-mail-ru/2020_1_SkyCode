@@ -42,6 +42,7 @@ export default class Order extends Component {
         if (withCheckoutButton) {
             this.addContextData({
                 Checkout: new Href({
+                    id: 'order-checkout__href',
                     classes: 'order__checkout',
                     text: 'Заказать',
                     href: '/checkout',
@@ -66,8 +67,22 @@ export default class Order extends Component {
 
     bind() {
         this.appear();
-        EventBus.subscribe(Events.basketChanged, this.setTotal.bind(this));
-        EventBus.subscribe('order-button-clicked', this.orderButtonHandler.bind(this));
+        this.addUnbind(
+            EventBus.subscribe(Events.basketChanged, this.setTotal.bind(this)),
+        );
+        this.addUnbind(
+            EventBus.subscribe(Events.updateBasket, () => {
+                if (BasketController.isEmpty()) {
+                    document.getElementById('order-checkout__href').style.visibility = 'hidden';
+                } else {
+                    document.getElementById('order-checkout__href').style.visibility = 'visible';
+                }
+            }),
+        );
+        this.addUnbind(
+            EventBus.subscribe('order-button-clicked', this.orderButtonHandler.bind(this)),
+        );
+
         super.bind();
         if (this.needToHide) {
             this.disappear();
@@ -75,9 +90,6 @@ export default class Order extends Component {
     }
 
     unbind() {
-        this.appear();
-        EventBus.unsubscribe(Events.basketChanged, this.setTotal.bind(this));
-        EventBus.subscribe('order-button-clicked', this.orderButtonHandler.bind(this));
         super.unbind();
         this.disappear();
     }
