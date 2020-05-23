@@ -103,7 +103,7 @@
     box-shadow: 0 0 10px #F6D471;
     background-color: #F6D471;
     color: black;
-    transition-delay: 0.45s;
+    transition-delay: 0.25s;
 }
 
 .login-field__goto-signup:hover, .singup-field__goto-login:hover {
