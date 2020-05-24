@@ -7,26 +7,28 @@
 
 .basket-point {
     position: fixed;
-    top: 22px;
-    right: 139px;
+    top: 21px;
+    right: 137px;
     display: none;
 }
 
 .notif-point {
     position: fixed;
-    top: 22px;
-    right: 203px;
+    top: 21px;
+    right: 200px;
     display: none;
 }
 
 @media (max-width: 700px) {
     .basket-point {
-        top: 619px;
-        right: 305px;
+        top: unset;
+        bottom: 40px;
+        right: calc(50% + -18px);
     }
 
     .notif-point {
-        top: 619px;
-        right: 418px;
+        top: unset;
+        bottom: 40px;
+        right: calc(50% + 75px);
     }
 }
