@@ -5,6 +5,7 @@ import temp from './GeoPopup.hbs';
 import GeoInput from '../../elements/GeoInput/GeoInput';
 import CheckedInput from '../../elements/checkedInput/CheckedInput';
 import NeonButton from '../../elements/neonButton/NeonButton';
+import Router from '../../../routing/Router';
 
 
 export default class GeoPopup extends Component {
@@ -37,8 +38,7 @@ export default class GeoPopup extends Component {
                     );
                     EventBus.broadcast(Events.successGeo);
                     if (!isNewGeo) {
-                        sessionStorage.message = 'Адрес успешно изменён';
-                        EventBus.broadcast(Events.setPage, {url: '/'});
+                        Router.reload('Адрес доставки успешно изменён');
                     }
                 },
             }),
