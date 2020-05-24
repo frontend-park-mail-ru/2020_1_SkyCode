@@ -98,10 +98,19 @@ export default class GeoPopup extends Component {
         if (isStatic) this.becomeStatic();
 
         this.domElement.style.display = 'flex';
-
         ymaps.ready(init);
         function init() {
-            const suggestView = new ymaps.SuggestView('alone_geo-input');
+            const input = document.getElementById('alone_geo-input');
+            Object.defineProperty(input, 'value', {
+                get() {
+                    return this.innerText.replace(/\s+/g, ' ').trim();
+                },
+                set(v) {
+                    this.innerText = v.replace(/\s+/g, '\n');
+                },
+            });
+
+            const suggestView = new ymaps.SuggestView(input);
         }
     }
 

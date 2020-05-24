@@ -1,0 +1,9 @@
+.geo-input__input {
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    height: fit-content;
+    outline: none;
+    font-size: 18px;
+    line-height: 20px;
+}

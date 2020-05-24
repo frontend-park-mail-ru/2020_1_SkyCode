@@ -1,23 +1,56 @@
-import Input from '../input/Input';
 import MapModel from '../../../models/MapModel';
 import EventBus from '../../../services/Events/EventBus';
 import Events from '../../../services/Events/Events';
+import Component from '../../Component';
+import temp from './GeoInput.hbs';
 
-export default class GeoInput extends Input {
+export default class GeoInput extends Component {
     constructor(idSuffix = '') {
-        super({
-            id: GeoInput.id(idSuffix),
+        super('geo-input__input', {
             type: 'text',
             isRequired: true,
             placeholder: 'с точностью до дома',
-        });
+        }, GeoInput.id(idSuffix), temp);
 
         this.id = GeoInput.id(idSuffix);
         this._isValid = false;
     }
 
+    correct() {
+
+        // const element = document.getElementById(this.id);
+        // const address = element.innerText
+        //     .replace(/\s+/g, ' ')
+        //     .trim()
+        //     .replace(/\s+/g, '\n');
+        // const len = address.length;
+        //
+        // element.innerText = address;
+        // setTimeout(() => {
+        //     console.log(element.selectionStart);
+        //     console.log(element.selectionEnd);
+        //
+        //     element.selectionStart = 0;
+        //     element.selectionEnd = len;
+        // }, 1000);
+    }
+
+    get value() {
+        return document.getElementById(this.id).innerText;
+    }
+
+    set value(val) {
+        document.getElementById(this.id).innerText = val;
+    }
+
     check() {
-        const address = document.getElementById(this.id).value.replace(/\s+/g, ' ').trim();
+        const address = document.getElementById(this.id).innerText
+            .replace(/\s+/g, ' ').trim();
+
+        if (address.length === 0) {
+            return 'Обязательное поле';
+        }
+
         MapModel
             .getCoordinates(address)
             .then((response) => {
@@ -34,6 +67,7 @@ export default class GeoInput extends Input {
                         .innerText = 'с точностью до дома';
                 }
             });
+
         return '';
     }
 

@@ -8,6 +8,7 @@
 @import "render/elements/neonButton/NeonButton.css";
 @import "render/elements/textarea/Textarea.css";
 @import "render/elements/numberInput/NumberInput.css";
+@import "render/elements/GeoInput/GeoInput.css";
 @import "render/elements/ImageInput/ImageInput.css";
 @import "render/views/MainView/MainView.css";
 @import "render/views/ProfileView/ProfileView.css";
