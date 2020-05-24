@@ -62,9 +62,6 @@ class ProfileController extends BaseController {
                 } else {
                     UserController.updateUserInfo().then(() => Router.reload('Данные обновлены'))
                         .catch(() => Router.reload('Ошибка обновления'));
-                    setTimeout(() => {
-                        Router.reload('Данные обновлены');
-                    }, 200);
                 }
             })
             .catch((err) => {
