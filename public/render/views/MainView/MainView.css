@@ -6,7 +6,7 @@
 
     background: #FFFFFF;
     width: inherit;
-    height: inherit;
+    height: 90vh;
     overflow-y: scroll;
 }
 
@@ -17,6 +17,9 @@
 }
 
 @media (max-width: 700px) {
+    .main-view {
+        height: 80vh;
+    }
     .main-view__info-bar {
         flex-direction: column;
         justify-content: center;

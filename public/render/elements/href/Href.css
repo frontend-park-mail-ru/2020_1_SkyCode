@@ -1,3 +1,7 @@
+.href {
+    cursor: pointer;
+}
+
 .admin-restaurant-list__href,
 .waving-menue__href {
     color: black;

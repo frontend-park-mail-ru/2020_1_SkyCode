@@ -18,9 +18,4 @@
     .restaurant-category-scroller {
         margin: 0;
     }
-
-}
-
-::-webkit-scrollbar {
-    background: rgba(255, 255, 255, 0.0);
 }

@@ -31,9 +31,3 @@
     align-items: center;
     text-align: center;
 }
-
-@media (max-width: 600px) {
-    .basket-product__info-container {
-        flex-direction: row;
-    }
-}

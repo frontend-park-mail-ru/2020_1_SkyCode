@@ -6,8 +6,6 @@
     height: 70px;
     font-size: 18px;
     font-family: 'Comfortaa', cursive;
-    margin-left: 20px;
-    margin-right: 20px;
 }
 
 .feedback-form__rate-input {
@@ -25,7 +23,7 @@
 .product-card__product-input {
     background-color: #F8F8F8;
     border-color: #2196f3;
-    width: 50px;
+    width: 59px;
     height: 30px;
     font-size: 18px;
     font-family: 'Comfortaa', cursive;

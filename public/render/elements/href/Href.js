@@ -4,7 +4,7 @@ import template from './Href.hbs';
 
 export default class Href extends Component {
     constructor({text, href: ref, classes = 'href', id}) {
-        super(classes, {
+        super(classes + ' href', {
             text,
             ref,
         }, id);

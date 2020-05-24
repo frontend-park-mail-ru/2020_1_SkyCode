@@ -5,6 +5,7 @@ import EventBus from '../../../services/Events/EventBus.js';
 import template from './IconBar.hbs';
 import Events from '../../../services/Events/Events';
 import Point from '../../elements/point/Point';
+import BasketController from '../../../controllers/BasketController';
 
 
 export default class IconBar extends Component {
@@ -67,6 +68,13 @@ export default class IconBar extends Component {
             EventBus.subscribe(Events.addProduct, () => {
                 if (document.getElementsByClassName('order')[0].style.display === 'none') {
                     this.context.BasketPoint.domElement.style.display = 'block';
+                }
+            }),
+        );
+        this.addUnbind(
+            EventBus.subscribe(Events.updateBasket, () => {
+                if (BasketController.isEmpty()) {
+                    this.context.BasketPoint.domElement.style.display = 'none';
                 }
             }),
         );
