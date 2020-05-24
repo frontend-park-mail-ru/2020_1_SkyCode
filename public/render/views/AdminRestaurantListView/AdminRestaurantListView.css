@@ -3,7 +3,7 @@
     flex-direction: column;
     background: #FFFFFF;
     padding: 0 100px 100px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 @media (max-width: 650px) {

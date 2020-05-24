@@ -20,13 +20,15 @@ export default class SupportChat extends Component {
                 classes: 'send_button',
                 text: 'Send',
                 callback: () => {
+                    if (this.context.Input.domElement.value.trim().length === 0) return;
+
                     const data = JSON.stringify({
                         message: this.context.Input.domElement.value,
                         chat_id: UserController.User.role === 'Support'
                             ? Number(localStorage.getItem('chat_id'))
                             : UserController.User.id,
                         user_id: UserController.User.id,
-                        username,
+                        user_name: username,
                     });
                     this.context.Input.domElement.value = '';
                     EventBus.broadcast('send-msg', data);

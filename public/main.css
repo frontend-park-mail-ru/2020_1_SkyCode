@@ -119,21 +119,36 @@ input[type=number] {
 }
 
 
-/*#view::-webkit-scrollbar {*/
-/*    width: 30px;*/
+/*::-webkit-scrollbar:horizontal {*/
 /*    height: 15px;*/
+/*    width: 15px;*/
 /*}*/
 
-/*#view::-webkit-scrollbar-thumb {*/
-/*    background: linear-gradient(180deg,#F6D471,deepskyblue);*/
-/*    border-radius: 30px;*/
-/*    box-shadow: inset 2px 2px 2px hsla(0,0%,100%,.25), inset -2px -2px 2px rgba(0,0,0,.25);*/
-/*}*/
+::-webkit-scrollbar {
+    width: 20px;
+    height: 15px;
+}
 
-/*#view::-webkit-scrollbar-track {*/
-/*    background: linear-gradient(245deg, transparent, lightgray);*/
-/*}*/
+::-webkit-scrollbar-thumb:vertical {
+    background: linear-gradient(180deg,#F6D471,#a68cff);
+    border-radius: 30px;
+    box-shadow: inset 2px 2px 2px hsla(0,0%,100%,.25), inset -2px -2px 2px rgba(0,0,0,.25);
+}
 
-/*::-webkit-scrollbar {*/
-/*    display: none;*/
-/*}*/
+::-webkit-scrollbar-track:vertical {
+    background: linear-gradient(90deg, transparent, lightgray);
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+    background: linear-gradient(90deg,#F6D471,#a68cff);
+    border-radius: 30px;
+    box-shadow: inset 2px 2px 2px hsla(0,0%,100%,.25), inset -2px -2px 2px rgba(0,0,0,.25);
+}
+
+::-webkit-scrollbar-track:horizontal {
+    background: linear-gradient(90deg, transparent, lightgray);
+}
+
+::-webkit-scrollbar {
+    display: none;
+}

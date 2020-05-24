@@ -10,7 +10,7 @@
 }
 
 .base-container {
-    overflow: scroll;
+    overflow: auto;
     padding-top: 10vh;
     height: 90vh;
     box-sizing: content-box;

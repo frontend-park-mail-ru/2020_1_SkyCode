@@ -48,7 +48,7 @@ export default class AddRestaurant extends Component {
                 }),
             }),
             AddressInput: new CheckedInput({
-                label: 'Адрес доставки',
+                label: 'Адрес ресторана',
                 Input: new GeoInput('__add-rest-point'),
             }),
             generalError: new ErrorBlock({
@@ -85,11 +85,11 @@ export default class AddRestaurant extends Component {
                         this.context.descInput.value(),
                     );
                     formData.append(
-                        'address',
+                        'Address',
                         this.context.AddressInput.value(),
                     );
                     formData.append(
-                        'radius',
+                        'Radius',
                         this.context.RadiusInput.value(),
                     );
                     EventBus.broadcast(Events.addRestaurant, formData);
@@ -111,13 +111,21 @@ export default class AddRestaurant extends Component {
                 }),
         );
 
-//         ymaps.ready(init);
-//
-//         function init() {
-//             const suggestView = new ymaps.SuggestView(GeoInput.id('__add-rest-point'));
-//         }
-// debugger
-//         this.focusOnAddressInput();
+        ymaps.ready(init);
+        function init() {
+            const input = document.getElementById(GeoInput.id('__add-rest-point'));
+            Object.defineProperty(input, 'value', {
+                get() {
+                    return this.innerText.replace(/\s+/g, ' ').trim();
+                },
+                set(v) {
+                    this.innerText = v.replace(/\s+/g, '\n');
+                },
+            });
+
+            const suggestView = new ymaps.SuggestView(input);
+        }
+
         super.bind();
     }
 }

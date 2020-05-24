@@ -30,7 +30,6 @@ class SupportChatController extends BaseController {
             console.log('MESSAGE!' + e.data);
             const data = JSON.parse(e.data);
 
-            if (data.user_name === '') data.user_name = UserController.User.firstName;
             localStorage.setItem('chat_id', data.chat_id);
             const domEl = document.getElementsByClassName('chat__messages')[0];
             if (data.message) {
