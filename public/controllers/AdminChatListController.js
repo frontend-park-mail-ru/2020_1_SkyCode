@@ -16,7 +16,7 @@ class AdminChatListController extends BaseController {
                 if (response.error) {
                     throw response.error;
                 }
-                super.execute(new AdminChatListView({chatArray: response}));
+                super.execute(new AdminChatListView({chatArray: response.chats}));
             })
             .catch((err) => {
                 console.log(err);

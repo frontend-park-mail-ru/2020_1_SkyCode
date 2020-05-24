@@ -3,6 +3,8 @@ import template from './supportChat.hbs';
 import Input from '../../elements/input/Input.js';
 import NeonButton from '../../elements/neonButton/NeonButton.js';
 import EventBus from '../../../services/Events/EventBus';
+import Events from '../../../services/Events/Events';
+import UserController from '../../../controllers/UserController';
 
 export default class SupportChat extends Component {
     constructor({classes, username}) {
@@ -21,7 +23,8 @@ export default class SupportChat extends Component {
                 callback: () => {
                     const data = JSON.stringify({
                         message: this.context.Input.domElement.value,
-                        chat_id: localStorage.getItem('chat_id'),
+                        chat_id: Number(localStorage.getItem('chat_id')),
+                        user_id: UserController.User.id,
                         username,
                     });
                     this.context.Input.domElement.value = '';

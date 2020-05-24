@@ -9,6 +9,7 @@ export default class ChatList extends Component {
 
         super.template = template;
 
+        if (!chatArr) chatArr = [];
         const chatComponents = [];
 
         for (const chat of chatArr) {

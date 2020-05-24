@@ -16,24 +16,19 @@ class SupportChatController extends BaseController {
     execute(matchData) {
         const chatId = matchData[0];
 
-        if (chatId !== undefined) {
+        if (UserController.User.role === 'Support') {
             this.socket = new WebSocket(`wss://skydelivery.site/api/v1/chats/${chatId}/join`);
         } else {
             this.socket = new WebSocket('wss://skydelivery.site/api/v1/chat');
         }
 
-        debugger
-        this.socket.onopen = () => {
-            const initMessage = JSON.stringify({
-                user_name: UserController.User.firstName,
-                chat_id: localStorage.getItem('chat_id'),
-            });
-            this.socket.send(initMessage);
+        this.socket.onopen = (e) => {
+            console.log('support chat opened');
         };
 
         this.socket.onmessage = (e) => {
-            console.log('MESSAGE!' + JSON.stringify(e));
-            const data = JSON.stringify(e.data);
+            console.log('MESSAGE!' + e.data);
+            const data = JSON.parse(e.data);
 
             if (data.user_name === '') data.user_name = UserController.User.firstName;
             localStorage.setItem('chat_id', data.chat_id);
@@ -53,18 +48,19 @@ class SupportChatController extends BaseController {
         };
 
         super.execute(new SupportChatView({username: UserController.User.firstName}));
-        ChatModel.getChatHistory(chatId !== undefined ? chatId : localStorage.getItem('chat_id'))
-            .then((response) => {
-                if (!Array.isArray(response)) return;
-
-                const domEl = document.getElementsByClassName('chat__messages')[0];
-                for (const msg of response) {
-                    const el = new Message('msg', msg.message, msg.user_name);
-                    domEl.innerHTML += el;
-                }
-                domEl.scrollTop = 99999;
-            })
-            .catch((err) => console.log(err));
+        setTimeout(() => {
+            ChatModel.getChatHistory(UserController.User.role === 'Support' ? chatId : String(UserController.User.id))
+                .then((response) => {
+                    if (!Array.isArray(response)) return;
+                    const domEl = document.getElementsByClassName('chat__messages')[0];
+                    for (const msg of response) {
+                        const el = new Message('msg', msg.message, msg.user_name);
+                        domEl.innerHTML = el + domEl.innerHTML;
+                    }
+                    domEl.scrollTop = 99999;
+                })
+                .catch((err) => console.log(err));
+        }, 100);
     }
 
     startCatchEvents() {

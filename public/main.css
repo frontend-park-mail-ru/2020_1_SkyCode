@@ -89,7 +89,6 @@ body {
     display: grid;
     grid-template-areas: "header" "view";
     grid-template-rows: 10vh 1fr;
-    overflow-y: scroll;
 }
 
 .error {

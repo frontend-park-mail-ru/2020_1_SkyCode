@@ -12,6 +12,7 @@
     height: fit-content;
     align-self: center;
     margin: 20px auto;
+    overflow-y: scroll;
 }
 
 
