@@ -39,6 +39,10 @@
     margin-bottom: 5px;
     text-align: center;
     border-bottom: 2px solid #dfdfdf;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    outline: none;
 }
 
 .checked-input__input:focus+.checked-input__label,

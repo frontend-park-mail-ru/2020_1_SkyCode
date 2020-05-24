@@ -2,11 +2,20 @@
     height: fit-content;
 }
 
+.recommend-bar__restaurant {
+    width: 25%;
+    min-width: 230px;
+    margin: 20px 40px 0 0;
+
+    text-decoration: none;
+    color: black;
+}
+
 .recommend-bar__list {
     box-sizing: border-box;
     display: flex;
     list-style-type: none;
-    overflow-x: scroll;
+    overflow-x: auto;
     align-items: flex-start;
     scroll-behavior: smooth;
     padding-inline-start: 10px;

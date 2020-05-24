@@ -39,7 +39,8 @@ class AddProductController extends BaseController {
                     );
                 } else if (response.message) {
                     EventBus.broadcast(Event.setPage, {
-                        url: `/restaurants/${this.restaurant}`,
+                        url: `/restaurants/${this.restaurantId}`,
+                        message: 'Продукт успешно добавлен',
                     });
                 }
             })

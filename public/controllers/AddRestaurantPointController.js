@@ -22,7 +22,7 @@ class AddRestaurantPointController extends BaseController {
 
     startCatchEvents() {
         this.addUnbind(
-            EventBus.subscribe(Event.addRestaurantPoint, this.AddPoint.bind(this))
+            EventBus.subscribe(Event.addRestaurantPoint, this.AddPoint.bind(this)),
         );
     }
 
@@ -30,12 +30,16 @@ class AddRestaurantPointController extends BaseController {
         RestaurantModel.addPoint(data, this.restId)
             .then((response) => {
                 if (response.message) {
-                    sessionStorage.message = 'Точка успешно добавлена';
-                    EventBus.broadcast(Event.setPage, {url: '/admin/restaurants'});
+                    EventBus.broadcast(Event.setPage, {
+                        url: '/admin/restaurants',
+                        message: 'Точка успешно добавлена',
+                    });
                 }
                 if (response.error) {
-                    sessionStorage.message = 'Ошибка: ' + response.error;
-                    EventBus.broadcast(Event.setPage, {url: window.location.pathname});
+                    EventBus.broadcast(Event.setPage, {
+                        url: window.location.pathname,
+                        message: 'Ошибка: ' + response.error,
+                    });
                 }
             })
             .catch((err) => console.log(err));

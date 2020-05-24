@@ -26,7 +26,6 @@
 @import "render/views/AddProductView/AddProductView.css";
 @import "render/blocks/actionBar/ActionBar.css";
 @import "render/blocks/chatList/chatList.css";
-@import "render/blocks/RecommendBar/RecommendBar.css";
 @import "render/blocks/addRestaurant/AddRestaurant.css";
 @import "render/blocks/addRestaurantPoint/addRestaurantPoint.css";
 @import "render/blocks/basket/Basket.css";
@@ -71,6 +70,7 @@
 @import "render/blocks/signupField/SignupField.css";
 @import "render/blocks/supportChat/supportChat.css";
 @import "render/blocks/wavingMenue/WavingMenue.css";
+@import "render/blocks/RecommendBar/RecommendBar.css";
 
 
 

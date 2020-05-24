@@ -10,6 +10,7 @@
     overflow-y: scroll;
 }
 
+
 .main-view__info-bar {
     display: flex;
     justify-content: space-between;
@@ -40,4 +41,8 @@
     margin-inline-end: 0;
     font-weight: normal;
     text-align: center;
+}
+
+.main-view__cat-info-bar {
+    margin: 80px 90px -50px;
 }

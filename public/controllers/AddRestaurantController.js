@@ -32,10 +32,10 @@ class AddRestaurantController extends BaseController {
                         response.error,
                     );
                 } else if (response.message) {
-                    sessionStorage.message = 'Ресторан успешно создан';
                     EventBus.broadcast(Event.setPage, {
                     // Лучше переводить на страницу ресторана
                         url: '/admin/restaurants',
+                        message: 'Ресторан успешно создан',
                     });
                 }
             })

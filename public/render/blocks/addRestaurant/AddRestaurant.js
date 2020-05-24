@@ -3,11 +3,13 @@ import Input from '../../elements/input/Input.js';
 import NeonButton from '../../elements/neonButton/NeonButton.js';
 import EventBus from '../../../services/Events/EventBus.js';
 import ErrorBlock from '../errorBlock/ErrorBlock.js';
-import Validation from '../../../services/InputValidation.js';
 import template from './AddRestaurant.hbs';
 import Textarea from '../../elements/textarea/Textarea';
 import Events from '../../../services/Events/Events';
 import CheckedInput from '../../elements/checkedInput/CheckedInput';
+import ImageInput from '../../elements/ImageInput/ImageInput';
+import RadiusInput from '../../elements/RadiusInput/RadiusInput';
+import GeoInput from '../../elements/GeoInput/GeoInput';
 
 export default class AddRestaurant extends Component {
     constructor({classes}) {
@@ -15,7 +17,6 @@ export default class AddRestaurant extends Component {
             nameInput: new CheckedInput({
                 label: 'Название',
                 Input: new Input({
-                    classes: 'add-restaurant__input',
                     id: 'add-restaurant__name-input',
                     type: 'text',
                     placeholder: 'ресторана',
@@ -26,7 +27,6 @@ export default class AddRestaurant extends Component {
             descInput: new CheckedInput({
                 label: 'Описание',
                 Input: new Textarea({
-                    classes: 'add-restaurant__textarea',
                     id: 'add-restaurant__desc-textarea',
                     placeholder: 'ресторана',
                     maxlength: 255,
@@ -34,15 +34,22 @@ export default class AddRestaurant extends Component {
                     isRequired: true,
                 }),
             }),
-            Image: new Input({
-                classes: 'add-restaurant__image-input',
-                id: 'add-restaurant__image-input',
-                type: 'file',
-                value: 'xxx',
-                isRequired: true,
+            Image: new CheckedInput({
+                label: 'Изображение',
+                Input: new ImageInput({
+                    id: 'add-restaurant__image-input',
+                    isRequired: true,
+                }),
             }),
-            ImageError: new ErrorBlock({
-                id: 'image-error',
+            RadiusInput: new CheckedInput({
+                label: 'Радиус доставки',
+                Input: new RadiusInput({
+                    id: 'add-rest-point__rad-input',
+                }),
+            }),
+            AddressInput: new CheckedInput({
+                label: 'Адрес доставки',
+                Input: new GeoInput('__add-rest-point'),
             }),
             generalError: new ErrorBlock({
                 id: 'general-error',
@@ -57,44 +64,42 @@ export default class AddRestaurant extends Component {
                 text: 'Добавить',
                 callback: () => {
                     this.context.generalError.clean();
-                    let validationFlag;
-
-                    validationFlag = Validation.inputValidation(
-                        this.context.nameInput,
-                        this.context.nameError,
-                    );
-
-                    validationFlag = Validation.inputValidation(
-                        this.context.descInput,
-                        this.context.descError,
-                    ) && validationFlag;
-
-                    validationFlag = Validation.inputValidation(
-                        this.context.Image,
-                        this.context.ImageError,
-                    ) && validationFlag;
-
-                    if (validationFlag === false) {
-                        return;
-                    }
+                    let valFlag = this.context.nameInput.isValid();
+                    valFlag = valFlag && this.context.descInput.isValid();
+                    valFlag = valFlag && this.context.Image.isValid();
+                    valFlag = valFlag && this.context.RadiusInput.isValid();
+                    valFlag = valFlag && this.context.AddressInput.isValid();
+                    if (!valFlag) return;
 
                     const formData = new FormData();
                     formData.append(
                         'image',
-                        this.context.Image.domElement.files[0],
+                        this.context.Image.context.Input.domElement.files[0],
                     );
                     formData.append(
                         'Name',
-                        this.context.nameInput.domElement.value,
+                        this.context.nameInput.value(),
                     );
                     formData.append(
                         'Description',
-                        this.context.descInput.domElement.value,
+                        this.context.descInput.value(),
+                    );
+                    formData.append(
+                        'address',
+                        this.context.AddressInput.value(),
+                    );
+                    formData.append(
+                        'radius',
+                        this.context.RadiusInput.value(),
                     );
                     EventBus.broadcast(Events.addRestaurant, formData);
                 },
             }),
         });
+    }
+
+    focusOnAddressInput() {
+        this.context.AddressInput.focus();
     }
 
     bind() {
@@ -106,6 +111,13 @@ export default class AddRestaurant extends Component {
                 }),
         );
 
+//         ymaps.ready(init);
+//
+//         function init() {
+//             const suggestView = new ymaps.SuggestView(GeoInput.id('__add-rest-point'));
+//         }
+// debugger
+//         this.focusOnAddressInput();
         super.bind();
     }
 }

@@ -63,7 +63,7 @@ export default class AddProductView extends Component {
                     const formData = new FormData();
                     formData.append(
                         'image',
-                        this.context.ImageInput.value(),
+                        this.context.ImageInput.context.Input.value(),
                     );
                     formData.append(
                         'Name',

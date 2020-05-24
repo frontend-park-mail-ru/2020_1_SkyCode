@@ -7,15 +7,6 @@
     color: black;
 }
 
-.recommend-bar__restaurant {
-    width: 25%;
-    min-width: 230px;
-    margin: 10px 20px 50px 0;
-
-    text-decoration: none;
-    color: black;
-}
-
 @media (max-width: 600px) {
     /*@media (max-width: 850px) {*/
     .restaurant-list__restaurant {
