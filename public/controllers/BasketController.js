@@ -113,6 +113,7 @@ class BasketController extends BaseController {
             owner: -1,
             product: {},
         };
+        EventBus.broadcast(Event.updateBasket, this.basket.product);
     }
 }
 

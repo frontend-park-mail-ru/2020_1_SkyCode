@@ -37,10 +37,11 @@ class CheckoutController extends BaseController {
                 if (response.error) {
                     EventBus.broadcast(Event.orderCheckoutError, response.error);
                 } else {
-                    sessionStorage.message = 'Ваш заказ успешно оформлен';
-
-                    EventBus.broadcast(Event.checkoutSuccess, {});
-                    EventBus.broadcast(Event.setPage, {url: '/orders'});
+                    EventBus.broadcast(Event.checkoutSuccess);
+                    EventBus.broadcast(Event.setPage, {
+                        url: '/orders',
+                        message: 'Ваш заказ успешно оформлен',
+                    });
                 }
             })
             .catch((err) => {

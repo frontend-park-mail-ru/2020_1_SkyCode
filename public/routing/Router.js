@@ -125,9 +125,10 @@ class Router {
         this._currentController.execute(matchData);
     }
 
-    _goto({url}, withHistRecords = true) {
+    _goto({url, message = ''}, withHistRecords = true) {
         let matchData;
         let pageRecord;
+        sessionStorage.message = message;
 
         // eslint-disable-next-line prefer-const
         [pageRecord, matchData] = this._matchUrl(url)
@@ -136,10 +137,12 @@ class Router {
         if (pageRecord.needLogin) {
             if (pageRecord.needAdmin && UserController.logined
                 && UserController.User.role !== 'Admin') {
-                sessionStorage.message = 'Недостаточно прав для перехода'
-                + ' по данному url';
                 if (this._currentController === null) {
-                    EventBus.broadcast(Events.setPage, {url: '/'});
+                    EventBus.broadcast(Events.setPage, {
+                        url: '/',
+                        message: 'Недостаточно прав для перехода'
+                            + ' по данному url',
+                    });
                 } else {
                     this.reload();
                 }
@@ -148,10 +151,12 @@ class Router {
 
             if (pageRecord.needSupport && UserController.logined
                 && UserController.User.role !== 'Support') {
-                sessionStorage.message = 'Недостаточно прав для перехода'
-                + ' по данному url';
                 if (this._currentController === null) {
-                    EventBus.broadcast(Events.setPage, {url: '/'});
+                    EventBus.broadcast(Events.setPage, {
+                        url: '/',
+                        message: 'Недостаточно прав для перехода'
+                            + ' по данному url',
+                    });
                 } else {
                     this.reload();
                 }

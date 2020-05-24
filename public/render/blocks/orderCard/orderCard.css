@@ -77,7 +77,7 @@
     flex-direction: column;
     justify-content: flex-start;
     margin-bottom: 10px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .order-card__product-section-list_product {
