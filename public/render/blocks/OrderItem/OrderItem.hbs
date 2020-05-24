@@ -1,25 +1,28 @@
 <div class="restaurant-item {{classes}}" id={{id}}>
-    <div class="order-item__name">
-        <div class="restaurant-item__name">{{time}}</div>
-        <div class="restaurant-item__name">{{status}}</div>
+    <div class="order-item__time-name">
+        <div class="order-item__time">{{time}}</div>
+        <div class="order-item__name">{{status}}</div>
     </div>
-    {{#if Button}}
-        {{{Button}}}
-    {{/if}}
 
-    <h3>Информация о заказе</h3>
+    <h2>Информация о заказе:</h2>
     <ul>
         <li>Дата: {{date}}</li>
         <li>Телефон: {{order.phone}}</li>
-        <li>Комментарий: {{order.comment}}</li>
+        {{#if order.comment}}
+            <li>Комментарий: {{order.comment}}</li>
+        {{/if}}
+
         <li>Количество людей: {{order.person_num}}</li>
         <li>Стоимость: {{order.price}} рублей</li>
     </ul>
-    <h3>Заказ</h3>
+    <h2>Содержимое заказа:</h2>
     <ul>
         {{#each products}}
-            <li>{{this.name}}</li>
+            <li>{{this.name}} × {{this.count}} шт</li>
         {{/each}}
     </ul>
 
+    {{#if Button}}
+        {{{Button}}}
+    {{/if}}
 </div>

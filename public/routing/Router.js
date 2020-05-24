@@ -303,9 +303,11 @@ class Router {
     }
 
     reload(message = '') {
-        sessionStorage.message = message;
         EventBus.broadcast('reload');
-        this._goto({url: window.location.pathname}, false);
+        this._goto({
+            url: window.location.pathname,
+            message,
+        }, false);
     }
 }
 

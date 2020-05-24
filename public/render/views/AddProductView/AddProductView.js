@@ -39,9 +39,12 @@ export default class AddProductView extends Component {
                 }),
             }),
 
-            ImageInput: new ImageInput({
-                id: 'add-product__image-input',
-                classes: 'add-product__image-input',
+            ImageInput: new CheckedInput({
+                label: 'Изображение',
+                Input: new ImageInput({
+                    id: 'add-product__image-input',
+                    classes: 'add-product__image-input',
+                }),
             }),
         });
 
@@ -60,7 +63,7 @@ export default class AddProductView extends Component {
                     const formData = new FormData();
                     formData.append(
                         'image',
-                        this.context.ImageInput.domElement.value,
+                        this.context.ImageInput.value(),
                     );
                     formData.append(
                         'Name',

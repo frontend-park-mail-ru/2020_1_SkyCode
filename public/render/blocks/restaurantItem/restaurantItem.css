@@ -24,6 +24,7 @@
 
 .restaurant-item__name {
     font-size: 20px;
+    line-height: 28px;
     width: 100%;
     font-weight: bold;
     cursor: pointer;

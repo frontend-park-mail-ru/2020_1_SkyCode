@@ -32,9 +32,13 @@ export default class ImageInput extends Component {
         this.isRequired = isRequired;
     }
 
+    correct() {
+        void 0;
+    }
+
     check() {
-        if (this.domElement.files.length === 0) return 'Изображение' +
-            ' обязательно';
+        if (this.domElement.files.length === 0) return 'Изображение'
+            + ' обязательно';
         if (!validFileType(this.value())) return 'Выберите изображение (.png,'
             + ' .jpg)';
         return '';
@@ -62,9 +66,11 @@ export default class ImageInput extends Component {
             this.errorElement().innerHTML = error;
             if (error !== '') return;
 
-            const innterHtml = this.labelElement().innerHTML;
+            const innerHtml = this.labelElement().innerHTML;
             this.labelElement().innerHTML = `"${this.value().name}"`
-                + innterHtml.slice(innterHtml.indexOf('<'));
+                + innerHtml.slice(innerHtml.indexOf('<'));
+
+            this.imageElement().src = URL.createObjectURL(this.domElement.files[0]);
         };
 
         super.bind();

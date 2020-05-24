@@ -7,31 +7,32 @@ import Validation from '../../../services/InputValidation.js';
 import template from './AddRestaurant.hbs';
 import Textarea from '../../elements/textarea/Textarea';
 import Events from '../../../services/Events/Events';
+import CheckedInput from '../../elements/checkedInput/CheckedInput';
 
 export default class AddRestaurant extends Component {
     constructor({classes}) {
         super(classes, {
-            nameInput: new Input({
-                classes: 'add-restaurant__input',
-                id: 'add-restaurant__name-input',
-                type: 'text',
-                placeholder: 'Название',
-                minlength: 4,
-                isRequired: true,
+            nameInput: new CheckedInput({
+                label: 'Название',
+                Input: new Input({
+                    classes: 'add-restaurant__input',
+                    id: 'add-restaurant__name-input',
+                    type: 'text',
+                    placeholder: 'ресторана',
+                    minlength: 4,
+                    isRequired: true,
+                }),
             }),
-            nameError: new ErrorBlock({
-                id: 'name-error',
-            }),
-            descInput: new Textarea({
-                classes: 'add-restaurant__textarea',
-                id: 'add-restaurant__desc-textarea',
-                placeholder: 'Описание',
-                maxlength: 255,
-                minLength: 10,
-                isRequired: true,
-            }),
-            descError: new ErrorBlock({
-                id: 'desc-error',
+            descInput: new CheckedInput({
+                label: 'Описание',
+                Input: new Textarea({
+                    classes: 'add-restaurant__textarea',
+                    id: 'add-restaurant__desc-textarea',
+                    placeholder: 'ресторана',
+                    maxlength: 255,
+                    minLength: 10,
+                    isRequired: true,
+                }),
             }),
             Image: new Input({
                 classes: 'add-restaurant__image-input',

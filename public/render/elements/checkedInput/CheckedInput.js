@@ -1,5 +1,6 @@
 import temp from './CheckedInput.hbs';
 import Component from '../../Component';
+import Input from '../input/Input';
 
 export default class CheckedInput extends Component {
     constructor({Input, label, botError = false} = {}) {
@@ -37,6 +38,7 @@ export default class CheckedInput extends Component {
          * Super.bind() опущен намеренно, ибо Input.bind перезапишет коллбек
          * На oninput
          */
+        if (!(this.context.Input instanceof Input)) super.bind();
     }
 
     isValid() {

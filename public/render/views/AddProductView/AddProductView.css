@@ -11,14 +11,14 @@
     width: fit-content;
     height: fit-content;
     align-self: center;
-    margin: 0 auto;
+    margin: 20px auto;
 }
+
 
 @media (max-width: 600px) {
     .add-product-by-restaurant-view {
         border-radius: 0;
         box-shadow: none;
-        width: 100%;
         height: 100%;
         padding: 0 30px;
     }

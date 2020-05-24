@@ -18,6 +18,11 @@
     background-color: transparent;
 }
 
+.order-item__submit {
+    min-height: 30px;
+    margin: 10px auto;
+}
+
 .login-field__goto-signup, .singup-field__goto-login {
     color: black;
     background: transparent;

@@ -33,6 +33,7 @@ export default class OrderItem extends Component {
             button = new NeonButton({
                 text: `Обновить статус до "${frontStatuses[1]}"`,
                 id: 'order-item' + order.id + '__button',
+                classes: 'order-item__submit neon-button',
                 callback: this.updateStatus(status, order.id),
             });
         } else if (order.status === 'Delivering') {

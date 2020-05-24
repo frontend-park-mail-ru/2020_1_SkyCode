@@ -6,6 +6,7 @@ import Textarea from '../../elements/textarea/Textarea';
 import NumberInput from '../../elements/numberInput/NumberInput';
 import EventBus from '../../../services/Events/EventBus';
 import Events from '../../../services/Events/Events';
+import Router from '../../../routing/Router';
 
 
 export default class FeedbackForm extends Component {
@@ -54,26 +55,28 @@ export default class FeedbackForm extends Component {
                     if (oldReview === null) {
                         RestaurantModel
                             .addRestaurantReview(restaurantId, JSON.stringify(body))
-                            .then((response) => {
-                                sessionStorage.message = 'Ваш отзыв успешно'
-                                    + ' добавлен';
-                                EventBus.broadcast(Events.setPage, {url: window.location.pathname});
+                            .then((resp) => {
+                                if (resp.error) throw resp.error;
+                                Router.reload(body.text.length === 0 ? 'Ваша'
+                                        + ' оценка учтена. Оценки без отзывов'
+                                        + ' не показываются в общем списке'
+                                    : 'Ваш отзыв успешно' + ' добавлен');
                             })
                             .catch((err) => {
-                                sessionStorage.message = 'Ошибка добавления'
-                                    + ' отзыва';
+                                Router.reload('Ошибка добавления'
+                                    + ' отзыва: ' + err);
                             });
                     } else {
                         RestaurantModel
                             .changeRestaurantReview(oldReview.id, JSON.stringify(body))
                             .then((response) => {
-                                sessionStorage.message = 'Ваш отзыв успешно'
-                                    + ' изменён';
-                                EventBus.broadcast(Events.setPage, {url: window.location.pathname});
+                                Router.reload(body.text.length === 0 ? 'Ваша'
+                                    + ' оценка учтена. Оценки без отзывов'
+                                    + ' не показываются в общем списке'
+                                    : 'Ваш отзыв успешно изменён');
                             })
                             .catch((err) => {
-                                sessionStorage.message = 'Ошибка изменения'
-                                    + ' отзыва';
+                                Router.reload('Ошибка изменения отзыва: ' + err);
                             });
                     }
                 },
