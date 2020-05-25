@@ -31,6 +31,7 @@ export default class IconBar extends Component {
             },
         }),
         new Img({
+            id: 'notif icon',
             classes: 'icon map-href',
             src: '/static/notif.svg',
             imageClasses: 'icon-bar__map-image',
@@ -38,11 +39,14 @@ export default class IconBar extends Component {
                 EventBus.broadcast(Events.notifRequest);
             },
         }),
-        new ImageHref({
-            classes: 'icon order-history-href',
-            src: '/static/order_history.svg',
-            href: '/orders',
-            imageClasses: 'icon-bar__history-image',
+        new Img({
+            id: 'map icon',
+            classes: 'icon map-href',
+            src: '/static/map-pin.svg',
+            imageClasses: 'icon-bar__map-image',
+            callback: () => {
+                EventBus.broadcast(Events.geoRequest);
+            },
         }),
     ]} = {}) {
         super(classes, {

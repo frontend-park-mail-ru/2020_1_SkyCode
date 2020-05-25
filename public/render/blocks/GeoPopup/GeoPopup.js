@@ -101,16 +101,16 @@ export default class GeoPopup extends Component {
         ymaps.ready(init);
         function init() {
             const input = document.getElementById('alone_geo-input');
-            // Object.defineProperty(input, 'value', {
-            //     get() {
-            //         return this.innerText.replace(/\s+/g, ' ').trim();
-            //     },
-            //     set(v) {
-            //         this.innerText = v.replace(/\s+/g, '\n');
-            //     },
-            // });
+            Object.defineProperty(input, 'value', {
+                get() {
+                    return this.innerText.replace(/\s+/g, ' ').trim();
+                },
+                set(v) {
+                    this.innerText = v.replace(/\s+/g, '\n');
+                },
+            });
 
-            const suggestView = new ymaps.SuggestView(input);
+            new ymaps.SuggestView(input);
         }
     }
 

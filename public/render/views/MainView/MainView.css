@@ -22,7 +22,6 @@
         height: 80vh;
     }
     .main-view__info-bar {
-        flex-direction: column;
         justify-content: center;
     }
 }

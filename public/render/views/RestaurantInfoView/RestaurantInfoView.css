@@ -1,3 +1,8 @@
+.restaurant-feedback-card__word {
+    padding-left: 15px;
+    padding-bottom: 7px;
+}
+
 .restaurant-info-view {
     grid-area: view;
 

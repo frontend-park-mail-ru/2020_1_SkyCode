@@ -1,23 +1,21 @@
 .chat {
-    position: relative;
     width: 80%;
-    border-radius: 10px 0 0;
+    border-radius: 10px;
     box-shadow: 0 4px 100px #D6D6D6;
-    justify-self: center;
-    align-self: center;
+    overflow: hidden;
+    height: fit-content;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
     .chat {
         width: 100%;
-        height: 70vh;
+        box-shadow: none;
     }
 }
 
 .chat__header {
     background: #2196f3;
     height: 50px;
-    border-radius: 10px 10px 0 0;
     color: #FFFFFF;
 }
 
@@ -28,7 +26,6 @@
     padding: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
 }
 
 .chat__title {
@@ -37,15 +34,12 @@
 }
 
 .chat__input-container {
-    position: absolute;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    bottom: -50px;
     width: 100%;
     height: 50px;
     border-radius: 0 0 10px 10px;
     background: white;
+    align-items: center;
 }
 
 .chat__body {

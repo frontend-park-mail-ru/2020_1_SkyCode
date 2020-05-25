@@ -19,7 +19,7 @@ export default class AddRestaurant extends Component {
                 Input: new Input({
                     id: 'add-restaurant__name-input',
                     type: 'text',
-                    placeholder: 'ресторана',
+                    // placeholder: 'ресторана',
                     minlength: 4,
                     isRequired: true,
                 }),
@@ -28,7 +28,7 @@ export default class AddRestaurant extends Component {
                 label: 'Описание',
                 Input: new Textarea({
                     id: 'add-restaurant__desc-textarea',
-                    placeholder: 'ресторана',
+                    // placeholder: 'ресторана',
                     maxlength: 255,
                     minLength: 10,
                     isRequired: true,
@@ -42,7 +42,7 @@ export default class AddRestaurant extends Component {
                 }),
             }),
             RadiusInput: new CheckedInput({
-                label: 'Радиус доставки',
+                label: 'Радиус доставки (км)',
                 Input: new RadiusInput({
                     id: 'add-rest-point__rad-input',
                 }),

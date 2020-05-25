@@ -43,6 +43,9 @@
     border-right: none;
     border-left: none;
     outline: none;
+    resize: vertical;
+    font-size: 18px;
+    line-height: 20px;
 }
 
 .checked-input__input:focus+.checked-input__label,

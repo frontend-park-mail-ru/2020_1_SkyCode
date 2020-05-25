@@ -49,7 +49,7 @@ export default class RestaurantInfoView extends Component {
                 }),
                 Signup: new NeonButton({
                     classes: 'restaurant-feedback__login-signup',
-                    text: 'Зарегестрируйтесь',
+                    text: 'Зарегистрируйтесь',
                     id: 'restaurant-feedback__signup',
                     callback: () => {
                         EventBus.broadcast(Events.signupRequest);

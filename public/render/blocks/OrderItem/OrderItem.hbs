@@ -4,23 +4,28 @@
         <div class="order-item__name">{{status}}</div>
     </div>
 
-    <h2>Информация о заказе:</h2>
-    <ul>
-        <li>Дата: {{date}}</li>
-        <li>Телефон: {{order.phone}}</li>
-        {{#if order.comment}}
-            <li>Комментарий: {{order.comment}}</li>
-        {{/if}}
+    <div class="order-item__container">
+        <h2>Информация о заказе:</h2>
+        <ul>
+            <li>Дата: {{date}}</li>
+            <li>Телефон: {{order.phone}}</li>
+            {{#if order.comment}}
+                <li>Комментарий: {{order.comment}}</li>
+            {{/if}}
 
-        <li>Количество людей: {{order.person_num}}</li>
-        <li>Стоимость: {{order.price}} рублей</li>
-    </ul>
-    <h2>Содержимое заказа:</h2>
-    <ul>
-        {{#each products}}
-            <li>{{this.name}} × {{this.count}} шт</li>
-        {{/each}}
-    </ul>
+            <li>Количество людей: {{order.person_num}}</li>
+            <li>Стоимость: {{order.price}} рублей</li>
+        </ul>
+    </div>
+
+    <div class="order-item__container">
+        <h2>Содержимое заказа:</h2>
+        <ul>
+            {{#each products}}
+                <li>{{this.name}} × {{this.count}} шт</li>
+            {{/each}}
+        </ul>
+    </div>
 
     {{#if Button}}
         {{{Button}}}

@@ -103,7 +103,7 @@ export default class ProfileTextArea extends Component {
                 id: 'profile-area__orders',
                 classes: 'profile-area__submit',
                 callback: () => {
-                    EventBus.broadcast(Events.setPage, '/orders');
+                    EventBus.broadcast(Events.setPage, {url: '/orders'});
                 },
             }),
         });

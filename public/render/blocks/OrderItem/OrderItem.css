@@ -20,3 +20,10 @@
     margin-bottom: 5px;
     text-align: right;
 }
+
+.order-item__container {
+    border: 1px dotted black;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 15px;
+}

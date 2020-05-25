@@ -2,6 +2,7 @@
     grid-area: view;
 
     overflow-y: auto;
+    overflow-x: hidden;
     padding: 20px 0;
 }
 
