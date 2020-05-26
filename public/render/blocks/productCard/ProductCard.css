@@ -14,10 +14,13 @@
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
     .product-list__product-card {
         justify-self: center;
         min-width: 200px;
+        margin-right: 0;
+        margin-bottom: 20px;
+        margin-top: 10px;
     }
 }
 

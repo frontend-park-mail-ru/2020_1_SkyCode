@@ -12,5 +12,6 @@
 @media (max-width: 600px) {
     .restaurant-view__product-list {
         justify-content: center;
+        margin: 0;
     }
 }
