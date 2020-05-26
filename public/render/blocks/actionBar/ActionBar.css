@@ -19,13 +19,6 @@
 
 @media (max-width: 700px) {
     .action-bar__list {
-        margin-left: 40px;
-        width: calc(100% - 80px);
-    }
-}
-
-@media (max-width: 450px) {
-    .action-bar__list {
         width: 100%;
     }
 }

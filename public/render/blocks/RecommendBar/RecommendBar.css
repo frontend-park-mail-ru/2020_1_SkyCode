@@ -27,13 +27,6 @@
 
 @media (max-width: 700px) {
     .recommend-bar__list {
-        margin-left: 40px;
-        width: calc(100% - 80px);
-    }
-}
-
-@media (max-width: 450px) {
-    .recommend-bar__list {
         width: 100%
     }
 }
