@@ -1,54 +1,58 @@
-<input  class="{{classes}} input"
-        type="{{type}}"
+<input class="{{classes}} input"
+       type="{{type}}"
 
-        {{#if  isChecked}}
-            checked
-        {{/if}}
+    {{#if  isChecked}}
+       checked
+    {{/if}}
 
-        {{#if isDisabled}}
-            disabled
-        {{/if}}
+    {{#if isDisabled}}
+       disabled
+    {{/if}}
 
-        {{#if placeholder}}
-            placeholder="{{placeholder}}"
-        {{/if}}
+    {{#if isReadonly}}
+       readonly
+    {{/if}}
 
-        {{#if src}}
-            src="{{src}}"
-            width="30"
-            height="30"
+    {{#if placeholder}}
+       placeholder="{{placeholder}}"
+    {{/if}}
 
-        {{/if}}
+    {{#if src}}
+       src="{{src}}"
+       width="30"
+       height="30"
 
-        {{#if max}}
-            max="{{max}}"
-        {{/if}}
+    {{/if}}
 
-        {{#if min}}
-            min="{{min}}"
-        {{/if}}
+    {{#if max}}
+       max="{{max}}"
+    {{/if}}
 
-        {{#if id}}
-            id="{{id}}"
-        {{/if}}
+    {{#if min}}
+       min="{{min}}"
+    {{/if}}
 
-        {{#if value}}
-            value="{{value}}"
-        {{/if}}
+    {{#if id}}
+       id="{{id}}"
+    {{/if}}
 
-        {{#if isRequired}}
-            required
-        {{/if}}
+    {{#if value}}
+       value="{{value}}"
+    {{/if}}
 
-        {{#if pattern}}
-            pattern="{{pattern}}"
-        {{/if}}
+    {{#if isRequired}}
+       required
+    {{/if}}
 
-        {{#if maxlength}}
-            maxlength="{{maxlength}}"
-        {{/if}}
+    {{#if pattern}}
+       pattern="{{pattern}}"
+    {{/if}}
 
-        {{#if minlength}}
-            minlength="{{minlength}}"
-        {{/if}}
+    {{#if maxlength}}
+       maxlength="{{maxlength}}"
+    {{/if}}
+
+    {{#if minlength}}
+       minlength="{{minlength}}"
+    {{/if}}
 />

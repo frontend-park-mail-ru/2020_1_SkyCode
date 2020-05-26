@@ -39,14 +39,11 @@ export default class IconBar extends Component {
                 EventBus.broadcast(Events.notifRequest);
             },
         }),
-        new Img({
-            id: 'map icon',
+        new ImageHref({
+            src: '/static/order_history.svg',
             classes: 'icon map-href',
-            src: '/static/map-pin.svg',
-            imageClasses: 'icon-bar__map-image',
-            callback: () => {
-                EventBus.broadcast(Events.geoRequest);
-            },
+            imageClasses: 'icon-bar__support-image',
+            href: '/orders',
         }),
     ]} = {}) {
         super(classes, {

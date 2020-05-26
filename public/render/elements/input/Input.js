@@ -18,6 +18,7 @@ export default class Input extends Component {
         minlength,
         isDisabled,
         isChecked,
+        isReadonly,
     }) {
         super(classes, {
             src,
@@ -31,6 +32,7 @@ export default class Input extends Component {
             maxlength,
             minlength,
             isDisabled,
+            isReadonly,
             isChecked,
         }, id);
 
