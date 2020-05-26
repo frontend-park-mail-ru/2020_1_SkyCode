@@ -82,7 +82,7 @@ export default class LoginField extends Component {
         );
         this.addUnbind(
             EventBus.subscribe('login-error', (message) => {
-                this.context.generalErrorField.addMessage(message);
+                this.context.generalErrorField.replaceMessage(message);
             }),
         );
 

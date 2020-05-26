@@ -75,7 +75,7 @@ export default class OrderCheckout extends Component {
                         if (BasketController.isEmpty()) {
                             this.context
                                 .GeneralError
-                                .addMessage('Ваша корзина пуста');
+                                .replaceMessage('Ваша корзина пуста');
                             validFlag = false;
                         }
 
@@ -118,7 +118,7 @@ export default class OrderCheckout extends Component {
     bind() {
         this.addUnbind(
             EventBus.subscribe('order-checkout-error', (message) => {
-                this.context.GeneralError.addMessage(message);
+                this.context.GeneralError.replaceMessage(message);
             }),
         );
 

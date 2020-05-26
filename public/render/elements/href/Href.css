@@ -84,7 +84,7 @@
     align-items: center;
     border-radius: 15px;
     transition: 0.2s;
-    margin: -30px auto 30px auto;
+    margin: 0 auto;
 }
 
 .restaurant-view__info,

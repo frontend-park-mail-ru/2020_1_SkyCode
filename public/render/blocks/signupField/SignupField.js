@@ -103,7 +103,7 @@ export default class SignupField extends Component {
 
         if (this.context.passwordInput1.value()
             !== this.context.passwordInput2.value()) {
-            this.context.generalErrorField.addMessage(
+            this.context.generalErrorField.replaceMessage(
                 'Пароли должны совпадать',
             );
             return;
@@ -128,7 +128,7 @@ export default class SignupField extends Component {
         );
         this.addUnbind(
             EventBus.subscribe(Event.signupError, (message) => {
-                this.context.generalErrorField.addMessage(message);
+                this.context.generalErrorField.replaceMessage(message);
             }),
         );
 

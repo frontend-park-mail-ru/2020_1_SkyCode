@@ -25,9 +25,6 @@ export default class Order extends Component {
         this.addContextData({
             Title: 'Заказ',
             Total: this.countTotal(basket),
-            PlaceTimeCard: new PlaceTimeCard({
-                classes: 'order__place-time-card',
-            }),
             Basket: new Basket({
                 classes: 'order__basket',
                 basket,

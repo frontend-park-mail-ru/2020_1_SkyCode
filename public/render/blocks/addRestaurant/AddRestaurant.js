@@ -107,7 +107,7 @@ export default class AddRestaurant extends Component {
             EventBus.subscribe(
                 'add-restaurant-error',
                 (message) => {
-                    this.context.generalError.addMessage(message);
+                    this.context.generalError.replaceMessage(message);
                 }),
         );
 

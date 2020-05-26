@@ -133,7 +133,7 @@ export default class ProfileTextArea extends Component {
             EventBus.subscribe('update-bio-error', () => {
                 this.context
                     .generalErrorField
-                    .addMessage('Пользователь с таким email уже существует');
+                    .replaceMessage('Пользователь с таким email уже существует');
                 // .addMessage(message);
             }),
         );
@@ -142,7 +142,7 @@ export default class ProfileTextArea extends Component {
             EventBus.subscribe('update-avatar-error', () => {
                 this.context
                     .avatarErrorField
-                    .addMessage('Ошибка обновления аватара');
+                    .replaceMessage('Ошибка обновления аватара');
                 // .addMessage(message);
             }),
         );

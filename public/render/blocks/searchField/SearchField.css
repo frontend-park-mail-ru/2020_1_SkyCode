@@ -1,6 +1,12 @@
 .header__search-field {
     flex-grow: 1;
     display: flex;
+    padding: 4px 0;
+    border-radius: 30px;
+    background: #F8F8F8;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
 }
 
 @media (max-width: 400px) {
