@@ -25,6 +25,7 @@ export default class SupportChat extends Component {
         });
 
         super.template = template;
+        this.username = username;
     }
 
     submit() {
@@ -41,7 +42,7 @@ export default class SupportChat extends Component {
                 ? Number(localStorage.getItem('chat_id'))
                 : UserController.User.id,
             user_id: UserController.User.id,
-            user_name: username,
+            user_name: this.username,
         });
         this.context.Input.domElement.value = '';
         EventBus.broadcast('send-msg', data);
