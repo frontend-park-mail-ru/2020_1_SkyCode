@@ -50,6 +50,7 @@ class Events {
         this.notifReceived = 'notif-received';
         this.basketChanged = 'basket-changed';
         this.restaurantSelected = 'restaurant-selected';
+        this.enterPressed = 'enter-pressed';
     }
 
     productAdded(id) {

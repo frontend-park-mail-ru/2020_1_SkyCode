@@ -73,35 +73,7 @@ export default class SignupField extends Component {
             submitButton: new NeonButton({
                 classes: 'signup-field__submit',
                 text: 'Зарегистрироваться',
-                callback: () => {
-                    this.context.generalErrorField.clean();
-
-                    const isValid = this.context.fNameInput.isValid()
-                        && this.context.lNameInput.isValid()
-                        && this.context.phoneInput.isValid()
-                        && this.context.passwordInput1.isValid()
-                        && this.context.passwordInput2.isValid();
-
-                    if (!isValid) {
-                        return;
-                    }
-
-                    if (this.context.passwordInput1.value()
-                        !== this.context.passwordInput2.value()) {
-                        this.context.generalErrorField.addMessage(
-                            'Пароли должны совпадать',
-                        );
-                        return;
-                    }
-
-                    const data = {
-                        firstName: this.context.fNameInput.value(),
-                        lastName: this.context.lNameInput.value(),
-                        phone: this.context.phoneInput.value(),
-                        password: this.context.passwordInput1.value(),
-                    };
-                    EventBus.broadcast(Event.signup, data);
-                },
+                callback: this.submit.bind(this),
             }),
             LoginButton: new NeonButton({
                 classes: 'singup-field__goto-login',
@@ -115,11 +87,45 @@ export default class SignupField extends Component {
         });
     }
 
+    submit() {
+        if (this.contextParent.domElement.style.display === 'none') return;
+        this.context.generalErrorField.clean();
+
+        const isValid = this.context.fNameInput.isValid()
+            & this.context.lNameInput.isValid()
+            & this.context.phoneInput.isValid()
+            & this.context.passwordInput1.isValid()
+            & this.context.passwordInput2.isValid();
+
+        if (!isValid) {
+            return;
+        }
+
+        if (this.context.passwordInput1.value()
+            !== this.context.passwordInput2.value()) {
+            this.context.generalErrorField.addMessage(
+                'Пароли должны совпадать',
+            );
+            return;
+        }
+
+        const data = {
+            firstName: this.context.fNameInput.value(),
+            lastName: this.context.lNameInput.value(),
+            phone: this.context.phoneInput.value(),
+            password: this.context.passwordInput1.value(),
+        };
+        EventBus.broadcast(Event.signup, data);
+    }
+
     focusOnFNameInput() {
         this.context.fNameInput.focus();
     }
 
     bind() {
+        this.addUnbind(
+            EventBus.subscribe(Event.enterPressed, this.submit.bind(this)),
+        );
         this.addUnbind(
             EventBus.subscribe(Event.signupError, (message) => {
                 this.context.generalErrorField.addMessage(message);

@@ -41,20 +41,7 @@ export default class LoginField extends Component {
             submitButton: new NeonButton({
                 classes: 'login-field__submit',
                 text: 'Войти',
-                callback: () => {
-                    const isValid = this.context.phoneInput.isValid()
-                    && this.context.passwordInput.isValid();
-
-                    if (!isValid) {
-                        return;
-                    }
-
-                    const data = {
-                        phone: this.context.phoneInput.value(),
-                        password: this.context.passwordInput.value(),
-                    };
-                    EventBus.broadcast(Event.login, data);
-                },
+                callback: this.submit.bind(this),
             }),
             signupButton: new NeonButton({
                 classes: 'login-field__goto-signup',
@@ -68,11 +55,31 @@ export default class LoginField extends Component {
         });
     }
 
+    submit() {
+        if (this.contextParent.domElement.style.display === 'none') return;
+
+        const isValid = this.context.phoneInput.isValid()
+            & this.context.passwordInput.isValid();
+
+        if (!isValid) {
+            return;
+        }
+
+        const data = {
+            phone: this.context.phoneInput.value(),
+            password: this.context.passwordInput.value(),
+        };
+        EventBus.broadcast(Event.login, data);
+    }
+
     focusOnPhoneInput() {
         this.context.phoneInput.focus();
     }
 
     bind() {
+        this.unbind(
+            EventBus.subscribe(Event.enterPressed, this.submit.bind(this)),
+        );
         this.addUnbind(
             EventBus.subscribe('login-error', (message) => {
                 this.context.generalErrorField.addMessage(message);

@@ -236,6 +236,7 @@ class Router {
             button: 'o',
         });
         this._registerPage(SupportChatController, '/support', {
+            needLogin: true,
             button: 's',
         });
         this._registerPage(MapController, '/map');
@@ -262,14 +263,18 @@ class Router {
         const events = Events;
 
         let keyDownFuncBody = 'if (e.key === \'Escape\')'
-            + ' eBus.publish(events.escButPressed);';
+            + ' eBus.broadcast(events.escButPressed);';
+
+        keyDownFuncBody += 'else if (e.key === "Enter")'
+            + ' eBus.broadcast(events.enterPressed);';
 
         for (const record of this._pages) {
             if (record.button === null) continue;
             keyDownFuncBody += `else if (e.key === '${record.button}' && e.altKey) 
-                eBus.publish(events.setPage, {url: '${record.path}'});`;
+                eBus.broadcast(events.setPage, {url: '${record.path}'});`;
         }
 
+        // KeyDownFuncBody += 'else if (e.key === \'Enter\') eBus.publish(events.enterPressed);';
         eval('document.body.onkeydown = (e) => {' + keyDownFuncBody + '};');
     }
 

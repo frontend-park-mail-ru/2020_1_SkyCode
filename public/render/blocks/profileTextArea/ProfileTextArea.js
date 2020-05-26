@@ -84,9 +84,7 @@ export default class ProfileTextArea extends Component {
                     id: 'profile-area__submit',
                     classes: 'profile-area__submit',
                     text: 'Сохранить',
-                    callback: () => {
-                        EventBus.broadcast(Events.profileViewUpdateUser);
-                    },
+                    callback: this.submit.bind(this),
                 }),
 
             LogoutButton:
@@ -109,7 +107,20 @@ export default class ProfileTextArea extends Component {
         });
     }
 
+    submit() {
+        if (document.getElementById('geo-popup').style.display !== 'none'
+         || document.getElementById('signup-popup').style.display !== 'none'
+         || document.getElementById('login-popup').style.display !== 'none')
+            return;
+
+        EventBus.broadcast(Events.profileViewUpdateUser);
+    }
+
     bind() {
+        this.addUnbind(
+            EventBus.subscribe(Events.enterPressed, this.submit.bind(this)),
+        );
+
         this.context.AvatarInput.domElement.addEventListener('change', () => {
             const img = this.context.AvatarInput.domElement.files[0];
             const formData = new FormData();
@@ -119,7 +130,7 @@ export default class ProfileTextArea extends Component {
         });
 
         this.addUnbind(
-            EventBus.subscribe('update-bio-error', (message) => {
+            EventBus.subscribe('update-bio-error', () => {
                 this.context
                     .generalErrorField
                     .addMessage('Пользователь с таким email уже существует');
@@ -128,7 +139,7 @@ export default class ProfileTextArea extends Component {
         );
 
         this.addUnbind(
-            EventBus.subscribe('update-avatar-error', (message) => {
+            EventBus.subscribe('update-avatar-error', () => {
                 this.context
                     .avatarErrorField
                     .addMessage('Ошибка обновления аватара');

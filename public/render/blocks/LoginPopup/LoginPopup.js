@@ -11,6 +11,7 @@ export default class LoginPopup extends Component {
         this.addContextData({
             LoginField: new LoginField(),
         });
+
         this.template = temp;
         this.isStatic = false;
     }

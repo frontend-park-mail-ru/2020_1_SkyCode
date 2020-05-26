@@ -17,7 +17,6 @@ export default class GeoInput extends Component {
     }
 
     correct() {
-
         // const element = document.getElementById(this.id);
         // const address = element.innerText
         //     .replace(/\s+/g, ' ')

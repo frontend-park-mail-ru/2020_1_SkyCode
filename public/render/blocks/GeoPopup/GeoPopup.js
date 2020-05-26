@@ -19,33 +19,37 @@ export default class GeoPopup extends Component {
             Submit: new NeonButton({
                 text: 'Подтвердить',
                 id: 'geo-popup-submit',
-                callback: () => {
-                    let isNewGeo = false;
-                    if (localStorage.getItem('deliveryGeo') === null) {
-                        isNewGeo = true;
-                    }
-                    localStorage.setItem(
-                        'deliveryGeo',
-                        sessionStorage.getItem('deliveryGeo'),
-                    );
-                    localStorage.setItem(
-                        'latitude',
-                        sessionStorage.getItem('latitude'),
-                    );
-                    localStorage.setItem(
-                        'longitude',
-                        sessionStorage.getItem('longitude'),
-                    );
-                    EventBus.broadcast(Events.successGeo);
-                    if (!isNewGeo) {
-                        Router.reload('Адрес доставки успешно изменён');
-                    }
-                },
+                callback: this.submit.bind(this),
             }),
         });
 
         this.template = temp;
         this.isStatic = false;
+    }
+
+    submit() {
+        if (this.domElement.style.display === 'none') return;
+
+        let isNewGeo = false;
+        if (localStorage.getItem('deliveryGeo') === null) {
+            isNewGeo = true;
+        }
+        localStorage.setItem(
+            'deliveryGeo',
+            sessionStorage.getItem('deliveryGeo'),
+        );
+        localStorage.setItem(
+            'latitude',
+            sessionStorage.getItem('latitude'),
+        );
+        localStorage.setItem(
+            'longitude',
+            sessionStorage.getItem('longitude'),
+        );
+        EventBus.broadcast(Events.successGeo);
+        if (!isNewGeo) {
+            Router.reload('Адрес доставки успешно изменён');
+        }
     }
 
     confirmDisappear() {
@@ -59,6 +63,9 @@ export default class GeoPopup extends Component {
     bind() {
         this.confirmDisappear();
 
+        this.addUnbind(
+            EventBus.subscribe(Events.enterPressed, this.submit.bind(this)),
+        );
         this.addUnbind(
             EventBus.subscribe(Events.escButPressed, () => {
                 if (!this.isStatic) {
@@ -108,6 +115,7 @@ export default class GeoPopup extends Component {
                 set(v) {
                     this.innerText = v.replace(/\s+/g, '\n');
                 },
+                configurable: true,
             });
 
             new ymaps.SuggestView(input);

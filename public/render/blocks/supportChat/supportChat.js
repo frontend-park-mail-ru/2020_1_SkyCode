@@ -4,6 +4,7 @@ import Input from '../../elements/input/Input.js';
 import NeonButton from '../../elements/neonButton/NeonButton.js';
 import EventBus from '../../../services/Events/EventBus';
 import UserController from '../../../controllers/UserController';
+import Events from '../../../services/Events/Events';
 
 export default class SupportChat extends Component {
     constructor({classes, username}) {
@@ -19,24 +20,38 @@ export default class SupportChat extends Component {
             SendButton: new NeonButton({
                 classes: 'send_button',
                 text: 'Send',
-                callback: () => {
-                    if (this.context.Input.domElement.value.trim().length === 0) return;
-
-                    const data = JSON.stringify({
-                        message: this.context.Input.domElement.value,
-                        chat_id: UserController.User.role === 'Support'
-                            ? Number(localStorage.getItem('chat_id'))
-                            : UserController.User.id,
-                        user_id: UserController.User.id,
-                        user_name: username,
-                    });
-                    this.context.Input.domElement.value = '';
-                    EventBus.broadcast('send-msg', data);
-                },
+                callback: this.submit.bind(this),
             }),
         });
 
         super.template = template;
+    }
+
+    submit() {
+        if (document.getElementById('geo-popup').style.display !== 'none'
+            || document.getElementById('signup-popup').style.display !== 'none'
+            || document.getElementById('login-popup').style.display !== 'none')
+            return;
+
+        if (this.context.Input.domElement.value.trim().length === 0) return;
+
+        const data = JSON.stringify({
+            message: this.context.Input.domElement.value,
+            chat_id: UserController.User.role === 'Support'
+                ? Number(localStorage.getItem('chat_id'))
+                : UserController.User.id,
+            user_id: UserController.User.id,
+            user_name: username,
+        });
+        this.context.Input.domElement.value = '';
+        EventBus.broadcast('send-msg', data);
+    }
+
+    bind() {
+        this.addUnbind(
+            EventBus.subscribe(Events.enterPressed, this.submit.bind(this)),
+        );
+        super.bind();
     }
 }
 
