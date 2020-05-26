@@ -5,6 +5,7 @@ import template from './ImageHref.hbs';
 
 export default class ImageHref extends Component {
     constructor({
+        id,
         src,
         href,
         classes = 'imageHref',
@@ -16,6 +17,7 @@ export default class ImageHref extends Component {
                 type: 'image',
                 classes: imageClasses,
                 src,
+                id,
             }),
             href,
             needNewWindow,

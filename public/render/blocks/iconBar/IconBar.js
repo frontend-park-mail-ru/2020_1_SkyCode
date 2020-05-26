@@ -31,8 +31,8 @@ export default class IconBar extends Component {
             },
         }),
         new Img({
-            id: 'notif icon',
-            classes: 'icon map-href',
+            id: 'notif-icon',
+            classes: 'icon notif-href',
             src: '/static/notif.svg',
             imageClasses: 'icon-bar__map-image',
             callback: () => {
@@ -40,8 +40,9 @@ export default class IconBar extends Component {
             },
         }),
         new ImageHref({
+            id: 'order-href',
             src: '/static/order_history.svg',
-            classes: 'icon map-href',
+            classes: 'icon order-href',
             imageClasses: 'icon-bar__support-image',
             href: '/orders',
         }),
