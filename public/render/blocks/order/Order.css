@@ -57,10 +57,6 @@
 }
 
 @media (max-width: 700px) {
-    .order__footer {
-        margin-bottom: 60px;
-    }
-
     .order {
         width: 100%;
         height: calc(100% - 140px);
