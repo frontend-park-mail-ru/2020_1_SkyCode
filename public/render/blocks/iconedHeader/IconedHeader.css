@@ -9,13 +9,14 @@
 
 .iconed-header__icon-bar {
     padding: 20px;
+    background-color: transparent;
 }
 
 @media (max-width: 700px) {
     .iconed-header__icon-bar {
         position: fixed;
         bottom: 0;
-        background-color: transparent;
+        background-color: white;
         overflow: hidden;
         padding: 20px;
     }
