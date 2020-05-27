@@ -32,10 +32,15 @@ class MapController extends BaseController {
                 draggable: false,
             });
 
+            const circles = {};
+
+
             RestaurantModel.getRestaurantsByAddress(1, 50, localStorage.getItem('deliveryGeo'))
                 .then((response) => {
                     if (response.restaurants) {
                         for (const rest of response.restaurants) {
+                            circles[rest.id] = newCircle(rest.points[0].service_radius, rest.points[0].map_point.longitude, rest.points[0].map_point.latitude);
+
                             myCollection.add(new ymaps.Placemark([rest.points[0].map_point.longitude, rest.points[0].map_point.latitude],
                                 {
                                     balloonContent: rest.id,
@@ -46,23 +51,64 @@ class MapController extends BaseController {
                                         id: rest.id,
                                         classes: `restaurant-${rest.id}`,
                                     }),
-
                                 }));
                         }
+
+                        myMap.geoObjects.add(myCollection);
+                        myMap.geoObjects.events.add('balloonopen', (e) => {
+                            const id = e.get('target')['properties'].get('balloonContent');
+                            myMap.geoObjects.add(circles[id]);
+                            document.getElementById(id)
+                                .addEventListener('click', (e) => {
+                                    e.preventDefault();
+                                    EventBus.broadcast(Event.setPage, {url: `/restaurants/${id}`});
+                                });
+                            console.log(id);
+                        });
+                        myMap.geoObjects.events.add('balloonclose', (e) => {
+                            const id = e.get('target')['properties'].get('balloonContent');
+                            myMap.geoObjects.remove(circles[id]);
+                            console.log(id);
+                        });
                     }
                 })
                 .catch((err) => console.log(err));
 
-            myMap.geoObjects.add(myCollection);
-            myMap.geoObjects.events.add('balloonopen', (e) => {
-                const id = e.get('target')['properties'].get('balloonContent');
-                document.getElementById(id)
-                    .addEventListener('click', (e) => {
-                        e.preventDefault();
-                        EventBus.broadcast(Event.setPage, {url: `/restaurants/${id}`});
-                    });
-                console.log(id);
-            });
+
+            function newCircle(rad, x, y) {
+                return new ymaps.Circle([
+                    // Координаты центра круга.
+                    [x, y],
+                    // Радиус круга в метрах.
+                    1000 * Number(rad),
+                ], {
+                    /*
+                     * Описываем свойства круга.
+                     * Содержимое балуна.
+                     */
+                    balloonContent: 'Радиус обслуживания',
+                    // Содержимое хинта.
+                    hintContent: 'Радиус обслуживания',
+                }, {
+                    /*
+                     * Задаем опции круга.
+                     * Включаем возможность перетаскивания круга.
+                     */
+                    draggable: false,
+                    /*
+                     * Цвет заливки.
+                     * Последний байт (77) определяет прозрачность.
+                     * Прозрачность заливки также можно задать используя опцию "fillOpacity".
+                     */
+                    fillColor: 'rgba(0,170,255,0.34)',
+                    // Цвет обводки.
+                    strokeColor: '#000f99',
+                    // Прозрачность обводки.
+                    strokeOpacity: 0.8,
+                    // Ширина обводки в пикселях.
+                    strokeWidth: 2,
+                });
+            }
         }
     }
 

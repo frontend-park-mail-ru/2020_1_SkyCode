@@ -56,37 +56,4 @@ export default class ActionBar extends Component {
         const div = Math.round(list.scrollLeft / fraction);
         list.scrollLeft = div * fraction;
     }
-
-    bind() {
-        const list = document.getElementsByClassName('action-bar__list')[0];
-        const minScrollLeft = 0;
-        const leftButton = this.context.LeftButton.domElement;
-        const rightButton = this.context.RightButton.domElement;
-
-        let hasTimer = false;
-        list.onscroll = () => {
-            if (hasTimer) {
-                return;
-            }
-            hasTimer = true;
-
-            setTimeout(() => {
-                const maxScrollLeft = list.scrollWidth - list.clientWidth;
-                const pos = Math.ceil(list.scrollLeft);
-                const leftVisibility = pos === minScrollLeft ? 'hidden' : 'visible';
-                const rightVisibility = Math.abs(pos - maxScrollLeft) <= 3 ? 'hidden' : 'visible';
-                leftButton.style.visibility = leftVisibility;
-                rightButton.style.visibility = rightVisibility;
-                this.normalize(list);
-                hasTimer = false;
-            }, 300);
-        };
-        super.bind();
-    }
-
-    unbind() {
-        const list = document.getElementsByClassName('action-bar__list')[0];
-        list.onscroll = null;
-        super.unbind();
-    }
 }

@@ -65,47 +65,4 @@ export default class CategoryBar extends Component {
         const div = Math.round(list.scrollLeft / fraction);
         list.scrollLeft = div * fraction;
     }
-
-    bind() {
-        const list = document.getElementsByClassName('category-bar__list')[0];
-        const leftButton = this.context.LeftButton.domElement;
-        const rightButton = this.context.RightButton.domElement;
-        let hasTimer = false;
-        const minScrollLeft = 0;
-
-        list.onscroll = () => {
-            if (hasTimer) {
-                return;
-            }
-            hasTimer = true;
-
-            setTimeout(() => {
-                const maxScrollLeft = list.scrollWidth - list.clientWidth;
-                const pos = Math.ceil(list.scrollLeft);
-                const leftVisibility = pos === minScrollLeft ? 'hidden' : 'visible';
-                const rightVisibility = Math.abs(pos - maxScrollLeft) <= 3 ? 'hidden' : 'visible';
-                leftButton.style.visibility = leftVisibility;
-                rightButton.style.visibility = rightVisibility;
-                this.normalize(list);
-                hasTimer = false;
-            }, 300);
-        };
-
-        this.addUnbind(
-            EventBus.subscribe(Events.restCategorySelected, (id) => {
-                for (const cat of this.context.categories) {
-                    cat.domElement.className = 'category-bar__category';
-                }
-                document.getElementById(Category.categoryId(id)).className += ' category-bar__active';
-            }),
-        );
-
-        super.bind();
-    }
-
-    unbind() {
-        const list = document.getElementsByClassName('category-bar__list')[0];
-        list.onscroll = null;
-        super.unbind();
-    }
 }
