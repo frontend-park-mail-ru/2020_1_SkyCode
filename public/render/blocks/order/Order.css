@@ -1,9 +1,9 @@
 .order {
     position: fixed;
-    top: 0;
+    top: 70px;
     right: 0;
 
-    height: 100vh;
+    height: calc(100% - 70px);
     width: 305px;
     box-sizing: border-box;
     display: flex;
@@ -16,13 +16,13 @@
     padding: 20px;
     z-index: 1;
     transition: display 1.5s ease-in-out;
+    overflow-y: auto;
 }
 
 .order__title {
     font-weight: normal;
     font-size: 30px;
     text-align: center;
-    margin-top: 105px;
 }
 
 .checkout-view__order {
@@ -63,6 +63,7 @@
 
     .order {
         width: 100%;
+        height: calc(100% - 140px);
     }
 }
 

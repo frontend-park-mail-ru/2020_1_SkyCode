@@ -2,7 +2,7 @@
     grid-area: header;
     display: flex;
     box-sizing: border-box;
-    height: 10vh;
+    height: 70px;
     width: 100%;
     padding: 0 10px 0 20px;
     align-items: center;

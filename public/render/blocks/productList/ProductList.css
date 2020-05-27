@@ -9,8 +9,11 @@
     margin: 20px -70px 110px 0;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
     .restaurant-view__product-list {
+        flex-wrap: nowrap;
+        flex-direction: column;
+        align-items: center;
         justify-content: center;
         margin: 0 0 160px 0;
     }

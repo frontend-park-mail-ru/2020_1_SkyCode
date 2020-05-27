@@ -6,13 +6,39 @@ import RestaurantController from './RestaurantController.js';
 class BasketController extends BaseController {
     constructor() {
         super();
-        this.basket = {
-            restaurant: RestaurantController.restaurantId,
-            owner: -1,
-            product: {},
-        };
-        this.total = 0;
-        this.persons = 1;
+        if (localStorage.basket) {
+            this.basket = JSON.parse(localStorage.basket);
+        } else {
+            this.basket = {
+                restaurant: RestaurantController.restaurantId,
+                owner: -1,
+                product: {},
+            };
+        }
+
+        if (localStorage.total) {
+            this.total = Number(localStorage.total);
+        } else {
+            this.total = 0;
+        }
+
+        if (localStorage.persons) {
+            this.persons = Number(localStorage.total);
+        } else {
+            this.persons = 1;
+        }
+    }
+
+    saveBasket() {
+        localStorage.basket = JSON.stringify(this.basket);
+    }
+
+    saveTotal() {
+        localStorage.total = String(this.total);
+    }
+
+    savePersonNum() {
+        localStorage.persons = String(this.persons);
     }
 
     startCatchEvents() {
@@ -80,6 +106,7 @@ class BasketController extends BaseController {
             EventBus.broadcast(Event.updateBasket, this.basket.product);
         }
 
+        this.saveBasket();
         EventBus.broadcast(Event.basketChanged, this.basket.product);
     }
 
@@ -94,6 +121,7 @@ class BasketController extends BaseController {
                 EventBus.broadcast(Event.productDeleted(id));
             }
 
+            this.saveBasket();
             EventBus.broadcast(Event.basketChanged, this.basket.product);
         }
     }
@@ -102,10 +130,12 @@ class BasketController extends BaseController {
         if (personNum > 0) {
             this.persons = personNum;
         }
+        this.savePersonNum();
     }
 
     CheckBasketHandler(data) {
         this.basket.owner = data;
+        this.saveBasket();
     }
 
     cleanBasketHandler() {
@@ -113,6 +143,8 @@ class BasketController extends BaseController {
             owner: -1,
             product: {},
         };
+
+        this.saveBasket();
         EventBus.broadcast(Event.updateBasket, this.basket.product);
     }
 }

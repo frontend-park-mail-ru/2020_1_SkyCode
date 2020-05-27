@@ -88,7 +88,7 @@ body {
 .general-view {
     display: grid;
     grid-template-areas: "header" "view";
-    grid-template-rows: 10vh 1fr;
+    grid-template-rows: 70px 1fr;
 }
 
 .error {
