@@ -1,9 +1,9 @@
 .waving-menue {
     position: fixed;
-    top: 10vh;
+    top: 70px;
     background: linear-gradient(0, #b4b4b4, white);
     width: 350px;
-    height: 90vh;
+    height: 100vh;
     z-index: 2;
 
     transition: .55s;
