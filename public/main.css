@@ -126,7 +126,7 @@ input[type=number] {
 /*}*/
 
 ::-webkit-scrollbar {
-    width: 20px;
+    width: 30px;
     height: 15px;
 }
 
@@ -148,8 +148,4 @@ input[type=number] {
 
 ::-webkit-scrollbar-track:horizontal {
     background: linear-gradient(90deg, transparent, lightgray);
-}
-
-::-webkit-scrollbar {
-    display: none;
 }
