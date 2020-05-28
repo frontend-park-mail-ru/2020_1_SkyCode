@@ -65,4 +65,18 @@ export default class CategoryBar extends Component {
         const div = Math.round(list.scrollLeft / fraction);
         list.scrollLeft = div * fraction;
     }
+
+    bind() {
+        this.unbind(
+            EventBus.subscribe(Events.restCategorySelected, (catId) => {
+                this.context.categories.forEach((cat) => {
+                    cat.domElement.className = 'category-bar__category';
+                });
+                document.getElementById(Category.categoryId(catId))
+                    .className = 'category-bar__category'
+                    + ' category-bar__active';
+            }),
+        );
+        super.bind();
+    }
 }

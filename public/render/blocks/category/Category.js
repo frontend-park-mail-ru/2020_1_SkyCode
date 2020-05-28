@@ -14,7 +14,10 @@ export default class Category extends Component {
 
     bind() {
         this.domElement.onclick = () => {
-            EventBus.broadcast(Events.restCategorySelected, this.catId);
+            EventBus.broadcast(
+                Events.restCategorySelected,
+                this.catId,
+            );
         };
         super.bind();
     }
