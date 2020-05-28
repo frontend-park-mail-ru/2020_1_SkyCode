@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     width: inherit;
-    height: inherit;
+    height: calc(100% - 70px);
     background: #FFFFFF;
 
     overflow-x: hidden;
@@ -15,7 +15,7 @@
 @media (max-width: 700px) {
     .restaurant-view {
         padding: 0 40px 200px;
-        height: calc(100% - 70px);
+        height: calc(100% - 140px);
     }
 }
 

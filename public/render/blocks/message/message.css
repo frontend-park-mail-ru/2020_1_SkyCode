@@ -12,7 +12,7 @@
 .messgae__text {
     font-size: 18px;
     margin: 5px 10px 2px 10px;
-    overflow-x: scroll;
+    overflow-x: auto;
     width: 100%;
 }
 

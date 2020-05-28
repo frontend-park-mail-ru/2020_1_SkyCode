@@ -131,21 +131,21 @@ input[type=number] {
 }
 
 ::-webkit-scrollbar-thumb:vertical {
-    background: linear-gradient(180deg,#F6D471,#a68cff);
+    background: linear-gradient(180deg, #f6d471, #dfff90);
     border-radius: 30px;
     box-shadow: inset 2px 2px 2px hsla(0,0%,100%,.25), inset -2px -2px 2px rgba(0,0,0,.25);
 }
 
 ::-webkit-scrollbar-track:vertical {
-    background: linear-gradient(90deg, transparent, lightgray);
+    background: linear-gradient(90deg, transparent, #d3d3d359);
 }
 
 ::-webkit-scrollbar-thumb:horizontal {
-    background: linear-gradient(90deg,#F6D471,#a68cff);
+    background: linear-gradient(90deg, #f6d471, #dfff90);
     border-radius: 30px;
     box-shadow: inset 2px 2px 2px hsla(0,0%,100%,.25), inset -2px -2px 2px rgba(0,0,0,.25);
 }
 
 ::-webkit-scrollbar-track:horizontal {
-    background: linear-gradient(90deg, transparent, lightgray);
+    background: linear-gradient(270deg, transparent, #d3d3d359);
 }

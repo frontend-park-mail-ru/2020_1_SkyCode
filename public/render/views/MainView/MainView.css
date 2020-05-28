@@ -19,7 +19,7 @@
 
 @media (max-width: 700px) {
     .main-view {
-        height: 80vh;
+        height: calc(100% - 70px);
     }
     .main-view__info-bar {
         justify-content: center;
