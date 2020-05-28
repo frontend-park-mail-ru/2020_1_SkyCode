@@ -16,8 +16,6 @@
     box-shadow: 0 0 10px rgb(246, 212, 113);
 }
 
-.category-bar__category:checked
-
 .category-bar__active {
     background: rgb(246, 212, 113);
 }
