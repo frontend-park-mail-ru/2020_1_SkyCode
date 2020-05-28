@@ -23,6 +23,7 @@ export default class SearchField extends Component {
                 placeholder: 'Изменить адрес доставки',
                 classes: 'search-field__input-field',
                 isReadonly: true,
+                value: localStorage.getItem('deliveryGeo'),
             }),
         }, true);
     }
