@@ -14,24 +14,27 @@ export default class GeoInput extends Component {
 
         this.id = GeoInput.id(idSuffix);
         this._isValid = false;
+        this.last = 0;
     }
 
     correct() {
-        // const element = document.getElementById(this.id);
-        // const address = element.innerText
-        //     .replace(/\s+/g, ' ')
-        //     .trim()
-        //     .replace(/\s+/g, '\n');
-        // const len = address.length;
-        //
-        // element.innerText = address;
-        // setTimeout(() => {
-        //     console.log(element.selectionStart);
-        //     console.log(element.selectionEnd);
-        //
-        //     element.selectionStart = 0;
-        //     element.selectionEnd = len;
-        // }, 1000);
+        /*
+         * Const element = document.getElementById(this.id);
+         * const address = element.innerText
+         *     .replace(/\s+/g, ' ')
+         *     .trim()
+         *     .replace(/\s+/g, '\n');
+         * const len = address.length;
+         *
+         * element.innerText = address;
+         * setTimeout(() => {
+         *     console.log(element.selectionStart);
+         *     console.log(element.selectionEnd);
+         *
+         *     element.selectionStart = 0;
+         *     element.selectionEnd = len;
+         * }, 1000);
+         */
     }
 
     get value() {
@@ -78,7 +81,24 @@ export default class GeoInput extends Component {
         return this._isValid;
     }
 
+    bind() {
+        this.domElement.addEventListener('input', (e) => {
+            const len = this.domElement.value.length;
+debugger
+            if (len - this.last > 1) {
+                e.stopPropagation();
+                e.preventDefault();
+            }
+
+            this.last = len;
+        }, true);
+
+
+        super.bind();
+    }
+
     unbind() {
+        this.domElement.oninput = null;
         EventBus.broadcast(Events.stopGeoConfirmation);
         super.unbind();
     }
