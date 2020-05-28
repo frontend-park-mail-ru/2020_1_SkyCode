@@ -2,6 +2,30 @@
     cursor: pointer;
 }
 
+.paginate_href {
+    margin: 0;
+    padding: .5em 1em;
+    border: 0;
+    font-weight: 300;
+    background-color: transparent;
+    box-shadow: inset 0px -2px 0px 0px #bbb;
+    color: #bbb;
+    text-decoration: none;
+}
+
+.paginate_current {
+    color: #2196f3;
+    box-shadow: inset 0px -4px 0px 0px #2196f3;
+}
+
+.paginate_disabled-href {
+    pointer-events: none;
+}
+
+.paginate_href:hover {
+    box-shadow: inset 0px -4px 0px 0px #bbb;
+}
+
 .admin-restaurant-list__href,
 .waving-menue__href {
     color: black;

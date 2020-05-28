@@ -15,12 +15,15 @@ class MainController extends BaseController {
         this.geopos;
     }
 
-    execute() {
+    execute(matchData = []) {
+        const count = 20;
+        const page = matchData.length === 0 ? 1 : matchData[0];
+
         Promise.all([
             RestaurantModel
                 .getRecommendationsByAddress(1, 20, localStorage.getItem('deliveryGeo')),
             RestaurantModel
-                .getRestaurantsByAddress(1, 50, localStorage.getItem('deliveryGeo')),
+                .getRestaurantsByAddress(page, count, localStorage.getItem('deliveryGeo')),
             TagModel.all(),
         ])
             .then(([recomResponse, restResponse, tagsResponse]) => {
@@ -50,6 +53,9 @@ class MainController extends BaseController {
                             categoryArr: tagsResponse.rest_tags,
                             restaurantArr: restResponse.restaurants,
                             products: BasketController.basket.product,
+                            page,
+                            count,
+                            total: restResponse.total,
                         }));
                     });
             })

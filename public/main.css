@@ -44,6 +44,7 @@
 @import "render/blocks/LoginPopup/LoginPopup.css";
 @import "render/blocks/SignupPopup/SignupPopup.css";
 @import "render/blocks/GeoPopup/GeoPopup.css";
+@import "render/blocks/Pagination/Pagination.css";
 @import "render/blocks/NotificationPopup/NotificationPopup.css";
 @import "render/blocks/Notification/Notification.css";
 @import "render/blocks/message/message.css";

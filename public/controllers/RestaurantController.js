@@ -16,19 +16,24 @@ class RestaurantController extends BaseController {
 
     execute(matchData) {
         this.restaurantId = matchData[0];
+        const count = 2;
+        const page = (matchData.length > 1) ? matchData[1] : 1;
+
         Promise.all([
             RestaurantModel.getRestaurant(this.restaurantId),
-            RestaurantModel.getProducts(this.restaurantId, 1, 10),
+            RestaurantModel.getProducts(this.restaurantId, page, count),
         ])
-            .then(([restaurant, products]) => {
+            .then(([restaurant, productResp]) => {
                 this.restaurantName = restaurant.name;
-                const categoryArr = Mocks.categories;
                 const basket = BasketController.basket.product;
                 super.execute(new RestaurantView({
-                    products: products.products,
+                    products: productResp.products,
                     restaurant,
                     basket,
-                    categoryArr}));
+                    page,
+                    count,
+                    total: productResp.total,
+                }));
             })
             .catch((err) => {
                 console.log(err);

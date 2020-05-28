@@ -5,15 +5,24 @@ import CategoryBar from '../../blocks/categoryBar/CategoryBar';
 import RestaurantList from '../../blocks/restaurantList/RestaurantList';
 import Component from '../../Component';
 import RecommendBar from '../../blocks/RecommendBar/RecommendBar';
+import Pagination from '../../blocks/Pagination/Pagination';
 
 export default class MainView extends Component {
-    constructor({actionArr, categoryArr, recommendArr, restaurantArr}) {
+    constructor({actionArr, categoryArr, recommendArr, restaurantArr, page, count, total}) {
         super();
         this.template = temp;
         const message = sessionStorage.message;
         sessionStorage.message = '';
 
         this.addContextData({
+            Pagination: new Pagination({
+                classes: '',
+                first: 1,
+                current: Number(page),
+                last: Math.floor(Number(total) / Number(count))
+                    + (Number(total) % Number(count) !== 0),
+                hrefBase: '/restaurant_list/',
+            }),
             message,
             label: 'Рестораны',
             selectTimeButton: new SelectTimeButton({

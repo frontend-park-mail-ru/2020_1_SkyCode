@@ -15,6 +15,7 @@
 @media (max-width: 700px) {
     .restaurant-view {
         padding: 0 40px 200px;
+        height: calc(100% - 70px);
     }
 }
 

@@ -11,7 +11,7 @@ class AdminRestaurantListController extends BaseController {
     }
 
     execute() {
-        RestaurantModel.getRestaurants(1, 50)
+        RestaurantModel.getRestaurants(1, 20)
             .then((response) => {
                 if (response.error) {
                     throw response.error;

@@ -222,10 +222,14 @@ class Router {
             needGeo: true,
             button: 'm',
         });
+        this._registerPage(MainController, '/restaurant_list/:page', {
+            needGeo: true,
+        });
         this._registerPage(ProfileController, '/me', {
             needLogin: true,
             button: 'p',
         });
+        this._registerPage(RestaurantController, '/restaurants/:int/:page');
         this._registerPage(RestaurantController, '/restaurants/:int');
         this._registerPage(CheckoutController, '/checkout', {
             needLogin: true,
@@ -287,7 +291,9 @@ class Router {
     } = {}) {
         this._pages.push({
             path,
-            pattern: new RegExp('^' + path.replace(/:\w+/, '([\\w-]+)') + '$'),
+            pattern: new RegExp('^' + path
+                .replace(/:\w+/, '([\\w-]+)')
+                .replace(/:\w+/, '([\\w-]+)') + '$'),
             page: controller,
             needSupport,
             needLogin,

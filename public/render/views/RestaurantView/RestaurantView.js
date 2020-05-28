@@ -3,13 +3,22 @@ import temp from './RestaurantView.hbs';
 import RestaurantBanner from '../../blocks/restaurantBanner/restaurantBanner';
 import ProductList from '../../blocks/productList/ProductList';
 import Href from '../../elements/href/Href';
+import Pagination from '../../blocks/Pagination/Pagination';
 
 
 export default class RestaurantView extends Component {
-    constructor({restaurant, products, categoryArr}) {
+    constructor({restaurant, products, page, total, count}) {
         super();
         super.template = temp;
         this.addContextData({
+            Pagination: new Pagination({
+                classes: '',
+                first: 1,
+                current: Number(page),
+                last: Math.floor(Number(total) / Number(count))
+                    + (Number(total) % Number(count) !== 0),
+                hrefBase: `/restaurants/${restaurant.id}/`,
+            }),
             Banner: new RestaurantBanner({
                 classes: 'restaurant-banner',
                 imgHref: `/images/${restaurant.image}`,
