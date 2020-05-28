@@ -17,3 +17,9 @@
     margin-left: 30px;
     margin-bottom: 20px;
 }
+
+@media (max-height: 600px) {
+    .order-history__main-content_title {
+        display: none;
+    }
+}
