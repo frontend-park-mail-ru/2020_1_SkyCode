@@ -4,6 +4,8 @@ import EventBus from '../../../services/Events/EventBus';
 
 export default class Button extends Component {
     constructor({text, callback, classes = 'button', id, isHidden = false}) {
+        classes += ' button';
+
         super(classes, {
             text,
             isHidden,
