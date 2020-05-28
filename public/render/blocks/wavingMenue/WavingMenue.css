@@ -15,7 +15,6 @@
 @media (max-width: 600px) {
     .waving-menue {
         width: 100%;
-        padding-top: 10vh;
         height: calc(100% - 140px);
     }
 }
