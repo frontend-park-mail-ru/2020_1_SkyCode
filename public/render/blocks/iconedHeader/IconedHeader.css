@@ -9,7 +9,7 @@
 
 .iconed-header__icon-bar {
     padding: 20px;
-    background-color: transparent;
+    background-color: white;
 }
 
 @media (max-width: 700px) {
