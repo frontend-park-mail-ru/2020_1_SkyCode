@@ -15,7 +15,7 @@
 @media (max-width: 700px) {
     .restaurant-view {
         padding: 0 40px 200px;
-        height: calc(100% - 140px);
+        height: calc(100% - 70px);
     }
 }
 
@@ -34,13 +34,6 @@
     justify-content: space-between;
 
     margin: 20px 0;
-}
-
-@media (max-width: 600px) {
-    .restaurant-view {
-        padding: 0 30px;
-        box-sizing: border-box;
-    }
 }
 
 @media (max-width: 400px) {
