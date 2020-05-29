@@ -18,8 +18,8 @@ export default class Pagination extends Component {
         const needRightShevron = current !== last && last !== first;
         let freeSpace = maxSpace - needLeftShevron - needRightShevron;
 
-        const needLeftPoints = !(current === (first + 1)) && (freeSpace < last - first);
-        const needRightPoints = !(current === (last - 1)) && (freeSpace < last - first);
+        const needLeftPoints = !(current - first <= 2);
+        const needRightPoints = !(last - current <= 2);
 
         freeSpace += -needLeftPoints - needLeftPoints
             - needRightPoints - needRightPoints;
@@ -48,7 +48,7 @@ export default class Pagination extends Component {
             }));
         }
 
-        const delta = (freeSpace - 1) / 2;
+        const delta = Math.floor((freeSpace - 1) / 2);
         let start = current - delta;
         if (start < first) start = first;
 
@@ -86,7 +86,7 @@ export default class Pagination extends Component {
                 text: '>',
                 href: hrefBase + String(current + 1),
                 classes: 'paginate_href',
-                id: 'paginate_left-shevron',
+                id: 'paginate_right-shevron',
             }));
         }
 
