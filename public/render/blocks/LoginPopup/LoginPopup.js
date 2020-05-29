@@ -51,7 +51,10 @@ export default class LoginPopup extends Component {
         if (isStatic) this.becomeStatic();
 
         this.domElement.style.display = 'flex';
-        this.context.LoginField.focusOnPhoneInput();
+        setTimeout(() => {
+            this.domElement.style.opacity = '1';
+            this.context.LoginField.focusOnPhoneInput();
+        }, 100);
     }
 
     disappear() {
@@ -59,8 +62,12 @@ export default class LoginPopup extends Component {
             this.isStatic = false;
             this.becomeNotStatic();
         }
-        this.domElement.style.display = 'none';
-        EventBus.broadcast(Events.logPopDisappear);
+        this.domElement.style.opacity = '0';
+
+        setTimeout(() => {
+            this.domElement.style.display = 'none';
+            EventBus.broadcast(Events.logPopDisappear);
+        }, 100);
     }
 
     quiteDisappear() {
@@ -68,7 +75,11 @@ export default class LoginPopup extends Component {
             this.isStatic = false;
             this.becomeNotStatic();
         }
-        this.domElement.style.display = 'none';
+        this.domElement.style.opacity = '0';
+
+        setTimeout(() => {
+            this.domElement.style.display = 'none';
+        }, 100);
     }
 
     becomeStatic() {

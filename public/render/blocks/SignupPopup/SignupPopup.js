@@ -48,7 +48,10 @@ export default class SignupPopup extends Component {
         if (isStatic) this.becomeStatic();
 
         this.domElement.style.display = 'flex';
-        this.context.SignupField.focusOnFNameInput();
+        setTimeout(() => {
+            this.domElement.style.opacity = '1';
+            this.context.SignupField.focusOnFNameInput();
+        }, 100);
     }
 
     disappear() {
@@ -56,16 +59,25 @@ export default class SignupPopup extends Component {
             this.isStatic = false;
             this.becomeNotStatic();
         }
-        this.domElement.style.display = 'none';
-        EventBus.broadcast(Events.signPopDisappear);
+        this.domElement.style.opacity = '0';
+
+        setTimeout(() => {
+            this.domElement.style.display = 'none';
+            EventBus.broadcast(Events.signPopDisappear);
+        }, 100);
     }
+
 
     quiteDisappear() {
         if (this.isStatic) {
             this.isStatic = false;
             this.becomeNotStatic();
         }
-        this.domElement.style.display = 'none';
+        this.domElement.style.opacity = '0';
+
+        setTimeout(() => {
+            this.domElement.style.display = 'none';
+        }, 100);
     }
 
     becomeStatic() {

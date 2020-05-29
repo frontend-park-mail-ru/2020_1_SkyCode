@@ -21,32 +21,6 @@ export default class NotificationPopup extends Component {
         }, 500);
     }
 
-    /*
-     *     Super('notif-popup', {}, 'notif-popup', temp);
-     *     if (UserController.logined) {
-     *         const notifArr = response.notifications;
-     *         const notifComponents = [];
-     *
-     *         for (const notif of notifArr) {
-     *             notifComponents.push(new Notif({notifModel: notif}));
-     *         }
-     *
-     *         this.addContextData({
-     *             Notifs: notifComponents,
-     *         });
-     *         console.log('all ok');
-     *         NotifModel.all()
-     *             .then((response) => {
-     *                 console.log('all ok');
-     *
-     *             })
-     *             .catch((err) => {
-     *                 console.log('error: ' + err);
-     *             });
-     *     }
-     * }
-     */
-
     handleLogin() {
         NotifModel.all()
             .then((response) => {
@@ -121,14 +95,25 @@ export default class NotificationPopup extends Component {
 
     appear() {
         this.domElement.style.display = 'flex';
+        setTimeout(() => {
+            this.domElement.style.opacity = '1';
+        }, 100);
     }
 
     disappear() {
-        this.domElement.style.display = 'none';
-        EventBus.broadcast(Events.logPopDisappear);
+        this.domElement.style.opacity = '0';
+
+        setTimeout(() => {
+            this.domElement.style.display = 'none';
+            EventBus.broadcast(Events.logPopDisappear);
+        }, 100);
     }
 
     quiteDisappear() {
-        this.domElement.style.display = 'none';
+        this.domElement.style.opacity = '0';
+
+        setTimeout(() => {
+            this.domElement.style.display = 'none';
+        }, 100);
     }
 }
