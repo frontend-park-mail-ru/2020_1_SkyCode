@@ -1,0 +1,65 @@
+.add-product-by-restaurant-view {
+    grid-area: view;
+    height: 90vh;
+    overflow-y: auto;
+}
+
+.add-product-by-restaurant__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 15px;
+    box-shadow: 0 0 10px #D6D6D6;
+    padding: 30px;
+    width: fit-content;
+    height: fit-content;
+    margin: 20px auto;
+}
+
+
+@media (max-width: 700px) {
+    .add-product-by-restaurant-view {
+        height: 80vh;
+    }
+    .add-product-by-restaurant__card {
+        margin: 0 auto;
+        box-shadow: none;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+.add-product-by-restaurant__title {
+    font-size: 30px;
+    line-height: 45px;
+}
+
+
+@media (max-width: 500px) {
+    .add-product-by-restaurant__title {
+        font-size: 20px;
+        line-height: 30px;
+    }
+}
+
+@media (max-width: 400px) {
+    .add-product-by-restaurant__title {
+        width: 100%;
+        height: 100%;
+        box-shadow: none;
+    }
+}
+
+.add-product-by-restaurant__label {
+    margin: 5px;
+}
+
+.add-product-by-restaurant__button {
+    margin-left: 5px;
+    font-size: 40px;
+}
+

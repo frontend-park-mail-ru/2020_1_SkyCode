@@ -1,0 +1,31 @@
+<main class="restaurant-info-view {{classes}}" id="view">
+    {{{RestaurantBanner}}}
+    <div class="restaurant-feedback__info-bar">
+        <h2 class="restaurant-feedback__label">Отзывы</h2>
+        <div class="restaurant-feedback__message">{{message}}</div>
+        {{{BackHref}}}
+    </div>
+
+    <div class="restaurant-feedback__container">
+        {{#if userLogined}}
+            {{{FeedbackForm}}}
+        {{else}}
+            <div class="restaurant-feedback__login-signup-invitation">
+                <span class="restaurant-feedback-card__word">Чтобы</span>
+                <span class="restaurant-feedback-card__word">оставить</span>
+                <span class="restaurant-feedback-card__word">отзыв,</span>
+                {{{Login}}}
+                <span class="restaurant-feedback-card__word">или</span>
+                {{{Signup}}}
+            </div>
+        {{/if}}
+
+        {{#each Feedback}}
+            {{{this}}}
+        {{else}}
+            <p class="message">Ваш отзыв будет первым.</p>
+        {{/each}}
+    </div>
+</main>
+
+

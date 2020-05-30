@@ -1,0 +1,65 @@
+.checked-input {
+    position: relative;
+    padding-top: 30px;
+    width: 80%;
+}
+
+@media (max-width: 500px) {
+    .checked-input {
+        width: 100%;
+    }
+}
+
+.checked-input__error {
+    color: red;
+    font-size: 15px;
+    text-align: center;
+    line-height: 20px;
+    height: 20px;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+.checked-input__label {
+    position: absolute;
+    transition: .3s;
+    top: 25px;
+    font-size: 20px;
+    pointer-events: none;
+    width: 100%;
+}
+
+.checked-input__input:focus {
+    border-color: #F6D471;
+}
+
+.checked-input__input {
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    border-bottom: 2px solid #dfdfdf;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    outline: none;
+    resize: vertical;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+.checked-input__input:focus+.checked-input__label,
+.checked-input__input:not(:placeholder-shown)+.checked-input__label{
+    top: 10px;
+    color: #cac6c6;
+    font-size: 15px;
+}
+
+.checked-input__input::-webkit-input-placeholder {
+    opacity: 0;
+    color: #cac6c6;
+}
+
+.checked-input__input:focus::-webkit-input-placeholder{
+    opacity: 1;
+}

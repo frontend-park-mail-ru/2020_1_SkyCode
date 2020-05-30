@@ -1,0 +1,10 @@
+{{#if Products}}
+    <div class="{{classes}}">
+        {{#each Products}}
+            {{{this}}}
+        {{/each}}
+    </div>
+{{else}}
+    <p class="message">В этом ресторане пока нет продуктов</p>
+{{/if}}
+

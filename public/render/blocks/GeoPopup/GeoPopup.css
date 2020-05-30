@@ -1,0 +1,60 @@
+.geo-popup {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: none;
+    transition: opacity .3s;
+    z-index: 3;
+    overflow-y: scroll;
+}
+
+.geo-popup__hider {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+
+    background-color: rgba(0, 0, 0, .70);
+}
+
+.geo-ask-card {
+    height: fit-content;
+    box-shadow: 0 0 10px #D6D6D6;
+    border-radius: 15px;
+    background-color: white;
+    position: relative;
+    padding: 20px;
+    width: 80%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+@media (max-width: 800px) {
+    .geo-popup__header {
+        display: none;
+    }
+}
+
+@media (max-width: 400px) {
+    #alone_geo-input-wrapper_label {
+        top: 10px;
+    }
+    .checked-input__input:focus+#alone_geo-input-wrapper_label,
+    .checked-input__input:not(:placeholder-shown)+#alone_geo-input-wrapper_label{
+        top: -10px;
+    }
+
+    .geo-ask-card {
+        width: 100%;
+        margin: auto 20px;
+    }
+}
+
+

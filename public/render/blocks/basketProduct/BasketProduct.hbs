@@ -1,4 +1,11 @@
 <div class="{{classes}}" id="{{id}}">
-    {{{img}}}
-    {{quantity}} × {{name}} <span class="basket-product__price">{{price}} RUB</span>
+    <div class="basket-product__img-container">
+        {{{img}}}
+    </div>
+
+    <div class="basket-product__info-container">
+        {{name}}
+        <div class="basket-product__price">{{price}}₽</div>
+    </div>
+    {{{Input}}}
 </div>

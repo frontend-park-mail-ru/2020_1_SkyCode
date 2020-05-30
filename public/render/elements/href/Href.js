@@ -1,12 +1,14 @@
 import Component from '../../Component.js';
 import EventBus from '../../../services/Events/EventBus.js';
+import template from './Href.hbs';
 
 export default class Href extends Component {
-    constructor({text, href, classes = 'href', id}) {
-        super(classes, {
+    constructor({text, href: ref, classes = 'href', id}) {
+        super(classes + ' href', {
             text,
-            href,
+            ref,
         }, id);
+        super.template = template;
     }
 
     bind() {
@@ -15,11 +17,13 @@ export default class Href extends Component {
             return;
         }
 
-        me.onclick = function(event) {
+        me.onclick = (event) => {
             event.preventDefault();
-            EventBus.publish('set-page', {url: this.context.href});
-        }.bind(this);
-        console.log('qwe');
+            event.stopPropagation();
+            EventBus.broadcast('set-page', {url: this.context.ref});
+        };
+
+        super.bind();
     }
 
     unbind() {
@@ -29,5 +33,6 @@ export default class Href extends Component {
         }
 
         me.onclick = null;
+        super.unbind();
     }
 }

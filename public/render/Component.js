@@ -1,11 +1,12 @@
 export default class Component {
-    constructor(classes, contextObj, id) {
-        this.toString = this.html;
+    constructor(classes, contextObj, id, template) {
+        this.unbindFuncs = [];
+        this.toString = () => template(this.context);
 
         // TemplateData --- информация, передающаяся в template
         this._context = {};
         // Добавляем классы
-        this.addContextData({classes: []}, false);
+        this.addContextData({classes: ''}, false);
 
         if (classes) {
             this.addClasses(classes);
@@ -21,6 +22,10 @@ export default class Component {
         }
     }
 
+    set template(template) {
+        this.toString = () => template(this.context);
+    }
+
     static isComponent(object) {
         return object instanceof Component;
     }
@@ -29,7 +34,28 @@ export default class Component {
         return this._context;
     }
 
+    removeContextData(contextObject) {
+        for (const prop of contextObject) {
+            if (prop in this.context) {
+                delete this.context[prop];
+            }
+        }
+    }
+
     addContextData(contextObject) {
+        for (const i in contextObject) {
+            if (Array.isArray(contextObject[i])) {
+                for (const j in contextObject[i]) {
+                    if (contextObject[i][j] instanceof Component) {
+                        contextObject[i][j].contextParent = this;
+                    }
+                }
+            } else {
+                if (contextObject[i] instanceof Component) {
+                    contextObject[i].contextParent = this;
+                }
+            }
+        }
         Object.assign(this.context, contextObject);
     }
 
@@ -47,11 +73,15 @@ export default class Component {
             addClasses = classes.split(' ');
         }
 
-        this.context.classes.push(addClasses);
+        if (this.context.classes !== '') {
+            this.context.classes += ' ';
+        }
+
+        this.context.classes += addClasses.join(' ');
     }
 
     get classes() {
-        return this.context.classes.join(' ');
+        return this.context.classes;
     }
 
     bind() {
@@ -71,24 +101,30 @@ export default class Component {
     }
 
     unbind() {
+        for (const ubind of this.unbindFuncs) ubind();
+
         for (const value of Object.values(this.context)) {
-            if (!(value instanceof Component)) {
-                continue;
+            if (Array.isArray(value)) {
+                value.forEach((value) => {
+                    if (Component.isComponent(value)) {
+                        value.unbind();
+                    }
+                });
             }
 
-            value.unbind();
+            if (Component.isComponent(value)) {
+                value.unbind();
+            }
         }
     }
 
-    html() {
-        // eslint-disable-next-line no-undef
-        return Handlebars.templates[
-            this.constructor.name + '.hbs'
-        ](this.context);
+    addUnbind(ubind) {
+        this.unbindFuncs.push(ubind);
     }
 
     set id(id) {
         this._id = id;
+        this.addContextData({id});
     }
 
     get id() {

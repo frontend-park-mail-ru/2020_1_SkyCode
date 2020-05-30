@@ -1,3 +1,115 @@
+.button {
+    cursor: pointer;
+}
+
+.product-card-button {
+    background-color: #2196f3;
+    color: white;
+    width: fit-content;
+    height: fit-content;
+    padding: 7px 15px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    transition: 0.2s;
+    outline: none;
+    cursor: pointer;
+    border-radius: 15px;
+    border: none;
+}
+
+.product-card-button:hover {
+    box-shadow: 0 0 10px #F6D471;
+    background-color: #F6D471;
+    color: black;
+}
+
+.feedback-form__submit {
+    background-color: #2196f3;
+    color: white;
+    width: fit-content;
+    height: fit-content;
+    padding: 7px 15px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    transition: 0.2s;
+    outline: none;
+    cursor: pointer;
+    border-radius: 15px;
+    border: none;
+    margin-top: 10px;
+}
+
+.feedback-form__submit:hover {
+    box-shadow: 0 0 10px #F6D471;
+    background-color: #F6D471;
+    color: black;
+}
+
+.scroll-bar__button {
+    border-radius: 100%;
+    outline: 0;
+    background: #F8F8F8;
+    border: 1px solid #d2d0d0;
+    box-shadow: 0 0 10px rgba(80, 80, 80, 0.5);
+    width: 50px;
+    height: 50px;
+    line-height: 39px;
+    z-index: 1;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.scroll-bar__button:hover {
+    background: #F6D471;
+    font-weight: bolder;
+}
+
+.category-bar__right-button {
+    position: relative;
+    top: 110px;
+    left: calc(100% - 120px);
+    visibility: hidden;
+}
+
+.action-bar__right-button {
+    position: relative;
+    top: 120px;
+    left: calc(100% - 120px);
+}
+
+.main-view__order-button {
+    position: fixed;
+
+    right: 0;
+    top: 50%;
+
+    width: 40px;
+    height: 80px;
+    background: #F8F8F8;
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+    border: none;
+    border-left: 1px solid #000000;
+    z-index: 2;
+
+    outline: 0;
+}
+
+.action-bar__left-button {
+    position: relative;
+    left: 15px;
+    top: 120px;
+    visibility: hidden;
+}
+
+.category-bar__left-button {
+    position: relative;
+    top: 110px;
+    left: 15px;
+    visibility: hidden;
+}
+
+
 
 .person-input__minus-button {
     background: #F8F8F8;
@@ -8,7 +120,7 @@
     border-bottom-left-radius: 15px;
     border-top-left-radius: 15px;
 
-    height: 20px;
+    height: 24px;
 }
 
 .person-input__plus-button {
@@ -21,11 +133,11 @@
     border-bottom-right-radius: 15px;
     border-top-right-radius: 15px;
 
-    height: 20px;
+    height: 24px;
 }
 
 .select-time-button__image-button {
-    background: #EA8B65 url("../../../static/clock.svg") no-repeat;
+    background: #F6D471 url("../../../static/clock.svg") no-repeat;
 
     height: 37px;
     width: 37px;
@@ -37,8 +149,7 @@
 }
 
 .select-time-button__text-button {
-
-    background: #EA8B65;
+    background: #F6D471;
     height: 37px;
     border: 0;
     outline: 0;
@@ -51,6 +162,7 @@
 
     border-bottom-right-radius: 20px;
     border-top-right-radius: 20px;
+    margin-right: 10px;
 }
 
 /*.profile-text-area__submit {*/
@@ -74,12 +186,12 @@
     margin: 40px 15px 15px;
 
     background: #F8F8F8;
-    box-shadow: 3px 2px black; 
+    box-shadow: 3px 2px black;
     border: 0;
     outline: 0;
     height: 25px;
     border-radius: 30px;
-  
+
     font-weight: bold;
     cursor: pointer;
 }

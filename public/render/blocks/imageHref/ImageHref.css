@@ -1,13 +1,12 @@
-
-.order__profile-href {
-    grid-area: profile;
-    justify-self: right;
-    margin: 10px;
+.icon-bar__profile-image, .icon-bar__basket-image, .icon-bar__map-image{
+    border-radius: 100%;
+    z-index: 3;
+    outline: none;
+    width: 30px;
 }
 
-.order__profile-image {
-    width: 30px;
-    height: 30px;
-    border-radius: 100%;
+.icon-bar__support-image, .icon-bar__history-image {
+    border-radius: 0;
     outline: none;
+    width: 30px;
 }

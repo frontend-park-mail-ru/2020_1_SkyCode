@@ -1,14 +1,19 @@
 'use strict';
 
 class BaseController {
-    constructor(title) {
+    constructor(title = 'untitled') {
         this._title = title;
+        this.unbindFuncs = [];
     }
 
-    // У вьюхи должны быть методы bind, unbind, html и геттер state
+    addUnbind(ubind) {
+        this.unbindFuncs.push(ubind);
+    }
+
+    // У вьюхи должны быть методы bind, unbind, html
     execute(view) {
         this._view = view;
-        document.body.innerHTML = this._view.html();
+        document.getElementById('view').outerHTML = this._view.toString();
         this._view.bind();
         this.startCatchEvents();
     }
@@ -27,7 +32,7 @@ class BaseController {
     }
 
     stopCatchEvents() {
-        void 0;
+        for (const ubind of this.unbindFuncs) ubind();
     }
 
     get title() {

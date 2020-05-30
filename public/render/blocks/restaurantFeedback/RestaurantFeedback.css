@@ -1,0 +1,61 @@
+.restaurant-feedback__login-signup-invitation {
+    background-color: #F8F8F8;
+    border: 3px solid #4d3434;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.restaurant-feedback__message {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    font-style: italic;
+}
+
+.restaurant-feedback__info-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    margin: 50px 0;
+}
+
+.restaurant-feedback__label {
+    display: inline;
+    font-size: 30px;
+    margin-block-start: 0;
+    min-width: 160px;
+    margin-block-end: 0;
+    text-align: center;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    font-weight: normal;
+}
+
+@media (max-width: 450px) {
+    .restaurant-feedback__info-bar{
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+}
+
+
+
+.restaurant-feedback__main-area {
+    grid-area: main-area;
+    display: flex;
+    flex-direction: column;
+    width: 100%
+}
+
+.restaurant-feedback__main-area:last-child {
+    margin-bottom: 500px;
+}
+
+
+

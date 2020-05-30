@@ -1,0 +1,33 @@
+.restaurant-feedback-card__word {
+    padding-left: 15px;
+    padding-bottom: 7px;
+}
+
+.restaurant-info-view {
+    grid-area: view;
+
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+
+    background: #FFFFFF;
+
+    box-sizing: border-box;
+    padding: 0 80px 100px;
+}
+
+@media (max-width: 700px) {
+    .restaurant-info-view {
+        padding: 0 40px 100px;
+    }
+}
+
+@media (max-width: 450px) {
+    .restaurant-info-view {
+        padding: 0 20px 100px;
+    }
+}
+

@@ -1,0 +1,33 @@
+.base-view {
+    background: #FFFFFF;
+    overflow: hidden;
+    box-sizing: content-box;
+    width: 100%;
+}
+
+.base-view > * {
+    min-width: 0;
+}
+
+.base-container {
+    overflow: auto;
+    padding-top: 10vh;
+    height: 90vh;
+    box-sizing: content-box;
+    width: 100%;
+}
+
+@media (max-width: 600px) {
+    .base-container {
+        height: 80vh;
+    }
+}
+
+.base-view__header {
+    position: fixed;
+}
+
+.add-product-by-restaurant__title {
+    text-align: center;
+
+}

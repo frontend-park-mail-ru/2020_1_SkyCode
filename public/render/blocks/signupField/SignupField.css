@@ -1,34 +1,89 @@
+.signup-field {
+    height: -webkit-fit-content;
+    height: fit-content;
+    box-shadow: 0 0 10px #D6D6D6;
+    border-radius: 15px;
+    background-color: white;
+    position: relative;
+    padding: 20px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10vh auto;
+}
+
 .login-signup__signup {
-    width: 50%;
-    height: 90%;
-    grid-area: signup;
     background-color: #FFFFFF;
-    justify-self: center;
-    align-self: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 20px;
-    box-shadow: 0px 4px 100px #D6D6D6;
 }
 
-.login-signup__signup:hover {
-    width: 50%;
-    height: 90%;
-    grid-area: signup;
-    background-color: #FFFFFF;
-    justify-self: center;
-    align-self: center;
+@media (max-width: 800px) {
+    .login-signup__signup {
+        margin-bottom: 30px;
+    }
+}
+
+.singup-field__row-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.singup-field__col-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: 0px 4px 100px #D6D6D6, 0px 8px 100px #D6D6D6;
+    text-align: center;
 }
+
+/*.login-signup__signup:hover {*/
+/*    width: 50%;*/
+/*    height: 90%;*/
+/*    grid-area: signup;*/
+/*    background-color: #FFFFFF;*/
+/*    justify-self: center;*/
+/*    align-self: center;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    box-shadow: 0px 4px 100px #D6D6D6, 0px 8px 100px #D6D6D6;*/
+/*}*/
 
 .signup-field__title {
     font-size: 30px;
     font-weight: bold;
     margin: 40px;
+}
+
+@media (max-width: 800px) {
+    #login-pretitle, #signup-pretitle {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .singup-field__row-container {
+        flex-direction: column;
+    }
+
+    input {
+        margin: 0;
+    }
+
+    .signup-field__title {
+        margin: 20px;
+        font-size: 20px;
+    }
+
+    .login-signup__signup {
+        margin-bottom: 50px;
+    }
 }

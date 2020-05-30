@@ -13,43 +13,43 @@ export default class Validation {
         if (isValid) return [true, errors];
 
         if (validity.valueMissing) {
-            errors.push('Required field');
+            errors.push('Обязательное поле');
         }
 
         if (validity.typeMismatch) {
-            errors.push('Wrong type');
+            errors.push('Неверный тип');
         }
 
         if (validity.patternMismatch) {
-            errors.push('Wrong format');
+            errors.push('Неверный формат');
         }
 
         if (validity.tooLong) {
-            errors.push(`Must be less than ${inputElement.maxLength} symbols`);
+            errors.push(`Длина должна быть меньше ${inputElement.maxLength} символов`);
         }
 
         if (validity.tooShort) {
-            errors.push(`Must be less than ${inputElement.minLength} symbols`);
+            errors.push(`Длина должна быть больше ${inputElement.minLength} символов`);
         }
 
         if (validity.rangeUnderflow) {
-            errors.push(`Must be more than ${inputElement.min}`);
+            errors.push(`Значение должно быть больше ${inputElement.min}`);
         }
 
         if (validity.rangeOverflow) {
-            errors.push(`Must be less than ${inputElement.max}`);
+            errors.push(`Значение должно быть меньше ${inputElement.max}`);
         }
 
         if (validity.stepMismatch) {
-            errors.push(`Must have step ${inputElement.step}`);
+            errors.push(`Знчечение должно иметь шаг ${inputElement.step}`);
         }
 
         if (validity.badInput) {
-            errors.push('Browser can\'t convert your input');
+            errors.push('Ввод не может правильно распознаться браузером');
         }
 
         if (validity.customError) {
-            errors.push('unexpected error... lights off... ');
+            errors.push('Такого быть не должно, туши свет...');
         }
 
         return [false, errors];

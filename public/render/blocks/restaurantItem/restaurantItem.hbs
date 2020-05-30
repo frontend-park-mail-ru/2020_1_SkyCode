@@ -1,0 +1,12 @@
+<div class="restaurant-item {{classes}}" id={{id}}>
+    <div class="restaurant-item__name">{{Name}}</div>
+    {{#if Hrefs}}
+        <ul>
+            {{#each Hrefs}}
+                {{{this}}}
+            {{/each}}
+        </ul>
+    {{else}}
+        Для данного ресторана не предусмотрены страницы управления
+    {{/if}}
+</div>

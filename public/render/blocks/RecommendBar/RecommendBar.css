@@ -1,0 +1,105 @@
+.recommend-bar {
+    height: fit-content;
+}
+
+.recommend-bar__restaurant {
+    width: 25%;
+    min-width: 230px;
+    margin: 20px 40px 0 0;
+
+    text-decoration: none;
+    color: black;
+}
+
+.recommend-bar__list {
+    box-sizing: border-box;
+    display: flex;
+    list-style-type: none;
+    overflow-x: auto;
+    align-items: flex-start;
+    scroll-behavior: smooth;
+    padding-inline-start: 10px;
+    padding-inline-end: 10px;
+    width: calc(100% - 160px);
+    margin-left: 80px;
+    margin-bottom: -50px;
+    padding: 10px 10px 0 0;
+}
+
+@media (max-width: 700px) {
+    .recommend-bar__list {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+.recommend-bar__li {
+    --recommends-per-bar: 4;
+    --recommend-horis-margin: 35px;
+    --k: 21px;
+    width: calc((100%
+                        - ((2 * var(--recommends-per-bar) - 2) *
+                            var(--recommend-horis-margin) +
+                            20px - var(--k)))
+                                / var(--recommends-per-bar));
+
+    border-radius: 15px;
+    height: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin: 10px var(--recommend-horis-margin);
+    cursor: pointer;
+}
+
+@media (max-width: 1100px) {
+    .recommend-bar__li {
+        width: calc((100% -
+        ((2 * 3 - 2) *
+        35px +
+        20px - 21px)) /
+        3);
+    }
+}
+
+@media (max-width: 850px) {
+    .recommend-bar__li {
+        width: calc((100% -
+        ((2 * 2 - 2) *
+        35px +
+        20px - 21px)) /
+        2);
+    }
+}
+
+@media (max-width: 600px) {
+    .recommend-bar__li {
+        width: calc(((100% -
+        ((2 * 1 - 2) *
+        35px +
+        20px - 21px)) /
+        1) * 2 / 3);
+    }
+
+    .recommend-bar__container {
+        margin: 0 30px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 450px) {
+    .recommend-bar__li {
+        width: calc(((100% -
+        ((2 * 1 - 2) *
+        35px +
+        20px - 21px)) /
+        1));
+    }
+}
+
+.recommend-bar__li:first-child {
+    margin-left: 0;
+}
+
+.recommend-bar__li:last-child {
+    margin-right: 10px;
+}
+

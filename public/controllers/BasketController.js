@@ -1,43 +1,84 @@
 import BaseController from './BaseController.js';
 import EventBus from '../services/Events/EventBus.js';
+import Event from '../services/Events/Events.js';
 import RestaurantController from './RestaurantController.js';
-import ProfileController from './ProfileController.js';
 
 class BasketController extends BaseController {
     constructor() {
         super();
-        this.basket = {
-            owner: -1,
-            product: {},
-        };
-        this.total = 0;
-        this.persons = 1;
+        if (localStorage.basket) {
+            this.basket = JSON.parse(localStorage.basket);
+        } else {
+            this.basket = {
+                restaurant: RestaurantController.restaurantId,
+                owner: -1,
+                product: {},
+            };
+        }
+
+        if (localStorage.total) {
+            this.total = Number(localStorage.total);
+        } else {
+            this.total = 0;
+        }
+
+        if (localStorage.persons) {
+            this.persons = Number(localStorage.total);
+        } else {
+            this.persons = 1;
+        }
+    }
+
+    saveBasket() {
+        localStorage.basket = JSON.stringify(this.basket);
+    }
+
+    saveTotal() {
+        localStorage.total = String(this.total);
+    }
+
+    savePersonNum() {
+        localStorage.persons = String(this.persons);
     }
 
     startCatchEvents() {
-        EventBus.subscribe('add-product', this.addProductHandler.bind(this));
-        EventBus.subscribe(
-            'person-amount-change',
-            this.personAmountChangeHandler.bind(this),
+        this.addUnbind(
+            EventBus.subscribe(Event.addProduct, this.addProductHandler.bind(this)),
         );
-        EventBus.subscribe('success-login', this.CheckBasketHandler.bind(this));
-        EventBus.subscribe('log-out', this.cleanBasketHandler.bind(this));
-        EventBus.subscribe('delete-prod', this.deleteProductHandler.bind(this));
-    }
-
-    stopCatchEvents() {
-        EventBus.unsubscribe('add-product', this.addProductHandler.bind(this));
-        EventBus.unsubscribe(
-            'person-amount-change',
-            this.personAmountChangeHandler.bind(this),
+        this.addUnbind(
+            EventBus.subscribe(
+                Event.personAmountChange,
+                this.personAmountChangeHandler.bind(this),
+            ),
         );
-        EventBus.unsubscribe('success-login', this.CheckBasketHandler.bind(this));
-        EventBus.unsubscribe('log-out', this.cleanBasketHandler.bind(this));
-        EventBus.unsubscribe('delete-prod', this.deleteProductHandler.bind(this));
+        this.addUnbind(
+            EventBus.subscribe(
+                Event.checkoutSuccess,
+                this.cleanBasketHandler.bind(this),
+            ),
+        );
+        this.addUnbind(
+            EventBus.subscribe(
+                Event.successLogin,
+                this.CheckBasketHandler.bind(this),
+            ),
+        );
+        this.addUnbind(
+            EventBus.subscribe(
+                Event.successSignup,
+                this.CheckBasketHandler.bind(this),
+            ),
+        );
+        this.addUnbind(
+            EventBus.subscribe(
+                Event.deleteProd,
+                this.deleteProductHandler.bind(this),
+            ),
+        );
     }
 
     productNumber() {
-        return Object.keys(this.basket).length;
+        return Object.keys(this.basket.product).length;
     }
 
     isEmpty() {
@@ -45,55 +86,66 @@ class BasketController extends BaseController {
     }
 
     addProductHandler(data) {
+        if (Object.entries(this.basket.product).length === 0) {
+            this.basket.restaurant = RestaurantController.restaurantId;
+            EventBus.broadcast(Event.restaurantSelected, {
+                name: RestaurantController.restaurantName,
+                id: RestaurantController.restaurantId,
+            });
+        }
+        if (this.basket.restaurant !== RestaurantController.restaurantId) {
+            this.cleanBasketHandler();
+            this.basket.restaurant = RestaurantController.restaurantId;
+        }
         if (data.id in this.basket.product) {
             this.basket.product[data.id].amount++;
+            EventBus.broadcast(Event.productAdded(data.id));
         } else {
             this.basket.product[data.id] = data;
             this.basket.product[data.id].amount = 1;
+            EventBus.broadcast(Event.updateBasket, this.basket.product);
         }
 
-        EventBus.publish('set-page', {
-            url: `/restaurants/${RestaurantController.restaurantId}`,
-        });
+        this.saveBasket();
+        EventBus.broadcast(Event.basketChanged, this.basket.product);
     }
 
     deleteProductHandler(id) {
-        console.log(id);
         if (id in this.basket.product) {
-
             if (this.basket.product[id].amount === 1) {
                 delete this.basket.product[id];
+                EventBus.broadcast(Event.productDeleted(id));
+                EventBus.broadcast(Event.updateBasket, this.basket.product);
             } else if (this.basket.product[id].amount > 1) {
                 this.basket.product[id].amount--;
+                EventBus.broadcast(Event.productDeleted(id));
             }
 
-            EventBus.publish('set-page', {
-                url: `/restaurants/${RestaurantController.restaurantId}`,
-            });
+            this.saveBasket();
+            EventBus.broadcast(Event.basketChanged, this.basket.product);
         }
     }
-    
+
     personAmountChangeHandler(personNum) {
         if (personNum > 0) {
             this.persons = personNum;
         }
+        this.savePersonNum();
     }
 
     CheckBasketHandler(data) {
-        console.log(this.basket.owner, data);
-        if (this.basket.owner !== data) {
-            this.basket = {
-                owner: data,
-                product: {},
-            };
-        }
+        this.basket.owner = data;
+        this.saveBasket();
     }
 
-    cleanBasketHandler(data) {
+    cleanBasketHandler() {
         this.basket = {
             owner: -1,
             product: {},
         };
+
+        this.saveBasket();
+        EventBus.broadcast(Event.updateBasket, this.basket.product);
     }
 }
 

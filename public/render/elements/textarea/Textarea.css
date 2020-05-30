@@ -1,0 +1,35 @@
+
+.restaurant-feedback-card__textarea {
+    border-radius: 20px;
+    padding: 20px;
+    width: -webkit-fill-available;
+    background-color: white;
+    border: 1px solid #D6D6D6;
+    outline: none;
+    resize: vertical;
+}
+
+.feedback-form__text-input {
+    border-radius: 5px;
+    padding: 20px;
+    width: -webkit-fill-available;
+    resize: vertical;
+    background-color: white;
+    border: 1px solid #D6D6D6;
+    outline: none;
+}
+
+.add-restaurant__textarea {
+    resize: vertical;
+    width: 100%;
+    text-align: start;
+    padding: 20px;
+    box-sizing: border-box;
+
+    background: #FFFFFF;
+    box-shadow: 4px 6px 100px #c8c8c8;
+    border: 1px;
+    outline: 1px;
+    height: 120px;
+    border-radius: 30px;
+}

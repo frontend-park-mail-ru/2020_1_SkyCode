@@ -1,4 +1,6 @@
 .neon-button {
+    width: fit-content;
+    height: fit-content;
     position: relative;
     display: inline-block;
     padding: 7px 15px;
@@ -13,11 +15,28 @@
     outline: none;
     border: 0;
     cursor: pointer;
+    background-color: transparent;
+}
+
+.order-item__submit {
+    min-height: 30px;
+    margin: 10px auto;
+}
+
+.login-field__goto-signup, .singup-field__goto-login {
+    color: black;
+    background: transparent;
 }
 
 .profile-text-area__submit-phone {
     height: 20px;
     width: 20px;
+}
+
+.send_button {
+    margin-right: 10px;
+    width: 90px;
+    box-sizing: border-box;
 }
 
 .neon-button__line {
@@ -33,7 +52,8 @@
      background: linear-gradient(90deg, transparent, #2196f3);
  }
 
-.neon-button:hover .neon-button__line--top {
+.neon-button:hover .neon-button__line--top,
+.neon-button:focus .neon-button__line--top{
     left: 100%;
     transition: 0.5s;
     transition-delay: 0.12s;
@@ -47,7 +67,8 @@
     background: linear-gradient(270deg, transparent, #2196f3);
 }
 
-.neon-button:hover .neon-button__line--bottom {
+.neon-button:hover .neon-button__line--bottom,
+.neon-button:focus .neon-button__line--bottom {
     right: 100%;
     transition: 0.5s;
     transition-delay: 0.12s;
@@ -61,7 +82,8 @@
     background: linear-gradient(0deg, transparent, #2196f3);
 }
 
-.neon-button:hover .neon-button__line--left {
+.neon-button:hover .neon-button__line--left,
+.neon-button:focus .neon-button__line--left{
     bottom: 100%;
     transition: 0.5s;
     transition-delay: 0s;
@@ -75,23 +97,34 @@
     background: linear-gradient(180deg, transparent, #2196f3);
 }
 
-.neon-button:hover .neon-button__line--right {
+.neon-button:hover .neon-button__line--right,
+.neon-button:focus .neon-button__line--right{
     top: 100%;
     transition: 0.5s;
     transition-delay: 0s;
 }
 
-.neon-button:hover {
+.neon-button:hover, .neon-button:focus {
+    box-shadow: 0 0 10px #F6D471;
+    background-color: #F6D471;
+    color: black;
+    transition-delay: 0.25s;
+}
+
+.login-field__goto-signup:hover, .singup-field__goto-login:hover {
     box-shadow: 0 0 10px #2196f3;
     background-color: #2196f3;
-    color: #FFFFFF;
-    transition-delay: 0.45s;
+    color: white;
 }
 
-.signup-field__submit-button {
-    margin-top: 20px;
+.signup-field__submit {
+    margin-left: 10px;
 }
 
-.login-field__submit-button {
-    margin-top: 30px;
+.login-field__submit {
+    border-radius: 2px;
+}
+
+.restaurant-feedback__login-signup {
+
 }

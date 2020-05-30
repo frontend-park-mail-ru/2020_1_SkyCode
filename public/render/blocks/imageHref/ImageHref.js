@@ -1,23 +1,28 @@
 import Component from '../../Component.js';
 import Input from '../../elements/input/Input.js';
 import EventBus from '../../../services/Events/EventBus.js';
-
+import template from './ImageHref.hbs';
 
 export default class ImageHref extends Component {
     constructor({
+        id,
         src,
         href,
         classes = 'imageHref',
         imageClasses = 'imageClasses',
+        needNewWindow = false,
     }) {
         super(classes, {
             image: new Input({
                 type: 'image',
                 classes: imageClasses,
                 src,
+                id,
             }),
             href,
+            needNewWindow,
         });
+        super.template = template;
     }
 
     bind() {
@@ -27,11 +32,11 @@ export default class ImageHref extends Component {
             return;
         }
 
-        me.onclick = function(event) {
+        me.onclick = (event) => {
             event.preventDefault();
-            console.log('href ' + this.href + ' clicked');
-            EventBus.publish('set-page', {url: this.context.href});
-        }.bind(this);
+            EventBus.broadcast('set-page', {url: this.context.href});
+        };
+        super.bind();
     }
 
     unbind() {
@@ -41,5 +46,6 @@ export default class ImageHref extends Component {
         }
 
         me.onclick = null;
+        super.unbind();
     }
 }

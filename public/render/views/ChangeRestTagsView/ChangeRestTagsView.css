@@ -1,0 +1,7 @@
+.change-restaurant-tag-view {
+    grid-area: view;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

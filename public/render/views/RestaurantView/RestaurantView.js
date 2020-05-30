@@ -1,34 +1,39 @@
-// eslint-disable-next-line max-len
-import RestaurantCategories from '../../blocks/restaurantCategories/RestaurantCategories.js';
-// eslint-disable-next-line max-len
-import RestaurantBanner from '../../blocks/restaurantBanner/restaurantBanner.js';
 import Component from '../../Component.js';
-import Header from '../../blocks/header/Header.js';
-import Order from '../../blocks/order/Order.js';
-import Products from '../../blocks/products/Products.js';
+import temp from './RestaurantView.hbs';
+import RestaurantBanner from '../../blocks/restaurantBanner/restaurantBanner';
+import ProductList from '../../blocks/productList/ProductList';
+import Href from '../../elements/href/Href';
+import Pagination from '../../blocks/Pagination/Pagination';
 
-class RestaurantView extends Component {
-    constructor({restaurant, products, categoryArr}) {
+
+export default class RestaurantView extends Component {
+    constructor({restaurant, products, page, total, count}) {
         super();
-
+        super.template = temp;
         this.addContextData({
-            header: new Header({
-                classes: 'header',
+            Pagination: new Pagination({
+                classes: '',
+                first: 1,
+                current: Number(page),
+                last: Math.floor(Number(total) / Number(count))
+                    + (Number(total) % Number(count) !== 0),
+                hrefBase: `/restaurants/${restaurant.id}/`,
             }),
-            order: new Order({
-                classes: 'order',
-            }),
-            restaurantBanner: new RestaurantBanner({
-                classes: 'restaurantBanner',
+            Banner: new RestaurantBanner({
+                classes: 'restaurant-banner',
                 imgHref: `/images/${restaurant.image}`,
                 rate: restaurant.rating,
                 name: restaurant.name,
             }),
-            categories: new RestaurantCategories({categoryArr}),
-            products: new Products({classes: 'products',
+            // Categories: new RestaurantCategories({categoryArr}),
+            Products: new ProductList({
+                classes: 'restaurant-view__product-list',
                 productArr: products}),
-        }, true);
+            InfoHref: new Href({
+                classes: 'restaurant-view__info',
+                text: 'Отзывы',
+                href: `/restaurants/${restaurant.id}/info`,
+            }),
+        });
     }
 }
-
-export default RestaurantView;

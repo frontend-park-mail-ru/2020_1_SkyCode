@@ -1,0 +1,51 @@
+.feedback-form__rate {
+    display: flex;
+    margin: 10px 20px 0 20px;
+}
+
+.feedback-form__first-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.feedback-form__second-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media (max-width: 700px) {
+    .feedback-form__first-line {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .feedback-form__second-line {
+        width: 100%;
+        flex-direction: row-reverse;
+    }
+}
+
+.restaurant-feedback__feedback-form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    background-color: #F8F8F8;
+    border: 1px solid #4d3434;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.restaurant-feedback__label {
+    margin: 0 0 20px 0;
+    line-height: 36px;
+}
+
+.feedback-form__stars-and-rate {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}

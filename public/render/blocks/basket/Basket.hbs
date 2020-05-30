@@ -1,13 +1,9 @@
 <div class="{{classes}}">
-    <div class="basket__scroll-hider">
-        <div class="basket__scrolled-area">
-            <ul class="basket__list">
-                {{#each basketProducts}}
-                    <li class="basket__list-item">
-                        {{{this}}}
-                    </li>
-                {{/each}}
-            </ul>
-        </div>
-    </div>
+    <ul class="basket__list">
+        {{#each basketProducts}}
+            <li class="basket__list-item">
+                {{{this}}}
+            </li>
+        {{/each}}
+    </ul>
 </div>

@@ -1,0 +1,25 @@
+.order-history__view {
+    grid-area: view;
+
+}
+.order-history-view__container {
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 75vh;
+}
+
+.order-history__main-content_title {
+    font-size: 30px;
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+
+@media (max-height: 600px) {
+    .order-history__main-content_title {
+        display: none;
+    }
+}

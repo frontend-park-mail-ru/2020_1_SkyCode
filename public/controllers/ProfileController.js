@@ -2,7 +2,10 @@ import BaseController from './BaseController.js';
 import ProfileView from '../render/views/ProfileView/ProfileView.js';
 import UserModel from '../models/UserModel.js';
 import EventBus from '../services/Events/EventBus.js';
+import Event from '../services/Events/Events.js';
 import SessionModel from '../models/SessionModel.js';
+import UserController from './UserController';
+import Router from '../routing/Router';
 
 class ProfileController extends BaseController {
     constructor(title = 'profile page') {
@@ -10,49 +13,42 @@ class ProfileController extends BaseController {
     }
 
     execute() {
-        UserModel
-            .getUser()
-            .then((response) => {
-                if (response.error === 'Unauthorized') {
-                    EventBus.publish('redirect', {url: '/login'});
-                } else {
-                    super.execute(new ProfileView({profile: response}));
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+        super.execute(new ProfileView({profile: UserController.User}));
     }
 
     startCatchEvents() {
-        EventBus.subscribe('update-user', this.updateBioHandler.bind(this));
-        EventBus.subscribe('log-out', this.logoutHandler.bind(this));
-        EventBus.subscribe(
-            'avatar-update',
-            this.updateAvatarHandler.bind(this),
+        this.addUnbind(
+            EventBus.subscribe(
+                Event.updateUser,
+                this.updateBioHandler.bind(this),
+            ),
         );
-    }
-
-    stopCatchEvents() {
-        EventBus.unsubscribe('update-user', this.updateBioHandler.bind(this));
-        EventBus.unsubscribe('log-out', this.logoutHandler.bind(this));
-        EventBus.unsubscribe(
-            'avatar-update',
-            this.updateAvatarHandler.bind(this),
+        this.addUnbind(
+            EventBus.subscribe(
+                Event.logout,
+                this.logoutHandler.bind(this),
+            ),
+        );
+        this.addUnbind(
+            EventBus.subscribe(
+                Event.avatarUpdate,
+                this.updateAvatarHandler.bind(this),
+            ),
         );
     }
 
     logoutHandler() {
-        console.log('qwer');
-        SessionModel.logout().then((response) => {
-            if (response.error) {
-                EventBus.publish('logout-error', response.error);
-            } else {
-                EventBus.publish('set-page', {url: '/login'});
-            }
-        })
+        SessionModel.logout()
+            .then((response) => {
+                if (response.error) {
+                    EventBus.broadcast(Event.logoutError, response.error);
+                } else {
+                    EventBus.broadcast(Event.successLogout);
+                    EventBus.broadcast(Event.setPage, {url: '/'});
+                }
+            })
             .catch((err) => {
-                EventBus.publish('logout-error', 'Bad connection');
+                EventBus.broadcast(Event.logoutError, 'Bad connection');
                 console.log(err);
             });
     }
@@ -62,14 +58,15 @@ class ProfileController extends BaseController {
             .updateUser(data)
             .then((response) => {
                 if (response.error) {
-                    EventBus.publish('update-bio-error', response.error);
+                    EventBus.broadcast(Event.updateBioError, response.error);
                 } else {
-                    EventBus.publish('set-page', {url: '/me'});
+                    UserController.updateUserInfo().then(() => Router.reload('Данные обновлены'))
+                        .catch(() => Router.reload('Ошибка обновления'));
                 }
             })
             .catch((err) => {
                 console.log(err);
-                EventBus.publish('update-bio-error', 'Bad connection');
+                EventBus.broadcast(Event.updateBioError, 'Bad connection');
             });
     }
 
@@ -78,17 +75,20 @@ class ProfileController extends BaseController {
             .updateAvatar(data)
             .then((response) => {
                 if (response.error) {
-                    EventBus.publish('update-avatar-error', response.error);
+                    EventBus.broadcast(Event.updateAvatarError, response.error);
                 } else {
-                    EventBus.publish('set-page', {url: '/me'});
+                    UserController
+                        .updateUserInfo()
+                        .then(() => {
+                            EventBus.broadcast(Event.setPage, {url: '/me'});
+                        });
                 }
             })
             .catch((err) => {
                 console.log(err);
-                EventBus.publish('update-avatar-error', 'Bad connection');
+                EventBus.broadcast(Event.updateAvatarError, 'Bad connection');
             });
     }
 }
-
 
 export default new ProfileController();

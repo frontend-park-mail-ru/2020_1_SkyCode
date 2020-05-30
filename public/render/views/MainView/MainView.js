@@ -1,26 +1,35 @@
-import Header from '../../blocks/header/Header.js';
-import ActionBar from '../../blocks/actionBar/ActionBar.js';
-import CategoryBar from '../../blocks/categoryBar/CategoryBar.js';
-import Component from '../../Component.js';
-import Order from '../../blocks/order/Order.js';
-// eslint-disable-next-line max-len
-import SelectTimeButton from '../../blocks/selectTimeButton/SelectTimeButton.js';
-import RestaurantList from '../../blocks/restaurantList/RestaurantList.js';
+import temp from './MainView.hbs';
+import SelectTimeButton from '../../blocks/selectTimeButton/SelectTimeButton';
+import ActionBar from '../../blocks/actionBar/ActionBar';
+import CategoryBar from '../../blocks/categoryBar/CategoryBar';
+import RestaurantList from '../../blocks/restaurantList/RestaurantList';
+import Component from '../../Component';
+import RecommendBar from '../../blocks/RecommendBar/RecommendBar';
+import Pagination from '../../blocks/Pagination/Pagination';
 
-class MainView extends Component {
-    constructor({actionArr, categoryArr, restaurantArr}) {
+export default class MainView extends Component {
+    constructor({actionArr, categoryArr, recommendArr, restaurantArr, page, count, total}) {
         super();
+        this.template = temp;
+        const message = sessionStorage.message;
+        sessionStorage.message = '';
 
         this.addContextData({
-            label: 'Restaurants',
+            Pagination: new Pagination({
+                classes: '',
+                first: 1,
+                current: Number(page),
+                last: Math.floor(Number(total) / Number(count))
+                    + (Number(total) % Number(count) !== 0),
+                hrefBase: '/restaurant_list/',
+            }),
+            message,
+            label: 'Рестораны',
             selectTimeButton: new SelectTimeButton({
                 classes: 'main-view__select-time-button',
                 imageHref: 'static/clock.svg',
-                text: 'Delivery: now',
+                text: 'Доставка: сейчас',
                 callback: () => 0,
-            }),
-            header: new Header({
-                classes: 'header',
             }),
             actionBar: new ActionBar({
                 classes: 'action-bar',
@@ -30,15 +39,17 @@ class MainView extends Component {
                 classes: 'category-bar',
                 categoryArr,
             }),
-            order: new Order({
-                classes: 'order',
-            }),
             restaurantList: new RestaurantList({
                 classes: 'main-view__restaurant-list',
                 restaurantArr,
             }),
-        }, true);
+        });
+        if (recommendArr && recommendArr.length > 0) {
+            this.addContextData({
+                RecommendBar: new RecommendBar({
+                    recommendArr,
+                }),
+            });
+        }
     }
 }
-
-export default MainView;

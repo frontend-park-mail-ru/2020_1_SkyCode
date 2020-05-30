@@ -2,141 +2,136 @@ import Component from '../../Component.js';
 import Input from '../../elements/input/Input.js';
 import NeonButton from '../../elements/neonButton/NeonButton.js';
 import EventBus from '../../../services/Events/EventBus.js';
+import Event from '../../../services/Events/Events.js';
 import ErrorBlock from '../errorBlock/ErrorBlock.js';
-import Validation from '../../../services/InputValidation.js';
+import template from './SignupField.hbs';
+import PhoneInput from '../../elements/phoneInput/PhoneInput';
+import CheckedInput from '../../elements/checkedInput/CheckedInput';
 
 export default class SignupField extends Component {
-    constructor({classes}) {
+    constructor({classes = ''} = {}) {
         super(classes, {
-            fNameInput: new Input({
-                classes: 'signup-field__input',
-                id: 'signup-field__fname-input',
-                type: 'text',
-                placeholder: 'first name',
-                isRequired: true,
+            fNameInput: new CheckedInput({
+                label: 'Имя',
+                Input: new Input({
+                    classes: 'signup-field__input',
+                    id: 'signup-field__fname-input',
+                    type: 'text',
+                    placeholder: 'Александр',
+                    isRequired: true,
+                    minlength: '4',
+                }),
             }),
-            lNameInput: new Input({
-                classes: 'signup-field__input',
-                id: 'signup-field__lname-input',
-                type: 'text',
-                placeholder: 'last name',
-                isRequired: true,
+            lNameInput: new CheckedInput({
+                label: 'Фамилия',
+                Input: new Input({
+                    classes: 'signup-field__input',
+                    id: 'signup-field__lname-input',
+                    type: 'text',
+                    placeholder: 'Постников',
+                    isRequired: true,
+                    minlength: '4',
+                }),
             }),
-            phoneInput: new Input({
-                classes: 'signup-field__input',
-                id: 'signup-field__phone-input',
-                type: 'phone',
-                placeholder: '8(800)555-35-35',
-                isRequired: true,
-                pattern: '\\d\\(\\d{3}\\)\\d{3}-\\d{2}-\\d{2}',
+            phoneInput: new CheckedInput({
+                label: 'Телефон',
+                Input: new PhoneInput({
+                    classes: 'signup-field__input',
+                    id: 'signup-field__phone-input',
+                    isRequired: true,
+                }),
             }),
-            passwordInput1: new Input({
-                classes: 'signup-field__input',
-                id: 'signup-field__password-input1',
-                type: 'password',
-                placeholder: 'GoodyGoody456',
-                isRequired: true,
+            passwordInput1: new CheckedInput({
+                label: 'Пароль',
+                Input: new Input({
+                    classes: 'signup-field__input',
+                    id: 'signup-field__password-input1',
+                    type: 'password',
+                    placeholder: 'elevator3plant',
+                    isRequired: true,
+                    minlength: '7',
+                }),
             }),
-            passwordInput2: new Input({
-                classes: 'signup-field__input',
-                id: 'signup-field__password-input2',
-                type: 'password',
-                placeholder: 'GoodyGoody456',
-                isRequired: true,
-            }),
-            firstNameErrorField: new ErrorBlock({
-                id: 'first-name-input-err',
-            }),
-            lastNameErrorField: new ErrorBlock({
-                id: 'last-name-input-err',
-            }),
-            phoneErrorField: new ErrorBlock({
-                id: 'phone-error',
-            }),
-            password1ErrorField: new ErrorBlock({
-                id: 'password1-error',
-            }),
-            password2ErrorField: new ErrorBlock({
-                id: 'password2-error',
+            passwordInput2: new CheckedInput({
+                label: 'Подтверждение',
+                Input: new Input({
+                    classes: 'signup-field__input',
+                    id: 'signup-field__password-input2',
+                    type: 'password',
+                    placeholder: 'elevator3plant',
+                    isRequired: true,
+                }),
             }),
             generalErrorField: new ErrorBlock({
                 id: 'signup-general-error',
             }),
         });
 
+        super.template = template;
+
         this.addContextData({
             submitButton: new NeonButton({
                 classes: 'signup-field__submit',
-                text: 'Sign Up',
+                text: 'Зарегистрироваться',
+                callback: this.submit.bind(this),
+            }),
+            LoginButton: new NeonButton({
+                classes: 'singup-field__goto-login',
+                text: 'Вход',
                 callback: () => {
-                    this.context.generalErrorField.clean();
-
-                    let validationFlag;
-                    validationFlag = Validation.inputValidation(
-                        this.context.fNameInput,
-                        this.context.firstNameErrorField,
-                    );
-
-                    validationFlag = Validation.inputValidation(
-                        this.context.lNameInput,
-                        this.context.lastNameErrorField,
-                    ) && validationFlag;
-
-                    validationFlag = Validation.inputValidation(
-                        this.context.phoneInput,
-                        this.context.phoneErrorField,
-                    ) && validationFlag;
-
-                    validationFlag = Validation.inputValidation(
-                        this.context.passwordInput1,
-                        this.context.password1ErrorField,
-                    ) && validationFlag;
-
-                    validationFlag = Validation.inputValidation(
-                        this.context.passwordInput2,
-                        this.context.password2ErrorField,
-                    ) && validationFlag;
-
-                    if (this.context.passwordInput1.domElement.value
-                        !== this.context.passwordInput2.domElement.value) {
-                        validationFlag = false;
-                        this.context.password1ErrorField.addMessage(
-                            'Passwords must be equal',
-                        );
-                        this.context.password2ErrorField.addMessage(
-                            'Passwords must be equal',
-                        );
-                    }
-
-                    if (validationFlag === false) {
-                        return;
-                    }
-
-                    const data = {
-                        firstName: this.context.fNameInput.domElement.value,
-                        lastName: this.context.lNameInput.domElement.value,
-                        phone: this.context.phoneInput.domElement.value,
-                        password: this.context.passwordInput1.domElement.value,
-                    };
-                    EventBus.publish('signup', data);
+                    EventBus.broadcast(Event.loginRequest, {
+                        isStatic: this.contextParent.isStatic,
+                    });
                 },
             }),
         });
     }
 
-    bind() {
-        EventBus.subscribe('signup-error', (message) => {
-            this.context.generalErrorField.addMessage(message);
-        });
+    submit() {
+        if (this.contextParent.domElement.style.display === 'none') return;
+        this.context.generalErrorField.clean();
 
-        super.bind();
+        const isValid = this.context.fNameInput.isValid()
+            & this.context.lNameInput.isValid()
+            & this.context.phoneInput.isValid()
+            & this.context.passwordInput1.isValid()
+            & this.context.passwordInput2.isValid();
+
+        if (!isValid) {
+            return;
+        }
+
+        if (this.context.passwordInput1.value()
+            !== this.context.passwordInput2.value()) {
+            this.context.generalErrorField.replaceMessage(
+                'Пароли должны совпадать',
+            );
+            return;
+        }
+
+        const data = {
+            firstName: this.context.fNameInput.value(),
+            lastName: this.context.lNameInput.value(),
+            phone: this.context.phoneInput.value(),
+            password: this.context.passwordInput1.value(),
+        };
+        EventBus.broadcast(Event.signup, data);
     }
 
-    unbind() {
-        EventBus.unsubscribe('signup-error', (message) => {
-            this.context.generalErrorField.addMessage(message);
-        });
+    focusOnFNameInput() {
+        this.context.fNameInput.focus();
+    }
 
-        super.unbind();
+    bind() {
+        this.addUnbind(
+            EventBus.subscribe(Event.enterPressed, this.submit.bind(this)),
+        );
+        this.addUnbind(
+            EventBus.subscribe(Event.signupError, (message) => {
+                this.context.generalErrorField.replaceMessage(message);
+            }),
+        );
+
+        super.bind();
     }
 }

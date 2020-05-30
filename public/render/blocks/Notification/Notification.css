@@ -1,0 +1,23 @@
+
+.notification {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: 10px;
+
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #D6D6D6;
+}
+
+.notification:hover {
+    box-shadow: 0 0 10px #F6D471;
+}
+
+.notif__first-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}

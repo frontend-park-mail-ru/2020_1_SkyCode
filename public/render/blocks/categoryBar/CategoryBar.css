@@ -1,22 +1,26 @@
-@import "../category/Category.css";
-
 .category-bar {
-    grid-area: category-bar;
-}
-
-.category-bar__container-scroll-hider {
-    overflow: hidden;
-}
-
-.category-bar__container {
-    overflow-x: scroll;
-
-    margin-bottom: -20px;
+    height: fit-content;
 }
 
 .category-bar__list {
-    display: flex;
-    list-style-type: none;
+    margin-left: 80px;
+    width: calc(100% - 160px);
 
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+
+    list-style-type: none;
     padding-inline-start: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
 }
+
+@media (max-width: 700px) {
+    .category-bar__list {
+        width: 100%;
+        margin-left: 0;
+    }
+
+}
+

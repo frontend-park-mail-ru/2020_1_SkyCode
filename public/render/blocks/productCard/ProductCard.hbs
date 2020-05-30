@@ -1,10 +1,13 @@
-<div class="product-card {{classes}}">
-    <div class="product-card__img-container">
-        <img class="product-card__img" src={{imgSrc}}>
-    </div>
-    <h3 class="product-card__title">{{productName}}</h3>
-    <div class="product-card__flex-container">
-        <p class="product-card__description">{{productPrice}} RUB</p>
-        {{{button}}}
+<div class="product-list__product-card {{classes}}">
+    <div class="product-card__container">
+        <div class="product-card__image-container">
+            <img class="product-card__img" src={{imgSrc}}>
+        </div>
+        <span class="product-card__name">{{productName}}</span>
+        <div class="product-card__info">
+            <span class="product-card__description">{{productPrice}}₽</span>
+            {{{button}}}
+            {{{Input}}}
+        </div>
     </div>
 </div>

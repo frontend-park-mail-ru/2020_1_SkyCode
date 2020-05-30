@@ -1,5 +1,6 @@
 import Component from '../../Component.js';
 import Href from '../../elements/href/Href.js';
+import template from './RestaurantCategory.hbs';
 
 export default class RestaurantCategory extends Component {
     constructor({classes, href, categoryName, id}) {
@@ -10,5 +11,7 @@ export default class RestaurantCategory extends Component {
                 id,
                 text: categoryName}),
         });
+
+        super.template = template;
     }
 }

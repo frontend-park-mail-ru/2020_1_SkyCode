@@ -1,0 +1,78 @@
+.restaurant-feedback__card {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: #F8F8F8;
+    border: 1px solid #4d3434;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.restaurant-feedback-card__second-line {
+    background: white;
+    border-radius: 5px;
+    border: 1px solid #D6D6D6;
+    padding: 20px;
+}
+
+.restaurant-feedback-card__date-and-rate {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 700px) {
+    .restaurant-feedback-card__date-and-rate {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.restaurant-feedback-card__first-line {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media (max-width: 700px) {
+    .restaurant-feedback-card__first-line {
+        flex-direction: column;
+    }
+}
+
+.restaurant-feedback-card__rate {
+    display: flex;
+    margin-bottom: 20px;
+    margin-left: auto;
+}
+
+@media (max-width: 700px) {
+    .restaurant-feedback-card__rate {
+        margin-left: 0;
+    }
+}
+
+.restaurant-feedback-card__date {
+    margin-bottom: 20px;
+    text-align: end;
+}
+
+
+.restaurant-feedback-card__name {
+    display: block;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    font-weight: bold;
+    margin: 0 0 20px 0;
+    line-height: 36px;
+}
+
+@media (max-width: 600px) {
+    .restaurant-feedback-card__name {
+        margin: 0;
+    }
+}

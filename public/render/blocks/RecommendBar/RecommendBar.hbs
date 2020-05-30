@@ -1,0 +1,10 @@
+<div class="recommend-bar {{classes}}">
+    {{{LeftButton}}}{{{RightButton}}}
+    <div class="recommend-bar__list">
+        {{#each recommends}}
+            {{{this}}}
+        {{else}}
+            <p class="message">Здесь должны быть рекоммендации</p>
+        {{/each}}
+    </div>
+</div>

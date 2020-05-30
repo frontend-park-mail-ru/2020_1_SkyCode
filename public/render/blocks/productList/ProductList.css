@@ -1,0 +1,20 @@
+.restaurant-view__product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    list-style-type: none;
+    padding-inline-start: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin: 20px -70px 110px 0;
+}
+
+@media (max-width: 700px) {
+    .restaurant-view__product-list {
+        flex-wrap: nowrap;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+    }
+}

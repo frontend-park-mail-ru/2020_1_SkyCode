@@ -2,81 +2,90 @@ import Component from '../../Component.js';
 import Input from '../../elements/input/Input.js';
 import NeonButton from '../../elements/neonButton/NeonButton.js';
 import EventBus from '../../../services/Events/EventBus.js';
-import ErrorBlock from '../errorBlock/ErrorBlock.js';
-import Validation from '../../../services/InputValidation.js';
+import Event from '../../../services/Events/Events';
+import template from './LoginField.hbs';
+import PhoneInput from '../../elements/phoneInput/PhoneInput';
+import CheckedInput from '../../elements/checkedInput/CheckedInput';
+import ErrorBlock from '../errorBlock/ErrorBlock';
 
 export default class LoginField extends Component {
-    constructor({classes}) {
+    constructor({classes = ''} = {}) {
         super(classes, {
-            phoneInput: new Input({
-                classes: 'login-field__input',
-                id: 'login-field__email-input',
-                type: 'tel',
-                placeholder: '8(800)555-35-35',
-                isRequired: true,
-                pattern: '\\d\\(\\d{3}\\)\\d{3}-\\d{2}-\\d{2}',
+            phoneInput: new CheckedInput({
+                label: 'Телефон',
+                Input: new PhoneInput({
+                    classes: 'login-field__input',
+                    id: 'login-field__phone-input',
+                    isRequired: true,
+                }),
             }),
-            passwordInput: new Input({
-                classes: 'login-field__input',
-                id: 'login-field__password-input',
-                type: 'password',
-                placeholder: 'password',
-                isRequired: true,
-            }),
-            phoneErrorField: new ErrorBlock({
-                id: 'indent-input-err',
-            }),
-            passwordErrorField: new ErrorBlock({
-                id: 'password-input-err',
+            passwordInput: new CheckedInput({
+                label: 'Пароль',
+                Input: new Input({
+                    classes: 'login-field__input',
+                    id: 'login-field__password-input',
+                    minlength: '7',
+                    type: 'password',
+                    isRequired: true,
+                    placeholder: 'elevator3plant',
+                }),
             }),
             generalErrorField: new ErrorBlock({
                 id: 'login-general-error',
             }),
         });
 
-        this.addContextData({submitButton: new NeonButton({
-            classes: 'login-field__submit',
-            text: 'Log In',
-            callback: () => {
-                this.context.generalErrorField.clean();
-                let validationFlag;
+        super.template = template;
 
-                validationFlag = Validation.inputValidation(
-                    this.context.phoneInput,
-                    this.context.phoneErrorField,
-                );
+        this.addContextData({
+            submitButton: new NeonButton({
+                classes: 'login-field__submit',
+                text: 'Войти',
+                callback: this.submit.bind(this),
+            }),
+            signupButton: new NeonButton({
+                classes: 'login-field__goto-signup',
+                text: 'Регистрация',
+                callback: () => {
+                    EventBus.broadcast(Event.signupRequest, {
+                        isStatic: this.contextParent.isStatic,
+                    });
+                },
+            }),
+        });
+    }
 
-                validationFlag = Validation.inputValidation(
-                    this.context.passwordInput,
-                    this.context.passwordErrorField,
-                ) && validationFlag;
+    submit() {
+        if (this.contextParent.domElement.style.display === 'none') return;
 
-                if (validationFlag === false) {
-                    return;
-                }
+        const isValid = this.context.phoneInput.isValid()
+            & this.context.passwordInput.isValid();
 
-                const data = {
-                    phone: this.context.phoneInput.domElement.value,
-                    password: this.context.passwordInput.domElement.value,
-                };
-                EventBus.publish('login', data);
-            },
-        })});
+        if (!isValid) {
+            return;
+        }
+
+        const data = {
+            phone: this.context.phoneInput.value(),
+            password: this.context.passwordInput.value(),
+        };
+        EventBus.broadcast(Event.login, data);
+    }
+
+    focusOnPhoneInput() {
+        this.context.phoneInput.focus();
     }
 
     bind() {
-        EventBus.subscribe('login-error', (message) => {
-            this.context.generalErrorField.addMessage(message);
-        });
+        this.unbind(
+            EventBus.subscribe(Event.enterPressed, this.submit.bind(this)),
+        );
+        this.addUnbind(
+            EventBus.subscribe('login-error', (message) => {
+                this.context.generalErrorField.replaceMessage(message);
+            }),
+        );
 
         super.bind();
-    }
-
-    unbind() {
-        EventBus.unsubscribe('login-error', (message) => {
-            this.context.generalErrorField.addMessage(message);
-        });
-
-        super.unbind();
     }
 }

@@ -1,9 +1,15 @@
 import Component from '../../Component.js';
+import template from './Button.hbs';
+import EventBus from '../../../services/Events/EventBus';
 
 export default class Button extends Component {
-    constructor({text, callback, classes = 'button', id}) {
-        super(classes, {text}, id);
+    constructor({text, callback, classes = 'button', id, isHidden = false}) {
+        super(classes, {
+            text,
+            isHidden,
+        }, id);
         this.callback = callback;
+        super.template = template;
     }
 
     bind() {
@@ -12,7 +18,11 @@ export default class Button extends Component {
             return;
         }
 
-        node.onclick = this.callback;
+        node.onclick = () => {
+            this.callback();
+            EventBus.broadcast(this.id + '-clicked');
+        };
+        super.bind();
     }
 
     unbind() {
@@ -22,5 +32,6 @@ export default class Button extends Component {
         }
 
         node.onclick = null;
+        super.unbind();
     }
 }

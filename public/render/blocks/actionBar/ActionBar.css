@@ -1,30 +1,92 @@
-@import "../action/Action.css";
-
 .action-bar {
-    grid-area: action-bar;
-}
-
-.action-bar__container-scroll-hider {
-    overflow: hidden;
-}
-
-.action-bar__container {
-    overflow-x: scroll;
+    height: fit-content;
+    width: 100%;
 }
 
 .action-bar__list {
-    display: flex;
-    list-style-type: none;
+    box-sizing: border-box;
+    width: calc(100% - 160px);
+    margin-left: 80px;
 
-    /* standart rewrite*/
-    margin-block-start: 0;
-    margin-block-end: 0;
-    margin-inline-start: 0;
-    margin-inline-end: 0;
-    padding-inline-start: 0;
-    /* end standart */
+    display: flex;
+    overflow-x: auto;
+    align-items: center;
+    scroll-behavior: smooth;
+
+    padding-inline-start: 10px;
+    padding-inline-end: 10px;
+}
+
+@media (max-width: 700px) {
+    .action-bar__list {
+        width: 100%;
+        margin-left: 0;
+    }
 }
 
 .action-bar__li {
-    margin: 15px;
+    width: auto;
+    height: 170px;
+    border-radius: 15px;
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin: 10px;
 }
+
+@media (max-width: 1000px) {
+    .action-bar__li {
+        width: auto;
+        height: 170px;
+    }
+}
+
+/*@media (max-width: 1100px) {*/
+/*    .action-bar__li {*/
+/*        width: calc((100% -*/
+/*        ((2 * 3 - 2) **/
+/*        35px +*/
+/*        20px - 21px)) /*/
+/*        3);*/
+/*    }*/
+/*}*/
+/*@media (max-width: 850px) {*/
+/*    .action-bar__li {*/
+/*        width: calc((100% -*/
+/*        ((2 * 2 - 2) **/
+/*        35px +*/
+/*        20px - 21px)) /*/
+/*        2);*/
+/*    }*/
+/*}*/
+/*@media (max-width: 600px) {*/
+/*    .action-bar__li {*/
+/*        width: calc(((100% -*/
+/*        ((2 * 1 - 2) **/
+/*        35px +*/
+/*        20px - 21px)) /*/
+/*        1) * 2 / 3);*/
+/*    }*/
+
+/*    .action-bar__container {*/
+/*        margin: 0 30px;*/
+/*        width: 100%;*/
+/*    }*/
+/*}*/
+/*@media (max-width: 450px) {*/
+/*    .action-bar__li {*/
+/*        width: calc(((100% -*/
+/*        ((2 * 1 - 2) **/
+/*        35px +*/
+/*        20px - 21px)) /*/
+/*        1));*/
+/*    }*/
+/*}*/
+
+.action-bar__li:first-child {
+    margin-left: 0;
+}
+
+.action-bar__li:last-child {
+    margin-right: 10px;
+}
+

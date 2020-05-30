@@ -1,0 +1,36 @@
+.order-item__time-name {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.order-item__time {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+.order-item__name {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 5px;
+    text-align: right;
+}
+
+.order-item__container {
+    border: 2px solid black;
+    width: fit-content;
+    padding: 10px;
+    margin: 10px;
+    height: fit-content;
+    border-radius: 15px;
+}
+
+.order-item__li {
+    display: flex;
+    justify-content: space-between;
+}

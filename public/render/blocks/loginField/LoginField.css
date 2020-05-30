@@ -1,33 +1,38 @@
-@import "../errorBlock/ErrorBlock.css";
-
-.login-signup__login {
-    width: 50%;
-    height: 90%;
-    grid-area: login;
-    background: #FFFFFF;
-    justify-self: center;
-    align-self: center;
+.login-field {
+    height: fit-content;
+    box-shadow: 0 0 10px #D6D6D6;
+    border-radius: 15px;
+    background-color: white;
+    position: relative;
+    padding: 20px;
+    width: 300px;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 4px 100px #D6D6D6;
+    margin: 10vh auto;
 }
 
-.login-signup__login:hover {
-    width: 50%;
-    height: 90%;
-    grid-area: login;
+.login-signup__login {
     background: #FFFFFF;
-    justify-self: center;
-    align-self: center;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: 0px 4px 100px #D6D6D6, 0px 8px 100px #D6D6D6;
+    padding: 20px;
+}
+
+@media (max-width: 800px) {
+    .login-signup__login {
+        margin-top: 230px;
+    }
+}
+
+@media (max-width: 600px) {
+    .login-signup__login {
+        margin-top: 400px;
+    }
 }
 
 
@@ -36,3 +41,4 @@
     font-weight: bold;
     margin: 40px;
 }
+

@@ -1,0 +1,33 @@
+.add-restaurant {
+    box-shadow: 0 0 10px #D6D6D6;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+@media (max-width: 700px) {
+    .add-restaurant {
+        margin: 20px;
+        box-shadow: none;
+        padding: 20px;
+        align-self: center;
+    }
+}
+
+.add-restaurant__label {
+    margin: 5px;
+}
+
+.add-restaurant__title {
+    font-size: 26px;
+}
+
+.add-restaurant__button {
+    margin-left: 5px;
+    font-size: 40px;
+    cursor: pointer;
+}

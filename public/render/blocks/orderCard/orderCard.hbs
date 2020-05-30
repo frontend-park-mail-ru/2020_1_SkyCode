@@ -1,0 +1,28 @@
+<div class="order-card__container">
+    <div class="order-card__title-section">
+        <h3 class="order-card__title-section_title">{{restaurantName}}</h3>
+        <div class="order-card__title-section_time">{{date}}</div>
+        <div class="order-card__title-section_time">{{time}}</div>
+        <div class="order-card__title-section_address">{{address}}</div>
+        <div class="order-card__title-section_status">{{status}}</div>
+    </div>
+    <div class="order-card__product-section">
+        <div class="order-card__product-section-list">
+            {{#each products}}
+                <div class="order-card__product-section-list_product">
+                    <div class="order-card__product-section-list_name">{{this.name}}</div>
+                    <div class="order-card__product-section-list_count">{{this.count}} шт</div>
+                    <div class="order-card__product-section-list_price">{{this.price}}₽</div>
+                </div>
+            {{/each}}
+
+            <div class="order-card__product-section-list_total">
+                <div>Итого</div>
+                {{total}}₽
+            </div>
+        </div>
+
+        {{{button}}}
+    </div>
+</div>
+

@@ -7,6 +7,33 @@ module.exports = {
         filename: 'main.js',
         path: path.resolve(__dirname, 'public'),
     },
-    mode: 'production',
+    mode: 'development',
+    watch: true,
+
+    module: {
+        rules: [
+            {
+                test: /\.hbs$/,
+                loader: 'handlebars-loader',
+            },
+
+            {
+                test: /\.css$/i,
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: {
+                                localIdentName: '[path][name]__[local]--[hash:base64:5]',
+                            },
+                            localsConvention: 'dashesOnly',
+                            sourceMap: true,
+                        },
+                    }
+                ]
+            },
+        ],
+    },
 };
 /* eslint-enable */

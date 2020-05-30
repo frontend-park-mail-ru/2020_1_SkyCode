@@ -1,3 +1,12 @@
+.input {
+    outline: none;
+    font-size: 18px;
+    line-height: 20px;
+    background-color: transparent;
+    transition: 0.3s;
+    border-width: 0;
+    font-family: 'Comfortaa', cursive;
+}
 
 .header__profile-button {
     width: 30px;
@@ -8,13 +17,14 @@
 
 .search-field__input-field {
     background: #F8F8F8;
-    height: 30px;
-    min-width: 50px;
+    height: 35px;
+    min-width: 85px;
     border-radius: 0 30px 30px 0;
     border: none;
     outline: none;
     vertical-align: middle;
     width: 100%;
+    cursor: pointer;
 }
 
 .search-field__input-button {
@@ -25,6 +35,17 @@
     width: 50px;
     min-width: 50px;
     border-radius: 30px 0 0 30px;
+    cursor: pointer;
+}
+
+@media (max-width: 400px){
+    .search-field__input-button {
+        border-radius: 30px;
+    }
+
+    .search-field__input-field {
+        display: none;
+    }
 }
 
 .place-time-card__change-place-button {
@@ -73,21 +94,6 @@
     border-radius: 30px;
 }
 
-.signup-field__input {
-    width: 200px;
-    text-align: center;
-    margin-top: 5px;
-    margin-bottom: 5px;
-
-    background: #FFFFFF;
-    box-shadow: 4px 6px 100px #9E9E9E;
-    border: 1px;
-    outline: 1px;
-
-    height: 25px;
-    border-radius: 30px;
-}
-
 
 .profile-avatar-area__image-input {
     opacity: 0;
@@ -97,20 +103,13 @@
 .add-product-by-restaurant__image-input {
     opacity: 0;
     visibility: hidden;
+    height: 0;
 }
 
-.login-field__input {
-    width: 200px;
-    text-align: center;
-    margin-top: 5px;
-    margin-bottom: 5px;
-
-    background: #FFFFFF;
-    box-shadow: 4px 6px 100px #9E9E9E;
-    border: 1px;
-    outline: 1px;
-    height: 25px;
-    border-radius: 30px;
+.add-restaurant__image-input {
+    opacity: 0;
+    height: 0;
+    visibility: hidden;
 }
 
 .order-checkout__input {
@@ -143,3 +142,59 @@
     border-radius: 30px;
 }
 
+.message_input {
+    width: 100%;
+    flex-grow: 1;
+    text-align: start;
+    margin: 10px;
+    padding-left: 10px;
+    font-size: 18px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 6px #9E9E9E;
+    border: 1px;
+    outline: 1px;
+    height: 30px;
+    border-radius: 30px;
+}
+
+.chat__username {
+    width: 750px;
+    text-align: start;
+    margin: 10px;
+    padding-left: 10px;
+    font-size: 16px;
+    background: #FFFFFF;
+    box-shadow: 4px 6px 100px #9E9E9E;
+    border: 1px;
+    outline: 1px;
+    height: 30px;
+    border-radius: 30px;
+}
+
+.add-restaurant__input {
+    padding-left: 10px;
+    margin-right: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: start;
+
+    background: #FFFFFF;
+    box-shadow: 4px 6px 100px #9E9E9E;
+    border: 1px;
+    outline: 1px;
+    height: 25px;
+    border-radius: 30px;
+}
+
+#suggest {
+    width: 60%;
+    text-align: start;
+    font-size: 18px;
+    background: #FFFFFF;
+    box-shadow: 4px 6px 100px #9E9E9E;
+    border: 1px;
+    outline: 1px;
+    height: 30px;
+    border-radius: 30px;
+    z-index: 1;
+}

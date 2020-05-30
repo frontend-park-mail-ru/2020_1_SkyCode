@@ -5,97 +5,86 @@ import EventBus from '../../../services/Events/EventBus.js';
 import BasketController from '../../../controllers/BasketController.js';
 import ErrorBlock from '../errorBlock/ErrorBlock.js';
 import Validation from '../../../services/InputValidation.js';
+import template from './OrderCheckout.hbs';
+import PhoneInput from '../../elements/phoneInput/PhoneInput.js';
+import Button from '../../elements/button/Button';
+import Events from '../../../services/Events/Events';
+import CheckedInput from '../../elements/checkedInput/CheckedInput';
 
 export default class OrderCheckout extends Component {
     constructor({classes, phone, address, email, profile}) {
         super(classes, {
-            PhoneInput: new Input({
-                classes: 'order-checkout__input',
-                id: 'order-checkout__phone-input',
-                type: 'tel',
-                value: phone[0]
-                    + '(' + phone.slice(1, 4)
-                    + ')' + phone.slice(4, 7)
-                    + '-' + phone.slice(7, 9)
-                    + '-' + phone.slice(9, 11),
-                placeholder: '8(800)555-35-35',
-                isRequired: true,
-                pattern: '\\d\\(\\d{3}\\)\\d{3}-\\d{2}-\\d{2}',
+            PhoneInput: new CheckedInput({
+                label: 'Телефон',
+                Input: new PhoneInput({
+                    id: 'order-checkout__phone-input',
+                    value: phone,
+                    isRequired: true,
+                }),
             }),
-            PhoneError: new ErrorBlock({
-                id: 'phone-input-error',
+            AddressInput: new CheckedInput({
+                label: 'Адрес',
+                Input: new Input({
+                    id: 'order-checkout__address-input',
+                    type: 'text',
+                    minlength: '5',
+                    maxlength: '255',
+                    value: localStorage.getItem('deliveryGeo'),
+                    placeholder: 'Введите адрес доставки',
+                    isRequired: true,
+                }),
             }),
-            AddressInput: new Input({
-                classes: 'order-checkout__input',
-                id: 'order-checkout__address-input',
-                type: 'text',
-                value: address,
-                placeholder: 'Enter your address',
-                isRequired: true,
+            EmailInput: new CheckedInput({
+                label: 'Почта',
+                Input: new Input({
+                    id: 'order-checkout__email-input',
+                    type: 'email',
+                    value: email,
+                    pattern: '^([A-Za-z0-9_\\-\\.])+@([A-Za-z0-9_\\-\\.])+\\.([A-Za-z]{2,4})$',
+                    placeholder: 'email@example.com',
+                }),
             }),
-            AddressError: new ErrorBlock({
-                id: 'address-input-error',
-            }),
-            EmailInput: new Input({
-                classes: 'order-checkout__input',
-                id: 'order-checkout__email-input',
-                type: 'email',
-                value: email,
-                // eslint-disable-next-line max-len
-                pattern: '^([A-Za-z0-9_\\-\\.])+@([A-Za-z0-9_\\-\\.])+\\.([A-Za-z]{2,4})$',
-                placeholder: 'email@example.com',
-            }),
-            EmailError: new ErrorBlock({
-                id: 'email-input-error',
-            }),
-            CommentInput: new Input({
-                classes: 'order-checkout__input',
-                id: 'order-checkout__comment-input',
-                type: 'text',
-                placeholder: 'Enter your comment',
+            CommentInput: new CheckedInput({
+                label: 'Комментарии',
+                Input: new Input({
+                    id: 'order-checkout__comment-input',
+                    type: 'text',
+                    maxlength: 255,
+                    placeholder: 'пожелания',
+
+                }),
             }),
             GeneralError: new ErrorBlock({
                 id: 'general-error',
             }),
         });
+        super.template = template;
 
         this.addContextData({
             SubmitButton:
-                new NeonButton({
-                    classes: 'order-checkout__confirm',
-                    text: 'Confirm',
+                new Button({
+                    classes: 'product-card-button',
+                    text: 'Заказать',
                     callback: () => {
                         this.context.GeneralError.clean();
-                        let validationFlag;
-
-                        validationFlag = Validation.inputValidation(
-                            this.context.PhoneInput,
-                            this.context.PhoneError,
-                        );
-
-                        validationFlag = Validation.inputValidation(
-                            this.context.AddressInput,
-                            this.context.AddressError,
-                        ) && validationFlag;
-
-                        validationFlag = Validation.inputValidation(
-                            this.context.EmailInput,
-                            this.context.EmailError,
-                        ) && validationFlag;
+                        let validFlag = this.context.PhoneInput.isValid();
+                        validFlag = validFlag && this.context.AddressInput.isValid();
+                        validFlag = validFlag && this.context.EmailInput.isValid();
+                        validFlag = validFlag && this.context.CommentInput.isValid();
 
                         if (BasketController.isEmpty()) {
                             this.context
                                 .GeneralError
-                                .addMessage('Your basket is empty');
-                            validationFlag = false;
+                                .replaceMessage('Ваша корзина пуста');
+                            validFlag = false;
                         }
 
-                        if (validationFlag === false) {
+                        if (validFlag === false) {
                             return;
                         }
 
+                        const basket = BasketController.basket.product;
                         const products = [];
-                        const basket = BasketController.basket;
                         for (const id in basket) {
                             const productItem = {
                                 productId: parseInt(id),
@@ -103,35 +92,36 @@ export default class OrderCheckout extends Component {
                             };
                             products.push(productItem);
                         }
+
                         const data = {
                             userId: profile.id,
-                            phone: this.context.PhoneInput.domElement.value,
-                            address: this.context.AddressInput.domElement.value,
-                            email: this.context.EmailInput.domElement.value,
-                            comment: this.context.CommentInput.domElement.value,
-                            personNum: BasketController.persons,
+                            phone: this.context.PhoneInput.value(),
+                            address: this.context.AddressInput.value(),
+                            email: this.context.EmailInput.value(),
+                            comment: this.context.CommentInput.value(),
+                            personNum: parseInt(BasketController.persons),
                             price: BasketController.total,
+                            restId: parseInt(BasketController.basket.restaurant),
                             products,
                         };
-                        EventBus.publish('checkout', data);
+
+                        EventBus.broadcast(Events.checkout, data);
                     },
                 }),
         });
+
+        setTimeout(() => {
+            this.context.PhoneInput.context.Input.correct();
+        }, 500);
     }
 
     bind() {
-        EventBus.subscribe('order-checkout-error', (message) => {
-            this.context.GeneralError.addMessage(message);
-        });
+        this.addUnbind(
+            EventBus.subscribe('order-checkout-error', (message) => {
+                this.context.GeneralError.replaceMessage(message);
+            }),
+        );
 
         super.bind();
-    }
-
-    unbind() {
-        EventBus.unsubscribe('order-checkout-error', (message) => {
-            this.context.GeneralError.addMessage(message);
-        });
-
-        super.unbind();
     }
 }

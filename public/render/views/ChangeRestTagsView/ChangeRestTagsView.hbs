@@ -1,0 +1,8 @@
+<main class="change-restaurant-tag-view" id="view">
+    <h2>Теги ресторана {{rest.name}}</h2>
+    {{#each tagsComponents}}
+        {{{this}}}{{{this._context.value}}}<br>
+    {{/each}}
+    {{{Submit}}}
+    <div class="message">{{message}}</div>
+</main>

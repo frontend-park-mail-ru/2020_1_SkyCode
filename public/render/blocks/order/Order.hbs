@@ -1,25 +1,24 @@
 <div class="{{classes}}">
-    {{{profileButton}}}
 
-    <div class="order__title">
-        {{title}}
-    </div>
+    <h3 class="order__title">
+        {{Title}}
+    </h3>
+    <div class="order__restaurant-href" style="display: none"></div>
 
-    {{{placeTimeCard}}}
-    {{{basket}}}
-
-    <div class="order__total-text">
-        Total:
-    </div>
+    {{{Basket}}}
 
     <div class="order__total">
-        RUB {{total}}
+        <div>Итого:</div>
+        <div class="order__total-sum">
+            ₽ <span id="total">{{Total}}</span>
+        </div>
     </div>
 
-    <div style="grid-area: hline">
-        <hr>
+    <div><hr></div>
+
+    <div class="order__footer">
+        {{{PersonInput}}}
+        {{{Checkout}}}
     </div>
 
-    {{{personInput}}}
-    {{{checkout}}}
 </div>

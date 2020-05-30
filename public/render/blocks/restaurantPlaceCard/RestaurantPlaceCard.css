@@ -1,0 +1,10 @@
+.restaurant-info__place-card {
+    display: flex;
+    flex-direction: column;
+
+    background: #2196f3;
+    padding: 10px;
+    border-radius: 15px;
+
+    margin-bottom: 20px;
+}

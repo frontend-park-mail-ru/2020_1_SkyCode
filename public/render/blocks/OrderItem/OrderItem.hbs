@@ -1,0 +1,43 @@
+<div class="restaurant-item {{classes}}" id={{id}}>
+    <div class="order-item__time-name">
+        <div class="order-item__time">{{time}}</div>
+        <div class="order-item__name">{{status}}</div>
+    </div>
+
+    <div class="order-item__container">
+        <h2>Информация о заказе:</h2>
+        <li class="order-item__li">
+            <span>Дата:</span><span>{{date}}</span>
+        </li>
+        <li class="order-item__li">
+            <span>Телефон:</span><span>{{order.phone}}</span>
+        </li>
+        <li class="order-item__li">
+            <span>Стоимость:</span>
+            <span>{{order.price}}₽</span>
+        </li>
+        {{#if order.comment}}
+            <li class="order-item__li">
+                <span>Комментарий:</span>
+                <span>{{order.comment}}</span>
+            </li>
+        {{/if}}
+
+        <li class="order-item__li">
+            <span>Количество людей:</span>
+            <span>{{order.person_num}}</span>
+        </li>
+    </div>
+
+    <div class="order-item__container">
+        <h2>Содержимое заказа:</h2>
+        {{#each products}}
+            <li class="order-item__li"><span>{{this.name}}</span> <span>× {{this.count}}
+                шт</span></li>
+        {{/each}}
+    </div>
+
+    {{#if Button}}
+        {{{Button}}}
+    {{/if}}
+</div>

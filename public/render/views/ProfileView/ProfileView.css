@@ -1,15 +1,14 @@
-@import "../../blocks/profileTextArea/ProfileTextArea.css";
-@import "../../blocks/header/Header.css";
-
 .profile-view {
-    display: grid;
-    grid-template-areas:
-            "header header header"
-            ". profile-area .";
-    grid-template-columns: 1fr 7fr 1fr;
-    grid-template-rows:  1fr 1fr 5fr;
-    justify-content: center;
-    align-items: center;
+    grid-area: view;
 
-    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    height: 90vh;
+}
+
+@media (max-width: 700px) {
+    .profile-view {
+        height: 80vh;
+    }
 }

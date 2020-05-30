@@ -3,4 +3,6 @@
     font-size: 15px;
     min-height: 20px;
     margin-bottom: 5px;
+    transition: .3s;
+    margin-top: 20px;
 }

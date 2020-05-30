@@ -1,23 +1,110 @@
+@import "render/elements/button/Button.css";
+@import "render/elements/point/Point.css";
+@import "render/elements/hamburgerButton/HamburgerButton.css";
+@import "render/elements/href/Href.css";
+@import "render/elements/img/Img.css";
+@import "render/elements/input/Input.css";
+@import "render/elements/checkedInput/CheckedInput.css";
+@import "render/elements/neonButton/NeonButton.css";
+@import "render/elements/textarea/Textarea.css";
+@import "render/elements/numberInput/NumberInput.css";
+@import "render/elements/GeoInput/GeoInput.css";
+@import "render/elements/ImageInput/ImageInput.css";
 @import "render/views/MainView/MainView.css";
 @import "render/views/ProfileView/ProfileView.css";
-@import "render/views/LoginSignupView/LoginSignupView.css";
 @import "render/views/RestaurantView/RestaurantView.css";
 @import "render/views/CheckoutView/CheckoutView.css";
-@import "render/views/AddProductByRestaurantView/AddProductByRestaurantView.css";
+@import "render/views/OrderHistoryView/OrderHistoryView.css";
+@import "render/views/AddRestaurantView/AddRestaurantView.css";
+@import "render/views/RestaurantInfoView/RestaurantInfoView.css";
+@import "render/views/SupportChatView/SupportChatView.css";
+@import "render/views/AdminChatListView/AdminChatListView.css";
+@import "render/views/MapView/MapView.css";
+@import "render/views/AddRestaurantPointView/AddRestaurantPointView.css";
+@import "render/views/AdminRestaurantListView/AdminRestaurantListView.css";
+@import "render/views/BaseView/BaseView.css";
+@import "render/views/AddProductView/AddProductView.css";
+@import "render/blocks/actionBar/ActionBar.css";
+@import "render/blocks/chatList/chatList.css";
+@import "render/blocks/addRestaurant/AddRestaurant.css";
+@import "render/blocks/addRestaurantPoint/addRestaurantPoint.css";
+@import "render/blocks/basket/Basket.css";
+@import "render/blocks/OrderItem/OrderItem.css";
+@import "render/blocks/basketProduct/BasketProduct.css";
+@import "render/blocks/category/Category.css";
+@import "render/blocks/categoryBar/CategoryBar.css";
+@import "render/blocks/chatItem/chatItem.css";
+@import "render/blocks/errorBlock/ErrorBlock.css";
+@import "render/blocks/feedbackForm/FeedbackForm.css";
+@import "render/blocks/header/Header.css";
+@import "render/blocks/iconBar/IconBar.css";
+@import "render/blocks/iconedHeader/IconedHeader.css";
+@import "render/blocks/imageHref/ImageHref.css";
+@import "render/blocks/loginField/LoginField.css";
+@import "render/blocks/LoginPopup/LoginPopup.css";
+@import "render/blocks/SignupPopup/SignupPopup.css";
+@import "render/blocks/GeoPopup/GeoPopup.css";
+@import "render/blocks/Pagination/Pagination.css";
+@import "render/blocks/NotificationPopup/NotificationPopup.css";
+@import "render/blocks/Notification/Notification.css";
+@import "render/blocks/message/message.css";
+@import "render/blocks/order/Order.css";
+@import "render/blocks/orderCard/orderCard.css";
+@import "render/blocks/orderCheckout/OrderCheckout.css";
+@import "render/blocks/personInput/PersonInput.css";
+@import "render/blocks/placeTimeCard/PlaceTimeCard.css";
+@import "render/blocks/productCard/ProductCard.css";
+@import "render/blocks/productList/ProductList.css";
+@import "render/blocks/profileTextArea/ProfileTextArea.css";
+@import "render/blocks/restaurant/Restaurant.css";
+@import "render/blocks/restaurantBanner/restaurantBanner.css";
+@import "render/blocks/restaurantCategories/RestaurantCategories.css";
+@import "render/blocks/restaurantFeedback/RestaurantFeedback.css";
+@import "render/blocks/restaurantFeedbackCard/RestaurantFeedbackCard.css";
+@import "render/blocks/restaurantInfo/RestaurantInfo.css";
+@import "render/blocks/restaurantItem/restaurantItem.css";
+@import "render/blocks/restaurantList/RestaurantList.css";
+@import "render/blocks/restaurantPlaceCard/RestaurantPlaceCard.css";
+@import "render/blocks/restaurantСategory/RestaurantCategory.css";
+@import "render/blocks/searchField/SearchField.css";
+@import "render/blocks/selectTimeButton/SelectTimeButton.css";
+@import "render/blocks/signupField/SignupField.css";
+@import "render/blocks/supportChat/supportChat.css";
+@import "render/blocks/wavingMenue/WavingMenue.css";
+@import "render/blocks/RecommendBar/RecommendBar.css";
+
+
 
 body {
-    font-family: 'Varela Round', sans-serif;
+    font-family: 'Comfortaa', cursive;
     font-style: normal;
     font-weight: normal;
     padding: 0;
     margin: 0;
     height: 100vh;
     overflow: hidden;
+    letter-spacing: 1px;
+    background-color: white;
+}
+
+.general-view {
+    display: grid;
+    grid-template-areas: "header" "view";
+    grid-template-rows: 70px 1fr;
 }
 
 .error {
     color: red;
     font-size: 12px;
+}
+
+.message {
+    font-size: 18px;
+    font-style: italic;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 /** REMOVE INPUT NUMBER CONTROLLERS **/
@@ -31,4 +118,40 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
     -moz-appearance: textfield;
+}
+
+
+/*::-webkit-scrollbar:horizontal {*/
+/*    height: 15px;*/
+/*    width: 15px;*/
+/*}*/
+
+::-webkit-scrollbar {
+    width: 30px;
+    height: 15px;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+    background: linear-gradient(180deg, #f6d471, #dfff90);
+    border-radius: 30px;
+    box-shadow: inset 2px 2px 2px hsla(0,0%,100%,.25), inset -2px -2px 2px rgba(0,0,0,.25);
+}
+
+::-webkit-scrollbar-track:vertical {
+    background: linear-gradient(90deg, transparent, #d3d3d359);
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+    background: linear-gradient(90deg, #f6d471, #dfff90);
+    border-radius: 30px;
+    box-shadow: inset 2px 2px 2px hsla(0,0%,100%,.25), inset -2px -2px 2px rgba(0,0,0,.25);
+}
+
+::-webkit-scrollbar-track:horizontal {
+    background: linear-gradient(270deg, transparent, #d3d3d359);
+}
+
+
+::-webkit-scrollbar{
+    display: none;
 }

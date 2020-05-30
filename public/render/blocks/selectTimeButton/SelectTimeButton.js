@@ -1,5 +1,6 @@
 import Component from '../../Component.js';
 import Button from '../../elements/button/Button.js';
+import template from './SelectTimeButton.hbs';
 
 
 export default class SelectTimeButton extends Component {
@@ -15,5 +16,7 @@ export default class SelectTimeButton extends Component {
                 callback,
             }),
         });
+
+        super.template = template;
     }
 }

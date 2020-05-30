@@ -3,7 +3,10 @@ import CheckoutView from '../render/views/CheckoutView/CheckoutView.js';
 import UserModel from '../models/UserModel.js';
 import BasketController from './BasketController.js';
 import EventBus from '../services/Events/EventBus.js';
+import Event from '../services/Events/Events.js';
 import RestaurantModel from '../models/RestaurantModel.js';
+import Swal from 'sweetalert2';
+import UserController from './UserController';
 
 class CheckoutController extends BaseController {
     constructor(title = 'confirm') {
@@ -11,31 +14,20 @@ class CheckoutController extends BaseController {
     }
 
     execute() {
-        UserModel
-            .getUser()
-            .then((response) => {
-                if (response.error === 'Unauthorized') {
-                    EventBus.publish('redirect', {url: '/login'});
-                } else {
-                    super.execute(new CheckoutView({
-                        profile: response.User,
-                        basket: BasketController.basket.product,
-                        personNum: BasketController.persons,
-                    }));
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-                EventBus.publish('redirect', {url: '/'});
-            });
+        super.execute(new CheckoutView({
+            profile: UserController.User,
+            basket: BasketController.basket.product,
+            personNum: BasketController.persons,
+        }));
     }
 
     startCatchEvents() {
-        EventBus.subscribe('checkout', this.checkoutHandler.bind(this));
-    }
-
-    stopCatchEvents() {
-        EventBus.unsubscribe('checkout', this.checkoutHandler.bind(this));
+        this.addUnbind(
+            EventBus.subscribe(
+                Event.checkout,
+                this.checkoutHandler.bind(this),
+            ),
+        );
     }
 
     checkoutHandler(data) {
@@ -43,14 +35,18 @@ class CheckoutController extends BaseController {
             .addOrder(data)
             .then((response) => {
                 if (response.error) {
-                    EventBus.publish('order-checkout-error', response.error);
+                    EventBus.broadcast(Event.orderCheckoutError, response.error);
                 } else {
-                    EventBus.publish('set-page', {url: '/'});
+                    EventBus.broadcast(Event.checkoutSuccess);
+                    EventBus.broadcast(Event.setPage, {
+                        url: '/orders',
+                        message: 'Ваш заказ успешно оформлен',
+                    });
                 }
             })
             .catch((err) => {
                 console.log(err);
-                EventBus.publish('order-checkout-error', err);
+                EventBus.broadcast(Event.orderCheckoutError, err);
             });
     }
 }
