@@ -16,7 +16,7 @@ class MainController extends BaseController {
     }
 
     execute(matchData = []) {
-        const count = 20;
+        const count = 6;
         const page = matchData.length === 0 ? 1 : matchData[0];
 
         Promise.all([
