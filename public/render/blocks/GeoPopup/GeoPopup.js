@@ -64,7 +64,10 @@ export default class GeoPopup extends Component {
         this.confirmDisappear();
 
         this.addUnbind(
-            EventBus.subscribe(Events.enterPressed, this.submit.bind(this)),
+            EventBus.subscribe(Events.enterPressed, () => {
+                if (!this.context.Input.isValid()) return;
+                this.submit.bind(this);
+            }),
         );
         this.addUnbind(
             EventBus.subscribe(Events.escButPressed, () => {
