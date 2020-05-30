@@ -21,7 +21,7 @@ class MainController extends BaseController {
 
         Promise.all([
             RestaurantModel
-                .getRecommendationsByAddress(1, 20, localStorage.getItem('deliveryGeo')),
+                .getRecommendationsByAddress(1, 4, localStorage.getItem('deliveryGeo')),
             RestaurantModel
                 .getRestaurantsByAddress(page, count, localStorage.getItem('deliveryGeo')),
             TagModel.all(),
