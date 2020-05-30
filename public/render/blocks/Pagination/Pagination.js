@@ -12,6 +12,8 @@ export default class Pagination extends Component {
     }
 
     static createHrefs(first, last, current, hrefBase) {
+        if (last < first) last = first;
+
         const hrefs = [];
         const maxSpace = 9;
         const needLeftShevron = current !== first && last !== first;
