@@ -3,9 +3,9 @@
 Сервис доставки еды
 
 
-##[Деплой](https://skydelivery.site/ "https://skydelivery.site/")
+## [Деплой](https://skydelivery.site/ "https://skydelivery.site/")
 
-##Команда
+## Команда
 * [Постников Александр](https://vk.com/po_ofik)
 * [Исполатов Филипп](https://vk.com/ispolatovph)
 * [Николас Яковидис](https://vk.com/rockandniko)
