@@ -6,7 +6,7 @@ export default class RadiusInput extends Input {
             type: 'text',
             classes,
             id,
-            // placeholder: 'в километрах',
+            isRequired: true,
         });
     }
 

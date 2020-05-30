@@ -2,8 +2,6 @@ import Component from '../../Component.js';
 import template from './AddRestaurantPointView.hbs';
 import AddRestaurantPoint from '../../blocks/addRestaurantPoint/addRestaurantPoint.js';
 
-
-
 export default class AddRestaurantPointView extends Component {
     constructor({restaurant}) {
         super();

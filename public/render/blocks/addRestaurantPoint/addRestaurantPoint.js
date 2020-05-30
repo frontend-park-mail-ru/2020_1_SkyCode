@@ -47,10 +47,19 @@ export default class AddRestaurantPoint extends Component {
         ymaps.ready(init);
 
         function init() {
-            const suggestView = new ymaps.SuggestView(GeoInput.id('__add-rest-point'));
-        }
+            const input = document.getElementById(GeoInput.id('__add-rest-point'));
+            Object.defineProperty(input, 'value', {
+                get() {
+                    return this.innerText.replace(/\s+/g, ' ').trim();
+                },
+                set(v) {
+                    this.innerText = v.replace(/\s+/g, '\n');
+                },
+                configurable: true,
+            });
 
-        this.focusOnAddressInput();
+            new ymaps.SuggestView(input);
+        }
 
         super.bind();
     }

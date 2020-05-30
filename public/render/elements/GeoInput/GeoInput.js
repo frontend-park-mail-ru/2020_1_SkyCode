@@ -84,7 +84,7 @@ export default class GeoInput extends Component {
     bind() {
         this.domElement.addEventListener('input', (e) => {
             const len = this.domElement.value.length;
-debugger
+
             if (len - this.last > 1) {
                 e.stopPropagation();
                 e.preventDefault();
