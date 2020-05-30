@@ -16,7 +16,7 @@ class RestaurantController extends BaseController {
 
     execute(matchData) {
         this.restaurantId = matchData[0];
-        const count = 2;
+        const count = 20;
         const page = (matchData.length > 1) ? matchData[1] : 1;
 
         Promise.all([
