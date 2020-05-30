@@ -84,6 +84,7 @@ body {
     height: 100vh;
     overflow: hidden;
     letter-spacing: 1px;
+    background-color: white;
 }
 
 .general-view {
@@ -150,3 +151,7 @@ input[type=number] {
     background: linear-gradient(270deg, transparent, #d3d3d359);
 }
 
+
+::-webkit-scrollbar{
+    display: none;
+}
