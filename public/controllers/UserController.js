@@ -3,6 +3,7 @@ import Event from '../services/Events/Events.js';
 import SessionModel from '../models/SessionModel.js';
 import BaseController from './BaseController.js';
 import UserModel from '../models/UserModel.js';
+import Events from '../services/Events/Events';
 
 
 class UserController extends BaseController {
@@ -62,8 +63,18 @@ class UserController extends BaseController {
             .createUser(data)
             .then((response) => {
                 if (response.message) {
-                    this.updateUserInfo();
-                    EventBus.broadcast(Event.successSignup);
+                    this.updateUserInfo()
+                        .then(() => {
+                            if (this.isLogined()) {
+                                EventBus.broadcast(Event.successSignup);
+                            } else {
+                                EventBus.broadcast(Events.setPage, {
+                                    url: '/',
+                                    message: 'Регистрация не удаласть,'
+                                        + ' попоробуйте ещё раз'},
+                                );
+                            }
+                        });
                 }
 
                 if (response.error) {
