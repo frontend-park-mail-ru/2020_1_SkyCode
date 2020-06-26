@@ -70,7 +70,7 @@ export default class GeoInput extends Component {
                 }
             });
 
-        return '';
+        return this._isValid ? '' : 'с точностью до дома';
     }
 
     static id(suffix) {
