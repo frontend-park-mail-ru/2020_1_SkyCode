@@ -70,6 +70,7 @@ export default class ProfileTextArea extends Component {
                 id: 'profile-avatar-area__image-input',
                 type: 'file',
                 value: 'xxx',
+                image: true,
             }),
             generalErrorField: new ErrorBlock({
                 id: 'profile-general-error',

@@ -17,9 +17,9 @@ class SupportChatController extends BaseController {
         const chatId = matchData[0];
 
         if (UserController.User.role === 'Support') {
-            this.socket = new WebSocket(`wss://skydelivery.site/api/v1/chats/${chatId}/join`);
+            this.socket = new WebSocket(`ws://skydelivery.site/api/v1/chats/${chatId}/join`);
         } else {
-            this.socket = new WebSocket('wss://skydelivery.site/api/v1/chat');
+            this.socket = new WebSocket('ws://skydelivery.site/api/v1/chat');
         }
 
         this.socket.onopen = (e) => {
