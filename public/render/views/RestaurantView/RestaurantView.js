@@ -17,7 +17,7 @@ export default class RestaurantView extends Component {
                 current: Number(page),
                 last: Math.floor(Number(total) / Number(count))
                     + (Number(total) % Number(count) !== 0),
-                hrefBase: `/restaurants/${restaurant.id}/`,
+                hrefBase: `/restaurants/${restaurant.id}/products/`,
             }),
             Banner: new RestaurantBanner({
                 classes: 'restaurant-banner',

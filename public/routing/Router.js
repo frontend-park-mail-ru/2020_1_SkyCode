@@ -229,7 +229,7 @@ class Router {
             needLogin: true,
             button: 'p',
         });
-        this._registerPage(RestaurantController, '/restaurants/:int/:page');
+        this._registerPage(RestaurantController, '/restaurants/:int/products/:page');
         this._registerPage(RestaurantController, '/restaurants/:int');
         this._registerPage(CheckoutController, '/checkout', {
             needLogin: true,

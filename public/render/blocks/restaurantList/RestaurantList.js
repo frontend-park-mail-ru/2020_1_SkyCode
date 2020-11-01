@@ -46,7 +46,7 @@ export default class RestaurantList extends Component {
                 avgDeliveryTime: 30,
                 rate: restaurant.rating,
                 imageHref: `/images/${restaurant.image}`,
-                href: `/restaurants/${restaurant.id}`,
+                href: `/restaurants/${restaurant.id}/products/1`,
             }));
         }
 
