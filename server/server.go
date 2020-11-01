@@ -50,5 +50,6 @@ func main() {
 
 	http.HandleFunc("/", mainHandler)
 
-	log.Fatal(http.ListenAndServe("127.0.0.1:8080", nil))
+	fmt.Println("Start")
+	log.Fatal(http.ListenAndServe("0.0.0.0:8000", nil))
 }

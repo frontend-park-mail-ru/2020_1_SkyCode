@@ -1,6 +1,6 @@
 class Http {
     constructor() {
-        this.serverPath = 'https://skydelivery.site';
+        this.serverPath = 'http://skydelivery.site';
     }
 
     fetchRequest({
